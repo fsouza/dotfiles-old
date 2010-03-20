@@ -57,3 +57,4 @@ EOF
 colorscheme Dark
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nnoremap <c-o> :FufFile<CR>
+nnoremap <c-l> :FufDir<CR>
