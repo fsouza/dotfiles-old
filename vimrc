@@ -13,7 +13,6 @@ autocmd BufRead *.py match BadWhitespace /^\t\+/
 autocmd BufRead *.py match BadWhitespace /\s\+$/
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=html.django_template " For SnipMate"
-autocmd BufRead * python setIndentation()
 
 colorscheme Dark
 nmap <silent> <c-p> :NERDTreeToggle<CR>
