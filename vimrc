@@ -16,7 +16,7 @@ autocmd BufRead *.py match BadWhitespace /\s\+$/
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=html.django_template " For SnipMate"
 
-colorscheme Dark
+colorscheme ir_black
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nnoremap <c-o> :FufFile<CR>
 nnoremap <c-l> :FufDir<CR>
