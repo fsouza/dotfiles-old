@@ -29,7 +29,7 @@ endif
 
 hi Statement  guifg=tan
 hi Constant   guifg=#FF7070
-hi String           guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
+hi String     guifg=#A8FF60     guibg=NONE        gui=NONE      ctermfg=green       ctermbg=NONE        cterm=NONE
 hi Comment    guifg=SkyBlue
 hi PreProc    guifg=orchid2
 hi Character  guifg=Cyan
