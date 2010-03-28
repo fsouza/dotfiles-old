@@ -5,6 +5,8 @@ autocmd BufRead *.py inoremap # X^H#
 set tabstop=4
 set shiftwidth=4
 set smarttab
+set autoindent
+set smartindent
 set expandtab
 autocmd BufRead * set softtabstop=4
 autocmd BufRead *.py set autoindent
