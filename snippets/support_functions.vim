@@ -1,29 +1,66 @@
 "ruby {{{1
-function! Snippet_RubyClassNameFromFilename()
+function! Snippet_RubyClassNameFromFilename(...)
     let name = expand("%:t:r")
+    if len(name) == 0
+        if a:0 == 0
+            let name = 'MyClass'
+        else
+            let name = a:1
+        endif
+    endif
     return Snippet_Camelcase(name)
 endfunction
 
-function! Snippet_MigrationNameFromFilename()
+function! Snippet_MigrationNameFromFilename(...)
     let name = substitute(expand("%:t:r"), '^.\{-}_', '', '')
+    if len(name) == 0
+        if a:0 == 0
+            let name = 'MyClass'
+        else
+            let name = a:1
+        endif
+    endif
     return Snippet_Camelcase(name)
 endfunction
 
 
 "python {{{1
-function! Snippet_PythonClassNameFromFilename()
+function! Snippet_PythonClassNameFromFilename(...)
     let name = expand("%:t:r")
+    if len(name) == 0
+        if a:0 == 0
+            let name = 'MyClass'
+        else
+            let name = a:1
+        endif
+    endif
     return Snippet_Camelcase(name)
 endfunction
 
 "php {{{1
-function! Snippet_PHPClassNameFromFilename()
-    return expand("%:t:r:r")
+function! Snippet_PHPClassNameFromFilename(...)
+    let name = expand("%:t:r:r")
+    if len(name) == 0
+        if a:0 == 0
+            let name = 'MyClass'
+        else
+            let name = a:1
+        endif
+    endif
+    return name
 endfunction
 
 "java {{{1
-function! Snippet_JavaClassNameFromFilename()
-    return expand("%:t:r")
+function! Snippet_JavaClassNameFromFilename(...)
+    let name = expand("%:t:r")
+    if len(name) == 0
+        if a:0 == 0
+            let name = 'MyClass'
+        else
+            let name = a:1
+        endif
+    endif
+    return name
 endfunction
 
 function! Snippet_JavaInstanceVarType(name)
@@ -56,7 +93,7 @@ function! s:end_comment()
 endfunction
 
 function! Snippet_Modeline()
-    return s:start_comment() . " vim: set <+settings+>:" . s:end_comment()
+    return s:start_comment() . " vim: set ${1:settings}:" . s:end_comment()
 endfunction
 
 function! Snippet_Camelcase(s)
