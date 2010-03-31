@@ -12,6 +12,7 @@ autocmd BufRead *.erb set tabstop=2
 autocmd BufRead *.erb set shiftwidth=2
 autocmd BufRead *.erb set softtabstop=2
 autocmd BufRead *.erb set ft=eruby.eruby-rails.html
+autocmd BufRead *.rb set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
 set smarttab
 set autoindent
 set smartindent
