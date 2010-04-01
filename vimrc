@@ -11,7 +11,6 @@ autocmd BufRead *.rb set softtabstop=2
 autocmd BufRead *.erb set tabstop=2
 autocmd BufRead *.erb set shiftwidth=2
 autocmd BufRead *.erb set softtabstop=2
-autocmd BufRead *.erb set ft=eruby.eruby-rails.html
 autocmd BufRead *.rb set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
 set smarttab
 set autoindent
@@ -23,6 +22,8 @@ autocmd BufRead *.py match BadWhitespace /^\t\+/
 autocmd BufRead *.py match BadWhitespace /\s\+$/
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=html.django_template " For SnipMate"
+autocmd BufRead *.erb set ft=eruby.eruby-rails.html
+autocmd BufRead *.html.erb set ft=eruby.eruby-rails.html
 set number
 
 colorscheme Dark
