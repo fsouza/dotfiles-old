@@ -31,3 +31,11 @@ nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
 nnoremap <c-o> :FufFile<CR>
 nnoremap <c-l> :FufDir<CR>
+
+let EnhCommentifyPretty = "yes"
+let EnhCommentifyUserBindings = "yes"
+let EnhCommentifyRespectIndent = "yes"
+let EnhCommentifyUseBlockIndent = "yes"
+
+nmap <c-m> :EnhancedCommentify('yes', 'guess')<CR>
+vmap <c-m> <Plug>VisualTraditional
