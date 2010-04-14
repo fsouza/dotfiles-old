@@ -12,8 +12,10 @@ autocmd BufRead *.erb set tabstop=2
 autocmd BufRead *.erb set shiftwidth=2
 autocmd BufRead *.erb set softtabstop=2
 autocmd BufRead *.rb set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
+autocmd BufRead *.php set bomb
 autocmd BufRead *.php set encoding=iso-8859-1
 autocmd BufRead *.php set fileencodings=iso-8859-1
+autocmd BufRead *.php set fileencoding=iso-8859-1
 set smarttab
 set autoindent
 set smartindent
