@@ -1,10 +1,13 @@
 set term=builtin_ansi
+
 syntax on
-autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd BufRead *.py inoremap # X^H#
+autocmd Filetype python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd Filetype python map <Leader>p :!python % <CR>
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+
 autocmd BufRead *.rb set tabstop=2
 autocmd BufRead *.rb set shiftwidth=2
 autocmd BufRead *.rb set softtabstop=2
@@ -16,10 +19,12 @@ autocmd BufRead *.php set bomb
 autocmd BufRead *.php set encoding=iso-8859-1
 autocmd BufRead *.php set fileencodings=iso-8859-1
 autocmd BufRead *.php set fileencoding=iso-8859-1
+
 set smarttab
 set autoindent
 set smartindent
 set expandtab
+
 autocmd BufRead *.py set autoindent
 autocmd BufRead *.py highlight BadWhitespace ctermbg=red guibg=red
 autocmd BufRead *.py match BadWhitespace /^\t\+/
@@ -28,6 +33,7 @@ autocmd FileType python set ft=python.django
 autocmd FileType html set ft=django_template.html
 autocmd BufRead *.erb set ft=eruby.eruby-rails.html
 autocmd BufRead *.html.erb set ft=eruby.eruby-rails.html
+
 set number
 
 colorscheme Dark
@@ -35,10 +41,11 @@ nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
 map <c-t> :FuzzyFinderTextMate<CR>
 
-let EnhCommentifyPretty = "yes"
-let EnhCommentifyUserBindings = "yes"
-let EnhCommentifyRespectIndent = "yes"
-let EnhCommentifyUseBlockIndent = "yes"
+map ,# :s/^/#/<CR>
 
-nmap <c-m> :EnhancedCommentify('yes', 'guess')<CR>
-vmap <c-m> <Plug>VisualTraditional
+map ,/ :s/^/\/\//<CR>
+
+map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
+
+map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
+
