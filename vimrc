@@ -33,6 +33,8 @@ set number
 colorscheme Dark
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
+map <leader>t :FuzzyFinderTextMate<CR>
+map <leader>y :FuzzyFinderTextMateRefreshFiles<CR>
 
 let EnhCommentifyPretty = "yes"
 let EnhCommentifyUserBindings = "yes"
