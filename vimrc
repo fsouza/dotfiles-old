@@ -33,8 +33,6 @@ set number
 colorscheme Dark
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
-nnoremap <c-o> :FufFile<CR>
-nnoremap <c-l> :FufDir<CR>
 
 let EnhCommentifyPretty = "yes"
 let EnhCommentifyUserBindings = "yes"
