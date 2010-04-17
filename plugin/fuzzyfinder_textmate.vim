@@ -17,43 +17,29 @@ function! s:HighlightError()
   syntax clear
   syntax match Error  /^.*$/
 endfunction
-
-function! s:OpenBuffer(nr, mode)
-  execute printf([
-        \   ':%sbuffer',
-        \   ':%ssbuffer',
-        \   ':vertical :%ssbuffer',
-        \   ':tab :%ssbuffer',
-        \ ][a:mode], a:nr)
-endfunction
-
-function! s:OpenFile(path, mode)
-  let nr = bufnr('^' . a:path . '$')
-  if nr > -1
-    call s:OpenBuffer(nr, a:mode)
-  else
-    execute [
-          \   ':edit ',
-          \   ':split ',
-          \   ':vsplit ',
-          \   ':tabedit ',
-          \ ][a:mode] . s:EscapeFilename(a:path)
-  endif
-endfunction
-
-function! s:EscapeFilename(fn)
-  return escape(a:fn, " \t\n*?[{`$%#'\"|!<")
-endfunction
 " ------------------------------------------------------------------------------------
 " }}}
 " ====================================================================================
 
-command! -bang -narg=? -complete=file   FuzzyFinderTextMate   call FuzzyFinderTextMateLauncher(<q-args>, len(<q-bang>))
+command! -bang -narg=? -complete=file   FuzzyFinderTextMate   call FuzzyFinderTextMateLauncher(<q-args>, len(<q-bang>), bufnr('%'), s:GetCurrentTagFiles())
 
 function! InstantiateTextMateMode() "{{{
 ruby << RUBY
   begin
-    require "#{ENV['HOME']}/.vim/ruby/fuzzy_file_finder"
+    if ENV['OS'] && ENV['OS'].downcase =~ /windows/
+      require "#{ENV['HOME']}\\vimfiles\\ruby\\fuzzy_file_finder"
+    else
+      begin
+        require "#{ENV['HOME']}/.vim/ruby/fuzzy_file_finder"
+      rescue LoadError
+        files = Dir["#{ENV['HOME']}/.vim/bundle/*/ruby/fuzzy_file_finder.rb"]
+        if !files.empty?
+          require files[0]
+        else
+          raise
+        end
+      end
+    end
   rescue LoadError
     begin
       require 'rubygems'
@@ -82,15 +68,18 @@ RUBY
   endif
 
   " Configuration option: g:fuzzy_ignore
-  " A delimited list of file glob patterns to ignore. Entries may be delimited
-  " with either commas or semi-colons.
+  " A semi-colon delimited list of file glob patterns to ignore
   if !exists('g:fuzzy_ignore')
     let g:fuzzy_ignore = ""
   endif
 
-  " Configuration option: g:fuzzy_enumerating_limit
+  if !exists('g:shorten_paths')
+    let g:shorten_paths = "true"
+  endif
+
+  " Configuration option: g:fuzzy_matching_limit
   " The maximum number of matches to return at a time. Defaults to 200, via the
-  " g:FuzzyFinderMode.TextMate.enumerating_limit variable, but using a global variable
+  " g:FuzzyFinderMode.TextMate.matching_limit variable, but using a global variable
   " makes it easier to set this value.
 
 ruby << RUBY
@@ -98,8 +87,9 @@ ruby << RUBY
     @finder ||= begin
       roots = VIM.evaluate("g:fuzzy_roots").split("\n")
       ceiling = VIM.evaluate("g:fuzzy_ceiling").to_i
-      ignore = VIM.evaluate("g:fuzzy_ignore").split(/[;,]/)
-      FuzzyFileFinder.new(roots, ceiling, ignore)
+      ignore = VIM.evaluate("g:fuzzy_ignore").split(/;/)
+      shorten_paths = VIM.evaluate("g:shorten_paths") == "true" ? true : false
+      FuzzyFileFinder.new(roots, ceiling, ignore, {:shorten_paths => shorten_paths})
     end
   end
 RUBY
@@ -125,10 +115,10 @@ RUBY
 
     let result = []
 
-    if exists('g:fuzzy_enumerating_limit')
-      let l:limit = g:fuzzy_enumerating_limit
+    if exists('g:fuzzy_matching_limit')
+      let l:limit = g:fuzzy_matching_limit
     else
-      let l:limit = self.enumerating_limit
+      let l:limit = self.matching_limit
     endif
 
     ruby << RUBY
@@ -144,7 +134,7 @@ RUBY
       end
 RUBY
 
-    if empty(result) || len(result) >= l:limit
+    if empty(result) || len(result) >= self.matching_limit
       call s:HighlightError()
     endif
 
@@ -155,24 +145,20 @@ RUBY
     return result
   endfunction
 
-  function! FuzzyFinderTextMateLauncher(initial_text, partial_matching)
-    call g:FuzzyFinderMode.TextMate.launch(a:initial_text, a:partial_matching)
-  endfunction
-
-  function! g:FuzzyFinderMode.TextMate.on_open(expr, mode)
-    call s:OpenFile(fnamemodify(a:expr, ':~:.'), a:mode)
+  function! FuzzyFinderTextMateLauncher(initial_text, partial_matching, prev_bufnr, tag_files)
+    call g:FuzzyFinderMode.TextMate.launch(a:initial_text, a:partial_matching, a:prev_bufnr, a:tag_files)
   endfunction
 
   let g:FuzzyFinderOptions.TextMate = copy(g:FuzzyFinderOptions.File)
 endfunction "}}}
 
 if !exists('loaded_fuzzyfinder') "{{{
-  function! FuzzyFinderTextMateLauncher(initial_text, partial_matching)
+  function! FuzzyFinderTextMateLauncher(initial_text, partial_matching, prev_bufnr, tag_files)
     call InstantiateTextMateMode()
-    function! FuzzyFinderTextMateLauncher(initial_text, partial_matching)
-      call g:FuzzyFinderMode.TextMate.launch(a:initial_text, a:partial_matching)
+    function! FuzzyFinderTextMateLauncher(initial_text, partial_matching, prev_bufnr, tag_files)
+      call g:FuzzyFinderMode.TextMate.launch(a:initial_text, a:partial_matching, a:prev_bufnr, a:tag_files)
     endfunction
-    call g:FuzzyFinderMode.TextMate.launch(a:initial_text, a:partial_matching)
+    call g:FuzzyFinderMode.TextMate.launch(a:initial_text, a:partial_matching, a:prev_bufnr, a:tag_files)
   endfunction
   finish
 end "}}}
