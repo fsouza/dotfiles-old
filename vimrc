@@ -7,6 +7,8 @@ autocmd Filetype python map <Leader>p :!python % <CR>
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set tabpagemax=20
+set showtabline=2
 
 autocmd BufRead *.rb set tabstop=2
 autocmd BufRead *.rb set shiftwidth=2
@@ -41,6 +43,7 @@ nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
 nmap <c-t> :FuzzyFinderTextMate<CR>
 nmap ,t :tabnew<CR>
+nmap <tab> gt
 
 map ,# :s/^/#/<CR>
 
