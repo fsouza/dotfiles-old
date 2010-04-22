@@ -38,7 +38,7 @@ autocmd BufRead *.html.erb set ft=eruby.eruby-rails.html
 
 set number
 
-colorscheme railscast
+colorscheme railscasts
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
 nmap <c-t> :FuzzyFinderTextMate<CR>
