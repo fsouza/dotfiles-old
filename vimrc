@@ -10,6 +10,7 @@ set softtabstop=4
 set tabpagemax=20
 set showtabline=2
 
+autocmd BufRead *.mako set ft=html.mako
 autocmd BufRead *.rb set tabstop=2
 autocmd BufRead *.rb set shiftwidth=2
 autocmd BufRead *.rb set softtabstop=2
@@ -38,7 +39,7 @@ autocmd BufRead *.html.erb set ft=eruby.eruby-rails.html
 
 set number
 
-colorscheme railscasts
+colorscheme Dark
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
 nmap <c-t> :FuzzyFinderTextMate<CR>
