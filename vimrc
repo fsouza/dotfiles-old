@@ -10,7 +10,6 @@ set softtabstop=4
 set tabpagemax=20
 set showtabline=2
 
-autocmd BufRead *.mako set ft=html.mako
 autocmd BufRead *.rb set tabstop=2
 autocmd BufRead *.rb set shiftwidth=2
 autocmd BufRead *.rb set softtabstop=2
@@ -44,7 +43,8 @@ nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
 nmap <c-t> :FuzzyFinderTextMate<CR>
 nmap ,t :tabnew<CR>
-nmap <tab> gt
+nmap <C-Tab> gt
+nmap <C-S-Tab> gT
 
 map ,# :s/^/#/<CR>
 
