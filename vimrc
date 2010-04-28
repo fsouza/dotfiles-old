@@ -44,6 +44,7 @@ nmap <silent> <c-a> :NERDTree<CR>
 nmap ,t :tabnew<CR>
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
+nmap <C-t> :CommandT
 
 map ,# :s/^/#/<CR>
 
