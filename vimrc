@@ -41,7 +41,6 @@ set number
 colorscheme Dark
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
-nmap <c-t> :FuzzyFinderTextMate<CR>
 nmap ,t :tabnew<CR>
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
