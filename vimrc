@@ -45,7 +45,7 @@ nmap ,t :tabnew<CR>
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
 nmap <C-t> :CommandT<CR>
-nmap <C-S-b> :FufBuffer<CR>
+nmap <C-l> :FufBuffer<CR>
 
 map ,# :s/^/#/<CR>
 
