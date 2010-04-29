@@ -44,8 +44,8 @@ nmap <silent> <c-a> :NERDTree<CR>
 nmap ,t :tabnew<CR>
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
-nmap <C-t> :CommandT
-nmap <C-S-b> :FufBuffer
+nmap <C-t> :CommandT<CR>
+nmap <C-S-b> :FufBuffer<CR>
 
 map ,# :s/^/#/<CR>
 
