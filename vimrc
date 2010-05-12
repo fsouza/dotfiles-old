@@ -10,6 +10,9 @@ set softtabstop=4
 set tabpagemax=20
 set showtabline=2
 
+autocmd BufRead *.sql set tabstop=2
+autocmd BufRead *.sql set shiftwidth=2
+autocmd BufRead *.sql set softtabstop=2
 autocmd BufRead *.rb set tabstop=2
 autocmd BufRead *.rb set shiftwidth=2
 autocmd BufRead *.rb set softtabstop=2
