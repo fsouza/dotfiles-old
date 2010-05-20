@@ -18,8 +18,8 @@ set expandtab
 autocmd Filetype python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd Filetype python map <Leader>p :!python % <CR>
 autocmd FileType python highlight BadWhitespace ctermbg=red guibg=red
-autocmd FileType python BadWhitespace /^\t\+/
-autocmd FileType python BadWhitespace /\s\+$/
+autocmd FileType python match BadWhitespace /^\t\+/
+autocmd FileType python match BadWhitespace /\s\+$/
 autocmd FileType python set ft=python.django
 autocmd FileType python set tabstop=2
 autocmd FileType python set shiftwidth=2
