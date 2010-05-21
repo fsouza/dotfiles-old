@@ -30,7 +30,7 @@ autocmd FileType php set ft=php.html
 autocmd FileType eruby set ft=eruby.eruby-rails.html
 
 set number
-colorscheme Dark
+colorscheme railscasts
 
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
