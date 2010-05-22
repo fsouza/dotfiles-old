@@ -21,9 +21,9 @@ autocmd FileType python highlight BadWhitespace ctermbg=red guibg=red
 autocmd FileType python match BadWhitespace /^\t\+/
 autocmd FileType python match BadWhitespace /\s\+$/
 autocmd FileType python set ft=python.django
-autocmd FileType python set tabstop=2
-autocmd FileType python set shiftwidth=2
-autocmd FileType python set softtabstop=2
+autocmd FileType python set tabstop=4
+autocmd FileType python set shiftwidth=4
+autocmd FileType python set softtabstop=4
 
 autocmd FileType html set ft=django_template.html
 autocmd FileType php set ft=php.html
