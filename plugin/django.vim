@@ -13,8 +13,6 @@ if exists("loaded_matchit")
     \ '<\@<=dl\>[^>]*\%(>\|$\):<\@<=d[td]\>:<\@<=/dl>,' .
     \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(>\|$\):<\@<=/\1>,'  .
     \ '{% *if .*%}:{% *else *%}:{% *endif *%},' .
-    \ '{% *ifequal .*%}:{% *else *%}:{% *endifequal *%},' .
-    \ '{% *ifnotequal .*%}:{% *else *%}:{% *endifnotequal *%},' .
     \ '{% *ifchanged .*%}:{% *else *%}:{% *endifchanged *%},' .
     \ '{% *for .*%}:{% *endfor *%},' .
     \ '{% *with .*%}:{% *endwith *%},' .
