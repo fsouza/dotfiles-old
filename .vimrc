@@ -15,8 +15,10 @@ set autoindent
 set smartindent
 set expandtab
 
-autocmd Filetype python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd Filetype python map <Leader>p :!python % <CR>
+autocmd FileType make setlocal noexpandtab
+
+autocmd FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd FileType python map <Leader>p :!python % <CR>
 autocmd FileType python highlight BadWhitespace ctermbg=red guibg=red
 autocmd FileType python match BadWhitespace /^\t\+/
 autocmd FileType python match BadWhitespace /\s\+$/
