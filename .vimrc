@@ -27,7 +27,8 @@ autocmd FileType python set tabstop=4
 autocmd FileType python set shiftwidth=4
 autocmd FileType python set softtabstop=4
 
-autocmd FileType html set ft=django_template.html
+autocmd FileType html set ft=htmldjango.html
+autocmd FileType htmldjango set ft=htmldjango.html
 autocmd FileType php set ft=php.html
 autocmd FileType eruby set ft=eruby.eruby-rails.html
 
