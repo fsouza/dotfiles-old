@@ -2,37 +2,58 @@ set term=builtin_ansi
 
 syntax on
 
+"Setting up tab settings
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set tabpagemax=20
 set showtabline=2
-
-autocmd BufRead *.rb set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
-
 set smarttab
 set autoindent
 set smartindent
 set expandtab
 
+"Change file type for ruby
+autocmd FileType ruby set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
+
+"Set noexpandtab to Makefiles, to use <tab> char instead of spaces
 autocmd FileType make setlocal noexpandtab
 
+"Set smartindent for Python files
 autocmd FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+
+"Map to execute Python files
 autocmd FileType python map <Leader>p :!python % <CR>
+
+"Settings for mark BadWhitespaces in Python files
 autocmd FileType python highlight BadWhitespace ctermbg=red guibg=red
 autocmd FileType python match BadWhitespace /^\t\+/
 autocmd FileType python match BadWhitespace /\s\+$/
+
+"Using Django and Python file type instead of just Python
 autocmd FileType python set ft=python.django
+
+"Setting tab spaces to 4 instead of 2
 autocmd FileType python set tabstop=4
 autocmd FileType python set shiftwidth=4
 autocmd FileType python set softtabstop=4
+autocmd FileType htmldjango set tabstop=4
+autocmd FileType htmldjango set shiftwidth=4
+autocmd FileType htmldjango set softtabstop=4
 
-autocmd FileType html set ft=htmldjango.html
+"Setting file type to htmldjango and html
 autocmd FileType htmldjango set ft=htmldjango.html
+
+"Setting file type to PHP and HTML (snippets)
 autocmd FileType php set ft=php.html
+
+"Setting file type to eruby and html (snippets)
 autocmd FileType eruby set ft=eruby.eruby-rails.html
 
+"Displaying line numbers
 set number
+
+"Colorscheme
 colorscheme railscasts
 
 nmap <silent> <c-p> :NERDTreeToggle<CR>
@@ -43,14 +64,8 @@ nmap <C-S-Tab> gT
 nmap <C-t> :CommandT<CR>
 nmap <C-l> :!php -l %<CR>
 
-map ,# :s/^/#/<CR>
-
-map ,/ :s/^/\/\//<CR>
-
-map ,< :s/^\(.*\)$/<!-- \1 -->/<CR><Esc>:nohlsearch<CR>
-
-map ,* :s/^\(.*\)$/\/\* \1 \*\//<CR><Esc>:nohlsearch<CR>
-
+"Related files, useful in Django
+"Open files related to a Django project or app, as views.py, models.py or settings.py
 let g:last_relative_dir = ''
 nnoremap \1 :call RelatedFile ("models.py")<cr>
 nnoremap \2 :call RelatedFile ("views.py")<cr>
@@ -63,6 +78,7 @@ nnoremap \8 :call RelatedFile ( "management/" )<cr>
 nnoremap \9 :e urls.py<cr>
 nnoremap \0 :e settings.py<cr>
 
+"Function used to open RelatedFile
 fun! RelatedFile(file)
     "This is to check that the directory looks djangoish
     if filereadable(expand("%:h"). '/models.py') || isdirectory(expand("%:h") . "/templatetags/")
@@ -86,9 +102,10 @@ fun SetAppDir()
 endfun
 autocmd BufEnter *.py call SetAppDir()
 
-let g:surround_{char2nr("b")} = "{% block\1 \r..*\r &\1%}\r{% endblock %}"
-let g:surround_{char2nr("i")} = "{% if\1 \r..*\r &\1%}\r{% endif %}"
-let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &\1%}\r{% endwith %}"
-let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1%}\r{% endcomment %}"
-let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
+"Surrounds for Django templates
+autocmd FileType htmldjango let g:surround_{char2nr("b")} = "{% block\1 \r..*\r &\1%}\r{% endblock %}"
+autocmd FileType htmldjango let g:surround_{char2nr("i")} = "{% if\1 \r..*\r &\1%}\r{% endif %}"
+autocmd FileType htmldjango let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &\1%}\r{% endwith %}"
+autocmd FileType htmldjango let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1%}\r{% endcomment %}"
+autocmd FileType htmldjango let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
 
