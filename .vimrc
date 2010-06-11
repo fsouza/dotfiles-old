@@ -109,3 +109,6 @@ autocmd FileType htmldjango let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &
 autocmd FileType htmldjango let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1%}\r{% endcomment %}"
 autocmd FileType htmldjango let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
 
+set guifont=Monaco:h11
+
+
