@@ -43,6 +43,7 @@ autocmd FileType htmldjango set softtabstop=4
 
 "Setting file type to htmldjango and html
 autocmd FileType htmldjango set ft=htmldjango.html
+autocmd FileType html set ft=htmldjango.html
 
 "Setting file type to PHP and HTML (snippets)
 autocmd FileType php set ft=php.html
