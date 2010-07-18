@@ -40,6 +40,9 @@ autocmd FileType python set softtabstop=4
 autocmd FileType htmldjango set tabstop=4
 autocmd FileType htmldjango set shiftwidth=4
 autocmd FileType htmldjango set softtabstop=4
+autocmd FileType htmljinja set tabstop=2
+autocmd FileType htmljinja set shiftwidth=2
+autocmd FileType htmljinja set softtabstop=2
 
 "Setting file type to htmldjango and html
 autocmd FileType htmldjango set ft=htmldjango.html
