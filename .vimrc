@@ -37,16 +37,17 @@ autocmd FileType python set ft=python.django
 autocmd FileType python set tabstop=4
 autocmd FileType python set shiftwidth=4
 autocmd FileType python set softtabstop=4
-autocmd FileType htmldjango set tabstop=4
-autocmd FileType htmldjango set shiftwidth=4
-autocmd FileType htmldjango set softtabstop=4
+autocmd FileType htmldjango set tabstop=2
+autocmd FileType htmldjango set shiftwidth=2
+autocmd FileType htmldjango set softtabstop=2
 autocmd FileType htmljinja set tabstop=2
 autocmd FileType htmljinja set shiftwidth=2
 autocmd FileType htmljinja set softtabstop=2
 
 "Setting file type to htmldjango and html
-autocmd FileType htmldjango set ft=htmldjango.html
-autocmd FileType html set ft=htmldjango.html
+autocmd FileType htmldjango set ft=htmljinja.htmldjango.html
+autocmd FileType html set ft=htmljinja.htmldjango.html
+autocmd FileType xhtml set ft=htmljinja.htmldjango.html
 
 "Setting file type to PHP and HTML (snippets)
 autocmd FileType php set ft=php.html
