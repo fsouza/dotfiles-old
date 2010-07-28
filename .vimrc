@@ -137,3 +137,9 @@ let vala_no_tab_space_error = 1
 
 " Minimum lines used for comment syncing (default 50)
 "let vala_minlines = 120
+
+"Indent on
+filetype indent on
+
+"Increase HTML indent
+let g:html_indent_inctags="html,head,body,tbody"
