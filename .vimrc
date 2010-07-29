@@ -140,6 +140,7 @@ let vala_no_tab_space_error = 1
 
 "Indent on
 filetype indent on
+filetype plugin on
 
 "Increase HTML indent
 let g:html_indent_inctags="html,head,body,tbody"
