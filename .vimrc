@@ -3,11 +3,11 @@ set term=builtin_ansi
 syntax on
 
 "Setting up tab settings
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set tabpagemax=20
-set showtabline=2
+set showtabline=4
 set smarttab
 set autoindent
 set smartindent
@@ -42,17 +42,6 @@ let g:pylint_onwrite = 0
 
 "Using Django and Python file type instead of just Python
 autocmd FileType python set ft=python.django
-
-"Setting tab spaces to 4 instead of 2
-autocmd FileType python set tabstop=4
-autocmd FileType python set shiftwidth=4
-autocmd FileType python set softtabstop=4
-autocmd FileType htmldjango set tabstop=2
-autocmd FileType htmldjango set shiftwidth=2
-autocmd FileType htmldjango set softtabstop=2
-autocmd FileType htmljinja set tabstop=2
-autocmd FileType htmljinja set shiftwidth=2
-autocmd FileType htmljinja set softtabstop=2
 
 "Setting file type to htmldjango and html
 autocmd FileType htmldjango set ft=htmljinja.htmldjango.html
