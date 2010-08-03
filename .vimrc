@@ -143,3 +143,6 @@ filetype plugin on
 
 "Increase HTML indent
 let g:html_indent_inctags="html,head,body,tbody"
+
+"Markdown syntax
+autocmd BufRead,BufNewFile *.mkd setfiletype mkd
