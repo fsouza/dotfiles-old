@@ -54,6 +54,8 @@ autocmd FileType php set ft=php.html
 "Setting file type to eruby and html (snippets)
 autocmd FileType eruby set ft=eruby.eruby-rails.html
 
+au FileType xml,xsl so ~/.vim/ftplugin/html_autoclosetag.vim
+
 "Displaying line numbers
 set number
 
