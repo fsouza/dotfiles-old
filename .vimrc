@@ -147,3 +147,6 @@ let g:html_indent_inctags="html,head,body,tbody"
 "Markdown syntax
 autocmd BufRead,BufNewFile *.mkd setfiletype mkd
 autocmd BufRead,BufNewFile *.markdown setfiletype mkd
+
+"Vim JDE
+autocmd FileType java set cfu=VjdeCompletionFun
