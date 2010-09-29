@@ -147,3 +147,9 @@ let g:html_indent_inctags="html,head,body,tbody"
 "Markdown syntax
 autocmd BufRead,BufNewFile *.mkd setfiletype mkd
 autocmd BufRead,BufNewFile *.markdown setfiletype mkd
+
+"JavaImp
+let g:JavaImpPaths=$HOME . "/.vim/java/JavaImp"
+let g:JavaImpDataDir=$HOME . "/.vim/java/JavaImpDataDir"
+let g:JavaImpPathSep=":"
+let g:JavaImpSortBin="sort"
