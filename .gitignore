@@ -1,6 +1,7 @@
 *.pyc
 *.swp
 *.o
+*.so
 ruby/command-t/Makefile
 ruby/command-t/ext.bundle
 ruby/command-t/mkmf.log
