@@ -1,5 +1,7 @@
 set term=builtin_ansi
 
+call pathogen#runtime_append_all_bundles()
+
 syntax on
 
 "Setting up tab settings
