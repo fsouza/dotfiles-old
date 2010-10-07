@@ -1,3 +1,6 @@
 [submodule "snippets"]
 	path = snippets
 	url = git@github.com:franciscosouza/snipmate-snippets.git
+[submodule "bundle/Command-T"]
+	path = bundle/Command-T
+	url = git://github.com/akitaonrails/Command-T.git
