@@ -18,6 +18,11 @@ set expandtab
 "Change file type for ruby
 autocmd FileType ruby set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
 
+"Change tabs to 2 space on ruby files
+autocmd FileType ruby set tabstop=2
+autocmd FileType ruby set shiftwidth=2
+autocmd FileType ruby set softtabstop=2
+
 "Set noexpandtab to Makefiles, to use <tab> char instead of spaces
 autocmd FileType make setlocal noexpandtab
 
