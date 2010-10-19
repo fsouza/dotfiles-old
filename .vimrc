@@ -46,9 +46,9 @@ let g:pylint_onwrite = 0
 autocmd FileType python set ft=python.django
 
 "Setting file type to htmldjango and html
-autocmd FileType htmldjango set ft=htmljinja.htmldjango.html
-autocmd FileType html set ft=htmljinja.htmldjango.html
-autocmd FileType xhtml set ft=htmljinja.htmldjango.html
+autocmd FileType htmldjango set syntax=htmljinja
+autocmd FileType html set syntax=htmljinja
+autocmd FileType xhtml set syntax=htmljinja
 
 "Setting file type to PHP and HTML (snippets)
 autocmd FileType php set ft=php.html
