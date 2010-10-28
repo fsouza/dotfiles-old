@@ -157,5 +157,5 @@ filetype plugin on
 let g:html_indent_inctags="html,head,body,tbody"
 
 "Markdown syntax
-autocmd BufRead,BufNewFile *.mkd setfiletype mkd
-autocmd BufRead,BufNewFile *.markdown setfiletype mkd
+autocmd BufRead,BufNewFile *.mkd setfiletype markdown
+autocmd BufRead,BufNewFile *.markdown setfiletype markdown
