@@ -41,6 +41,7 @@ autocmd FileType python match BadWhitespace /\s\+$/
 autocmd FileType python nmap <C-h> :RopeAutoImport<CR>
 autocmd FileType python nmap <C-l> :RopeOrganizeImports<CR>
 autocmd FileType python nmap <C-g> :RopeGotoDefinition<CR>
+autocmd FileType python call SetRopeVimSettings()
 
 "Pylint
 autocmd FileType python compiler pylint
@@ -120,6 +121,13 @@ fun SetAppDir()
         return ''
     endif
 endfun
+
+fun SetRopeVimSettings()
+    if filereadable("settings.vim")
+        source settings.vim
+    endif
+endfun
+
 autocmd BufEnter *.py call SetAppDir()
 
 "Surrounds for Django templates
