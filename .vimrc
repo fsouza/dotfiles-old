@@ -37,6 +37,11 @@ autocmd FileType python highlight BadWhitespace ctermbg=red guibg=red
 autocmd FileType python match BadWhitespace /^\t\+/
 autocmd FileType python match BadWhitespace /\s\+$/
 
+"RopeVim
+autocmd FileType python nmap <C-h> :RopeAutoImport<CR>
+autocmd FileType python nmap <C-l> :RopeOrganizeImports<CR>
+autocmd FileType python nmap <C-g> :RopeGotoDefinition<CR>
+
 "Pylint
 autocmd FileType python compiler pylint
 "To disable calling Pylint every time a buffer is saved put into .vimrc file
@@ -78,7 +83,6 @@ nmap ,t :tabnew<CR>
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
 nmap <C-t> :CommandT<CR>
-nmap <C-l> :!php -l %<CR>
 
 "Related files, useful in Django
 "Open files related to a Django project or app, as views.py, models.py or settings.py
