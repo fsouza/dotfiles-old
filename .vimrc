@@ -37,12 +37,6 @@ autocmd FileType python highlight BadWhitespace ctermbg=red guibg=red
 autocmd FileType python match BadWhitespace /^\t\+/
 autocmd FileType python match BadWhitespace /\s\+$/
 
-"RopeVim
-autocmd FileType python nmap <C-h> :RopeAutoImport<CR>
-autocmd FileType python nmap <C-l> :RopeOrganizeImports<CR>
-autocmd FileType python nmap <C-g> :RopeGotoDefinition<CR>
-autocmd FileType python call SetRopeVimSettings()
-
 "Pylint
 autocmd FileType python compiler pylint
 "To disable calling Pylint every time a buffer is saved put into .vimrc file
@@ -119,12 +113,6 @@ fun SetAppDir()
     if filereadable(expand("%:h"). '/models.py') || isdirectory(expand("%:h") . "/templatetags/")
         let g:last_relative_dir = expand("%:h") . '/'
         return ''
-    endif
-endfun
-
-fun SetRopeVimSettings()
-    if filereadable("settings.vim")
-        source settings.vim
     endif
 endfun
 
