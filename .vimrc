@@ -162,6 +162,7 @@ let g:html_indent_inctags="html,head,body,tbody"
 "Markdown syntax
 autocmd BufRead,BufNewFile *.mkd setfiletype markdown
 autocmd BufRead,BufNewFile *.markdown setfiletype markdown
+autocmd BufRead,BufNewFile *.md setfiletype markdown
 
 "Cucumber syntax
 autocmd BufRead,BufNewFile *.feature setfiletype cucumber
