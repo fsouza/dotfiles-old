@@ -167,6 +167,3 @@ autocmd BufRead,BufNewFile *.md setfiletype markdown
 "Cucumber syntax
 autocmd BufRead,BufNewFile *.feature setfiletype cucumber
 autocmd BufRead,BufNewFile *.feature setfiletype cucumber
-autocmd BufRead,BufNewFile *.feature set tabstop=2
-autocmd BufRead,BufNewFile *.feature set shiftwidth=2
-autocmd BufRead,BufNewFile *.feature set softtabstop=2
