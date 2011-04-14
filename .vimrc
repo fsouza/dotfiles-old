@@ -153,9 +153,6 @@ let vala_no_tab_space_error = 1
 filetype indent on
 filetype plugin on
 
-"pydiction
-let g:pydiction_location="$HOME/Projetos/pydiction/complete-dict"
-
 "Increase HTML indent
 let g:html_indent_inctags="html,head,body,tbody"
 
