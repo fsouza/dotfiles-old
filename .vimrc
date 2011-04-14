@@ -19,9 +19,14 @@ set expandtab
 autocmd FileType ruby set ft=ruby.ruby-rails.ruby-rspec.ruby-rails-rjs.ruby-shoulda
 
 "Change tabs to 2 space on ruby files
-autocmd FileType ruby set tabstop=2
-autocmd FileType ruby set shiftwidth=2
-autocmd FileType ruby set softtabstop=2
+autocmd BufEnter *.rb set tabstop=2
+autocmd BufEnter *.rb set shiftwidth=2
+autocmd BufEnter *.rb set softtabstop=2
+
+"Undo the change
+autocmd BufLeave *.rb set tabstop=4
+autocmd BufLeave *.rb set shiftwidth=4
+autocmd BufLeave *.rb set softtabstop=4
 
 "Set noexpandtab to Makefiles, to use <tab> char instead of spaces
 autocmd FileType make setlocal noexpandtab
@@ -74,7 +79,6 @@ colorscheme railscasts
 
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
-nmap ,t :tabnew<CR>
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
 nmap <C-t> :CommandT<CR>
