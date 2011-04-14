@@ -31,6 +31,3 @@
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "bundle/pydiction"]
-	path = bundle/pydiction
-	url = https://github.com/franciscosouza/Pydiction.git
