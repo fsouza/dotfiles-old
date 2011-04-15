@@ -2,22 +2,39 @@
 
 ##Getting started
 
-If you want to use my vimfiles, clone the repository on your ``$VIMHOME``:
+If you want to use my vimfiles, you'll need to download and install it. Here are these two steps described:
+
+###Downloading
+
+####With git...
+
+If you have git installed on your computer, all you need to do is to clone the repository on your ``$VIMHOME``:
 
     $ cd $HOME
     $ git clone git://github.com/franciscosouza/vimfiles.git .vim
 
-Then, enter in the ``.vim`` directory and update the submodules:
+Then enter in the ``.vim`` directory and update the submodules:
 
     $ cd $HOME/.vim
     $ git submodule init
     $ git submodule update
 
-The last step is create a ``.vimrc`` on your ``$HOME``:
+####Without git...
+
+So, you don't have git on your computer? I recommend you start to use, but don't worry, you can still get my vimfiles working by download a tar.gz package:
+
+    $ cd $HOME
+    $ wget https://github.com/downloads/franciscosouza/vimfiles/0.1.tar.gz
+    $ tar -xvzf 0.1.tar.gz
+
+###Installing
+
+After download the packages with or without git, 
+all you need to do is create a ``.vimrc`` on your ``$HOME``:
 
     $ echo "source $HOME/.vim/.vimrc" > $HOME/.vimrc
 
-##Command-T
+###Command-T
 
 [Command-T](https://github.com/wincent/Command-T) is a plugin written in Ruby for fast opening files. If you want to use it, you'll need to compile it:
 
