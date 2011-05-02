@@ -86,13 +86,9 @@ nmap <C-t> :CommandT<CR>
 " Removes trailing spaces
 function TrimWhiteSpace()
     %s/\s*$//
-    ''
 :endfunction
 
-autocmd FileWritePre * :call TrimWhiteSpace()
-autocmd FileAppendPre * :call TrimWhiteSpace()
-autocmd FilterWritePre * :call TrimWhiteSpace()
-autocmd BufWritePre * :call TrimWhiteSpace()
+map <Leader>o :call TrimWhiteSpace()<CR>
 
 "Related files, useful in Django
 "Open files related to a Django project or app, as views.py, models.py or settings.py
