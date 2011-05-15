@@ -34,3 +34,6 @@
 [submodule "bundle/json-syntax"]
 	path = bundle/json-syntax
 	url = git://github.com/vim-scripts/JSON.vim.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = https://github.com/tpope/vim-fugitive.git
