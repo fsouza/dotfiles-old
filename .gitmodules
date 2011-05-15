@@ -31,3 +31,6 @@
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
+[submodule "bundle/json-syntax"]
+	path = bundle/json-syntax
+	url = git://github.com/vim-scripts/JSON.vim.git
