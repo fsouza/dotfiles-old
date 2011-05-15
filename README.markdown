@@ -24,8 +24,8 @@ Then enter in the ``.vim`` directory and update the submodules:
 So, you don't have git on your computer? I recommend you start to use, but don't worry, you can still get my vimfiles working by download a tar.gz package:
 
     $ cd $HOME
-    $ wget https://github.com/downloads/franciscosouza/vimfiles/0.1.tar.gz
-    $ tar -xvzf 0.1.tar.gz
+    $ wget https://github.com/downloads/franciscosouza/vimfiles/0.2.tar.gz
+    $ tar -xvzf 0.2.tar.gz
 
 ###Installing
 
