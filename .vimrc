@@ -4,6 +4,9 @@ call pathogen#runtime_append_all_bundles()
 
 syntax on
 
+"Hidden mode
+set hidden
+
 "Setting up tab settings
 set tabstop=4
 set shiftwidth=4
@@ -83,6 +86,9 @@ nmap <C-Tab> gt
 nmap <C-S-Tab> gT
 nmap <C-t> :CommandT<CR>
 
+nmap <C-S-o> :LustyFilesystemExplorer<CR>
+nmap <C-S-p> :LustyFilesystemExplorerFromHere<CR>
+
 " Removes trailing spaces
 function TrimWhiteSpace()
     %s/\s*$//
@@ -136,29 +142,8 @@ autocmd FileType htmldjango let g:surround_{char2nr("w")} = "{% with\1 \r..*\r &
 autocmd FileType htmldjango let g:surround_{char2nr("c")} = "{% comment\1 \r..*\r &\1%}\r{% endcomment %}"
 autocmd FileType htmldjango let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
 
+"guifont
 set guifont=Monaco
-
-"Vala options
-autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-autocmd BufRead *.vapi set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
-au BufRead,BufNewFile *.vala            setfiletype vala
-au BufRead,BufNewFile *.vapi            setfiletype vala
-
-" Disable valadoc syntax highlight
-"let vala_ignore_valadoc = 1
-
-" Enable comment strings
-let vala_comment_strings = 1
-
-" Highlight space errors
-let vala_space_errors = 1
-" Disable trailing space errors
-"let vala_no_trail_space_error = 1
-" Disable space-tab-space errors
-let vala_no_tab_space_error = 1
-
-" Minimum lines used for comment syncing (default 50)
-"let vala_minlines = 120
 
 "Indent on
 filetype indent on
@@ -177,9 +162,9 @@ autocmd BufRead,BufNewFile *.feature setfiletype cucumber
 autocmd BufRead,BufNewFile *.feature setfiletype cucumber
 
 "Moving lines
-nnoremap <A-j> :m+<CR>==
-nnoremap <A-k> :m-2<CR>==
-inoremap <A-j> <Esc>:m+<CR>==gi
-inoremap <A-k> <Esc>:m-2<CR>==gi
-vnoremap <A-j> :m'>+<CR>gv=gv
-vnoremap <A-k> :m-2<CR>gv=gv
+nnoremap <C-j> :m+<CR>==
+nnoremap <C-k> :m-2<CR>==
+inoremap <C-j> <Esc>:m+<CR>==gi
+inoremap <C-k> <Esc>:m-2<CR>==gi
+vnoremap <C-j> :m'>+<CR>gv=gv
+vnoremap <C-k> :m-2<CR>gv=gv
