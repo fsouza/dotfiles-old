@@ -1,7 +1,12 @@
 set term=builtin_ansi
 
+"Setting PYTHONPATH
+let $PYTHONPATH .= ":".$HOME."/.vim/python"
+
+"Loading bundle plugins
 call pathogen#runtime_append_all_bundles()
 
+"Syntax
 syntax on
 
 "Hidden mode
