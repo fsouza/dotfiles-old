@@ -91,8 +91,8 @@ nmap <C-Tab> gt
 nmap <C-S-Tab> gT
 nmap <C-t> :CommandT<CR>
 
-nmap <C-S-o> :LustyFilesystemExplorer<CR>
-nmap <C-S-p> :LustyFilesystemExplorerFromHere<CR>
+nmap <C-x> :LustyFilesystemExplorer<CR>
+nmap <C-c> :LustyFilesystemExplorerFromHere<CR>
 
 " Removes trailing spaces
 function TrimWhiteSpace()
