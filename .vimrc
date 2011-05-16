@@ -83,7 +83,7 @@ autocmd FileType eruby set ft=eruby.eruby-rails.html
 set number
 
 "Colorscheme
-colorscheme railscasts
+colorscheme sorceror
 
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
@@ -148,7 +148,7 @@ autocmd FileType htmldjango let g:surround_{char2nr("c")} = "{% comment\1 \r..*\
 autocmd FileType htmldjango let g:surround_{char2nr("f")} = "{% for\1 \r..*\r &\1%}\r{% endfor %}"
 
 "guifont
-set guifont=Monaco
+set guifont=Monaco:h12
 
 "Indent on
 filetype indent on
