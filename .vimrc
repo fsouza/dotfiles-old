@@ -83,7 +83,7 @@ autocmd FileType eruby set ft=eruby.eruby-rails.html
 set number
 
 "Colorscheme
-colorscheme sorceror
+colorscheme moria
 
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>
