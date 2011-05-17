@@ -1,8 +1,5 @@
 set term=builtin_ansi
 
-"Setting PYTHONPATH
-let $PYTHONPATH .= ":".$HOME."/.vim/python"
-
 "Loading bundle plugins
 call pathogen#runtime_append_all_bundles()
 
@@ -35,22 +32,6 @@ set number
 "Colorscheme
 colorscheme moria
 
-nmap <silent> <c-p> :NERDTreeToggle<CR>
-nmap <silent> <c-a> :NERDTree<CR>
-nmap <C-Tab> gt
-nmap <C-S-Tab> gT
-nmap <C-t> :CommandT<CR>
-
-nmap <C-x> :LustyFilesystemExplorer<CR>
-nmap <C-c> :LustyFilesystemExplorerFromHere<CR>
-
-" Removes trailing spaces
-function TrimWhiteSpace()
-    %s/\s*$//
-:endfunction
-
-map <Leader>o :call TrimWhiteSpace()<CR>
-
 "guifont
 set guifont=Monaco:h12
 
@@ -69,11 +50,3 @@ autocmd BufRead,BufNewFile *.md setfiletype markdown
 "Cucumber syntax
 autocmd BufRead,BufNewFile *.feature setfiletype cucumber
 autocmd BufRead,BufNewFile *.feature setfiletype cucumber
-
-"Moving lines
-nnoremap <C-j> :m+<CR>==
-nnoremap <C-k> :m-2<CR>==
-inoremap <C-j> <Esc>:m+<CR>==gi
-inoremap <C-k> <Esc>:m-2<CR>==gi
-vnoremap <C-j> :m'>+<CR>gv=gv
-vnoremap <C-k> :m-2<CR>gv=gv

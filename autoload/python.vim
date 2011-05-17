@@ -1,3 +1,6 @@
+"Setting PYTHONPATH
+let $PYTHONPATH .= ":".$HOME."/.vim/python"
+
 "Set smartindent for Python files
 autocmd FileType python set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 
