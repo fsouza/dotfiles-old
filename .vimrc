@@ -6,11 +6,13 @@ let $PYTHONPATH .= ":".$HOME."/.vim/python"
 "Loading bundle plugins
 call pathogen#runtime_append_all_bundles()
 
-"Syntax
 syntax on
+filetype indent on
+filetype plugin on
 
 "Hidden mode
 set hidden
+set number
 
 "Setting up tab settings
 set tabstop=4
@@ -18,23 +20,16 @@ set shiftwidth=4
 set softtabstop=4
 set tabpagemax=20
 set showtabline=4
-set smarttab
 set autoindent
-set smartindent
 set expandtab
-
-"Displaying line numbers
-set number
+set smartindent
+set smarttab
 
 "Colorscheme
 colorscheme moria
 
 "guifont
 set guifont=Monaco:h12
-
-"Indent on
-filetype indent on
-filetype plugin on
 
 "Increase HTML indent
 let g:html_indent_inctags="html,head,body,tbody"
