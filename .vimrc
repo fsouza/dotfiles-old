@@ -34,7 +34,7 @@ set wildmode=list:longest
 colorscheme moria
 
 "guifont
-set guifont=Monaco:h12
+set guifont=Inconsolata:h16
 
 "Increase HTML indent
 let g:html_indent_inctags="html,head,body,tbody"
