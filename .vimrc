@@ -27,6 +27,8 @@ set autoindent
 set expandtab
 set smartindent
 set smarttab
+set wildmenu
+set wildmode=list:longest
 
 "Colorscheme
 colorscheme moria
@@ -47,5 +49,5 @@ source $VIMHOME/modules/python.vim
 source $VIMHOME/modules/ruby.vim
 
 if has("gui_running")
-    set guioptions=egmrt
+    set guioptions=egmt
 endif
