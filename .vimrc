@@ -31,9 +31,6 @@ colorscheme moria
 "guifont
 set guifont=Monaco:h12
 
-"Increase HTML indent
-let g:html_indent_inctags="html,head,body,tbody"
-
 "NERDTree
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <silent> <c-a> :NERDTree<CR>

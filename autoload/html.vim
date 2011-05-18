@@ -1,3 +1,6 @@
+"Increase HTML indent
+let g:html_indent_inctags="html,head,body,tbody"
+
 "Setting file type to htmldjango and html
 autocmd FileType htmldjango set ft=htmljinja.htmldjango.html
 autocmd FileType html set ft=htmljinja.htmldjango.html
