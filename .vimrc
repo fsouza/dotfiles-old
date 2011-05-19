@@ -34,7 +34,7 @@ set wildmode=list:longest
 colorscheme moria
 
 "guifont
-set guifont=Monaco:h14
+set guifont=Monaco:h12
 
 "Increase HTML indent
 let g:html_indent_inctags="html,head,body,tbody"
@@ -50,4 +50,6 @@ source $VIMHOME/modules/ruby.vim
 
 if has("gui_running")
     set guioptions=egmt
+    set fuoptions=maxvert,maxhorz
+    au GUIEnter * set fullscreen
 endif
