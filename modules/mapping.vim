@@ -5,9 +5,6 @@ nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
 
-"Command-T
-nmap <C-t> :CommandT<CR>
-
 "Lusty
 nmap <C-x> :LustyFilesystemExplorer<CR>
 nmap <C-c> :LustyFilesystemExplorerFromHere<CR>
