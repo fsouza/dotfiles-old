@@ -1,6 +1,5 @@
 "NERDTree
 nmap <silent> <c-p> :NERDTreeToggle<CR>
-nmap <silent> <c-a> :NERDTree<CR>
 
 "Tabs navigation
 nmap <C-Tab> gt
