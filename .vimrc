@@ -47,6 +47,7 @@ source $VIMHOME/modules/markdown.vim
 source $VIMHOME/modules/php.vim
 source $VIMHOME/modules/python.vim
 source $VIMHOME/modules/ruby.vim
+source $VIMHOME/github.vim
 
 if has("gui_running")
     set guioptions=egmt

@@ -1,0 +1,2 @@
+let g:github_user="YOUR_USER"
+let g:github_token="YOUR_TOKEN"
