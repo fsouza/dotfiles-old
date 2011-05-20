@@ -34,12 +34,6 @@ all you need to do is create a ``.vimrc`` on your ``$HOME``:
 
     $ echo "source $HOME/.vim/.vimrc" > $HOME/.vimrc
 
-###Command-T
+###Gist
 
-[Command-T](https://github.com/wincent/Command-T) is a plugin written in Ruby for fast opening files. If you want to use it, you'll need to compile it:
-
-    $ cd $HOME/.vim/bundle/Command-T/ruby/command-t
-    $ ruby extconf.rb
-    $ make
-
-Make sure you have Ruby headers files (on Ubuntu, you need to install the ``ruby-dev`` package).
+You need to copy the github.vim.example to github.vim in order to use [Gist.vim](http://www.vim.org/scripts/script.php?script_id=2423).
