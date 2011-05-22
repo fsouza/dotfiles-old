@@ -37,3 +37,6 @@
 [submodule "bundle/gist-vim"]
 	path = bundle/gist-vim
 	url = git://github.com/mattn/gist-vim.git
+[submodule "bundle/jasmine"]
+	path = bundle/jasmine
+	url = git://github.com/franciscosouza/jasmine.vim.git
