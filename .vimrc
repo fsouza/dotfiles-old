@@ -30,12 +30,6 @@ set smarttab
 set wildmenu
 set wildmode=list:longest
 
-"Colorscheme
-colorscheme moria
-
-"guifont
-set guifont=Monaco:h12
-
 "Increase HTML indent
 let g:html_indent_inctags="html,head,body,tbody"
 
@@ -51,6 +45,12 @@ source $VIMHOME/modules/ruby.vim
 source $VIMHOME/github.vim
 
 if has("gui_running")
+    "Colorscheme
+    colorscheme jellybeans
+
+    "guifont
+    set guifont=Monaco:h12
+
     set guioptions=egmt
     set fuoptions=maxvert,maxhorz
     au GUIEnter * set fullscreen
