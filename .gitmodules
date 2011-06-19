@@ -1,9 +1,3 @@
-[submodule "bundle/rails"]
-	path = bundle/rails
-	url = git://github.com/tpope/vim-rails.git
-[submodule "bundle/cucumber"]
-	path = bundle/cucumber
-	url = git://github.com/tpope/vim-cucumber.git
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = git://github.com/tpope/vim-surround.git
@@ -19,24 +13,12 @@
 [submodule "bundle/vim-ruby"]
 	path = bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
-[submodule "bundle/ack"]
-	path = bundle/ack
-	url = git://github.com/mileszs/ack.vim.git
 [submodule "snippets"]
 	path = snippets
 	url = git://github.com/franciscosouza/snipmate-snippets.git
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "bundle/json-syntax"]
-	path = bundle/json-syntax
-	url = git://github.com/vim-scripts/JSON.vim.git
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/gist-vim"]
-	path = bundle/gist-vim
-	url = git://github.com/mattn/gist-vim.git
 [submodule "bundle/jasmine"]
 	path = bundle/jasmine
 	url = git://github.com/franciscosouza/jasmine.vim.git
@@ -49,6 +31,3 @@
 [submodule "bundle/vim-javascript"]
 	path = bundle/vim-javascript
 	url = git://github.com/franciscosouza/vim-javascript.git
-[submodule "bundle/vagrantfile"]
-	path = bundle/vagrantfile
-	url = git://github.com/robbevan/Vagrantfile.vim.git
