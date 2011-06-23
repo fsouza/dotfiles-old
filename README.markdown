@@ -21,11 +21,7 @@ Then enter in the ``.vim`` directory and update the submodules:
 
 ####Without git...
 
-So, you don't have git on your computer? I recommend you start to use, but don't worry, you can still get my vimfiles working by download a tar.gz package:
-
-    $ cd $HOME
-    $ wget https://github.com/downloads/franciscosouza/vimfiles/0.2.tar.gz
-    $ tar -xvzf 0.2.tar.gz
+So, you don't have git on your computer? Install it :P
 
 ###Installing
 
@@ -34,6 +30,6 @@ all you need to do is create a ``.vimrc`` on your ``$HOME``:
 
     $ echo "source $HOME/.vim/.vimrc" > $HOME/.vimrc
 
-###Gist
+###JavaScript lint
 
-You need to copy the github.vim.example to github.vim in order to use [Gist.vim](http://www.vim.org/scripts/script.php?script_id=2423).
+In order to use JavaScript lint, you need to add the ``jsl`` executable to your ``PATH``. [Download it](http://javascriptlint.com/download.htm) and add to a directory in your ``PATH``.
