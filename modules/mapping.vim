@@ -23,3 +23,8 @@ inoremap <C-j> <Esc>:m+<CR>==gi
 inoremap <C-k> <Esc>:m-2<CR>==gi
 vnoremap <C-j> :m'>+<CR>gv=gv
 vnoremap <C-k> :m-2<CR>gv=gv
+
+"Rope stuffs
+autocmd FileType python map <C-g> :RopeGotoDefinition<CR>
+autocmd FileType python map <D-r> :RopeRename<CR>
+autocmd FileType python vmap <D-Return> :RopeExtractMethod<CR>
