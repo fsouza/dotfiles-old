@@ -28,3 +28,9 @@ vnoremap <C-k> :m-2<CR>gv=gv
 autocmd FileType python map <C-g> :RopeGotoDefinition<CR>
 autocmd FileType python map <D-r> :RopeRename<CR>
 autocmd FileType python vmap <D-Return> :RopeExtractMethod<CR>
+
+"Split resizing
+map <C-S-Left> <c-w><
+map <C-S-Right> <c-w>>
+map <C-S-Up> <c-w>-
+map <C-S-Down> <c-w>+
