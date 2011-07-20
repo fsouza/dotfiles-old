@@ -52,5 +52,4 @@ if has("gui_running")
 
     set guioptions=egmt
     set fuoptions=maxvert,maxhorz
-    au GUIEnter * set fullscreen
 endif
