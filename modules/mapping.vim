@@ -13,12 +13,15 @@ function TrimWhiteSpace()
 map <Leader>o :call TrimWhiteSpace()<CR>
 
 "Moving lines
-nnoremap <C-j> :m+<CR>==
-nnoremap <C-k> :m-2<CR>==
-inoremap <C-j> <Esc>:m+<CR>==gi
-inoremap <C-k> <Esc>:m-2<CR>==gi
-vnoremap <C-j> :m'>+<CR>gv=gv
-vnoremap <C-k> :m-2<CR>gv=gv
+noremap <C-j> :m+<CR>==
+noremap <C-k> :m-2<CR>==
+noremap <C-j> <Esc>:m+<CR>==gi
+noremap <C-k> <Esc>:m-2<CR>==gi
+noremap <C-j> :m'>+<CR>gv=gv
+noremap <C-k> :m-2<CR>gv=gv
+
+vnoremap <C-l> xp
+vnoremap <C-h> x<left>P
 
 "Rope stuffs
 autocmd FileType python map <C-g> :RopeGotoDefinition<CR>
