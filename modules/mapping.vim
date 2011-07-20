@@ -1,12 +1,6 @@
 "NERDTree
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 
-"Move only with h j k l
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
 "Tabs navigation
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
