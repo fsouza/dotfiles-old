@@ -5,10 +5,6 @@ nmap <silent> <c-p> :NERDTreeToggle<CR>
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
 
-"Lusty
-nmap <C-x> :LustyFilesystemExplorer<CR>
-nmap <C-c> :LustyFilesystemExplorerFromHere<CR>
-
 " Removes trailing spaces
 function TrimWhiteSpace()
     %s/\s*$//
