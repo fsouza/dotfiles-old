@@ -1,6 +1,12 @@
 "NERDTree
 nmap <silent> <c-p> :NERDTreeToggle<CR>
 
+"Move only with h j k l
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
 "Tabs navigation
 nmap <C-Tab> gt
 nmap <C-S-Tab> gT
@@ -21,7 +27,7 @@ noremap <C-j> :m'>+<CR>gv=gv
 noremap <C-k> :m-2<CR>gv=gv
 
 vnoremap <C-l> xp
-vnoremap <C-h> x<left>P
+vnoremap <C-h> xhP
 
 "Rope stuffs
 autocmd FileType python map <C-g> :RopeGotoDefinition<CR>
