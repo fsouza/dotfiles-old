@@ -17,6 +17,11 @@ filetype plugin on
 set hidden
 set number
 
+"Bad whitespaces
+autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
+autocmd BufEnter * match BadWhitespace /^\t\+/
+autocmd BufEnter * match BadWhitespace /\s\+$/
+
 "Setting up tab settings
 set tabstop=4
 set shiftwidth=4
