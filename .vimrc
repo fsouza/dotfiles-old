@@ -50,7 +50,7 @@ nmap <C-S-Tab> gT
 " Removes trailing spaces
 function TrimWhiteSpace()
     %s/\s*$//
-    ``
+    ''
 :endfunction
 
 map <Leader>o :call TrimWhiteSpace()<CR>
