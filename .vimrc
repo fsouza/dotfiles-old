@@ -53,7 +53,7 @@ function TrimWhiteSpace()
     ''
 :endfunction
 
-map <Leader>o :call TrimWhiteSpace()<CR>
+autocmd BufWritePre * :call TrimWhiteSpace()
 
 "Moving lines
 noremap <C-j> :m+<CR>==
