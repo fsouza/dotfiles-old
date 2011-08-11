@@ -39,7 +39,6 @@ set wildmode=list:longest
 let g:html_indent_inctags="html,head,body,tbody"
 
 source $VIMHOME/modules/mapping.vim
-source $VIMHOME/modules/ruby.vim
 
 if has("gui_running")
     "Colorscheme
