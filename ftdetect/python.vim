@@ -16,3 +16,8 @@ let g:pylint_onwrite = 0
 
 "Using Django and Python file type instead of just Python
 autocmd FileType python set ft=python.django
+
+"Rope stuffs
+autocmd FileType python map <C-g> :RopeGotoDefinition<CR>
+autocmd FileType python map <D-r> :RopeRename<CR>
+autocmd FileType python vmap <D-Return> :RopeExtractMethod<CR>

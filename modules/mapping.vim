@@ -23,11 +23,6 @@ noremap <C-k> :m-2<CR>gv=gv
 vnoremap <C-l> xp
 vnoremap <C-h> xhP
 
-"Rope stuffs
-autocmd FileType python map <C-g> :RopeGotoDefinition<CR>
-autocmd FileType python map <D-r> :RopeRename<CR>
-autocmd FileType python vmap <D-Return> :RopeExtractMethod<CR>
-
 "Split resizing
 map <C-S-Left> <c-w><
 map <C-S-Right> <c-w>>
