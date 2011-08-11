@@ -38,9 +38,7 @@ set wildmode=list:longest
 "Increase HTML indent
 let g:html_indent_inctags="html,head,body,tbody"
 
-source $VIMHOME/modules/make.vim
 source $VIMHOME/modules/mapping.vim
-source $VIMHOME/modules/markdown.vim
 source $VIMHOME/modules/php.vim
 source $VIMHOME/modules/python.vim
 source $VIMHOME/modules/ruby.vim
