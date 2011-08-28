@@ -74,6 +74,7 @@ map <C-S-Left> <c-w><
 map <C-S-Right> <c-w>>
 map <C-S-Up> <c-w>-
 map <C-S-Down> <c-w>+
+
 "============
 "End mappings
 
