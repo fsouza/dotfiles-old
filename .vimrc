@@ -6,6 +6,9 @@ let $VIMHOME = $HOME."/.vim"
 "Setting PYTHONPATH
 let $PYTHONPATH .= ":".$VIMHOME."/python"
 
+"Setting PATH
+let $PATH .= ":".$VIMHOME."/python"
+
 "Loading bundle plugins
 call pathogen#runtime_append_all_bundles()
 
