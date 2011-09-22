@@ -11,7 +11,7 @@ If you want to use my vimfiles, you'll need to download and install it. Here are
 If you have git installed on your computer, all you need to do is to clone the repository on your ``$VIMHOME``:
 
     $ cd $HOME
-    $ git clone git://github.com/franciscosouza/vimfiles.git .vim
+    $ git clone git://github.com/fsouza/vimfiles.git .vim
 
 Then enter in the ``.vim`` directory and update the submodules:
 
@@ -25,7 +25,7 @@ So, you don't have git on your computer? Install it :P
 
 ###Installing
 
-After download the packages with or without git, 
+After download the packages with or without git,
 all you need to do is create a ``.vimrc`` on your ``$HOME``:
 
     $ echo "source $HOME/.vim/.vimrc" > $HOME/.vimrc
