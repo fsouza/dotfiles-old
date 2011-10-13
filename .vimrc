@@ -1,5 +1,3 @@
-set term=builtin_ansi
-
 "Setting VIMHOME
 let $VIMHOME = $HOME."/.vim"
 
