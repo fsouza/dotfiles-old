@@ -1,6 +1,3 @@
-"Setting file type to htmldjango and html
-autocmd BufEnter *.html set ft=html.htmldjango
-
 "Related files, useful in Django
 "Open files related to a Django project or app, as views.py, models.py or settings.py
 let g:last_relative_dir = ''
