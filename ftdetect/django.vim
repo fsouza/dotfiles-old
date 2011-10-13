@@ -1,12 +1,5 @@
 "Setting file type to htmldjango and html
-autocmd FileType htmldjango set ft=htmljinja.htmldjango.html
-autocmd FileType html set ft=htmljinja.htmldjango.html
-autocmd FileType xhtml set ft=htmljinja.htmldjango.html
-
-"Setting syntax to htmldjango and html
-autocmd FileType htmldjango set syntax=htmljinja
-autocmd FileType html set syntax=htmljinja
-autocmd FileType xhtml set syntax=htmljinja
+autocmd BufEnter *.html set ft=html.htmldjango
 
 "Related files, useful in Django
 "Open files related to a Django project or app, as views.py, models.py or settings.py
