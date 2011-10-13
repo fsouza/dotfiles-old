@@ -1,5 +1,7 @@
 "Related files, useful in Django
 "Open files related to a Django project or app, as views.py, models.py or settings.py
+autocmd BufEnter *.html set ft=html
+
 let g:last_relative_dir = ''
 nnoremap \1 :call RelatedFile ("models.py")<cr>
 nnoremap \2 :call RelatedFile ("views.py")<cr>
