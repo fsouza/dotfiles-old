@@ -81,8 +81,7 @@ map <C-S-Down> <c-w>+
 
 if has("gui_running")
     "Colorscheme
-    set background=dark
-    colorscheme solarized
+    colorscheme jellybeans
 
     "guifont
     set guifont=Monaco:h12
