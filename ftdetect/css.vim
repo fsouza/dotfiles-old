@@ -1,3 +1,5 @@
+autocmd BufRead,BufNewFile *.css set ft=css syntax=css3
+
 autocmd filetype css setlocal equalprg=csstidy\ -\ --silent=true\ --template=$VIMHOME/ftdetect/csstidy.tpl\ --sort_properties=true\ --merge_selectors=1\ --sort_selectors=true\ --compress_font-weight=false
 autocmd filetype css map <C-c> :call MakeCSSInline()<CR>
 
