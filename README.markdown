@@ -17,7 +17,9 @@ Then enter in the ``.vim`` directory and update the submodules:
 
     $ cd $HOME/.vim
     $ git submodule init
-    $ git submodule update
+    $ git submodule update --init --recursive
+
+It's necessary to make a recursive update, because there is a submodule with another submodule inside it (pyflakes-vim).
 
 ####Without git...
 
