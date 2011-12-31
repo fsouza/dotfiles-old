@@ -10,7 +10,7 @@ let $PATH .= ":".$VIMHOME."/python"
 "Loading bundle plugins
 call pathogen#runtime_append_all_bundles()
 
-syntax on
+syntax off
 filetype indent on
 filetype plugin on
 
