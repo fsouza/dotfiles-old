@@ -19,9 +19,6 @@
 [submodule "bundle/jasmine"]
 	path = bundle/jasmine
 	url = git://github.com/fsouza/jasmine.vim.git
-[submodule "bundle/lusty"]
-	path = bundle/lusty
-	url = git://github.com/sjbach/lusty.git
 [submodule "bundle/vim-haml"]
 	path = bundle/vim-haml
 	url = git://github.com/tpope/vim-haml.git
