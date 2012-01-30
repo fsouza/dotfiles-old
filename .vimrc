@@ -49,6 +49,7 @@ let g:html_indent_inctags="html,head,body,tbody"
 "==============
 "NERDTree
 nmap <silent> <c-p> :NERDTreeToggle<CR>
+nmap <silent> <s-p> :NERDTreeFind<CR>
 
 " Removes trailing spaces
 function TrimWhiteSpace()
