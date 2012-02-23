@@ -40,7 +40,7 @@ In order to use JavaScript lint, you need to add the ``jsl`` executable to your 
 
 You will need also to install ``csstidy``. Just download it, extract, compile and add the executable to your path:
 
-    $ curl -O "http://ufpr.dl.sourceforge.net/project/csstidy/CSSTidy%20%28C%2B%2B%2C%20stable%29/1.3/csstidy-source-1.4.zip"
+    $ curl -4O "http://ufpr.dl.sourceforge.net/project/csstidy/CSSTidy%20%28C%2B%2B%2C%20stable%29/1.3/csstidy-source-1.4.zip"
     $ unzip csstidy-source-1.4.zip
     $ cd csstidy
     $ g++ *.cpp -0 csstidy
