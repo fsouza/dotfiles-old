@@ -21,9 +21,6 @@ set number
 "Backspace
 set backspace=2
 
-"linebreak
-set wrap linebreak nolist
-
 "Bad whitespaces
 autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
 autocmd BufEnter * match BadWhitespace /^\t\+/
