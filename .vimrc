@@ -11,7 +11,6 @@ let $PATH .= ":".$VIMHOME."/python"
 call pathogen#runtime_append_all_bundles()
 
 syntax off
-filetype indent on
 filetype plugin on
 
 "Hidden mode
@@ -32,15 +31,11 @@ set shiftwidth=4
 set softtabstop=4
 set tabpagemax=20
 set showtabline=4
-set autoindent
 set expandtab
 set smartindent
 set smarttab
 set wildmenu
 set wildmode=list:longest
-
-"Increase HTML indent
-let g:html_indent_inctags="html,head,body,tbody"
 
 "Start mappings
 "==============
