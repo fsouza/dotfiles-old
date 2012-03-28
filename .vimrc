@@ -12,6 +12,7 @@ call pathogen#runtime_append_all_bundles()
 
 syntax off
 filetype plugin on
+filetype indent on
 
 "Hidden mode
 set hidden
@@ -31,6 +32,7 @@ set shiftwidth=4
 set softtabstop=4
 set tabpagemax=20
 set showtabline=4
+set autoindent
 set expandtab
 set smartindent
 set smarttab
