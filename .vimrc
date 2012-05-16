@@ -53,16 +53,5 @@ function TrimWhiteSpace()
 
 map <Leader>o :call TrimWhiteSpace()<CR>
 
-"Moving lines
-noremap <C-j> :m+<CR>==
-noremap <C-k> :m-2<CR>==
-noremap <C-j> <Esc>:m+<CR>==gi
-noremap <C-k> <Esc>:m-2<CR>==gi
-noremap <C-j> :m'>+<CR>gv=gv
-noremap <C-k> :m-2<CR>gv=gv
-
-vnoremap <C-l> xp
-vnoremap <C-h> xhP
-
 "============
 "End mappings
