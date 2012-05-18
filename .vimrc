@@ -21,6 +21,9 @@ set number
 "Backspace
 set backspace=2
 
+"Skip back for temp files
+set backupskip=/tmp/*,/private/tmp/*""
+
 "Bad whitespaces
 autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
 autocmd BufEnter * match BadWhitespace /^\t\+/
