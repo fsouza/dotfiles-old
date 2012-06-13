@@ -58,3 +58,6 @@ map <Leader>o :call TrimWhiteSpace()<CR>
 
 "============
 "End mappings
+
+autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
