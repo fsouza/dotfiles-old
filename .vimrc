@@ -16,7 +16,7 @@ filetype indent on
 
 "Hidden mode
 set hidden
-set number
+set ruler
 
 "Backspace
 set backspace=2
