@@ -49,8 +49,9 @@ nmap <silent> <S-f> :NERDTreeFind<CR>
 
 " Removes trailing spaces
 function TrimWhiteSpace()
-    %s/\s*$//
-    ''
+    let v = winsaveview()
+    silent %s/\s\+$//
+    call winrestview(v)
 :endfunction
 
 map <Leader>o :call TrimWhiteSpace()<CR>
