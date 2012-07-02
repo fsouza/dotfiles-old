@@ -1,9 +1,6 @@
 "Setting VIMHOME
 let $VIMHOME = $HOME."/.vim"
 
-"Setting PYTHONPATH
-let $PYTHONPATH .= ":".$VIMHOME."/python"
-
 "Setting PATH
 let $PATH .= ":".$VIMHOME."/python:".$VIMHOME."/bundle/c.vim/bin"
 
