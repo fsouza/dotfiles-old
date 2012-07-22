@@ -40,3 +40,6 @@
 [submodule "bundle/c.vim"]
 	path = bundle/c.vim
 	url = git://github.com/fsouza/c.vim.git
+[submodule "bundle/rust"]
+	path = bundle/rust
+	url = git://github.com/fsouza/rust.vim
