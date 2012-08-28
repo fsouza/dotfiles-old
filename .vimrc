@@ -58,3 +58,7 @@ map <Leader>o :call TrimWhiteSpace()<CR>
 
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+let g:clang_complete_auto = 0
+let g:clang_clang_hl_errors = 0
+let g:clang_close_preview = 1
