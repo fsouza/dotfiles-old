@@ -1,5 +1,6 @@
 *.pyc
-*.swp
+*.sw[o-z]
+swp
 *.o
 *.so
 ruby/command-t/Makefile

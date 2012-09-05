@@ -11,6 +11,8 @@ syntax off
 filetype plugin on
 filetype indent on
 
+set directory=$VIMHOME/swp
+
 "Hidden mode
 set hidden
 set ruler
