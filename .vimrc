@@ -34,7 +34,6 @@ set softtabstop=4
 set tabpagemax=20
 set showtabline=4
 set autoindent
-set expandtab
 set smartindent
 set smarttab
 set wildmenu
