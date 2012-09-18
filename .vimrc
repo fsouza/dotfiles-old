@@ -2,7 +2,7 @@
 let $VIMHOME = $HOME."/.vim"
 
 "Setting PATH
-let $PATH .= ":".$VIMHOME."/bundle/pep8/bin:".$VIMHOME."/bundle/c.vim/bin"
+let $PATH .= ":".$VIMHOME."/bundle/pep8/bin:".$VIMHOME."/bundle/c-cpp-java-format.vim/bin"
 
 "Loading bundle plugins
 call pathogen#runtime_append_all_bundles()
