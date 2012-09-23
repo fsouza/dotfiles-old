@@ -39,7 +39,7 @@
 	url = git://github.com/othree/html5.vim.git
 [submodule "bundle/c-cpp-java-format.vim"]
 	path = bundle/c-cpp-java-format.vim
-	url = git://github.com/fsouza/c.vim.git
+	url = git://github.com/fsouza/c-cpp-java-format.vim.git
 [submodule "bundle/rust"]
 	path = bundle/rust
 	url = git://github.com/fsouza/rust.vim
