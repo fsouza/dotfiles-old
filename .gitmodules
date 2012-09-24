@@ -49,3 +49,6 @@
 [submodule "bundle/scala.vim"]
 	path = bundle/scala.vim
 	url = git://github.com/derekwyatt/vim-scala.git
+[submodule "bundle/cobol.vim"]
+	path = bundle/cobol.vim
+	url = git://github.com/fsouza/cobol.vim
