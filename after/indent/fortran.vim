@@ -16,8 +16,8 @@
 " source form, else nothing is done
 if (b:fortran_fixed_source != 1)
 	setlocal indentexpr=SebuFortranGetFreeIndent()
-	setlocal indentkeys+==~subroutine,=~function,=~forall
-	setlocal indentkeys+==~endsubroutine,=~endfunction,=~endforall
+	setlocal indentkeys+==~subroutine,=~function,=~forall,=~program
+	setlocal indentkeys+==~endsubroutine,=~endfunction,=~endforall,=~endprogram
 	" Only define the functions once
 	if exists("*SebuFortranGetFreeIndent")
 		finish
@@ -57,10 +57,10 @@ function SebuFortranGetFreeIndent()
 				\ || line =~? '^\s*\(\(recursive\s*\)\=pure\|elemental\)\=\s*'
 				\ . '\(\(integer\|real\|complex\|logical\|character\|type\)'
 				\ . '\((\S\+)\)\=\)\=\s*function'
-				\ || line =~? '^\s*\(forall\)'
+				\ || line =~? '^\s*\(forall\|program\)'
 		let ind += &sw
 	endif
-	if getline(v:lnum) =~? '^\s*end\s*\(subroutine\|function\|forall\)'
+	if getline(v:lnum) =~? '^\s*end\s*\(subroutine\|function\|forall\|program\)'
 		let ind -= &sw
 	endif
 	" You shouldn't use variable names begining with 'puresubroutine',
