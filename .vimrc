@@ -57,8 +57,9 @@ map <Leader>o :call TrimWhiteSpace()<CR>
 "============
 "End mappings
 
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+" Conque options
+let g:ConqueTerm_Color = 0
+map <F7> :ConqueTermSplit tcsh<CR>
 
 set completeopt=menu,longest
 let g:clang_complete_auto = 0
