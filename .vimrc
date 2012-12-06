@@ -57,12 +57,6 @@ map <Leader>o :call TrimWhiteSpace()<CR>
 "============
 "End mappings
 
-" Conque options
-let g:ConqueTerm_Color = 0
-let g:ConqueTerm_ReadUnfocused = 1
-let g:ConqueTerm_CWInsert = 1
-map <F7> :ConqueTermSplit tcsh<CR>
-
 set completeopt=menu,longest
 let g:clang_complete_auto = 0
 let g:clang_clang_hl_errors = 0
