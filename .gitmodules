@@ -49,3 +49,6 @@
 [submodule "bundle/a.vim"]
 	path = bundle/a.vim
 	url = git://github.com/vim-scripts/a.vim.git
+[submodule "bundle/flake8"]
+	path = bundle/flake8
+	url = git://github.com/nvie/vim-flake8.git
