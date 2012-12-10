@@ -8,5 +8,4 @@ autocmd BufWritePost *.py call Flake8()
 autocmd BufReadPost *.py call Flake8()
 
 "python-flake8 settings
-let g:flake8_max_line_length=99
 let g:flake8_max_complexity=8
