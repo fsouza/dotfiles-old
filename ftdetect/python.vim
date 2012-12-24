@@ -7,5 +7,7 @@ autocmd FileType rst setlocal expandtab
 autocmd BufWritePost *.py call Flake8()
 autocmd BufReadPost *.py call Flake8()
 
+inoremap # X#
+
 "python-flake8 settings
 let g:flake8_max_complexity=8
