@@ -1,16 +1,5 @@
-"Using Django and Python file type instead of just Python
-autocmd FileType python set ft=python.django
-
-autocmd FileType python setlocal expandtab
-autocmd FileType rst setlocal expandtab
-
-autocmd FileType python setlocal tabstop=4
-autocmd FileType python setlocal shiftwidth=4
-autocmd FileType python setlocal softtabstop=4
-autocmd FileType python setlocal showtabline=4
-
-autocmd BufWritePost *.py call Flake8()
-autocmd BufReadPost *.py call Flake8()
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 showtabline=4 expandtab
+autocmd FileType rst setlocal tabstop=4 shiftwidth=4 softtabstop=4 showtabline=4 expandtab
 
 inoremap # X#
 
