@@ -52,3 +52,6 @@
 [submodule "bundle/flake8"]
 	path = bundle/flake8
 	url = git://github.com/nvie/vim-flake8.git
+[submodule "bundle/tabular"]
+	path = bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
