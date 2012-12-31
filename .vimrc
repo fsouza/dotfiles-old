@@ -32,6 +32,7 @@ set tabpagemax=20
 set autoindent
 set smartindent
 set smarttab
+
 set wildmenu
 set wildmode=list:longest
 
