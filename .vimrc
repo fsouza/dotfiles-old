@@ -28,11 +28,7 @@ autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
 autocmd BufEnter * match BadWhitespace /\s\+$/
 
 "Setting up tab settings
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
 set tabpagemax=20
-set showtabline=4
 set autoindent
 set smartindent
 set smarttab
@@ -53,6 +49,9 @@ function TrimWhiteSpace()
 :endfunction
 
 map <Leader>o :call TrimWhiteSpace()<CR>
+
+" Depends on Tabular.vim
+vmap <F3> :Tabularize /\\$<CR>
 
 "============
 "End mappings
