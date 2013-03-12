@@ -5,3 +5,4 @@ inoremap # X#
 
 "python-flake8 settings
 let g:flake8_max_complexity=16
+let g:flake8_max_line_length=119
