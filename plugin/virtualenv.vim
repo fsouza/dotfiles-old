@@ -1,5 +1,3 @@
-" Auto activates a virtualenv named `vim` if it exists.
-
 python << EOF
 import os
 virtualenvs_path = os.environ.get("VIRTUALENVS")
