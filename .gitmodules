@@ -61,3 +61,6 @@
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = git://github.com/tsaleh/vim-matchit.git
+[submodule "bundle/lusty"]
+	path = bundle/lusty
+	url = git://github.com/sjbach/lusty.git
