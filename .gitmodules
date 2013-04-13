@@ -55,3 +55,6 @@
 [submodule "bundle/autoclose"]
 	path = bundle/autoclose
 	url = git://github.com/Townk/vim-autoclose.git
+[submodule "bundle/lint"]
+	path = bundle/lint
+	url = git://github.com/joestelmach/lint.vim.git
