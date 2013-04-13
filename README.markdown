@@ -17,14 +17,28 @@ Then enter in the ``.vim`` directory and update the submodules:
 	% cd ${HOME}/.vim
 	% git submodule update --init --recursive
 
-It's necessary to make a recursive update, because there is a submodule with
-another submodule inside it (pyflakes-vim).
-
 ###Installing
 
 After download the project, you need create a ``.vimrc`` file in your ``$HOME``:
 
 	% echo "source ${HOME}/.vim/.vimrc" > ${HOME}/.vimrc
+
+###lint
+
+I use [lint.vim](https://github.com/joestelmach/lint.vim) for JavaScript and
+CSS linting. They depend on v8 being installed (without shared libraries).
+
+You can use ``brew`` to install V8 on Mac OS X:
+
+	% brew install v8
+
+Or install it from ports on FreeBSD:
+
+	% cd /usr/ports/lang/v8
+	$ make install clean
+
+For installation from source, please check [lint.vim
+readme](https://github.com/joestelmach/lint.vim#installation).
 
 ###csstidy
 
