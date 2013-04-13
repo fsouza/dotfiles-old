@@ -8,13 +8,11 @@ filetype plugin on
 filetype indent on
 
 set directory=$VIMHOME/swp
+set backupskip=/tmp/*,/private/tmp/*""
 
 set hidden
 set ruler
-
 set backspace=2
-
-set backupskip=/tmp/*,/private/tmp/*""
 
 autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
 autocmd BufEnter * match BadWhitespace /\s\+$/
