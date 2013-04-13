@@ -26,21 +26,6 @@ After download the project, you need create a ``.vimrc`` file in your ``$HOME``:
 
 	% echo "source ${HOME}/.vim/.vimrc" > ${HOME}/.vimrc
 
-###JavaScript lint
-
-In order to use JavaScript lint, you need to add the ``jsl`` executable to your
-``PATH``. [Download it](http://javascriptlint.com/download.htm) and add to a
-directory in your ``PATH``.
-
-Alternatively, you can use ``brew`` to install it on Mac OS X:
-
-	% brew install jsl
-
-On FreeBSD you can install it using ports:
-
-	% cd /usr/ports/devel/jsl
-# make install clean
-
 ###csstidy
 
 You will need also to install ``csstidy``.
