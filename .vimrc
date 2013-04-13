@@ -27,9 +27,6 @@ set smarttab
 set wildmenu
 set wildmode=list:longest
 
-nmap <silent> <c-p> :NERDTreeToggle<CR>
-nmap <silent> <S-f> :NERDTreeFind<CR>
-
 function TrimWhiteSpace()
     let v = winsaveview()
     silent %s/\s\+$//
