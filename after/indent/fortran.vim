@@ -50,23 +50,7 @@ function SebuFortranGetFreeIndent()
 	" Continued		1	1	|	0	No change
 	let result = -SebuIsFortranContStat(lnum-1)+SebuIsFortranContStat(lnum)
 	" One shiftwidth indentation for continued statements
-	let ind += result*&sw
-	" One shiftwidth indentation for subroutine, function and forall's bodies
-	let line = getline(lnum)
-	if line =~? '^\s*\(\(recursive\s*\)\=pure\|elemental\)\=\s*subroutine'
-				\ || line =~? '^\s*\(\(recursive\s*\)\=pure\|elemental\)\=\s*'
-				\ . '\(\(integer\|real\|complex\|logical\|character\|type\)'
-				\ . '\((\S\+)\)\=\)\=\s*function'
-				\ || line =~? '^\s*\(forall\|program\)'
-		let ind += &sw
-	endif
-	if getline(v:lnum) =~? '^\s*end\s*\(subroutine\|function\|forall\|program\)'
-		let ind -= &sw
-	endif
-	" You shouldn't use variable names begining with 'puresubroutine',
-	" 'function', 'endforall', etc. as these would make the indentation
-	" collapse: it's easier to pay attention than to implement the exceptions
-	return ind
+	return ind + result*&sw
 endfunction
 
 " SebuPrevNonBlankNonCPP(lnum) is modified prevnonblank(lnum):
