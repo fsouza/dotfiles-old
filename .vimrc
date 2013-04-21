@@ -13,6 +13,7 @@ set backupskip=/tmp/*,/private/tmp/*""
 set hidden
 set ruler
 set backspace=2
+set nohlsearch
 
 autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
 autocmd BufEnter * match BadWhitespace /\s\+$/
