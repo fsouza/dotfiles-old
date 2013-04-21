@@ -35,6 +35,7 @@ function TrimWhiteSpace()
 map <Leader>o :call TrimWhiteSpace()<CR>
 
 vmap <F3> :Tabularize /\\$<CR>
+vmap <F4> :Tabularize /=
 
 set completeopt=menu,longest
 let g:clang_complete_auto = 0
