@@ -16,8 +16,8 @@
 " source form, else nothing is done
 if (b:fortran_fixed_source != 1)
 	setlocal indentexpr=SebuFortranGetFreeIndent()
-	setlocal indentkeys+==~subroutine,=~function,=~forall,=~program
-	setlocal indentkeys+==~endsubroutine,=~endfunction,=~endforall,=~endprogram
+	setlocal indentkeys+==~subroutine,=~function,=~forall,=~program,=~module
+	setlocal indentkeys+==~endsubroutine,=~endfunction,=~endforall,=~endprogram,=~endmodule
 	" Only define the functions once
 	if exists("*SebuFortranGetFreeIndent")
 		finish
