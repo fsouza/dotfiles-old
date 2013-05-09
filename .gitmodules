@@ -16,9 +16,6 @@
 [submodule "bundle/go"]
 	path = bundle/go
 	url = git://github.com/fsouza/go.vim
-[submodule "bundle/html5"]
-	path = bundle/html5
-	url = git://github.com/othree/html5.vim.git
 [submodule "bundle/c-cpp-java-format.vim"]
 	path = bundle/c-cpp-java-format.vim
 	url = git://github.com/fsouza/c-cpp-java-format.vim.git
