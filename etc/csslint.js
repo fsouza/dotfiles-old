@@ -25,7 +25,7 @@ var CSS_LINT_OPTIONS = {
 	'star-property-hack' : 1,
 	'text-indent' : 1,
 	'underscore-property-hack' : 1,
-	'unique-headings' : 1,
+	'unique-headings' : 0,
 	'universal-selector' : 1,
 	'unqualified-attributes' : 1,
 	'vendor-prefix' : 1,
