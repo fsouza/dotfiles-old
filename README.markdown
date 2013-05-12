@@ -39,26 +39,3 @@ Or install it from ports on FreeBSD:
 
 For installation from source, please check [lint.vim
 readme](https://github.com/joestelmach/lint.vim#installation).
-
-###csstidy
-
-You will need also to install ``csstidy``.
-
-You can use ``brew`` to install it on Mac OS X:
-
-	% brew install csstidy
-
-Or install it from ports on FreeBSD:
-
-	% cd /usr/ports/www/csstidy
-	# make install clean
-
-You can also download it and build from source using your preferred c++
-compiler:
-
-	% curl -L http://sourceforge.net/projects/csstidy/files/CSSTidy%20%28C%2B%2B%2C%20stable%29/1.3/csstidy-source-1.4.zip/download -o csstidy.zip
-	% unzip csstidy.zip
-	% cd csstidy
-	% clang++ *.cpp -o csstidy
-
-After building, put it somewhere in your shell path.
