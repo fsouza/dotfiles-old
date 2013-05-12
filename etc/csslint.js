@@ -16,7 +16,7 @@ var CSS_LINT_OPTIONS = {
 	'important' : 1,
 	'known-properties' : 1,
 	'outline-none' : 1,
-	'overqualified-elements' : 1,
+	'overqualified-elements' : 0,
 	'qualified-headings' : 0,
 	'regex-selectors' : 1,
 	'selector-max-approaching' : 1,
