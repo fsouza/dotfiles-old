@@ -46,3 +46,6 @@
 [submodule "bundle/lusty"]
 	path = bundle/lusty
 	url = git://github.com/sjbach/lusty.git
+[submodule "bundle/python-pep8-indent"]
+	path = bundle/python-pep8-indent
+	url = git://github.com/hynek/vim-python-pep8-indent.git
