@@ -23,9 +23,11 @@ setenv MANPAGER $PAGER
 
 setenv CC /opt/bin/clang
 setenv CXX /opt/bin/clang++
-setenv CFLAGS "-I/opt/include/libcxx -I/usr/local/include/ -Wall -Wextra -Wno-comments -pedantic"
+setenv CFLAGS "-Wall -Wextra -Wno-comments -pedantic"
+setenv C_INCLUDE_PATH /usr/local/include:/opt/include
 setenv CXXFLAGS "${CFLAGS}"
-setenv LDFLAGS "-L/usr/local/lib/ -L/opt/lib"
+setenv CPLUS_INCLUDE_PATH /opt/include/libcxx:/usr/local/include:/opt/include
+setenv LIBRARY_PATH /usr/local/lib:/opt/lib
 setenv DYLD_LIBRARY_PATH /opt/lib/libcxx:/opt/lib
 setenv VIRTUALENVS ${HOME}/.venvs
 
