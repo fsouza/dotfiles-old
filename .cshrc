@@ -45,6 +45,7 @@ alias rbenv_version "cat $RBENV/version >& /dev/null && cat $RBENV/version | sed
 alias dr "rm $RBENV/version"
 alias disable-push "cp ${HOME}/Projects/dotfiles/extra/pre-push .git/hooks/pre-push"
 alias enable-push "rm .git/hooks/pre-push"
+alias enable-cilk-llvm "source ${HOME}/Projects/dotfiles/extra/enable-cilk-llvm.csh"
 
 alias setprompt 'set prompt="${machine}$cwd:t% "'
 alias precmd setprompt
