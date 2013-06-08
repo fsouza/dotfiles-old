@@ -6,6 +6,7 @@ if ($?oldpath) then
 	unalias cdsitepackages
 	alias setprompt 'set prompt="${machine}$cwd:t% "'
 	setprompt
+	rehash
 else
 	echo "virtualenv not active"
 endif
