@@ -1,6 +1,6 @@
-#!/bin/bash -e
+#!/bin/csh -e
 
-CC=/opt/bin/gcc
+setenv CC /opt/bin/gcc
 pushd $GOROOT/src
 hg sync
 ./make.bash
