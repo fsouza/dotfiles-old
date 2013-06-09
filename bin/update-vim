@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/csh -e
 
 pushd /opt/src/vim
 hg pull -u
