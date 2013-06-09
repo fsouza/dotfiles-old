@@ -1,0 +1,7 @@
+#!/bin/bash -e
+
+CC=/opt/bin/gcc
+pushd $GOROOT/src
+hg sync
+./make.bash
+popd
