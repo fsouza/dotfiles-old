@@ -1,0 +1,8 @@
+#!/bin/bash -e
+
+pushd /opt/src/vim
+hg pull -u
+./configure --prefix=/opt --enable-gui=no --without-x --enable-multibyte --with-tlib=ncurses --enable-cscope --with-features=huge --enable-pythoninterp --enable-rubyinterp
+make
+sudo make install prefix=/opt STRIP=/usr/bin/true
+popd
