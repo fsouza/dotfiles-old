@@ -1,8 +1,12 @@
 #!/bin/csh -e
 
 pushd /opt/src/vim
+set old=`hg tip --template "{node}"`
 hg pull -u
-./configure --prefix=/opt --enable-gui=no --without-x --enable-multibyte --with-tlib=ncurses --enable-cscope --with-features=huge --enable-pythoninterp --enable-rubyinterp
-make
-sudo make install prefix=/opt STRIP=/usr/bin/true
+set new=`hg tip --template "{node}"`
+if $new != $old then
+	./configure --prefix=/opt --enable-gui=no --without-x --enable-multibyte --with-tlib=ncurses --enable-cscope --with-features=huge --enable-pythoninterp --enable-rubyinterp
+	make
+	sudo make install prefix=/opt STRIP=/usr/bin/true
+endif
 popd
