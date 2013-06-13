@@ -14,6 +14,7 @@ set hidden
 set ruler
 set backspace=2
 set nohlsearch
+set term=builtin_ansi
 
 autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
 autocmd BufEnter * match BadWhitespace /\s\+$/
