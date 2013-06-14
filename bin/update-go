@@ -7,5 +7,6 @@ hg sync
 set new=`hg tip --template "{node}"`
 if $new != $old then
 	./make.bash
+	go get -u code.google.com/p/go.tools/cmd/vet
 endif
 popd
