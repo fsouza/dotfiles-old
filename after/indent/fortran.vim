@@ -33,6 +33,9 @@ function SebuFortranGetFreeIndent()
 	if getline(v:lnum) =~ '^\s*#'
 		return 0
 	endif
+	if getline(v:lnum) =~ '^\s*\d\+'
+		return 0
+	endif
 	" Previous non-blank non-preprocessor line
 	let lnum = SebuPrevNonBlankNonCPP(v:lnum-1)
 	" No indentation at the top of the file
@@ -58,7 +61,7 @@ endfunction
 " neither blank nor preprocessor instruction.
 function SebuPrevNonBlankNonCPP(lnum)
 	let lnum = prevnonblank(a:lnum)
-	while getline(lnum) =~ '^#'
+	while getline(lnum) =~ '^#' || getline(lnum) =~ '^\d\+'
 		let lnum = prevnonblank(lnum-1)
 	endwhile
 	return lnum
