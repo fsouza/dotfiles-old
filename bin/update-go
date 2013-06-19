@@ -8,5 +8,6 @@ set new=`hg tip --template "{node}"`
 if $new != $old then
 	./make.bash
 	go get -u code.google.com/p/go.tools/cmd/vet
+	go get -u code.google.com/p/go.tools/cmd/cover
 endif
 popd
