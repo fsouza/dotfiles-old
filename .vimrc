@@ -18,7 +18,6 @@ set nohlsearch
 autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
 autocmd BufEnter * match BadWhitespace /\s\+$/
 
-set tabpagemax=20
 set autoindent
 set smartindent
 set smarttab
