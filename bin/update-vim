@@ -6,7 +6,7 @@ hg pull -u
 set new=`hg tip --template "{node}"`
 if $new != $old then
 	./configure --prefix=/opt --enable-gui=no --without-x --enable-multibyte --with-tlib=ncurses --enable-cscope --with-features=huge --enable-pythoninterp --enable-rubyinterp
-	make
-	sudo make install prefix=/opt STRIP=/usr/bin/true
+	make -j4
+	sudo make -j4 install prefix=/opt STRIP=/usr/bin/true
 endif
 popd
