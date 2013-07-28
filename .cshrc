@@ -13,7 +13,7 @@ setenv RBENV ${HOME}/.rbenv
 
 setenv NODE_PATH /usr/local/lib/node_modules
 
-set path=($RBENV/shims $HOME/bin /opt/bin ${GOROOT}/bin ${GOPATH}/bin /usr/local/bin /usr/local/sbin /opt/local/bin ${path} ${HOME}/Projects/dotfiles/bin $PLAN9/bin)
+set path=($RBENV/shims $HOME/bin /opt/bin ${GOROOT}/bin ${GOPATH}/bin /usr/local/bin /usr/local/sbin /opt/local/bin ${path} ${HOME}/Projects/dotfiles/bin $PLAN9/bin /usr/local/share/npm/bin)
 
 setenv JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_17.jdk/Contents/Home
 
