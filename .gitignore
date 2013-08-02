@@ -1,3 +1,4 @@
 *.pyc
 swp
 .netrwhist
+ftdetect/projects.vim
