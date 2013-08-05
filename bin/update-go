@@ -1,6 +1,5 @@
 #!/bin/csh -e
 
-setenv CC /opt/bin/gcc
 pushd $GOROOT/src
 set old=`hg tip --template "{node}"`
 hg sync
