@@ -16,7 +16,8 @@ if ${command} == "start" then
 		--sync-frm=FALSE \
 		--myisam_use_mmap=TRUE \
 		--tmpdir=/Volumes/mysql/tmp \
-		--pid-file=${pidfile} &
+		--pid-file=${pidfile} \
+		--socket=/tmp/mysql.sock &
 else if ${command} == "stop" then
 	if -f ${pidfile} then
 		kill -TERM `cat ${pidfile}`
