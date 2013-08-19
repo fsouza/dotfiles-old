@@ -8,6 +8,7 @@ if $new != $old then
 	./make.bash
 	go get -u code.google.com/p/go.tools/cmd/vet
 	go get -u code.google.com/p/go.tools/cmd/cover
+	go get -u code.google.com/p/go.tools/cmd/godoc
 	rm -rf `go env GOROOT`/pkg/*_race
 	go install -race std
 endif
