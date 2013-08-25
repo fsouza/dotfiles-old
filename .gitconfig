@@ -7,3 +7,5 @@
 [github]
 	user = fsouza
 	token = censored
+[color]
+	ui = false
