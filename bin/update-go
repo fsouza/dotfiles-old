@@ -4,7 +4,7 @@ pushd $GOROOT/src
 set old=`hg tip --template "{node}"`
 hg sync
 set new=`hg tip --template "{node}"`
-if $new != $old then
+if($new != $old || "$1" == "-f") then
 	./make.bash
 	go get -u code.google.com/p/go.tools/cmd/vet
 	go get -u code.google.com/p/go.tools/cmd/cover
