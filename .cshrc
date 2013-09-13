@@ -13,6 +13,7 @@ setenv RBENV ${HOME}/.rbenv
 setenv PYTHONPATH /usr/local/lib/python2.7/site-packages
 
 setenv NODE_PATH /usr/local/lib/node_modules
+setenv NODE_MODULES /usr/local/lib/node_modules
 
 set path=($RBENV/shims $HOME/bin /opt/bin ${GOROOT}/bin ${GOPATH}/bin /usr/local/bin /usr/local/sbin /opt/local/bin ${path} ${HOME}/Projects/dotfiles/bin $PLAN9/bin /usr/local/share/npm/bin)
 
