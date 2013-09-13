@@ -10,6 +10,7 @@ setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
 setenv PLAN9 ${HOME}/lib/plan9port
 setenv RBENV ${HOME}/.rbenv
+setenv PYTHONPATH /usr/local/lib/python2.7/site-packages
 
 setenv NODE_PATH /usr/local/lib/node_modules
 
