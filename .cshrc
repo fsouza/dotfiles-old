@@ -54,4 +54,4 @@ alias precmd setprompt
 setprompt
 
 source /opt/intel/bin/compilervars.csh intel64
-pushd /opt/src/chapel-1.7.0 > /dev/null && source util/setchplenv.csh > /dev/null && popd > /dev/null
+pushd /opt/src/chapel-1.8.0 > /dev/null && source util/setchplenv.csh > /dev/null && popd > /dev/null
