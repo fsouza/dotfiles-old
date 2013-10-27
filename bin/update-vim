@@ -1,12 +1,14 @@
 #!/bin/csh -e
 
-pushd /opt/src/vim
+pushd ${HOME}/opt/src/vim
 set old=`hg tip --template "{node}"`
 hg pull -u
 set new=`hg tip --template "{node}"`
 if($new != $old || "$1" == "-f") then
-	./configure --prefix=/opt --enable-gui=no --without-x --enable-multibyte --with-tlib=ncurses --enable-cscope --with-features=huge --enable-pythoninterp --enable-rubyinterp
+	patch -p1 < $HOME/Projects/dotfiles/patches/vim_sigaltstack.diff
+	./configure --prefix=${HOME}/opt --enable-gui=no --without-x --enable-multibyte --with-tlib=ncurses --enable-cscope --with-features=huge --enable-pythoninterp --enable-rubyinterp
 	make -j4
-	sudo make -j4 install prefix=/opt STRIP=/usr/bin/true
+	sudo make -j4 install prefix=${HOME}/opt
+	hg revert --all
 endif
 popd
