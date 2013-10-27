@@ -8,28 +8,27 @@ setenv LC_TIME pt_BR.UTF-8
 
 setenv GOROOT ${HOME}/lib/go
 setenv GOPATH ${HOME}/gocode
-setenv PLAN9 ${HOME}/lib/plan9port
-setenv RBENV ${HOME}/.rbenv
 
+setenv PYTHONPATH /usr/local/lib/python2.7/site-packages
+setenv MANPATH /usr/share/man:/usr/local/share/man
 setenv NODE_PATH /usr/local/lib/node_modules
 setenv NODE_MODULES /usr/local/lib/node_modules
 
-set path=($RBENV/shims $HOME/bin /opt/bin ${GOROOT}/bin ${GOPATH}/bin /usr/local/bin /usr/local/sbin /opt/local/bin ${path} ${HOME}/Projects/dotfiles/bin $PLAN9/bin /usr/local/share/npm/bin)
+set path=(${HOME}/opt/bin ${GOROOT}/bin ${GOPATH}/bin /usr/local/bin /usr/local/sbin ${path} ${HOME}/Projects/dotfiles/bin /usr/local/share/npm/bin)
 
-setenv JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_17.jdk/Contents/Home
+setenv JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
 
 setenv EDITOR vim
 setenv PAGER less
 setenv MANPAGER $PAGER
 
-setenv CC /opt/bin/clang
-setenv CXX /opt/bin/clang++
+setenv CC /usr/bin/clang
+setenv CXX /usr/bin/clang++
 setenv CFLAGS "-Wall -Wextra -Wno-comments -pedantic"
-setenv C_INCLUDE_PATH /usr/local/include:/opt/include
+setenv C_INCLUDE_PATH /usr/local/include
 setenv CXXFLAGS "${CFLAGS}"
-setenv CPLUS_INCLUDE_PATH /opt/include/libcxx:/usr/local/include:/opt/include
-setenv LIBRARY_PATH /usr/local/lib:/opt/lib
-setenv DYLD_LIBRARY_PATH /opt/lib/libcxx:/opt/lib
+setenv CPLUS_INCLUDE_PATH /usr/local/include
+setenv LIBRARY_PATH /usr/local/lib
 setenv VIRTUALENVS ${HOME}/.venvs
 
 if $?SSH_CLIENT then
@@ -41,17 +40,12 @@ endif
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
 alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
 alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv-2.7 ${VIRTUALENVS}/\!:1"
-alias mkvp3 "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv --python=python3 ${VIRTUALENVS}/\!:1" 
 alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
-alias rbenv_version "cat $RBENV/version >& /dev/null && cat $RBENV/version | sed -e 's/^.*\(1.[0-9].[0-9]\).*/r=\1 /'"
-alias dr "rm $RBENV/version"
 alias disable-push "cp ${HOME}/Projects/dotfiles/extra/pre-push .git/hooks/pre-push"
 alias enable-push "rm .git/hooks/pre-push"
-alias enable-cilk-llvm "source ${HOME}/Projects/dotfiles/extra/enable-cilk-llvm.csh"
 
 alias setprompt 'set prompt="${machine}$cwd:t% "'
 alias precmd setprompt
 setprompt
 
-source /opt/intel/bin/compilervars.csh intel64
-pushd /opt/src/chapel-1.8.0 > /dev/null && source util/setchplenv.csh > /dev/null && popd > /dev/null
+pushd ${HOME}/lib/chapel > /dev/null && source util/setchplenv.csh > /dev/null && popd > /dev/null
