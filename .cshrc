@@ -22,13 +22,13 @@ setenv EDITOR vim
 setenv PAGER less
 setenv MANPAGER $PAGER
 
-setenv CC /usr/bin/clang
-setenv CXX /usr/bin/clang++
+setenv CC $HOME/opt/bin/clang
 setenv CFLAGS "-Wall -Wextra -Wno-comments -pedantic"
-setenv C_INCLUDE_PATH /usr/local/include
+setenv C_INCLUDE_PATH $HOME/opt/include:/usr/local/include
+setenv CXX $HOME/opt/bin/clang++
 setenv CXXFLAGS "${CFLAGS}"
-setenv CPLUS_INCLUDE_PATH /usr/local/include
-setenv LIBRARY_PATH /usr/local/lib
+setenv CPLUS_INCLUDE_PATH $HOME/opt/include:/usr/local/include
+setenv LIBRARY_PATH $HOME/opt/lib:/usr/local/lib
 setenv VIRTUALENVS ${HOME}/.venvs
 
 if $?SSH_CLIENT then
