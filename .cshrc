@@ -22,6 +22,8 @@ setenv EDITOR vim
 setenv PAGER less
 setenv MANPAGER $PAGER
 
+setenv HOMEBREW_MAKE_JOBS 4
+
 setenv CC $HOME/opt/bin/clang
 setenv CFLAGS "-Wall -Wextra -Wno-comments -pedantic"
 setenv CPPFLAGS "-I$HOME/opt/include -I/usr/include -I/usr/local/include"
