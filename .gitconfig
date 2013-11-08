@@ -9,3 +9,6 @@
 	token = censored
 [color]
 	ui = false
+[status]
+	short = true
+	branch = true
