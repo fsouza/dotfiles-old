@@ -1,5 +1,6 @@
 #!/bin/csh -e
 
+setenv VERBOSE 1
 brew remove git
 brew cleanup -s
 brew install --with-pcre --without-completions --with-brewed-curl --with-brewed-openssl --HEAD git
