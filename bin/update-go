@@ -2,7 +2,7 @@
 
 pushd $GOROOT/src
 set old=`hg tip --template "{node}"`
-hg sync
+hg pull -u
 set new=`hg tip --template "{node}"`
 if($new != $old || "$1" == "-f") then
 	./make.bash
