@@ -5,3 +5,4 @@ ignore = ~/.hgignore_global
 
 [extensions]
 purge =
+codereview = ${GOROOT}/lib/codereview/codereview.py
