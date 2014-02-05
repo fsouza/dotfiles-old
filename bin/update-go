@@ -10,6 +10,7 @@ if($new != $old || "$1" == "-f") then
 	go get -u code.google.com/p/go.tools/cmd/vet
 	go get -u code.google.com/p/go.tools/cmd/cover
 	go get -u code.google.com/p/go.tools/cmd/godoc
+	go get -u code.google.com/p/go.codereview/cmd/hgapplydiff
 	rm -rf `go env GOROOT`/pkg/*_race
 	go install -race std
 endif
