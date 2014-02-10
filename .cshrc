@@ -34,12 +34,6 @@ setenv CXXFLAGS "${CFLAGS}"
 setenv LIBRARY_PATH $HOME/opt/lib:/usr/local/lib
 setenv VIRTUALENVS ${HOME}/.venvs
 
-if $?SSH_CLIENT then
-	set machine="ssh=%m/"
-else
-	set machine=""
-endif
-
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
 alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
 alias cv "which python"
@@ -47,8 +41,6 @@ alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv-2.7 ${
 alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
 alias dr "rm $RBENV_ROOT/version"
 
-alias setprompt 'set prompt="${machine}% "'
-alias precmd setprompt
-setprompt
+alias setprompt 'set prompt="% "'
 
 pushd ${HOME}/lib/chapel > /dev/null && source util/setchplenv.csh > /dev/null && popd > /dev/null
