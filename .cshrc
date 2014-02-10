@@ -47,7 +47,7 @@ alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv-2.7 ${
 alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
 alias dr "rm $RBENV_ROOT/version"
 
-alias setprompt 'set prompt="${machine}$cwd:t% "'
+alias setprompt 'set prompt="${machine}% "'
 alias precmd setprompt
 setprompt
 
