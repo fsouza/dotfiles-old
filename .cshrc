@@ -45,8 +45,6 @@ alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
 alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv-2.7 ${VIRTUALENVS}/\!:1"
 alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
 alias dr "rm $RBENV_ROOT/version"
-alias disable-push "cp ${HOME}/Projects/dotfiles/extra/pre-push .git/hooks/pre-push"
-alias enable-push "rm .git/hooks/pre-push"
 
 alias setprompt 'set prompt="${machine}$cwd:t% "'
 alias precmd setprompt

@@ -1,4 +1,0 @@
-#!/bin/sh -e
-
-echo "ERROR: Push is disabled. Please run enable-push to enable it again."
-exit 7
