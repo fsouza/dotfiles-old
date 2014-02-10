@@ -42,6 +42,7 @@ endif
 
 alias v "source ${HOME}/Projects/dotfiles/extra/activate_virtualenv.csh"
 alias d "source ${HOME}/Projects/dotfiles/extra/deactivate_virtualenv.csh"
+alias cv "which python"
 alias mkv "test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS} ; virtualenv-2.7 ${VIRTUALENVS}/\!:1"
 alias rmv "rm -rf ${VIRTUALENVS}/\!:1 && echo 'Removed ${VIRTUALENVS}/\!:1'"
 alias dr "rm $RBENV_ROOT/version"
