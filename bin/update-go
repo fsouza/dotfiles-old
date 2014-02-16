@@ -1,5 +1,6 @@
 #!/bin/csh -e
 
+setenv CC /usr/bin/clang
 set hg=$VIRTUALENVS/go/bin/hg
 pushd $GOROOT/src
 set old=`$hg tip --template "{node}"`
