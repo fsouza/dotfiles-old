@@ -5,10 +5,15 @@ set old=`hg tip --template "{node}"`
 hg pull -u
 set new=`hg tip --template "{node}"`
 if($new != $old || "$1" == "-f") then
+	set cur_rbenv=`rbenv global`
+	rbenv global system
+	rbenv rehash
 	patch -p1 < $HOME/Projects/dotfiles/patches/vim_sigaltstack.diff
 	./configure --prefix=${HOME}/opt --enable-gui=no --without-x --enable-multibyte --with-tlib=ncurses --enable-cscope --with-features=huge --enable-pythoninterp=yes --enable-rubyinterp=yes --enable-luainterp=yes --with-luajit
 	make -j4
 	make -j4 install prefix=${HOME}/opt
 	hg revert --all
+	rbenv global $cur_rbenv
+	rbenv rehash
 endif
 popd
