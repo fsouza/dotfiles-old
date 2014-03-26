@@ -5,6 +5,8 @@ if ($#argv < 1) then
 	exit 2
 endif
 
+unsetenv CFLAGS
+
 pushd ${GOROOT}/src
 ./make.bash --no-clean
 popd
