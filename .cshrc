@@ -44,3 +44,5 @@ alias dr "rm $RBENV_ROOT/version"
 set prompt="% "
 
 pushd ${HOME}/lib/chapel > /dev/null && source util/setchplenv.csh > /dev/null && popd > /dev/null
+
+source /opt/intel/bin/compilervars.csh intel64
