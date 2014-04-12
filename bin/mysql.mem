@@ -3,7 +3,7 @@
 set command="${1}"
 set pidfile="/usr/local/var/mysql/xikinbook.pid"
 set logfile="/Volumes/mysql/xikinboook.err"
-set mysqlversion=`mysql --version | awk '{sub(",", "", $5);print $5}'`
+set mysqlversion=`mysql --version | awk '{sub(",", "", $5);print $5}'`_1
 
 if ${command} == "start" then
 	diskutil erasevolume HFS+ "mysql" `hdiutil attach -nomount ram://1165430`
