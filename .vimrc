@@ -1,7 +1,7 @@
 let $VIMHOME = $HOME."/.vim"
 let $PATH .= ":".$VIMHOME."/bundle/c-cpp-java-format.vim/bin"
 
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 syntax off
 filetype plugin on
