@@ -1,12 +1,6 @@
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = git://github.com/tpope/vim-surround.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = git://github.com/akitaonrails/snipmate.vim.git
-[submodule "snippets"]
-	path = snippets
-	url = git://github.com/fsouza/snipmate-snippets.git
 [submodule "bundle/go"]
 	path = bundle/go
 	url = git://github.com/fsouza/go.vim
