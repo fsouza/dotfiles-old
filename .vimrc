@@ -16,9 +16,6 @@ set backspace=2
 set nohlsearch
 set nofoldenable
 
-autocmd BufEnter * highlight BadWhitespace ctermbg=red guibg=red
-autocmd BufEnter * match BadWhitespace /\s\+$/
-
 set autoindent
 set smartindent
 set smarttab
@@ -26,14 +23,6 @@ set nocompatible
 
 set wildmenu
 set wildmode=list:longest
-
-function TrimWhiteSpace()
-	let v = winsaveview()
-	silent %s/\s\+$//
-	call winrestview(v)
-endfunction
-
-map <Leader>o :call TrimWhiteSpace()<CR>
 
 vmap <F3> :Tabularize /\\$<CR>
 vmap <F4> :Tabularize /=<CR>
