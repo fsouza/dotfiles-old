@@ -28,10 +28,8 @@ setenv HOMEBREW_MAKE_JOBS 4
 
 setenv FC /usr/local/bin/gfortran-4.9
 setenv CC $HOME/opt/bin/clang
-setenv CFLAGS "-Wall -Wextra -Wno-comments -pedantic"
 setenv CPPFLAGS "-I$HOME/opt/include -I/usr/include -I/usr/local/include"
 setenv CXX $HOME/opt/bin/clang++
-setenv CXXFLAGS "${CFLAGS}"
 setenv LIBRARY_PATH $HOME/opt/lib:/usr/local/lib
 setenv VIRTUALENVS ${HOME}/.venvs
 
