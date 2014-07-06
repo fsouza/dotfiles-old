@@ -11,7 +11,7 @@ setenv GOPATH ${HOME}/gocode
 setenv RBENV_ROOT /usr/local/var/rbenv
 
 setenv PYTHONPATH /usr/local/lib/python2.7/site-packages
-setenv MANPATH /usr/share/man:/usr/local/share/man:/usr/local/opt/erlang/lib/erlang/man
+setenv MANPATH /usr/share/man:/usr/local/share/man
 setenv NODE_PATH /usr/local/lib/node_modules
 setenv NODE_MODULES /usr/local/lib/node_modules
 setenv ANDROID_HOME /usr/local/opt/android-sdk
