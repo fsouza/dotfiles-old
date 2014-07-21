@@ -2,6 +2,7 @@ let $VIMHOME = $HOME."/.vim"
 let $PATH .= ":".$VIMHOME."/bundle/c-cpp-java-format.vim/bin"
 
 call pathogen#infect()
+call pathogen#helptags()
 
 syntax off
 filetype plugin on
