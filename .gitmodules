@@ -28,3 +28,6 @@
 [submodule "bundle/vim-dispatch"]
 	path = bundle/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule "bundle/omnisharp"]
+	path = bundle/omnisharp
+	url = https://github.com/nosami/Omnisharp.git
