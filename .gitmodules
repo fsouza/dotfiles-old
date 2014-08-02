@@ -25,6 +25,3 @@
 [submodule "bundle/rust"]
 	path = bundle/rust
 	url = https://github.com/wting/rust.vim.git
-[submodule "bundle/vimerl"]
-	path = bundle/vimerl
-	url = https://github.com/jimenezrick/vimerl.git
