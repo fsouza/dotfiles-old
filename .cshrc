@@ -44,5 +44,8 @@ alias dr "rm $RBENV_ROOT/version"
 set prompt="% "
 
 pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.csh > /dev/null && popd > /dev/null
+setenv QT_GUARD_PAGES no
+setenv CHPL_TASK qthreads
+setenv CHPL_AUX_FILESYS curl
 
 source /opt/intel/bin/compilervars.csh intel64
