@@ -47,7 +47,6 @@ pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.csh > /d
 setenv QT_GUARD_PAGES no
 setenv CHPL_TASK qthreads
 setenv CHPL_LOCALE_MODEL numa
-setenv CHPL_COMM gasnet
 setenv CHPL_TARGET_ARCH native
 setenv CHPL_REGEXP re2
 setenv CHPL_AUX_FILESYS curl
