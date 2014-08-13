@@ -45,7 +45,7 @@ set prompt="% "
 
 pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.csh > /dev/null && popd > /dev/null
 setenv QT_GUARD_PAGES no
-setenv CHPL_TASK qthreads
+setenv CHPL_TASKS qthreads
 setenv CHPL_TARGET_ARCH native
 setenv CHPL_REGEXP re2
 setenv CHPL_AUX_FILESYS curl
