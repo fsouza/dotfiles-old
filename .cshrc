@@ -49,5 +49,6 @@ setenv CHPL_TASKS qthreads
 setenv CHPL_TARGET_ARCH native
 setenv CHPL_REGEXP re2
 setenv CHPL_AUX_FILESYS curl
+setenv CHPL_MODULE_PATH ${HOME}/Projects/chapel-modules
 
 source /opt/intel/bin/compilervars.csh intel64
