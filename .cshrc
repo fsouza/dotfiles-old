@@ -26,6 +26,7 @@ setenv MANPAGER $PAGER
 
 setenv HOMEBREW_MAKE_JOBS 4
 setenv HOMEBREW_BUILD_FROM_SOURCE 1
+setenv VERBOSE 1
 
 setenv FC /usr/local/bin/gfortran-4.9
 setenv CC $HOME/opt/bin/clang
