@@ -16,7 +16,7 @@ setenv NODE_PATH /usr/local/lib/node_modules
 setenv NODE_MODULES /usr/local/lib/node_modules
 setenv ANDROID_HOME /usr/local/opt/android-sdk
 
-set path=($RBENV_ROOT/shims ${HOME}/opt/bin ${GOROOT}/bin ${GOPATH}/bin /usr/local/bin /usr/local/sbin ${path} ${HOME}/Projects/dotfiles/bin /usr/local/share/npm/bin)
+set path=($RBENV_ROOT/shims ${HOME}/opt/bin ${GOROOT}/bin ${GOPATH}/bin /usr/local/bin /usr/local/sbin ${path} ${HOME}/Projects/dotfiles/bin /usr/local/share/npm/bin ${HOME}/opt/src/x10-code/x10.dist/bin)
 
 setenv JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
 
