@@ -12,3 +12,5 @@
 [status]
 	short = true
 	branch = true
+[help]
+	autocorrect = 1
