@@ -22,7 +22,7 @@ setenv CGO_ENABLED 0
 foreach arg ($argv[*])
 	setenv GOOS `echo $arg | cut -d'_' -f1`
 	setenv GOARCH `echo $arg | cut -d'_' -f2`
-	go tool dist install -v pkg/runtime
+	go tool dist install -v runtime
 	go install -v -a std
 end
 
