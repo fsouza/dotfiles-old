@@ -18,7 +18,7 @@ setenv ANDROID_HOME /usr/local/opt/android-sdk
 
 set path=($RBENV_ROOT/shims ${HOME}/opt/bin ${GOROOT}/bin ${GOPATH}/bin /usr/local/bin /usr/local/sbin ${path} ${HOME}/Projects/dotfiles/bin /usr/local/share/npm/bin ${HOME}/opt/src/x10-code/x10.dist/bin)
 
-setenv JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home
+setenv JAVA_HOME /Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
 setenv EDITOR vim
 setenv PAGER less
