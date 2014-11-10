@@ -8,11 +8,11 @@ $hg sync
 set new=`$hg tip --template "{node}"`
 if($new != $old || "$1" == "-f") then
 	./make.bash
-	go get -u code.google.com/p/go.tools/cmd/vet
-	go get -u code.google.com/p/go.tools/cmd/cover
-	go get -u code.google.com/p/go.tools/cmd/godoc
-	go get -u code.google.com/p/go.tools/cmd/oracle
-	go get -u code.google.com/p/go.tools/cmd/goimports
+	go get -u golang.org/x/tools/cmd/vet
+	go get -u golang.org/x/tools/cmd/cover
+	go get -u golang.org/x/tools/cmd/godoc
+	go get -u golang.org/x/tools/cmd/oracle
+	go get -u golang.org/x/tools/cmd/goimports
 	go get -u code.google.com/p/go.talks/present
 	go get -u code.google.com/p/go.codereview/cmd/hgapplydiff
 	rm -rf `go env GOROOT`/pkg/*_race
