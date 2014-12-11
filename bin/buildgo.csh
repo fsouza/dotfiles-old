@@ -12,7 +12,7 @@ pushd ${GOROOT}/src
 popd
 
 foreach arch (8 6)
-	foreach cmd (a c g l)
+	foreach cmd (a g l)
 		go tool dist install -v cmd/$arch$cmd
 	end
 end
