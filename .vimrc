@@ -13,6 +13,7 @@ set backupskip=/tmp/*,/private/tmp/*""
 
 set hidden
 set ruler
+set rulerformat=%-14.(%l,%c%V\ \ \ %o%)
 set backspace=2
 set nohlsearch
 set nofoldenable
