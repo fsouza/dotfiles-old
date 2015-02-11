@@ -1,5 +1,0 @@
-setenv PATH $HOME/opt/llvm-omp/bin:$PATH
-setenv C_INCLUDE_PATH $HOME/opt/llvm-omp/include:$HOME/opt/src/openmp/runtime/exports/common/include
-setenv CPLUS_INCLUDE_PATH $HOME/opt/llvm-omp/include:$HOME/opt/src/openmp/runtime/exports/common/include
-setenv LIBRARY_PATH $HOME/opt/llvm-omp/lib:$HOME/opt/src/openmp/runtime/exports/mac_32e/lib.thin:$LIBRARY_PATH
-setenv DYLD_LIBRARY_PATH $HOME/opt/llvm-omp/lib:$HOME/opt/src/openmp/runtime/exports/mac_32e/lib.thin:$DYLD_LIBRARY_PATH
