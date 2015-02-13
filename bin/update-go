@@ -7,6 +7,7 @@ git pull --rebase
 set new=`git rev-parse HEAD`
 if($new != $old || "$1" == "-f") then
 	./make.bash
+	rehash
 	go get -u golang.org/x/tools/cmd/vet
 	go get -u golang.org/x/tools/cmd/cover
 	go get -u golang.org/x/tools/cmd/godoc
