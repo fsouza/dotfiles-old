@@ -6,8 +6,8 @@ setenv LC_MONETARY pt_BR.UTF-8
 setenv LC_NUMERIC pt_BR.UTF-8
 setenv LC_TIME pt_BR.UTF-8
 
-setenv GOROOT ${HOME}/lib/go
-setenv GOPATH ${HOME}/gocode
+setenv GOROOT ${HOME}/opt/src/go
+setenv GOPATH ${HOME}
 setenv RBENV_ROOT /usr/local/var/rbenv
 
 setenv PYTHONPATH /usr/local/lib/python2.7/site-packages
