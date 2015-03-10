@@ -1,6 +1,5 @@
 #!/bin/csh -e
 
-unsetenv CFLAGS
 pushd $GOROOT/src
 set old=`git rev-parse HEAD`
 git pull --rebase
