@@ -1,0 +1,55 @@
+export VIRTUALENVS=${HOME}/.venvs
+
+function v() {
+	virtualenvpath=${VIRTUALENVS}/${1}
+	if [ -z "${1}" ]
+	then
+		ls ${VIRTUALENVS}
+	elif [ -d "${virtualenvpath}" ]
+	then
+		if [ -z "${oldpath}" ]
+		then
+			export oldpath=$PATH
+		fi
+		export PATH=${virtualenvpath}/bin:$PATH
+		alias cdvirtualenv='cd ${virtualenvpath}'
+		alias cdsitepackages='cd ${virtualenvpath}/lib/python*/site-packages'
+		hash -r
+	else
+		echo "virtualenv $1 not found!"
+		return 1
+	fi
+}
+
+function d() {
+	if [ -z "${oldpath}" ]
+	then
+		echo "no virtualenv active"
+		return 1
+	fi
+	export PATH=${oldpath}
+	unalias cdvirtualenv cdsitepackages
+	hash -r
+}
+
+function mkv() {
+	test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS}
+	if [ -z "${1}" ]
+	then
+		echo "Please specify the name of the virtualenv you want to create"
+		return 2
+	fi
+	virtualenv-2.7 ${VIRTUALENVS}/$1
+}
+
+function rmv() {
+	if [ -z "${1}" ]
+	then
+		echo "Please specify the name of the virtualenv you want to remove"
+		return 2
+	fi
+	dir=${VIRTUALENVS}/${1}
+	rm -rf ${dir}
+}
+
+alias cv="which python"
