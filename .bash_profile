@@ -27,7 +27,7 @@ export MANPAGER=$PAGER
 export HOMEBREW_MAKE_JOBS=4
 export HOMEBREW_BUILD_FROM_SOURCE=1
 
-export FC=/usr/local/bin/gfortran-4.9
+export FC=/usr/local/bin/gfortran-5
 export CC=$HOME/opt/bin/clang CXX=$HOME/opt/bin/clang++
 export CPPFLAGS="-I$HOME/opt/include=-I/usr/include=-I/usr/local/include"
 export LIBRARY_PATH=$HOME/opt/lib:/usr/local/lib
