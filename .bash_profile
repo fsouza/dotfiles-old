@@ -41,5 +41,3 @@ pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.bash > /
 export QT_GUARD_PAGES=no
 export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl
 export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
-
-source /opt/intel/bin/compilervars.sh intel64
