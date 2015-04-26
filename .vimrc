@@ -30,8 +30,3 @@ vmap <F3> :Tabularize /\\$<CR>
 vmap <F4> :Tabularize /=<CR>
 
 set completeopt=menu,longest
-let g:clang_complete_auto = 0
-let g:clang_clang_hl_errors = 0
-let g:clang_close_preview = 1
-let g:clang_complete_macros = 1
-let g:clang_library_path = $HOME."/opt/lib"
