@@ -7,9 +7,6 @@
 [submodule "bundle/c-cpp-java-format.vim"]
 	path = bundle/c-cpp-java-format.vim
 	url = git://github.com/fsouza/c-cpp-java-format.vim.git
-[submodule "bundle/clang_complete"]
-	path = bundle/clang_complete
-	url = git://github.com/Rip-Rip/clang_complete.git
 [submodule "bundle/flake8"]
 	path = bundle/flake8
 	url = git://github.com/nvie/vim-flake8.git
