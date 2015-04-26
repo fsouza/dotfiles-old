@@ -14,7 +14,6 @@ export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 export MANPATH=/usr/share/man:/usr/local/share/man:$HOME/opt/src/qthread/man
 export NODE_PATH=/usr/local/lib/node_modules
 export NODE_MODULES=/usr/local/lib/node_modules
-export ANDROID_HOME=/usr/local/opt/android-sdk
 
 export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOROOT}/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/sbin:${path}:${HOME}/Projects/dotfiles/bin:/usr/local/share/npm/bin:${HOME}/opt/src/x10-code/x10.dist/bin:$PATH
 
