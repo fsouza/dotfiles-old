@@ -20,16 +20,12 @@ export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOROOT}/bin:${GOPATH}/bin:/usr/l
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk/Contents/Home
 
-export EDITOR=vim
-export PAGER=less
-export MANPAGER=$PAGER
-
-export HOMEBREW_MAKE_JOBS=4
-export HOMEBREW_BUILD_FROM_SOURCE=1
+export EDITOR=vim PAGER=less MANPAGER=less
+export HOMEBREW_MAKE_JOBS=4 HOMEBREW_BUILD_FROM_SOURCE=1
 
 export FC=/usr/local/bin/gfortran-5
 export CC=$HOME/opt/bin/clang CXX=$HOME/opt/bin/clang++
-export CPPFLAGS="-I$HOME/opt/include=-I/usr/include=-I/usr/local/include"
+export CPPFLAGS="-I$HOME/opt/include -I/usr/include -I/usr/local/include"
 export LIBRARY_PATH=$HOME/opt/lib:/usr/local/lib
 
 source ${HOME}/Projects/dotfiles/extra/virtualenv
@@ -38,6 +34,5 @@ alias dr="rm $RBENV_ROOT/version"
 export PS1="% "
 
 pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.bash > /dev/null && popd > /dev/null
-export QT_GUARD_PAGES=no
 export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl
 export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
