@@ -27,6 +27,8 @@ export FC=/usr/local/bin/gfortran-5
 source ${HOME}/Projects/dotfiles/extra/virtualenv
 alias dr="rm $RBENV_ROOT/version"
 
+export MONO_GAC_PREFIX="/usr/local"
+
 export PS1="% "
 
 pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.bash > /dev/null && popd > /dev/null
