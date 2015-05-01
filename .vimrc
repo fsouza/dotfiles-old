@@ -11,20 +11,13 @@ filetype indent on
 set directory=$VIMHOME/swp
 set backupskip=/tmp/*,/private/tmp/*""
 
-set hidden
-set ruler
-set rulerformat=%-14.(%l,%c\ \ \ %o%)
-set backspace=2
-set nohlsearch
-set nofoldenable
+set hidden ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
+set backspace=2 nohlsearch nofoldenable
 
-set autoindent
-set smartindent
-set smarttab
+set autoindent smartindent smarttab
 set nocompatible
 
-set wildmenu
-set wildmode=list:longest
+set wildmenu wildmode=list:longest
 
 vmap <F3> :Tabularize /\\$<CR>
 vmap <F4> :Tabularize /=<CR>
