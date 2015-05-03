@@ -39,7 +39,9 @@ function mkv() {
 		echo "Please specify the name of the virtualenv you want to create"
 		return 2
 	fi
-	virtualenv-2.7 ${VIRTUALENVS}/$1
+	version=${PY_VERSION-"2.7"}
+	echo $version
+	virtualenv-${version} ${VIRTUALENVS}/$1
 }
 
 function rmv() {
