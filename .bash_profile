@@ -10,7 +10,6 @@ export GOROOT=${HOME}/opt/src/go
 export GOPATH=${HOME}
 export RBENV_ROOT=/usr/local/var/rbenv
 
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 export MANPATH=/usr/share/man:/usr/local/share/man:$HOME/opt/src/qthread/man
 export NODE_PATH=/usr/local/lib/node_modules
 export NODE_MODULES=/usr/local/lib/node_modules
