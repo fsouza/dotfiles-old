@@ -1,0 +1,13 @@
+function ntfs_mount() {
+	base_dst="/Volumes/win"
+	dst=$base_dst
+	count=0
+	while [ -d $dst ]
+	do
+		count=$((count + 1))
+		dst=$base_dst$count
+	done
+	mkdir $dst
+	mount -t ntfs -o rw,auto,nobrowse $1 $dst
+	echo "Mounted: ${dst}"
+}

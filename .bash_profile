@@ -25,6 +25,7 @@ export FC=/usr/local/bin/gfortran-5
 
 source ${HOME}/Projects/dotfiles/extra/virtualenv
 alias dr="rm $RBENV_ROOT/version"
+source ${HOME}/Projects/dotfiles/extra/ntfs
 
 export MONO_GAC_PREFIX="/usr/local"
 
