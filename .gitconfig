@@ -12,4 +12,4 @@
 [help]
 	autocorrect = -1
 [format]
-	pretty = format:commit %h %an <%ae>%n%aD%n  %s%n
+	pretty = medium
