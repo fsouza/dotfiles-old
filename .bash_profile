@@ -6,7 +6,6 @@ export LC_MONETARY=pt_BR.UTF-8
 export LC_NUMERIC=pt_BR.UTF-8
 export LC_TIME=pt_BR.UTF-8
 
-export GOROOT=${HOME}/opt/src/go
 export GOPATH=${HOME}
 export RBENV_ROOT=/usr/local/var/rbenv
 
@@ -14,7 +13,7 @@ export MANPATH=/usr/share/man:/usr/local/share/man:$HOME/opt/src/qthread/man
 export NODE_PATH=/usr/local/lib/node_modules
 export NODE_MODULES=/usr/local/lib/node_modules
 
-export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOROOT}/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/sbin:${path}:${HOME}/Projects/dotfiles/bin:/usr/local/share/npm/bin:${HOME}/opt/src/x10-code/x10.dist/bin:$PATH
+export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/sbin:${path}:${HOME}/Projects/dotfiles/bin:/usr/local/share/npm/bin:${HOME}/opt/src/x10-code/x10.dist/bin:$PATH
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
 
