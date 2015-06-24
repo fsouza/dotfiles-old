@@ -23,3 +23,7 @@ vmap <F3> :Tabularize /\\$<CR>
 vmap <F4> :Tabularize /=<CR>
 
 set completeopt=menu,longest
+
+if $ITERM_PROFILE == "talk (colored)"
+	syntax on
+endif
