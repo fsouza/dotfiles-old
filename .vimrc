@@ -4,7 +4,12 @@ let $PATH .= ":".$VIMHOME."/bundle/c-cpp-java-format.vim/bin"
 call pathogen#infect()
 call pathogen#helptags()
 
-syntax off
+if ($ITERM_PROFILE =~? '.*colored.*')
+	syntax on
+else
+	syntax off
+endif
+
 filetype plugin on
 filetype indent on
 
@@ -23,7 +28,3 @@ vmap <F3> :Tabularize /\\$<CR>
 vmap <F4> :Tabularize /=<CR>
 
 set completeopt=menu,longest
-
-if $ITERM_PROFILE == "talk (colored)"
-	syntax on
-endif
