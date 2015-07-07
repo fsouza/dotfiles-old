@@ -47,7 +47,7 @@ function mkv() {
 function rmv() {
 	if [ -z "${1}" ]
 	then
-		echo "Please specify the name of the virtualenv you want to remove"
+		echo "Please specify the virtualenv you want to remove"
 		return 2
 	fi
 	dir=${VIRTUALENVS}/${1}
