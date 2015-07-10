@@ -32,4 +32,4 @@ let g:clang_complete_auto = 0
 let g:clang_clang_hl_errors = 0
 let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
-let g:clang_library_path = $HOME."/opt/lib"
+let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib"
