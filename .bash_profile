@@ -33,5 +33,3 @@ export PS1="% "
 pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.bash > /dev/null && popd > /dev/null
 export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl CHPL_DEVELOPER=1
 export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
-
-export TSURU_PAGER=""
