@@ -4,5 +4,4 @@ editor = vim
 ignore = ~/.hgignore_global
 
 [extensions]
-purge =
 strip =
