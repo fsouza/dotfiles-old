@@ -1,9 +1,9 @@
 alias gt="\gt ./..."
 
 function g() {
-	grep $@ -Ir . --exclude-dir .git --exclude-dir .hg --exclude-dir .svn
+	grep "$@" -Ir . --exclude-dir .git --exclude-dir .hg --exclude-dir .svn
 }
 
 function cg() {
-	g --color $@
+	g --color "$@"
 }
