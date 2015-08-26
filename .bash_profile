@@ -35,3 +35,7 @@ export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl CHPL_DEVELO
 export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
 
 source ${HOME}/Projects/dotfiles/extra/aliases
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+	. $(brew --prefix)/etc/bash_completion
+fi
