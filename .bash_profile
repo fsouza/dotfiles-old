@@ -39,7 +39,3 @@ source ${HOME}/Projects/dotfiles/extra/aliases
 if [ -f ${HOME}/Projects/dotfiles/extra/local-aliases ]; then
 	source ${HOME}/Projects/dotfiles/extra/local-aliases
 fi
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-	. $(brew --prefix)/etc/bash_completion
-fi
