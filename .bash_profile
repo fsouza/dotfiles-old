@@ -34,8 +34,8 @@ pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.bash > /
 export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl CHPL_DEVELOPER=1
 export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
 
-source ${HOME}/Projects/dotfiles/extra/aliases
+source ${HOME}/Projects/dotfiles/extra/functions
 
-if [ -f ${HOME}/Projects/dotfiles/extra/local-aliases ]; then
-	source ${HOME}/Projects/dotfiles/extra/local-aliases
+if [ -f ${HOME}/Projects/dotfiles/extra/local-functions ]; then
+	source ${HOME}/Projects/dotfiles/extra/local-functions
 fi
