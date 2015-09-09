@@ -39,3 +39,5 @@ source ${HOME}/Projects/dotfiles/extra/functions
 if [ -f ${HOME}/Projects/dotfiles/extra/local-functions ]; then
 	source ${HOME}/Projects/dotfiles/extra/local-functions
 fi
+
+. `brew --prefix`/etc/profile.d/z.sh
