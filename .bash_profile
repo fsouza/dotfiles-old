@@ -18,7 +18,7 @@ export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:/usr/local/bin:/usr/
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home
 
 export EDITOR=vim PAGER=less MANPAGER=less
-export HOMEBREW_MAKE_JOBS=4 HOMEBREW_BUILD_FROM_SOURCE=1
+export HOMEBREW_MAKE_JOBS=4
 
 export FC=/usr/local/bin/gfortran
 
