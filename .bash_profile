@@ -6,7 +6,7 @@ export LC_MONETARY=pt_BR.UTF-8
 export LC_NUMERIC=pt_BR.UTF-8
 export LC_TIME=pt_BR.UTF-8
 
-export GOPATH=${HOME}
+export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
 export RBENV_ROOT=/usr/local/var/rbenv
 
 export MANPATH=/usr/share/man:/usr/local/share/man:$HOME/opt/src/qthread/man
