@@ -9,7 +9,7 @@ export LC_TIME=pt_BR.UTF-8
 export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
 export RBENV_ROOT=/usr/local/var/rbenv
 
-export MANPATH=/usr/share/man:/usr/local/share/man:$HOME/opt/src/qthread/man
+export MANPATH=/usr/share/man:/usr/local/share/man
 export NODE_PATH=/usr/local/lib/node_modules
 export NODE_MODULES=/usr/local/lib/node_modules
 
