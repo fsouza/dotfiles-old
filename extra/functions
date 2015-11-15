@@ -25,3 +25,8 @@ function build_binaries {
 	build_binary $1 $2 windows amd64
 	build_binary $1 $2 windows 386
 }
+
+function docker_node_ssh {
+	filter=$1
+	tsuru-admin docker-node-list -f $filter | grep "^| http://" | awk '{print $2}' | egrep -o "\d+\.\d+\.\d+\.\d+" | xargs csshX
+}
