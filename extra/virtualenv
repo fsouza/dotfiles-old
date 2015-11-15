@@ -40,7 +40,6 @@ function mkv() {
 		return 2
 	fi
 	version=${PY_VERSION-"2.7"}
-	echo $version
 	virtualenv-${version} ${VIRTUALENVS}/$1
 }
 
