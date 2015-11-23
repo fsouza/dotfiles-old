@@ -40,7 +40,8 @@ function mkv() {
 		return 2
 	fi
 	version=${PY_VERSION-"2.7"}
-	virtualenv-${version} ${VIRTUALENVS}/$1
+	virtualenv-${version} ${VIRTUALENVS}/${1}
+	${VIRTUALENVS}/${1}/bin/pip install --upgrade pip distribute
 }
 
 function rmv() {
