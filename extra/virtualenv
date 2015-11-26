@@ -39,8 +39,8 @@ function mkv() {
 		echo "Please specify the name of the virtualenv you want to create"
 		return 2
 	fi
-	version=${PY_VERSION-"2.7"}
-	virtualenv-${version} ${VIRTUALENVS}/${1}
+	python=${PYTHON:-python2.7}
+	virtualenv -p ${python} ${VIRTUALENVS}/${1}
 	${VIRTUALENVS}/${1}/bin/pip install --upgrade pip distribute
 }
 
