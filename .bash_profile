@@ -10,10 +10,9 @@ OS=$(uname -s)
 
 export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
 export RBENV_ROOT=/usr/local/var/rbenv
-
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/Projects/dotfiles/extra/z
 
-export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:${HOME}/opt/src/x10-code/x10.dist/bin:$PATH
+export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 export EDITOR=vim PAGER=less MANPAGER=less
 
