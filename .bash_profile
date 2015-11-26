@@ -6,6 +6,8 @@ export LC_MONETARY=pt_BR.UTF-8
 export LC_NUMERIC=pt_BR.UTF-8
 export LC_TIME=pt_BR.UTF-8
 
+OS=$(uname -s)
+
 export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
 export RBENV_ROOT=/usr/local/var/rbenv
 
@@ -16,11 +18,14 @@ export NODE_MODULES=/usr/local/lib/node_modules
 export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:${HOME}/opt/src/x10-code/x10.dist/bin:$PATH
 
 export EDITOR=vim PAGER=less MANPAGER=less
-export HOMEBREW_MAKE_JOBS=4
+
+if [ "${OS}" = "Darwin" ]; then
+	export HOMEBREW_MAKE_JOBS=4
+	source ${HOME}/Projects/dotfiles/extra/ntfs
+fi
 
 source ${HOME}/Projects/dotfiles/extra/virtualenv
 alias dr="rm $RBENV_ROOT/version"
-source ${HOME}/Projects/dotfiles/extra/ntfs
 
 export PS1="% "
 
