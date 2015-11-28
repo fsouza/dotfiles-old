@@ -9,7 +9,7 @@ function cg() {
 }
 
 function xvim() {
-	find . -name "$1" | xargs -o vim
+	vim $(find . -name "$1")
 }
 
 function build_binary {
