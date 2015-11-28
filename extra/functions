@@ -8,6 +8,10 @@ function cg() {
 	g --color "$@"
 }
 
+function xvim() {
+	find . -name "$1" | xargs -o vim
+}
+
 function build_binary {
 	GOOS=$3 GOARCH=$4 go build
 	target=$1
