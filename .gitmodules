@@ -64,3 +64,6 @@
 [submodule "bundle/erlang-compiler"]
 	path = bundle/erlang-compiler
 	url = https://github.com/vim-erlang/vim-erlang-compiler.git
+[submodule "bundle/puppet"]
+	path = bundle/puppet
+	url = https://github.com/rodjek/vim-puppet.git
