@@ -49,6 +49,3 @@
 [submodule "bundle/godef"]
 	path = bundle/godef
 	url = https://github.com/dgryski/vim-godef.git
-[submodule "bundle/dash"]
-	path = bundle/dash
-	url = https://github.com/rizzatti/dash.vim.git
