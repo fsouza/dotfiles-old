@@ -55,3 +55,12 @@
 [submodule "bundle/ultisnips"]
 	path = bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
+[submodule "bundle/erlang-omnicomplete"]
+	path = bundle/erlang-omnicomplete
+	url = https://github.com/vim-erlang/vim-erlang-omnicomplete.git
+[submodule "bundle/erlang-runtime"]
+	path = bundle/erlang-runtime
+	url = https://github.com/vim-erlang/vim-erlang-runtime.git
+[submodule "bundle/erlang-compiler"]
+	path = bundle/erlang-compiler
+	url = https://github.com/vim-erlang/vim-erlang-compiler.git
