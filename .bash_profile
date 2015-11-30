@@ -10,7 +10,7 @@ OS=$(uname -s)
 
 export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
 export RBENV_ROOT=/usr/local/var/rbenv
-export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/Projects/dotfiles/extra/z
+export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
 
 export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
@@ -18,10 +18,10 @@ export EDITOR=vim PAGER=less MANPAGER=less
 
 if [ "${OS}" = "Darwin" ]; then
 	export HOMEBREW_MAKE_JOBS=4
-	source ${HOME}/Projects/dotfiles/extra/ntfs
+	source ${HOME}/.dotfiles/extra/ntfs
 fi
 
-source ${HOME}/Projects/dotfiles/extra/virtualenv
+source ${HOME}/.dotfiles/extra/virtualenv
 alias dr="rm $RBENV_ROOT/version"
 
 export PS1="% "
@@ -32,10 +32,10 @@ if [ -d ${HOME}/opt/src/chapel-code ]; then
 	export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
 fi
 
-source ${HOME}/Projects/dotfiles/extra/functions
+source ${HOME}/.dotfiles/extra/functions
 
-if [ -f ${HOME}/Projects/dotfiles/extra/local-functions ]; then
-	source ${HOME}/Projects/dotfiles/extra/local-functions
+if [ -f ${HOME}/.dotfiles/extra/local-functions ]; then
+	source ${HOME}/.dotfiles/extra/local-functions
 fi
 
-. ${HOME}/Projects/dotfiles/extra/z/z.sh
+. ${HOME}/.dotfiles/extra/z/z.sh
