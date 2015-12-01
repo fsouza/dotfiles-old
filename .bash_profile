@@ -10,7 +10,7 @@ OS=$(uname -s)
 
 export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
 
-if [ "${OS}" = "Linux"]; then
+if [ "${OS}" = "Linux" ]; then
 	export GOPATH=/var/data/${USER}/go
 fi
 
