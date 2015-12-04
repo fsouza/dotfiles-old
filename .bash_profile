@@ -10,10 +10,6 @@ OS=$(uname -s)
 
 export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
 
-if [ "${OS}" = "Linux" ]; then
-	export GOPATH=/var/data/${USER}/go
-fi
-
 export RBENV_ROOT=/usr/local/var/rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
 
