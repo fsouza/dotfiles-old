@@ -32,5 +32,5 @@ function build_binaries {
 
 function docker_node_ssh {
 	filter=$1
-	tsuru-admin docker-node-list -f $filter | grep "^| http://" | awk '{print $2}' | egrep -o "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | xargs csshX
+	tsuru-admin docker-node-list -f $filter | grep "^| http://" | awk '{print $2}' | egrep -o "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | xargs cssh
 }
