@@ -40,3 +40,6 @@ if [ -f ${HOME}/.dotfiles/extra/local-functions ]; then
 fi
 
 . ${HOME}/.dotfiles/extra/z/z.sh
+
+export NVM_DIR="${HOME}/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
