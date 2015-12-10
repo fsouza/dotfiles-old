@@ -39,6 +39,10 @@ if [ -f ${HOME}/.dotfiles/extra/local-functions ]; then
 	source ${HOME}/.dotfiles/extra/local-functions
 fi
 
+if [ -f ${HOME}/.dotfiles/extra/${OS}-functions ]; then
+	source ${HOME}/.dotfiles/extra/${OS}-functions
+fi
+
 . ${HOME}/.dotfiles/extra/z/z.sh
 
 export NVM_DIR="${HOME}/.nvm"
