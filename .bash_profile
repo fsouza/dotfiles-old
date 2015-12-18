@@ -14,7 +14,7 @@ export SCALA_HOME=${HOME}/opt/scala
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
 
-export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:${SCALA_HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
+export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:${SCALA_HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:${HOME}/.dotfiles/extra/gimme:$PATH
 
 export EDITOR=vim PAGER=less MANPAGER=less
 export HOMEBREW_MAKE_JOBS=4
@@ -44,3 +44,6 @@ fi
 
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+export GIMME_SILENT_ENV=1 GIMME_TYPE=binary
+source ${HOME}/.gimme/envs/latest.env
