@@ -46,4 +46,3 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 export GIMME_SILENT_ENV=1 GIMME_TYPE=binary
-source ${HOME}/.gimme/envs/latest.env
