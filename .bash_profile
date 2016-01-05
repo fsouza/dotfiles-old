@@ -32,13 +32,8 @@ fi
 
 source ${HOME}/.dotfiles/extra/functions
 
-if [ -f ${HOME}/.dotfiles/extra/local-functions ]; then
-	source ${HOME}/.dotfiles/extra/local-functions
-fi
-
-if [ -f ${HOME}/.dotfiles/extra/${OS}-functions ]; then
-	source ${HOME}/.dotfiles/extra/${OS}-functions
-fi
+[ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
+[ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
 
 . ${HOME}/.dotfiles/extra/z/z.sh
 
