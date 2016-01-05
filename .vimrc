@@ -36,5 +36,3 @@ let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchain
 
 let g:godef_split=2
 let g:godef_same_file_in_same_window=1
-
-nmap <silent> <leader>d <Plug>DashSearch
