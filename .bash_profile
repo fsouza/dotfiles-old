@@ -17,7 +17,6 @@ export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
 export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:${SCALA_HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:${HOME}/.dotfiles/extra/gimme:$PATH
 
 export EDITOR=vim PAGER=less MANPAGER=less
-export HOMEBREW_MAKE_JOBS=4
 
 source ${HOME}/.dotfiles/extra/virtualenv
 alias dr="rm $RBENV_ROOT/version"
