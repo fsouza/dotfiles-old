@@ -37,7 +37,7 @@ let g:godef_split=2
 let g:godef_same_file_in_same_window=1
 
 let s:uname = substitute(system("uname -s"), "\n", "", "")
-let s:osvimrc = $VIMHOME."/".s:uname."-vimrc"
+let s:osvimrc = $VIMHOME."/etc/".s:uname."-vimrc"
 if filereadable(s:osvimrc)
 	execute "source ".s:osvimrc
 endif
