@@ -1,6 +1,5 @@
 function gt {
-	GT=$(which gt)
-	${GT} "$@" ./... | grep -v "no test files"
+	$(which gt) "$@" ./... | grep -v "no test files"
 }
 
 function g {
