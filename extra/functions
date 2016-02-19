@@ -39,5 +39,9 @@ function gimme {
 		return 1
 	fi
 	GIMME=$(which gimme)
-	eval "$(${GIMME} ${1})"
+	if [[ $1 =~ ^- ]]; then
+		${GIMME} "${1}"
+	else
+		eval "$(${GIMME} ${1})"
+	fi
 }
