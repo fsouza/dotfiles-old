@@ -21,7 +21,11 @@ export EDITOR=vim PAGER=less MANPAGER=less
 source ${HOME}/.dotfiles/extra/virtualenv
 alias dr="rm $RBENV_ROOT/version"
 
-export PS1="% "
+if [ -n "${SSH_CLIENT}" ]; then
+	export PS1="[\h] % "
+else
+	export PS1="% "
+fi
 
 if [ -d ${HOME}/opt/src/chapel-code ]; then
 	pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.bash > /dev/null && popd > /dev/null
