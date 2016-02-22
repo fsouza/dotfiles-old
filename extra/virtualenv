@@ -16,7 +16,7 @@ function v() {
 		alias cdsitepackages='cd ${virtualenvpath}/lib/python*/site-packages'
 		hash -r
 	else
-		echo "virtualenv $1 not found!"
+		echo "virtualenv $1 not found"
 		return 1
 	fi
 }
