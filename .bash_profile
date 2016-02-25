@@ -7,14 +7,12 @@ export LC_NUMERIC=pt_BR.UTF-8
 export LC_TIME=pt_BR.UTF-8
 
 OS=$(uname -s)
-
-export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
 export SCALA_HOME=${HOME}/opt/scala
 
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
 
-export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${GOPATH}/bin:${SCALA_HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:${HOME}/.dotfiles/extra/gimme:$PATH
+export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${SCALA_HOME}/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:${HOME}/.dotfiles/extra/gimme:$PATH
 
 export EDITOR=vim PAGER=less MANPAGER=less
 
@@ -45,3 +43,6 @@ export NVM_DIR="${HOME}/.nvm"
 
 export GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 gimme 1.6
+
+export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
+export PATH=${GOPATH}/bin:${PATH}
