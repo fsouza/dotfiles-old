@@ -25,13 +25,7 @@ else
 	export PS1="% "
 fi
 
-if [ -d ${HOME}/opt/src/chapel-code ]; then
-	pushd ${HOME}/opt/src/chapel-code > /dev/null && source util/setchplenv.bash > /dev/null && popd > /dev/null
-	export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl CHPL_DEVELOPER=1
-	export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
-	export CHPL_COMM=gasnet GASNET_SPAWNFN=L GASNET_MASTERIP=127.0.0.1
-fi
-
+source ${HOME}/.dotfiles/extra/chapel
 source ${HOME}/.dotfiles/extra/functions
 
 [ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions

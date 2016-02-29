@@ -1,0 +1,40 @@
+function _load_chpl() {
+	pushd ${HOME}/opt/src/chapel-code/chapel-${1} > /dev/null && source util/setchplenv.bash > /dev/null && popd > /dev/null
+	export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl CHPL_DEVELOPER=1
+	export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
+}
+
+function _download_and_build() {
+	pushd $CHPL_HOME
+	git pull --rebase
+	make -j
+	make chpldoc
+	popd
+}
+
+function _update_chapel_gasnet() {
+	chapel_gasnet
+	_download_and_build
+}
+
+function _update_chapel_basic() {
+	chapel_basic
+	_download_and_build
+}
+
+function update_chapel() {
+	_update_chapel_basic
+	_update_chapel_gasnet
+}
+
+function chapel_gasnet() {
+	_load_chpl gasnet
+	export CHPL_COMM=gasnet GASNET_SPAWNFN=L GASNET_MASTERIP=127.0.0.1
+}
+
+function chapel_basic() {
+	_load_chpl basic
+	unset CHPL_COMM GASNET_SPAWNFN GASNET_MASTERIP
+}
+
+chapel_basic
