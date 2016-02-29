@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -le
 
 brew update
 brew upgrade
