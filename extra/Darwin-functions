@@ -8,6 +8,5 @@ function ntfs_mount() {
 		dst=$base_dst$count
 	done
 	mkdir $dst
-	sudo mount -t ntfs -o rw,auto,nobrowse $1 $dst
-	echo "Mounted: ${dst}"
+	sudo mount -t ntfs -o rw,auto,nobrowse $1 $dst && echo "Mounted: ${dst}"
 }
