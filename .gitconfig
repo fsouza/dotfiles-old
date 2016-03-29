@@ -1,6 +1,5 @@
 [user]
-	name = Francisco Souza
-	email = f@souza.cc
+	useConfigOnly = true
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
