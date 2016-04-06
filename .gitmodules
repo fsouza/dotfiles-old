@@ -37,9 +37,6 @@
 [submodule "bundle/racer"]
 	path = bundle/racer
 	url = https://github.com/phildawes/racer.git
-[submodule "bundle/vala"]
-	path = bundle/vala
-	url = https://github.com/tkztmk/vim-vala.git
 [submodule "bundle/godef"]
 	path = bundle/godef
 	url = https://github.com/dgryski/vim-godef.git
