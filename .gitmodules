@@ -1,9 +1,6 @@
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "bundle/go"]
-	path = bundle/go
-	url = https://github.com/fsouza/go.vim
 [submodule "bundle/c-cpp-java-format.vim"]
 	path = bundle/c-cpp-java-format.vim
 	url = https://github.com/fsouza/c-cpp-java-format.vim.git
