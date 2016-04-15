@@ -6,5 +6,10 @@ if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
 	export SSH_AGENT_PID
 else
 	rm -f ~/.gpg-agent.log
-	eval $(gpg-agent --daemon --enable-ssh-support --disable-scdaemon --log-file ~/.gpg-agent.log --pinentry-program $(which pinentry) --write-env-file ~/.gpg-agent-info)
+	if [ "$(uname -s)" = "Darwin" ]; then
+		pinentry=$(which pinentry-mac)
+	else
+		pinentry=$(which pinentry)
+	fi
+	eval $(gpg-agent --daemon --enable-ssh-support --disable-scdaemon --log-file ~/.gpg-agent.log --pinentry-program ${pinentry} --write-env-file ~/.gpg-agent-info)
 fi
