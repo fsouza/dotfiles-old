@@ -17,6 +17,7 @@ export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${SCALA_HOME}/bin:/usr/local/bin:/
 export EDITOR=vim PAGER=less MANPAGER=less
 
 source ${HOME}/.dotfiles/extra/virtualenv
+source ${HOME}/.dotfiles/extra/gpg-agent
 alias dr="rm $RBENV_ROOT/version"
 
 if [ -n "${SSH_CLIENT}" ]; then
