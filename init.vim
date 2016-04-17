@@ -38,3 +38,7 @@ let s:osvimrc = $VIMHOME."/etc/".s:uname."-vimrc"
 if filereadable(s:osvimrc)
 	execute "source ".s:osvimrc
 endif
+
+if exists(':tnoremap')
+	tnoremap <Esc> <C-\><C-n>
+endif
