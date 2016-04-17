@@ -6,6 +6,15 @@ function cg {
 	g --color "$@"
 }
 
+function vim() {
+	v vim
+	which_vim=$(which nvim)
+	if [ -z "$which_vim" ]; then
+		which_vim=$(which vim)
+	fi
+	$which_vim "$@"
+}
+
 function xvim() {
 	vim $(find . -name "$1")
 }
