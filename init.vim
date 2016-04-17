@@ -14,7 +14,6 @@ filetype plugin on
 filetype indent on
 
 call mkdir($VIMHOME."/swp", "p")
-
 set directory=$VIMHOME/swp
 set backupskip=/tmp/*,/private/tmp/*""
 
