@@ -16,7 +16,7 @@ filetype indent on
 set directory=$VIMHOME/swp
 set backupskip=/tmp/*,/private/tmp/*""
 
-set hidden ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
+set hidden noshowmode laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
 set backspace=2 nohlsearch nofoldenable
 
 set autoindent smartindent smarttab
