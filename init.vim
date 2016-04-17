@@ -40,3 +40,6 @@ endif
 if exists(':tnoremap')
 	tnoremap <Esc> <C-\><C-n>
 endif
+
+let g:ctrlp_map = '<Leader>lf'
+noremap <Leader>lb :CtrlPBuffer<CR>
