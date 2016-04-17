@@ -20,8 +20,8 @@ set backupskip=/tmp/*,/private/tmp/*""
 set hidden noshowmode laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
 set backspace=2 nohlsearch noincsearch nofoldenable
 
-set autoindent smartindent smarttab
-set wildmenu wildmode=list:longest
+set smartindent
+set wildmode=list:longest
 
 vmap <F3> :Tabularize /\\$<CR>
 vmap <F4> :Tabularize /=<CR>
