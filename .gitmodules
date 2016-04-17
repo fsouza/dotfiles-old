@@ -34,9 +34,6 @@
 [submodule "bundle/racer"]
 	path = bundle/racer
 	url = https://github.com/phildawes/racer.git
-[submodule "bundle/godef"]
-	path = bundle/godef
-	url = https://github.com/dgryski/vim-godef.git
 [submodule "bundle/snippets"]
 	path = bundle/snippets
 	url = https://github.com/honza/vim-snippets.git
