@@ -33,9 +33,6 @@ let g:clang_clang_hl_errors = 0
 let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 
-let g:godef_split=2
-let g:godef_same_file_in_same_window=1
-
 let s:uname = substitute(system("uname -s"), "\n", "", "")
 let s:osvimrc = $VIMHOME."/etc/".s:uname."-vimrc"
 if filereadable(s:osvimrc)
