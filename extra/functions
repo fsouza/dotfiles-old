@@ -13,6 +13,7 @@ function vim() {
 		which_vim=$(which vim)
 	fi
 	$which_vim "$@"
+	d
 }
 
 function xvim() {
