@@ -44,3 +44,5 @@ endif
 
 let g:ctrlp_map = '<C-p>'
 noremap <Leader>lb :CtrlPBuffer<CR>
+
+let g:go_fmt_autosave = 0
