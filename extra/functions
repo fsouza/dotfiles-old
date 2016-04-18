@@ -7,13 +7,11 @@ function cg {
 }
 
 function vim() {
-	v vim
 	which_vim=$(which nvim)
 	if [ -z "$which_vim" ]; then
 		which_vim=$(which vim)
 	fi
-	$which_vim "$@"
-	d
+	PATH=${VIRTUALENVS}/vim/bin:$PATH $which_vim "$@"
 }
 
 function xvim() {
