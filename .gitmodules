@@ -73,3 +73,6 @@
 [submodule "bundle/unite"]
 	path = bundle/unite
 	url = https://github.com/Shougo/unite.vim.git
+[submodule "bundle/godef"]
+	path = bundle/godef
+	url = https://github.com/dgryski/vim-godef.git
