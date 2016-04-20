@@ -17,7 +17,7 @@ call mkdir($VIMHOME."/swp", "p")
 set directory=$VIMHOME/swp
 set backupskip=/tmp/*,/private/tmp/*""
 
-set hidden noshowmode laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
+set hidden laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
 set backspace=2 nohlsearch noincsearch nofoldenable
 
 set autoindent smartindent smarttab
