@@ -38,7 +38,12 @@ if filereadable(s:osvimrc)
 	execute "source ".s:osvimrc
 endif
 
-let g:ctrlp_map = '<C-p>'
-noremap <Leader>lb :CtrlPBuffer<CR>
+if has("nvim")
+	noremap <Leader>lf :Unite file_rec/neovim<CR>
+	noremap <Leader>lr :UniteWithBufferDir file_rec/neovim<CR>
+else
+	noremap <Leader>lf :Unite file_rec/async<CR>
+	noremap <Leader>lr :UniteWithBufferDir file_rec/async<CR>
+end
 
 colorscheme boring
