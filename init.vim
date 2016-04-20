@@ -38,10 +38,6 @@ if filereadable(s:osvimrc)
 	execute "source ".s:osvimrc
 endif
 
-if exists(':tnoremap')
-	tnoremap <Esc> <C-\><C-n>
-endif
-
 let g:ctrlp_map = '<C-p>'
 noremap <Leader>lb :CtrlPBuffer<CR>
 
