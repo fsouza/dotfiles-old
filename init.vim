@@ -41,12 +41,12 @@ if filereadable(s:osvimrc)
 endif
 
 if has("nvim")
-	noremap <Leader>lf :Unite -smartcase file_rec/neovim<CR>
-	noremap <Leader>lr :UniteWithBufferDir -smartcase file_rec/neovim<CR>
+	noremap <Leader>lf :Unite -smartcase -start-insert file_rec/neovim<CR>
+	noremap <Leader>lr :UniteWithBufferDir -smartcase -start-insert file_rec/neovim<CR>
 else
-	noremap <Leader>lf :Unite -smartcase file_rec/ascync<CR>
-	noremap <Leader>lr :UniteWithBufferDir -smartcase file_rec/async<CR>
+	noremap <Leader>lf :Unite -smartcase -start-insert file_rec/ascync<CR>
+	noremap <Leader>lr :UniteWithBufferDir -smartcase -start-insert file_rec/async<CR>
 end
-noremap <Leader>lb :Unite -smartcase buffer<CR>
+noremap <Leader>lb :Unite -smartcase -start-insert buffer<CR>
 
 colorscheme boring
