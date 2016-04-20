@@ -4,7 +4,7 @@ let $PATH .= ":".$VIMHOME."/bundle/c-cpp-java-format.vim/bin"
 call pathogen#infect()
 call pathogen#helptags()
 
-if ($ITERM_PROFILE =~? '.*colored.*')
+if ($ITERM_PROFILE =~? '.*color.*')
 	syntax on
 else
 	syntax off
