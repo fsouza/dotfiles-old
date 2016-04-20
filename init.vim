@@ -2,6 +2,7 @@ let $VIMHOME = $HOME."/.config/nvim"
 let $PATH .= ":".$VIMHOME."/bundle/c-cpp-java-format.vim/bin"
 
 let g:python3_host_prog = $VIRTUALENVS."/vim/bin/python"
+let g:python3_host_skip_check = 1
 
 call pathogen#infect()
 call pathogen#helptags()
