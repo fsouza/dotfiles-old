@@ -76,6 +76,7 @@ else
 	noremap <Leader>lr :UniteWithBufferDir -smartcase -start-insert file_rec/async<CR>
 end
 noremap <Leader>lb :Unite -smartcase -start-insert buffer<CR>
+noremap <Leader>ln :Unite file/new<CR>
 
 colorscheme boring
 
