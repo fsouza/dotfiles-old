@@ -78,3 +78,5 @@ end
 noremap <Leader>lb :Unite -smartcase -start-insert buffer<CR>
 
 colorscheme boring
+
+let g:grepper = {'tools': ['git', 'grep'], 'open': 1, 'jump': 1}
