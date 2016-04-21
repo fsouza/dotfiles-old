@@ -31,6 +31,7 @@ Plug 'garyburd/go-explorer'
 Plug 'Shougo/unite.vim'
 Plug 'dgryski/vim-godef'
 Plug 'rhysd/vim-go-impl'
+Plug 'mhinz/vim-grepper'
 call plug#end()
 
 if ($ITERM_PROFILE =~? '.*color.*')
