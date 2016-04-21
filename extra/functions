@@ -6,7 +6,6 @@ function cg {
 	g --color "$@"
 }
 
-alias vim=nvim
 function xvim() {
 	vim $(find . -name "$1")
 }
