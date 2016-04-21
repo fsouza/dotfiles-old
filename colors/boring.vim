@@ -4,11 +4,11 @@
 
 set background=light
 highlight clear
-if exists("syntax_on")
+if exists('syntax_on')
   syntax reset
 endif
 
-let colors_name = "boring"
+let colors_name = 'boring'
 
 highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=8
 highlight ErrorMsg term=NONE cterm=NONE ctermbg=1 ctermfg=7
