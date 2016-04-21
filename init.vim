@@ -1,7 +1,7 @@
-let $VIMHOME = expand("~/.config/nvim")
-let $PATH .= ":".$VIMHOME."/plugged/c-cpp-java-format.vim/bin"
+let $VIMHOME = expand('~/.config/nvim')
+let $PATH .= ':'.$VIMHOME.'/plugged/c-cpp-java-format.vim/bin'
 
-let g:python3_host_prog = $VIRTUALENVS."/vim/bin/python"
+let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
 let g:python3_host_skip_check = 1
 
 call plug#begin($VIMHOME.'/plugged')
@@ -43,9 +43,9 @@ endif
 filetype plugin on
 filetype indent on
 
-call mkdir($VIMHOME."/swp", "p")
+call mkdir($VIMHOME.'/swp', 'p')
 set directory=$VIMHOME/swp
-set backupskip=/tmp/*,/private/tmp/*""
+set backupskip=/tmp/*,/private/tmp/*''
 
 set hidden laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
 set backspace=2 nohlsearch noincsearch nofoldenable
@@ -62,13 +62,13 @@ let g:clang_clang_hl_errors = 0
 let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 
-let s:uname = substitute(system("uname -s"), "\n", "", "")
-let s:osvimrc = $VIMHOME."/etc/".s:uname.".vim"
+let s:uname = substitute(system('uname -s'), '\n', '', '')
+let s:osvimrc = $VIMHOME.'/etc/'.s:uname.'.vim'
 if filereadable(s:osvimrc)
-	execute "source ".s:osvimrc
+	execute 'source '.s:osvimrc
 endif
 
-if has("nvim")
+if has('nvim')
 	noremap <Leader>lf :Unite -smartcase -start-insert file_rec/neovim<CR>
 	noremap <Leader>lr :UniteWithBufferDir -smartcase -start-insert file_rec/neovim<CR>
 else
