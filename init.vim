@@ -78,6 +78,9 @@ end
 noremap <Leader>lb :Unite -smartcase -start-insert buffer<CR>
 noremap <Leader>ln :Unite file/new<CR>
 
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
 colorscheme boring
 
 let g:grepper = {'tools': ['git', 'grep'], 'open': 1, 'jump': 1}
