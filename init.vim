@@ -1,11 +1,37 @@
-let $VIMHOME = $HOME."/.config/nvim"
-let $PATH .= ":".$VIMHOME."/bundle/c-cpp-java-format.vim/bin"
+let $VIMHOME = expand("~/.config/nvim")
+let $PATH .= ":".$VIMHOME."/plugged/c-cpp-java-format.vim/bin"
 
 let g:python3_host_prog = $VIRTUALENVS."/vim/bin/python"
 let g:python3_host_skip_check = 1
 
-call pathogen#infect()
-call pathogen#helptags()
+call plug#begin($VIMHOME.'/plugged')
+Plug 'tpope/vim-surround'
+Plug 'fsouza/c-cpp-java-format.vim'
+Plug 'Rip-Rip/clang_complete'
+Plug 'nvie/vim-flake8'
+Plug 'godlygeek/tabular'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'tpope/vim-dispatch'
+Plug 'tell-k/vim-autopep8'
+Plug 'pangloss/vim-javascript'
+Plug 'rust-lang/rust.vim'
+Plug 'phildawes/racer'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'vim-erlang/vim-erlang-omnicomplete'
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'vim-erlang/vim-erlang-compiler'
+Plug 'rodjek/vim-puppet'
+Plug 'markcornick/vim-terraform'
+Plug 'guns/vim-clojure-static'
+Plug 'derekwyatt/vim-scala'
+Plug 'mattn/emmet-vim'
+Plug 'moll/vim-node'
+Plug 'fatih/vim-go'
+Plug 'garyburd/go-explorer'
+Plug 'Shougo/unite.vim'
+Plug 'dgryski/vim-godef'
+Plug 'rhysd/vim-go-impl'
+call plug#end()
 
 if ($ITERM_PROFILE =~? '.*color.*')
 	syntax on
