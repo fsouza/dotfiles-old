@@ -62,7 +62,7 @@ let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 
 let s:uname = substitute(system("uname -s"), "\n", "", "")
-let s:osvimrc = $VIMHOME."/etc/".s:uname."-vimrc"
+let s:osvimrc = $VIMHOME."/etc/".s:uname.".vim"
 if filereadable(s:osvimrc)
 	execute "source ".s:osvimrc
 endif
