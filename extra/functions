@@ -53,3 +53,18 @@ function gimme {
 		fi
 	fi
 }
+
+function git_config {
+	email=$1
+	if [ -z "$email" ]; then
+		echo "Please provide the email"
+		return 1
+	fi
+	if [ -z "$GITNAME" ]; then
+		echo "Please define the GITNAME environment variable with your name"
+		return 1
+	fi
+	git config user.name "$GITNAME"
+	git config user.email $email
+	git config user.signingkey $email
+}
