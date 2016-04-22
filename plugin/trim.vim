@@ -1,6 +1,6 @@
 function TrimWhiteSpace()
 	let v = winsaveview()
-	silent %s/\s\+$//
+	silent %s/\s\+$//e
 	call winrestview(v)
 endfunction
 
