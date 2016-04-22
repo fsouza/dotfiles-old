@@ -34,39 +34,38 @@ Plug 'rhysd/vim-go-impl'
 Plug 'mhinz/vim-grepper'
 call plug#end()
 
+colorscheme boring
 if ($ITERM_PROFILE =~? '.*color.*')
 	syntax on
 else
 	syntax off
 endif
 
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 call mkdir($VIMHOME.'/swp', 'p')
 set directory=$VIMHOME/swp
 set backupskip=/tmp/*,/private/tmp/*''
 
+set completeopt=menu,longest
 set hidden laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
 set backspace=2 nohlsearch noincsearch nofoldenable
-
 set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
-
-vmap <F3> :Tabularize /\\$<CR>
-vmap <F4> :Tabularize /=<CR>
-
-set completeopt=menu,longest
-let g:clang_complete_auto = 0
-let g:clang_clang_hl_errors = 0
-let g:clang_close_preview = 1
-let g:clang_complete_macros = 1
 
 let s:uname = substitute(system('uname -s'), '\n', '', '')
 let s:osvimrc = $VIMHOME.'/etc/'.s:uname.'.vim'
 if filereadable(s:osvimrc)
 	execute 'source '.s:osvimrc
 endif
+
+vmap <F3> :Tabularize /\\$<CR>
+vmap <F4> :Tabularize /=<CR>
+
+let g:clang_complete_auto = 0
+let g:clang_clang_hl_errors = 0
+let g:clang_close_preview = 1
+let g:clang_complete_macros = 1
 
 if has('nvim')
 	noremap <Leader>lf :Unite -smartcase -start-insert file_rec/neovim<CR>
@@ -80,8 +79,6 @@ noremap <Leader>ln :Unite file/new<CR>
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-
-colorscheme boring
 
 let g:grepper = {'tools': ['git', 'grep'], 'open': 1, 'jump': 1}
 
