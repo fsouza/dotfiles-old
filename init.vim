@@ -84,3 +84,6 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 colorscheme boring
 
 let g:grepper = {'tools': ['git', 'grep'], 'open': 1, 'jump': 1}
+
+let g:EclimCompletionMethod = 'omnifunc'
+let g:EclimJavaValidate = 0
