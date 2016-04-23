@@ -6,7 +6,6 @@ let g:python3_host_skip_check = 1
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'tpope/vim-surround'
-Plug 'fsouza/c-cpp-java-format.vim'
 Plug 'Rip-Rip/clang_complete'
 Plug 'nvie/vim-flake8'
 Plug 'godlygeek/tabular'
