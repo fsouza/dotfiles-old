@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+# This script creates all necessary symlinks.
+
+basedir=$(cd $(dirname $0)/..; pwd -P)
+files=".bash_profile .clang-format .gitconfig .gitignore_global .hgignore_global .hgrc"
+for file in $files; do
+	ln -sf ${basedir}/${file} ~/${file}
+done
