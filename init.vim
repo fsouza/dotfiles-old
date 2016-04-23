@@ -85,3 +85,7 @@ let g:grepper = {'tools': ['git', 'grep'], 'open': 1, 'jump': 1}
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimJavaValidate = 0
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
