@@ -32,6 +32,7 @@ Plug 'Shougo/unite.vim'
 Plug 'dgryski/vim-godef'
 Plug 'rhysd/vim-go-impl'
 Plug 'mhinz/vim-grepper'
+Plug 'fsouza/chapel.vim'
 call plug#end()
 
 colorscheme boring
