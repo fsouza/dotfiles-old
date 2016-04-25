@@ -2,7 +2,7 @@ let g:go_fmt_autosave = 0
 let g:go_fmt_options = '-s'
 let g:go_def_mapping_enabled = 0
 
-function! CustomJump()
+function! GoDef()
 	let bin_path = go#path#CheckBinPath("guru")
 	if empty(bin_path)
 		return
@@ -57,7 +57,7 @@ function! s:doCustomJump(out)
 	let &switchbuf = old_switchbuf
 endfunction
 
-autocmd FileType go nmap gd :call CustomJump()<CR>
+autocmd FileType go nmap gd :call GoDef()<CR>
 autocmd FileType go nmap <Leader>f :GoFmt<CR>
 autocmd FileType go nmap <Leader>l :GoLint<CR>
 autocmd FileType go nmap <Leader>v :GoVet<CR>
