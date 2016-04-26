@@ -36,6 +36,7 @@ highlight Character term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Number term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Boolean term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Float term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
+highlight Identifier term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Function term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Statement term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Conditional term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
