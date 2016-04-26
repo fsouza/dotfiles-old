@@ -30,7 +30,7 @@ highlight Visual term=NONE cterm=reverse
 
 highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Constant term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight String term=NONE cterm=bold ctermbg=NONE ctermfg=0
+highlight String term=NONE cterm=bold ctermbg=NONE ctermfg=NONE
 highlight Character term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Number term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Boolean term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
