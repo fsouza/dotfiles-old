@@ -32,11 +32,9 @@ Plug 'mhinz/vim-grepper'
 Plug 'fsouza/chapel.vim'
 call plug#end()
 
-colorscheme boring
-if ($ITERM_PROFILE =~? '.*color.*')
-	syntax on
-else
-	syntax off
+syntax on
+if ($ITERM_PROFILE !~ '.*color.*')
+	colorscheme boring
 endif
 
 filetype plugin indent on
