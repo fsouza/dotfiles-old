@@ -65,5 +65,11 @@ highlight Ignore term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Error term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Todo term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 
-" Vim's specific highlights
+" Vim highlights
 highlight vimVar term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+
+" Make highligts
+highlight makeIdent term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+
+" Go highlights
+highlight goEscapeC term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
