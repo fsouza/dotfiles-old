@@ -10,6 +10,7 @@ endif
 
 let colors_name = 'boring'
 
+highlight Conceal term=NONE cterm=NONE ctermbg=NONE
 highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=8
 highlight ErrorMsg term=NONE cterm=NONE ctermbg=1 ctermfg=7
 highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
@@ -18,7 +19,7 @@ highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Pmenu term=NONE cterm=NONE ctermbg=15 ctermfg=NONE
-highlight PmenuSel term=NONE cterm=bold ctermbg=NONE ctermfg=NONE
+highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Search term=NONE cterm=NONE ctermbg=3 ctermfg=7
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=8
 highlight SpellBad term=NONE cterm=NONE ctermbg=1 ctermfg=7
@@ -62,3 +63,6 @@ highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Ignore term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Error term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Todo term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
+
+" Vim's specific highlights
+highlight vimVar term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
