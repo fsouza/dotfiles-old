@@ -41,7 +41,7 @@ filetype plugin indent on
 
 call mkdir($VIMHOME.'/swp', 'p')
 set directory=$VIMHOME/swp
-set backupskip=/tmp/*,/private/tmp/*''
+set backupskip=/tmp/*,/private/tmp/*
 
 set completeopt=menu,longest
 set hidden laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
