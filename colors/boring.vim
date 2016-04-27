@@ -73,3 +73,6 @@ highlight makeIdent term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 
 " Go highlights
 highlight goEscapeC term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+
+" Terraform highlights
+highlight terraResourceTypeBI term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
