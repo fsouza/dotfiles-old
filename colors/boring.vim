@@ -76,3 +76,6 @@ highlight goEscapeC term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
 
 " Terraform highlights
 highlight terraResourceTypeBI term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+
+" JSON highlights
+highlight jsonKeyword term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
