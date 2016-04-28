@@ -88,3 +88,5 @@ let g:EclimJavaValidate = 0
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+
+nmap <silent> <leader>D <Plug>DashSearch
