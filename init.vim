@@ -32,6 +32,7 @@ Plug 'mhinz/vim-grepper'
 Plug 'fsouza/chapel.vim'
 Plug 'tpope/vim-repeat'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'thinca/vim-quickrun'
 call plug#end()
 
 syntax on
