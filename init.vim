@@ -30,6 +30,7 @@ Plug 'Shougo/unite.vim'
 Plug 'rhysd/vim-go-impl'
 Plug 'mhinz/vim-grepper'
 Plug 'fsouza/chapel.vim'
+Plug 'tpope/vim-repeat'
 call plug#end()
 
 syntax on
