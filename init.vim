@@ -36,9 +36,12 @@ Plug 'vim-erlang/vim-erlang-omnicomplete'
 Plug 'vim-erlang/vim-erlang-runtime'
 call plug#end()
 
-syntax on
-if ($ITERM_PROFILE !~ '.*color.*')
+" Some comment
+if ($ITERM_PROFILE =~ '.*color.*')
+	syntax on
+else
 	colorscheme boring
+	syntax off
 endif
 
 filetype plugin indent on
