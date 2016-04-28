@@ -31,6 +31,7 @@ Plug 'rhysd/vim-go-impl'
 Plug 'mhinz/vim-grepper'
 Plug 'fsouza/chapel.vim'
 Plug 'tpope/vim-repeat'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 syntax on
