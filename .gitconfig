@@ -18,3 +18,5 @@
 	default = current
 [credential]
 	helper = osxkeychain
+[http]
+	cookiefile = ~/.gitcookies
