@@ -80,6 +80,11 @@ noremap <Leader>ln :Unite file/new<CR>
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
+let g:unite_source_rec_async_command = [
+			\ 'pt', '-lfS', '--nocolor', '--hidden',
+			\ '--ignore', '.git/*', '--ignore', '.hg/*',
+			\ '']
+
 let g:grepper = {'tools': ['git', 'grep'], 'open': 1, 'jump': 1}
 
 let g:EclimCompletionMethod = 'omnifunc'
