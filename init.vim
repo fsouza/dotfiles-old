@@ -88,7 +88,13 @@ let g:unite_source_rec_async_command = [
 			\ '--ignore', '.git/*', '--ignore', '.hg/*',
 			\ '']
 
-let g:grepper = {'tools': ['git', 'grep'], 'open': 1, 'jump': 1}
+let g:grepper = {
+			\ 'tools': ['pt'],
+			\ 'pt': {
+			\   'grepprg':    'pt --nocolor --nogroup --hidden --ignore .git --ignore .hg',
+			\   'grepformat': '%f:%l:%m',
+			\   'escape':     '\+*^$()[]',
+			\ }}
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimJavaValidate = 0
