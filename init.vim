@@ -3,6 +3,8 @@ let $PATH .= ':'.$VIRTUALENVS.'/vim/bin'
 
 let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
 let g:python3_host_skip_check = 1
+let g:python_host_prog = g:python3_host_prog
+let g:python_host_skip_check = 1
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'davidhalter/jedi-vim'
