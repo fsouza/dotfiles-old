@@ -1,5 +1,5 @@
 function cg {
-	pt -Uf --hidden --nogroup --color-match '1;31' --color-line-number '0;0' --color-path '0;0' --ignore .git --ignore .hg --ignore .svn --ignore Godeps --ignore _build "$@"
+	pt -eUf --hidden --nogroup --color-match '1;31' --color-line-number '0;0' --color-path '0;0' --ignore .git --ignore .hg --ignore .svn --ignore Godeps --ignore _build "$@"
 }
 
 function g {
