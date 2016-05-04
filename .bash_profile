@@ -2,8 +2,9 @@ OS=$(uname -s)
 
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
+export GOPATH=$HOME GO15VENDOREXPERIMENT=1 GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 
-export PATH=$RBENV_ROOT/shims:${HOME}/opt/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:${HOME}/.dotfiles/extra/gimme:$PATH
+export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/opt/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:${HOME}/.dotfiles/extra/gimme:$PATH
 
 export EDITOR=nvim PAGER=less MANPAGER=less
 
@@ -23,10 +24,6 @@ source ${HOME}/.dotfiles/extra/functions
 [ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
 [ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
 
-. ${HOME}/.dotfiles/extra/z/z.sh
+[ -f ${HOME}/.dotfiles/extra/z/z.sh ] && source ${HOME}/.dotfiles/extra/z/z.sh
 
-export GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 gimme 1.6.2
-
-export GOPATH=${HOME} GO15VENDOREXPERIMENT=1
-export PATH=${GOPATH}/bin:${PATH}
