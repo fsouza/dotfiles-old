@@ -33,9 +33,6 @@ source ${HOME}/.dotfiles/extra/functions
 
 . ${HOME}/.dotfiles/extra/z/z.sh
 
-export NVM_DIR="${HOME}/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-
 export GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 gimme 1.6.2
 
