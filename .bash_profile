@@ -12,12 +12,6 @@ source ${HOME}/.dotfiles/extra/virtualenv
 source ${HOME}/.dotfiles/extra/gpg-agent
 alias dr="rm $RBENV_ROOT/version"
 
-if [ -n "${SSH_CLIENT}" ]; then
-	export PS1="[\h] % "
-else
-	export PS1="% "
-fi
-
 source ${HOME}/.dotfiles/extra/chapel
 source ${HOME}/.dotfiles/extra/functions
 
@@ -26,4 +20,5 @@ source ${HOME}/.dotfiles/extra/functions
 
 [ -f ${HOME}/.dotfiles/extra/z/z.sh ] && source ${HOME}/.dotfiles/extra/z/z.sh
 
+export PS1="% "
 gimme 1.6.2
