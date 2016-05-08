@@ -10,11 +10,6 @@ function xvim() {
 	vim $(find . -name "$1")
 }
 
-function docker_node_ssh {
-	filter=$1
-	tsuru-admin docker-node-list -f $filter | grep "^| http://" | awk '{print $2}' | egrep -o "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+" | xargs cssh
-}
-
 function gimme {
 	if [ -z "$1" ]; then
 		echo "Please provide the go version"
