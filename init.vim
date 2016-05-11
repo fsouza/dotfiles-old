@@ -75,7 +75,7 @@ else
 	noremap <Leader>lr :UniteWithBufferDir -smartcase -start-insert file_rec/async<CR>
 end
 noremap <Leader>lb :Unite -smartcase -start-insert buffer<CR>
-noremap <Leader>ln :Unite file/new<CR>
+noremap <Leader>ln :Unite -start-insert file/new<CR>
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
