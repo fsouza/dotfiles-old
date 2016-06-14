@@ -7,7 +7,7 @@ function _load_chpl() {
 function _download_and_build() {
 	pushd $CHPL_HOME
 	git pull --rebase
-	make -j
+	make
 	make chpldoc
 	popd
 }
