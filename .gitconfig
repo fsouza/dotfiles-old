@@ -5,6 +5,8 @@
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
+[diff]
+	compactionHeuristic = 1
 [color]
 	ui = false
 [status]
