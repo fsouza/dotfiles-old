@@ -1,6 +1,7 @@
 autocmd FileType python setlocal shiftwidth=4 showtabline=4 expandtab
 autocmd FileType python map <buffer> <Leader>f :call Autopep8()<CR>
 autocmd FileType python setlocal omnifunc=jedi#complete
+autocmd FileType python setlocal completeopt-=preview
 autocmd FileType rst setlocal shiftwidth=4 showtabline=4 expandtab
 
 let g:autopep8_max_line_length=109
