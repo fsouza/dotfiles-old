@@ -2,3 +2,4 @@ swp
 .netrwhist
 plugged
 .init.vim-rplugin~
+*.old
