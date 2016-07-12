@@ -15,3 +15,7 @@ done
 
 mkdir -p ~/.gnupg
 ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
+
+if [ -d $HOME/Library/Fonts ]; then
+	cp ${basedir}/extra/fonts/* ~/Library/Fonts/
+fi
