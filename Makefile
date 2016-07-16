@@ -1,7 +1,6 @@
 .PHONY: pip
 
 REQUIREMENTS=\
-	     neovim \
 	     flask \
 	     django \
 	     tornado \
