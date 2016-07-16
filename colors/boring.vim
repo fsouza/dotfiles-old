@@ -22,10 +22,10 @@ highlight Pmenu term=NONE cterm=NONE ctermbg=15 ctermfg=NONE
 highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Search term=NONE cterm=NONE ctermbg=3 ctermfg=7
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=8
-highlight SpellBad term=NONE cterm=NONE ctermbg=1 ctermfg=7
-highlight TabLine term=None cterm=None ctermbg=15 ctermfg=8
-highlight TabLineFill term=NONE cterm=NONE ctermbg=8 ctermfg=NONE
-highlight TabLineSel term=NONE cterm=NONE ctermbg=NONE ctermfg=0
+highlight SpellBad term=NONE cterm=NONE ctermbg=15 ctermfg=7
+highlight TabLine term=underline cterm=underline ctermbg=7 ctermfg=6
+highlight TabLineSel term=NONE cterm=NONE ctermbg=7 ctermfg=0
+highlight TabLineFill term=reverse cterm=reverse
 highlight WarningMsg term=NONE cterm=None ctermbg=NONE ctermfg=3
 highlight Visual term=NONE cterm=reverse
 
