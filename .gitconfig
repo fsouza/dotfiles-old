@@ -3,7 +3,7 @@
 [commit]
 	gpgsign = true
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.gitignore_global
 [diff]
 	compactionHeuristic = 1
