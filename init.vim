@@ -1,4 +1,4 @@
-let $VIMHOME = expand('~/.config/nvim')
+let $VIMHOME = expand('~/.vim')
 let $PATH .= ':'.$VIRTUALENVS.'/vim/bin'
 
 let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
@@ -25,8 +25,8 @@ Plug 'Rip-Rip/clang_complete'
 Plug 'rizzatti/dash.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
-Plug 'Shougo/unite.vim'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'sjbach/lusty'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-dispatch'
@@ -44,7 +44,9 @@ endif
 
 filetype plugin indent on
 
-call mkdir($VIMHOME.'/swp', 'p')
+if !isdirectory($VIMHOME.'/swp')
+	call mkdir($VIMHOME.'/swp', 'p')
+endif
 set directory=$VIMHOME/swp
 set backupskip=/tmp/*,/private/tmp/*
 
@@ -67,24 +69,6 @@ let g:clang_complete_auto = 0
 let g:clang_clang_hl_errors = 0
 let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
-
-if has('nvim')
-	noremap <Leader>lf :Unite -smartcase -start-insert file_rec/neovim<CR>
-	noremap <Leader>lr :UniteWithBufferDir -smartcase -start-insert file_rec/neovim<CR>
-else
-	noremap <Leader>lf :Unite -smartcase -start-insert file_rec/ascync<CR>
-	noremap <Leader>lr :UniteWithBufferDir -smartcase -start-insert file_rec/async<CR>
-end
-noremap <Leader>lb :Unite -smartcase -start-insert buffer<CR>
-noremap <Leader>ln :Unite -start-insert file/new<CR>
-
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
-let g:unite_source_rec_async_command = [
-			\ 'pt', '-lf', '--nocolor', '--hidden',
-			\ '--ignore', '.git/*', '--ignore', '.hg/*',
-			\ '']
 
 let g:grepper = {
 			\ 'tools': ['pt'],
