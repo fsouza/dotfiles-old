@@ -11,18 +11,18 @@ endif
 let colors_name = 'boring'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE
-highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=8
+highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=5
 highlight ErrorMsg term=NONE cterm=NONE ctermbg=1 ctermfg=7
 highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight MatchParen term=NONE cterm=NONE ctermbg=15 ctermfg=NONE
+highlight MatchParen term=NONE cterm=NONE ctermbg=4 ctermfg=NONE
 highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Pmenu term=NONE cterm=NONE ctermbg=15 ctermfg=NONE
+highlight Pmenu term=NONE cterm=NONE ctermbg=4 ctermfg=NONE
 highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Search term=NONE cterm=NONE ctermbg=3 ctermfg=7
-highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=8
-highlight SpellBad term=NONE cterm=NONE ctermbg=15 ctermfg=7
+highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=5
+highlight SpellBad term=NONE cterm=NONE ctermbg=4 ctermfg=7
 highlight TabLine term=underline cterm=underline ctermbg=7 ctermfg=6
 highlight TabLineSel term=NONE cterm=NONE ctermbg=7 ctermfg=0
 highlight TabLineFill term=reverse cterm=reverse
