@@ -1,6 +1,6 @@
 [ui]
 username = Francisco Souza <f@souza.cc>
-editor = nvim
+editor = vim
 ignore = ~/.hgignore_global
 
 [extensions]
