@@ -5,6 +5,7 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
+	filemode = true
 [diff]
 	compactionHeuristic = 1
 [color]
