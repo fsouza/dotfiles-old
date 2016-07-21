@@ -1,4 +1,5 @@
 let g:go_fmt_options = '-s'
+let g:go_fmt_experimental = 1
 let g:go_def_mapping_enabled = 0
 
 let g:go_highlight_generate_tags = 0
