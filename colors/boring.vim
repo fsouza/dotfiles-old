@@ -14,7 +14,7 @@ highlight Conceal term=NONE cterm=NONE ctermbg=NONE
 highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=8
 highlight ErrorMsg term=NONE cterm=NONE ctermbg=1 ctermfg=7
 highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight MatchParen term=NONE cterm=NONE ctermbg=15 ctermfg=NONE
+highlight MatchParen term=NONE cterm=NONE ctermbg=12 ctermfg=NONE
 highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
