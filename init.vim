@@ -35,7 +35,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 call plug#end()
 
-" Some comment
+set t_Co=256
 if ($ITERM_PROFILE =~ '.*color.*')
 	syntax on
 else
