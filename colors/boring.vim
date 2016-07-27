@@ -27,7 +27,7 @@ highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59
 highlight TabLineSel term=NONE cterm=NONE ctermbg=231 ctermfg=59
 highlight TabLineFill term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
 highlight WarningMsg term=NONE cterm=None ctermbg=NONE ctermfg=52
-highlight Visual term=NONE cterm=reverse
+highlight Visual term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE
 
 highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Constant term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
