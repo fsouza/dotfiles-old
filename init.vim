@@ -38,6 +38,7 @@ call plug#end()
 
 set t_Co=256
 if ($ITERM_PROFILE =~ '.*color.*')
+	colorscheme beauty256
 	syntax on
 else
 	colorscheme boring
