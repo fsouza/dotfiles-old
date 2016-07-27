@@ -1,2 +1,2 @@
-autocmd BufEnter * highlight BadWhitespace ctermbg=196 guibg=#990000
+autocmd BufEnter * highlight BadWhitespace ctermbg=160 guibg=#d70000
 autocmd BufEnter * match BadWhitespace /\s\+$/

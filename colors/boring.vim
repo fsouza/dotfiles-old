@@ -12,7 +12,7 @@ let colors_name = 'boring'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE
 highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=59
-highlight ErrorMsg term=NONE cterm=NONE ctermbg=196 ctermfg=231
+highlight ErrorMsg term=NONE cterm=NONE ctermbg=160 ctermfg=231
 highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight MatchParen term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
 highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
