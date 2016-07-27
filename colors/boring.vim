@@ -11,22 +11,22 @@ endif
 let colors_name = 'boring'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE
-highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=8
-highlight ErrorMsg term=NONE cterm=NONE ctermbg=1 ctermfg=7
+highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=59
+highlight ErrorMsg term=NONE cterm=NONE ctermbg=196 ctermfg=231
 highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight MatchParen term=NONE cterm=NONE ctermbg=12 ctermfg=NONE
+highlight MatchParen term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
 highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Pmenu term=NONE cterm=NONE ctermbg=15 ctermfg=NONE
+highlight Pmenu term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
 highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Search term=NONE cterm=NONE ctermbg=3 ctermfg=7
-highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=8
-highlight SpellBad term=NONE cterm=NONE ctermbg=12 ctermfg=7
-highlight TabLine term=NONE cterm=NONE ctermbg=12 ctermfg=6
-highlight TabLineSel term=NONE cterm=NONE ctermbg=7 ctermfg=0
-highlight TabLineFill term=NONE cterm=NONE ctermbg=12 ctermfg=NONE
-highlight WarningMsg term=NONE cterm=None ctermbg=NONE ctermfg=3
+highlight Search term=NONE cterm=NONE ctermbg=52 ctermfg=231
+highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59
+highlight SpellBad term=NONE cterm=NONE ctermbg=145 ctermfg=231
+highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59
+highlight TabLineSel term=NONE cterm=NONE ctermbg=231 ctermfg=59
+highlight TabLineFill term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
+highlight WarningMsg term=NONE cterm=None ctermbg=NONE ctermfg=52
 highlight Visual term=NONE cterm=reverse
 
 highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
