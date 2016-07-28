@@ -22,7 +22,7 @@ highlight Pmenu term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
 highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Search term=NONE cterm=NONE ctermbg=52 ctermfg=231
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59
-highlight SpellBad term=NONE cterm=NONE ctermbg=145 ctermfg=231
+highlight SpellBad term=NONE cterm=NONE ctermbg=196 ctermfg=231
 highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59
 highlight TabLineSel term=NONE cterm=NONE ctermbg=231 ctermfg=59
 highlight TabLineFill term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
