@@ -1,6 +1,8 @@
 let g:go_fmt_options = '-s'
 let g:go_fmt_experimental = 1
 let g:go_def_mapping_enabled = 0
+let g:go_metalinter_autosave = 1
+let g:go_template_autocreate = 0
 
 let g:go_highlight_generate_tags = 0
 let g:go_highlight_string_spellcheck = 0
