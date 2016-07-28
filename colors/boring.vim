@@ -31,7 +31,7 @@ highlight Visual term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE
 
 highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Constant term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight String term=NONE cterm=bold ctermbg=NONE ctermfg=NONE
+highlight String term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Character term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Number term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Boolean term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
@@ -72,10 +72,10 @@ highlight vimVar term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 highlight makeIdent term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 
 " Go highlights
-highlight goEscapeC term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+highlight goEscapeC term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 
 " Terraform highlights
-highlight terraResourceTypeBI term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+highlight terraResourceTypeBI term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
 
 " JSON highlights
-highlight jsonKeyword term=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+highlight jsonKeyword term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
