@@ -20,7 +20,7 @@ highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Pmenu term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
 highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Search term=NONE cterm=NONE ctermbg=52 ctermfg=231
+highlight Search term=NONE cterm=bold ctermbg=NONE ctermfg=NONE
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59
 highlight SpellBad term=NONE cterm=NONE ctermbg=196 ctermfg=231
 highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59
