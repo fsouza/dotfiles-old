@@ -6,6 +6,10 @@ function g {
 	cg --nocolor "$@"
 }
 
+function ig {
+	g -i "$@"
+}
+
 function xvim() {
 	vim $(find . -name "$1")
 }
