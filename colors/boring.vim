@@ -16,7 +16,7 @@ highlight ErrorMsg term=NONE cterm=NONE ctermbg=160 ctermfg=231 gui=NONE guibg=#
 highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight MatchParen term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
 highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight MoreMsg term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Pmenu term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
 highlight PmenuSbar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
@@ -26,6 +26,8 @@ highlight Question term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg
 highlight Search term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
 highlight SpellBad term=NONE cterm=NONE ctermbg=196 ctermfg=231 gui=NONE guibg=#ff0000 guifg=#ffffff
+highlight StatusLine term=NONE cterm=bold,reverse ctermbg=NONE ctermfg=NONE gui=bold,reverse guibg=NONE guifg=NONE
+highlight StatusLineNC term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59 gui=NONE guibg=#afafaf guifg=#5f5f5f
 highlight TabLineSel term=NONE cterm=NONE ctermbg=231 ctermfg=59 gui=NONE guibg=#ffffff guifg=#5f5f5f
 highlight TabLineFill term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
