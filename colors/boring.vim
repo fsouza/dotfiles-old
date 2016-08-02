@@ -10,75 +10,61 @@ endif
 
 let colors_name = 'boring'
 
-highlight Conceal term=NONE cterm=NONE ctermbg=NONE
-highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=59
-highlight ErrorMsg term=NONE cterm=NONE ctermbg=160 ctermfg=231
-highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight MatchParen term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
-highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Pmenu term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
-highlight PmenuSbar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight PmenuThumb term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Search term=NONE cterm=bold ctermbg=NONE ctermfg=NONE
-highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59
-highlight SpellBad term=NONE cterm=NONE ctermbg=196 ctermfg=231
-highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59
-highlight TabLineSel term=NONE cterm=NONE ctermbg=231 ctermfg=59
-highlight TabLineFill term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
-highlight Title term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight WarningMsg term=NONE cterm=None ctermbg=NONE ctermfg=52
-highlight Visual term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE
+highlight Conceal term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
+highlight ErrorMsg term=NONE cterm=NONE ctermbg=160 ctermfg=231 gui=NONE guibg=#d70000 guifg=#ffffff
+highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight MatchParen term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
+highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Pmenu term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
+highlight PmenuSbar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight PmenuThumb term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Question term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Search term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
+highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
+highlight SpellBad term=NONE cterm=NONE ctermbg=196 ctermfg=231 gui=NONE guibg=#ff0000 guifg=#ffffff
+highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59 gui=NONE guibg=#afafaf guifg=#5f5f5f
+highlight TabLineSel term=NONE cterm=NONE ctermbg=231 ctermfg=59 gui=NONE guibg=#ffffff guifg=#5f5f5f
+highlight TabLineFill term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
+highlight Title term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight WarningMsg term=NONE cterm=None ctermbg=NONE ctermfg=52 gui=None guibg=NONE guifg=#5f0000
+highlight Visual term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 
-highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Constant term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight String term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Character term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Number term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Boolean term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Float term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Identifier term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Function term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Statement term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Conditional term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Repeat term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Label term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Operator term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Keyword term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Exception term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight PreProc term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Include term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Define term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Macro term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight PreCondit term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Type term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight StorageClass term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Structure term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Typedef term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Special term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight SpecialChar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Tag term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Delimiter term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight SpecialComment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Debug term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Ignore term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Error term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-highlight Todo term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
-
-" Vim highlights
-highlight vimVar term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
-
-" Make highligts
-highlight makeIdent term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
-
-" Go highlights
-highlight goEscapeC term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
-
-" Terraform highlights
-highlight terraResourceTypeBI term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
-
-" JSON highlights
-highlight jsonKeyword term=NONE cterm=NONE ctermfg=NONE ctermbg=NONE
+highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Constant term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight String term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Character term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Number term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Boolean term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Float term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Identifier term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Function term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Statement term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Conditional term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Repeat term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Label term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Operator term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Keyword term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Exception term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight PreProc term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Include term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Define term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Macro term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight PreCondit term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Type term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight StorageClass term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Structure term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Typedef term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Special term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight SpecialChar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Tag term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Delimiter term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight SpecialComment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Debug term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Ignore term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Error term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Todo term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
