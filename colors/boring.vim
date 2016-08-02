@@ -19,13 +19,16 @@ highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight MoreMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Pmenu term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
+highlight PmenuSbar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
+highlight PmenuThumb term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight Search term=NONE cterm=bold ctermbg=NONE ctermfg=NONE
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59
 highlight SpellBad term=NONE cterm=NONE ctermbg=196 ctermfg=231
 highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59
 highlight TabLineSel term=NONE cterm=NONE ctermbg=231 ctermfg=59
 highlight TabLineFill term=NONE cterm=NONE ctermbg=145 ctermfg=NONE
+highlight Title term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE
 highlight WarningMsg term=NONE cterm=None ctermbg=NONE ctermfg=52
 highlight Visual term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE
 
