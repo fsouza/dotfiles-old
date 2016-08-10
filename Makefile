@@ -6,6 +6,7 @@ REQUIREMENTS=\
 	     tornado \
 	     flake8 \
 	     autopep8 \
+	     neovim \
 	     boto3
 
 pip:
