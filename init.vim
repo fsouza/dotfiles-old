@@ -1,4 +1,4 @@
-let $VIMHOME = expand('~/.vim')
+let $VIMHOME = expand('~/.config/nvim')
 let $PATH .= ':'.$VIRTUALENVS.'/vim/bin'
 
 let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
