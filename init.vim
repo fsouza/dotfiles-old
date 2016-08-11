@@ -37,12 +37,11 @@ Plug 'tpope/vim-surround'
 call plug#end()
 
 set t_Co=256
+syntax on
 if ($ITERM_PROFILE =~ '.*color.*')
 	colorscheme beauty256
-	syntax on
 else
 	colorscheme boring
-	syntax off
 endif
 
 filetype plugin indent on
