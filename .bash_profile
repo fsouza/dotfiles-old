@@ -22,4 +22,4 @@ source ${HOME}/.dotfiles/extra/functions
 [ -f ${HOME}/.dotfiles/extra/z/z.sh ] && source ${HOME}/.dotfiles/extra/z/z.sh
 
 export PS1="% "
-gimme 1.7rc6
+gimme 1.7
