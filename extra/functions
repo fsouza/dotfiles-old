@@ -56,5 +56,3 @@ function eclimd {
 	$HOME/Applications/Eclipse.app/Contents/Eclipse/eclimd -b >$HOME/run/eclimd.log 2>&1
 	cd $OLDPWD
 }
-
-alias vim=nvim
