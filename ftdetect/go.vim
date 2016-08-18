@@ -79,3 +79,5 @@ autocmd FileType go nmap gd :call GoDef()<CR>
 autocmd FileType go nmap <Leader>f :GoFmt<CR>
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>e <Plug>(go-rename)
+
+autocmd FileType go nmap <C-s> :GoSameIds<CR>
