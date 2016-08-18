@@ -70,3 +70,5 @@ highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE gui
 highlight Ignore term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Error term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Todo term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+
+highlight goSameId term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
