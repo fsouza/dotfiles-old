@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-# This script creates all necessary symlinks.
+# This script setups this repository, intializing the submodules, setting up
+# symlinks and copying any required files.
 
 basedir=$(cd $(dirname $0)/..; pwd -P)
 
