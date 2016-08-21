@@ -7,6 +7,8 @@ REQUIREMENTS=\
 	     flake8 \
 	     autopep8 \
 	     neovim \
+	     requests \
+	     schedule \
 	     boto3
 
 pip:
