@@ -27,6 +27,12 @@ function update_chapel() {
 	_update_chapel_gasnet
 }
 
+function clean_chapel() {
+	for d in $(ls -d ${HOME}/opt/src/chapel-code/chapel-*); do
+		git --git-dir=${d}/.git --work-tree=${d} clean -dfX
+	done
+}
+
 function chapel_gasnet() {
 	_load_chpl gasnet
 	export CHPL_COMM=gasnet GASNET_SPAWNFN=L GASNET_MASTERIP=127.0.0.1
