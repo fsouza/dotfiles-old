@@ -31,7 +31,6 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 call plug#end()
