@@ -57,10 +57,4 @@ function eclimd {
 	cd $OLDPWD
 }
 
-function cover_html {
-	go test -coverprofile cover.out
-	go tool cover -html cover.out
-	rm cover.out
-}
-
 alias jq='\jq -M'
