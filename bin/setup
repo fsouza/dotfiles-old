@@ -20,3 +20,5 @@ ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
 if [ -d $HOME/Library/Fonts ]; then
 	cp ${basedir}/extra/fonts/* $HOME/Library/Fonts/
 fi
+
+$basedir/bin/setup_osx
