@@ -10,10 +10,6 @@ function ig {
 	g -i "$@"
 }
 
-function xvim() {
-	nvim $(find . -name "$1")
-}
-
 function gimme {
 	if [ -z "$1" ]; then
 		echo "Please provide the go version"
