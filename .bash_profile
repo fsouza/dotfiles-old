@@ -14,7 +14,6 @@ alias dr="rm $RBENV_ROOT/version"
 
 source ${HOME}/.dotfiles/extra/chapel
 source ${HOME}/.dotfiles/extra/functions
-source ${HOME}/.dotfiles/extra/autoenv
 
 [ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
 [ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
