@@ -37,11 +37,12 @@ function git_config {
 		echo "Please provide the email"
 		return 1
 	fi
-	if [ -z "$GITNAME" ]; then
-		echo "Please define the GITNAME environment variable with your name"
+	name=${2:-${GITNAME}}
+	if [ -z "$name" ]; then
+		echo "Please define the GITNAME environment variable or provide a second parameter to this command"
 		return 1
 	fi
-	git config user.name "$GITNAME"
+	git config user.name "$name"
 	git config user.email $email
 	git config user.signingkey $email
 }
