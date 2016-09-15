@@ -8,7 +8,6 @@ let g:python_host_skip_check = 1
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'davidhalter/jedi-vim'
-Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go'
 Plug 'fsouza/chapel.vim'
