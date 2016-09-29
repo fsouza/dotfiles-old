@@ -18,7 +18,6 @@ Plug 'guns/vim-clojure-static'
 Plug 'hashivim/vim-terraform'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'mhinz/vim-grepper'
 Plug 'mxw/vim-jsx'
 Plug 'noah/vim256-color'
 Plug 'nvie/vim-flake8'
@@ -70,14 +69,6 @@ let g:clang_complete_auto = 0
 let g:clang_clang_hl_errors = 0
 let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
-
-let g:grepper = {
-			\ 'tools': ['pt'],
-			\ 'pt': {
-			\   'grepprg':    'pt --nocolor --nogroup --hidden --ignore .git --ignore .hg',
-			\   'grepformat': '%f:%l:%m',
-			\   'escape':     '\+*^$()[]',
-			\ }}
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimJavaValidate = 0
