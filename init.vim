@@ -81,6 +81,7 @@ let g:grepper = {
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimJavaValidate = 0
+let g:EclimScalaValidate = 0
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
