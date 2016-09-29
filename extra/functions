@@ -1,9 +1,9 @@
 function cg {
-	pt -eNUf --hidden --nogroup --color-match '1;31' --color-path '0;0' --ignore .git --ignore .hg --ignore .svn --ignore Godeps --ignore _build "$@"
+	rg --no-heading -N "$@"
 }
 
 function g {
-	cg --nocolor "$@"
+	cg --color never "$@"
 }
 
 function ig {
