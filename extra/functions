@@ -50,7 +50,7 @@ function git_config {
 function eclimd {
 	cd /tmp
 	ps -ef | grep org.eclim.application | grep -v grep | awk '{print $2}' | xargs kill
-	$HOME/Applications/Eclipse.app/Contents/Eclipse/eclimd -b >$HOME/run/eclimd.log 2>&1
+	/Applications/Eclipse.app/Contents/Eclipse/eclimd -b >$HOME/run/eclimd.log 2>&1
 	cd $OLDPWD
 }
 
