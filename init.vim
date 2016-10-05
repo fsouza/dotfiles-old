@@ -70,10 +70,6 @@ let g:clang_clang_hl_errors = 0
 let g:clang_close_preview = 1
 let g:clang_complete_macros = 1
 
-let g:EclimCompletionMethod = 'omnifunc'
-let g:EclimJavaValidate = 0
-let g:EclimScalaValidate = 0
-
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
