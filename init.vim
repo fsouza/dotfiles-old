@@ -56,12 +56,6 @@ set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set mouse=a
 
-let s:uname = substitute(system('uname -s'), '\n', '', '')
-let s:osvimrc = $VIMHOME.'/etc/'.s:uname.'.vim'
-if filereadable(s:osvimrc)
-	execute 'source '.s:osvimrc
-endif
-
 vmap <F3> :Tabularize /\\$<CR>
 vmap <F4> :Tabularize /=<CR>
 
