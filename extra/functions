@@ -47,11 +47,4 @@ function git_config {
 	git config user.signingkey $email
 }
 
-function eclimd {
-	cd /tmp
-	ps -ef | grep org.eclim.application | grep -v grep | awk '{print $2}' | xargs kill
-	/Applications/Eclipse.app/Contents/Eclipse/eclimd -b >$HOME/run/eclimd.log 2>&1
-	cd $OLDPWD
-}
-
 alias jq='\jq -M'
