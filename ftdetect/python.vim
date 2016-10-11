@@ -8,11 +8,11 @@ let g:jedi#popup_on_dot = 0
 let g:virtualenv_directory='$VIRTUALENVS'
 let g:virtualenv_auto_activate=0
 
-autocmd FileType python setlocal shiftwidth=4 showtabline=4 expandtab
+autocmd FileType python setlocal shiftwidth=4 expandtab
 autocmd FileType python map <buffer> <Leader>f :call Autopep8()<CR>
 autocmd FileType python setlocal omnifunc=jedi#complete
 autocmd FileType python setlocal completeopt-=preview
 autocmd FileType python VirtualEnvActivate vim
-autocmd FileType rst setlocal shiftwidth=4 showtabline=4 expandtab
+autocmd FileType rst setlocal shiftwidth=4 expandtab
 
 inoremap # X#
