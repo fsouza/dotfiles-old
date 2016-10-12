@@ -20,7 +20,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'idanarye/vim-dutyl'
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'mxw/vim-jsx'
 Plug 'noah/vim256-color'
 Plug 'nvie/vim-flake8'
@@ -71,8 +70,5 @@ let g:clang_complete_macros = 1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-
-let g:gutentags_tagfile = '.gutentag'
-set tags=.gutentag
 
 nmap <silent> <leader>D <Plug>DashSearch
