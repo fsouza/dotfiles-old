@@ -21,7 +21,5 @@
 	pretty = medium
 [push]
 	default = current
-[credential]
-	helper = osxkeychain
 [http]
 	cookiefile = ~/.gitcookies
