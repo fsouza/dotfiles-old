@@ -13,6 +13,7 @@ files=".bash_profile .clang-format .gitconfig .gitignore_global .hgignore_global
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
+ln -sf ${basedir}/.bash_profile ~/.bashrc
 
 mkdir -p ~/.gnupg
 ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
