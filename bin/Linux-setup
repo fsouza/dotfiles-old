@@ -12,5 +12,10 @@ gsettings set $GNOME_TERMINAL_PROFILE font 'InconsolataGo 12'
 gsettings set $GNOME_TERMINAL_PROFILE allow-bold false
 gsettings set $GNOME_TERMINAL_PROFILE scrollback-lines 999999
 
+gsettings set org.gnome.Terminal.Legacy.Profile theme-variant light
+gsettings set org.gnome.Terminal.Legacy.Profile mnemonics-enabled true
+gsettings set org.gnome.Terminal.Legacy.Profile default-show-menubar false
+gsettings set org.gnome.Terminal.Legacy.Profile new-terminal-mode tab
+
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 10
 gsettings set org.gnome.desktop.peripherals.keyboard delay 150
