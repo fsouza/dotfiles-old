@@ -1,5 +1,7 @@
+CHAPEL_CODE=${HOME}/opt/src/chapel-code
+
 function _load_chpl() {
-	source ${HOME}/opt/src/chapel-code/chapel-${1}/util/setchplenv.bash > /dev/null
+	source ${CHAPEL_CODE}/chapel-${1}/util/setchplenv.bash > /dev/null
 	export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl CHPL_DEVELOPER=1
 	export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
 }
@@ -26,7 +28,7 @@ function update_chapel() {
 }
 
 function clean_chapel() {
-	for d in $(ls -d ${HOME}/opt/src/chapel-code/chapel-*); do
+	for d in $(ls -d ${CHAPEL_CODE}/chapel-*); do
 		git --git-dir=${d}/.git --work-tree=${d} clean -dfX
 	done
 }
@@ -41,4 +43,4 @@ function chapel_basic() {
 	unset CHPL_COMM GASNET_SPAWNFN GASNET_MASTERIP
 }
 
-chapel_basic
+if [ -d $CHAPEL_CODE ]; then chapel_basic; fi
