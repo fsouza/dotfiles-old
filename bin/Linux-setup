@@ -4,3 +4,13 @@ basedir=$(cd $(dirname $0)/..; pwd -P)
 mkdir -p $HOME/.fonts
 cp ${basedir}/extra/fonts/* $HOME/.fonts
 fc-cache -f
+
+GNOME_TERMINAL_PROFILE="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default|tr -d \')/"
+
+gsettings set $GNOME_TERMINAL_PROFILE cursor-blink-mode off
+gsettings set $GNOME_TERMINAL_PROFILE font 'InconsolataGo 12'
+gsettings set $GNOME_TERMINAL_PROFILE allow-bold false
+gsettings set $GNOME_TERMINAL_PROFILE scollback-lines 999999
+
+gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 10
+gsettings set org.gnome.desktop.peripherals.keyboard delay 150
