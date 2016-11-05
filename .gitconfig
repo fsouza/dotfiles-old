@@ -2,6 +2,8 @@
 	useConfigOnly = true
 [commit]
 	gpgsign = true
+[gpg]
+	program = gpg2
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
