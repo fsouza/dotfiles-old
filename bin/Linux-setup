@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+basedir=$(cd $(dirname $0)/..; pwd -P)
+mkdir -p $HOME/.fonts
+cp ${basedir}/extra/fonts/* $HOME/.fonts
+fc-cache -f
