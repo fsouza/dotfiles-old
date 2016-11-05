@@ -1,17 +1,4 @@
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 
-export PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
-
 [ -e /etc/profile.d/vte.sh ] && source /etc/profile.d/vte.sh
-
-function brew() {
-	brew=$(which brew)
-	if [ -z "$brew" ]; then
-		echo >&2 "brew is not installed"
-		exit 2
-	fi
-	BREW_PATH="${brew}" python ${HOME}/.dotfiles/extra/brew-wrapper.py "$@"
-}
