@@ -9,7 +9,7 @@ import sys
 
 SKIP_FORMULAS = ["mongodb", "mysql", "delve", "go-delve/delve/delve", "gawk",
                  "gnu-sed", "gnupg21", "homebrew/versions/gnupg21", "bash",
-                 "pinentry-mac", "terraform", "packer", "go"]
+                 "pinentry-mac", "terraform", "packer", "go", "watch"]
 
 
 def invoke_brew(args):
