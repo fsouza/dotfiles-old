@@ -60,10 +60,7 @@ set backspace=2 nohlsearch noincsearch nofoldenable
 set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set mouse=a
-
 set cursorline
-autocmd InsertEnter * set nocursorline
-autocmd InsertLeave * set cursorline
 
 vmap <F3> :Tabularize /\\$<CR>
 vmap <F4> :Tabularize /=<CR>
