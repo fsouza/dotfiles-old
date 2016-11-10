@@ -11,7 +11,7 @@ endif
 let colors_name = 'boring'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight CursorLine term=NONE cterm=NONE ctermbg=250 ctermfg=NONE gui=NONE guibg=#bcbcbc guifg=NONE
+highlight CursorLine term=NONE cterm=NONE ctermbg=255 ctermfg=NONE gui=NONE guibg=#eeeeee guifg=NONE
 highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
 highlight ErrorMsg term=NONE cterm=NONE ctermbg=160 ctermfg=231 gui=NONE guibg=#d70000 guifg=#ffffff
 highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
@@ -26,7 +26,7 @@ highlight PmenuThumb term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE gui
 highlight Question term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Search term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
-highlight SpellBad term=NONE cterm=NONE ctermbg=196 ctermfg=231 gui=NONE guibg=#ff0000 guifg=#ffffff
+highlight SpellBad term=NONE cterm=NONE ctermbg=NONE ctermfg=196 gui=NONE guibg=NONE guifg=#ff0000
 highlight StatusLine term=NONE cterm=bold,reverse ctermbg=NONE ctermfg=NONE gui=bold,reverse guibg=NONE guifg=NONE
 highlight StatusLineNC term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59 gui=NONE guibg=#afafaf guifg=#5f5f5f
