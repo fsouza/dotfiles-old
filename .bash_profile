@@ -10,7 +10,6 @@ export EDITOR=nvim PAGER=less MANPAGER=less
 
 source ${HOME}/.dotfiles/extra/virtualenv
 source ${HOME}/.dotfiles/extra/gpg-agent
-alias dr="rm $RBENV_ROOT/version"
 
 source ${HOME}/.dotfiles/extra/chapel
 source ${HOME}/.dotfiles/extra/functions
