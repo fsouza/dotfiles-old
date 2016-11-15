@@ -89,6 +89,6 @@ let g:fzf_colors = {
 	\ 'spinner': ['fg', 'Normal'],
 	\ 'header': ['fg', 'Normal'] }
 
-map <silent> <leader>z :FzfFiles<CR>
+map <silent> <leader>lz :FzfFiles<CR>
 
 nmap <silent> <leader>D <Plug>DashSearch
