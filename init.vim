@@ -89,6 +89,8 @@ let g:fzf_colors = {
 	\ 'spinner': ['fg', 'Normal'],
 	\ 'header': ['fg', 'Normal'] }
 
+let g:jsx_ext_required = 0
+
 map <silent> <leader>lz :FzfFiles<CR>
 
 nmap <silent> <leader>D <Plug>DashSearch
