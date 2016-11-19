@@ -43,4 +43,4 @@ function chapel_basic() {
 	unset CHPL_COMM GASNET_SPAWNFN GASNET_MASTERIP
 }
 
-if [ -d $CHAPEL_CODE ]; then chapel_basic; fi
+[ -d $CHAPEL_CODE ] && chapel_basic
