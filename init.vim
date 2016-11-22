@@ -12,7 +12,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'commit': '362decf1ad1d3156a9dcfb7b6596b99aa91883b6' }
 Plug 'fsouza/chapel.vim'
 Plug 'godlygeek/tabular'
 Plug 'guns/vim-clojure-static'
