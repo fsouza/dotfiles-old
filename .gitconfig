@@ -10,6 +10,7 @@
 	filemode = true
 [diff]
 	compactionHeuristic = 1
+	indentHeuristic = 1
 [color]
 	ui = false
 [status]
