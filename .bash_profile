@@ -22,5 +22,4 @@ source /usr/local/opt/nvm/nvm.sh
 [ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
 
 export PS1="% "
-nvm use --delete-prefix v6.9.1
 gimme 1.8beta1
