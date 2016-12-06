@@ -23,7 +23,6 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
-Plug 'noah/vim256-color'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
 Plug 'racer-rust/vim-racer'
@@ -41,11 +40,7 @@ call plug#end()
 
 set t_Co=256
 syntax on
-if ($ITERM_PROFILE =~ '.*color.*')
-	colorscheme beauty256
-else
-	colorscheme boring
-endif
+colorscheme boring
 
 filetype plugin indent on
 
