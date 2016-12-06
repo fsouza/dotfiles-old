@@ -16,8 +16,6 @@ source ${HOME}/.dotfiles/extra/gpg-agent
 source ${HOME}/.dotfiles/extra/chapel
 source ${HOME}/.dotfiles/extra/functions
 
-source /usr/local/opt/nvm/nvm.sh
-
 [ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
 [ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
 
