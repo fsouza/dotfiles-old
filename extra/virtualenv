@@ -54,4 +54,10 @@ function rmv() {
 	rm -rf ${dir}
 }
 
+function upgrade_pip() {
+	for env in $(v); do
+		${VIRTUALENVS}/${env}/bin/pip install -U pip
+	done
+}
+
 alias cv="which python"
