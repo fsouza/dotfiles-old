@@ -2,7 +2,7 @@
 
 basedir=$(cd $(dirname $0)/..; pwd -P)
 mkdir -p $HOME/.fonts
-cp ${basedir}/extra/fonts/* $HOME/.fonts
+cp ${basedir}/extra/fonts/*.ttf $HOME/.fonts
 fc-cache -f
 
 GNOME_TERMINAL_PROFILE="org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default|tr -d \')/"
