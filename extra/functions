@@ -46,5 +46,3 @@ function git_config {
 	git config user.email $email
 	git config user.signingkey $email
 }
-
-alias jq='\jq -M'
