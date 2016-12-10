@@ -10,16 +10,3 @@ function ntfs_mount() {
 	sudo mkdir $dst
 	sudo mount -t ntfs -o rw,auto,nobrowse $1 $dst && echo "Mounted: ${dst}"
 }
-
-function ramdisk() {
-	size=${1:-512}
-	size=$(expr $size \* 2048)
-	count=1
-	diskname=ramdisk
-	while [ -e "/Volumes/$diskname" ]; do
-		let count+=1
-		diskname="ramdisk-$count"
-	done
-	diskutil erasevolume HFS+ "$diskname" $(hdiutil attach -nomount ram://${size})
-	echo "mounted /Volumes/$diskname"
-}
