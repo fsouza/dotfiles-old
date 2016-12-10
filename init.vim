@@ -55,11 +55,6 @@ set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set mouse=a
 
-let g:clang_complete_auto = 0
-let g:clang_clang_hl_errors = 0
-let g:clang_close_preview = 1
-let g:clang_complete_macros = 1
-
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
