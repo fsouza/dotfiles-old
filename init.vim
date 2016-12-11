@@ -28,7 +28,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'sjbach/lusty'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 call plug#end()
 
