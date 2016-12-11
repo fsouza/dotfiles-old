@@ -27,7 +27,6 @@ Plug 'racer-rust/vim-racer'
 Plug 'rizzatti/dash.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-multiple-cursors'
@@ -53,10 +52,6 @@ set backspace=2 nohlsearch noincsearch nofoldenable
 set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set mouse=a
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 let g:jsx_ext_required = 0
 
