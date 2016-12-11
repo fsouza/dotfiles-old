@@ -14,7 +14,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go'
 Plug 'fsouza/chapel.vim'
 Plug 'godlygeek/tabular'
-Plug 'guns/vim-clojure-static'
 Plug 'hashivim/vim-terraform'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
