@@ -7,7 +7,6 @@ let g:python_host_prog = g:python3_host_prog
 let g:python_host_skip_check = 1
 
 call plug#begin($VIMHOME.'/plugged')
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
