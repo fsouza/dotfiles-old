@@ -22,3 +22,5 @@ ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
 if [ -f $basedir/bin/${os}-setup ]; then
 	$basedir/bin/${os}-setup
 fi
+
+curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
