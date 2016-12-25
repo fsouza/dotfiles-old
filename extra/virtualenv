@@ -41,7 +41,7 @@ function mkv() {
 	fi
 	python=${PYTHON:-python3}
 	virtualenv -p ${python} ${VIRTUALENVS}/${1}
-	${VIRTUALENVS}/${1}/bin/pip install --upgrade pip distribute
+	${VIRTUALENVS}/${1}/bin/pip install --upgrade pip
 }
 
 function rmv() {
