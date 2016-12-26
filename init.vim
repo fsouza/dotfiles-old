@@ -18,6 +18,8 @@ Plug 'hashivim/vim-terraform'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
@@ -50,6 +52,22 @@ set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set mouse=a
 
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_colors = {
+	\ 'fg': ['fg', 'Normal'],
+	\ 'bg': ['bg', 'Normal'],
+	\ 'hl': ['fg', 'Normal'],
+	\ 'fg+': ['fg', 'Normal'],
+	\ 'bg+': ['bg', 'Normal'],
+	\ 'hl+': ['fg', 'Normal'],
+	\ 'info': ['fg', 'Normal'],
+	\ 'prompt': ['fg', 'Normal'],
+	\ 'pointer': ['fg', 'Normal'],
+	\ 'marker': ['fg', 'Normal'],
+	\ 'spinner': ['fg', 'Normal'],
+	\ 'header': ['fg', 'Normal'] }
+
 let g:jsx_ext_required = 0
 
+map <silent> <leader>lz :FzfFiles<CR>
 nmap <silent> <leader>D <Plug>DashSearch
