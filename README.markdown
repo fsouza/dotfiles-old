@@ -9,12 +9,11 @@ This repository uses [neovim's](https://github.com/neovim/neovim) nomenclature.
 
 ###Downloading
 
-All you need to do is clone the repository in your ``$NVIMHOME`` and then
+All you need to do is clone the repository in your ``$VIMHOME`` and then
 initialize the submodules:
 
 ```
-% mkdir -p ${XDG_CONFIG_HOME:=$HOME/.config}
-% git clone https://github.com/fsouza/vimfiles.git ${XDG_CONFIG_HOME}/nvim
+% git clone https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
 % nvim +PlugInstall
 ```
 
