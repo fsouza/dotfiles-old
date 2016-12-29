@@ -24,7 +24,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
-Plug 'racer-rust/vim-racer'
+Plug 'fsouza/vim-racer', { 'branch': 'fix-completion' }
 Plug 'rizzatti/dash.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
