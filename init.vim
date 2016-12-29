@@ -10,7 +10,6 @@ let g:python3_host_skip_check = 1
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'artur-shaik/vim-javacomplete2'
-Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go'
@@ -24,6 +23,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
+Plug 'python-mode/python-mode'
 Plug 'fsouza/vim-racer', { 'branch': 'fix-completion' }
 Plug 'rizzatti/dash.vim'
 Plug 'rodjek/vim-puppet'
