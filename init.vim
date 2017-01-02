@@ -11,7 +11,7 @@ endif
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'artur-shaik/vim-javacomplete2'
-Plug 'fsouza/jedi-vim'
+Plug 'fsouza/jedi-vim', { 'branch': 'update-jedi' }
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go'
