@@ -52,6 +52,9 @@ function SebuFortranGetFreeIndent()
 	" Disappering	1	0	|	-1	Unindent
 	" Continued		1	1	|	0	No change
 	let result = -SebuIsFortranContStat(lnum-1)+SebuIsFortranContStat(lnum)
+	if IsModuleProcedure(v:lnum - 1)
+		let ind -= &sw
+	endif
 	" One shiftwidth indentation for continued statements
 	return ind + result*&sw
 endfunction
@@ -73,4 +76,9 @@ endfunction
 function SebuIsFortranContStat(lnum)
 	let line = getline(a:lnum)
 	return substitute(line,'!.*$','','') =~ '&\s*$'
+endfunction
+
+function IsModuleProcedure(lnum)
+	let line = getline(a:lnum)
+	return line =~ "module procedure"
 endfunction
