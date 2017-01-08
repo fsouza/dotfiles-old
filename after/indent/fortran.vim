@@ -96,5 +96,5 @@ endfunction
 
 function IsOmpEnd(lnum)
 	let line = getline(a:lnum)
-	return line =~ "!\$omp end "
+	return line =~ "!\$omp end " && line !~ "!\$omp end parallel do"
 endfunction
