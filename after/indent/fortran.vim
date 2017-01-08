@@ -55,6 +55,12 @@ function SebuFortranGetFreeIndent()
 	if IsModuleProcedure(v:lnum - 1)
 		let ind -= &sw
 	endif
+	if IsOmpStart(v:lnum - 1)
+		let ind += &sw
+	endif
+	if IsOmpEnd(v:lnum)
+		let ind -= &sw
+	endif
 	" One shiftwidth indentation for continued statements
 	return ind + result*&sw
 endfunction
@@ -81,4 +87,14 @@ endfunction
 function IsModuleProcedure(lnum)
 	let line = getline(a:lnum)
 	return line =~ "module procedure"
+endfunction
+
+function IsOmpStart(lnum)
+	let line = getline(a:lnum)
+	return line =~ "!\$omp" && line !~ "!\$omp parallel for" && line !~ "!\$omp end"
+endfunction
+
+function IsOmpEnd(lnum)
+	let line = getline(a:lnum)
+	return line =~ "!\$omp end "
 endfunction
