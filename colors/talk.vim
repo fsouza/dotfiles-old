@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer:	Francisco Souza <f@souza.cc>
-" Last Change:	2016 Apr 18
+" Last Change:	2017 Jan 09
 
 set background=light
 highlight clear
@@ -36,9 +36,9 @@ highlight Title term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NO
 highlight Visual term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 highlight WarningMsg term=NONE cterm=None ctermbg=NONE ctermfg=52 gui=None guibg=NONE guifg=#5f0000
 
-highlight Boolean term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=NONE
-highlight Character term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=NONE
-highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=27 gui=NONE guibg=NONE guifg=NONE
+highlight Boolean term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=#ff00ff
+highlight Character term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=#ff00ff
+highlight Comment term=NONE cterm=NONE ctermbg=NONE ctermfg=27 gui=NONE guibg=NONE guifg=#005fff
 highlight Conditional term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Constant term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Debug term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
@@ -46,30 +46,30 @@ highlight Define term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=N
 highlight Delimiter term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Error term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Exception term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Float term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=NONE
+highlight Float term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=#ff00ff
 highlight Function term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Identifier term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Ignore term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Include term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Keyword term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Include term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
+highlight Keyword term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 highlight Label term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Macro term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Number term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=NONE
+highlight Number term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=#ff00ff
 highlight Operator term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight PreCondit term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight PreCondit term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 highlight PreProc term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Repeat term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Repeat term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 highlight Special term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight SpecialChar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight SpecialComment term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Statement term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Statement term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 highlight StorageClass term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight String term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=NONE
+highlight String term=NONE cterm=NONE ctermbg=NONE ctermfg=201 gui=NONE guibg=NONE guifg=#ff00ff
 highlight Structure term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Tag term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Todo term=NONE cterm=NONE ctermbg=NONE ctermfg=21 gui=NONE guibg=NONE guifg=NONE
-highlight Type term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Typedef term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight Todo term=NONE cterm=NONE ctermbg=NONE ctermfg=27 gui=bold guibg=NONE guifg=#005fff
+highlight Type term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
+highlight Typedef term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 
 highlight goSameId term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
