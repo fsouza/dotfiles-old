@@ -37,7 +37,12 @@ call plug#end()
 
 set t_Co=256
 syntax on
-colorscheme boring
+
+if $ITERM_PROFILE =~ "talk"
+	colorscheme talk
+else
+	colorscheme boring
+endif
 
 filetype plugin indent on
 
