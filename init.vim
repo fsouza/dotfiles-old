@@ -23,7 +23,6 @@ Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
-Plug 'noah/vim256-color'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
 Plug 'racer-rust/vim-racer'
