@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer:	Francisco Souza <f@souza.cc>
-" Last Change:	2016 Apr 18
+" Last Change:	2017 Jan 09
 
 set background=light
 highlight clear
@@ -8,7 +8,7 @@ if exists('syntax_on')
   syntax reset
 endif
 
-let colors_name = 'boring'
+let g:colors_name = 'boring'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=255 ctermfg=NONE gui=NONE guibg=#eeeeee guifg=NONE
