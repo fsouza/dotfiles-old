@@ -91,7 +91,7 @@ endfunction
 
 function IsOmpStart(lnum)
 	let line = getline(a:lnum)
-	return line =~ "!\$omp" && line !~ "!\$omp parallel do" && line !~ "!\$omp do" && line !~ "!\$omp end" && line !~ "!\$omp section[^s]" && line !~ "!\$omp section$"
+	return line =~ "!\$omp" && line !~ "!\$omp parallel do" && line !~ "!\$omp do" && line !~ "!\$omp end" && line !~ "!\$omp section[^s]" && line !~ "!\$omp section$" && line !~ "!\$omp atomic"
 endfunction
 
 function IsOmpEnd(lnum)
