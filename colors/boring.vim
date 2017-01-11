@@ -73,4 +73,4 @@ highlight Typedef term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=
 highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 
 highlight goSameId term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
-highlight htmlBold term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONe guifg=NONE
+highlight htmlBold term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
