@@ -74,3 +74,4 @@ highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE gui
 
 highlight goSameId term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 highlight htmlBold term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
+highlight LustySelected term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
