@@ -26,6 +26,7 @@ highlight SpecialComment ctermfg=27 guifg=#005fff
 highlight Statement cterm=bold gui=bold
 highlight StorageClass cterm=bold gui=bold
 highlight String ctermfg=200 guifg=#ff00d7
+highlight Structure cterm=bold gui=bold
 highlight Todo ctermfg=27 gui=bold guifg=#005fff
 highlight Type cterm=bold gui=bold
 highlight Typedef cterm=bold gui=bold
