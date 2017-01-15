@@ -27,7 +27,7 @@ highlight Question term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg
 highlight Search term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
 highlight SpellBad term=NONE cterm=NONE ctermbg=NONE ctermfg=196 gui=NONE guibg=NONE guifg=#ff0000
-highlight StatusLine term=NONE cterm=bold,reverse ctermbg=NONE ctermfg=NONE gui=bold,reverse guibg=NONE guifg=NONE
+highlight StatusLine term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 highlight StatusLineNC term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 highlight TabLine term=NONE cterm=NONE ctermbg=145 ctermfg=59 gui=NONE guibg=#afafaf guifg=#5f5f5f
 highlight TabLineFill term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
@@ -74,4 +74,4 @@ highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE gui
 
 highlight goSameId term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
 highlight htmlBold term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight LustySelected term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
+highlight LustySelected term=NONE cterm=NONE ctermbg=NONE ctermfg=245 gui=NONE guibg=NONE guifg=#8a8a8a
