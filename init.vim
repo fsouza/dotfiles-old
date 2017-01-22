@@ -1,4 +1,5 @@
 let $VIMHOME = expand('~/.config/nvim')
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 if !isdirectory($VIMHOME)
 	let $VIMHOME = expand('~/.vim')
 endif
