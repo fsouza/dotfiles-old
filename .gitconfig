@@ -22,3 +22,5 @@
 	pretty = medium
 [push]
 	default = current
+[http "https://gopkg.in"]
+	followRedirects = true
