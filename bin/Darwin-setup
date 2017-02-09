@@ -127,3 +127,17 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool false
 
 # Use plain text mode for new TextEdit documents
 defaults write com.apple.TextEdit RichText -int 0
+
+# controlstrip (don't call me hipster)
+defaults write com.apple.controlstrip FullCustomized -array com.apple.system.group.brightness \
+	com.apple.system.mission-control \
+	com.apple.system.launchpad \
+	com.apple.system.group.keyboard-brightness \
+	com.apple.system.group.media com.apple.system.group.volume
+
+defaults write com.apple.controlstrip MiniCustomized -array com.apple.system.brightness \
+	com.apple.system.volume \
+	com.apple.system.mute
+
+defaults write com.apple.touchbar.agent PresentationModeGlobal -string fullControlStrip
+defaults write com.apple.touchbar.agent PresentationModeFnModes -dict appWithControlStrip fullControlStrip
