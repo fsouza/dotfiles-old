@@ -139,5 +139,4 @@ defaults write com.apple.controlstrip MiniCustomized -array com.apple.system.bri
 	com.apple.system.volume \
 	com.apple.system.mute
 
-defaults write com.apple.touchbar.agent PresentationModeGlobal -string fullControlStrip
 defaults write com.apple.touchbar.agent PresentationModeFnModes -dict appWithControlStrip fullControlStrip
