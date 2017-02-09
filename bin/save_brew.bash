@@ -16,3 +16,4 @@ for formula in $(brew leaves); do
 done
 
 brew cask list > "${1}-cask"
+brew tap > "${1}-tap"
