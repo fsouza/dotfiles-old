@@ -17,6 +17,7 @@ done
 ln -sf ${basedir}/.bash_profile ~/.bashrc
 
 mkdir -p ~/.gnupg
+chmod 700 ~/.gnupg
 ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
 
 if [ -f $basedir/bin/${os}-setup ]; then
