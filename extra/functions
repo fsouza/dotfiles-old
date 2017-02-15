@@ -32,7 +32,7 @@ function gimme {
 }
 
 function git_config {
-	email=$1
+	email=${1:-${GITEMAIL}}
 	if [ -z "$email" ]; then
 		echo "Please provide the email"
 		return 1
