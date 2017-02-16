@@ -20,4 +20,4 @@ source ${HOME}/.dotfiles/extra/functions
 [ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
 
 export PS1="% "
-gimme 1.8rc3
+gimme 1.8
