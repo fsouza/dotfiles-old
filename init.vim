@@ -23,7 +23,6 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
