@@ -24,3 +24,5 @@
 	default = current
 [http "https://gopkg.in"]
 	followRedirects = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
