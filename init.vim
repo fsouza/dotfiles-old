@@ -1,5 +1,4 @@
 let $VIMHOME = expand('~/.config/nvim')
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 0
 if !isdirectory($VIMHOME)
 	let $VIMHOME = expand('~/.vim')
 endif
@@ -58,6 +57,7 @@ set hidden laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
 set backspace=2 nohlsearch noincsearch nofoldenable
 set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
+set guicursor=
 set mouse=a
 
 let g:jsx_ext_required = 0
