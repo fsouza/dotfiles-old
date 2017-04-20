@@ -20,7 +20,6 @@ Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
-Plug 'jodosha/vim-godebug'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'mxw/vim-jsx'
