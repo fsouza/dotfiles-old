@@ -8,7 +8,7 @@ if exists('syntax_on')
   syntax reset
 endif
 
-let g:colors_name = 'boring'
+let g:colors_name = 'none'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=255 ctermfg=NONE gui=NONE guibg=#eeeeee guifg=NONE

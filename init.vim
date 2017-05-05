@@ -41,7 +41,7 @@ syntax on
 if $ITERM_PROFILE =~ "talk"
 	colorscheme talk
 else
-	colorscheme boring
+	colorscheme none
 endif
 
 filetype plugin indent on
