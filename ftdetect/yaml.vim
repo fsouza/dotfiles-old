@@ -1,1 +1,1 @@
-autocmd filetype yaml setlocal shiftwidth=2 expandtab
+autocmd filetype yaml setlocal softtabstop=2 expandtab
