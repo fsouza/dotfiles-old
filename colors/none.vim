@@ -11,7 +11,7 @@ endif
 let g:colors_name = 'none'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight CursorLine term=NONE cterm=NONE ctermbg=255 ctermfg=NONE gui=NONE guibg=#eeeeee guifg=NONE
+highlight CursorLine term=NONE cterm=NONE ctermbg=230 ctermfg=NONE gui=NONE guibg=#ffffd7 guifg=NONE
 highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
 highlight ErrorMsg term=NONE cterm=NONE ctermbg=160 ctermfg=231 gui=NONE guibg=#d70000 guifg=#ffffff
 highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
