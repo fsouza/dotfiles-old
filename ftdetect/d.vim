@@ -1,4 +1,4 @@
-autocmd FileType d setlocal softtabstop=4 expandtab
+autocmd FileType d setlocal shiftwidth=4 expandtab
 
 call dutyl#register#tool('dcd-client', ['dcd-client', '--tcp'])
 call dutyl#register#tool('dcd-server', ['dcd-server', '--tcp'])

@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.vcl setlocal expandtab softtabstop=2
+au BufNewFile,BufRead *.vcl setlocal expandtab shiftwidth=2

@@ -1,1 +1,1 @@
-autocmd FileType scala setlocal softtabstop=2 expandtab
+autocmd FileType scala setlocal shiftwidth=2 expandtab
