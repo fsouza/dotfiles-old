@@ -5,7 +5,7 @@ set background=light
 set t_Co=256
 let g:colors_name = "talk"
 
-highlight Normal guifg=#000000 guibg=#ffffff guisp=#ffffff gui=NONE ctermfg=NONE ctermbg=231 cterm=NONE
+highlight Normal term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guibg=#ffffff guifg=#262626
 highlight WildMenu guifg=#000000 guibg=#ffff00 guisp=#ffff00 gui=NONE ctermfg=NONE ctermbg=11 cterm=NONE
 highlight SpecialComment guifg=#695ace guibg=#ffffff guisp=#ffffff gui=NONE ctermfg=62 ctermbg=231 cterm=NONE
 highlight Typedef guifg=#961fe6 guibg=#ffffff guisp=#ffffff gui=NONE ctermfg=92 ctermbg=231 cterm=NONE
@@ -13,7 +13,7 @@ highlight Title guifg=#e600e6 guibg=NONE guisp=NONE gui=bold ctermfg=164 ctermbg
 highlight Folded guifg=#00008b guibg=#ffffff guisp=#ffffff gui=NONE ctermfg=18 ctermbg=231 cterm=NONE
 highlight PreCondit guifg=#d66ad6 guibg=#ffffff guisp=#ffffff gui=NONE ctermfg=170 ctermbg=231 cterm=NONE
 highlight Include guifg=#d66ad6 guibg=#ffffff guisp=#ffffff gui=NONE ctermfg=170 ctermbg=231 cterm=NONE
-highlight NonText guifg=#0000e6 guibg=#e5e5e5 guisp=#e5e5e5 gui=bold ctermfg=20 ctermbg=254 cterm=bold
+highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight DiffText guifg=NONE guibg=#ff0000 guisp=#ff0000 gui=bold ctermfg=NONE ctermbg=196 cterm=bold
 highlight ErrorMsg guifg=#e6e6e6 guibg=#ff0000 guisp=#ff0000 gui=NONE ctermfg=254 ctermbg=196 cterm=NONE
 highlight Ignore guifg=#e6e6e6 guibg=NONE guisp=NONE gui=NONE ctermfg=254 ctermbg=NONE cterm=NONE
