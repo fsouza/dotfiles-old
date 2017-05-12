@@ -34,6 +34,7 @@ Plug 'sjbach/lusty'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin'
 call plug#end()
 
 set t_Co=256
