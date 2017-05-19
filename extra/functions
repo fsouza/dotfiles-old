@@ -31,6 +31,11 @@ function gimme {
 	fi
 }
 
+function update_go_tip {
+	gimme=$(which gimme)
+	GIMME_DEBUG=2 env -u GIMME_TYPE $gimme tip
+}
+
 function git_config {
 	email=${1:-${GITEMAIL}}
 	if [ -z "$email" ]; then
