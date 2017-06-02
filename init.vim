@@ -10,6 +10,7 @@ if isdirectory($VIRTUALENVS)
 endif
 
 call plug#begin($VIMHOME.'/plugged')
+Plug 'albertorestifo/github.vim'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
