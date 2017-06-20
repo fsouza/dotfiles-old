@@ -1,9 +1,10 @@
 root = true
 
 [*]
-end_of_line = lf
-insert_final_line = true
 charset = utf-8
+end_of_line = lf
+indent_style = tab
+insert_final_line = true
 trim_trailing_whitespace = true
 
 [*.{d,py,rs,rst,ts}]
