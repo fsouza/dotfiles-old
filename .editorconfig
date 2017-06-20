@@ -4,6 +4,7 @@ root = true
 end_of_line = lf
 insert_final_line = true
 charset = utf-8
+trim_trailing_whitespace = true
 
 [*.{d,py,rs,rst,ts}]
 indent_style = space
