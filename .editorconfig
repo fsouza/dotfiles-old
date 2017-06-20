@@ -1,0 +1,18 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_line = true
+charset = utf-8
+
+[*.{d,py,rs,rst,ts}]
+indent_style = space
+indent_size = 4
+
+[*.{f90,lua,rb,erb,scala,tf,tfstate,vcl,yaml,yml}]
+indent_style = space
+indent_size = 2
+
+[Vagrantfile]
+indent_style = space
+indent_size = 2
