@@ -3,7 +3,7 @@
 brew update
 brew upgrade
 
-brew reinstall --HEAD neovim/neovim/neovim
+brew reinstall --HEAD neovim
 
 brew cleanup -s
 brew cask cleanup
