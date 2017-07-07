@@ -8,7 +8,7 @@ export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/b
 
 [ -f ${HOME}/.dotfiles/extra/z/z.sh ] && source ${HOME}/.dotfiles/extra/z/z.sh
 
-export EDITOR=nvim PAGER=less MANPAGER=less
+export EDITOR=vim PAGER=less MANPAGER=less
 
 source ${HOME}/.dotfiles/extra/virtualenv
 source ${HOME}/.dotfiles/extra/gpg-agent

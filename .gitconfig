@@ -5,7 +5,7 @@
 [gpg]
 	program = gpg2
 [core]
-	editor = nvim
+	editor = vim
 	excludesfile = ~/.gitignore_global
 	filemode = true
 [diff]
