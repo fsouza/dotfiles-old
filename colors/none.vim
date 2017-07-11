@@ -18,7 +18,7 @@ highlight LineNr term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=N
 highlight MatchParen term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
 highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight MoreMsg term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
-highlight Normal term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guibg=#ffffff guifg=#262626
+highlight Normal term=NONE cterm=NONE ctermbg=NONE ctermfg=235 gui=NONE guibg=NONE guifg=#262626
 highlight NonText term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Pmenu term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
 highlight PmenuSbar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
