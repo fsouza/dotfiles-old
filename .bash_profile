@@ -7,6 +7,10 @@ export GOPATH=$HOME GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/sbin:${HOME}/.config/yarn/global/node_modules/.bin:/usr/local/share/npm/bin:$PATH
 export DYLD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$DYLD_LIBRARY_PATH
 
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_EMOJI=1
+export HOMEBREW_NO_GITHUB_API=1
+
 [ -f ${HOME}/.dotfiles/extra/z/z.sh ] && source ${HOME}/.dotfiles/extra/z/z.sh
 
 export EDITOR=vim PAGER=less MANPAGER=less
