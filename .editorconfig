@@ -7,7 +7,7 @@ indent_style = tab
 insert_final_line = true
 trim_trailing_whitespace = true
 
-[*.{d,py,rs,rst,ts}]
+[*.{d,py,rs,rst,ts,jl}]
 indent_style = space
 indent_size = 4
 
