@@ -11,10 +11,10 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
-[*.{f90,lua,pp,rb,erb,scala,tf,tfstate,vcl,yaml,yml}]
+[*.{f90,lua,pp,rb,erb,scala,tf,tfstate,vcl,yaml,yml,erl,app.src}]
 indent_style = space
 indent_size = 2
 
-[Vagrantfile]
+[Vagrantfile,rebar.config]
 indent_style = space
 indent_size = 2
