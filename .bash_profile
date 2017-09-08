@@ -7,7 +7,6 @@ export GOPATH=$HOME GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/sbin:${HOME}/.config/yarn/global/node_modules/.bin:/usr/local/share/npm/bin:$PATH
 export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$DYLD_LIBRARY_PATH
-export PATH=$PATH:$(gcloud info --format="value(installation.sdk_root)")/bin
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_EMOJI=1
