@@ -25,6 +25,7 @@ Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'mhinz/vim-grepper'
 Plug 'mxw/vim-jsx'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
@@ -74,3 +75,4 @@ let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:jsx_ext_required = 0
 
 nmap <silent> <leader>D <Plug>DashSearch
+nmap <silent> <leader>g :Grepper -tool rg<CR>
