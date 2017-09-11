@@ -83,4 +83,6 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 autocmd FileType go nmap <Leader>r <Plug>(go-rename)
 autocmd FileType go nmap <Leader>b <Plug>(go-build)
 autocmd FileType go nmap <Leader>d <Plug>(go-describe)
+autocmd FileType go nmap <Leader>t :GoDeclsDir<CR>
 autocmd FileType go nmap <Leader>s :GoSameIds<CR>
+autocmd FileType go nmap <Leader>a :GoAlternate<CR>
