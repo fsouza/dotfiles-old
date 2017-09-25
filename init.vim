@@ -14,7 +14,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fsouza/vim-go', { 'branch': 'decls-fzf' }
+Plug 'fatih/vim-go'
 Plug 'fsouza/chapel.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
