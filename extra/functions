@@ -25,7 +25,7 @@ function gimme {
 	else
 		if [ "$1" = "tip" ] && [ -n "$GIMME_TYPE" ]; then
 			old_gimme_type=$GIMME_TYPE
-			unset GIMME_TYPE
+			export GIMME_TYPE=git
 		fi
 		eval "$(${GIMME} ${1})"
 		if [ -n "$old_gimme_type" ]; then
