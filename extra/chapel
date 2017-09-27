@@ -9,7 +9,11 @@ function _load_chpl() {
 function _download_and_build() {
 	git --git-dir="$CHPL_HOME/.git" --work-tree="$CHPL_HOME" pull --rebase
 	make -C "$CHPL_HOME" -f "$CHPL_HOME/Makefile" -j
-	make -C "$CHPL_HOME" -f "$CHPL_HOME/Makefile" mason chpldoc
+	make -C "$CHPL_HOME" -f "$CHPL_HOME/Makefile" chpldoc
+}
+
+function _build_mason() {
+	make -C "$CHPL_HOME" -f "$CHPL_HOME/Makefile" mason
 }
 
 function _update_chapel_gasnet() {
@@ -20,6 +24,7 @@ function _update_chapel_gasnet() {
 function _update_chapel_basic() {
 	chapel_basic
 	_download_and_build
+	_build_mason
 }
 
 function update_chapel() {
