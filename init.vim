@@ -66,6 +66,7 @@ set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set guicursor=
 set mouse=a
+set synmaxcol=160
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
