@@ -46,7 +46,7 @@ set t_Co=256
 syntax on
 
 if $ITERM_PROFILE =~ "talk"
-	colorscheme github
+	colorscheme default
 else
 	colorscheme none
 endif
