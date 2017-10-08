@@ -3,6 +3,7 @@ let g:go_fmt_options = {
 	\ }
 let g:go_fmt_experimental = 1
 let g:go_def_mapping_enabled = 0
+let g:go_metalinter_autosave = 1
 let g:go_template_autocreate = 0
 let g:go_snippet_case_type = 'camelcase'
 let g:go_gocode_unimported_packages = 0
