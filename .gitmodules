@@ -1,3 +1,6 @@
 [submodule "extra/z"]
 	path = extra/z
 	url = https://github.com/rupa/z.git
+[submodule "extra/gimme"]
+	path = extra/gimme
+	url = https://github.com/travis-ci/gimme.git
