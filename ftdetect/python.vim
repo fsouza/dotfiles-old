@@ -8,5 +8,6 @@ let g:jedi#popup_on_dot = 0
 autocmd FileType python map <buffer> <Leader>f :call Autopep8()<CR>
 autocmd FileType python setlocal omnifunc=jedi#complete
 autocmd FileType python setlocal completeopt-=preview
+autocmd FileType python VirtualEnvActivate vim
 
 inoremap # X#

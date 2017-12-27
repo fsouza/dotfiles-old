@@ -7,6 +7,7 @@ if isdirectory($VIRTUALENVS)
 	let $PATH = $VIRTUALENVS.'/vim/bin:'.$PATH
 	let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
 	let g:python3_host_skip_check = 1
+	let g:virtualenv_directory = $VIRTUALENVS
 endif
 
 call plug#begin($VIMHOME.'/plugged')
@@ -20,6 +21,7 @@ Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
+Plug 'jmcantrell/vim-virtualenv'
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
