@@ -14,6 +14,7 @@ function v() {
 		export PATH=${virtualenvpath}/bin:$PATH
 		alias cdvirtualenv='cd ${virtualenvpath}'
 		alias cdsitepackages='cd ${virtualenvpath}/lib/python*/site-packages'
+		export VIRTUAL_ENV=$1
 		hash -r
 	else
 		echo "virtualenv $1 not found"
@@ -29,6 +30,7 @@ function d() {
 	fi
 	export PATH=${oldpath}
 	unalias cdvirtualenv cdsitepackages
+	unset VIRTUAL_ENV
 	hash -r
 }
 
