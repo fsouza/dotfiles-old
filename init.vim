@@ -8,6 +8,7 @@ if isdirectory($VIRTUALENVS)
 	let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
 	let g:python3_host_skip_check = 1
 	let g:virtualenv_directory = $VIRTUALENVS
+	let g:virtualenv_auto_activate = 1
 endif
 
 call plug#begin($VIMHOME.'/plugged')
