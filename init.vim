@@ -33,6 +33,7 @@ Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
 Plug 'quramy/tsuquyomi'
 Plug 'racer-rust/vim-racer'
+Plug 'Rip-Rip/clang_complete'
 Plug 'rizzatti/dash.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
@@ -74,6 +75,7 @@ set synmaxcol=160
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
 
 let g:jsx_ext_required = 0
 
