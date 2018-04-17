@@ -16,7 +16,7 @@ function ig {
 
 function gimme {
 	if [ -z "$1" ]; then
-		echo "Please provide the go version"
+		echo >&2 "Please provide the go version"
 		return 1
 	fi
 	GIMME=$(which gimme)
@@ -49,12 +49,12 @@ function update_go_tip {
 function git_config {
 	email=${1:-${GITEMAIL}}
 	if [ -z "$email" ]; then
-		echo "Please provide the email"
+		echo >&2 "Please provide the email"
 		return 1
 	fi
 	name=${2:-${GITNAME}}
 	if [ -z "$name" ]; then
-		echo "Please define the GITNAME environment variable or provide a second parameter to this command"
+		echo >&2 "Please define the GITNAME environment variable or provide a second parameter to this command"
 		return 1
 	fi
 	git config user.name "$name"
