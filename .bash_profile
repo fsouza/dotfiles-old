@@ -24,5 +24,5 @@ source ${HOME}/.dotfiles/extra/functions
 [ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
 [ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
 
-gimme 1.x
 export PS1="% "
+source ~/.gimme/envs/gotip.env
