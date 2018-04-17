@@ -38,6 +38,12 @@ function gimme {
 function update_go_tip {
 	gimme=$(which gimme)
 	GIMME_DEBUG=2 GIMME_TYPE=git $gimme tip
+	gopath="$(go env GOPATH)"
+
+	if [ -n "$gopath" ]; then
+		rm -rf $gopath/pkg/$(go env GOOS)_$(go env GOARCH)
+	fi
+	go clean -cache
 }
 
 function git_config {
