@@ -25,5 +25,6 @@ source /usr/local/opt/nvm/nvm.sh
 
 [ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
 [ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 
 export PS1="% "
