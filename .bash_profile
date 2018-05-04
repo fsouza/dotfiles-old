@@ -21,10 +21,12 @@ source ${HOME}/.dotfiles/extra/virtualenv
 source ${HOME}/.dotfiles/extra/gpg-agent
 
 source ${HOME}/.dotfiles/extra/functions
-source /usr/local/opt/nvm/nvm.sh
 
 [ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
 [ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
+
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
 export PS1="% "
