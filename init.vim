@@ -23,7 +23,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
 Plug 'jmcantrell/vim-virtualenv'
-Plug 'JuliaEditorSupport/julia-vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
@@ -42,8 +41,6 @@ Plug 'sjbach/lusty'
 Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
-Plug 'udalov/kotlin-vim'
-Plug 'xolox/vim-misc' | Plug 'xolox/vim-lua-ftplugin'
 call plug#end()
 
 set t_Co=256
