@@ -26,3 +26,5 @@
 	followRedirects = true
 [http]
 	cookiefile = /Users/fsouza/.gitcookies
+[url "https://"]
+	insteadOf = git://
