@@ -16,7 +16,7 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'fsouza/chapel.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
