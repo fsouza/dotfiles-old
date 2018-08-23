@@ -7,8 +7,6 @@ if isdirectory($VIRTUALENVS)
 	let $PATH = $VIRTUALENVS.'/vim/bin:'.$PATH
 	let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
 	let g:python3_host_skip_check = 1
-	let g:virtualenv_directory = $VIRTUALENVS
-	let g:virtualenv_auto_activate = 1
 endif
 
 call plug#begin($VIMHOME.'/plugged')
@@ -20,9 +18,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'fsouza/chapel.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
-Plug 'hynek/vim-python-pep8-indent'
 Plug 'idanarye/vim-dutyl', { 'branch': 'develop' }
-Plug 'jmcantrell/vim-virtualenv'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
@@ -31,6 +27,7 @@ Plug 'mxw/vim-jsx'
 Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
 Plug 'PProvost/vim-ps1'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'quramy/tsuquyomi'
 Plug 'racer-rust/vim-racer'
 Plug 'Rip-Rip/clang_complete'
@@ -38,7 +35,6 @@ Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
 Plug 'sirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
-Plug 'tell-k/vim-autopep8'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 call plug#end()
