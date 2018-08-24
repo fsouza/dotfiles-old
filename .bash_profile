@@ -3,11 +3,11 @@ OS=$(uname -s)
 export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
-export GOPATH=$HOME
+export GOPATH=$HOME GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 
-export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/sbin:${PATH}
-export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:${LD_LIBRARY_PATH}
-export DYLD_LIBRARY_PATH=$(rustc --print sysroot)/lib:${DYLD_LIBRARY_PATH}
+export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/sbin:${HOME}/.dotfiles/extra/gimme:$PATH
+export LD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$LD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=$(rustc --print sysroot)/lib:$DYLD_LIBRARY_PATH
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_EMOJI=1
@@ -30,3 +30,4 @@ source ${HOME}/.dotfiles/extra/functions
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
 export PS1="% "
+source ~/.gimme/envs/gotip.env
