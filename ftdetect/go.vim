@@ -82,7 +82,7 @@ function! s:doCustomJump(out)
 endfunction
 
 autocmd FileType go nmap gd :call GoDef()<CR>
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
+autocmd FileType go nmap <Leader>i :GoInfo<CR>
 autocmd FileType go nmap <Leader>r <Plug>(go-rename)
 autocmd FileType go nmap <Leader>b <Plug>(go-build)
 autocmd FileType go nmap <Leader>d <Plug>(go-describe)
