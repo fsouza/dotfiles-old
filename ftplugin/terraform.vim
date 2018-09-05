@@ -1,1 +1,0 @@
-autocmd BufWritePre *.tf TerraformFmt
