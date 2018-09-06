@@ -7,11 +7,11 @@ indent_style = tab
 insert_final_line = true
 trim_trailing_whitespace = true
 
-[*.{d,py,rs,rst,ts,jl,proto,ps1}]
+[*.{d,py,rs,rst,ts,jl,ps1}]
 indent_style = space
 indent_size = 4
 
-[*.{f90,lua,pp,rb,erb,scala,tf,tfstate,vcl,yaml,yml,toml,erl,app.src,chpl}]
+[*.{f90,lua,pp,rb,erb,scala,tf,tfstate,vcl,yaml,yml,toml,erl,app.src,chpl,proto}]
 indent_style = space
 indent_size = 2
 
