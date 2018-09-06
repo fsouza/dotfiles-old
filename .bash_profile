@@ -20,6 +20,7 @@ export EDITOR=vim PAGER=less MANPAGER=less
 source ${HOME}/.dotfiles/extra/virtualenv
 source ${HOME}/.dotfiles/extra/gpg-agent
 
+source ${HOME}/.dotfiles/extra/chapel
 source ${HOME}/.dotfiles/extra/functions
 
 [ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
