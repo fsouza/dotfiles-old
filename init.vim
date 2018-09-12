@@ -36,7 +36,6 @@ Plug 'sirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
-Plug 'w0rp/ale'
 call plug#end()
 
 set t_Co=256
@@ -75,6 +74,3 @@ let g:jsx_ext_required = 0
 nmap <silent> <leader>g :Grepper -tool rg<CR>
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
-
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_text_changed = 'never'
