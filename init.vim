@@ -36,6 +36,7 @@ Plug 'sirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
 call plug#end()
 
 set t_Co=256
