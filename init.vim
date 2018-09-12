@@ -75,3 +75,6 @@ let g:jsx_ext_required = 0
 nmap <silent> <leader>g :Grepper -tool rg<CR>
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
+
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
