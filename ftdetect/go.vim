@@ -7,6 +7,7 @@ let g:go_metalinter_autosave = 1
 let g:go_template_autocreate = 0
 let g:go_snippet_case_type = 'camelcase'
 let g:go_gocode_unimported_packages = 0
+let g:go_gocode_propose_source = 0
 let g:go_info_mode = 'gocode'
 let g:go_echo_command_info = 0
 
