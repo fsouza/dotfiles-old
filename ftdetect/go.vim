@@ -26,6 +26,7 @@ let g:go_highlight_methods = 0
 let g:go_highlight_structs = 0
 let g:go_highlight_interfaces = 0
 let g:go_highlight_build_constraints = 0
+let g:go_jump_to_error = 0
 
 function! GoDef()
 	let bin_path = go#path#CheckBinPath("guru")
