@@ -34,9 +34,6 @@ function! GoDef()
 		return
 	endif
 
-	let old_gopath = $GOPATH
-	let $GOPATH = go#path#Detect()
-
 	let fname = fnamemodify(expand("%"), ':p:gs?\\?/?')
 	let command = printf("%s definition %s:#%s", bin_path, shellescape(fname), go#util#OffsetCursor())
 
@@ -47,7 +44,6 @@ function! GoDef()
 	endif
 
 	call s:doCustomJump(out)
-	let $GOPATH = old_gopath
 endfunction
 
 function! s:doCustomJump(out)
