@@ -9,7 +9,8 @@ REQUIREMENTS=\
 	     neovim \
 	     requests \
 	     schedule \
-	     boto3
+	     boto3 \
+	     black
 
 pip:
 	pip install --upgrade $(REQUIREMENTS)

@@ -9,6 +9,7 @@ if isdirectory($VIRTUALENVS)
 endif
 
 call plug#begin($VIMHOME.'/plugged')
+Plug 'ambv/black'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
@@ -68,6 +69,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+let g:black_virtualenv = $VIRTUALENVS.'/vim'
 
 let g:jsx_ext_required = 0
 
