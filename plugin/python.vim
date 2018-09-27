@@ -7,6 +7,7 @@ if $VIRTUAL_ENV != ""
 	let virtualenv = $VIRTUAL_ENV
 endif
 
+let g:black_virtualenv = $VIRTUALENVS.'/vim'
 let g:pymode_python = 'python3'
 let g:pymode_options = 0
 let g:pymode_indent = 1
