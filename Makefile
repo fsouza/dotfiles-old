@@ -1,4 +1,4 @@
-.PHONY: pip
+.PHONY: pip setup-langservers bootstrap
 
 REQUIREMENTS=\
 	     flask \
@@ -15,3 +15,8 @@ REQUIREMENTS=\
 
 pip:
 	pip install --upgrade $(REQUIREMENTS)
+
+setup-langservers:
+	./setup-langservers.bash
+
+bootstrap: pip setup-langservers
