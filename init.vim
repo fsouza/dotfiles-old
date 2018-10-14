@@ -29,7 +29,6 @@ Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
 Plug 'PProvost/vim-ps1'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
-Plug 'quramy/tsuquyomi'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
 Plug 'sirVer/ultisnips' | Plug 'honza/vim-snippets'
