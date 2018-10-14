@@ -1,9 +1,10 @@
 let g:LanguageClient_serverCommands = {
-	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+	\ 'cpp': ['clangd'],
+	\ 'java': ['jdtls'],
 	\ 'javascript': ['javascript-typescript-stdio'],
 	\ 'javascript.jsx': ['javascript-typescript-stdio'],
+	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 	\ 'typescript': ['javascript-typescript-stdio'],
-	\ 'cpp': ['clangd'],
 	\ }
 
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
