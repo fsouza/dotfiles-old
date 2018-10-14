@@ -31,4 +31,5 @@ source ${HOME}/.dotfiles/extra/functions
 [ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
 
 export PS1="% "
+eval $(opam env)
 source ~/.gimme/envs/gotip.env
