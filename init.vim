@@ -30,7 +30,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'PProvost/vim-ps1'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'quramy/tsuquyomi'
-Plug 'racer-rust/vim-racer'
 Plug 'Rip-Rip/clang_complete'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
