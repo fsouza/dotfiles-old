@@ -1,5 +1,6 @@
 let g:LanguageClient_serverCommands = {
 	\ 'cpp': ['clangd'],
+	\ 'fortran': ['fortls'],
 	\ 'java': ['jdtls'],
 	\ 'javascript': ['javascript-typescript-stdio'],
 	\ 'javascript.jsx': ['javascript-typescript-stdio'],

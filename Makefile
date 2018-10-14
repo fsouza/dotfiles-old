@@ -10,7 +10,8 @@ REQUIREMENTS=\
 	     requests \
 	     schedule \
 	     boto3 \
-	     black
+	     black \
+	     fortran-language-server
 
 pip:
 	pip install --upgrade $(REQUIREMENTS)
