@@ -11,6 +11,7 @@ endif
 call plug#begin($VIMHOME.'/plugged')
 Plug 'ambv/black'
 Plug 'artur-shaik/vim-javacomplete2'
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
