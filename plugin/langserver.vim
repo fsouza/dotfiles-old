@@ -4,6 +4,8 @@ let g:LanguageClient_serverCommands = {
 	\ 'java': ['jdtls'],
 	\ 'javascript': ['javascript-typescript-stdio'],
 	\ 'javascript.jsx': ['javascript-typescript-stdio'],
+	\ 'ocaml': ['ocaml-language-server', '--stdio'],
+	\ 'reason': ['ocaml-language-server', '--stdio'],
 	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 	\ 'typescript': ['javascript-typescript-stdio'],
 	\ }
