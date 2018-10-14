@@ -11,7 +11,7 @@ trim_trailing_whitespace = true
 indent_style = space
 indent_size = 4
 
-[*.{f90,lua,pp,rb,erb,scala,tf,tfstate,vcl,yaml,yml,toml,erl,app.src,chpl,proto}]
+[*.{f90,lua,pp,rb,erb,scala,tf,tfstate,vcl,yaml,yml,toml,erl,app.src,chpl,proto,ml}]
 indent_style = space
 indent_size = 2
 
