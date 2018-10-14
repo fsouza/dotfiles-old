@@ -4,6 +4,7 @@ if !isdirectory($VIMHOME)
 endif
 
 if isdirectory($VIRTUALENVS)
+	let $PATH = $VIRTUALENVS.'/vim/bin:'.$PATH
 	let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
 	let g:python3_host_skip_check = 1
 endif
