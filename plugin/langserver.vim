@@ -2,7 +2,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'cpp': ['clangd'],
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
 	\ 'fortran': ['fortls'],
-	\ 'java': ['jdtls'],
+	\ 'java': [$VIMHOME.'/bin/jdtls'],
 	\ 'javascript': ['javascript-typescript-stdio'],
 	\ 'javascript.jsx': ['javascript-typescript-stdio'],
 	\ 'ocaml': ['ocaml-language-server', '--stdio'],
