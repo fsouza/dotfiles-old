@@ -25,7 +25,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'mxw/vim-jsx'
-Plug 'nvie/vim-flake8'
 Plug 'pangloss/vim-javascript'
 Plug 'PProvost/vim-ps1'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
