@@ -12,7 +12,6 @@ endif
 call plug#begin($VIMHOME.'/plugged')
 Plug 'ambv/black'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'davidhalter/jedi-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -27,7 +26,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'PProvost/vim-ps1'
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
