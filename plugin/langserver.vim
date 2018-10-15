@@ -1,4 +1,5 @@
 let g:LanguageClient_serverCommands = {
+	\ 'c': ['clangd'],
 	\ 'cpp': ['clangd'],
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
 	\ 'fortran': ['fortls'],
