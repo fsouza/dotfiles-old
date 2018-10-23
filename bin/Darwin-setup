@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-basedir=$(cd $(dirname $0)/..; pwd -P)
-cp ${basedir}/extra/fonts/*.ttf $HOME/Library/Fonts/
-
 # This script is based on the work of Mathias Bynens at
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx.
 
