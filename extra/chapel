@@ -1,13 +1,21 @@
 CHAPEL_CODE=${HOME}/opt/src/chapel-code
 
+if [ ! -d "$CHAPEL_CODE" ]; then mkdir -p "$CHAPEL_CODE"; fi
+
+function _clone_chpl() {
+	git clone https://github.com/chapel-lang/chapel.git "$1"
+}
+
 function _load_chpl() {
-	source ${CHAPEL_CODE}/chapel-${1}/util/setchplenv.bash > /dev/null
+	location="${CHAPEL_CODE}/chapel-${1}"
+	if [ ! -d "$location" ]; then _clone_chpl "$location"; fi
+	source "${location}/util/setchplenv.bash" > /dev/null
 	export CHPL_TARGET_ARCH=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl CHPL_DEVELOPER=1
 	export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
 }
 
 function _download_and_build() {
-	git --git-dir="$CHPL_HOME/.git" --work-tree="$CHPL_HOME" pull --rebase
+	git -C "$CHPL_HOME" pull --rebase
 	make -C "$CHPL_HOME" -f "$CHPL_HOME/Makefile" -j
 	make -C "$CHPL_HOME" -f "$CHPL_HOME/Makefile" chpldoc
 	make -C "$CHPL_HOME" -f "$CHPL_HOME/Makefile" docs
@@ -35,7 +43,7 @@ function update_chapel() {
 
 function clean_chapel() {
 	for d in $(ls -d ${CHAPEL_CODE}/chapel-*); do
-		git --git-dir=${d}/.git --work-tree=${d} clean -dfX
+		git -C $d clean -dfX
 	done
 }
 
