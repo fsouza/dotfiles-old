@@ -10,3 +10,8 @@ function ntfs_mount() {
 	sudo mkdir $dst
 	sudo mount -t ntfs -o rw,auto,nobrowse $1 $dst && echo "Mounted: ${dst}"
 }
+
+function jdk8 {
+	jdk=$(ls -d /Library/Java/JavaVirtualMachines/jdk1.8.0_* | sort | tail -1)
+	export JAVA_HOME=$jdk/Contents/Home/
+}
