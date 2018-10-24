@@ -35,6 +35,9 @@ defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
 defaults write -g com.apple.mouse.tapBehavior -int 1
 defaults write -g com.apple.trackpad.forceClick -int 1
 
+# Use fn on keyboards
+defaults write -g com.apple.keyboard.fnState -int 1
+
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
