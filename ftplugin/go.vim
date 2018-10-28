@@ -1,4 +1,4 @@
-nmap gd :call godef#Def()<CR>
+nmap gd :call go#def#Jump('tab')<CR>
 nmap <Leader>i :GoInfo<CR>
 nmap <Leader>r <Plug>(go-rename)
 nmap <Leader>b <Plug>(go-build)

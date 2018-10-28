@@ -10,6 +10,7 @@ let g:go_gocode_unimported_packages = 0
 let g:go_gocode_propose_source = 0
 let g:go_info_mode = 'gocode'
 let g:go_echo_command_info = 0
+let g:go_def_mode = 'godef'
 
 let g:go_highlight_generate_tags = 0
 let g:go_highlight_string_spellcheck = 0
