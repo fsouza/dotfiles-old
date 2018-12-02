@@ -1,8 +1,13 @@
+let g:LanguageClient_rootMarkers = {
+        \ 'go': ['go.mod'],
+        \ }
+
 let g:LanguageClient_serverCommands = {
 	\ 'c': ['clangd', '-index'],
 	\ 'cpp': ['clangd'],
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
 	\ 'fortran': ['fortls'],
+	\ 'go': ['bingo', '-mode', 'stdio', '-use-global-cache'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
 	\ 'javascript': ['javascript-typescript-stdio'],
 	\ 'javascript.jsx': ['javascript-typescript-stdio'],
