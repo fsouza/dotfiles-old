@@ -13,6 +13,7 @@ call plug#begin($VIMHOME.'/plugged')
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'fsouza/chapel.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
