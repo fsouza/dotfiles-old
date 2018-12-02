@@ -26,6 +26,7 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'PProvost/vim-ps1'
 Plug 'reasonml-editor/vim-reason-plus'
+Plug 'rizzatti/dash.vim'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
 Plug 'sirVer/ultisnips' | Plug 'honza/vim-snippets'
@@ -67,6 +68,7 @@ let g:clang_library_path = '/Library/Developer/CommandLineTools/usr/lib/libclang
 
 let g:jsx_ext_required = 0
 
+nmap <silent> <leader>D <Plug>DashSearch
 nmap <silent> <leader>g :Grepper -tool rg<CR>
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
