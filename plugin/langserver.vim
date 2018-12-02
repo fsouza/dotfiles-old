@@ -10,7 +10,6 @@ let g:LanguageClient_serverCommands = {
 	\ 'go': ['bingo', '-mode', 'stdio', '-use-global-cache'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
 	\ 'javascript': ['javascript-typescript-stdio'],
-	\ 'javascript.jsx': ['javascript-typescript-stdio'],
 	\ 'ocaml': ['ocaml-language-server', '--stdio'],
 	\ 'python': ['pyls'],
 	\ 'reason': ['ocaml-language-server', '--stdio'],
