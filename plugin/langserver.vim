@@ -38,11 +38,11 @@ function LC_init()
 	endif
 endfunction
 
-function LC_auto_format()
-	if has_key(g:LanguageClient_serverCommands, &filetype)
+function LC_autoformat()
+	if has_key(g:LanguageClient_serverCommands, &filetype) && get(g:, 'LC_autoformat', 1) != 0
 		call LanguageClient#textDocument_formatting()
 	endif
 endfunction
 
 autocmd FileType * call LC_init()
-autocmd BufWritePre * call LC_auto_format()
+autocmd BufWritePre * call LC_autoformat()
