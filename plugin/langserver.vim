@@ -12,6 +12,21 @@ let g:LanguageClient_serverCommands = {
 	\ 'typescript': ['javascript-typescript-stdio'],
 	\ }
 
+let g:LanguageClient_documentHighlightDisplay = {
+	 \ 1: {
+	 \	"name": "Text",
+	 \	"texthl": "LangClientText",
+	 \ },
+	 \ 2: {
+	 \	"name": "Read",
+	 \	"texthl": "LangClientRead",
+	 \ },
+	 \ 3: {
+	 \	"name": "Write",
+	 \	"texthl": "LangClientWrite",
+	 \ },
+\ }
+
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
