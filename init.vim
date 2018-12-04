@@ -63,8 +63,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
-let g:jsx_ext_required = 0
-
 nmap <silent> <leader>D <Plug>DashSearch
 nmap <silent> <leader>g :Grepper -tool rg<CR>
 
