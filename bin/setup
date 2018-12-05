@@ -16,6 +16,9 @@ for file in $files; do
 done
 ln -sf ${basedir}/.bash_profile ~/.bashrc
 
+mkdir -p $HOME/.config
+ln -sf ${basedir}/pycodestyle $HOME/.config/pycodestyle
+
 mkdir -p ~/.gnupg
 chmod 700 ~/.gnupg
 ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
