@@ -40,7 +40,7 @@ endfunction
 
 function LC_autoformat()
 	if has_key(g:LanguageClient_serverCommands, &filetype) && get(g:, 'LC_autoformat', 1) != 0
-		call LanguageClient#textDocument_formatting()
+		call LanguageClient_runSync('LanguageClient#textDocument_formatting', {'handle': v:true})
 	endif
 endfunction
 
