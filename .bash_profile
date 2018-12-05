@@ -13,7 +13,7 @@ export HOMEBREW_NO_GITHUB_API=1
 
 [ -f ${HOME}/.dotfiles/extra/z/z.sh ] && source ${HOME}/.dotfiles/extra/z/z.sh
 
-export EDITOR=vim PAGER=less MANPAGER=less
+export EDITOR=nvim PAGER=less MANPAGER=less
 
 source ${HOME}/.dotfiles/extra/virtualenv
 source ${HOME}/.dotfiles/extra/gpg-agent
