@@ -8,7 +8,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'ocaml': ['ocaml-language-server', '--stdio'],
 	\ 'python': ['pyls'],
 	\ 'reason': ['ocaml-language-server', '--stdio'],
-	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+	\ 'rust': ['rls'],
 	\ 'typescript': ['javascript-typescript-stdio'],
 	\ }
 
