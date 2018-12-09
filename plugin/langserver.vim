@@ -1,14 +1,17 @@
 let g:LanguageClient_serverCommands = {
 	\ 'c': ['clangd', '-index', '-pch-storage=memory'],
 	\ 'cpp': ['clangd', '-index', '-pch-storage=memory'],
+	\ 'css': ['css-languageserver', '--stdio'],
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
 	\ 'fortran': ['fortls'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
 	\ 'javascript': ['typescript-language-server', '--stdio'],
+	\ 'less': ['css-languageserver', '--stdio'],
 	\ 'ocaml': ['ocaml-language-server', '--stdio'],
 	\ 'python': ['pyls'],
 	\ 'reason': ['ocaml-language-server', '--stdio'],
 	\ 'rust': ['rls'],
+	\ 'scss': ['css-languageserver', '--stdio'],
 	\ 'typescript': ['typescript-language-server', '--stdio'],
 	\ }
 
