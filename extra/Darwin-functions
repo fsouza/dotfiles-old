@@ -20,3 +20,5 @@ function corretto8 {
 	jdk=$(ls -d /Library/Java/JavaVirtualMachines/amazon-corretto-8* | sort | tail -1)
 	export JAVA_HOME=$jdk/Contents/Home/
 }
+
+export CACHE_DIR=$HOME/Library/Caches
