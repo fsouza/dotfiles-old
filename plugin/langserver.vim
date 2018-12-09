@@ -1,6 +1,12 @@
+let cquery_cache_dir = '/tmp/cquery'
+
+if isdirectory($CACHE_DIR)
+	let cquery_cache_dir = $CACHE_DIR . '/cquery'
+endif
+
 let g:LanguageClient_serverCommands = {
-	\ 'c': ['clangd', '-index'],
-	\ 'cpp': ['clangd'],
+	\ 'c': ['cquery', '--init={"cacheDirectory":"' . cquery_cache_dir . '"}'],
+	\ 'cpp': ['cquery', '--init={"cacheDirectory":"' . cquery_cache_dir . '"}'],
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
 	\ 'fortran': ['fortls'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
