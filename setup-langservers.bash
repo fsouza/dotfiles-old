@@ -15,7 +15,7 @@ function install_java_server {
 }
 
 function install_servers_from_npm {
-	npm i -g ocaml-language-server javascript-typescript-langserver dockerfile-language-server-nodejs
+	npm i -g ocaml-language-server typescript-language-server dockerfile-language-server-nodejs
 }
 
 install_java_server

@@ -10,12 +10,12 @@ let g:LanguageClient_serverCommands = {
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
 	\ 'fortran': ['fortls'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
-	\ 'javascript': ['javascript-typescript-stdio'],
+	\ 'javascript': ['typescript-language-server', '--stdio'],
 	\ 'ocaml': ['ocaml-language-server', '--stdio'],
 	\ 'python': ['pyls'],
 	\ 'reason': ['ocaml-language-server', '--stdio'],
 	\ 'rust': ['rls'],
-	\ 'typescript': ['javascript-typescript-stdio'],
+	\ 'typescript': ['typescript-language-server', '--stdio'],
 	\ }
 
 let g:LanguageClient_documentHighlightDisplay = {
