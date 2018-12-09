@@ -1,6 +1,6 @@
 let g:LanguageClient_serverCommands = {
-	\ 'c': ['clangd', '-index'],
-	\ 'cpp': ['clangd'],
+	\ 'c': ['clangd', '-index', '-pch-storage=memory'],
+	\ 'cpp': ['clangd', '-index', '-pch-storage=memory'],
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
 	\ 'fortran': ['fortls'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
