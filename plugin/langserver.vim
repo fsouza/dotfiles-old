@@ -30,6 +30,8 @@ let g:LanguageClient_documentHighlightDisplay = {
 	 \ },
 \ }
 
+let g:LanguageClient_hasSnippetSupport = 0
+
 function LC_init()
 	if has_key(g:LanguageClient_serverCommands, &filetype)
 		nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
