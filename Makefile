@@ -2,7 +2,7 @@
 
 REQUIREMENTS=\
 	     flake8 \
-	     neovim \
+	     pynvim \
 	     black \
 	     pyls-black \
 	     pyls-isort \
