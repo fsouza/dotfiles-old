@@ -16,7 +16,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'fsouza/chapel.vim'
 Plug 'godlygeek/tabular'
-Plug 'google/vim-jsonnet'
 Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
