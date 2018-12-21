@@ -6,7 +6,6 @@ function install_java_server {
 			git clone https://github.com/eclipse/eclipse.jdt.ls.git "${JDTLS_LOCATION}"
 		fi
 		pushd "${JDTLS_LOCATION}"
-		export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-8.jdk/Contents/Home/
 		./mvnw verify
 		popd
 	else
