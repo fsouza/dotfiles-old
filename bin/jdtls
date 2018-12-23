@@ -1,9 +1,7 @@
 #!/bin/bash -e
 
-if [ -z "${JDTLS_LOCATION}" ]; then
-	echo >&2 the environment variable JDTLS_LOCATION is required
-	exit 2
-fi
+ROOT=$(cd `dirname ${0}`/.. && pwd -P)
+JDTLS_LOCATION=$ROOT/langservers/jdtls
 
 java \
 	-Declipse.application=org.eclipse.jdt.ls.core.id1 \

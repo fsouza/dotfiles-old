@@ -1,21 +1,29 @@
 #!/bin/bash -e
 
+ROOT=$(cd `dirname ${0}` && pwd -P)
+
+function init {
+	git submodule update --init --recursive
+}
+
 function install_java_server {
-	if [ -n "${JDTLS_LOCATION}" ]; then
-		if [ ! -d "${JDTLS_LOCATION}" ]; then
-			git clone https://github.com/eclipse/eclipse.jdt.ls.git "${JDTLS_LOCATION}"
-		fi
-		pushd "${JDTLS_LOCATION}"
-		./mvnw verify
-		popd
-	else
-		echo "skipping jdt server, no JDTLS_LOCATION... "
-	fi
+	pushd "$ROOT/langservers/jdtls"
+	./mvnw package
+	popd
+}
+
+function install_yaml_server {
+	pushd "$ROOT/langservers/yaml-language-server"
+	npm ci
+	npm run compile
+	popd
 }
 
 function install_servers_from_npm {
 	npm i -g ocaml-language-server typescript-language-server dockerfile-language-server-nodejs vscode-css-languageserver-bin
 }
 
+init
 install_java_server
+install_yaml_server
 install_servers_from_npm

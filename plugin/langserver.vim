@@ -13,6 +13,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'rust': ['rls'],
 	\ 'scss': ['css-languageserver', '--stdio'],
 	\ 'typescript': ['typescript-language-server', '--stdio'],
+	\ 'yaml': [$VIMHOME.'/bin/yls'],
 	\ }
 
 let g:LanguageClient_documentHighlightDisplay = {
