@@ -28,5 +28,4 @@ source ${HOME}/.dotfiles/extra/functions
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
 export PS1=":: "
-eval $(opam env)
 source ~/.gimme/envs/gotip.env
