@@ -20,6 +20,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhinz/vim-grepper'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'rizzatti/dash.vim'
 Plug 'sirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
