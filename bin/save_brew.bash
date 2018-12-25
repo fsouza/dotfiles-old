@@ -14,7 +14,11 @@ function backup_line() {
 		flags="--HEAD $flags"
 	fi
 
-	echo "$formula_name $flags"
+	if [ -n "${flags}" ]; then
+		formula_name="$formula_name $flags"
+	fi
+
+	echo $formula_name
 }
 
 >"$1"
