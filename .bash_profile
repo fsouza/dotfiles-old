@@ -1,5 +1,9 @@
 OS=$(uname -s)
 
+function cond_source {
+	[ -s "${1}" ] && source "${1}"
+}
+
 export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
@@ -11,8 +15,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_EMOJI=1
 export HOMEBREW_NO_GITHUB_API=1
 
-[ -f ${HOME}/.dotfiles/extra/z/z.sh ] && source ${HOME}/.dotfiles/extra/z/z.sh
-
 export EDITOR=nvim PAGER=less MANPAGER=less
 
 source ${HOME}/.dotfiles/extra/virtualenv
@@ -21,11 +23,11 @@ source ${HOME}/.dotfiles/extra/gpg-agent
 source ${HOME}/.dotfiles/extra/chapel
 source ${HOME}/.dotfiles/extra/functions
 
-[ -f ${HOME}/.dotfiles/extra/local-functions ] && source ${HOME}/.dotfiles/extra/local-functions
-[ -f ${HOME}/.dotfiles/extra/${OS}-functions ] && source ${HOME}/.dotfiles/extra/${OS}-functions
-[ -f /usr/local/etc/bash_completion ] && source /usr/local/etc/bash_completion
-
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+cond_source "${HOME}/.dotfiles/extra/z/z.sh"
+cond_source "${HOME}/.dotfiles/extra/local-functions"
+cond_source "${HOME}/.dotfiles/extra/${OS}-functions"
+cond_source /usr/local/etc/bash_completion
+cond_source "$NVM_DIR/nvm.sh"
+cond_source "${HOME}/.gimme/envs/gotip.env"
 
 export PS1=":: "
-source ~/.gimme/envs/gotip.env
