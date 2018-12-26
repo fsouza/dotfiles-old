@@ -27,8 +27,6 @@ if [ -f $basedir/bin/${os}-setup ]; then
 	$basedir/bin/${os}-setup
 fi
 
-curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path -y
-
 if [ -n "$NVM_DIR" ]; then
 	mkdir -p $NVM_DIR
 	curl -s https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
