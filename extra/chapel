@@ -1,8 +1,7 @@
 CHAPEL_CODE=${HOME}/opt/src/chapel-code
 
-if [ ! -d "$CHAPEL_CODE" ]; then mkdir -p "$CHAPEL_CODE"; fi
-
 function _clone_chpl() {
+	mkdir -p "$CHAPEL_CODE"
 	git clone https://github.com/chapel-lang/chapel.git "$1"
 }
 
