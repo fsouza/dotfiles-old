@@ -20,7 +20,13 @@ function install_yaml_server {
 }
 
 function install_servers_from_npm {
-	npm i -g ocaml-language-server typescript-language-server dockerfile-language-server-nodejs vscode-css-languageserver-bin bash-language-server
+	npm i -g \
+		ocaml-language-server \
+		typescript-language-server \
+		dockerfile-language-server-nodejs \
+		vscode-css-languageserver-bin \
+		vscode-html-languageserver-bin \
+		bash-language-server
 }
 
 init
