@@ -7,6 +7,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'html': ['html-languageserver', '--stdio'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
 	\ 'javascript': ['typescript-language-server', '--stdio'],
+	\ 'json': ['json-languageserver', '--stdio'],
 	\ 'less': ['css-languageserver', '--stdio'],
 	\ 'ocaml': ['ocaml-language-server', '--stdio'],
 	\ 'python': ['pyls'],
