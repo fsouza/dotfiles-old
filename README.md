@@ -13,7 +13,7 @@ All you need to do is clone the repository in your ``$VIMHOME`` and then
 initialize the submodules:
 
 ```
-% git clone https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
+% git clone --recurse-submodules https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
 % nvim +PlugInstall
 ```
 
@@ -22,7 +22,7 @@ initialize the submodules:
 You may optionally use it with Vim instead of NeoVim:
 
 ```
-% git clone https://github.com/fsouza/vimfiles.git ${HOME}/.vim
+% git clone --recurse-submodules https://github.com/fsouza/vimfiles.git ${HOME}/.vim
 % echo "source ${HOME}/.vim/init.vim" > ${HOME}/.vimrc
 % vim +PlugInstall
 ```
