@@ -30,10 +30,8 @@ defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false
 defaults write -g NSAutomaticDashSubstitutionEnabled -bool false
 
 # Trackpad: enable tap to click for this user and for the login screen
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write -g com.apple.mouse.tapBehavior -int 1
-defaults write -g com.apple.mouse.tapBehavior -int 1
-defaults write -g com.apple.trackpad.forceClick -int 1
 
 # Use fn on keyboards
 defaults write -g com.apple.keyboard.fnState -int 1
