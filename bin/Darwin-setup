@@ -58,6 +58,10 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Finder: show all filename extensions
 defaults write -g AppleShowAllExtensions -bool true
 
+# Mojave colors
+defaults write -g AppleAccentColor -string "-1"
+defaults write -g AppleHighlightColor "0.847059 0.847059 0.862745 Graphite"
+
 # When performing a search, search the current folder by default
 defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
