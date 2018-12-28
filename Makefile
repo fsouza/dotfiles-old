@@ -12,7 +12,10 @@ REQUIREMENTS=\
 pip:
 	pip install --upgrade $(REQUIREMENTS)
 
+gem:
+	gem install neovim
+
 setup-langservers:
 	./setup-langservers.bash
 
-bootstrap: pip setup-langservers
+bootstrap: pip gem setup-langservers
