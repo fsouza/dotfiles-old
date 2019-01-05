@@ -14,6 +14,7 @@ initialize the submodules:
 
 ```
 % git clone --recurse-submodules https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
+% make -f ${HOME}/.config/nvim/Makefile bootstrap
 % nvim +PlugInstall
 ```
 
@@ -23,6 +24,7 @@ You may optionally use it with Vim instead of NeoVim:
 
 ```
 % git clone --recurse-submodules https://github.com/fsouza/vimfiles.git ${HOME}/.vim
+% make -f ${HOME}/.vim/Makefile bootstrap
 % echo "source ${HOME}/.vim/init.vim" > ${HOME}/.vimrc
 % vim +PlugInstall
 ```
