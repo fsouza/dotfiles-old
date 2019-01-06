@@ -45,6 +45,8 @@ function LC_init()
 		nnoremap <silent> <Leader>i :call LanguageClient#textDocument_hover()<CR>
 		nnoremap <silent> <Leader>s :call LanguageClient#textDocument_documentHighlight()<CR>
 		nnoremap <silent> <Leader>t :call LanguageClient#workspace_symbol()<CR>
+
+		setlocal omnifunc=LanguageClient#complete
 	endif
 endfunction
 
