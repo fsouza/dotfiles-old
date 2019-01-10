@@ -3,6 +3,5 @@
 brew update
 brew upgrade
 
-brew cleanup -s
+brew cleanup -s --prune 3
 brew services cleanup
-brew prune
