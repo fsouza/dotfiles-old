@@ -10,7 +10,7 @@ if isdirectory($VIRTUALENVS)
 endif
 
 call plug#begin($VIMHOME.'/plugged')
-Plug 'autozimu/LanguageClient-neovim', { 'commit': '8abfeb15161418674e5bc98917983b0c470fe10b', 'do': 'bash install.sh' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
