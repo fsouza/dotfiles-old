@@ -14,3 +14,7 @@ let g:fzf_colors = {
 	\ 'header': ['fg', 'Normal'] }
 
 map <silent> <leader>lz :FzfFiles<CR>
+
+if executable("rg") == 1
+	let $FZF_DEFAULT_COMMAND = "rg -l '.*'"
+endif
