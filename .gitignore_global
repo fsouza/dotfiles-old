@@ -5,3 +5,5 @@ doc/tags
 .editorconfig
 .merlin
 .mypy_cache
+workspace/jdt.ls-java-project/
+workspace/.metadata/
