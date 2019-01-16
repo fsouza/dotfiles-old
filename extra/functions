@@ -35,6 +35,11 @@ function gimme {
 	fi
 }
 
+function gomodu {
+	cat go.mod | grep -v indirect | grep '^\s\+' | grep 'v[0-9]\+\.[0-9]\+\.[0-9]\+$' | awk '{print $1}' | xargs -tI PKG go get PKG@latest
+	go mod tidy
+}
+
 function update_go_tip {
 	gimme=$(which gimme)
 	GIMME_DEBUG=2 GIMME_TYPE=git $gimme tip
