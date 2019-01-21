@@ -4,7 +4,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'css': ['css-languageserver', '--stdio'],
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
 	\ 'fortran': ['fortls'],
-	\ 'go': ['bingo', '-disable-func-snippet'],
+	\ 'go': ['bingo', '-disable-func-snippet', '-format-style', 'gofmt', '-golist-duration', '5'],
 	\ 'html': ['html-languageserver', '--stdio'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
 	\ 'javascript': ['typescript-language-server', '--stdio'],
