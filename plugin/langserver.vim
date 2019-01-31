@@ -36,6 +36,7 @@ let g:LanguageClient_documentHighlightDisplay = {
 \ }
 
 let g:LanguageClient_hasSnippetSupport = 0
+let g:LanguageClient_useVirtualText = 0
 
 function LC_init()
 	if has_key(g:LanguageClient_serverCommands, &filetype)
