@@ -10,7 +10,7 @@ REQUIREMENTS=\
 	     fortran-language-server
 
 pip:
-	pip install --upgrade $(REQUIREMENTS)
+	pip install --upgrade pip $(REQUIREMENTS)
 
 gem:
 	gem install neovim
