@@ -7,5 +7,6 @@ doc/tags
 .mypy_cache
 **/workspace/jdt.ls-java-project/
 **/workspace/.metadata/
+ensime.sbt
 .ensime
 .ensime_cache
