@@ -7,7 +7,9 @@ REQUIREMENTS=\
 	     pyls-black \
 	     pyls-isort \
 	     pyls-mypy \
-	     fortran-language-server
+	     fortran-language-server \
+	     websocket-client \
+	     sexpdata
 
 pip:
 	pip install --upgrade pip $(REQUIREMENTS)
