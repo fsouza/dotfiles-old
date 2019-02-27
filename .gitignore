@@ -4,3 +4,4 @@ plugged
 .init.vim-rplugin~
 *.old
 view
+plugin/local-*.vim
