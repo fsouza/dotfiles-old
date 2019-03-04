@@ -28,3 +28,7 @@
 	cookiefile = /Users/fsouza/.gitcookies
 [url "https://"]
 	insteadOf = git://
+[pull]
+	rebase = true
+[rebase]
+	autoStash = true
