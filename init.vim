@@ -16,6 +16,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
+Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
