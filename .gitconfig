@@ -24,8 +24,6 @@
 	default = current
 [http "https://gopkg.in"]
 	followRedirects = true
-[http]
-	cookiefile = /Users/fsouza/.gitcookies
 [url "https://"]
 	insteadOf = git://
 [pull]
