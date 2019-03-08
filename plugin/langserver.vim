@@ -3,7 +3,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'cpp': ['clangd', '-index', '-pch-storage=memory'],
 	\ 'css': ['css-languageserver', '--stdio'],
 	\ 'dockerfile': ['docker-langserver', '--stdio'],
-	\ 'fortran': ['fortls'],
+	\ 'fortran': ['fortls', '--lowercase_intrinsics'],
 	\ 'go': ['bingo', '-disable-func-snippet', '-format-style', 'gofmt'],
 	\ 'html': ['html-languageserver', '--stdio'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
