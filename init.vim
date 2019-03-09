@@ -25,6 +25,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rgrinberg/vim-ocaml'
 Plug 'rizzatti/dash.vim'
+Plug 'sirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
@@ -55,6 +56,10 @@ set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set guicursor=
 set mouse=a
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-n>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 nmap <silent> <leader>D <Plug>DashSearch
 nmap <silent> <leader>g :Grepper -tool rg<CR>
