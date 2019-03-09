@@ -27,5 +27,5 @@ cond_source /usr/local/etc/bash_completion
 cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 
-export PS1="% "
+export PS1="％ "
 eval $(opam env)
