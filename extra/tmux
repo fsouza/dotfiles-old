@@ -1,0 +1,11 @@
+function _go_to_tmux {
+	if [ tmux has-session ]; then
+		tmux attach
+	else
+		tmux new
+	fi
+}
+
+if [ -z "$TMUX" ] && [ -n "$(which tmux)" ] && [[ $- =~ i ]]; then
+	_go_to_tmux
+fi

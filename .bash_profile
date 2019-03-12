@@ -29,3 +29,5 @@ cond_source "${HOME}/.gimme/envs/gotip.env"
 
 export PS1="％ "
 eval $(opam env)
+
+source ${HOME}/.dotfiles/extra/tmux
