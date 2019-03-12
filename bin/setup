@@ -10,7 +10,7 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=".bash_profile .clang-format .gitconfig .gitignore_global .hgignore_global .hgrc .editorconfig .utoprc .alacritty.yml"
+files=".bash_profile .clang-format .gitconfig .gitignore_global .hgignore_global .hgrc .editorconfig .utoprc .alacritty.yml .tmux.conf"
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
