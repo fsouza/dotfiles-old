@@ -1,5 +1,5 @@
 function _go_to_tmux {
-	if [ tmux has-session ]; then
+	if tmux has-session; then
 		tmux attach
 	else
 		tmux new
