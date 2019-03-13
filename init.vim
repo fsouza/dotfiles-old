@@ -33,13 +33,7 @@ call plug#end()
 
 set t_Co=256
 syntax on
-
-if $ITERM_PROFILE =~ "talk"
-	set background=light
-	colorscheme PaperColor
-else
-	colorscheme none
-endif
+colorscheme none
 
 filetype plugin indent on
 
