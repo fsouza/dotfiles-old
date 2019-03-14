@@ -4,7 +4,6 @@ nnoremap <localleader>r :EnRename<CR>
 
 function! ScalaFmt()
 	if get(g:, 'ScalaFmt_autoformat', 1) != 0
-		try | silent undojoin | catch | endtry
 		let view = winsaveview()
 		setlocal shellredir=>
 		silent %!scalafmt --stdin --stdout
