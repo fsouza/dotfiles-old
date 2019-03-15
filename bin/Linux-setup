@@ -27,6 +27,7 @@ function install_base_dev_tools {
 		gnupg-agent \
 		software-properties-common \
 		ruby \
+		pinentry-tty \
 		openjdk-8-jdk \
 		openjdk-11-jdk
 }
