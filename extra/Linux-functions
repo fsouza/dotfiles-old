@@ -1,1 +1,1 @@
-export TMUX_COPY_CMD='xsel -ib'
+export TMUX_COPY_CMD='xclip -i -selection clipboard'
