@@ -27,6 +27,7 @@ function install_base_dev_tools {
 		gnupg-agent \
 		software-properties-common \
 		ruby \
+		xsel \
 		pinentry-tty
 }
 
