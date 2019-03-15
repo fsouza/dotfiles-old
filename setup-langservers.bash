@@ -26,8 +26,7 @@ function install_servers_from_npm {
 		dockerfile-language-server-nodejs \
 		vscode-css-languageserver-bin \
 		vscode-html-languageserver-bin \
-		vscode-json-languageserver-bin \
-		bash-language-server
+		vscode-json-languageserver-bin
 }
 
 init
