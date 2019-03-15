@@ -2,6 +2,7 @@ function cond_source {
 	[ -s "${1}" ] && source "${1}"
 }
 
+export OS_NAME=$(uname -s)
 export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
@@ -23,6 +24,7 @@ source ${HOME}/.dotfiles/extra/functions
 
 cond_source "${HOME}/.dotfiles/extra/z/z.sh"
 cond_source "${HOME}/.dotfiles/extra/local-functions"
+cond_source "${HOME}/.dotfiles/extra/${OS_NAME}-functions"
 cond_source /usr/local/etc/bash_completion
 cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
