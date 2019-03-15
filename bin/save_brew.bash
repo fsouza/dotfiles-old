@@ -26,5 +26,7 @@ for formula in $(brew leaves); do
 	backup_line "${formula}" >> "$1"
 done
 
-brew cask list > "${1}-cask"
 brew tap > "${1}-tap"
+if [[ ${OS_NAME} == "Darwin" ]]; then
+	brew cask list > "${1}-cask"
+fi
