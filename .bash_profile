@@ -8,7 +8,7 @@ export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${HOME}/.dotfiles/extra/z
 export GOPATH=$HOME GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 
-export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/bin:/usr/local/bin:/usr/local/sbin:${HOME}/.dotfiles/extra/gimme:$PATH
+export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/bin:/home/linuxbrew/.linuxbrew:/usr/local/bin:/usr/local/sbin:${HOME}/.dotfiles/extra/gimme:$PATH
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_EMOJI=1
@@ -26,7 +26,7 @@ cond_source "${HOME}/.dotfiles/extra/z/z.sh"
 cond_source "${HOME}/.dotfiles/extra/local-functions"
 cond_source "${HOME}/.dotfiles/extra/${OS_NAME}-functions"
 cond_source /usr/local/etc/bash_completion
-cond_source "${HOME}/.linuxbrew/etc/bash_completion"
+cond_source "/home/linuxbrew/.linuxbrew/etc/bash_completion"
 cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 
