@@ -1,5 +1,13 @@
 #!/bin/bash -e
 
+function install_source_code_pro {
+	SOURCE_CODE_PRO_VERSION=variable-fonts
+
+	pushd $HOME/Library/Fonts
+	curl -LO https://github.com/adobe-fonts/source-code-pro/releases/download/${SOURCE_CODE_PRO_VERSION}/SourceCodeVariable-Roman.ttf
+	popd
+}
+
 # This script is based on the work of Mathias Bynens at
 # https://github.com/mathiasbynens/dotfiles/blob/master/.osx.
 
@@ -151,3 +159,4 @@ defaults write com.apple.controlstrip MiniCustomized -array com.apple.system.bri
 	com.apple.system.mute
 
 defaults write com.apple.touchbar.agent PresentationModeFnModes -dict appWithControlStrip fullControlStrip
+install_source_code_pro
