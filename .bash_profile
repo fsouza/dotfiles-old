@@ -26,6 +26,7 @@ cond_source "${HOME}/.dotfiles/extra/z/z.sh"
 cond_source "${HOME}/.dotfiles/extra/local-functions"
 cond_source "${HOME}/.dotfiles/extra/${OS_NAME}-functions"
 cond_source /usr/local/etc/bash_completion
+cond_source "${HOME}/.linuxbrew/etc/bash_completion"
 cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 
