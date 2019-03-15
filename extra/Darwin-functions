@@ -1,0 +1,1 @@
+export TMUX_COPY_CMD=pbcopy
