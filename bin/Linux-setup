@@ -36,6 +36,7 @@ function install_source_code_pro {
 	mkdir -p ${HOME}/.fonts
 	pushd ${HOME}/.fonts
 	curl -LO https://github.com/adobe-fonts/source-code-pro/releases/download/${SOURCE_CODE_PRO_VERSION}/SourceCodeVariable-Roman.otf
+	popd
 	fc-cache -f
 }
 
