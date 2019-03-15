@@ -1,0 +1,107 @@
+#!/bin/bash -e
+
+# Yes, this script requires sudo. Life sucks.
+
+USE_PODMAN=yes
+CORRETTO8_URL=https://d2znqt9b1bc64u.cloudfront.net/java-1.8.0-amazon-corretto-jdk_8.202.08-2_amd64.deb
+CORRETTO11_URL=https://d3pxv6yz143wms.cloudfront.net/11.0.2.9.3/java-11-amazon-corretto-jdk_11.0.2.9-3_amd64.deb
+ALACRITTY_VERSION=v0.2.9
+
+function rm_dir {
+	if [ -n "${1}" ] && [ -d "${1}" ]; then
+		rm -rf "${1}"
+	fi
+}
+
+function apt_update {
+	sudo apt update
+}
+
+function install_base_dev_tools {
+	# ruby is installed globally for homebrew
+	sudo apt install -y \
+		build-essential \
+		curl \
+		file \
+		apt-transport-https \
+		gnupg-agent \
+		software-properties-common \
+		ruby \
+		openjdk-8-jdk \
+		openjdk-11-jdk
+}
+
+function install_source_code_pro {
+	SOURCE_CODE_PRO_VERSION=variable-fonts
+
+	mkdir -p ${HOME}/.fonts
+	pushd ${HOME}/.fonts
+	curl -LO https://github.com/adobe-fonts/source-code-pro/releases/download/${SOURCE_CODE_PRO_VERSION}/SourceCodeVariable-Roman.otf
+	fc-cache -f
+}
+
+function install_op {
+	OP_VERSION=v0.5.5
+
+	tmp_dir=$(mktemp -d)
+	pushd ${tmp_dir}
+	curl -Lo op.zip https://cache.agilebits.com/dist/1P/op/pkg/${OP_VERSION}/op_linux_amd64_${OP_VERSION}.zip
+	unzip op.zip
+	mv op ${HOME}/bin
+	popd
+
+	rm_dir "${tmp_dir}"
+}
+
+# really, apt?
+function install_remote_deb_packages {
+        tmp_dir=$(mktemp -d)
+
+        pushd ${tmp_dir}
+                for pkg in ${@}; do
+                        curl -LO ${pkg}
+                done
+                sudo apt install -y ./*.deb
+        popd
+
+	rm_dir "${tmp_dir}"
+}
+
+function install_additional_tools {
+	install_remote_deb_package \
+		${CORRETTO8_URL} \
+		${CORRETTO11_URL} \
+		https://github.com/jwilm/alacritty/releases/download/${ALACRITTY_VERSION}/Alacritty-${ALACRITTY_VERSION}_amd64.deb
+
+	install_source_code_pro
+	install_op
+}
+
+# based on instructions from the official Docker docs.
+#
+# TODO: if podman works fine for me, get rid of this function.
+function install_docker {
+	sudo apt-key adv --fetch-keys https://download.docker.com/linux/ubuntu/gpg
+	sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+	sudo apt update
+	sudo apt install -y docker-ce docker-ce-cli containerd.io
+}
+
+function install_podman {
+	sudo apt-add-repository -y ppa:projectatomic/ppa
+	sudo apt install -y podman
+}
+
+function main {
+	apt_update
+	install_base_dev_tools
+	install_additional_tools
+
+	if [[ $USE_PODMAN == "yes" ]]; then
+		install_podman
+	else
+		install_docker
+	fi
+}
+
+main
