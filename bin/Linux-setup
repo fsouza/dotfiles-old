@@ -28,6 +28,7 @@ function install_base_dev_tools {
 		software-properties-common \
 		ruby \
 		xclip \
+		m4 \
 		pinentry-tty
 }
 
