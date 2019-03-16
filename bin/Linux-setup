@@ -2,7 +2,6 @@
 
 # Yes, this script requires sudo. Life sucks.
 
-USE_PODMAN=yes
 CORRETTO8_URL=https://d2znqt9b1bc64u.cloudfront.net/java-1.8.0-amazon-corretto-jdk_8.202.08-2_amd64.deb
 CORRETTO11_URL=https://d3pxv6yz143wms.cloudfront.net/11.0.2.9.3/java-11-amazon-corretto-jdk_11.0.2.9-3_amd64.deb
 ALACRITTY_VERSION=v0.2.9
@@ -94,23 +93,14 @@ function install_docker {
 	sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 	sudo apt update
 	sudo apt install -y docker-ce docker-ce-cli containerd.io
-}
-
-function install_podman {
-	sudo apt-add-repository -y ppa:projectatomic/ppa
-	sudo apt install -y podman
+	sudo usermod -G docker $(whoami)
 }
 
 function main {
 	apt_update
 	install_base_dev_tools
 	install_additional_tools
-
-	if [[ $USE_PODMAN == "yes" ]]; then
-		install_podman
-	else
-		install_docker
-	fi
+	install_docker
 }
 
 main
