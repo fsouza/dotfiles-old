@@ -28,6 +28,8 @@ function install_base_dev_tools {
 		software-properties-common \
 		ruby \
 		xclip \
+		uidmap \
+		slirp4netns \
 		pinentry-tty
 }
 
