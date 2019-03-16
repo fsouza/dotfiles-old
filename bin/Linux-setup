@@ -30,6 +30,7 @@ function install_base_dev_tools {
 		xclip \
 		uidmap \
 		slirp4netns \
+		libssl-dev \
 		pinentry-tty
 }
 
@@ -46,6 +47,7 @@ function install_source_code_pro {
 function install_op {
 	OP_VERSION=v0.5.5
 
+	mkdir -p ${HOME}/bin
 	tmp_dir=$(mktemp -d)
 	pushd ${tmp_dir}
 	curl -Lo op.zip https://cache.agilebits.com/dist/1P/op/pkg/${OP_VERSION}/op_linux_amd64_${OP_VERSION}.zip
