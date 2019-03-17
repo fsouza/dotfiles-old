@@ -8,7 +8,7 @@ export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${HOME}/.dotfiles/extra/z
 export GOPATH=$HOME GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 
-export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/usr/local/bin:/usr/local/sbin:${HOME}/.dotfiles/extra/gimme:$PATH
+export PATH=$GOPATH/bin:$RBENV_ROOT/shims:${HOME}/.dotfiles/bin:${HOME}/.cargo/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:/usr/local/bin:/usr/local/sbin:${HOME}/.dotfiles/extra/gimme:$PATH
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_EMOJI=1
