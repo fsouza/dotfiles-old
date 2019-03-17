@@ -1,4 +1,6 @@
-.PHONY: pip setup-langservers bootstrap
+.PHONY: pip setup-langservers bootstrap echo-path
+
+mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 
 REQUIREMENTS=\
 	     flake8 \
@@ -18,6 +20,6 @@ gem:
 	gem install neovim
 
 setup-langservers:
-	./setup-langservers.bash
+	$$(dirname $(mkfile_path))/setup-langservers.bash
 
 bootstrap: pip gem setup-langservers

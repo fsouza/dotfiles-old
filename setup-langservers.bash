@@ -29,7 +29,9 @@ function install_servers_from_npm {
 		vscode-json-languageserver-bin
 }
 
+pushd $ROOT
 init
 install_java_server
 install_yaml_server
 install_servers_from_npm
+popd
