@@ -29,6 +29,9 @@ cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 
 export PS1="％ "
-eval $(opam env)
+
+if [ -n "$(which opam)" ]; then
+	eval $(opam env)
+fi
 
 source ${HOME}/.dotfiles/extra/tmux
