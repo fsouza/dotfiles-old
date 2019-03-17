@@ -32,6 +32,7 @@ function install_base_dev_tools {
 		ruby \
 		xclip \
 		libssl-dev \
+		virtualenv \
 		pinentry-tty
 }
 
