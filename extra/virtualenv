@@ -37,15 +37,14 @@ function mkv() {
 		return 2
 	fi
 
-	if [ -d "${VIRTUALENVS}/${1}" ]; then
-		# env already exists, let's use it :)
-		v $1
-		return 0
+	# create the env only if it doesn't exist yet
+	if ! [ -d "${VIRTUALENVS}/${1}" ]; then
+		python=${PYTHON:-python3}
+		virtualenv -p ${python} ${VIRTUALENVS}/${1}
+		${VIRTUALENVS}/${1}/bin/pip install --upgrade pip
 	fi
 
-	python=${PYTHON:-python3}
-	virtualenv -p ${python} ${VIRTUALENVS}/${1}
-	${VIRTUALENVS}/${1}/bin/pip install --upgrade pip
+	v $1
 }
 
 function rmv() {
