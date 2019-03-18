@@ -6,6 +6,8 @@ CORRETTO8_URL=https://d2znqt9b1bc64u.cloudfront.net/java-1.8.0-amazon-corretto-j
 CORRETTO11_URL=https://d3pxv6yz143wms.cloudfront.net/11.0.2.9.3/java-11-amazon-corretto-jdk_11.0.2.9-3_amd64.deb
 ALACRITTY_VERSION=v0.2.9
 
+basedir=$(cd $(dirname $0)/..; pwd -P)
+
 function rm_dir {
 	if [ -n "${1}" ] && [ -d "${1}" ]; then
 		rm -rf "${1}"
@@ -37,12 +39,8 @@ function install_base_dev_tools {
 }
 
 function install_source_code_pro {
-	SOURCE_CODE_PRO_VERSION=variable-fonts
-
 	mkdir -p ${HOME}/.fonts
-	pushd ${HOME}/.fonts
-	curl -LO https://github.com/adobe-fonts/source-code-pro/releases/download/${SOURCE_CODE_PRO_VERSION}/SourceCodeVariable-Roman.otf
-	popd
+	cp ${basedir}/extra/source-code-pro/SourceCodeVariable-Roman.otf ${HOME}/.fonts/
 	fc-cache -f
 }
 
