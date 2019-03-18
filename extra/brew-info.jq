@@ -3,15 +3,15 @@ def filter_deps:
 ;
 
 def get_options:
-  .installed[].used_options | join (" ")
+  .installed[].used_options | join (" ") | select(. != "")
 ;
 
 def head_option:
-  if (.installed[].version | test("^HEAD-")) then "--HEAD" else "" end
+  if (.installed[].version | test("^HEAD-")) then "--HEAD" else empty end
 ;
 
 def from_source_option:
-  if (.versions.bottle) and (.installed[].poured_from_bottle | not) then "-s" else "" end
+  if (.versions.bottle) and (.installed[].poured_from_bottle | not) then "--build-from-source" else empty end
 ;
 
 def parts:
@@ -19,7 +19,7 @@ def parts:
 ;
 
 def raw_line:
-  [parts[] | select(. != "")] | join(" ")
+  parts | join(" ")
 ;
 
 filter_deps | raw_line
