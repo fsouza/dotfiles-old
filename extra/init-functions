@@ -1,0 +1,14 @@
+export OS_NAME=$(uname -s)
+
+function cond_source {
+	[ -s "${1}" ] && source "${1}"
+}
+
+function prepend_to_path {
+	for dir in $@; do
+		if [ -d "$dir" ]; then
+			export PATH=$dir:$PATH
+		fi
+	done
+	export PATH
+}
