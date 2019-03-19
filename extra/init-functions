@@ -7,7 +7,16 @@ function cond_source {
 function prepend_to_path {
 	for dir in $@; do
 		if [ -d "$dir" ]; then
-			export PATH=$dir:$PATH
+			PATH=$dir:$PATH
+		fi
+	done
+	export PATH
+}
+
+function append_to_path {
+	for dir in $@; do
+		if [ -d "$dir" ]; then
+			PATH=$PATH:$dir
 		fi
 	done
 	export PATH
