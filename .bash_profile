@@ -9,14 +9,14 @@ export GOPATH=${HOME} GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
-	${GOPATH}/bin \
-	${RBENV_ROOT}/shims \
-	${HOME}/.cargo/bin \
-	/home/linuxbrew/.linuxbrew/bin \
-	/home/linuxbrew/.linuxbrew/sbin \
-	/usr/local/bin \
+	${basedir}/extra/gimme \
 	/usr/local/sbin \
-	${basedir}/extra/gimme
+	/usr/local/bin \
+	/home/linuxbrew/.linuxbrew/sbin \
+	/home/linuxbrew/.linuxbrew/bin \
+	${HOME}/.cargo/bin \
+	${RBENV_ROOT}/shims \
+	${GOPATH}/bin
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_EMOJI=1
