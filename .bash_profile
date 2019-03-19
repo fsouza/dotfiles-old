@@ -16,6 +16,7 @@ prepend_to_path \
 	/home/linuxbrew/.linuxbrew/bin \
 	${HOME}/.cargo/bin \
 	${RBENV_ROOT}/shims \
+	${basedir}/bin \
 	${GOPATH}/bin
 
 export HOMEBREW_NO_AUTO_UPDATE=1
