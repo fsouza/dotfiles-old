@@ -26,6 +26,7 @@ function d() {
 	fi
 	export PATH=${oldpath}
 	unalias cdvirtualenv cdsitepackages
+	unset oldpath
 	unset VIRTUAL_ENV
 	hash -r
 }
