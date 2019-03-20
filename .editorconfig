@@ -15,6 +15,6 @@ indent_size = 4
 indent_style = space
 indent_size = 2
 
-[Vagrantfile,rebar.config]
+[Vagrantfile,rebar.config,dune]
 indent_style = space
 indent_size = 2
