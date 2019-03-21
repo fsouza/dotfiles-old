@@ -56,6 +56,8 @@ let g:UltiSnipsListSnippets="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
 let g:UltiSnipsJumpBackwardTrigger="<c-l>"
 
+let g:netrw_banner = 0
+
 nmap <silent> <leader>D <Plug>DashSearch
 nmap <silent> <leader>g :Grepper -tool rg<CR>
 
