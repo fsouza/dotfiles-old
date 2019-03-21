@@ -30,6 +30,7 @@ source ${basedir}/extra/gpg-agent
 
 source ${basedir}/extra/chapel
 source ${basedir}/extra/functions
+source ${basedir}/extra/brew
 
 cond_source "${basedir}/extra/z/z.sh"
 cond_source "${basedir}/extra/local-functions"
