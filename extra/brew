@@ -1,4 +1,4 @@
-if [ -d "$(which brew)" ]; then
+if [ -n "$(which brew)" ]; then
 	eval $(brew shellenv)
 
 	export LIBRARY_PATH=$HOMEBREW_PREFIX/lib:$LIBRARY_PATH
