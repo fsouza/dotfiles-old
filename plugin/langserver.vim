@@ -13,6 +13,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'python': ['pyls'],
 	\ 'reason': ['ocaml-language-server', '--stdio'],
 	\ 'rust': ['rls'],
+	\ 'scala': ['metals-vim'],
 	\ 'typescript': ['typescript-language-server', '--stdio'],
 	\ 'yaml': [$VIMHOME.'/bin/yls'],
 	\ }
@@ -37,13 +38,15 @@ let g:LanguageClient_useVirtualText = 0
 
 function LC_init()
 	if has_key(g:LanguageClient_serverCommands, &filetype)
-		nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-		nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename()<CR>
-		nnoremap <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
-		nnoremap <silent> <Leader>i :call LanguageClient#textDocument_hover()<CR>
-		nnoremap <silent> <Leader>s :call LanguageClient#textDocument_documentHighlight()<CR>
-		nnoremap <silent> <Leader>t :call LanguageClient#workspace_symbol()<CR>
-		nnoremap <silent> <Leader>q :call LanguageClient#textDocument_references()<CR>
+		if get(g:, 'LC_enable_mappings', 1) != 0
+			nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+			nnoremap <silent> <Leader>r :call LanguageClient#textDocument_rename()<CR>
+			nnoremap <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
+			nnoremap <silent> <Leader>i :call LanguageClient#textDocument_hover()<CR>
+			nnoremap <silent> <Leader>s :call LanguageClient#textDocument_documentHighlight()<CR>
+			nnoremap <silent> <Leader>t :call LanguageClient#workspace_symbol()<CR>
+			nnoremap <silent> <Leader>q :call LanguageClient#textDocument_references()<CR>
+		endif
 
 		setlocal omnifunc=LanguageClient#complete
 	endif
