@@ -1,5 +1,5 @@
 if [ -n "$(which brew)" ]; then
-	eval $(brew shellenv)
+	export HOMEBREW_PREFIX=$(brew --prefix)
 
 	export LIBRARY_PATH=$HOMEBREW_PREFIX/lib:$LIBRARY_PATH
 	export LD_LIBRARY_PATH=$HOMEBREW_PREFIX/lib:$LD_LIBRARY_PATH
