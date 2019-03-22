@@ -81,6 +81,9 @@ function install_additional_tools {
 
 	install_source_code_pro
 	install_op
+
+	mkdir -p ${HOME}/bin
+	ln -sf /usr/bin/java ${HOME}/bin/java
 }
 
 # based on instructions from the official Docker docs.
