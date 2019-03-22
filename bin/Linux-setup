@@ -84,11 +84,9 @@ function install_additional_tools {
 }
 
 # based on instructions from the official Docker docs.
-#
-# TODO: if podman works fine for me, get rid of this function.
 function install_docker {
 	sudo apt-key adv --fetch-keys https://download.docker.com/linux/ubuntu/gpg
-	sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+	sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) nightly"
 	sudo apt update
 	sudo apt install -y docker-ce docker-ce-cli containerd.io
 	sudo usermod -a -G docker $(whoami)
