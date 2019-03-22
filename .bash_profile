@@ -16,6 +16,7 @@ prepend_to_path \
 	/home/linuxbrew/.linuxbrew/bin \
 	${HOME}/.cargo/bin \
 	${RBENV_ROOT}/shims \
+	${HOME}/.local/bin \
 	${basedir}/bin \
 	${GOPATH}/bin
 
