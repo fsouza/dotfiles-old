@@ -95,11 +95,19 @@ function install_docker {
 	sudo usermod -a -G docker $(whoami)
 }
 
+# don't ask me about it
+function install_legacy_firefox {
+	sudo add-apt-repository -y ppa:fss0/firefox-esr
+	sudo apt update
+	sudo apt install firefox-esr -y
+}
+
 function main {
 	apt_update
 	install_base_dev_tools
 	install_additional_tools
 	install_docker
+	install_legacy_firefox
 }
 
 main
