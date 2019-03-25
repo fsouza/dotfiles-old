@@ -112,6 +112,7 @@ pref("app.update.channel", "esr");
 pref("app.update.auto", false);
 pref("app.update.enabled", false);
 pref("app.update.silent", true);
+pref("browser.shell.checkDefaultBrowser", false);
 EOF
 	fi
 }
