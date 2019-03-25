@@ -101,13 +101,13 @@ function install_docker {
 # don't ask me about it
 function install_legacy_firefox {
 	if ! [ -d $HOME/firefox ]; then
-		sudo apt install libgtk-2.0 -y
+		sudo apt install libgtk2.0 -y
 		curl -L https://ftp.mozilla.org/pub/firefox/releases/52.9.0esr/linux-x86_64/en-US/firefox-52.9.0esr.tar.bz2 -o /tmp/firefox.tar.bz2
 		tar -C $HOME -xjf /tmp/firefox.tar.bz2
 
 		# Hack to disable updates
 		rm $HOME/firefox/updater
-		cat > $HOME/firefox/default/prefs/channel-prefs.js <<'EOF'
+		cat > $HOME/firefox/defaults/pref/channel-prefs.js <<'EOF'
 pref("app.update.channel", "esr");
 pref("app.update.auto", false);
 pref("app.update.enabled", false);
