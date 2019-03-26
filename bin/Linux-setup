@@ -139,6 +139,10 @@ function tune_dconf {
 	dconf write /org/gtk/settings/file-chooser/clock-format "'12h'"
 	dconf write /org/gnome/desktop/interface/clock-show-date true
 	dconf write /org/gnome/desktop/datetime/automatic-timezone true
+
+	# disable notifications
+	dconf write /org/gnome/desktop/notifications/show-banners false
+	dconf write /org/gnome/desktop/notifications/show-in-lock-screen false
 }
 
 function main {
