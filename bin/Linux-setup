@@ -159,6 +159,10 @@ function tune_dconf {
 
 	# match alacritty.yml
 	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/palette "['rgb(0,0,0)', 'rgb(201,27,0)', 'rgb(0,182,0)', 'rgb(199,196,0)', 'rgb(2,37,199)', 'rgb(201,48,198)', 'rgb(0,197,199)', 'rgb(199,199,199)', 'rgb(101,101,101)', 'rgb(255,109,103)', 'rgb(95,249,103)', 'rgb(254,251,103)', 'rgb(104,113,255)', 'rgb(255,118,255)', 'rgb(95,253,255)', 'rgb(255,255,255)']"
+
+	# night light
+	dconf write /org/gnome/settings-daemon/plugins/color/night-light-enabled true
+	dconf write /org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic true
 }
 
 function main {
