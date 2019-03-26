@@ -121,6 +121,26 @@ function cleanup {
 	sudo apt autoremove -y
 }
 
+function tune_dconf {
+	# move titlebar buttons to the left
+	dconf write /org/gnome/desktop/wm/preferences/button-layout "'close,minimize,maximize:'"
+
+	# set monospace-font-name
+	dconf write /org/gnome/desktop/interface/monospace-font-name "'Source Code Variable 13'"
+
+	# scaling factor (may change depending on resolution)
+	dconf write /org/gnome/desktop/interface/text-scaling-factor 1.25
+
+	# key repetition
+	dconf write /org/gnome/desktop/peripherals/keyboard/delay 250
+	dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval 15
+
+	# clock config
+	dconf write /org/gtk/settings/file-chooser/clock-format "'12h'"
+	dconf write /org/gnome/desktop/interface/clock-show-date true
+	dconf write /org/gnome/desktop/datetime/automatic-timezone true
+}
+
 function main {
 	apt_update
 	install_base_dev_tools
@@ -128,6 +148,7 @@ function main {
 	install_docker
 	install_legacy_firefox
 	cleanup
+	tune_dconf
 }
 
 main
