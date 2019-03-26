@@ -5,7 +5,7 @@ mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 REQUIREMENTS=\
 	     flake8 \
 	     pynvim \
-	     black==18.9b0 \
+	     black \
 	     pyls-black \
 	     pyls-isort \
 	     pyls-mypy \
