@@ -143,6 +143,22 @@ function tune_dconf {
 	# disable notifications
 	dconf write /org/gnome/desktop/notifications/show-banners false
 	dconf write /org/gnome/desktop/notifications/show-in-lock-screen false
+
+	# gnome-terminal
+	profile="$(dconf list /org/gnome/terminal/legacy/profiles:/ | head -1 | sed -e 's,/$,,')"
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/background-color "'rgb(255,255,255)'"
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/foreground-color "'rgb(0,0,0)'"
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/cursor-blink-mode "'off'"
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/default-show-menubar false
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/font "'Source Code Variable 13'"
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/menu-accelerator-enabled false
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/scrollback-lines 50000
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/scrollbar-policy "'never'"
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/use-theme-colors false
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/text-blink-mode "'never'"
+
+	# match alacritty.yml
+	dconf write /org/gnome/terminal/legacy/profiles:/${profile}/palette "['rgb(0,0,0)', 'rgb(201,27,0)', 'rgb(0,182,0)', 'rgb(199,196,0)', 'rgb(2,37,199)', 'rgb(201,48,198)', 'rgb(0,197,199)', 'rgb(199,199,199)', 'rgb(101,101,101)', 'rgb(255,109,103)', 'rgb(95,249,103)', 'rgb(254,251,103)', 'rgb(104,113,255)', 'rgb(255,118,255)', 'rgb(95,253,255)', 'rgb(255,255,255)']"
 }
 
 function main {
