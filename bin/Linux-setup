@@ -150,8 +150,8 @@ function tune_dconf {
 	dconf write /org/gnome/desktop/interface/monospace-font-name "'Source Code Variable 10'"
 
 	# key repetition
-	dconf write /org/gnome/desktop/peripherals/keyboard/delay 250
-	dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval 15
+	dconf write /org/gnome/desktop/peripherals/keyboard/delay 200
+	dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval 10
 
 	# clock config
 	dconf write /org/gtk/settings/file-chooser/clock-format "'12h'"
@@ -190,7 +190,7 @@ function tune_dconf {
 	dconf write /org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic true
 
 	# mouse speed
-	dconf write /org/gnome/desktop/peripherals/touchpad/speed 0.61151079136690645
+	dconf write /org/gnome/desktop/peripherals/touchpad/speed 0.5625
 
 	# wayland scaling, may vary with resolution. This is my preferred setting for a 2K monitor
 	dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer']"
