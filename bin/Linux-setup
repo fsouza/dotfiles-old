@@ -128,9 +128,6 @@ function tune_dconf {
 	# set monospace-font-name
 	dconf write /org/gnome/desktop/interface/monospace-font-name "'Source Code Variable 13'"
 
-	# scaling factor (may change depending on resolution)
-	dconf write /org/gnome/desktop/interface/text-scaling-factor 1.25
-
 	# key repetition
 	dconf write /org/gnome/desktop/peripherals/keyboard/delay 250
 	dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval 15
@@ -163,6 +160,12 @@ function tune_dconf {
 	# night light
 	dconf write /org/gnome/settings-daemon/plugins/color/night-light-enabled true
 	dconf write /org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic true
+
+	# mouse speed
+	dconf write /org/gnome/desktop/peripherals/touchpad/speed 0.61151079136690645
+
+	# wayland scaling, may vary with resolution. This is my preferred setting for a 2K monitor
+	gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 }
 
 function main {
