@@ -142,6 +142,9 @@ function tune_dconf {
 	dconf write /org/gnome/desktop/notifications/show-in-lock-screen false
 
 	# gnome-terminal
+	dconf write /org/gnome/terminal/legacy/default-show-menubar false
+	dconf write /org/gnome/terminal/legacy/menu-accelerator-enabled false
+
 	profile="$(uuidgen)"
 
 	dconf write /org/gnome/terminal/legacy/profiles:/list "['${profile}']"
@@ -152,9 +155,7 @@ function tune_dconf {
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/background-color "'rgb(255,255,255)'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/foreground-color "'rgb(0,0,0)'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/cursor-blink-mode "'off'"
-	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/default-show-menubar false
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/font "'Source Code Variable 13'"
-	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/menu-accelerator-enabled false
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/scrollback-lines 50000
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/scrollbar-policy "'never'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/use-theme-colors false
