@@ -79,7 +79,6 @@ function install_additional_tools {
 	install_remote_deb_packages \
 		${CORRETTO8_URL} \
 		${CORRETTO11_URL} \
-		https://github.com/jwilm/alacritty/releases/download/${ALACRITTY_VERSION}/Alacritty-${ALACRITTY_VERSION}_amd64.deb \
 		https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 	install_source_code_pro
