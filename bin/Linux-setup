@@ -4,7 +4,6 @@
 
 CORRETTO8_URL=https://d2znqt9b1bc64u.cloudfront.net/java-1.8.0-amazon-corretto-jdk_8.202.08-2_amd64.deb
 CORRETTO11_URL=https://d3pxv6yz143wms.cloudfront.net/11.0.2.9.3/java-11-amazon-corretto-jdk_11.0.2.9-3_amd64.deb
-ALACRITTY_VERSION=v0.2.9
 GPMDP_VERSION=4.6.1
 
 basedir=$(cd $(dirname $0)/..; pwd -P)
@@ -20,8 +19,6 @@ function apt_update {
 }
 
 function install_base_dev_tools {
-	sudo apt remove -y firefox
-
 	echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
 
 	# ruby is installed globally for homebrew
@@ -79,7 +76,6 @@ function install_additional_tools {
 	install_remote_deb_packages \
 		${CORRETTO8_URL} \
 		${CORRETTO11_URL} \
-		https://github.com/jwilm/alacritty/releases/download/${ALACRITTY_VERSION}/Alacritty-${ALACRITTY_VERSION}_amd64.deb \
 		https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v${GPMDP_VERSION}/google-play-music-desktop-player_${GPMDP_VERSION}_amd64.deb \
 		https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
@@ -97,25 +93,6 @@ function install_docker {
 	sudo apt update
 	sudo apt install -y docker-ce docker-ce-cli containerd.io
 	sudo usermod -a -G docker $(whoami)
-}
-
-function install_firefox {
-	if ! [ -d $HOME/Applications/firefox ]; then
-		mkdir -p $HOME/Applications/firefox
-		curl -Lo /tmp/firefox-latest.tar.bz2 \
-			-H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:65.0) Gecko/20100101 Firefox/65.0' \
-			'https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US'
-		tar -C $HOME/Applications/firefox --strip 1 -xjf /tmp/firefox-latest.tar.bz2
-
-		cat >$HOME/.local/share/applications/firefox.desktop <<EOF
-[Desktop Entry]
-Encoding=UTF-8
-Name=Firefox
-Exec=$HOME/Applications/firefox/firefox-bin
-Icon=$HOME/Applications/firefox/browser/chrome/icons/default/default128.png
-Type=Application
-EOF
-	fi
 }
 
 # don't ask me about it
@@ -147,7 +124,7 @@ function tune_dconf {
 	dconf write /org/gnome/desktop/wm/preferences/button-layout "'close,minimize,maximize:'"
 
 	# set monospace-font-name
-	dconf write /org/gnome/desktop/interface/monospace-font-name "'Source Code Variable 10'"
+	dconf write /org/gnome/desktop/interface/monospace-font-name "'Source Code Variable Regular 12'"
 
 	# key repetition
 	dconf write /org/gnome/desktop/peripherals/keyboard/delay 200
@@ -176,7 +153,7 @@ function tune_dconf {
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/background-color "'rgb(255,255,255)'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/foreground-color "'rgb(0,0,0)'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/cursor-blink-mode "'off'"
-	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/font "'Source Code Variable 10'"
+	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/font "'Source Code Variable Regular 12'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/scrollback-lines 50000
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/scrollbar-policy "'never'"
 	dconf write /org/gnome/terminal/legacy/profiles:/:${profile}/use-theme-colors false
@@ -208,7 +185,7 @@ function tune_dconf {
 	dconf write /org/gnome/shell/extensions/dash-to-dock/dock-fixed false
 
 	# dock items
-	dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'zevdocs_zevdocs.desktop']"
+	dconf write /org/gnome/shell/favorite-apps "['firefox.desktop', 'org.gnome.Terminal.desktop', 'zevdocs_zevdocs.desktop', 'slack_slack.desktop']"
 
 	# close with alt+q, super+q or alt+f4
 	dconf write /org/gnome/desktop/wm/keybindings/close "['<Alt>q', '<Super>q', '<Alt>F4']"
@@ -220,7 +197,6 @@ function main {
 	install_additional_tools
 	install_docker
 	install_legacy_firefox
-	install_firefox
 	cleanup
 	tune_dconf
 }
