@@ -35,6 +35,7 @@ function install_base_dev_tools {
 		gnupg-agent \
 		software-properties-common \
 		ruby \
+		ruby-dev \
 		xclip \
 		libssl-dev \
 		virtualenv \
