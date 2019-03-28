@@ -135,6 +135,7 @@ function tune_dconf {
 	# key repetition
 	dconf write /org/gnome/desktop/peripherals/keyboard/delay 200
 	dconf write /org/gnome/desktop/peripherals/keyboard/repeat-interval 10
+	dconf write /org/gnome/desktop/input-sources/xkb-options "['compose:ralt']"
 
 	# clock config
 	dconf write /org/gtk/settings/file-chooser/clock-format "'12h'"
