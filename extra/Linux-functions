@@ -21,6 +21,7 @@ function rclone_push {
 	fi
 
 	if [[ $1 == "-ef" ]]; then
+		flags=""
 		force="true"
 	fi
 
@@ -34,7 +35,7 @@ function rclone_push {
 			echo "-f provided, proceeding"
 		fi
 
-		if [[ $answer =~ ^[Yy]$ ]] || [ -n "$force" ] -; then
+		if [[ $answer =~ ^[Yy]$ ]] || [ -n "$force" ]; then
 			rclone sync --fast-list --transfers 16 --checkers 32 --progress "$HOME/OneDrive/$rel_path" "od:$rel_path"
 		fi
 	fi
@@ -50,6 +51,7 @@ function rclone_pull {
 	fi
 
 	if [[ $1 == "-ef" ]]; then
+		flags=""
 		force="true"
 	fi
 
