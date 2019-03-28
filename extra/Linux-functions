@@ -17,8 +17,9 @@ function rclone_push {
 	force=""
 	if [[ $1 == "-e" ]]; then
 		force="true"
+	else
+		rclone sync --dry-run --fast-list --transfers 16 --checkers 32 "$HOME/OneDrive/$rel_path" "od:$rel_path"
 	fi
-	rclone sync --dry-run --fast-list --transfers 16 --checkers 32 "$HOME/OneDrive/$rel_path" "od:$rel_path"
 
 	answer=""
 	if [ -z "$force" ]; then
@@ -38,8 +39,9 @@ function rclone_pull {
 	force=""
 	if [[ $1 == "-e" ]]; then
 		force="true"
+	else
+		rclone sync --dry-run --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
 	fi
-	rclone sync --dry-run --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
 
 	answer=""
 	if [ -z "$force" ]; then
