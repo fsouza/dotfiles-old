@@ -54,8 +54,3 @@ function rclone_pull {
 		rclone sync --progress --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
 	fi
 }
-
-if [ -n "$DISPLAY" ]; then
-	xmodmap -e 'keycode 117=NoSymbol'
-	xmodmap -e 'keycode 112=NoSymbol'
-fi
