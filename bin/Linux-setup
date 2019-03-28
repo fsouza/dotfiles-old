@@ -21,6 +21,10 @@ function apt_update {
 function install_base_dev_tools {
 	echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | sudo debconf-set-selections
 
+	echo postfix postfix/mailname string "$(hostname -s)" | sudo debconf-set-selections
+	echo postfix postfix/main_mailer_type string 'Local only' | sudo debconf-set-selections
+
+
 	# ruby is installed globally for homebrew
 	sudo apt install -y \
 		build-essential \
@@ -35,6 +39,7 @@ function install_base_dev_tools {
 		libssl-dev \
 		virtualenv \
 		ttf-mscorefonts-installer \
+		postfix \
 		pinentry-tty
 }
 
