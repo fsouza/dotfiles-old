@@ -53,5 +53,7 @@ function rclone_pull {
 	fi
 }
 
-xmodmap -e 'keycode 117=NoSymbol'
-xmodmap -e 'keycode 112=NoSymbol'
+if [ -n "$DISPLAY" ]; then
+	xmodmap -e 'keycode 117=NoSymbol'
+	xmodmap -e 'keycode 112=NoSymbol'
+fi
