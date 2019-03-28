@@ -52,3 +52,6 @@ function rclone_pull {
 		rclone sync --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
 	fi
 }
+
+xmodmap -e 'keycode 117=NoSymbol'
+xmodmap -e 'keycode 112=NoSymbol'
