@@ -50,7 +50,7 @@ function rclone_pull {
 		echo "-e provided, proceeding"
 	fi
 
-	if [[ $answer =~ ^[Yy]$ ]] || [ -n "$force" ] -; then
+	if [[ $answer =~ ^[Yy]$ ]] || [ -n "$force" ]; then
 		rclone sync --progress --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
 	fi
 }
