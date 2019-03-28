@@ -137,7 +137,7 @@ function tune_dconf {
 	dconf write /org/gnome/desktop/datetime/automatic-timezone true
 
 	# disable notifications
-	dconf write /org/gnome/desktop/notifications/show-banners false
+	dconf write /org/gnome/desktop/notifications/show-banners true
 	dconf write /org/gnome/desktop/notifications/show-in-lock-screen false
 
 	# gnome-terminal
