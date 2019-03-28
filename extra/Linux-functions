@@ -39,7 +39,7 @@ function rclone_pull {
 	if [[ $1 == "-e" ]]; then
 		force="true"
 	fi
-	rclone sync --dry-run --fast-list --transfers 16 --checkers 32 --progress "od:$rel_path" "$HOME/OneDrive/$rel_path"
+	rclone sync --dry-run --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
 
 	answer=""
 	if [ -z "$force" ]; then
@@ -49,7 +49,7 @@ function rclone_pull {
 	fi
 
 	if [[ $answer =~ ^[Yy]$ ]] || [ -n "$force" ] -; then
-		rclone sync --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
+		rclone sync --progress --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
 	fi
 }
 
