@@ -4,7 +4,6 @@
 
 CORRETTO8_URL=https://d2znqt9b1bc64u.cloudfront.net/java-1.8.0-amazon-corretto-jdk_8.202.08-2_amd64.deb
 CORRETTO11_URL=https://d3pxv6yz143wms.cloudfront.net/11.0.2.9.3/java-11-amazon-corretto-jdk_11.0.2.9-3_amd64.deb
-GPMDP_VERSION=4.6.1
 
 basedir=$(cd $(dirname $0)/..; pwd -P)
 
@@ -82,7 +81,6 @@ function install_additional_tools {
 	install_remote_deb_packages \
 		${CORRETTO8_URL} \
 		${CORRETTO11_URL} \
-		https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-/releases/download/v${GPMDP_VERSION}/google-play-music-desktop-player_${GPMDP_VERSION}_amd64.deb \
 		https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 	install_source_code_pro
