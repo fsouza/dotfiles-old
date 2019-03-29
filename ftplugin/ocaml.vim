@@ -7,7 +7,7 @@ function! OcamlFormat()
 		if v:shell_error
 			% |
 			undo
-			echohl Error | echomsg "scalafmt returned an error" | echohl None
+			echohl Error | echomsg "ocamlformat returned an error" | echohl None
 		endif
 		call winrestview(view)
 	endif
