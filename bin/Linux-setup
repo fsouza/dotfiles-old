@@ -132,7 +132,7 @@ function install_alacritty {
 [Desktop Entry]
 Encoding=UTF-8
 Name=Alacritty
-Exec=$HOME/Applications/alacritty/alacritty
+Exec=/usr/bin/env WAYLAND_DISPLAY="" $HOME/Applications/alacritty/alacritty
 Icon=$HOME/Applications/alacritty/alacritty.svg
 Type=Application
 EOF
