@@ -195,8 +195,8 @@ function tune_dconf {
 	# mouse speed
 	dconf write /org/gnome/desktop/peripherals/touchpad/speed 0.5625
 
-	# wayland scaling, may vary with resolution. This is my preferred setting for a 2K monitor
-	dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer']"
+	# wayland/x11 scaling, may vary with resolution. This is my preferred setting for a 2K monitor
+	dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']"
 
 	# lock screen & notifications
 	dconf write /org/gnome/desktop/screensaver/lock-delay 0
