@@ -5,9 +5,9 @@ mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 REQUIREMENTS=\
 	     flake8 \
 	     pynvim \
+	     isort \
 	     black \
 	     pyls-black \
-	     pyls-isort \
 	     pyls-mypy \
 	     fortran-language-server \
 	     websocket-client \
