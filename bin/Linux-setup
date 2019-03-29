@@ -121,14 +121,13 @@ EOF
 }
 
 function install_alacritty {
-	if ! [ -d $HOME/Applications/alacritty ]; then
-		mkdir -p $HOME/Applications/alacritty
-		curl -L \
-			https://github.com/jwilm/alacritty/releases/download/${ALACRITTY_VERSION}/Alacritty-${ALACRITTY_VERSION}-x86_64.tar.gz | \
-			tar -C $HOME/Applications/alacritty -xzf -
-		cp ${basedir}/extra/etc/alacritty.svg $HOME/Applications/alacritty
+	mkdir -p $HOME/Applications/alacritty
+	curl -L \
+		https://github.com/jwilm/alacritty/releases/download/${ALACRITTY_VERSION}/Alacritty-${ALACRITTY_VERSION}-x86_64.tar.gz | \
+		tar -C $HOME/Applications/alacritty -xzf -
+	cp ${basedir}/extra/etc/alacritty.svg $HOME/Applications/alacritty
 
-		cat > $HOME/.local/share/applications/alacritty.desktop <<EOF
+	cat > $HOME/.local/share/applications/alacritty.desktop <<EOF
 [Desktop Entry]
 Encoding=UTF-8
 Name=Alacritty
@@ -136,7 +135,6 @@ Exec=/usr/bin/env WAYLAND_DISPLAY="" $HOME/Applications/alacritty/alacritty
 Icon=$HOME/Applications/alacritty/alacritty.svg
 Type=Application
 EOF
-	fi
 }
 
 function cleanup {
