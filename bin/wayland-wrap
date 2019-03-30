@@ -1,0 +1,6 @@
+#!/bin/bash -e
+
+# Hack for some applications.
+
+export WAYLAND_DISPLAY=$DISPLAY
+exec "$@"
