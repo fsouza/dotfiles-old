@@ -204,8 +204,9 @@ function tune_dconf {
 	dconf write /org/gnome/settings-daemon/plugins/color/night-light-enabled true
 	dconf write /org/gnome/settings-daemon/plugins/color/night-light-schedule-automatic true
 
-	# mouse speed
+	# mouse & touchpad speed
 	dconf write /org/gnome/desktop/peripherals/touchpad/speed 0.5625
+	dconf write /org/gnome/desktop/peripherals/mouse/speed 0.065693430656934337
 
 	# wayland/x11 scaling, may vary with resolution. This is my preferred setting for a 2K monitor
 	dconf write /org/gnome/mutter/experimental-features "['scale-monitor-framebuffer', 'x11-randr-fractional-scaling']"
