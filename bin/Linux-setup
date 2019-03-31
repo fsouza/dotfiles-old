@@ -4,7 +4,7 @@
 
 CORRETTO8_URL=https://d2znqt9b1bc64u.cloudfront.net/java-1.8.0-amazon-corretto-jdk_8.202.08-2_amd64.deb
 CORRETTO11_URL=https://d3pxv6yz143wms.cloudfront.net/11.0.2.9.3/java-11-amazon-corretto-jdk_11.0.2.9-3_amd64.deb
-ALACRITTY_VERSION=v0.3.0-rc1
+ALACRITTY_VERSION=v0.2.9
 
 basedir=$(cd $(dirname $0)/..; pwd -P)
 
