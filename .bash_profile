@@ -6,6 +6,7 @@ export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
 export GOPATH=${HOME} GIMME_SILENT_ENV=1 GIMME_TYPE=binary
+export BASH_COMPLETION_COMPAT_DIR="${HOMEBREW_PREFIX}/etc/bash_completion.d"
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
@@ -36,7 +37,7 @@ source ${basedir}/extra/brew
 cond_source "${basedir}/extra/z/z.sh"
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/${OS_NAME}-functions"
-cond_source "${HOMEBREW_PREFIX}/etc/bash_completion"
+cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 
