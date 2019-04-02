@@ -100,7 +100,7 @@ function install_docker {
 	sudo usermod -a -G docker $(whoami)
 }
 
-# don't ask me about it
+# install a legacy verion of firefox with support to NPAPI. I blame $WORK.
 function install_legacy_firefox {
 	if ! [ -d $HOME/Applications/firefox-esr ]; then
 		mkdir -p $HOME/Applications/firefox-esr
