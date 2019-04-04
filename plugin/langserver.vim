@@ -36,6 +36,8 @@ let g:LanguageClient_documentHighlightDisplay = {
 let g:LanguageClient_hasSnippetSupport = 0
 let g:LanguageClient_useVirtualText = 0
 
+let lc_complete_skip = ['scala']
+
 function LC_init()
 	if has_key(g:LanguageClient_serverCommands, &filetype)
 		if get(g:, 'LC_enable_mappings', 1) != 0
@@ -48,7 +50,9 @@ function LC_init()
 			nnoremap <silent> <Leader>q :call LanguageClient#textDocument_references()<CR>
 		endif
 
-		setlocal omnifunc=LanguageClient#complete
+		if index(lc_complete_skip, &filetype) < 0
+			setlocal omnifunc=LanguageClient#complete
+		endif
 	endif
 endfunction
 
