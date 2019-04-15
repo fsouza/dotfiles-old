@@ -46,7 +46,7 @@ function install_base_dev_tools {
 
 function install_source_code_pro {
 	mkdir -p ${HOME}/.fonts
-	cp ${basedir}/extra/source-code-pro/SourceCodeVariable-Roman.otf ${HOME}/.fonts/
+	cp ${basedir}/extra/source-code-pro/*.otf ${HOME}/.fonts/
 	fc-cache -f
 }
 
