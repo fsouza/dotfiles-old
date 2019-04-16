@@ -57,6 +57,7 @@ set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set guicursor=
 set mouse=a
+set shadafile=NONE
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<s-tab>"
