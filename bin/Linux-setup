@@ -98,6 +98,7 @@ function install_gcp_sdk {
 		curl -Lo google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCP_SDK_VERSION}-linux-x86_64.tar.gz
 		mkdir -p $HOME/Applications
 		tar -C $HOME/Applications -xzf google-cloud-sdk.tar.gz
+		rm google-cloud-sdk.tar.gz
 		popd
 	fi
 }
