@@ -18,6 +18,7 @@ prepend_to_path \
 	${HOME}/.cargo/bin \
 	${RBENV_ROOT}/shims \
 	${HOME}/.local/bin \
+	${HOME}/Applications/google-cloud-sdk/bin \
 	${basedir}/bin \
 	${GOPATH}/bin
 
