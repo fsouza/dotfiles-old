@@ -175,8 +175,9 @@ function tune_dconf {
 	dconf write /org/gnome/shell/extensions/desktop-icons/icon-size "'large'"
 	dconf write /org/gnome/shell/extensions/desktop-icons/show-home false
 
-	# set monospace-font-name
-	dconf write /org/gnome/desktop/interface/monospace-font-name "'Source Code Variable 11'"
+	# set fonts
+	dconf write /org/gnome/desktop/interface/monospace-font-name "'Source Code Pro 11'"
+	dconf write /org/gnome/desktop/interface/document-font-name "'Ubuntu 11'"
 
 	# key repetition
 	dconf write /org/gnome/desktop/peripherals/keyboard/delay 200
