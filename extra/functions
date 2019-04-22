@@ -1,9 +1,5 @@
-function vg {
-	rg --no-heading -N "$@"
-}
-
 function cg {
-	vg -g '!vendor/' "$@"
+	rg --no-heading -N "$@"
 }
 
 function g {
