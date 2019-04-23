@@ -249,6 +249,12 @@ function tune_dconf {
 
 	# close with alt+q, super+q or alt+f4
 	dconf write /org/gnome/desktop/wm/keybindings/close "['<Alt>q', '<Super>q', '<Alt>F4']"
+
+	# switch applications with alt+tab
+	dconf write /org/gnome/desktop/wm/keybindings/switch-windows "@as []"
+	dconf write /org/gnome/desktop/wm/keybindings/switch-windows-backward "@as []"
+	dconf write /org/gnome/desktop/wm/keybindings/switch-applications "['<Alt>Tab']"
+	dconf write /org/gnome/desktop/wm/keybindings/switch-applications-backward "['<Shift><Alt>Tab']"
 }
 
 function main {
