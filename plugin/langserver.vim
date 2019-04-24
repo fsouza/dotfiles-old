@@ -7,14 +7,14 @@ let g:LanguageClient_serverCommands = {
 	\ 'go': ['bingo', '-disable-func-snippet', '-format-style', 'gofmt'],
 	\ 'html': ['html-languageserver', '--stdio'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
-	\ 'javascript': ['typescript-language-server', '--stdio'],
+	\ 'javascript': ['javascript-typescript-stdio'],
 	\ 'json': ['json-languageserver', '--stdio'],
 	\ 'ocaml': ['ocaml-language-server', '--stdio'],
 	\ 'python': ['pyls'],
 	\ 'reason': ['ocaml-language-server', '--stdio'],
 	\ 'rust': ['rls'],
 	\ 'scala': ['metals-vim'],
-	\ 'typescript': ['typescript-language-server', '--stdio'],
+	\ 'typescript': ['javascript-typescript-stdio'],
 	\ 'yaml': [$VIMHOME.'/bin/yls'],
 	\ }
 
