@@ -36,7 +36,7 @@ let g:LanguageClient_documentHighlightDisplay = {
 let g:LanguageClient_hasSnippetSupport = 0
 let g:LanguageClient_useVirtualText = 0
 
-let g:lc_complete_skip = ['scala']
+let g:lc_complete_skip = []
 
 function LC_init()
 	if has_key(g:LanguageClient_serverCommands, &filetype)
