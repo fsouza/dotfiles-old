@@ -13,13 +13,6 @@ call plug#begin($VIMHOME.'/plugged')
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'derekwyatt/vim-scala'
 Plug 'editorconfig/editorconfig-vim'
-
-if has("nvim")
-	Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
-else
-	Plug 'ensime/ensime-vim'
-end
-
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
