@@ -13,6 +13,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'python': ['pyls'],
 	\ 'reason': ['ocaml-language-server', '--stdio'],
 	\ 'rust': ['rls'],
+	\ 'sbt': ['metals-vim'],
 	\ 'scala': ['metals-vim'],
 	\ 'typescript': ['javascript-typescript-stdio'],
 	\ 'yaml': [$VIMHOME.'/bin/yls'],
