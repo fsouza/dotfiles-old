@@ -1,60 +1,6 @@
 export TMUX_COPY_CMD='xclip -i -selection clipboard'
 append_to_path /snap/bin
 
-function _get_rel_path {
-	pwd=${PWD}/
-	if $(echo $pwd | grep -q $HOME/OneDrive/); then
-		sed -e "s;^$HOME/OneDrive/;;" <<< $pwd
-	else
-		echo >&2 not currently inside the $HOME/OneDrive/
-		return 2
-	fi
-}
-
-function rclone_push {
-	rel_path=$(_get_rel_path)
-
-	force=""
-	if [[ $1 == "-e" ]]; then
-		force="true"
-	else
-		rclone sync --dry-run --fast-list --transfers 16 --checkers 32 "$HOME/OneDrive/$rel_path" "od:$rel_path"
-	fi
-
-	answer=""
-	if [ -z "$force" ]; then
-		read -p "Proceed? " -r answer
-	else
-		echo "-e provided, proceeding"
-	fi
-
-	if [[ $answer =~ ^[Yy]$ ]] || [ -n "$force" ]; then
-		rclone sync --fast-list --transfers 16 --checkers 32 --progress "$HOME/OneDrive/$rel_path" "od:$rel_path"
-	fi
-}
-
-function rclone_pull {
-	rel_path=$(_get_rel_path)
-
-	force=""
-	if [[ $1 == "-e" ]]; then
-		force="true"
-	else
-		rclone sync --dry-run --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
-	fi
-
-	answer=""
-	if [ -z "$force" ]; then
-		read -p "Proceed? " -r answer
-	else
-		echo "-e provided, proceeding"
-	fi
-
-	if [[ $answer =~ ^[Yy]$ ]] || [ -n "$force" ]; then
-		rclone sync --progress --fast-list --transfers 16 --checkers 32 "od:$rel_path" "$HOME/OneDrive/$rel_path"
-	fi
-}
-
 function rclone_mount {
 	if [ -z "$1" ]; then
 		echo >&2 please specify the path
