@@ -49,10 +49,6 @@ set wildmenu wildmode=list:longest
 set guicursor=
 set mouse=a
 
-if has("nvim")
-	set shadafile=NONE
-end
-
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-n>"
