@@ -37,9 +37,7 @@ colorscheme none
 
 filetype plugin indent on
 
-if !isdirectory($VIMHOME.'/swp')
-	call mkdir($VIMHOME.'/swp', 'p')
-endif
+call mkdir($VIMHOME.'/swp', 'p')
 set directory=$VIMHOME/swp
 set backupskip=/tmp/*,/private/tmp/*
 
