@@ -24,7 +24,6 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'PProvost/vim-ps1'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rgrinberg/vim-ocaml'
-Plug 'rizzatti/dash.vim'
 Plug 'sirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
@@ -56,7 +55,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-l>"
 
 let g:netrw_banner = 0
 
-nmap <silent> <leader>D <Plug>DashSearch
 nmap <silent> <leader>g :Grepper -tool rg<CR>
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
