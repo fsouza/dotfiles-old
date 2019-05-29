@@ -1,5 +1,5 @@
 [ui]
-username = Francisco Souza <f@souza.cc>
+username = Francisco Souza <fsouza@invalid.host>
 editor = nvim
 ignore = ~/.hgignore_global
 
