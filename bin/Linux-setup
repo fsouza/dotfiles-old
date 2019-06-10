@@ -112,26 +112,6 @@ function install_docker {
 	sudo usermod -a -G docker $(id -un)
 }
 
-# install a legacy verion of firefox with support to NPAPI. I blame $WORK.
-function install_legacy_firefox {
-	if ! [ -d $HOME/Applications/firefox-esr ]; then
-		mkdir -p $HOME/Applications/firefox-esr
-		sudo apt install libgtk2.0 -y
-		curl -L https://ftp.mozilla.org/pub/firefox/releases/52.9.0esr/linux-x86_64/en-US/firefox-52.9.0esr.tar.bz2 -o /tmp/firefox-esr.tar.bz2
-		tar -C $HOME/Applications/firefox-esr --strip 1 -xjf /tmp/firefox-esr.tar.bz2
-
-		# Hack to disable updates
-		rm $HOME/Applications/firefox-esr/updater
-		cat > $HOME/Applications/firefox-esr/defaults/pref/channel-prefs.js <<'EOF'
-pref("app.update.channel", "esr");
-pref("app.update.auto", false);
-pref("app.update.enabled", false);
-pref("app.update.silent", true);
-pref("browser.shell.checkDefaultBrowser", false);
-EOF
-	fi
-}
-
 function install_alacritty {
 	mkdir -p $HOME/Applications/alacritty
 	curl -L \
@@ -263,7 +243,6 @@ function main {
 	install_additional_tools
 	install_gcp_sdk
 	install_docker
-	install_legacy_firefox
 	install_alacritty
 	install_gpmdp_shortcut
 	cleanup
