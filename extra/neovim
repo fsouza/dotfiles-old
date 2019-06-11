@@ -1,0 +1,16 @@
+NEOVIM_INSTALL_PREFIX=$HOME/opt/neovim
+NEOVIM_SRC=$HOME/Projects/3/neovim
+
+function update_neovim {
+	if ! [ -d $NEOVIM_SRC ]; then
+		git clone https://github.com/neovim/neovim.git $NEOVIM_SRC
+	fi
+
+	pushd $NEOVIM_SRC
+	git pull
+	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$NEOVIM_INSTALL_PREFIX
+	make install
+	popd
+}
+
+prepend_to_path $NEOVIM_INSTALL_PREFIX/bin
