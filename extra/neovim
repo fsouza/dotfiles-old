@@ -1,14 +1,18 @@
 NEOVIM_INSTALL_PREFIX=$HOME/opt/neovim
-NEOVIM_SRC=$HOME/Projects/os/3/neovim
+NEOVIM_SRC_DIR=$HOME/Projects/os/3/neovim
 
 function update_neovim {
-	if ! [ -d $NEOVIM_SRC ]; then
-		git clone https://github.com/neovim/neovim.git $NEOVIM_SRC
+	if ! [ -d $NEOVIM_SRC_DIR ]; then
+		git clone https://github.com/neovim/neovim.git $NEOVIM_SRC_DIR
 	fi
 
-	pushd $NEOVIM_SRC
+	pushd $NEOVIM_SRC_DIR
 	git pull
-	make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=$NEOVIM_INSTALL_PREFIX
+	make \
+		CMAKE_BUILD_TYPE=RelWithDebInfo \
+		CMAKE_INSTALL_PREFIX=$NEOVIM_INSTALL_PREFIX \
+		CMAKE_EXTRA_FLAGS="-DCMAKE_FIND_FRAMEWORK=LAST" \
+		BUNDLED_CMAKE_FLAG="-DUSE_BUNDLED_GPERF=OFF"
 	make install
 	popd
 }
