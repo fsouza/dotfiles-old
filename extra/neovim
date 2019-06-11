@@ -1,5 +1,5 @@
 NEOVIM_INSTALL_PREFIX=$HOME/opt/neovim
-NEOVIM_SRC=$HOME/Projects/3/neovim
+NEOVIM_SRC=$HOME/Projects/os/3/neovim
 
 function update_neovim {
 	if ! [ -d $NEOVIM_SRC ]; then
