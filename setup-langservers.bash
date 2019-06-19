@@ -23,6 +23,7 @@ function install_servers_from_npm {
 	npm i -g \
 		ocaml-language-server \
 		javascript-typescript-langserver \
+		typescript-language-server \
 		dockerfile-language-server-nodejs \
 		vscode-css-languageserver-bin \
 		vscode-html-languageserver-bin \

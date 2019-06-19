@@ -15,7 +15,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'rust': ['rls'],
 	\ 'sbt': ['metals-vim'],
 	\ 'scala': ['metals-vim'],
-	\ 'typescript': ['javascript-typescript-stdio'],
+	\ 'typescript': ['typescript-language-server',  '--stdio'],
 	\ 'yaml': [$VIMHOME.'/bin/yls'],
 	\ }
 
