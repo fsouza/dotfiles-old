@@ -42,6 +42,8 @@ function install_base_dev_tools {
 		virtualenv \
 		ttf-mscorefonts-installer \
 		postfix \
+		exfat-utils \
+		exfat-fuse \
 		pinentry-tty
 }
 
