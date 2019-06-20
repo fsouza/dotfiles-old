@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 ROOT=$(cd `dirname ${0}` && pwd -P)
 
@@ -20,11 +20,11 @@ function install_yaml_server {
 }
 
 function install_servers_from_npm {
-	npm i -g \
-		ocaml-language-server \
-		javascript-typescript-langserver \
-		typescript-language-server \
+	npm i --no-save \
 		dockerfile-language-server-nodejs \
+		javascript-typescript-langserver \
+		ocaml-language-server \
+		typescript-language-server \
 		vscode-css-languageserver-bin \
 		vscode-html-languageserver-bin \
 		vscode-json-languageserver-bin

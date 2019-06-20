@@ -18,6 +18,6 @@ gem:
 	gem install neovim
 
 setup-langservers:
-	$$(dirname $(mkfile_path))/setup-langservers.bash
+	cd $$(dirname $(mkfile_path)) && ./setup-langservers.bash
 
 bootstrap: pip gem setup-langservers
