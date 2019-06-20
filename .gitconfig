@@ -8,7 +8,6 @@
 	editor = nvim
 	excludesfile = ~/.gitignore_global
 	filemode = true
-	autocrlf = input
 [diff]
 	compactionHeuristic = 1
 	indentHeuristic = 1
