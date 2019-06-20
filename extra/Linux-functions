@@ -24,3 +24,4 @@ function ensure_rclone_mount {
 }
 
 ensure_rclone_mount
+export _Z_EXCLUDE_DIRS=$HOME/OneDrive
