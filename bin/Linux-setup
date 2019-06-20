@@ -53,20 +53,6 @@ function install_source_code_pro {
 	fc-cache -f
 }
 
-function install_op {
-	OP_VERSION=v0.5.5
-
-	mkdir -p ${HOME}/bin
-	tmp_dir=$(mktemp -d)
-	pushd ${tmp_dir}
-	curl -Lo op.zip https://cache.agilebits.com/dist/1P/op/pkg/${OP_VERSION}/op_linux_amd64_${OP_VERSION}.zip
-	unzip op.zip
-	mv op ${HOME}/bin
-	popd
-
-	rm_dir "${tmp_dir}"
-}
-
 # really, apt?
 function install_remote_deb_packages {
         tmp_dir=$(mktemp -d)
@@ -88,7 +74,6 @@ function install_additional_tools {
 		https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 	install_source_code_pro
-	install_op
 
 	mkdir -p ${HOME}/bin
 	ln -sf /usr/bin/java ${HOME}/bin/java
