@@ -47,6 +47,7 @@ function LC_init()
 			nnoremap <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
 			nnoremap <silent> <Leader>i :call LanguageClient#textDocument_hover()<CR>
 			nnoremap <silent> <Leader>s :call LanguageClient#textDocument_documentHighlight()<CR>
+			nnoremap <silent> <Leader>v :call LanguageClient#clearDocumentHighlight()<CR>
 			nnoremap <silent> <Leader>t :call LanguageClient#workspace_symbol()<CR>
 			nnoremap <silent> <Leader>q :call LanguageClient#textDocument_references()<CR>
 		endif
