@@ -25,7 +25,6 @@ function install_base_dev_tools {
 	echo postfix postfix/mailname string "$(hostname -s)" | sudo debconf-set-selections
 	echo postfix postfix/main_mailer_type string 'Local only' | sudo debconf-set-selections
 
-
 	# ruby is installed globally for homebrew
 	sudo apt install -y \
 		build-essential \
@@ -97,6 +96,13 @@ function install_docker {
 	sudo apt update
 	sudo apt install -y docker-ce docker-ce-cli containerd.io
 	sudo usermod -a -G docker $(id -un)
+}
+
+function install_dotnet_core {
+	curl -Lo /tmp/packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
+	sudo apt install /tmp/packages-microsoft-prod.deb
+	sudo apt update
+	sudo apt install dotnet-sdk-2.2
 }
 
 function install_alacritty {
@@ -230,6 +236,7 @@ function main {
 	install_additional_tools
 	install_gcp_sdk
 	install_docker
+	install_dotnet_core
 	install_alacritty
 	install_gpmdp_shortcut
 	cleanup
