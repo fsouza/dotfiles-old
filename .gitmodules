@@ -4,3 +4,6 @@
 [submodule "langservers/jdtls"]
 	path = langservers/jdtls
 	url = https://github.com/eclipse/eclipse.jdt.ls.git
+[submodule "langservers/fsharp-language-server"]
+	path = langservers/fsharp-language-server
+	url = https://github.com/fsprojects/fsharp-language-server.git

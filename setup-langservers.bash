@@ -19,6 +19,13 @@ function install_yaml_server {
 	popd
 }
 
+function install_fsharp_server {
+	pushd "$ROOT/langservers/fsharp-language-server"
+	npm ci
+	dotnet build -c Release
+	popd
+}
+
 function install_servers_from_npm {
 	npm i --no-save \
 		dockerfile-language-server-nodejs \
@@ -45,6 +52,7 @@ pushd $ROOT
 init
 install_java_server
 install_yaml_server
+install_fsharp_server
 install_servers_from_npm
 install_scala_metals
 popd
