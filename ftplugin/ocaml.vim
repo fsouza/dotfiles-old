@@ -3,7 +3,7 @@ setlocal et sw=2
 function! OcamlFormat()
 	if get(g:, 'OcamlFormat_autoformat', 1) != 0
 		let view = winsaveview()
-		execute "silent %!ocamlformat - --name " . expand('%:t')
+		execute "silent %!ocamlformat - --enable-outside-detected-project --name " . expand('%:t')
 		if v:shell_error
 			% |
 			undo
