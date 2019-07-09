@@ -20,6 +20,10 @@ function install_yaml_server {
 }
 
 function install_fsharp_server {
+	if [ -z "$(which dotnet)" ]; then
+		echo skipping fharsp-language-server
+		return
+	fi
 	pushd "$ROOT/langservers/fsharp-language-server"
 	npm ci
 	dotnet build -c Release
