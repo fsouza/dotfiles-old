@@ -40,6 +40,15 @@ let g:LanguageClient_useVirtualText = 0
 
 let g:lc_complete_skip = []
 
+function LC_restart(is_running)
+	if a:is_running.result
+		call LanguageClient#exit()
+		call LanguageClient#isAlive(function('LC_restart'))
+	else
+		call LanguageClient#startServer()
+	endif
+endfunction
+
 function LC_init()
 	if has_key(g:LanguageClient_serverCommands, &filetype)
 		if get(g:, 'LC_enable_mappings', 1) != 0
@@ -51,6 +60,7 @@ function LC_init()
 			nnoremap <silent> <Leader>v :call LanguageClient#clearDocumentHighlight()<CR>
 			nnoremap <silent> <Leader>t :call LanguageClient#workspace_symbol()<CR>
 			nnoremap <silent> <Leader>q :call LanguageClient#textDocument_references()<CR>
+			nnoremap <silent> <Leader>lc :call LC_restart({'result': v:true})<CR>
 		endif
 
 		if index(g:lc_complete_skip, &filetype) < 0
