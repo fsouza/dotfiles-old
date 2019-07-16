@@ -43,6 +43,7 @@ let g:lc_complete_skip = []
 function LC_restart(is_running)
 	if a:is_running.result
 		call LanguageClient#exit()
+		sign unplace *
 		call LanguageClient#isAlive(function('LC_restart'))
 	else
 		call LanguageClient#startServer()
