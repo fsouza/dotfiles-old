@@ -1,11 +1,22 @@
 NEOVIM_INSTALL_PREFIX=$HOME/opt/neovim
 NEOVIM_SRC_DIR=$HOME/Projects/os/3/neovim
 
-function update_neovim {
+function _ensure_neovim_src {
 	if ! [ -d $NEOVIM_SRC_DIR ]; then
 		git clone https://github.com/neovim/neovim.git $NEOVIM_SRC_DIR
 	fi
+}
 
+function rebootstrap_neovim {
+	_ensure_neovim_src
+	pushd $NEOVIM_SRC_DIR
+	make distclean
+	git clean -dfx
+	update_neovim
+}
+
+function update_neovim {
+	_ensure_neovim_src
 	pushd $NEOVIM_SRC_DIR
 	git pull
 	make \
