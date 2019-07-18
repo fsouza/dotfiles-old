@@ -37,12 +37,12 @@ source ${basedir}/extra/functions
 source ${basedir}/extra/brew
 source ${basedir}/extra/neovim
 
-cond_source "${basedir}/extra/z/z.sh"
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/${OS_NAME}-functions"
 cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
+cond_source "${basedir}/extra/z/z.sh"
 
 export PS1="％ " PS2="≫ "
 
