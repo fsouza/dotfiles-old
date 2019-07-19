@@ -30,11 +30,18 @@ function install_fsharp_server {
 	popd
 }
 
+function install_merlin_lsp {
+	if [ -z "$(which opam)" ]; then
+		echo skipping merlin-lsp
+		return
+	fi
+	opam pin merlin-lsp.dev https://github.com/ocaml/merlin.git -y
+}
+
 function install_servers_from_npm {
 	npm i --no-save \
 		dockerfile-language-server-nodejs \
 		javascript-typescript-langserver \
-		ocaml-language-server \
 		typescript-language-server \
 		vscode-css-languageserver-bin \
 		vscode-html-languageserver-bin \
@@ -57,6 +64,7 @@ init
 install_java_server
 install_yaml_server
 install_fsharp_server
+install_merlin_lsp
 install_servers_from_npm
 install_scala_metals
 popd
