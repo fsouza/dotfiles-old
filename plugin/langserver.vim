@@ -12,7 +12,6 @@ let g:LanguageClient_serverCommands = {
 	\ 'json': [$VIMHOME.'/bin/nodels', 'json-languageserver', '--stdio'],
 	\ 'ocaml': [$VIMHOME.'/bin/nodels', 'ocaml-language-server', '--stdio'],
 	\ 'python': ['pyls'],
-	\ 'reason': [$VIMHOME.'/bin/nodels', 'ocaml-language-server', '--stdio'],
 	\ 'rust': ['rls'],
 	\ 'sbt': ['metals-vim'],
 	\ 'scala': ['metals-vim'],
