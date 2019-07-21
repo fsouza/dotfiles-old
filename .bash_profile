@@ -44,7 +44,7 @@ cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 cond_source "${basedir}/extra/z/z.sh"
 
-export PS1=">>| " PS2=">>>> "
+export PS1="\\ " PS2=">> "
 
 if [ -n "$(which opam)" ]; then
 	eval $(opam env)
