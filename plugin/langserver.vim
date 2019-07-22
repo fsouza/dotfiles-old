@@ -3,7 +3,6 @@ let g:LanguageClient_serverCommands = {
 	\ 'cpp': ['clangd', '-index', '-pch-storage=memory'],
 	\ 'css': [$VIMHOME.'/bin/nodels', 'css-languageserver', '--stdio'],
 	\ 'dockerfile': [$VIMHOME.'/bin/nodels', 'docker-langserver', '--stdio'],
-	\ 'fortran': ['fortls', '--lowercase_intrinsics'],
 	\ 'fsharp': [$VIMHOME.'/bin/fsls'],
 	\ 'go': ['gopls'],
 	\ 'html': [$VIMHOME.'/bin/nodels', 'html-languageserver', '--stdio'],

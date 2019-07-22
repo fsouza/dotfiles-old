@@ -8,8 +8,7 @@ REQUIREMENTS=\
 	     black \
 	     pyls-black \
 	     pyls-isort \
-	     pyls-mypy \
-	     fortran-language-server
+	     pyls-mypy
 
 pip:
 	pip install --upgrade pip $(REQUIREMENTS)
