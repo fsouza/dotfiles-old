@@ -21,7 +21,7 @@ function install_yaml_server {
 
 function install_fsharp_server {
 	if [ -z "$(which dotnet)" ]; then
-		echo skipping fharsp-language-server
+		echo skipping fsharp-language-server
 		return
 	fi
 	pushd "$ROOT/langservers/fsharp-language-server"
