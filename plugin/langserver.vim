@@ -5,7 +5,6 @@ let g:LanguageClient_serverCommands = {
 	\ 'dockerfile': [$VIMHOME.'/bin/nodels', 'docker-langserver', '--stdio'],
 	\ 'fsharp': [$VIMHOME.'/bin/fsls'],
 	\ 'go': ['gopls'],
-	\ 'groovy': [$VIMHOME.'/bin/groovyls'],
 	\ 'html': [$VIMHOME.'/bin/nodels', 'html-languageserver', '--stdio'],
 	\ 'java': [$VIMHOME.'/bin/jdtls'],
 	\ 'javascript': [$VIMHOME.'/bin/nodels', 'javascript-typescript-stdio'],

@@ -12,12 +12,6 @@ function install_java_server {
 	popd
 }
 
-function install_groovy_server {
-	pushd "$ROOT/langservers/groovy-language-server"
-	bash gradlew build
-	popd
-}
-
 function install_yaml_server {
 	pushd "$ROOT/langservers/yaml-language-server"
 	npm ci
@@ -68,7 +62,6 @@ function install_scala_metals {
 pushd $ROOT
 init
 install_java_server
-install_groovy_server
 install_yaml_server
 install_fsharp_server
 install_merlin_lsp
