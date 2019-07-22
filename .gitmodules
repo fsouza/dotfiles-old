@@ -7,3 +7,6 @@
 [submodule "langservers/fsharp-language-server"]
 	path = langservers/fsharp-language-server
 	url = https://github.com/fsprojects/fsharp-language-server.git
+[submodule "langservers/groovy-language-server"]
+	path = langservers/groovy-language-server
+	url = https://github.com/prominic/groovy-language-server.git
