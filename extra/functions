@@ -31,6 +31,15 @@ function gimme {
 	fi
 }
 
+function go {
+	go=$(which go)
+	if [ -z "$1" ]; then
+		rlwrap yaegi
+	else
+		$go "$@"
+	fi
+}
+
 function update_go_tip {
 	gimme=$(which gimme)
 	GIMME_DEBUG=2 GIMME_TYPE=git $gimme tip
