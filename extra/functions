@@ -1,15 +1,3 @@
-function cg {
-	rg --no-heading -N "$@"
-}
-
-function g {
-	cg --color never "$@"
-}
-
-function ig {
-	g -i "$@"
-}
-
 function gimme {
 	if [ -z "$1" ]; then
 		echo >&2 "Please provide the go version"
