@@ -9,3 +9,6 @@ doc/tags
 **/workspace/.metadata/
 .metals
 .bloop
+__pycache__
+.pyre
+.pyre_configuration
