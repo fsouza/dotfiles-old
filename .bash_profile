@@ -6,7 +6,7 @@ export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
 export GOPATH=${HOME} GIMME_SILENT_ENV=1 GIMME_TYPE=binary
-export GOPROXY=https://proxy.golang.org,https://goproxy.io,direct
+export GOPROXY=https://proxy.golang.org,https://gocenter.io,https://athens.azurefd.net,direct
 export BASH_COMPLETION_COMPAT_DIR="${HOMEBREW_PREFIX}/etc/bash_completion.d"
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
