@@ -13,7 +13,6 @@ let g:LanguageClient_serverCommands = {
 	\ 'python': ['pyls'],
 	\ 'rust': ['rls'],
 	\ 'sbt': ['metals-vim'],
-	\ 'scala': ['metals-vim'],
 	\ 'typescript': [$VIMHOME.'/bin/nodels', 'typescript-language-server',  '--stdio'],
 	\ 'yaml': [$VIMHOME.'/bin/yls'],
 	\ }
