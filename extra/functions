@@ -34,7 +34,7 @@ function update_go_tip {
 	gopath="$(go env GOPATH)"
 
 	if [ -n "$gopath" ]; then
-		rm -rf $gopath/pkg/$(go env GOOS)_$(go env GOARCH)
+		rm -rf "${gopath}/pkg/$(go env GOOS)_$(go env GOARCH)"
 	fi
 	go clean -cache
 }
