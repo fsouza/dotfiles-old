@@ -50,5 +50,9 @@ if [ -n "$(which opam)" ]; then
 	eval $(opam env)
 fi
 
+if [ -n "$(which rg)" ]; then
+	export FZF_DEFAULT_COMMAND="rg -l --hidden -g '!.git' -g '!.hg' '.*'"
+fi
+
 source ${basedir}/extra/tmux
 unset basedir
