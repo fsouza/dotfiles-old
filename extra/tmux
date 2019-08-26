@@ -6,6 +6,6 @@ function _go_to_tmux {
 	fi
 }
 
-if [ -z "$TMUX" ] && [ -n "$(which tmux)" ] && [[ $- =~ i ]]; then
+if [ -z "$TMUX" ] && which -s tmux && [[ $- =~ i ]]; then
 	_go_to_tmux
 fi
