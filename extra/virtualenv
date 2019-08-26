@@ -31,6 +31,17 @@ function d() {
 	hash -r
 }
 
+function _find_python() {
+	python=${PYTHON:-python3}
+	if ! which -s "${python}" && [ -n "$HOMEBREW_PREFIX" ]; then
+		path=$(ls ${HOMEBREW_PREFIX}/opt/python3*/bin/${python} | head -1)
+		if [ -n "$path" ]; then
+			python=$path
+		fi
+	fi
+	echo $python
+}
+
 function mkv() {
 	test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS}
 	if [ -z "${1}" ]; then
@@ -40,9 +51,8 @@ function mkv() {
 
 	# create the env only if it doesn't exist yet
 	if ! [ -d "${VIRTUALENVS}/${1}" ]; then
-		python=${PYTHON:-python3}
-		virtualenv -p ${python} ${VIRTUALENVS}/${1}
-		${VIRTUALENVS}/${1}/bin/pip install --upgrade pip
+		virtualenv -p "$(_find_python)" ${VIRTUALENVS}/${1} && \
+			${VIRTUALENVS}/${1}/bin/pip install --upgrade pip
 	fi
 
 	v $1
