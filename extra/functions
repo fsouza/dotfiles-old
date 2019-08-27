@@ -28,6 +28,25 @@ function go {
 	fi
 }
 
+function refresh_go_tools {
+	GO111MODULE=off go get -u github.com/Masterminds/glide
+	(
+		cd /tmp
+		export GO111MODULE=on
+		go get golang.org/x/tools/gopls@master
+		go get honnef.co/go/tools/cmd/staticcheck@master
+		go get mvdan.cc/gofumpt/gofumports@master
+		go get mvdan.cc/gofumpt@master
+
+		# golangci-lint & yaegi won't compile with Go 1.13, yet.
+		gimme 1.12.x
+		export GOPROXY=direct
+
+		go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+		go get github.com/containous/yaegi/cmd/yaegi@master
+	)
+}
+
 function update_go_tip {
 	gimme=$(which gimme)
 	GIMME_DEBUG=2 GIMME_TYPE=git $gimme tip
@@ -37,6 +56,7 @@ function update_go_tip {
 		rm -rf "${gopath}/pkg/$(go env GOOS)_$(go env GOARCH)"
 	fi
 	go clean -cache
+	refresh_go_tools
 }
 
 function git_config {
