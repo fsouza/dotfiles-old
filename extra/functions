@@ -19,15 +19,6 @@ function gimme {
 	fi
 }
 
-function go {
-	go=$(which go)
-	if [ -z "$1" ]; then
-		rlwrap yaegi
-	else
-		$go "$@"
-	fi
-}
-
 function refresh_go_tools {
 	GO111MODULE=off go get -u github.com/Masterminds/glide
 	(
@@ -38,12 +29,10 @@ function refresh_go_tools {
 		go get mvdan.cc/gofumpt/gofumports@master
 		go get mvdan.cc/gofumpt@master
 
-		# golangci-lint & yaegi won't compile with Go 1.13, yet.
+		# golangci-lint won't compile with Go 1.13
 		gimme 1.12.x
 		export GOPROXY=direct
-
 		go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
-		go get github.com/containous/yaegi/cmd/yaegi@master
 	)
 }
 
