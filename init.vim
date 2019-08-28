@@ -25,6 +25,7 @@ Plug 'rgrinberg/vim-ocaml'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
+Plug 'Vimjas/vim-python-pep8-indent'
 call plug#end()
 
 set t_Co=256
