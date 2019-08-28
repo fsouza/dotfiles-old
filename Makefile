@@ -1,4 +1,4 @@
-.PHONY: pip setup-langservers bootstrap echo-path
+.PHONY: pip gem setup-langservers bootstrap update-spell
 
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 
@@ -18,5 +18,11 @@ gem:
 
 setup-langservers:
 	cd $$(dirname $(mkfile_path)) && ./setup-langservers.bash
+
+update-spell:
+	cd $$(dirname $(mkfile_path))/spell && \
+		curl -sLO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl && \
+		curl -sLO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl && \
+		curl -sLO http://ftp.vim.org/vim/runtime/spell/pt.utf-8.spl
 
 bootstrap: pip gem setup-langservers
