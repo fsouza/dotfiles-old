@@ -45,7 +45,8 @@ function install_servers_from_npm {
 		typescript-language-server \
 		vscode-css-languageserver-bin \
 		vscode-html-languageserver-bin \
-		vscode-json-languageserver-bin
+		vscode-json-languageserver-bin \
+		vim-language-server
 }
 
 pushd $ROOT
