@@ -46,11 +46,11 @@ cond_source "${basedir}/extra/z/z.sh"
 
 export PS1="％ " PS2="\\ "
 
-if which -s opam; then
+if [ -n "$(which opam)" ]; then
 	eval $(opam env)
 fi
 
-if which -s rg; then
+if [ -n "$(which rg)" ]; then
 	export FZF_DEFAULT_COMMAND="rg -l --hidden -g '!.git' -g '!.hg' '.*'"
 fi
 
