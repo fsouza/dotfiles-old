@@ -44,15 +44,12 @@ function _find_python() {
 
 function mkv() {
 	test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS}
-	if [ -z "${1}" ]; then
-		echo >&2 "Please specify the name of the virtualenv you want to create"
-		return 2
-	fi
+	name=${1:-$(basename "${PWD}")}
 
 	# create the env only if it doesn't exist yet
-	if ! [ -d "${VIRTUALENVS}/${1}" ]; then
-		virtualenv -p "$(_find_python)" ${VIRTUALENVS}/${1} && \
-			${VIRTUALENVS}/${1}/bin/pip install --upgrade pip
+	if ! [ -d "${VIRTUALENVS}/${name}" ]; then
+		virtualenv -p "$(_find_python)" ${VIRTUALENVS}/${name} && \
+			"${VIRTUALENVS}/${name}/bin/pip" install --upgrade pip
 	fi
 
 	v $1
