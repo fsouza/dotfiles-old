@@ -68,7 +68,7 @@ function set_private_goproxy {
 	# assumes that the private GOPROXY is an athens server, so /healthz
 	# should work.
 	proxy_host=${1}
-	if curl -f https://${proxy_host}/healthz &>/dev/null; then
+	if curl -fm 0.1 https://${proxy_host}/healthz &>/dev/null; then
 		export GOPROXY=https://$proxy_host,$GOPROXY
 	fi
 }
