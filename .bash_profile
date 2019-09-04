@@ -36,6 +36,7 @@ source ${basedir}/extra/chapel
 source ${basedir}/extra/functions
 source ${basedir}/extra/brew
 source ${basedir}/extra/neovim
+source ${basedir}/extra/rclone
 
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/${OS_NAME}-functions"

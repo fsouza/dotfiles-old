@@ -1,27 +1,2 @@
 export TMUX_COPY_CMD='xclip -i -selection clipboard'
 append_to_path /snap/bin
-
-function rclone_mount {
-	if [ -z "$1" ]; then
-		echo >&2 please specify the path
-		return 2
-	fi
-
-	rclone mount od: $1 \
-		--daemon \
-		--dir-cache-time 60s \
-		--dir-perms 0755 \
-		--file-perms 0644 \
-		--poll-interval 20s \
-		--vfs-cache-mode full \
-		--write-back-cache
-}
-
-function ensure_rclone_mount {
-	if ! (mount | grep -q ^"od: on $HOME/OneDrive "); then
-		rclone_mount $HOME/OneDrive
-	fi
-}
-
-ensure_rclone_mount
-export _Z_EXCLUDE_DIRS=($HOME/OneDrive)
