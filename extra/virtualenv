@@ -1,8 +1,13 @@
 export VIRTUALENVS=${HOME}/.venvs
 
 function v() {
-	virtualenvpath=${VIRTUALENVS}/${1}
-	if [ -z "${1}" ]; then
+	name=${1}
+	if [[ ${name} == "@" ]]; then
+		name=$(basename "$PWD")
+	fi
+
+	virtualenvpath=${VIRTUALENVS}/${name}
+	if [ -z "${name}" ]; then
 		ls ${VIRTUALENVS}
 	elif [ -d "${virtualenvpath}" ]; then
 		if [ -z "${oldpath}" ]; then
@@ -14,7 +19,7 @@ function v() {
 		export VIRTUAL_ENV=${virtualenvpath}
 		hash -r
 	else
-		echo >&2 "virtualenv $1 not found"
+		echo >&2 "virtualenv ${name} not found"
 		return 1
 	fi
 }
