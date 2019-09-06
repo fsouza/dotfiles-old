@@ -1,9 +1,6 @@
 [submodule "langservers/yaml-language-server"]
 	path = langservers/yaml-language-server
 	url = https://github.com/redhat-developer/yaml-language-server.git
-[submodule "langservers/jdtls"]
-	path = langservers/jdtls
-	url = https://github.com/eclipse/eclipse.jdt.ls.git
 [submodule "langservers/fsharp-language-server"]
 	path = langservers/fsharp-language-server
 	url = https://github.com/fsprojects/fsharp-language-server.git

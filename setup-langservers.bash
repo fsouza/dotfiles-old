@@ -6,12 +6,6 @@ function init {
 	git submodule update --init --recursive
 }
 
-function install_java_server {
-	pushd "$ROOT/langservers/jdtls"
-	./mvnw package
-	popd
-}
-
 function install_yaml_server {
 	pushd "$ROOT/langservers/yaml-language-server"
 	npm ci
@@ -51,7 +45,6 @@ function install_servers_from_npm {
 
 pushd $ROOT
 init
-install_java_server
 install_yaml_server
 install_fsharp_server
 install_merlin_lsp

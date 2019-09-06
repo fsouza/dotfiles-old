@@ -6,7 +6,6 @@ let g:LanguageClient_serverCommands = {
 	\ 'fsharp': [$VIMHOME.'/bin/fsls'],
 	\ 'go': ['gopls'],
 	\ 'html': [$VIMHOME.'/bin/nodels', 'html-languageserver', '--stdio'],
-	\ 'java': [$VIMHOME.'/bin/jdtls'],
 	\ 'javascript': [$VIMHOME.'/bin/nodels', 'javascript-typescript-stdio'],
 	\ 'json': [$VIMHOME.'/bin/nodels', 'json-languageserver', '--stdio'],
 	\ 'ocaml': ['ocamlmerlin-lsp'],
