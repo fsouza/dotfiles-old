@@ -30,7 +30,7 @@ function refresh_go_tools {
 		go get mvdan.cc/gofumpt@master
 
 		# golangci-lint won't compile with Go 1.13
-		gimme 1.12.9
+		gimme 1.12.x
 		export GOPROXY=direct
 		go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	)
