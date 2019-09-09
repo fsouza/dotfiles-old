@@ -1,6 +1,6 @@
 let g:LanguageClient_serverCommands = {
-	\ 'c': ['clangd', '-index', '-pch-storage=memory'],
-	\ 'cpp': ['clangd', '-index', '-pch-storage=memory'],
+	\ 'c': [$VIMHOME.'/bin/clangd'],
+	\ 'cpp': [$VIMHOME.'/bin/clangd'],
 	\ 'css': [$VIMHOME.'/bin/nodels', 'css-languageserver', '--stdio'],
 	\ 'dockerfile': [$VIMHOME.'/bin/nodels', 'docker-langserver', '--stdio'],
 	\ 'fsharp': [$VIMHOME.'/bin/fsls'],

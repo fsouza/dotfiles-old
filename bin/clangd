@@ -1,0 +1,3 @@
+#!/bin/bash -e
+
+exec $HOMEBREW_PREFIX/opt/llvm/bin/clangd -index -pch-storage=memory
