@@ -48,22 +48,6 @@ function update_go_tip {
 	refresh_go_tools
 }
 
-function git_config {
-	email=${1:-${GITEMAIL}}
-	if [ -z "$email" ]; then
-		echo >&2 "Please provide the email"
-		return 1
-	fi
-	name=${2:-${GITNAME}}
-	if [ -z "$name" ]; then
-		echo >&2 "Please define the GITNAME environment variable or provide a second parameter to this command"
-		return 1
-	fi
-	git config user.name "$name"
-	git config user.email $email
-	git config user.signingkey $email
-}
-
 function set_private_goproxy {
 	# assumes that the private GOPROXY is an athens server, so /healthz
 	# should work.
@@ -72,5 +56,3 @@ function set_private_goproxy {
 		export GOPROXY=https://$proxy_host,$GOPROXY
 	fi
 }
-
-alias zvim='nvim $(fzf)'
