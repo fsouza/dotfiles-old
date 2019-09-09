@@ -3,4 +3,4 @@
 ROOT=$(cd `dirname ${0}`/.. && pwd -P)
 FS_LS_LOCATION=$ROOT/langservers/fsharp-language-server
 
-dotnet $FS_LS_LOCATION/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/FSharpLanguageServer.dll
+exec dotnet $FS_LS_LOCATION/src/FSharpLanguageServer/bin/Release/netcoreapp2.0/FSharpLanguageServer.dll
