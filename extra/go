@@ -7,7 +7,7 @@ function gimme {
 	if [[ $1 =~ ^- || $1 == "help" ]]; then
 		${GIMME} "${1}"
 	else
-		if [ "$1" = "tip" ]; then
+		if [[ $1 == "tip" ]]; then
 			old_gimme_type=$GIMME_TYPE
 			export GIMME_TYPE=git
 		fi
