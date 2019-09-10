@@ -25,6 +25,7 @@ function refresh_go_tools {
 		cd /tmp
 		export GO111MODULE=on
 		go get golang.org/x/tools/gopls@master
+		go get golang.org/x/tools/cmd/goimports@master
 		go get honnef.co/go/tools/cmd/staticcheck@master
 		go get mvdan.cc/gofumpt/gofumports@master
 		go get mvdan.cc/gofumpt@master
