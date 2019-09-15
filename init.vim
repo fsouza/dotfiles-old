@@ -45,11 +45,6 @@ set wildmenu wildmode=list:longest
 set guicursor=
 set mouse=a
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-l>"
-
 let g:netrw_banner = 0
 
 nmap <silent> <leader>g :Grepper -tool rg<CR>
