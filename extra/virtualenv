@@ -57,7 +57,7 @@ function mkv() {
 			"${VIRTUALENVS}/${name}/bin/pip" install --upgrade pip
 	fi
 
-	v $1
+	v $name
 }
 
 function rmv() {
