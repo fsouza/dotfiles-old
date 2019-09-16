@@ -81,4 +81,5 @@ highlight LangClientText term=NONE cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE 
 highlight LangClientRead term=NONE cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
 highlight LangClientWrite term=NONE cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
 
-highlight StatusLineNC term=reverse cterm=reverse ctermfg=252 ctermbg=238 gui=reverse
+highlight StatusLine term=NONE cterm=NONE ctermbg=240 ctermfg=255 gui=NONE
+highlight StatusLineNC term=NONE cterm=NONE ctermfg=238 ctermbg=252 gui=NONE
