@@ -1,7 +1,7 @@
 func! Multiple_cursors_before()
-	call LanguageClient#isAlive(function('LC_stop'))
+	let g:LanguageClient_changeThrottle = 400
 endfunc
 
 func! Multiple_cursors_after()
-	call LC_restart({'result': v:false})
+	let g:LanguageClient_changeThrottle = v:null
 endfunc

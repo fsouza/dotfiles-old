@@ -36,14 +36,6 @@ let g:LanguageClient_useVirtualText = 0
 
 let g:lc_complete_skip = []
 
-function LC_stop(is_running)
-	if a:is_running.result
-		call LanguageClient#exit()
-		sign unplace *
-		call LanguageClient#isAlive(function('LC_stop'))
-	endif
-endfunction
-
 function LC_restart(is_running)
 	if a:is_running.result
 		call LanguageClient#exit()
