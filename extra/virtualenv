@@ -53,8 +53,7 @@ function mkv() {
 
 	# create the env only if it doesn't exist yet
 	if ! [ -d "${VIRTUALENVS}/${name}" ]; then
-		virtualenv -p "$(_find_python)" ${VIRTUALENVS}/${name} && \
-			"${VIRTUALENVS}/${name}/bin/pip" install --upgrade pip
+		virtualenv -p "$(_find_python)" ${VIRTUALENVS}/${name}
 	fi
 
 	v $1
