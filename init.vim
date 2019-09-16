@@ -38,7 +38,9 @@ set directory=$VIMHOME/swp
 set backupskip=/tmp/*,/private/tmp/*
 
 set completeopt=menu,longest
-set hidden laststatus=0 noshowcmd ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
+set hidden noshowcmd
+set laststatus=2 statusline=%<%f\ %h%m%r%=%-14.(%l,%c\ \ \ %o%)
+set ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
 set backspace=2 nohlsearch noincsearch nofoldenable
 set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
