@@ -1,7 +1,7 @@
-func! Multiple_cursors_before()
+function! Multiple_cursors_before()
 	let g:LanguageClient_changeThrottle = 400
-endfunc
+endfunction
 
-func! Multiple_cursors_after()
+function! Multiple_cursors_after()
 	let g:LanguageClient_changeThrottle = v:null
-endfunc
+endfunction
