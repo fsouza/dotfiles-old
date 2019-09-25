@@ -41,6 +41,7 @@ function refresh_go_tools {
 		go get mvdan.cc/gofumpt/gofumports@master
 		go get mvdan.cc/gofumpt@master
 		go get github.com/golangci/golangci-lint/cmd/golangci-lint@master
+		go get honnef.co/go/tools/cmd/staticcheck@master
 	)
 }
 
