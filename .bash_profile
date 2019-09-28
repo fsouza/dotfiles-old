@@ -5,9 +5,9 @@ source ${basedir}/extra/init-functions
 export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
-export GOPATH=${HOME} GIMME_SILENT_ENV=1 GIMME_TYPE=binary
+export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 export GOPROXY=https://proxy.golang.org,https://gocenter.io,direct
-export BASH_COMPLETION_COMPAT_DIR="${HOMEBREW_PREFIX}/etc/bash_completion.d"
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d:/home/linuxbrew/.linuxbrew/etc/bash_completion.d"
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
@@ -21,7 +21,7 @@ prepend_to_path \
 	${HOME}/.local/bin \
 	${HOME}/Applications/google-cloud-sdk/bin \
 	${basedir}/bin \
-	${GOPATH}/bin
+	${GOBIN}
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_NO_EMOJI=1
