@@ -7,7 +7,6 @@ export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 export GOPROXY=https://proxy.golang.org,https://gocenter.io,direct
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d:/home/linuxbrew/.linuxbrew/etc/bash_completion.d"
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
@@ -38,6 +37,8 @@ source ${basedir}/extra/go
 source ${basedir}/extra/brew
 source ${basedir}/extra/neovim
 source ${basedir}/extra/rclone
+
+export BASH_COMPLETION_COMPAT_DIR="${HOMEBREW_PREFIX}/etc/bash_completion.d"
 
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/${OS_NAME}-functions"
