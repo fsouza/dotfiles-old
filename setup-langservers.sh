@@ -14,7 +14,7 @@ function install_yaml_server {
 }
 
 function install_fsharp_server {
-	if [ -z "$(which dotnet)" ]; then
+	if ! command -v dotnet &>/dev/null; then
 		echo skipping fsharp-language-server
 		return
 	fi
@@ -25,7 +25,7 @@ function install_fsharp_server {
 }
 
 function install_merlin_lsp {
-	if [ -z "$(which opam)" ]; then
+	if ! command -v opam &/dev/null; then
 		echo skipping merlin-lsp
 		return
 	fi
