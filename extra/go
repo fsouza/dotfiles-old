@@ -27,7 +27,7 @@ function _update_gopls {
 
 	pushd "$dir"
 	git pull
-	go install
+	go install -v
 	popd
 }
 
