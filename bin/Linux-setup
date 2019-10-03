@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/zsh -e
 
 # Yes, this script requires sudo. Life sucks.
 

@@ -1,4 +1,4 @@
-#!/bin/bash -el
+#!/bin/zsh -el
 
 basedir=$(cd $(dirname $0)/..; pwd -P)
 

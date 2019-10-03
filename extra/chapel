@@ -8,7 +8,7 @@ function _clone_chpl() {
 function _load_chpl() {
 	location="${CHAPEL_CODE}/chapel-${1}"
 	if [ ! -d "$location" ]; then _clone_chpl "$location"; fi
-	source "${location}/util/setchplenv.bash" > /dev/null
+	source "${location}/util/setchplenv.sh" > /dev/null
 	export CHPL_TARGET_CPU=native CHPL_REGEXP=re2 CHPL_AUX_FILESYS=curl CHPL_DEVELOPER=1
 	export CHPL_MODULE_PATH=${HOME}/Projects/chapel-modules
 }

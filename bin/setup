@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/zsh -e
 
 # This script setups this repository, intializing the submodules, setting up
 # symlinks and copying any required files.
@@ -10,11 +10,10 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=".bash_profile .clang-format .gitconfig .gitignore_global .hgignore_global .hgrc .editorconfig .utoprc .tmux.conf .tmux.${os}.conf .alacritty.yml .ocamlformat"
+files=".zshrc .clang-format .gitconfig .gitignore_global .hgignore_global .hgrc .editorconfig .utoprc .tmux.conf .tmux.${os}.conf .alacritty.yml .ocamlformat"
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
-ln -sf ${basedir}/.bash_profile ~/.bashrc
 
 mkdir -p $HOME/.config
 ln -sf ${basedir}/pycodestyle $HOME/.config/pycodestyle
@@ -29,5 +28,5 @@ fi
 
 if [ -n "$NVM_DIR" ]; then
 	mkdir -p $NVM_DIR
-	curl -s https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+	curl -s https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | zsh
 fi

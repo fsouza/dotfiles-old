@@ -1,6 +1,8 @@
 # on mac, coreutils is needed to get realpath.
-basedir=$(dirname $(realpath $BASH_SOURCE))
+basedir=$(dirname $(realpath ${(%):-%N}))
 source ${basedir}/extra/init-functions
+
+autoload -U compinit && compinit
 
 export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
@@ -59,3 +61,7 @@ fi
 
 source ${basedir}/extra/tmux
 unset basedir
+
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+bindkey -e
