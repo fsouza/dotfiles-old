@@ -4,6 +4,9 @@ source ${basedir}/extra/init-functions
 
 autoload -U compinit && compinit
 
+setopt noautomenu
+setopt nomenucomplete
+
 export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
