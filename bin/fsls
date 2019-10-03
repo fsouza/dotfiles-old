@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/zsh -e
 
 ROOT=$(cd `dirname ${0}`/.. && pwd -P)
 FS_LS_LOCATION=$ROOT/langservers/fsharp-language-server

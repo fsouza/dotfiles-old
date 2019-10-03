@@ -17,7 +17,7 @@ gem:
 	gem install neovim
 
 setup-langservers:
-	cd $$(dirname $(mkfile_path)) && ./setup-langservers.bash
+	cd $$(dirname $(mkfile_path)) && ./setup-langservers.zsh
 
 update-spell:
 	cd $$(dirname $(mkfile_path))/spell && \

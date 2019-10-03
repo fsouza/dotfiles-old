@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 ROOT=$(cd `dirname ${0}` && pwd -P)
 
