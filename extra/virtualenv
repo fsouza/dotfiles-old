@@ -25,7 +25,7 @@ function v() {
 }
 
 function d() {
-	if [ -z "${oldpath}" ]; then
+	if [[ ! -v oldpath ]]; then
 		echo >&2 "no virtualenv active"
 		return 1
 	fi
@@ -38,7 +38,7 @@ function d() {
 
 function _find_python() {
 	python=${PYTHON:-python3}
-	if [ -z "$(which "${python}")" ] && [ -n "$HOMEBREW_PREFIX" ]; then
+	if [ -z "$(command -v "${python}")" ] && [[ -v HOMEBREW_PREFIX ]]; then
 		path=$(ls ${HOMEBREW_PREFIX}/opt/python3*/bin/${python} | head -1)
 		if [ -n "$path" ]; then
 			python=$path
@@ -73,6 +73,15 @@ function upgrade_pip() {
 	for env in $(v); do
 		${VIRTUALENVS}/${env}/bin/pip install -U pip
 	done
+}
+
+function pip() {
+	if [[ ! -v VIRTUAL_ENV ]]; then
+		echo >&2 "refusing to use global pip, call the full binary if you really mean it"
+		return 3
+	fi
+
+	command pip $@
 }
 
 alias cv="which python"
