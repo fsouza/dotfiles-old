@@ -3,15 +3,14 @@ function gimme {
 		echo >&2 "Please provide the go version"
 		return 1
 	fi
-	GIMME=$(which gimme)
 	if [[ $1 =~ ^- || $1 == "help" ]]; then
-		${GIMME} "${1}"
+		command gimme "${1}"
 	else
 		if [[ $1 == "tip" ]]; then
 			old_gimme_type=$GIMME_TYPE
 			export GIMME_TYPE=git
 		fi
-		eval "$(${GIMME} ${1})"
+		eval "$(command gimme ${1})"
 		if [ -n "$old_gimme_type" ]; then
 			export GIMME_TYPE=$old_gimme_type
 			unset old_gimme_type
@@ -46,8 +45,7 @@ function refresh_go_tools {
 }
 
 function update_go_tip {
-	gimme=$(which gimme)
-	GIMME_DEBUG=2 GIMME_TYPE=git $gimme tip
+	GIMME_DEBUG=2 GIMME_TYPE=git command gimme tip
 	gopath="$(go env GOPATH)"
 
 	if [ -n "$gopath" ]; then
