@@ -1,6 +1,6 @@
 .PHONY: pip gem setup-langservers bootstrap update-spell
 
-mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
+mkfile_path := $(realpath $(lastword $(MAKEFILE_LIST)))
 
 REQUIREMENTS=\
 	     flake8 \
