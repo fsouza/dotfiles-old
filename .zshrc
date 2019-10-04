@@ -43,8 +43,6 @@ source ${basedir}/extra/brew
 source ${basedir}/extra/neovim
 source ${basedir}/extra/rclone
 
-export BASH_COMPLETION_COMPAT_DIR="${HOMEBREW_PREFIX}/etc/bash_completion.d"
-
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/${OS_NAME}-functions"
 cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
@@ -66,5 +64,6 @@ source ${basedir}/extra/tmux
 unset basedir
 
 fpath=(/usr/local/share/zsh-completions $fpath)
+export ZLE_SPACE_SUFFIX_CHARS=$'|&'
 
 bindkey -e
