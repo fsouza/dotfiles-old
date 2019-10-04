@@ -4,9 +4,6 @@ source ${basedir}/extra/init-functions
 
 autoload -U compinit && compinit
 
-setopt noautomenu
-setopt nomenucomplete
-
 export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
@@ -65,5 +62,16 @@ unset basedir
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 export ZLE_SPACE_SUFFIX_CHARS=$'|&'
+
+export HISTFILE="$HOME/.history"
+export HISTSIZE=1234567890
+export SAVEHIST=$HISTSIZE
+
+setopt noautomenu
+setopt nomenucomplete
+
+setopt BANG_HIST
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
 
 bindkey -e
