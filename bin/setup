@@ -10,7 +10,7 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=".zshrc .clang-format .gitconfig .gitignore_global .hgignore_global .hgrc .editorconfig .utoprc .tmux.conf .tmux.${os}.conf .alacritty.yml .ocamlformat"
+files=(.zshrc .clang-format .gitconfig .gitignore_global .hgignore_global .hgrc .editorconfig .utoprc .tmux.conf .tmux.${os}.conf .alacritty.yml .ocamlformat)
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
@@ -22,7 +22,7 @@ mkdir -p ~/.gnupg
 chmod 700 ~/.gnupg
 ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
 
-if [ -f $basedir/bin/${os}-setup ]; then
+if [ -f $basedir/bin/${os}-setup ] && [[ $1 != "--skip-os" ]]; then
 	$basedir/bin/${os}-setup
 fi
 
