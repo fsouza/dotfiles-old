@@ -57,6 +57,9 @@ function LC_init()
 			nnoremap <silent> <Leader>v :call LanguageClient#clearDocumentHighlight()<CR>
 			nnoremap <silent> <Leader>t :call LanguageClient#workspace_symbol()<CR>
 			nnoremap <silent> <Leader>q :call LanguageClient#textDocument_references()<CR>
+			nnoremap <silent> <Leader>m :call LanguageClient_contextMenu()<CR>
+			nnoremap <silent> <Leader>c :call LanguageClient#textDocument_codeAction()<CR>
+			nnoremap <silent> <Leader>e :call LanguageClient#explainErrorAtPoint()<CR>
 			nnoremap <silent> <Leader>lc :call LC_restart({'result': v:true})<CR>
 		endif
 
