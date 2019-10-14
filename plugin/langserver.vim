@@ -9,7 +9,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'javascript': [$VIMHOME.'/bin/nodels', 'javascript-typescript-stdio'],
 	\ 'json': [$VIMHOME.'/bin/nodels', 'json-languageserver', '--stdio'],
 	\ 'ocaml': ['ocamlmerlin-lsp'],
-	\ 'python': ['pyls'],
+	\ 'python': ['python', '-m', 'pyls'],
 	\ 'rust': ['rls'],
 	\ 'typescript': [$VIMHOME.'/bin/nodels', 'typescript-language-server',  '--stdio'],
 	\ 'vim': [$VIMHOME.'/bin/nodels', 'vim-language-server', '--stdio'],
