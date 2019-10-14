@@ -10,7 +10,7 @@ if isdirectory($VIRTUALENVS)
 endif
 
 call plug#begin($VIMHOME.'/plugged')
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'zsh install.sh' }
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'google/vim-jsonnet'
