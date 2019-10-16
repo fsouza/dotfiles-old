@@ -30,3 +30,5 @@
 	rebase = true
 [rebase]
 	autoStash = true
+[credential]
+	helper = !zsh -c 'exec ${HOMEBREW_PREFIX}/opt/git/libexec/git-core/git-credential-netrc get'

@@ -30,13 +30,13 @@ export HOMEBREW_NO_GITHUB_API=1
 
 export EDITOR=nvim PAGER=less MANPAGER=less
 
+source ${basedir}/extra/brew
 source ${basedir}/extra/virtualenv
 source ${basedir}/extra/gpg-agent
 
 source ${basedir}/extra/chapel
 source ${basedir}/extra/git
 source ${basedir}/extra/go
-source ${basedir}/extra/brew
 source ${basedir}/extra/neovim
 source ${basedir}/extra/rclone
 

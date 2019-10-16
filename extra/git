@@ -13,3 +13,7 @@ function git_config {
 	git config user.email $email
 	git config user.signingkey $email
 }
+
+if [[ -v HOMEBREW_PREFIX ]]; then
+	export PERLLIB=${HOMEBREW_PREFIX}/opt/git/share/perl5:$PERLLIB
+fi
