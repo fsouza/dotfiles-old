@@ -77,7 +77,16 @@ highlight goSameId term=NONE cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=
 highlight htmlBold term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight LustySelected term=NONE cterm=NONE ctermbg=NONE ctermfg=245 gui=NONE guibg=NONE guifg=#8a8a8a
 
+highlight CocErrorSign term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guibg=#ffffff guifg=#262626
 highlight CocHighlightText term=NONE cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
+highlight CocHintSign term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guibg=#ffffff guifg=#262626
+highlight CocInfoSign term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guibg=#ffffff guifg=#262626
+highlight CocWarningSign term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guibg=#ffffff guifg=#262626
+
+highlight CocErrorFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=ff0000
+highlight CocHintFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=ff0000
+highlight CocInfoFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=ff0000
+highlight CocWarningFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=ff0000
 
 highlight StatusLine term=NONE cterm=NONE ctermbg=238 ctermfg=15 gui=NONE
 highlight StatusLineNC term=NONE cterm=NONE ctermfg=238 ctermbg=252 gui=NONE
