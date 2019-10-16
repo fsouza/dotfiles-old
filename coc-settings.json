@@ -1,8 +1,10 @@
 {
-  "suggest.autoTrigger": "none",
   "coc.preferences.jumpCommand": "tab drop",
-  "diagnostic.errorSign": "\\\\ ",
+  "diagnostic.errorSign": "≫ ",
   "diagnostic.level": "error",
+  "diagnostic.messageDelay": 0,
+  "diagnostic.messageTarget": "echo",
+  "suggest.autoTrigger": "none",
   "languageserver": {
     "bash": {
       "command": "vim-nodels",
