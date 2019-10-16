@@ -1,6 +1,7 @@
 {
   "suggest.autoTrigger": "none",
   "coc.preferences.jumpCommand": "tab drop",
+  "diagnostic.errorSign": "\\\\ ",
   "diagnostic.level": "error",
   "languageserver": {
     "bash": {
