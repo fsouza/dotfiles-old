@@ -3,6 +3,7 @@ if !isdirectory($VIMHOME)
 	let $VIMHOME = expand('~/.vim')
 endif
 
+let $PATH = $VIMHOME.'/bin:'.$PATH
 if isdirectory($VIRTUALENVS)
 	let $PATH = $VIRTUALENVS.'/vim/bin:'.$PATH
 	let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
@@ -10,7 +11,6 @@ if isdirectory($VIRTUALENVS)
 endif
 
 call plug#begin($VIMHOME.'/plugged')
-Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': './install.sh' }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'godlygeek/tabular'
 Plug 'google/vim-jsonnet'
@@ -19,6 +19,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhinz/vim-grepper'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'rgrinberg/vim-ocaml'
 Plug 'sjbach/lusty'

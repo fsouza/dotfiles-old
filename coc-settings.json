@@ -1,0 +1,106 @@
+{
+  "suggest.autoTrigger": "none",
+  "languageserver": {
+    "clangd": {
+      "command": "vim-clangd",
+      "args": [
+        "--background-index"
+      ],
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "c",
+        "cpp"
+      ]
+    },
+    "css": {
+      "command": "vim-nodels",
+      "args": [
+        "css-languageserver",
+        "--stdio"
+      ],
+      "filetypes": [
+        "css"
+      ]
+    },
+    "dockerfile": {
+      "command": "vim-nodels",
+      "args": [
+        "docker-langserver",
+        "--stdio"
+      ],
+      "filetypes": [
+        "dockerfile"
+      ]
+    },
+    "fsharp": {
+      "command": "vim-fsls",
+      "filetypes": [
+        "fsharp"
+      ]
+    },
+    "gopls": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "filetypes": [
+        "go"
+      ],
+      "initializationOptions": {
+        "diagnosticsEnabled": true,
+        "lintTool": "staticcheck"
+      }
+    },
+    "html": {
+      "command": "vim-nodels",
+      "args": [
+        "html-langserver",
+        "--stdio"
+      ],
+      "filetypes": [
+        "html"
+      ]
+    },
+    "ocaml": {
+      "command": "ocamlmerlin-lsp",
+      "filetypes": [
+        "ocaml",
+        "reason"
+      ]
+    },
+    "python": {
+      "command": "python",
+      "args": [
+        "-m",
+        "pyls"
+      ],
+      "filetypes": [
+        "python"
+      ]
+    },
+    "rust": {
+      "command": "rls",
+      "filetypes": [
+        "rust"
+      ],
+      "rootPatterns": [
+        "Cargo.toml"
+      ]
+    },
+    "vim": {
+      "command": "vim-nodels",
+      "args": [
+        "vim-language-server",
+        "--stdio"
+      ],
+      "filetypes": [
+        "vim"
+      ]
+    }
+  }
+}
