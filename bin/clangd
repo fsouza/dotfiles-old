@@ -1,3 +1,3 @@
 #!/bin/zsh -e
 
-exec $HOMEBREW_PREFIX/opt/llvm/bin/clangd -index -pch-storage=memory
+exec $HOMEBREW_PREFIX/opt/llvm/bin/clangd --pch-storage=memory --background-index
