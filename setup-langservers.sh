@@ -25,7 +25,7 @@ function install_fsharp_server {
 }
 
 function install_merlin_lsp {
-	if ! command -v opam &/dev/null; then
+	if ! command -v opam &>/dev/null; then
 		echo skipping merlin-lsp
 		return
 	fi
@@ -34,6 +34,7 @@ function install_merlin_lsp {
 
 function install_servers_from_npm {
 	npm i --no-save \
+		bash-language-server \
 		dockerfile-language-server-nodejs \
 		javascript-typescript-langserver \
 		typescript-language-server \
