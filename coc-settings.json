@@ -1,6 +1,7 @@
 {
   "suggest.autoTrigger": "none",
   "coc.preferences.jumpCommand": "tab drop",
+  "diagnostic.level": "error",
   "languageserver": {
     "bash": {
       "command": "vim-nodels",
