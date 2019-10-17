@@ -1,5 +1,5 @@
 function s:lc_init()
-	if get(g:, 'LC_enable_mappings', 1) != 0
+	if get(g:, 'LC_enable_mappings', 1) != 0 && get(b:, 'LC_enable_mappings', 1) != 0
 		inoremap <silent><expr> <c-x><c-o> coc#refresh()
 		nmap <silent> gd <Plug>(coc-definition)
 		nmap <silent> gy <Plug>(coc-type-definition)
@@ -16,7 +16,7 @@ function s:lc_init()
 endfunction
 
 function s:lc_autoformat()
-	if get(g:, 'LC_autoformat', 1) != 0
+	if get(g:, 'LC_autoformat', 1) != 0 && get(b:, 'LC_autoformat', 1) != 0
 		call CocAction('format')
 	endif
 endfunction
