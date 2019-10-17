@@ -1,5 +1,5 @@
 function! JsonnetFormat()
-	if get(g:, 'jsonnetfmt_autoformat', 1) != 0
+	if get(b:, 'jsonnetfmt_autoformat', 1) != 0
 		let view = winsaveview()
 		execute "silent %!jsonnetfmt -"
 		if v:shell_error
