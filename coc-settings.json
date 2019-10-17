@@ -121,5 +121,11 @@
         "vim",
       ],
     },
+    "yaml": {
+      "command": "vim-yls",
+      "filetypes": [
+        "yaml",
+      ],
+    },
   },
 }
