@@ -1,5 +1,5 @@
 function! TerraformFmt()
-	if get(g:, 'TerraformFmt_autoformat', 1) != 0 && executable("terraform")
+	if get(b:, 'TerraformFmt_autoformat', 1) != 0 && executable("terraform")
 		let view = winsaveview()
 		execute "silent %!terraform fmt -"
 		if v:shell_error
