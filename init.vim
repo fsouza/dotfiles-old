@@ -19,7 +19,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'mhinz/vim-grepper'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fsouza/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'rgrinberg/vim-ocaml'
 Plug 'sjbach/lusty'
