@@ -1,9 +1,11 @@
 {
-  "coc.preferences.jumpCommand": "tab drop",
   "diagnostic.errorSign": "≫ ",
   "diagnostic.level": "error",
   "diagnostic.messageDelay": 0,
   "diagnostic.messageTarget": "echo",
+  "signature.enable": true,
+  "signature.hideOnTextChange": true,
+  "signature.triggerSignatureWait": 50,
   "suggest.autoTrigger": "none",
   "languageserver": {
     "bash": {
@@ -69,7 +71,8 @@
       ],
       "initializationOptions": {
         "diagnosticsEnabled": true,
-        "lintTool": "staticcheck",
+        "usePlaceholders": false,
+        "staticcheck": true,
       },
     },
     "html": {
