@@ -1,1 +1,1 @@
-let g:LC_autoformat = 0
+let b:LC_autoformat = 0
