@@ -225,7 +225,7 @@ function main {
 	apt_update
 	install_base_dev_tools
 	install_additional_tools
-	# install_dotnet_core
+	install_dotnet_core
 	install_alacritty
 	install_gpmdp_shortcut
 	cleanup
