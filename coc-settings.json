@@ -65,6 +65,7 @@
     },
     "gopls": {
       "command": "gopls",
+      "disableCompletionSnippets": true,
       "rootPatterns": [
         "go.mod",
       ],
