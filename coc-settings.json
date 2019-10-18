@@ -1,6 +1,8 @@
 {
   "diagnostic.errorSign": "≫ ",
-  "diagnostic.level": "error",
+  "diagnostic.hintSign": "≫ ",
+  "diagnostic.infoSign": "≫ ",
+  "diagnostic.warningSign": "≫ ",
   "diagnostic.messageDelay": 0,
   "diagnostic.messageTarget": "echo",
   "signature.enable": true,
