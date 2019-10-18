@@ -1,4 +1,5 @@
 setlocal et sw=2
+let no_ocaml_maps = 1
 
 function! OcamlFormat()
 	if get(b:, 'OcamlFormat_autoformat', 1) != 0
