@@ -4,7 +4,6 @@
 
 CORRETTO8_URL=https://d3pxv6yz143wms.cloudfront.net/8.232.09.1/java-1.8.0-amazon-corretto-jdk_8.232.09-1_amd64.deb
 CORRETTO11_URL=https://d3pxv6yz143wms.cloudfront.net/11.0.5.10.1/java-11-amazon-corretto-jdk_11.0.5.10-1_amd64.deb
-ALACRITTY_VERSION=v0.3.3
 
 basedir=$(cd $(dirname $0)/..; pwd -P)
 
@@ -42,7 +41,8 @@ function install_base_dev_tools {
 		postfix \
 		exfat-utils \
 		exfat-fuse \
-		pinentry-tty
+		pinentry-tty \
+		docker.io
 }
 
 function install_source_code_pro {
@@ -77,15 +77,6 @@ function install_additional_tools {
 	ln -sf /usr/bin/java ${HOME}/bin/java
 }
 
-# based on instructions from the official Docker docs.
-function install_docker {
-	sudo apt-key adv --fetch-keys https://download.docker.com/linux/ubuntu/gpg
-	sudo add-apt-repository -y "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) test"
-	sudo apt update
-	sudo apt install -y docker-ce docker-ce-cli containerd.io
-	sudo usermod -a -G docker $(id -un)
-}
-
 function install_dotnet_core {
 	curl -Lo /tmp/packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
 	sudo apt install /tmp/packages-microsoft-prod.deb
@@ -94,11 +85,23 @@ function install_dotnet_core {
 }
 
 function install_alacritty {
+	if ! command -v cargo &>/dev/null; then
+		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+	fi
+
+	if [ ! -d $HOME/Projects/os/3/alacritty ]; then
+		mkdir -p $HOME/Projects/os/3/
+		git clone https://github.com/jwilm/alacritty.git $HOME/Projects/os/3/alacritty
+	fi
+
 	mkdir -p $HOME/Applications/alacritty
-	curl -L \
-		https://github.com/jwilm/alacritty/releases/download/${ALACRITTY_VERSION}/Alacritty-${ALACRITTY_VERSION}-x86_64.tar.gz | \
-		tar -C $HOME/Applications/alacritty -xzf -
 	cp ${basedir}/extra/etc/alacritty.svg $HOME/Applications/alacritty
+	(
+		cd $HOME/Projects/os/3/alacritty
+		git pull
+		cargo build --release
+		cp -f -v target/release/alacritty $HOME/Applications/alacritty/alacritty
+	)
 
 	cat > $HOME/.local/share/applications/alacritty.desktop <<EOF
 [Desktop Entry]
@@ -222,8 +225,7 @@ function main {
 	apt_update
 	install_base_dev_tools
 	install_additional_tools
-	install_docker
-	install_dotnet_core
+	# install_dotnet_core
 	install_alacritty
 	install_gpmdp_shortcut
 	cleanup
