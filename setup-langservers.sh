@@ -36,8 +36,6 @@ function install_servers_from_npm {
 	npm i --no-save \
 		bash-language-server \
 		dockerfile-language-server-nodejs \
-		javascript-typescript-langserver \
-		typescript-language-server \
 		vscode-css-languageserver-bin \
 		vscode-html-languageserver-bin \
 		vscode-json-languageserver-bin \
