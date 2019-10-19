@@ -8,7 +8,6 @@ export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
-export GOPROXY=https://proxy.golang.org,https://gocenter.io,direct
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
