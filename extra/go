@@ -35,6 +35,7 @@ function refresh_go_tools {
 function update_go_tip {
 	GIMME_DEBUG=2 GIMME_TYPE=git command gimme tip
 	go clean -cache
+	source "${HOME}/.gimme/envs/gotip.env"
 	refresh_go_tools
 }
 
