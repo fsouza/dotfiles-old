@@ -42,6 +42,7 @@ function install_base_dev_tools {
 		exfat-utils \
 		exfat-fuse \
 		pinentry-tty \
+		zsh \
 		docker.io
 }
 
