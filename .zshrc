@@ -28,6 +28,11 @@ export HOMEBREW_NO_GITHUB_API=1
 
 export EDITOR=nvim PAGER=less MANPAGER=less
 
+cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+cond_source "$NVM_DIR/nvm.sh"
+cond_source "${HOME}/.gimme/envs/gotip.env"
+cond_source "${basedir}/extra/z/z.sh"
+
 source ${basedir}/extra/brew
 source ${basedir}/extra/virtualenv
 source ${basedir}/extra/gpg-agent
@@ -40,10 +45,6 @@ source ${basedir}/extra/rclone
 
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/${OS_NAME}-functions"
-cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-cond_source "$NVM_DIR/nvm.sh"
-cond_source "${HOME}/.gimme/envs/gotip.env"
-cond_source "${basedir}/extra/z/z.sh"
 
 export PS1="％ " PS2="\\ "
 
