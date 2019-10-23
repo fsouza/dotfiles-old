@@ -88,11 +88,10 @@
         "html",
       ],
     },
-    "ocaml": {
+    "merlin-lsp": {
       "command": "ocamlmerlin-lsp",
       "filetypes": [
         "ocaml",
-        "reason",
       ],
     },
     "python": {
