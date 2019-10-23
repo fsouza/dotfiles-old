@@ -104,6 +104,12 @@
         "python",
       ],
     },
+    "reason": {
+      "command": "vim-rels",
+      "filetypes": [
+        "reason",
+      ],
+    },
     "rust": {
       "command": "rls",
       "filetypes": [

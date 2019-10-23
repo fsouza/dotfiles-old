@@ -4,3 +4,6 @@
 [submodule "langservers/fsharp-language-server"]
 	path = langservers/fsharp-language-server
 	url = https://github.com/fsprojects/fsharp-language-server.git
+[submodule "langservers/reason-language-server"]
+	path = langservers/reason-language-server
+	url = https://github.com/jaredly/reason-language-server.git

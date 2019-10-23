@@ -32,6 +32,17 @@ function install_merlin_lsp {
 	opam pin merlin-lsp.dev https://github.com/ocaml/merlin.git -y
 }
 
+function install_reason_lsp {
+	if ! command -v dune &>/dev/null; then
+		echo skipping reason-language-server
+		return
+	fi
+	npm i -g esy
+	pushd "$ROOT/langservers/reason-language-server"
+	esy
+	popd
+}
+
 function install_servers_from_npm {
 	npm i --no-save \
 		bash-language-server \
@@ -47,5 +58,6 @@ init
 install_yaml_server
 install_fsharp_server
 install_merlin_lsp
+install_reason_lsp
 install_servers_from_npm
 popd

@@ -1,0 +1,6 @@
+#!/bin/zsh -e
+
+ROOT=$(cd `dirname ${0}`/.. && pwd -P)
+RE_LS_LOCATION=$ROOT/langservers/reason-language-server
+
+exec ${RE_LS_LOCATION}/_build/install/default/bin/Bin
