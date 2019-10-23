@@ -23,9 +23,6 @@
     },
     "clangd": {
       "command": "vim-clangd",
-      "args": [
-        "--background-index",
-      ],
       "rootPatterns": [
         "compile_flags.txt",
         "compile_commands.json",
