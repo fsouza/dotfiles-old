@@ -73,8 +73,6 @@
         "go",
       ],
       "initializationOptions": {
-        "diagnosticsEnabled": true,
-        "usePlaceholders": false,
         "staticcheck": true,
       },
     },
