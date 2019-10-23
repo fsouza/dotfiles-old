@@ -4,7 +4,7 @@ let no_ocaml_maps = 1
 function! OcamlFormat()
 	if get(b:, 'OcamlFormat_autoformat', 1) != 0
 		let view = winsaveview()
-		execute "silent %!ocamlformat - --enable-outside-detected-project --name " . expand('%:t')
+		execute "silent %!ocamlformat - --enable-outside-detected-project --name " . expand('%:p')
 		if v:shell_error
 			% |
 			undo
