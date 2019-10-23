@@ -21,6 +21,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'fsouza/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rgrinberg/vim-ocaml'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
