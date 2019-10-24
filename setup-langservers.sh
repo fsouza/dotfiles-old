@@ -37,9 +37,9 @@ function install_reason_lsp {
 		echo skipping reason-language-server
 		return
 	fi
-	npm i -g esy
+	npm i --no-save esy
 	pushd "$ROOT/langservers/reason-language-server"
-	esy
+	../../node_modules/.bin/esy
 	popd
 }
 
