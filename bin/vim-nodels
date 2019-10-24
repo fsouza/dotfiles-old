@@ -2,4 +2,4 @@
 
 cd $(dirname ${0})/..
 
-exec npx $@
+exec npx --no-install $@
