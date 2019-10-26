@@ -1,0 +1,6 @@
+#!/bin/zsh -e
+
+ROOT=$(cd `dirname ${0}`/.. && pwd -P)
+NIM_LS_LOCATION=$ROOT/langservers/nimlsp
+
+exec ${NIM_LS_LOCATION}/nimlsp

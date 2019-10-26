@@ -43,6 +43,18 @@ function install_reason_lsp {
 	popd
 }
 
+function install_nim_lsp {
+	if ! command -v nimble &>/dev/null; then
+		echo skipping nimlsp
+		return
+	fi
+
+	pushd "$ROOT/langservers/nimlsp"
+	git submodule update --init --recursive
+	nimble build
+	popd
+}
+
 function install_servers_from_npm {
 	npm i --no-save \
 		bash-language-server \
@@ -59,5 +71,6 @@ install_yaml_server
 install_fsharp_server
 install_merlin_lsp
 install_reason_lsp
+install_nim_lsp
 install_servers_from_npm
 popd

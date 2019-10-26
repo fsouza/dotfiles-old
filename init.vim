@@ -27,6 +27,7 @@ Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'zah/nim.vim'
 call plug#end()
 
 set t_Co=256
