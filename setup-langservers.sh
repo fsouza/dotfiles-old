@@ -51,7 +51,7 @@ function install_nim_lsp {
 
 	pushd "$ROOT/langservers/nimlsp"
 	git submodule update --init --recursive
-	nimble build
+	nimble build -y
 	popd
 }
 
