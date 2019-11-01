@@ -23,7 +23,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'rgrinberg/vim-ocaml'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
@@ -50,11 +49,6 @@ set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set guicursor=
 set mouse=a
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsListSnippets="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 let g:netrw_banner = 0
 
