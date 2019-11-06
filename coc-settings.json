@@ -108,6 +108,9 @@
         "pyls": {
           "enable": true,
           "plugins": {
+            "pyflakes": {
+              "enabled": false,
+            },
             "pylint": {
               "enabled": false,
             },
