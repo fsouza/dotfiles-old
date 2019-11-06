@@ -19,7 +19,6 @@ function gimme {
 }
 
 function refresh_go_tools {
-	GO111MODULE=off go get -u github.com/Masterminds/glide
 	(
 		cd /tmp
 		export GO111MODULE=on
