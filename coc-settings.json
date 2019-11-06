@@ -104,6 +104,19 @@
       "filetypes": [
         "python",
       ],
+      "settings": {
+        "pyls": {
+          "enable": true,
+          "plugins": {
+            "pylint": {
+              "enabled": false,
+            },
+            "yapf": {
+              "enabled": false,
+            },
+          },
+        },
+      },
     },
     "reason": {
       "command": "vim-rels",

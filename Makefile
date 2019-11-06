@@ -4,8 +4,8 @@ REQUIREMENTS=\
 	     flake8 \
 	     pynvim \
 	     black \
+	     python-language-server[all] \
 	     pyls-black \
-	     pyls-isort \
 	     pyls-mypy
 
 .PHONY: pip
