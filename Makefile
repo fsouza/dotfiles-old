@@ -6,7 +6,8 @@ REQUIREMENTS=\
 	     black \
 	     python-language-server[all] \
 	     pyls-black \
-	     pyls-mypy
+	     pyls-mypy \
+	     pyls-isort
 
 .PHONY: pip
 pip:
