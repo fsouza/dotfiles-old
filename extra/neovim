@@ -7,15 +7,7 @@ function _ensure_neovim_src {
 	fi
 }
 
-function rebootstrap_neovim {
-	_ensure_neovim_src
-	pushd $NEOVIM_SRC_DIR
-	make distclean
-	git clean -dfx
-	update_neovim
-}
-
-function update_neovim {
+function _update_neovim {
 	_ensure_neovim_src
 	pushd $NEOVIM_SRC_DIR
 	git pull
@@ -26,6 +18,18 @@ function update_neovim {
 		BUNDLED_CMAKE_FLAG="-DUSE_BUNDLED_GPERF=OFF"
 	make install
 	popd
+}
+
+function rebootstrap_neovim {
+	_ensure_neovim_src
+	pushd $NEOVIM_SRC_DIR
+	make distclean
+	git clean -dfx
+	_update_neovim
+}
+
+function update_neovim {
+	_update_neovim || rebootstrap_neovim
 }
 
 prepend_to_path $NEOVIM_INSTALL_PREFIX/bin
