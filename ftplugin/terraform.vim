@@ -1,5 +1,5 @@
-function! TerraformFmt()
-	if get(b:, 'TerraformFmt_autoformat', 1) != 0 && executable("terraform")
+function! s:terraform_fmt()
+	if get(b:, 'terraform_autoformat', 1) != 0 && executable("terraform")
 		let view = winsaveview()
 		execute "silent %!terraform fmt -"
 		if v:shell_error
@@ -11,4 +11,4 @@ function! TerraformFmt()
 	endif
 endfunction
 
-autocmd! BufWritePre *.tf call TerraformFmt()
+autocmd! BufWritePre *.tf call s:terraform_fmt()
