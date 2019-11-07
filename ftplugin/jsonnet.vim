@@ -1,5 +1,5 @@
-function! JsonnetFormat()
-	if get(b:, 'jsonnetfmt_autoformat', 1) != 0
+function! s:jsonnet_fmt()
+	if get(b:, 'jsonnet_autoformat', 1) != 0
 		let view = winsaveview()
 		execute "silent %!jsonnetfmt -"
 		if v:shell_error
@@ -11,4 +11,4 @@ function! JsonnetFormat()
 	endif
 endfunction
 
-autocmd! BufWritePre *.jsonnet call JsonnetFormat()
+autocmd! BufWritePre *.jsonnet call s:jsonnet_fmt()
