@@ -1,8 +1,16 @@
 setlocal et sw=2
 let no_ocaml_maps = 1
 
+function! s:ocaml_enter()
+	if exists('g:LC_autoformat')
+		let b:ocamlformat_autoformat = 0
+	else
+		let b:LC_autoformat = 0
+	endif
+endfunction
+
 function! s:ocamlformat()
-	if get(b:, 'ocaml_autoformat', 1) != 0
+	if get(b:, 'ocamlformat_autoformat', 1) != 0
 		let view = winsaveview()
 		execute "silent %!ocamlformat - --enable-outside-detected-project --name " . expand('%:p')
 		if v:shell_error
@@ -14,5 +22,5 @@ function! s:ocamlformat()
 	endif
 endfunction
 
-autocmd! BufEnter *.ml let g:LC_autoformat = 0
+autocmd! BufEnter *.ml call s:ocaml_enter()
 autocmd! BufWritePre *.ml call s:ocamlformat()
