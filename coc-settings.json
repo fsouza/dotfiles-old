@@ -108,6 +108,9 @@
         "pyls": {
           "enable": true,
           "plugins": {
+            "autopep8": {
+              "enabled": false,
+            },
             "pylint": {
               "enabled": false,
             },
