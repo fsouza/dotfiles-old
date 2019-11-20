@@ -74,4 +74,7 @@ setopt BANG_HIST
 setopt HIST_IGNORE_SPACE
 setopt SHARE_HISTORY
 
+export MAILCHECK=300
+export MAILPATH=/var/mail/$USER
+
 bindkey -e
