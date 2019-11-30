@@ -75,13 +75,6 @@ function upgrade_pip() {
 	done
 }
 
-function pip() {
-	if [[ ! -v VIRTUAL_ENV ]]; then
-		echo >&2 "refusing to use global pip, call the full binary if you really mean it"
-		return 3
-	fi
-
-	command pip $@
-}
+export PIP_REQUIRE_VIRTUALENV=1
 
 alias cv="which python"
