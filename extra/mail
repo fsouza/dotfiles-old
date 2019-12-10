@@ -1,0 +1,7 @@
+export MAILCHECK=300
+export MAILPATH=/var/mail/$USER
+
+function read_mail() {
+	cat /var/mail/${USER}
+	:>/var/mail/${USER}
+}

@@ -41,6 +41,7 @@ source ${basedir}/extra/gpg-agent
 source ${basedir}/extra/chapel
 source ${basedir}/extra/git
 source ${basedir}/extra/go
+source ${basedir}/extra/mail
 source ${basedir}/extra/neovim
 source ${basedir}/extra/rclone
 
@@ -73,8 +74,5 @@ setopt nomenucomplete
 setopt BANG_HIST
 setopt HIST_IGNORE_SPACE
 setopt SHARE_HISTORY
-
-export MAILCHECK=300
-export MAILPATH=/var/mail/$USER
 
 bindkey -e
