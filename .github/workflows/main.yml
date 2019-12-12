@@ -10,8 +10,8 @@ jobs:
           - ubuntu-latest
           - macos-latest
 
-    name: bootstrap (${os})
-    runs-on: ${os}
+    name: bootstrap
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v1.0.0
 
