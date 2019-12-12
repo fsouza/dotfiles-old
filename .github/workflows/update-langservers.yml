@@ -1,0 +1,39 @@
+name: Update langservers
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  update-langservers:
+    name: Update language servers submodules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1.0.0
+
+      - name: submodule update
+        run: git submodule update --init
+
+      - name: git config
+        run: git remote set-url origin https://fsouza:${GITHUB_PASSWORD}@github.com/fsouza/vimfiles.git
+        env:
+          GITHUB_PASSWORD: ${{ secrets.VIMFILES_GH_TOKEN }}
+
+      - name: fetch hub
+        run: |
+          curl -sL hub.tgz https://github.com/github/hub/releases/download/v2.13.0/hub-linux-amd64-2.13.0.tgz | \
+            sudo tar -C /usr -xzf - --strip-components 1
+          hub --version
+
+      - name: bump submodules
+        run: |
+          git config --local user.name "GitHub Action"
+          git config --local user.email "action@github.com"
+          git switch master
+          git submodule foreach 'git fetch origin master && git checkout FETCH_HEAD'
+          git switch -c "update-submodules-$(date +%Y%m%d%H%M%S)"
+          git commit -m "Bump language servers" langservers
+
+      - name: open PR
+        run: hub pull-request --push --no-edit --labels automerge
+        env:
+          GITHUB_TOKEN: ${{ secrets.VIMFILES_GH_TOKEN }}
