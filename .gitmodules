@@ -10,3 +10,6 @@
 [submodule "langservers/nimlsp"]
 	path = langservers/nimlsp
 	url = https://github.com/PMunch/nimlsp.git
+[submodule "langservers/ocaml-lsp"]
+	path = langservers/ocaml-lsp
+	url = https://github.com/ocaml/ocaml-lsp.git

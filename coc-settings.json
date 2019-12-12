@@ -84,8 +84,8 @@
         "html",
       ],
     },
-    "merlin-lsp": {
-      "command": "ocamlmerlin-lsp",
+    "ocaml-lsp": {
+      "command": "vim-ocaml-lsp",
       "filetypes": [
         "ocaml",
       ],

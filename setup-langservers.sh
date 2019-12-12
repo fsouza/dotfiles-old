@@ -24,12 +24,15 @@ function install_fsharp_server {
 	popd
 }
 
-function install_merlin_lsp {
-	if ! command -v opam &>/dev/null; then
-		echo skipping merlin-lsp
+function install_ocaml_lsp {
+	if ! command -v dune &>/dev/null; then
+		echo skipping ocaml-lsp
 		return
 	fi
-	opam pin merlin-lsp.dev https://github.com/ocaml/merlin.git -y
+	pushd "$ROOT/langservers/ocaml-lsp" &&
+		git submodule update --init --recursive &&
+		dune build @install &&
+		popd
 }
 
 function install_reason_lsp {
@@ -37,10 +40,10 @@ function install_reason_lsp {
 		echo skipping reason-language-server
 		return
 	fi
-	npm i --no-save esy
-	pushd "$ROOT/langservers/reason-language-server"
-	../../node_modules/.bin/esy
-	popd
+	npm i --no-save esy &&
+		pushd "$ROOT/langservers/reason-language-server" &&
+		../../node_modules/.bin/esy &&
+		popd
 }
 
 function install_nim_lsp {
@@ -49,10 +52,10 @@ function install_nim_lsp {
 		return
 	fi
 
-	pushd "$ROOT/langservers/nimlsp"
-	git submodule update --init --recursive
-	nimble build -y
-	popd
+	pushd "$ROOT/langservers/nimlsp" &&
+		git submodule update --init --recursive &&
+		nimble build -y &&
+		popd
 }
 
 function install_servers_from_npm {
@@ -69,7 +72,7 @@ pushd $ROOT
 init
 install_yaml_server
 install_fsharp_server
-install_merlin_lsp
+install_ocaml_lsp
 install_reason_lsp
 install_nim_lsp
 install_servers_from_npm
