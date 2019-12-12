@@ -24,6 +24,19 @@ function install_fsharp_server {
 	popd
 }
 
+function opam_setup {
+	if ! command -v opam &>/dev/null; then
+		echo skipping opam
+		return
+	fi
+	opam update -y
+	opam install -y \
+		dune \
+		ppx_yojson_conv_lib \
+		ocamlfind \
+		menhir
+}
+
 function install_ocaml_lsp {
 	if ! command -v dune &>/dev/null; then
 		echo skipping ocaml-lsp
@@ -70,6 +83,7 @@ function install_servers_from_npm {
 
 pushd $ROOT
 init
+opam_setup
 install_yaml_server
 install_fsharp_server
 install_ocaml_lsp
