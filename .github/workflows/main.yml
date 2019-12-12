@@ -1,0 +1,39 @@
+name: Build
+on:
+  - push
+
+jobs:
+  bootstrap:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+
+    name: bootstrap (${os})
+    runs-on: ${os}
+    steps:
+      - uses: actions/checkout@v1.0.0
+
+      - uses: actions/setup-dotnet@v1.2.0
+        with:
+          dotnet-version: '3.1.100'
+
+      - uses: actions/setup-node@v1.2.0
+        with:
+          node-version: '12.x'
+
+      - uses: avsm/setup-ocaml@v1.0
+        with:
+          ocaml-version: '4.08.1'
+
+      - uses: actions/setup-python@v1.1.1
+        with:
+          python-version: '3.x'
+
+      - uses: actions/setup-ruby@v1.1.0
+        with:
+          ruby-version: '2.x'
+
+      - name: bootstrap
+        run: make bootstrap
