@@ -7,11 +7,11 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest
-          - macos-latest
+          - ubuntu
+          - macos
 
     name: bootstrap
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
     steps:
       - uses: actions/checkout@v1.0.0
 
@@ -34,6 +34,10 @@ jobs:
       - uses: actions/setup-ruby@v1.1.0
         with:
           ruby-version: '2.x'
+
+      - name: install zsh on linux
+        run: sudo apt update && sudo apt install zsh -y
+        if: matrix.os == 'ubuntu'
 
       - name: bootstrap
         run: make bootstrap
