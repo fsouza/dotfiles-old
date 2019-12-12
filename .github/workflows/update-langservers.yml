@@ -28,12 +28,20 @@ jobs:
         run: |
           git config --local user.name "GitHub Action"
           git config --local user.email "action@github.com"
-          git switch master
+          git switch -c "update-submodules-$(date +%Y%m%d%H%M%S)" origin/master
           git submodule foreach 'git fetch origin master && git checkout FETCH_HEAD'
-          git switch -c "update-submodules-$(date +%Y%m%d%H%M%S)"
-          git commit -m "Bump language servers" langservers
+          git status --short --no-branch | \
+            grep langservers/ | \
+            awk '{print $2}' | \
+            xargs -I FILE git commit -m "Update FILE" FILE
 
       - name: open PR
-        run: hub pull-request --push --no-edit --labels automerge
+        run: |
+          hub pull-request \
+            --push \
+            --message "Bump language servers" \
+            --message 'Updated servers:' \
+            --message "$(git diff --name-only origin/master | sed -e 's/^/- /')" \
+            --labels automerge
         env:
           GITHUB_TOKEN: ${{ secrets.VIMFILES_GH_TOKEN }}
