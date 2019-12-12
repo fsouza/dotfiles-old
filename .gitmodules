@@ -7,9 +7,6 @@
 [submodule "langservers/reason-language-server"]
 	path = langservers/reason-language-server
 	url = https://github.com/jaredly/reason-language-server.git
-[submodule "langservers/nimlsp"]
-	path = langservers/nimlsp
-	url = https://github.com/PMunch/nimlsp.git
 [submodule "langservers/ocaml-lsp"]
 	path = langservers/ocaml-lsp
 	url = https://github.com/ocaml/ocaml-lsp.git

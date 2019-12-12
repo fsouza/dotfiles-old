@@ -90,12 +90,6 @@
         "ocaml",
       ],
     },
-    "nimlsp": {
-      "command": "vim-nimlsp",
-      "filetypes": [
-        "nim",
-      ],
-    },
     "python": {
       "command": "python",
       "args": [
