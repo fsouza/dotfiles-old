@@ -40,4 +40,6 @@ jobs:
         if: matrix.os == 'ubuntu'
 
       - name: bootstrap
-        run: make bootstrap
+        run: |
+          eval "$(opam env)"
+          make bootstrap
