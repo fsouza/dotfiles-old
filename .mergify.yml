@@ -1,0 +1,10 @@
+pull_request_rules:
+  - name: automerge
+    conditions:
+      - -merged
+      - status-success=Build / bootstrap (ubuntu) (pull_request)
+      - status-success=Build / bootstrap (macos) (pull_request)
+      - label=automerge
+    actions:
+      merge:
+        method: squash
