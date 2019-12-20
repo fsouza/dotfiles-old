@@ -22,13 +22,13 @@ jobs:
         run: brew install bash
         if: matrix.os == 'macos'
 
-      - uses: actions/checkout@v1.0.0
+      - uses: actions/checkout@v2.0.0
 
-      - uses: actions/setup-dotnet@v1.2.0
+      - uses: actions/setup-dotnet@v1.3.0
         with:
           dotnet-version: '3.1.100'
 
-      - uses: actions/setup-node@v1.2.0
+      - uses: actions/setup-node@v1.3.0
         with:
           node-version: '12.x'
 
