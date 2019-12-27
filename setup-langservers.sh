@@ -35,7 +35,6 @@ function opam_setup {
 	opam install -y \
 		dune \
 		ocamlfind \
-		result \
 		yojson \
 		ppx_yojson_conv_lib \
 		menhir
