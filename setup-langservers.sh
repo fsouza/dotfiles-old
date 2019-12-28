@@ -15,17 +15,6 @@ function install_yaml_server {
 	popd
 }
 
-function install_fsharp_server {
-	if ! command -v dotnet &>/dev/null; then
-		echo skipping fsharp-language-server
-		return
-	fi
-	pushd "$ROOT/langservers/fsharp-language-server"
-	npm ci
-	dotnet build -c Release
-	popd
-}
-
 function opam_setup {
 	if ! command -v opam &>/dev/null; then
 		echo skipping opam
@@ -76,7 +65,6 @@ pushd $ROOT
 init
 opam_setup
 install_yaml_server
-install_fsharp_server
 install_ocaml_lsp
 install_reason_lsp
 install_servers_from_npm

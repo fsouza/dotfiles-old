@@ -54,12 +54,6 @@
         "dockerfile",
       ],
     },
-    "fsharp": {
-      "command": "vim-fsls",
-      "filetypes": [
-        "fsharp",
-      ],
-    },
     "gopls": {
       "command": "gopls",
       "disableCompletionSnippets": true,
