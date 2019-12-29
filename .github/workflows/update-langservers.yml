@@ -37,11 +37,13 @@ jobs:
 
       - name: open PR
         run: |
-          hub pull-request \
-            --push \
-            --message "Bump language servers" \
-            --message 'Updated servers:' \
-            --message "$(git diff --name-only origin/master | sed -e 's/^/- /')" \
-            --labels automerge
+          if [ -n "$(git diff --name-only origin/master)" ]; then
+            hub pull-request \
+              --push \
+              --message "Bump language servers" \
+              --message 'Updated servers:' \
+              --message "$(git diff --name-only origin/master | sed -e 's/^/- /')" \
+              --labels automerge
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.VIMFILES_GH_TOKEN }}
