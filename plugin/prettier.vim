@@ -12,7 +12,7 @@ function! s:prettier_fmt()
 		if v:shell_error
 			% |
 			undo
-			echohl Error | echomsg "ocamlformat returned an error" | echohl None
+			echohl Error | echomsg "prettier returned an error" | echohl None
 		endif
 		call winrestview(view)
 	endif
