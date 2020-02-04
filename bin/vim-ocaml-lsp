@@ -3,4 +3,4 @@
 ROOT=$(cd `dirname ${0}`/.. && pwd -P)
 OCAML_LS_LOCATION=$ROOT/langservers/ocaml-lsp
 
-exec ${OCAML_LS_LOCATION}/_build/install/default/bin/ocaml-lsp-server
+exec ${OCAML_LS_LOCATION}/_build/install/default/bin/ocamllsp
