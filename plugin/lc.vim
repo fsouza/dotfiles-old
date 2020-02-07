@@ -11,6 +11,7 @@ function s:lc_init()
 		nmap <silent> <Leader>t :<C-u>CocList -I symbols<CR>
 		nmap <silent> <Leader>q <Plug>(coc-references)
 		nmap <silent> <Leader>c <Plug>(coc-codeaction)
+		vmap <silent> <Leader>c <Plug>(coc-codeaction)
 		nmap <silent> <Leader>lc :<C-u>CocRebuild<CR>
 	endif
 endfunction
