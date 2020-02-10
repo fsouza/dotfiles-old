@@ -59,9 +59,11 @@
       "disableCompletionSnippets": true,
       "rootPatterns": [
         "go.mod",
+        ".git",
       ],
       "filetypes": [
         "go",
+        "gomod",
       ],
       "initializationOptions": {
         "deepCompletion": false,
