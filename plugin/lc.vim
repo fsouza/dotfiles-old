@@ -5,14 +5,15 @@ function s:lc_init()
 		nmap <silent> gy <Plug>(coc-type-definition)
 		nmap <silent> gi <Plug>(coc-implementation)
 		nmap <silent> <Leader>r <Plug>(coc-rename)
-		nmap <silent> <Leader>f :call CocAction('format')<CR>
 		nmap <silent> <Leader>i :call CocActionAsync('doHover')<CR>
 		nmap <silent> <Leader>s :call CocActionAsync('highlight')<CR>
 		nmap <silent> <Leader>t :<C-u>CocList -I symbols<CR>
 		nmap <silent> <Leader>q <Plug>(coc-references)
-		nmap <silent> <Leader>c <Plug>(coc-codeaction)
-		vmap <silent> <Leader>c <Plug>(coc-codeaction)
 		nmap <silent> <Leader>lc :<C-u>CocRebuild<CR>
+		nmap <silent> <Leader>c :CocAction<CR>
+		xmap <silent> <Leader>c :CocAction<CR>
+		nmap <silent> <Leader>f :CocFix<CR>
+		xmap <silent> <Leader>f :CocFix<CR>
 	endif
 endfunction
 
