@@ -119,8 +119,7 @@
       ],
     },
     "rust": {
-      "command": "rls",
-      "disableCompletionSnippets": true,
+      "command": "vim-ra",
       "filetypes": [
         "rust",
       ],

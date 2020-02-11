@@ -51,6 +51,16 @@ function install_reason_lsp {
 		popd
 }
 
+function install_rust_analyzer {
+	if ! command -v cargo &>/dev/null; then
+		echo skipping rust-analyzer
+		return
+	fi
+	pushd "$ROOT/langservers/rust-analyzer" &&
+		cargo build &&
+		popd
+}
+
 function install_servers_from_npm {
 	npm i --no-save \
 		bash-language-server \
@@ -67,5 +77,6 @@ opam_setup
 install_yaml_server
 install_ocaml_lsp
 install_reason_lsp
+install_rust_analyzer
 install_servers_from_npm
 popd

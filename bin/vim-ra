@@ -1,0 +1,6 @@
+#!/bin/zsh -e
+
+ROOT=$(cd `dirname ${0}`/.. && pwd -P)
+RA_LOCATION=$ROOT/langservers/rust-analyzer
+
+exec ${RA_LOCATION}/target/debug/ra_lsp_server
