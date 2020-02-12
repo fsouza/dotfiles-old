@@ -69,6 +69,7 @@ function install_servers_from_npm {
 		vscode-css-languageserver-bin \
 		vscode-html-languageserver-bin \
 		vscode-json-languageserver-bin \
+		js-langserver \
 		vim-language-server
 }
 

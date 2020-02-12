@@ -9,6 +9,7 @@
   "signature.hideOnTextChange": true,
   "signature.triggerSignatureWait": 50,
   "suggest.autoTrigger": "none",
+  "tsserver.enableJavascript": false,
   "languageserver": {
     "bash": {
       "command": "vim-nodels",
@@ -78,6 +79,16 @@
       ],
       "filetypes": [
         "html",
+      ],
+    },
+    "js-langserver": {
+      "command": "vim-nodels",
+      "args": [
+        "js-langserver",
+        "--stdio",
+      ],
+      "filetypes": [
+        "javascript",
       ],
     },
     "ocaml-lsp": {
