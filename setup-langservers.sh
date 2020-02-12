@@ -15,19 +15,13 @@ function install_yaml_server {
 	popd
 }
 
-function opam_setup {
+function install_dune {
 	if ! command -v opam &>/dev/null; then
 		echo skipping opam
 		return
 	fi
 	opam update -y
-	opam install -y \
-		dune \
-		ocamlfind \
-		yojson \
-		stdlib-shims \
-		ppx_yojson_conv_lib \
-		menhir
+	opam install -y dune
 }
 
 function install_ocaml_lsp {
@@ -35,8 +29,10 @@ function install_ocaml_lsp {
 		echo skipping ocaml-lsp
 		return
 	fi
+
 	pushd "$ROOT/langservers/ocaml-lsp" &&
 		git submodule update --init --recursive &&
+		opam install --deps-only . &&
 		dune build @install &&
 		popd
 }
@@ -70,7 +66,7 @@ function install_servers_from_npm {
 
 pushd $ROOT
 init
-opam_setup
+install_dune
 install_yaml_server
 install_ocaml_lsp
 install_reason_lsp
