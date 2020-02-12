@@ -25,6 +25,7 @@ function opam_setup {
 		dune \
 		ocamlfind \
 		yojson \
+		stdlib-shims \
 		ppx_yojson_conv_lib \
 		menhir
 }
