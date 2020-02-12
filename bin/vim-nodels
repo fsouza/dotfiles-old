@@ -1,5 +1,5 @@
 #!/bin/zsh -e
 
-cd $(dirname ${0})/..
+cd $(dirname ${0})/../langservers
 
 exec npx --no-install $@

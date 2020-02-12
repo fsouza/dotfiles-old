@@ -1,0 +1,14 @@
+{
+  "name": "vimfiles",
+  "version": "1.0.0",
+  "scripts": {},
+  "license": "ISC",
+  "dependencies": {
+    "bash-language-server": "^1.7.0",
+    "dockerfile-language-server-nodejs": "0.0.21",
+    "js-langserver": "github:tbodt/js-langserver#master",
+    "vim-language-server": "^1.4.2",
+    "vscode-css-languageserver-bin": "^1.4.0",
+    "vscode-html-languageserver-bin": "^1.4.0"
+  }
+}

@@ -5,4 +5,4 @@ plugged
 *.old
 view
 plugin/local-*.vim
-node_modules
+langservers/node_modules

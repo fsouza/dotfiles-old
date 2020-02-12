@@ -63,14 +63,9 @@ function install_rust_analyzer {
 }
 
 function install_servers_from_npm {
-	npm i --no-save \
-		bash-language-server \
-		dockerfile-language-server-nodejs \
-		vscode-css-languageserver-bin \
-		vscode-html-languageserver-bin \
-		vscode-json-languageserver-bin \
-		js-langserver \
-		vim-language-server
+	pushd "$ROOT/langservers" &&
+		npm ci &&
+		popd
 }
 
 pushd $ROOT
