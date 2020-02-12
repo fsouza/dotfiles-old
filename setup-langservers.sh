@@ -42,9 +42,8 @@ function install_reason_lsp {
 		echo skipping reason-language-server
 		return
 	fi
-	npm i --no-save esy &&
-		pushd "$ROOT/langservers/reason-language-server" &&
-		../../node_modules/.bin/esy &&
+	pushd "$ROOT/langservers/reason-language-server" &&
+		../node_modules/.bin/esy &&
 		popd
 }
 
@@ -67,9 +66,9 @@ function install_servers_from_npm {
 pushd $ROOT
 init
 install_dune
+install_servers_from_npm
 install_yaml_server
 install_ocaml_lsp
 install_reason_lsp
 install_rust_analyzer
-install_servers_from_npm
 popd
