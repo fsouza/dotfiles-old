@@ -9,7 +9,7 @@ function init {
 }
 
 function install_yaml_server {
-	pushd "$ROOT/langservers/yaml-language-server"
+	pushd "$ROOT/yaml-language-server"
 	npm ci
 	npm run compile
 	popd
@@ -30,7 +30,7 @@ function install_ocaml_lsp {
 		return
 	fi
 
-	pushd "$ROOT/langservers/ocaml-lsp" &&
+	pushd "$ROOT/ocaml-lsp" &&
 		git submodule update --init --recursive &&
 		opam install --deps-only . &&
 		dune build @install &&
@@ -42,7 +42,7 @@ function install_reason_lsp {
 		echo skipping reason-language-server
 		return
 	fi
-	pushd "$ROOT/langservers/reason-language-server" &&
+	pushd "$ROOT/reason-language-server" &&
 		../node_modules/.bin/esy &&
 		popd
 }
@@ -52,21 +52,17 @@ function install_rust_analyzer {
 		echo skipping rust-analyzer
 		return
 	fi
-	pushd "$ROOT/langservers/rust-analyzer" &&
+	pushd "$ROOT/rust-analyzer" &&
 		cargo build &&
 		popd
 }
 
 function install_servers_from_npm {
-	pushd "$ROOT/langservers" &&
-		npm ci &&
-		popd
+	npm ci
 }
 
 function install_servers_from_pypi {
-	pushd "$ROOT/langservers" &&
-		pip install -r requirements.txt &&
-		popd
+	pip install -r requirements.txt
 }
 
 pushd $ROOT

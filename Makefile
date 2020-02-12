@@ -10,11 +10,11 @@ gem:
 
 .PHONY: setup-langservers
 setup-langservers:
-	cd $$(dirname $(mkfile_path)) && ./setup-langservers.sh
+	cd $(dir $(mkfile_path)) && ./langservers/setup.sh
 
 .PHONY: update-spell
 update-spell:
-	cd $$(dirname $(mkfile_path))/spell && \
+	cd $(dir $(mkfile_path))/spell && \
 		curl -sLO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl && \
 		curl -sLO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl && \
 		curl -sLO http://ftp.vim.org/vim/runtime/spell/pt.utf-8.spl
