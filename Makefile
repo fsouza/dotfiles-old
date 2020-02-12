@@ -1,17 +1,8 @@
 mkfile_path := $(realpath $(lastword $(MAKEFILE_LIST)))
 
-REQUIREMENTS=\
-	     flake8 \
-	     pynvim \
-	     black \
-	     python-language-server[all] \
-	     pyls-black \
-	     pyls-mypy \
-	     pyls-isort
-
 .PHONY: pip
 pip:
-	pip install --upgrade pip $(REQUIREMENTS)
+	pip install --upgrade pip pynvim pip-tools
 
 .PHONY: gem
 gem:

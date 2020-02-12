@@ -63,10 +63,17 @@ function install_servers_from_npm {
 		popd
 }
 
+function install_servers_from_pypi {
+	pushd "$ROOT/langservers" &&
+		pip install -r requirements.txt &&
+		popd
+}
+
 pushd $ROOT
 init
 install_dune
 install_servers_from_npm
+install_servers_from_pypi
 install_yaml_server
 install_ocaml_lsp
 install_reason_lsp

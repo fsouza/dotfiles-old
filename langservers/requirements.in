@@ -1,0 +1,5 @@
+flake8
+python-language-server[all]
+pyls-black
+pyls-mypy
+pyls-isort
