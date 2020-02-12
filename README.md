@@ -1,7 +1,6 @@
 # vimfiles
 
 [![Build Status](https://github.com/fsouza/vimfiles/workflows/Build/badge.svg)](https://github.com/fsouza/vimfiles/actions?query=branch:master+workflow:Build)
-[![Mergify Status][mergify-status]][mergify]
 
 [mergify]: https://mergify.io
 [mergify-status]: https://img.shields.io/endpoint.svg?url=https://dashboard.mergify.io/badges/fsouza/vimfiles&style=flat
