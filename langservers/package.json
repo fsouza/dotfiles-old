@@ -5,7 +5,7 @@
   "license": "ISC",
   "dependencies": {
     "bash-language-server": "^1.7.0",
-    "dockerfile-language-server-nodejs": "0.0.21",
+    "dockerfile-language-server-nodejs": "0.0.22",
     "esy": "^0.6.2",
     "js-langserver": "github:tbodt/js-langserver#master",
     "vim-language-server": "^1.4.2",
