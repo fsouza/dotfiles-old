@@ -27,8 +27,6 @@ Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'zah/nim.vim'
-
 
 " coc extensions
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
