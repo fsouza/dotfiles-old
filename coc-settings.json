@@ -6,7 +6,6 @@
   "diagnostic.messageDelay": 0,
   "diagnostic.messageTarget": "echo",
   "signature.enable": true,
-  "signature.hideOnTextChange": true,
   "signature.triggerSignatureWait": 50,
   "suggest.autoTrigger": "none",
   "tsserver.enableJavascript": false,
