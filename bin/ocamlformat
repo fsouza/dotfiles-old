@@ -1,0 +1,3 @@
+#!/bin/zsh -e
+
+opam exec -- ocamlformat --enable-outside-detected-project $@
