@@ -1,9 +1,13 @@
 function _go_to_tmux {
-	if tmux has-session; then
-		tmux attach
+	if command tmux has-session; then
+		command tmux -f $HOME/.config/tmux.conf attach
 	else
-		tmux new
+		command tmux -f $HOME/.config/tmux.conf new
 	fi
+}
+
+function tmux {
+	_go_to_tmux
 }
 
 if [ -z "$TMUX" ] && [ -n "$(which tmux)" ] && [[ $- =~ i ]]; then

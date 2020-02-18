@@ -1,7 +1,7 @@
 [ui]
 username = Francisco Souza <fsouza@invalid.host>
 editor = nvim
-ignore = ~/.hgignore_global
+ignore = ~/.config/.hgignore_global
 
 [extensions]
 strip =
