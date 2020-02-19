@@ -10,13 +10,13 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=(.zshrc .clang-format .gitconfig .hgrc .editorconfig .utoprc)
+files=(.zshrc .clang-format .gitconfig .editorconfig .utoprc)
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
 
 mkdir -p $HOME/.config
-xdg_files=(pycodestyle .ocamlformat .gitignore_global .hgignore_global .isort.cfg tmux.conf tmux.${os}.conf alacritty.yml)
+xdg_files=(pycodestyle .ocamlformat .gitignore_global .isort.cfg tmux.conf tmux.${os}.conf alacritty.yml)
 for file in $xdg_files; do
 	ln -sf ${basedir}/${file} $HOME/.config/${file}
 done
