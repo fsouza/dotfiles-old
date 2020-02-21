@@ -4,7 +4,6 @@ source ${basedir}/extra/init-functions
 
 autoload -U compinit && compinit
 
-export NVM_DIR="$HOME/.nvm"
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
@@ -30,7 +29,6 @@ export HOMEBREW_NO_GITHUB_API=1
 export EDITOR=nvim PAGER=less MANPAGER=less
 
 cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-cond_source "$NVM_DIR/nvm.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 cond_source "${basedir}/extra/z/z.sh"
 
@@ -51,7 +49,11 @@ cond_source "${basedir}/extra/${OS_NAME}-functions"
 export PS1="％ " PS2="\\ "
 
 if command -v opam &>/dev/null; then
-	eval $(opam env)
+	eval "$(opam env)"
+fi
+
+if command -v fnm &>/dev/null; then
+	eval "$(fnm env --multi)"
 fi
 
 if command -v rg &>/dev/null; then
