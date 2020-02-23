@@ -20,21 +20,21 @@ function gimme {
 
 function refresh_go_tools {
 	(
-		cd /tmp
-		export GO111MODULE=on
-		go get golang.org/x/tools/cmd/goimports@master
-		go get golang.org/x/tools/gopls@master golang.org/x/tools@master
-		go get github.com/golangci/golangci-lint/cmd/golangci-lint@master
-		go get honnef.co/go/tools/cmd/staticcheck@master
-		go get golang.org/x/exp/cmd/gorelease@master
+		cd /tmp &&
+			export GO111MODULE=on &&
+			go get golang.org/x/tools/cmd/goimports@master &&
+			go get golang.org/x/tools/gopls@master golang.org/x/tools@master &&
+			go get github.com/golangci/golangci-lint/cmd/golangci-lint@master &&
+			go get honnef.co/go/tools/cmd/staticcheck@master &&
+			go get golang.org/x/exp/cmd/gorelease@master
 	)
 }
 
 function update_go_tip {
-	GIMME_DEBUG=2 GIMME_TYPE=git command gimme tip
-	go clean -cache
-	source "${HOME}/.gimme/envs/gotip.env"
-	refresh_go_tools
+	GIMME_DEBUG=2 GIMME_TYPE=git command gimme tip &&
+		go clean -cache &&
+		source "${HOME}/.gimme/envs/gotip.env" &&
+		refresh_go_tools
 }
 
 function set_private_goproxy {
