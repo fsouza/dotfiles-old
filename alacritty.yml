@@ -155,69 +155,31 @@ draw_bold_text_with_bright_colors: false
 colors:
   # Default colors
   primary:
-    background: "0xffffff"
-    foreground: "0x000000"
-
-    # Bright and dim foreground colors
-    #
-    # The dimmed foreground color is calculated automatically if it is not present.
-    # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
-    # is `false`, the normal foreground color will be used.
-    #dim_foreground: '0x9a9a9a'
-    #bright_foreground: '0xffffff'
-
-  # Cursor colors
-  #
-  # Colors which should be used to draw the terminal cursor. If these are unset,
-  # the cursor color will be the inverse of the cell color.
-  #cursor:
-  #  text: '0x000000'
-  #  cursor: '0xffffff'
+    background: "#ffffff"
+    foreground: "#000000"
 
   # Normal colors
   normal:
-    black: "0x000000"
-    red: "0xc91b00"
-    green: "0x00c200"
-    yellow: "0xc7c400"
-    blue: "0x0225c7"
-    magenta: "0xc930c6"
-    cyan: "0x00c5c7"
-    white: "0xc7c7c7"
+    black: "#000000"
+    red: "#c91b00"
+    green: "#00c200"
+    yellow: "#c7c400"
+    blue: "#0225c7"
+    magenta: "#c930c6"
+    cyan: "#00c5c7"
+    white: "#c7c7c7"
 
   # Bright colors
   bright:
-    black: "0x656565"
-    red: "0xff6d67"
-    green: "0x5ff967"
-    yellow: "0x0fefb67"
-    blue: "0x6871ff"
-    magenta: "0xff76ff"
-    cyan: "0x5ffdff"
-    white: "0xffffff"
+    black: "#656565"
+    red: "#ff6d67"
+    green: "#5ff967"
+    yellow: "#fefb67"
+    blue: "#6871ff"
+    magenta: "#ff76ff"
+    cyan: "#5ffdff"
+    white: "#ffffff"
 
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '0x000000'
-  #  red:     '0x8c3336'
-  #  green:   '0x7a8530'
-  #  yellow:  '0x97822e'
-  #  blue:    '0x506d8f'
-  #  magenta: '0x80638e'
-  #  cyan:    '0x497e7a'
-  #  white:   '0x9a9a9a'
-
-  # Indexed Colors
-  #
-  # The indexed colors include all colors from 16 to 256.
-  # When these are not set, they're filled with sensible defaults.
-  #
-  # Example:
-  #   `- { index: 16, color: '0xff00ff' }`
-  #
   indexed_colors: []
 
 # Visual Bell
@@ -244,7 +206,7 @@ colors:
 visual_bell:
   animation: EaseOutExpo
   duration: 0
-  color: "0xffffff"
+  color: "#ffffff"
 
 # Background opacity
 #
