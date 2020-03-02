@@ -15,7 +15,7 @@ function! s:flip_prettier_if_needed()
 endfunction
 
 function! s:prettier_fmt()
-	if get(b:, 'Prettier_autoformat', 0) == 1 || get(g:, 'Prettier_autoformat', 0) == 1
+	if get(g:, 'Prettier_autoformat', get(b:, 'Prettier_autoformat', 0)) == 1
 		let view = winsaveview()
 		execute "silent %!npx prettier --stdin-filepath " . expand('%:p')
 		if v:shell_error
