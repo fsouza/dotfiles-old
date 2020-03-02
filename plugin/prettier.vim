@@ -17,7 +17,7 @@ endfunction
 function! s:prettier_fmt()
 	if get(g:, 'Prettier_autoformat', get(b:, 'Prettier_autoformat', 0)) == 1
 		let view = winsaveview()
-		execute "silent %!npx prettier --stdin-filepath " . expand('%:p')
+		execute "silent %!npx prettier --stdin-filepath '" . expand('%:p') . "'"
 		if v:shell_error
 			% |
 			undo
