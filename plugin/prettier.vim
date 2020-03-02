@@ -10,7 +10,7 @@ endfunction
 
 function! s:flip_prettier_if_needed()
 	if get(b:, 'TSPreferPrettier', 0) == 1
-		s.prefer_prettier(v:false)
+		call s:prefer_prettier(v:false)
 	endif
 endfunction
 
