@@ -10,6 +10,7 @@ function s:lc_init()
 		nmap <silent> <Leader>t :<C-u>CocList -I symbols<CR>
 		nmap <silent> <Leader>q <Plug>(coc-references)
 		nmap <silent> <Leader>lc :<C-u>CocRebuild<CR>
+		nmap <silent> <Leader>ll <Plug>(coc-codelens-action)
 		nmap <silent> <Leader>c :CocAction<CR>
 		xmap <silent> <Leader>c :CocAction<CR>
 		nmap <silent> <Leader>f :CocFix<CR>
