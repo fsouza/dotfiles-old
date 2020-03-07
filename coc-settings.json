@@ -5,6 +5,7 @@
   "diagnostic.warningSign": "≫ ",
   "diagnostic.messageDelay": 0,
   "diagnostic.messageTarget": "echo",
+  "codeLens.enable": true,
   "signature.enable": true,
   "signature.triggerSignatureWait": 50,
   "suggest.autoTrigger": "none",
