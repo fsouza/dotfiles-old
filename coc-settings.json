@@ -5,7 +5,6 @@
   "diagnostic.infoSign": "≫ ",
   "diagnostic.messageDelay": 0,
   "diagnostic.messageTarget": "echo",
-  "diagnostic.refreshAfterSave": true,
   "diagnostic.warningSign": "≫ ",
   "codeLens.enable": true,
   "signature.enable": true,
