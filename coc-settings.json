@@ -1,10 +1,12 @@
 {
+  "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "≫ ",
   "diagnostic.hintSign": "≫ ",
   "diagnostic.infoSign": "≫ ",
-  "diagnostic.warningSign": "≫ ",
   "diagnostic.messageDelay": 0,
   "diagnostic.messageTarget": "echo",
+  "diagnostic.refreshAfterSave": true,
+  "diagnostic.warningSign": "≫ ",
   "codeLens.enable": true,
   "signature.enable": true,
   "signature.triggerSignatureWait": 50,
