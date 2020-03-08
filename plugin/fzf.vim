@@ -1,3 +1,7 @@
+function! s:fzf_here()
+	call fzf#vim#files(expand('%:p:h'))
+endfunction
+
 let g:fzf_command_prefix = 'Fzf'
 let g:fzf_colors = {
 	\ 'fg': ['fg', 'Normal'],
@@ -13,9 +17,12 @@ let g:fzf_colors = {
 	\ 'spinner': ['fg', 'Normal'],
 	\ 'header': ['fg', 'Normal'] }
 
+command! FzfHere call s:fzf_here()
+
 nmap <silent> <leader>lf :FzfFiles<CR>
 nmap <silent> <leader>lz :FzfFiles<CR>
 nmap <silent> <leader>lb :FzfBuffers<CR>
 nmap <silent> <leader>lh :FzfHistory<CR>
 nmap <silent> <leader>lg :FzfLines<CR>
 nmap <silent> <leader>; :FzfCommands<CR>
+nmap <silent> <leader>g :FzfGrep<CR>
