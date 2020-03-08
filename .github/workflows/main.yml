@@ -36,10 +36,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      - uses: actions/setup-ruby@master
-        with:
-          ruby-version: '2.x'
-
       - uses: actions-rs/toolchain@master
         with:
           toolchain: stable
