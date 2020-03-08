@@ -19,7 +19,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'mhinz/vim-grepper'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ocaml/vim-ocaml'
 Plug 'reasonml-editor/vim-reason-plus'
@@ -53,7 +52,5 @@ set guicursor=
 set mouse=a
 
 let g:netrw_banner = 0
-
-nmap <silent> <leader>g :Grepper -tool rg<CR>
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
