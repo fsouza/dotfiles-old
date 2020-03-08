@@ -13,4 +13,9 @@ let g:fzf_colors = {
 	\ 'spinner': ['fg', 'Normal'],
 	\ 'header': ['fg', 'Normal'] }
 
-map <silent> <leader>lz :FzfFiles<CR>
+nmap <silent> <leader>lf :FzfFiles<CR>
+nmap <silent> <leader>lz :FzfFiles<CR>
+nmap <silent> <leader>lb :FzfBuffers<CR>
+nmap <silent> <leader>lh :FzfHistory<CR>
+nmap <silent> <leader>lg :FzfLines<CR>
+nmap <silent> <leader>; :FzfCommands<CR>
