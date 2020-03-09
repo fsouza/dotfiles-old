@@ -1,3 +1,7 @@
+function! s:fzf_here()
+	call fzf#vim#files(expand('%:p:h'))
+endfunction
+
 function! s:fzf_grep()
 	let what = input('what? ')
 	execute 'FzfRg '.what
@@ -19,10 +23,11 @@ let g:fzf_colors = {
 	\ 'header': ['fg', 'Normal'] }
 
 command! FzfGrep call s:fzf_grep()
+command! FzfHere call s:fzf_here()
 
 nmap <silent> <leader>lf :FzfFiles<CR>
 nmap <silent> <leader>lz :FzfFiles<CR>
-nmap <silent> <leader>lr :call fzf#vim#files(expand('%:p:h'))<CR>
+nmap <silent> <leader>lr :FzfHere<CR>
 nmap <silent> <leader>lb :FzfBuffers<CR>
 nmap <silent> <leader>lh :FzfHistory<CR>
 nmap <silent> <leader>lg :FzfLines<CR>
