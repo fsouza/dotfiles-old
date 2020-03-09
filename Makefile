@@ -4,6 +4,10 @@ mkfile_path := $(realpath $(lastword $(MAKEFILE_LIST)))
 pip:
 	pip install --upgrade pip pynvim pip-tools
 
+.PHONY: gem
+gem:
+	gem install neovim
+
 .PHONY: setup-langservers
 setup-langservers:
 	cd $(dir $(mkfile_path)) && ./langservers/setup.sh
@@ -16,7 +20,7 @@ update-spell:
 		curl -sLO http://ftp.vim.org/vim/runtime/spell/pt.utf-8.spl
 
 .PHONY: bootstrap
-bootstrap: pip setup-langservers
+bootstrap: pip gem setup-langservers
 
 .PHONY: clean
 clean:
