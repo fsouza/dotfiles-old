@@ -20,10 +20,6 @@ let g:fzf_colors = {
 
 command! FzfGrep call s:fzf_grep()
 
-nmap <silent> <leader>lf :FzfFiles<CR>
 nmap <silent> <leader>lz :FzfFiles<CR>
-nmap <silent> <leader>lr :FzfHere<CR>
-nmap <silent> <leader>lb :FzfBuffers<CR>
 nmap <silent> <leader>lh :FzfHistory<CR>
-nmap <silent> <leader>lg :FzfLines<CR>
 nmap <silent> <leader>; :FzfCommands<CR>
