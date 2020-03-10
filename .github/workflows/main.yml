@@ -22,6 +22,14 @@ jobs:
         run: brew install bash
         if: matrix.os == 'macos'
 
+      - name: install neovim on mac
+        run: brew install neovim
+        if: matrix.os == 'macos'
+
+      - name: install neovim on linux
+        run: sudo apt-get update && sudo apt-get install -y neovim
+        if: matrix.os == 'ubuntu'
+
       - uses: actions/checkout@master
 
       - uses: actions/setup-node@master
@@ -44,7 +52,12 @@ jobs:
         with:
           toolchain: stable
 
-      - name: bootstrap
+      - name: copy files to config dir
+        run: |
+          mkdir -p $HOME/.config
+          cp -rv $PWD $HOME/.config/nvim
+
+      - name: bootstrap from config dir
         run: |
           eval "$(opam env)"
-          make bootstrap
+          make -f $HOME/.config/nvim/Makefile bootstrap
