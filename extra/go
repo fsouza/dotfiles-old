@@ -43,7 +43,7 @@ function set_private_goproxy {
 	proxy_host=${1}
 	timeout=${2:-0.1}
 	if curl -fm ${timeout} https://${proxy_host}/healthz &>/dev/null; then
-		export GOPROXY=https://$proxy_host,$(go env GOPROXY)
+		export GOPROXY=https://$proxy_host
 	elif [[ -v GOPROXY ]]; then
 		unset GOPROXY
 	fi
