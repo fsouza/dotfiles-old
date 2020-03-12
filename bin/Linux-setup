@@ -92,11 +92,11 @@ function install_alacritty {
 
 	if [ ! -d $HOME/Projects/os/3/alacritty ]; then
 		mkdir -p $HOME/Projects/os/3/
-		git clone https://github.com/jwilm/alacritty.git $HOME/Projects/os/3/alacritty
+		git clone https://github.com/alacritty/alacritty.git $HOME/Projects/os/3/alacritty
 	fi
 
 	mkdir -p $HOME/Applications/alacritty
-	cp ${basedir}/extra/etc/alacritty.svg $HOME/Applications/alacritty
+	cp ${basedir}/extra/etc/alacritty.svg ${HOME}/Applications/alacritty
 	(
 		cd $HOME/Projects/os/3/alacritty
 		git pull
