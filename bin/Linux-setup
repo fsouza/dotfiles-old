@@ -2,10 +2,9 @@
 
 # Yes, this script requires sudo. Life sucks.
 
-CORRETTO8_URL=https://d3pxv6yz143wms.cloudfront.net/8.232.09.1/java-1.8.0-amazon-corretto-jdk_8.232.09-1_amd64.deb
-CORRETTO11_URL=https://d3pxv6yz143wms.cloudfront.net/11.0.5.10.1/java-11-amazon-corretto-jdk_11.0.5.10-1_amd64.deb
+CORRETTO11_URL=https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.deb
 
-basedir=$(cd $(dirname $0)/..; pwd -P)
+basedir=$(cd $(dirname "$0")/..; pwd -P)
 
 function rm_dir {
 	if [ -n "${1}" ] && [ -d "${1}" ]; then
@@ -47,8 +46,8 @@ function install_base_dev_tools {
 }
 
 function install_source_code_pro {
-	mkdir -p ${HOME}/.fonts
-	cp ${basedir}/extra/source-code-pro/*.otf ${HOME}/.fonts/
+	mkdir -p "${HOME}/.fonts"
+	cp "${basedir}/extra/source-code-pro/*.otf" "${HOME}/.fonts/"
 	fc-cache -f
 }
 
@@ -56,9 +55,9 @@ function install_source_code_pro {
 function install_remote_deb_packages {
         tmp_dir=$(mktemp -d)
 
-        pushd ${tmp_dir}
+        pushd "${tmp_dir}"
                 for pkg in ${@}; do
-                        curl -LO ${pkg}
+                        curl -LO "${pkg}"
                 done
                 sudo apt install -y ./*.deb
         popd
@@ -68,21 +67,13 @@ function install_remote_deb_packages {
 
 function install_additional_tools {
 	install_remote_deb_packages \
-		${CORRETTO8_URL} \
-		${CORRETTO11_URL} \
+		"${CORRETTO11_URL}" \
 		https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 
 	install_source_code_pro
 
-	mkdir -p ${HOME}/bin
-	ln -sf /usr/bin/java ${HOME}/bin/java
-}
-
-function install_dotnet_core {
-	curl -Lo /tmp/packages-microsoft-prod.deb https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
-	sudo apt install /tmp/packages-microsoft-prod.deb
-	sudo apt update
-	sudo apt install dotnet-sdk-2.2
+	mkdir -p "${HOME}/bin"
+	ln -sf /usr/bin/java "${HOME}/bin/java"
 }
 
 function install_alacritty {
@@ -90,32 +81,32 @@ function install_alacritty {
 		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 	fi
 
-	if [ ! -d $HOME/Projects/os/3/alacritty ]; then
-		mkdir -p $HOME/Projects/os/3/
-		git clone https://github.com/alacritty/alacritty.git $HOME/Projects/os/3/alacritty
+	if [ ! -d "$HOME/Projects/os/3/alacritty" ]; then
+		mkdir -p "$HOME/Projects/os/3/"
+		git clone https://github.com/alacritty/alacritty.git "$HOME/Projects/os/3/alacritty"
 	fi
 
-	mkdir -p $HOME/Applications/alacritty
-	cp ${basedir}/extra/etc/alacritty.svg ${HOME}/Applications/alacritty
+	mkdir -p "${HOME}/Applications/alacritty"
+	cp "${basedir}/extra/etc/alacritty.svg" "${HOME}/Applications/alacritty"
 	(
-		cd $HOME/Projects/os/3/alacritty
+		cd "${HOME}/Projects/os/3/alacritty"
 		git pull
 		cargo build --release
-		cp -f -v target/release/alacritty $HOME/Applications/alacritty/alacritty
+		cp -f -v target/release/alacritty "${HOME}/Applications/alacritty/alacritty"
 	)
 
-	cat > $HOME/.local/share/applications/alacritty.desktop <<EOF
+	cat > "${HOME}/.local/share/applications/alacritty.desktop" <<EOF
 [Desktop Entry]
 Encoding=UTF-8
 Name=Alacritty
-Exec=/usr/bin/env WAYLAND_DISPLAY="" $HOME/Applications/alacritty/alacritty
-Icon=$HOME/Applications/alacritty/alacritty.svg
+Exec=/usr/bin/env WAYLAND_DISPLAY="" ${HOME}/Applications/alacritty/alacritty
+Icon=${HOME}/Applications/alacritty/alacritty.svg
 Type=Application
 EOF
 }
 
 function install_gpmdp_shortcut {
-	cat > $HOME/.local/share/applications/google-play-music-desktop-player.desktop <<EOF
+	cat > "${HOME}/.local/share/applications/google-play-music-desktop-player.desktop" <<EOF
 [Desktop Entry]
 Name=Google Play Music Desktop Player
 Comment=An Electron wrapper for Google Play Music
@@ -226,7 +217,6 @@ function main {
 	apt_update
 	install_base_dev_tools
 	install_additional_tools
-	install_dotnet_core
 	install_alacritty
 	install_gpmdp_shortcut
 	cleanup
