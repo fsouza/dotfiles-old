@@ -7,7 +7,11 @@ function _go_to_tmux {
 }
 
 function tmux {
-	_go_to_tmux
+	if [ -z "${1}" ]; then
+		_go_to_tmux
+	else
+		command tmux $@
+	fi
 }
 
 if [ -z "$TMUX" ] && [ -n "$(which tmux)" ] && [[ $- =~ i ]]; then
