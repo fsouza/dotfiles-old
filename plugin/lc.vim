@@ -15,6 +15,8 @@ function s:lc_init()
 		xmap <silent> <Leader>c :CocAction<CR>
 		nmap <silent> <Leader>f :CocFix<CR>
 		xmap <silent> <Leader>f :CocFix<CR>
+		nmap <silent> <Leader>ls <Plug>(coc-range-select)
+		vmap <silent> <TAB> <Plug>(coc-range-select)
 	endif
 endfunction
 
