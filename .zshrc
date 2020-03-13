@@ -36,7 +36,6 @@ source ${basedir}/extra/brew
 source ${basedir}/extra/virtualenv
 source ${basedir}/extra/gpg-agent
 
-source ${basedir}/extra/chapel
 source ${basedir}/extra/git
 source ${basedir}/extra/go
 source ${basedir}/extra/mail
