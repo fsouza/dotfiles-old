@@ -32,7 +32,7 @@ function install_ocaml_lsp {
 
 	pushd "$ROOT/ocaml-lsp" &&
 		git submodule update --init --recursive &&
-		opam install --deps-only . &&
+		opam install --deps-only -y . &&
 		dune build @install &&
 		popd
 }
