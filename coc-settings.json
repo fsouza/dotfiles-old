@@ -14,14 +14,8 @@
   "languageserver": {
     "bash": {
       "command": "vim-nodels",
-      "args": [
-        "bash-language-server",
-        "start",
-      ],
-      "filetypes": [
-        "sh",
-        "zsh",
-      ],
+      "args": ["bash-language-server", "start"],
+      "filetypes": ["sh", "zsh"]
     },
     "clangd": {
       "command": "vim-clangd",
@@ -29,131 +23,82 @@
         "compile_flags.txt",
         "compile_commands.json",
         ".git/",
-        ".hg/",
+        ".hg/"
       ],
-      "filetypes": [
-        "c",
-        "cpp",
-      ],
+      "filetypes": ["c", "cpp"]
     },
     "css": {
       "command": "vim-nodels",
-      "args": [
-        "css-languageserver",
-        "--stdio",
-      ],
-      "filetypes": [
-        "css",
-      ],
+      "args": ["css-languageserver", "--stdio"],
+      "filetypes": ["css"]
     },
     "dockerfile": {
       "command": "vim-nodels",
-      "args": [
-        "docker-langserver",
-        "--stdio",
-      ],
-      "filetypes": [
-        "dockerfile",
-      ],
+      "args": ["docker-langserver", "--stdio"],
+      "filetypes": ["dockerfile"]
     },
     "gopls": {
       "command": "gopls",
       "disableCompletionSnippets": true,
-      "rootPatterns": [
-        "go.mod",
-        ".git",
-      ],
-      "filetypes": [
-        "go",
-        "gomod",
-      ],
+      "rootPatterns": ["go.mod", ".git"],
+      "filetypes": ["go", "gomod"],
       "initializationOptions": {
         "deepCompletion": false,
-        "staticcheck": true,
-      },
+        "staticcheck": true
+      }
     },
     "html": {
       "command": "vim-nodels",
-      "args": [
-        "html-langserver",
-        "--stdio",
-      ],
-      "filetypes": [
-        "html",
-      ],
+      "args": ["html-langserver", "--stdio"],
+      "filetypes": ["html"]
     },
     "js-langserver": {
       "command": "vim-nodels",
-      "args": [
-        "js-langserver",
-        "--stdio",
-      ],
-      "filetypes": [
-        "javascript",
-      ],
+      "args": ["js-langserver", "--stdio"],
+      "filetypes": ["javascript"]
     },
     "ocaml-lsp": {
       "command": "vim-ocaml-lsp",
-      "filetypes": [
-        "ocaml",
-      ],
+      "filetypes": ["ocaml"]
     },
     "python": {
       "command": "python",
-      "args": [
-        "-m",
-        "pyls",
-      ],
-      "filetypes": [
-        "python",
-      ],
+      "args": ["-m", "pyls"],
+      "filetypes": ["python"],
       "settings": {
         "pyls": {
           "enable": true,
           "plugins": {
             "autopep8": {
-              "enabled": false,
+              "enabled": false
             },
             "pylint": {
-              "enabled": false,
+              "enabled": false
             },
             "yapf": {
-              "enabled": false,
-            },
-          },
-        },
-      },
+              "enabled": false
+            }
+          }
+        }
+      }
     },
     "reason": {
       "command": "vim-rels",
-      "filetypes": [
-        "reason",
-      ],
+      "filetypes": ["reason"]
     },
     "rust": {
       "command": "vim-ra",
-      "filetypes": [
-        "rust",
-      ],
-      "rootPatterns": [
-        "Cargo.toml",
-      ],
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
     },
     "vim": {
       "command": "vim-nodels",
-      "args": [
-        "vim-language-server",
-        "--stdio",
-      ],
-      "filetypes": [
-        "vim",
-      ],
+      "args": ["vim-language-server", "--stdio"],
+      "filetypes": ["vim"]
     },
     "yaml": {
       "command": "vim-yls",
-      "filetypes": [
-        "yaml",
-      ],
-    },
-  },
+      "filetypes": ["yaml"]
+    }
+  }
 }
