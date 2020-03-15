@@ -16,7 +16,7 @@ for file in $files; do
 done
 
 mkdir -p $HOME/.config
-xdg_files=(pycodestyle .ocamlformat gitignore_global tmux.conf tmux.${os}.conf alacritty.yml)
+xdg_files=(pycodestyle gitignore_global tmux.conf tmux.${os}.conf alacritty.yml)
 for file in $xdg_files; do
 	ln -sf ${basedir}/${file} $HOME/.config/${file}
 done

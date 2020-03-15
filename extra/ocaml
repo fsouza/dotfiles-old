@@ -1,0 +1,7 @@
+DOTFILES_DIR=${basedir}
+
+function copy_ocamlformat {
+	if ! [ -f .ocamlformat ]; then
+		cp "${DOTFILES_DIR}/.ocamlformat" .
+	fi
+}
