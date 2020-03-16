@@ -88,5 +88,7 @@ highlight CocHintFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE gui
 highlight CocInfoFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=#ff0000
 highlight CocWarningFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=#ff0000
 
+highlight CocCodeLens term=NONE cterm=NONE ctermbg=231 ctermfg=248 gui=NONE guibg=#ffffff guifg=#a8a8a8
+
 highlight StatusLine term=NONE cterm=NONE ctermbg=238 ctermfg=15 gui=NONE
 highlight StatusLineNC term=NONE cterm=NONE ctermfg=238 ctermbg=252 gui=NONE
