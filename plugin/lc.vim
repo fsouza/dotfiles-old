@@ -4,7 +4,7 @@ function s:lc_init()
 		nmap <silent> gd <Plug>(coc-definition)
 		nmap <silent> gy <Plug>(coc-type-definition)
 		nmap <silent> gi <Plug>(coc-implementation)
-		nmap <silent> <Leader>r <Plug>(coc-rename)
+		nmap <silent> <Leader>r :call CocAction('rename')<CR>
 		nmap <silent> <Leader>i :call CocActionAsync('doHover')<CR>
 		nmap <silent> <Leader>s :call CocActionAsync('highlight')<CR>
 		nmap <silent> <Leader>t :<C-u>CocList -I symbols<CR>
