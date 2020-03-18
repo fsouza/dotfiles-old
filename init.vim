@@ -24,6 +24,7 @@ Plug 'ocaml/vim-ocaml'
 Plug 'reasonml-editor/vim-reason-plus'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
 
