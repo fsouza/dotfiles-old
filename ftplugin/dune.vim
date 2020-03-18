@@ -1,5 +1,3 @@
-setlocal et sw=2
-
 function! s:duneformat()
 	if get(b:, 'dune_autoformat', 1) != 0
 		let view = winsaveview()
