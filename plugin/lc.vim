@@ -7,8 +7,8 @@ function s:lc_init()
 		nmap <silent> <Leader>r :call CocAction('rename')<CR>
 		nmap <silent> <Leader>i :call CocActionAsync('doHover')<CR>
 		nmap <silent> <Leader>s :call CocActionAsync('highlight')<CR>
-		nmap <silent> <Leader>t :<C-u>CocList symbols<CR>
-		nmap <silent> <Leader>T :<C-u>CocList outline<CR>
+		nmap <silent> <Leader>T :<C-u>CocList symbols<CR>
+		nmap <silent> <Leader>t :<C-u>CocList outline<CR>
 		nmap <silent> <Leader>d :<C-u>CocList diagnostics<CR>
 		nmap <silent> <Leader>q <Plug>(coc-references)
 		nmap <silent> <Leader>lc :<C-u>CocRebuild<CR>
