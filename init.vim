@@ -14,7 +14,6 @@ call plug#begin($VIMHOME.'/plugged')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fsouza/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'godlygeek/tabular'
-Plug 'google/vim-jsonnet'
 Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
