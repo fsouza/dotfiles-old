@@ -9,7 +9,7 @@ function s:lc_init()
 		nmap <silent> <Leader>s :call CocActionAsync('highlight')<CR>
 		nmap <silent> <Leader>T :<C-u>CocList symbols<CR>
 		nmap <silent> <Leader>t :<C-u>CocList outline<CR>
-		nmap <silent> <Leader>D :<C-u>CocList diagnostics<CR>
+		nmap <silent> <Leader>ld :<C-u>CocList diagnostics<CR>
 		nmap <silent> <Leader>d :call CocActionAsync('diagnosticInfoFloat')<CR>
 		nmap <silent> , :call CocActionAsync('diagnosticInfoFloat')<CR>
 		nmap <silent> <Leader>q <Plug>(coc-references)
