@@ -83,10 +83,11 @@ highlight CocHintSign term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guib
 highlight CocInfoSign term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guibg=#ffffff guifg=#262626
 highlight CocWarningSign term=NONE cterm=NONE ctermbg=231 ctermfg=235 gui=NONE guibg=#ffffff guifg=#262626
 
-highlight CocErrorFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=#ff0000
-highlight CocHintFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=#ff0000
-highlight CocInfoFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=#ff0000
-highlight CocWarningFloat term=NONE cterm=NONE ctermbg=254 ctermfg=196 gui=NONE guibg=#e4e4e4 guifg=#ff0000
+highlight CocFloating term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
+highlight CocErrorFloat term=NONE cterm=NONE ctermbg=145 ctermfg=232 gui=NONE guibg=#afafaf guifg=#080808
+highlight CocHintFloat term=NONE cterm=NONE ctermbg=145 ctermfg=232 gui=NONE guibg=#afafaf guifg=#080808
+highlight CocInfoFloat term=NONE cterm=NONE ctermbg=145 ctermfg=232 gui=NONE guibg=#afafaf guifg=#080808
+highlight CocWarningFloat term=NONE cterm=NONE ctermbg=145 ctermfg=232 gui=NONE guibg=#afafaf guifg=#080808
 
 highlight CocCodeLens term=NONE cterm=NONE ctermbg=231 ctermfg=248 gui=NONE guibg=#ffffff guifg=#a8a8a8
 
