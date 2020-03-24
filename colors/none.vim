@@ -91,5 +91,11 @@ highlight CocWarningFloat term=NONE cterm=NONE ctermbg=145 ctermfg=232 gui=NONE 
 
 highlight CocCodeLens term=NONE cterm=NONE ctermbg=231 ctermfg=248 gui=NONE guibg=#ffffff guifg=#a8a8a8
 
+highlight CocUnderline term=NONE cterm=underline gui=underline
+highlight CocErrorHighlight term=NONE cterm=underline gui=underline
+highlight CocWarningHighlight term=NONE cterm=underline gui=underline
+highlight CocInfoHighlight term=NONE cterm=underline gui=underline
+highlight CocHintHighlight term=NONE cterm=underline gui=underline
+
 highlight StatusLine term=NONE cterm=NONE ctermbg=238 ctermfg=15 gui=NONE
 highlight StatusLineNC term=NONE cterm=NONE ctermfg=238 ctermbg=252 gui=NONE
