@@ -47,9 +47,6 @@ colors:
 
   indexed_colors: []
 
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
-
 mouse:
   double_click: { threshold: 100 }
   triple_click: { threshold: 100 }
