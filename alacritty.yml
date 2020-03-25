@@ -47,6 +47,10 @@ colors:
 
   indexed_colors: []
 
+mouse:
+  double_click: { threshold: 100 }
+  triple_click: { threshold: 100 }
+
 selection:
   semantic_escape_chars: ',│`|:"'' ()[]{}<>'
 
