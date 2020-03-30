@@ -1,6 +1,8 @@
-#!/bin/zsh -e
+#!/usr/bin/env bash
 
-ROOT=$(cd `dirname ${0}`/.. && pwd -P)
+set -e
+
+ROOT=$(cd "$(dirname "${0}")"/.. && pwd -P)
 RA_LOCATION=$ROOT/langservers/rust-analyzer
 
-exec ${RA_LOCATION}/target/debug/rust-analyzer
+exec "${RA_LOCATION}/target/debug/rust-analyzer"

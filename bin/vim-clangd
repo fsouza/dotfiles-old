@@ -1,3 +1,5 @@
-#!/bin/zsh -e
+#!/usr/bin/env bash
 
-exec $HOMEBREW_PREFIX/opt/llvm/bin/clangd --pch-storage=memory --background-index
+set -eu
+
+exec "$HOMEBREW_PREFIX/opt/llvm/bin/clangd" --pch-storage=memory --background-index

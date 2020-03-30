@@ -1,6 +1,8 @@
-#!/bin/zsh -e
+#!/usr/bin/env bash
 
-ROOT=$(cd `dirname ${0}`/.. && pwd -P)
+set -e
+
+ROOT=$(cd "$(dirname "${0}")"/.. && pwd -P)
 YAML_LS_LOCATION=$ROOT/langservers/yaml-language-server
 
-exec node $YAML_LS_LOCATION/out/server/src/server.js --stdio
+exec node "$YAML_LS_LOCATION/out/server/src/server.js" --stdio
