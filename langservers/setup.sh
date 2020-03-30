@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 
-ROOT=$(cd `dirname ${0}` && pwd -P)
+ROOT=$(cd "$(dirname "${0}")" && pwd -P)
 
 function init {
 	git submodule update --init --recursive
@@ -65,7 +65,7 @@ function install_servers_from_pypi {
 	pip install -r requirements.txt
 }
 
-pushd $ROOT
+pushd "$ROOT"
 init
 install_dune
 install_servers_from_npm
