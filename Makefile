@@ -32,3 +32,7 @@ clean:
 
 .PHONY: rebootstrap
 rebootstrap: clean bootstrap
+
+.PHONY: shellcheck
+shellcheck:
+	shellcheck bin/* langservers/setup.sh
