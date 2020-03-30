@@ -30,23 +30,33 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y neovim
         if: matrix.os == 'ubuntu'
 
+      - name: install shellcheck on mac
+        run: brew install shellcheck
+        if: matrix.os == 'macos'
+
+      - name: install shellcheck on linux
+        run: sudo apt-get update && sudo apt-get install -y shellcheck
+        if: matrix.os == 'ubuntu'
+
       - uses: actions/checkout@master
+
+      - run: make shellcheck
 
       - uses: actions/setup-node@master
         with:
-          node-version: '12.x'
+          node-version: "12.x"
 
       - uses: avsm/setup-ocaml@master
         with:
-          ocaml-version: '4.08.1'
+          ocaml-version: "4.08.1"
 
       - uses: actions/setup-python@master
         with:
-          python-version: '3.x'
+          python-version: "3.x"
 
       - uses: actions/setup-ruby@master
         with:
-          ruby-version: '2.x'
+          ruby-version: "2.x"
 
       - uses: actions-rs/toolchain@master
         with:
