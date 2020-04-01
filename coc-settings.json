@@ -45,7 +45,8 @@
         "deepCompletion": false,
         "staticcheck": true,
         "analyses": {
-          "unusedparams": true
+          "unusedparams": true,
+          "ST1000": false
         }
       }
     },
