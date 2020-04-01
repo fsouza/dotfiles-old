@@ -43,7 +43,10 @@
       "filetypes": ["go", "gomod"],
       "initializationOptions": {
         "deepCompletion": false,
-        "staticcheck": true
+        "staticcheck": true,
+        "analyses": {
+          "unusedparams": true
+        }
       }
     },
     "html": {
