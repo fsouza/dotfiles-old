@@ -38,7 +38,6 @@
     },
     "gopls": {
       "command": "gopls",
-      "disableCompletionSnippets": true,
       "rootPatterns": ["go.mod", ".git"],
       "filetypes": ["go", "gomod"],
       "initializationOptions": {
