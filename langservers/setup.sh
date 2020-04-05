@@ -48,13 +48,24 @@ function install_reason_lsp {
 }
 
 function install_rust_analyzer {
+	local suffix
+
 	if ! command -v cargo &>/dev/null; then
 		echo skipping rust-analyzer
 		return
 	fi
-	pushd "$ROOT/rust-analyzer" &&
-		cargo build &&
-		popd
+
+	if [[ $OSTYPE == darwin* ]]; then
+		suffix=mac
+	elif [[ $OSTYPE == linux* ]]; then
+		suffix=linux
+	else
+		echo "install-rust-analyzer: unuspported OSTYPE=${OSTYPE}"
+		return
+	fi
+
+	curl -sLo ../bin/rust-analyzer "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-${suffix}"
+	chmod +x ../bin/rust-analyzer
 }
 
 function install_servers_from_npm {

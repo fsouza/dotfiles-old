@@ -89,7 +89,7 @@
       "filetypes": ["reason"]
     },
     "rust": {
-      "command": "vim-ra",
+      "command": "rust-analyzer",
       "filetypes": ["rust"],
       "rootPatterns": ["Cargo.toml"]
     },

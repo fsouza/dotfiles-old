@@ -7,6 +7,3 @@
 [submodule "langservers/ocaml-lsp"]
 	path = langservers/ocaml-lsp
 	url = https://github.com/ocaml/ocaml-lsp.git
-[submodule "langservers/rust-analyzer"]
-	path = langservers/rust-analyzer
-	url = https://github.com/rust-analyzer/rust-analyzer.git

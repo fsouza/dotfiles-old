@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-ROOT=$(cd "$(dirname "${0}")"/.. && pwd -P)
-RA_LOCATION=$ROOT/langservers/rust-analyzer
-
-exec "${RA_LOCATION}/target/debug/rust-analyzer"
