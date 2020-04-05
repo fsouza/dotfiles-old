@@ -84,10 +84,6 @@
         }
       }
     },
-    "reason": {
-      "command": "vim-rels",
-      "filetypes": ["reason"]
-    },
     "rust": {
       "command": "rust-analyzer",
       "filetypes": ["rust"],
