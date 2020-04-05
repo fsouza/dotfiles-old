@@ -37,16 +37,6 @@ function install_ocaml_lsp {
 		popd
 }
 
-function install_reason_lsp {
-	if ! command -v dune &>/dev/null; then
-		echo skipping reason-language-server
-		return
-	fi
-	pushd "$ROOT/reason-language-server" &&
-		../node_modules/.bin/esy &&
-		popd
-}
-
 function install_rust_analyzer {
 	local suffix
 
@@ -83,6 +73,5 @@ install_servers_from_npm
 install_servers_from_pypi
 install_yaml_server
 install_ocaml_lsp
-install_reason_lsp
 install_rust_analyzer
 popd

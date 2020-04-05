@@ -1,9 +1,6 @@
 [submodule "langservers/yaml-language-server"]
 	path = langservers/yaml-language-server
 	url = https://github.com/redhat-developer/yaml-language-server.git
-[submodule "langservers/reason-language-server"]
-	path = langservers/reason-language-server
-	url = https://github.com/jaredly/reason-language-server.git
 [submodule "langservers/ocaml-lsp"]
 	path = langservers/ocaml-lsp
 	url = https://github.com/ocaml/ocaml-lsp.git
