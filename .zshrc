@@ -16,7 +16,7 @@ prepend_to_path \
 	/home/linuxbrew/.linuxbrew/sbin \
 	/home/linuxbrew/.linuxbrew/bin \
 	${HOME}/.cargo/bin \
-	${HOME}/.nimble/bin \
+	${HOME}/.fnm \
 	${RBENV_ROOT}/shims \
 	${HOME}/.local/bin \
 	${basedir}/bin \
