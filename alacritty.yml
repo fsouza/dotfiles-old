@@ -71,3 +71,9 @@ key_bindings:
   - { key: C, mods: Control|Shift, action: Copy }
   - { key: V, mods: Command, action: Paste }
   - { key: C, mods: Command, action: Copy }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
