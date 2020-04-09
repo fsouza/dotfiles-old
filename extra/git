@@ -14,6 +14,21 @@ function git_config {
 	git config user.signingkey $email
 }
 
+function gh_clone {
+	dest=${3:-${2}}
+
+	if [ -z "${dest}" ]; then
+		echo >&2 "can't clone without destination"
+		return 2
+	fi
+	git clone --recurse-submodules "git@github.com:${1}/${2}.git" "${dest}" &&
+		cd "${dest}"
+}
+
+function c {
+	gh_clone fsouza "$1" "$2"
+}
+
 if [[ -v HOMEBREW_PREFIX ]]; then
 	export PERLLIB=${HOMEBREW_PREFIX}/opt/git/share/perl5:$PERLLIB
 fi
