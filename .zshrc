@@ -5,7 +5,7 @@ source ${basedir}/extra/init-functions
 autoload -U compinit && compinit
 
 export RBENV_ROOT=${HOME}/.rbenv
-export MANPATH=/usr/share/man:/usr/local/share/man:/home/linuxbrew/.linuxbrew/share/man:${basedir}/extra/z
+export MANPATH=/usr/share/man:/usr/local/share/man:${basedir}/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
@@ -20,10 +20,6 @@ prepend_to_path \
 	${HOME}/.local/bin \
 	${basedir}/bin \
 	${GOBIN}
-
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_NO_EMOJI=1
-export HOMEBREW_NO_GITHUB_API=1
 
 export EDITOR=nvim PAGER=less MANPAGER=less
 

@@ -1,3 +1,15 @@
-if command -v brew &>/dev/null; then
-	export HOMEBREW_PREFIX=$(brew --prefix)
+function find_brew {
+	paths=(/usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew)
+	for path in ${paths[@]}; do
+		echo ${path}
+	done
+}
+
+brew_path=$(find_brew)
+if [ -n "${brew_path}" ]; then
+	eval "$(brew shellenv)"
+
+	export HOMEBREW_NO_AUTO_UPDATE=1
+	export HOMEBREW_NO_EMOJI=1
+	export HOMEBREW_NO_GITHUB_API=1
 fi
