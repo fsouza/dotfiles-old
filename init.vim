@@ -20,7 +20,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ocaml/vim-ocaml'
-Plug 'SirVer/ultisnips'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
@@ -30,10 +29,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 " coc extensions
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-
-Plug 'andys8/vscode-jest-snippets', {'do': 'npm ci'}
 call plug#end()
 
 set t_Co=256
