@@ -12,7 +12,7 @@ endif
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fsouza/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'fsouza/coc.nvim', {'do': 'npx yarn install --frozen-lockfile'}
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -27,9 +27,9 @@ Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
 
 " coc extensions
-Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'npx yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'npx yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install --frozen-lockfile'}
 call plug#end()
 
 set t_Co=256
