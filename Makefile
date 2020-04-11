@@ -21,7 +21,7 @@ update-spell:
 
 .PHONY: plug-setup
 plug-setup:
-	if which nvim; then nvim --headless +'PlugInstall|qa' +cq; fi
+	if command -v nvim &>/dev/null; then nvim --headless +'PlugInstall|qa' +cq; fi
 
 .PHONY: bootstrap
 bootstrap: pip gem setup-langservers plug-setup
