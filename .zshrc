@@ -7,27 +7,25 @@ autoload -U compinit && compinit
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${basedir}/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
+export EDITOR=nvim PAGER=less MANPAGER=less
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
 	${basedir}/extra/gimme \
 	/usr/local/sbin \
 	/usr/local/bin \
-	/home/linuxbrew/.linuxbrew/sbin \
-	/home/linuxbrew/.linuxbrew/bin \
 	${HOME}/.cargo/bin \
 	${RBENV_ROOT}/shims \
 	${HOME}/.local/bin \
 	${basedir}/bin \
 	${GOBIN}
 
-export EDITOR=nvim PAGER=less MANPAGER=less
+source ${basedir}/extra/brew
 
 cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 cond_source "${basedir}/extra/z/z.sh"
 
-source ${basedir}/extra/brew
 source ${basedir}/extra/virtualenv
 source ${basedir}/extra/gpg-agent
 
