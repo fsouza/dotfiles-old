@@ -10,8 +10,8 @@ function init {
 
 function install_yaml_server {
 	pushd "$ROOT/yaml-language-server"
-	npm ci
-	npm run compile
+	npx yarn install --frozen-lockfile
+	npx tsc -p .
 	popd
 }
 
