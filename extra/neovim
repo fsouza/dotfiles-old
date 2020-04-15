@@ -33,4 +33,4 @@ function update_neovim {
 }
 
 prepend_to_path $NEOVIM_INSTALL_PREFIX/bin
-alias zvim='nvim $(fzf)'
+alias zvim='nvim +FzfFiles'
