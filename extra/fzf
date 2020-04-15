@@ -1,0 +1,10 @@
+if command -v rg &>/dev/null; then
+	export FZF_DEFAULT_COMMAND="rg -l --hidden -g '!.git' -g '!.hg' '.*'"
+fi
+
+# ensure fzf completion and key-bindings is configured.
+if [[ -v HOMEBREW_PREFIX ]] && [ -x "${HOMEBREW_PREFIX}/opt/fzf/install" ]; then
+	"${HOMEBREW_PREFIX}/opt/fzf/install" --no-update-rc --key-bindings --completion --xdg &>/dev/null
+fi
+
+cond_source "${HOME}/.config/fzf/fzf.zsh"

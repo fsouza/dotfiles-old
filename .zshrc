@@ -49,12 +49,7 @@ if command -v fnm &>/dev/null; then
 	eval "$(fnm env --multi)"
 fi
 
-if command -v rg &>/dev/null; then
-	export FZF_DEFAULT_COMMAND="rg -l --hidden -g '!.git' -g '!.hg' '.*'"
-fi
-
 source ${basedir}/extra/tmux
-unset basedir
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 export ZLE_SPACE_SUFFIX_CHARS=$'|&'
@@ -71,3 +66,6 @@ setopt HIST_IGNORE_SPACE
 setopt SHARE_HISTORY
 
 bindkey -e
+
+source ${basedir}/extra/fzf
+unset basedir
