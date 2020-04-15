@@ -1,13 +1,15 @@
 function find_brew {
 	paths=(/usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew)
-	for path in ${paths[@]}; do
-		echo ${path}
+	for path in ${paths}; do
+		if [ -x "${path}" ]; then
+			echo ${path}
+		fi
 	done
 }
 
 brew_path=$(find_brew)
 if [ -n "${brew_path}" ]; then
-	eval "$(brew shellenv)"
+	eval "$("${brew_path}" shellenv)"
 
 	export HOMEBREW_NO_AUTO_UPDATE=1
 	export HOMEBREW_NO_EMOJI=1
