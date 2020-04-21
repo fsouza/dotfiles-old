@@ -44,7 +44,7 @@ set backupskip=/tmp/*,/private/tmp/*
 
 set completeopt=menu,longest
 set hidden noshowcmd
-set laststatus=2 statusline=%<%f\ %h%m%r%=%-14.(%l,%c\ \ \ %o%)
+set laststatus=0
 set ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
 set backspace=2 nohlsearch noincsearch nofoldenable
 set autoindent smartindent smarttab
