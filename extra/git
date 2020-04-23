@@ -30,5 +30,5 @@ function c {
 }
 
 if [[ -v HOMEBREW_PREFIX ]]; then
-	export PERLLIB=${HOMEBREW_PREFIX}/opt/git/share/perl5:$PERLLIB
+	export PERLLIB=${HOMEBREW_PREFIX}/opt/git/share/perl5:${PERLLIB+:$PERLLIB}
 fi
