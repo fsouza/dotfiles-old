@@ -32,5 +32,9 @@ function update_neovim {
 	_update_neovim || rebootstrap_neovim
 }
 
-prepend_to_path $NEOVIM_INSTALL_PREFIX/bin
-alias zvim='nvim +FzfFiles'
+if [ -x "$NEOVIM_INSTALL_PREFIX/bin/nvim" ]; then
+	prepend_to_path "$NEOVIM_INSTALL_PREFIX/bin"
+	alias zvim='nvim +FzfFiles'
+
+	export EDITOR=nvim
+fi

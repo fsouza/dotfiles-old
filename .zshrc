@@ -7,7 +7,7 @@ autoload -U compinit && compinit
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${basedir}/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
-export EDITOR=nvim PAGER=less MANPAGER=less
+export EDITOR=vim PAGER=less MANPAGER=less
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
