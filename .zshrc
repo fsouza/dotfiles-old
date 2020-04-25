@@ -41,10 +41,6 @@ cond_source "${basedir}/extra/${OS_NAME}-functions"
 
 export PS1="％ " PS2="\\ "
 
-if command -v opam &>/dev/null; then
-	eval "$(opam env)"
-fi
-
 if command -v fnm &>/dev/null; then
 	eval "$(fnm env --multi)"
 fi

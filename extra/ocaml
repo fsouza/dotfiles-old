@@ -5,3 +5,7 @@ function copy_ocamlformat {
 		cp "${DOTFILES_DIR}/.ocamlformat" .
 	fi
 }
+
+if command -v opam &>/dev/null && [ -f "$HOME/.opam/opam-init/init.zsh" ]; then
+	source "$HOME/.opam/opam-init/init.zsh"
+fi
