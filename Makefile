@@ -35,4 +35,4 @@ rebootstrap: clean bootstrap
 
 .PHONY: shellcheck
 shellcheck:
-	shellcheck bin/* langservers/setup.sh
+	shellcheck bin/vim-* langservers/setup.sh
