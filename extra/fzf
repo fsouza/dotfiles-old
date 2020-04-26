@@ -26,7 +26,7 @@ function _rebind_ctrl-r {
 
 function _setup_fzf {
 	if command -v fd &>/dev/null; then
-		export FZF_DEFAULT_COMMAND="fd --type f --hidden -E '.git' -E '.hg' --ignore-file .fzfignore"
+		export FZF_DEFAULT_COMMAND="fd --type f --hidden -E '.git' -E '.hg'"
 	fi
 	export FZF_DEFAULT_OPTS='--color=light,prompt:232,marker:232,pointer:232,hl:236,hl+:232'
 
