@@ -1,5 +1,5 @@
 function! s:fzf_grep()
-	let what = input('what? ')
+	let what = input('rg\ ')
 	execute 'FzfRg '.what
 endfunction
 
