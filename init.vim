@@ -51,7 +51,7 @@ set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set guicursor=
 set shortmess=filnxtToOFI
-set mouse=a
+set mouse=
 
 let g:netrw_banner = 0
 
