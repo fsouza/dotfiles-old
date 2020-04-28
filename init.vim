@@ -50,8 +50,8 @@ set backspace=2 nohlsearch noincsearch nofoldenable
 set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set guicursor=
-set shortmess=filnxtToOFI
 set mouse=
+set shortmess=filnxtToOFI
 
 let g:netrw_banner = 0
 
