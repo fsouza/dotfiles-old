@@ -15,7 +15,6 @@ prepend_to_path \
 	/usr/local/sbin \
 	/usr/local/bin \
 	${HOME}/.cargo/bin \
-	${RBENV_ROOT}/shims \
 	${HOME}/.local/bin \
 	${basedir}/bin \
 	${GOBIN}
@@ -43,6 +42,10 @@ export PS1="％ " PS2="\\ "
 
 if command -v fnm &>/dev/null; then
 	eval "$(fnm env --multi)"
+fi
+
+if command -v rbenv &>/dev/null; then
+	eval "$(rbenv init -)"
 fi
 
 source ${basedir}/extra/tmux
