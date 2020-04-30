@@ -5,4 +5,4 @@ endfunction
 
 command! ToggleLineno call s:toggle_lineno()
 
-nmap <silent> <leader>n :ToggleLineno<CR>
+nmap <silent> ;; :ToggleLineno<CR>
