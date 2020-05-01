@@ -15,8 +15,8 @@ function s:lc_init()
 		nmap <silent> <Leader>q <Plug>(coc-references)
 		nmap <silent> <Leader>lc :<C-u>CocRebuild<CR>
 		nmap <silent> <Leader>ll <Plug>(coc-codelens-action)
-		nmap <silent> <Leader>c :CocAction<CR>
-		xmap <silent> <Leader>c :CocAction<CR>
+		nmap <silent> <Leader>c <Plug>(coc-codeaction)
+		vmap <silent> <Leader>c <Plug>(coc-codeaction-selected)
 		nmap <silent> <Leader>f :CocFix<CR>
 		xmap <silent> <Leader>f :CocFix<CR>
 		nmap <silent> <Leader>ls <Plug>(coc-range-select)
