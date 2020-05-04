@@ -99,3 +99,5 @@ highlight CocHintHighlight term=NONE cterm=underline gui=underline
 
 highlight StatusLine term=NONE cterm=NONE ctermbg=238 ctermfg=15 gui=NONE
 highlight StatusLineNC term=NONE cterm=NONE ctermfg=238 ctermbg=252 gui=NONE
+
+highlight HighlightedyankRegion term=NONE cterm=NONE ctermbg=225 ctermfg=NONE gui=NONE guibg=#ffd7ff guifg=NONE
