@@ -48,7 +48,7 @@ jobs:
 
       - uses: avsm/setup-ocaml@master
         with:
-          ocaml-version: "4.09.1"
+          ocaml-version: "4.10.0"
 
       - uses: actions/setup-python@master
         with:
