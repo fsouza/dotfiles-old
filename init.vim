@@ -18,6 +18,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
+Plug 'machakann/vim-highlightedyank'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'ocaml/vim-ocaml'
 Plug 'sjbach/lusty'
