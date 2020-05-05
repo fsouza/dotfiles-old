@@ -26,7 +26,7 @@ highlight PmenuSbar term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guib
 highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight PmenuThumb term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Question term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight Search term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
+highlight Search term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
 highlight SpellBad term=NONE cterm=NONE ctermbg=NONE ctermfg=196 gui=NONE guibg=NONE guifg=#ff0000
 highlight StatusLine term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
