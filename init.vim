@@ -24,6 +24,7 @@ Plug 'ocaml/vim-ocaml'
 Plug 'sjbach/lusty'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
 
