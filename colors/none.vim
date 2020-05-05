@@ -12,7 +12,7 @@ let g:colors_name = 'none'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=253 ctermfg=NONE gui=NONE guibg=#dadada guifg=NONE
-highlight CursorLineNr term=NONE cterm=bold ctermbg=NONe ctermfg=NONE gui=bold guibg=NONE guifg=NONE
+highlight CursorLineNr term=NONE cterm=bold ctermbg=252 ctermfg=NONE gui=bold guibg=#d0d0d0 guifg=NONE
 highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
 highlight ErrorMsg term=NONE cterm=NONE ctermbg=160 ctermfg=231 gui=NONE guibg=#d70000 guifg=#ffffff
 highlight LineNr term=NONE cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
