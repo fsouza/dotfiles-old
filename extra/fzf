@@ -3,11 +3,11 @@ function _rebind_ctrl-r {
 		local selected num
 		setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
 		selected=( $(fc -rl 1 | perl -ne 'print if !$seen{($_ =~ s/^\s*[0-9]+\s+//r)}++' |
-			FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort --expect=ctrl-e --expect=right $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+			FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort --expect=ctrl-e --expect=right --expect=left $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
 		local ret=$?
 		if [ -n "$selected" ]; then
 			local accept=0
-			if [[ $selected[1] == ctrl-e ]] || [[ $selected[1] == right ]]; then
+			if [[ $selected[1] == ctrl-e ]] || [[ $selected[1] == right ]] || [[ $selected[1] == left ]]; then
 				accept=1
 				shift selected
 			fi
