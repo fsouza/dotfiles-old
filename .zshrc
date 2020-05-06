@@ -2,8 +2,6 @@
 basedir=$(dirname $(realpath ${(%):-%N}))
 source ${basedir}/extra/init-functions
 
-autoload -U compinit && compinit
-
 export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${basedir}/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
@@ -52,6 +50,8 @@ source ${basedir}/extra/tmux
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 export ZLE_SPACE_SUFFIX_CHARS=$'|&'
+
+autoload -Uz compinit && compinit -u
 
 export HISTFILE="$HOME/.history"
 export HISTSIZE=1234567890
