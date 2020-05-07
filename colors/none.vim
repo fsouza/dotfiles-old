@@ -12,10 +12,10 @@ let g:colors_name = 'none'
 
 highlight Conceal term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight CursorLine term=NONE cterm=NONE ctermbg=253 ctermfg=NONE gui=NONE guibg=#dadada guifg=NONE
-highlight CursorLineNr term=NONE cterm=bold ctermbg=252 ctermfg=NONE gui=bold guibg=#d0d0d0 guifg=NONE
+highlight CursorLineNr term=NONE cterm=bold ctermbg=253 ctermfg=NONE gui=bold guibg=#d0d0d0 guifg=NONE
 highlight Directory term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
 highlight ErrorMsg term=NONE cterm=NONE ctermbg=160 ctermfg=231 gui=NONE guibg=#d70000 guifg=#ffffff
-highlight LineNr term=NONE cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
+highlight LineNr term=NONE cterm=NONE ctermbg=253 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
 highlight MatchParen term=NONE cterm=NONE ctermbg=145 ctermfg=NONE gui=NONE guibg=#afafaf guifg=NONE
 highlight ModeMsg term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight MoreMsg term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
@@ -27,7 +27,7 @@ highlight PmenuSel term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg
 highlight PmenuThumb term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Question term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Search term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
-highlight SignColumn term=NONE cterm=NONE ctermbg=252 ctermfg=232 gui=NONE guibg=#d0d0d0 guifg=#080808
+highlight SignColumn term=NONE cterm=NONE ctermbg=253 ctermfg=232 gui=NONE guibg=#d0d0d0 guifg=#080808
 highlight SpecialKey term=NONE cterm=NONE ctermbg=NONE ctermfg=59 gui=NONE guibg=NONE guifg=#5f5f5f
 highlight SpellBad term=NONE cterm=NONE ctermbg=NONE ctermfg=196 gui=NONE guibg=NONE guifg=#ff0000
 highlight StatusLine term=NONE cterm=reverse ctermbg=NONE ctermfg=NONE gui=reverse guibg=NONE guifg=NONE
@@ -75,7 +75,6 @@ highlight Type term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NON
 highlight Typedef term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight Underlined term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 
-highlight goSameId term=NONE cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
 highlight htmlBold term=NONE cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 highlight LustySelected term=NONE cterm=NONE ctermbg=NONE ctermfg=245 gui=NONE guibg=NONE guifg=#8a8a8a
 
