@@ -7,11 +7,11 @@ indent_style = tab
 insert_final_line = true
 trim_trailing_whitespace = true
 
-[*.{d,elm,fs,ps1,py,rs,rst,ts}]
+[*.{d,elm,fs,proto,ps1,py,rs,rst,ts}]
 indent_style = space
 indent_size = 4
 
-[*.{atd,chpl,erb,f90,jsonnet,lua,ml,mli,mll,mly,pony,proto,rb,re,rei,rkt,scala,sls,sml,tf,tfstate,toml,yaml,yml}]
+[*.{atd,chpl,erb,f90,jsonnet,lua,ml,mli,mll,mly,pony,rb,re,rei,rkt,scala,sls,sml,tf,tfstate,toml,yaml,yml}]
 indent_style = space
 indent_size = 2
 
