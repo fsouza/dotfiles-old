@@ -1,5 +1,4 @@
-flake8
-python-language-server[all]
 pyls-black
-pyls-mypy
 pyls-isort
+pyls-mypy
+python-language-server[flake8, pycodestyle, pydocstyle]
