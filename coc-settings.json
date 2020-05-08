@@ -69,18 +69,7 @@
       "filetypes": ["python"],
       "settings": {
         "pyls": {
-          "enable": true,
-          "plugins": {
-            "autopep8": {
-              "enabled": false
-            },
-            "pylint": {
-              "enabled": false
-            },
-            "yapf": {
-              "enabled": false
-            }
-          }
+          "enable": true
         }
       }
     },
