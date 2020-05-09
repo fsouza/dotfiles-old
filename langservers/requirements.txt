@@ -8,27 +8,15 @@ appdirs==1.4.3            # via black
 attrs==19.3.0             # via black
 black==19.10b0            # via pyls-black
 click==7.1.2              # via black
-entrypoints==0.3          # via flake8
-flake8==3.7.9             # via python-language-server
 isort==4.3.21             # via pyls-isort
-jedi==0.15.2              # via python-language-server
-mccabe==0.6.1             # via flake8
 mypy-extensions==0.4.3    # via mypy
 mypy==0.770               # via pyls-mypy
-parso==0.7.0              # via jedi
 pathspec==0.8.0           # via black
-pluggy==0.13.1            # via python-language-server
-pycodestyle==2.5.0        # via flake8, python-language-server
-pydocstyle==5.0.2         # via python-language-server
-pyflakes==2.1.1           # via flake8
 pyls-black==0.4.4         # via -r requirements.in
 pyls-isort==0.1.1         # via -r requirements.in
 pyls-mypy==0.1.8          # via -r requirements.in
-python-jsonrpc-server==0.3.4  # via python-language-server
-python-language-server[flake8,pycodestyle,pydocstyle]==0.31.10  # via -r requirements.in, pyls-black, pyls-isort, pyls-mypy
+git+https://github.com/fsouza/python-language-server.git@rename-with-jedi#egg=python-language-server[flake8, pycodestyle, pydocstyle]  # via -r requirements.in, pyls-black, pyls-isort, pyls-mypy
 regex==2020.5.7           # via black
-snowballstemmer==2.0.0    # via pydocstyle
 toml==0.10.0              # via black, pyls-black
 typed-ast==1.4.1          # via black, mypy
 typing-extensions==3.7.4.2  # via mypy
-ujson==1.35               # via python-jsonrpc-server, python-language-server
