@@ -15,7 +15,7 @@ pathspec==0.8.0           # via black
 pyls-black==0.4.4         # via -r requirements.in
 pyls-isort==0.1.1         # via -r requirements.in
 pyls-mypy==0.1.8          # via -r requirements.in
-git+https://github.com/fsouza/python-language-server.git@rename-with-jedi#egg=python-language-server[flake8, pycodestyle, pydocstyle]  # via -r requirements.in, pyls-black, pyls-isort, pyls-mypy
+git+https://github.com/fsouza/python-language-server.git@rename-with-jedi#egg=python-language-server[flake8]  # via -r requirements.in, pyls-black, pyls-isort, pyls-mypy
 regex==2020.5.7           # via black
 toml==0.10.0              # via black, pyls-black
 typed-ast==1.4.1          # via black, mypy
