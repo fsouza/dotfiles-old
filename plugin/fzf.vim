@@ -10,3 +10,10 @@ nmap <silent> <leader>lz :FzfFiles<CR>
 nmap <silent> <leader>lh :FzfHistory<CR>
 nmap <silent> <leader>; :FzfCommands<CR>
 nmap <silent> <leader>g :FzfGrep<CR>
+
+let g:LustyExplorerDefaultMappings = 0
+
+nmap <silent> <Leader>lf :LustyFilesystemExplorer<CR>
+nmap <silent> <Leader>lr :LustyFilesystemExplorerFromHere<CR>
+nmap <silent> <Leader>lb :FzfBuffers<CR>
+nmap <silent> <Leader>lg :FzfLines<CR>
