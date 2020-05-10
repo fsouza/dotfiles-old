@@ -7,7 +7,7 @@
     "bash-language-server": "^1.14.0",
     "dockerfile-language-server-nodejs": "0.0.24",
     "js-langserver": "github:tbodt/js-langserver#master",
-    "vim-language-server": "^1.6.0",
+    "vim-language-server": "^1.9.0",
     "vscode-css-languageserver-bin": "^1.4.0",
     "vscode-html-languageserver-bin": "^1.4.0"
   }
