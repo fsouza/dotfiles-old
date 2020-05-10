@@ -21,6 +21,16 @@ function s:lc_init()
 		xmap <silent> <Leader>f :CocFix<CR>
 		nmap <silent> <Leader>ls <Plug>(coc-range-select)
 		vmap <silent> <TAB> <Plug>(coc-range-select)
+
+		xmap if <Plug>(coc-funcobj-i)
+		omap if <Plug>(coc-funcobj-i)
+		xmap af <Plug>(coc-funcobj-a)
+		omap af <Plug>(coc-funcobj-a)
+
+		xmap ic <Plug>(coc-classobj-i)
+		omap ic <Plug>(coc-classobj-i)
+		xmap ac <Plug>(coc-classobj-a)
+		omap ac <Plug>(coc-classobj-a)
 	endif
 endfunction
 
