@@ -69,7 +69,14 @@
       "filetypes": ["python"],
       "settings": {
         "pyls": {
-          "enable": true
+          "enable": true,
+          "plugins": {
+            "jedi_completion": {
+              "enabled": true,
+              "include_params": true,
+              "fuzzy": true
+            }
+          }
         }
       }
     },
