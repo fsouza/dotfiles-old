@@ -24,6 +24,19 @@ function v() {
 	fi
 }
 
+function zv() {
+	q=${1}
+	if [ -z "${q}" ]; then
+		echo &>2 needs param
+		return 2
+	fi
+
+	z "${q}"
+	if [[ ${OLDPWD} != "${PWD}" ]]; then
+		v @
+	fi
+}
+
 function d() {
 	if [[ ! -v oldpath ]]; then
 		echo >&2 "no virtualenv active"
