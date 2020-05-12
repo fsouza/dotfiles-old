@@ -1,3 +1,6 @@
+nnoremap <Space> <nop>
+let mapleader = " "
+
 let $VIMHOME = expand('~/.config/nvim')
 if !isdirectory($VIMHOME)
 	let $VIMHOME = expand('~/.vim')
