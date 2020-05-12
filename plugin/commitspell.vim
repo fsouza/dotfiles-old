@@ -1,5 +1,5 @@
 function! s:commitspell()
-	let b:no_relative_number = 1
+	let b:no_auto_relative_number = 1
 	setlocal spell
 endfunction
 
