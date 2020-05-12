@@ -73,7 +73,7 @@
           "plugins": {
             "jedi_completion": {
               "enabled": true,
-              "include_params": true,
+              "include_params": false,
               "fuzzy": true
             }
           }
