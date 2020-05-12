@@ -15,7 +15,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fsouza/coc.nvim', {'do': 'npx yarn install --frozen-lockfile'}
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'machakann/vim-highlightedyank'
