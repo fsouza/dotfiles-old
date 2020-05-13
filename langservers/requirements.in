@@ -1,4 +1,4 @@
 pyls-black
 pyls-isort
 pyls-mypy
-git+https://github.com/fsouza/python-language-server.git@rename-with-jedi#egg=python-language-server[flake8]
+python-language-server[flake8]
