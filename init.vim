@@ -1,5 +1,4 @@
-nnoremap <Space> <nop>
-let mapleader = " "
+let mapleader = ";"
 
 let $VIMHOME = expand('~/.config/nvim')
 if !isdirectory($VIMHOME)
@@ -57,3 +56,4 @@ set shortmess=filnxtToOFI
 let g:netrw_banner = 0
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
+nnoremap <Space> <nop>
