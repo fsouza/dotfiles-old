@@ -50,3 +50,7 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-ultisnips'
 	\ ]
+
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-k>"
