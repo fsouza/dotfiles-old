@@ -18,6 +18,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fsouza/coc.nvim', {'do': 'npx yarn install --frozen-lockfile'}
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
+Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
