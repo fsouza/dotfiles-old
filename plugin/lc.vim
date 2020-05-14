@@ -42,3 +42,11 @@ endfunction
 
 autocmd FileType * call s:lc_init()
 autocmd BufWritePre * call s:lc_autoformat()
+
+let g:coc_global_extensions = [
+	\ 'coc-json',
+	\ 'coc-prettier',
+	\ 'coc-snippets',
+	\ 'coc-tsserver',
+	\ 'coc-ultisnips'
+	\ ]

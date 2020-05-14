@@ -30,12 +30,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent'
-
-" coc extensions
-Plug 'neoclide/coc-json', {'do': 'npx yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-prettier', {'do': 'npx yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-snippets', {'do': 'npx yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'npx yarn install --frozen-lockfile'}
 call plug#end()
 
 set t_Co=256
