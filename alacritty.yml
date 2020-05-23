@@ -36,14 +36,14 @@ colors:
     white: "#c7c7c7"
 
   bright:
-    black: "#656565"
-    red: "#ff6d67"
-    green: "#5ff967"
-    yellow: "#fefb67"
-    blue: "#6871ff"
-    magenta: "#ff76ff"
-    cyan: "#5ffdff"
-    white: "#ffffff"
+    black: "#000000"
+    red: "#c91b00"
+    green: "#000000"
+    yellow: "#000000"
+    blue: "#000000"
+    magenta: "#000000"
+    cyan: "#00c5c7"
+    white: "#c7c7c7"
 
   indexed_colors: []
 
