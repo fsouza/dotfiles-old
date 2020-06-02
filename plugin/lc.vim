@@ -11,7 +11,6 @@ function s:lc_init()
 		nmap <silent> <Leader>t :<C-u>CocList outline<CR>
 		nmap <silent> <Leader>ld :<C-u>CocList diagnostics<CR>
 		nmap <silent> <Leader>d :call CocActionAsync('diagnosticInfoFloat')<CR>
-		nmap <silent> , :call CocActionAsync('diagnosticInfoFloat')<CR>
 		nmap <silent> <Leader>q <Plug>(coc-references)
 		nmap <silent> <Leader>lc :<C-u>CocRebuild<CR>
 		nmap <silent> <Leader>ll <Plug>(coc-codelens-action)
