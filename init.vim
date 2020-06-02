@@ -36,20 +36,21 @@ colorscheme none
 
 filetype plugin indent on
 
-call mkdir($VIMHOME.'/swp', 'p')
-set directory=$VIMHOME/swp
-set backupskip=/tmp/*,/private/tmp/*
+call mkdir($VIMHOME.'/undo-dir', 'p')
 
 set completeopt=menu,longest
 set hidden noshowcmd
 set laststatus=0
 set ruler rulerformat=%-14.(%l,%c\ \ \ %o%)
-set backspace=2 nohlsearch noincsearch nofoldenable
+set backspace=2 nohlsearch noincsearch nofoldenable smartcase
 set autoindent smartindent smarttab
 set wildmenu wildmode=list:longest
 set guicursor=
 set mouse=
 set shortmess=filnxtToOFI
+set noerrorbells
+set undodir=$VIMHOME/undo-dir
+set nobackup noswapfile undofile
 
 let g:netrw_banner = 0
 
