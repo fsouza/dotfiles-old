@@ -1,3 +1,6 @@
+nnoremap <Space> <nop>
+let mapleader = " "
+
 let $VIMHOME = expand('~/.config/nvim')
 if !isdirectory($VIMHOME)
 	let $VIMHOME = expand('~/.vim')
@@ -55,4 +58,3 @@ set nobackup noswapfile undofile
 let g:netrw_banner = 0
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
-nnoremap <Space> <nop>
