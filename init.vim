@@ -15,7 +15,12 @@ endif
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fsouza/coc.nvim', {'do': 'npx yarn install --frozen-lockfile'}
+Plug 'fsouza/coc.nvim',
+			\ {
+			\ 'do': 'npx yarn install --frozen-lockfile',
+			\ 'for': ['sh', 'c', 'cpp', 'css', 'dockerfile', 'go', 'gomod', 'html', 'javascript', 'ocaml', 'python', 'rust', 'vim', 'yaml']
+			\ }
+
 Plug 'fsouza/hlyank.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform', { 'on': 'terraform' }
