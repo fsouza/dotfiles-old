@@ -18,18 +18,18 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fsouza/coc.nvim', {'do': 'npx yarn install --frozen-lockfile'}
 Plug 'fsouza/hlyank.vim'
 Plug 'godlygeek/tabular'
-Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform', { 'on': 'terraform' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'ocaml/vim-ocaml'
+Plug 'ocaml/vim-ocaml', { 'for': 'ocaml' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'sjbach/lusty'
+Plug 'sjbach/lusty', { 'on': ['LustyFilesystemExplorer', 'LustyFilesystemExplorerFromHere'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 call plug#end()
 
 set t_Co=256
