@@ -14,7 +14,7 @@
     "bash": {
       "command": "vim-nodels",
       "args": ["bash-language-server", "start"],
-      "filetypes": ["sh", "zsh"]
+      "filetypes": ["sh"]
     },
     "clangd": {
       "command": "vim-clangd",
