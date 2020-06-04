@@ -25,7 +25,7 @@ endfunction
 
 function s:lc_autoformat()
 	if get(g:, 'LC_autoformat', 1) != 0 && get(b:, 'LC_autoformat', 1) != 0
-		call CocAction('format')
+		silent! call CocAction('format')
 	endif
 endfunction
 
