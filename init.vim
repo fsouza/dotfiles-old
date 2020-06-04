@@ -58,3 +58,8 @@ let g:netrw_banner = 0
 let g:HlYank_delay_ms = 300
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
+
+nnoremap <Up> <nop>
+nnoremap <Left> <nop>
+nnoremap <Right> <nop>
+nnoremap <Down> <nop>
