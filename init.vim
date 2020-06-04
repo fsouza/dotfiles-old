@@ -16,13 +16,13 @@ endif
 call plug#begin($VIMHOME.'/plugged')
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fsouza/coc.nvim', {'do': 'npx yarn install --frozen-lockfile'}
+Plug 'fsouza/hlyank.vim'
 Plug 'godlygeek/tabular'
 Plug 'hashivim/vim-terraform'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
-Plug 'machakann/vim-highlightedyank'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'ocaml/vim-ocaml'
 Plug 'SirVer/ultisnips'
