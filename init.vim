@@ -31,7 +31,6 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'ocaml/vim-ocaml', { 'for': 'ocaml' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'sjbach/lusty', { 'on': ['LustyFilesystemExplorer', 'LustyFilesystemExplorerFromHere'] }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
