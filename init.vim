@@ -18,7 +18,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'fsouza/coc.nvim',
 			\ {
 			\ 'do': 'npx yarn install --frozen-lockfile',
-			\ 'for': ['sh', 'c', 'cpp', 'css', 'dockerfile', 'go', 'gomod', 'html', 'javascript', 'markdown', 'ocaml', 'python', 'rust', 'vim', 'yaml'],
+			\ 'for': ['sh', 'c', 'cpp', 'css', 'dockerfile', 'go', 'gomod', 'html', 'javascript', 'json', 'markdown', 'ocaml', 'python', 'rust', 'typescript', 'vim', 'yaml'],
 			\ 'on': 'CocUpdateSync'
 			\ }
 
