@@ -1,5 +1,6 @@
 nnoremap <Space> <nop>
 let mapleader = " "
+let maplocalleader = " "
 
 let $VIMHOME = expand('~/.config/nvim')
 if !isdirectory($VIMHOME)
