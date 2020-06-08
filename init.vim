@@ -25,7 +25,6 @@ Plug 'fsouza/coc.nvim',
 
 Plug 'fsouza/hlyank.vim'
 Plug 'godlygeek/tabular'
-Plug 'hashivim/vim-terraform', { 'on': 'terraform' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
