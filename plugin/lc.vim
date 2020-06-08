@@ -1,33 +1,32 @@
 function s:coc_enabled_for_current_ft()
-	if get(g:, 'did_coc_loaded', 0) != 1
-		return 0
-	endif
-
-	let config = coc#util#get_config('languageserver')
-	for svc in values(config)
-		for ft in svc['filetypes']
-			if ft ==? &filetype
+	let services = CocAction('services')
+	for svc in services
+		for languageId in svc['languageIds']
+			if languageId ==# &filetype
 				return 1
 			endif
 		endfor
 	endfor
 
-	" special case stuff that's enabled via coc extensions.
-	if &filetype == 'json' || &filetype == 'typescript'
-		return 1
-	endif
+	let extensions_stats = CocAction('extensionStats')
+	for ext_stat in extensions_stats
+		for activation_event in ext_stat['packageJSON']['activationEvents']
+			if activation_event == 'onLanguage:' . &filetype
+				return 1
+			endif
+		endfor
+	endfor
 
 	return 0
 endfunction
 
-" can we do this with an event from coc.nvim instead?
-function s:lc_init()
-	function s:lc_autoformat()
-		if get(g:, 'LC_autoformat', 1) != 0 && get(b:, 'LC_autoformat', 1) != 0
-			call CocAction('format')
-		endif
-	endfunction
+function s:lc_autoformat()
+	if get(g:, 'LC_autoformat', 1) != 0 && get(b:, 'LC_autoformat', 1) != 0
+		call CocAction('format')
+	endif
+endfunction
 
+function s:lc_init()
 	if s:coc_enabled_for_current_ft() && get(g:, 'LC_enable_mappings', 1) != 0 && get(b:, 'LC_enable_mappings', 1) != 0
 		inoremap <silent><expr> <c-x><c-o> coc#refresh()
 		nmap <silent> <localleader>gd <Plug>(coc-definition)
@@ -53,7 +52,7 @@ function s:lc_init()
 	endif
 endfunction
 
-autocmd FileType * call s:lc_init()
+autocmd User CocNvimInit call s:lc_init()
 
 let g:coc_global_extensions = [
 	\ 'coc-json',
