@@ -12,4 +12,4 @@ nmap <silnet> <leader>fm :FzfMarks<CR>
 nmap <silent> <Leader>fb :FzfBuffers<CR>
 nmap <silent> <Leader>fg :FzfLines<CR>
 
-nmap <silent> <leader>g :FzfGrep<CR>
+nmap <silent> <leader>gg :FzfGrep<CR>
