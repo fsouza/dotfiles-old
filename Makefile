@@ -1,4 +1,5 @@
 mkfile_path := $(realpath $(lastword $(MAKEFILE_LIST)))
+mkfile_dir := $(dir $(mkfile_path))
 
 .PHONY: pip
 pip:
@@ -10,7 +11,7 @@ setup-langservers:
 
 .PHONY: update-spell
 update-spell:
-	cd $(dir $(mkfile_path))/spell && \
+	cd $(mkfile_dir)/spell && \
 		curl -sLO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl && \
 		curl -sLO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl && \
 		curl -sLO http://ftp.vim.org/vim/runtime/spell/pt.utf-8.spl
@@ -21,14 +22,14 @@ plug-setup: install-vim-plug
 
 .PHONY: install-vim-plug
 install-vim-plug:
-	cp vim-plug/plug.vim autoload/plug.vim
+	cp "$(mkfile_dir)/vim-plug/plug.vim" "$(mkfile_dir)/autoload/plug.vim"
 
 .PHONY: bootstrap
 bootstrap: submodules pip setup-langservers plug-setup
 
 .PHONY: submodules
 submodules:
-	git submodule update --init --recursive
+	git -C "$(mkfile_dir)" submodule update --init --recursive
 
 .PHONY: clean
 clean:
