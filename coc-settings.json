@@ -9,32 +9,16 @@
   "signature.enable": true,
   "signature.triggerSignatureWait": 50,
   "suggest.autoTrigger": "none",
-  "tsserver.enableJavascript": false,
   "languageserver": {
     "bash": {
       "command": "vim-nodels",
       "args": ["bash-language-server", "start"],
       "filetypes": ["sh"]
     },
-    "clangd": {
-      "command": "vim-clangd",
-      "rootPatterns": [
-        "compile_flags.txt",
-        "compile_commands.json",
-        ".git/",
-        ".hg/"
-      ],
-      "filetypes": ["c", "cpp"]
-    },
     "css": {
       "command": "vim-nodels",
       "args": ["css-languageserver", "--stdio"],
       "filetypes": ["css"]
-    },
-    "dockerfile": {
-      "command": "vim-nodels",
-      "args": ["docker-langserver", "--stdio"],
-      "filetypes": ["dockerfile"]
     },
     "gopls": {
       "command": "gopls",
@@ -53,11 +37,6 @@
       "command": "vim-nodels",
       "args": ["html-langserver", "--stdio"],
       "filetypes": ["html"]
-    },
-    "js-langserver": {
-      "command": "vim-nodels",
-      "args": ["js-langserver", "--stdio"],
-      "filetypes": ["javascript"]
     },
     "ocaml-lsp": {
       "command": "vim-ocaml-lsp",
@@ -84,11 +63,6 @@
       "command": "rust-analyzer",
       "filetypes": ["rust"],
       "rootPatterns": ["Cargo.toml"]
-    },
-    "vim": {
-      "command": "vim-nodels",
-      "args": ["vim-language-server", "--stdio"],
-      "filetypes": ["vim"]
     },
     "yaml": {
       "command": "vim-yls",

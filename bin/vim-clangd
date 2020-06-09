@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-set -eu
-
-exec "$HOMEBREW_PREFIX/opt/llvm/bin/clangd" --pch-storage=memory --background-index
