@@ -7,7 +7,7 @@ pip:
 
 .PHONY: setup-langservers
 setup-langservers:
-	cd $(dir $(mkfile_path)) && ./langservers/setup.sh
+	cd $(mkfile_dir) && ./langservers/setup.sh
 
 .PHONY: update-spell
 update-spell:
@@ -22,7 +22,8 @@ plug-setup: install-vim-plug
 
 .PHONY: install-vim-plug
 install-vim-plug:
-	cp "$(mkfile_dir)/vim-plug/plug.vim" "$(mkfile_dir)/autoload/plug.vim"
+	mkdir -p "$(mkfile_dir)autoload"
+	cp "$(mkfile_dir)vim-plug/plug.vim" "$(mkfile_dir)autoload/plug.vim"
 
 .PHONY: bootstrap
 bootstrap: submodules pip setup-langservers plug-setup
