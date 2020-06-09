@@ -45,8 +45,6 @@ function s:lc_init()
 		vmap <silent> <localleader>cc <Plug>(coc-codeaction-selected)
 		nmap <silent> <localleader>cf :CocFix<CR>
 		xmap <silent> <localleader>cf :CocFix<CR>
-		nmap <silent> <localleader>cs <Plug>(coc-range-select)
-		vmap <silent> <TAB> <Plug>(coc-range-select)
 
 		autocmd BufWritePre <buffer> call s:lc_autoformat()
 	endif
