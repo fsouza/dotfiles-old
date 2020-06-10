@@ -60,9 +60,6 @@ set nobackup noswapfile undofile
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
-autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
-autocmd FileType qf nnoremap <buffer> <C-t> <C-W><Enter><C-W>T
-
 nnoremap <Up> <nop>
 nnoremap <Left> <nop>
 nnoremap <Right> <nop>
