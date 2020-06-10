@@ -47,6 +47,7 @@ function s:lc_init()
 		xmap <silent> <buffer> <localleader>cf :CocFix<CR>
 
 		autocmd BufWritePre <buffer> call s:lc_autoformat()
+		autocmd FileType * call s:lc_init()
 	endif
 endfunction
 
