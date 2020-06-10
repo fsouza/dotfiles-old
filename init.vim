@@ -22,7 +22,6 @@ Plug 'fsouza/coc.nvim',
 			\ 'for': ['sh', 'c', 'cpp', 'css', 'dockerfile', 'go', 'gomod', 'html', 'javascript', 'json', 'markdown', 'ocaml', 'python', 'rust', 'typescript', 'vim', 'yaml'],
 			\ 'on': 'CocUpdateSync'
 			\ }
-
 Plug 'fsouza/hlyank.vim'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -65,6 +64,7 @@ let g:netrw_liststyle = 3
 let g:HlYank_delay_ms = 300
 
 autocmd FileType qf nnoremap <buffer> t <C-W><Enter><C-W>T
+autocmd FileType qf nnoremap <buffer> <C-t> <C-W><Enter><C-W>T
 
 nnoremap <Up> <nop>
 nnoremap <Left> <nop>
