@@ -29,22 +29,22 @@ endfunction
 function s:lc_init()
 	if s:coc_enabled_for_current_ft() && get(g:, 'LC_enable_mappings', 1) != 0 && get(b:, 'LC_enable_mappings', 1) != 0
 		inoremap <silent><expr> <c-x><c-o> coc#refresh()
-		nmap <silent> <localleader>gd <Plug>(coc-definition)
-		nmap <silent> <localleader>gy <Plug>(coc-type-definition)
-		nmap <silent> <localleader>gi <Plug>(coc-implementation)
-		nmap <silent> <localleader>r :call CocAction('rename')<CR>
-		nmap <silent> <localleader>i :call CocActionAsync('doHover')<CR>
-		nmap <silent> <localleader>s :call CocActionAsync('highlight')<CR>
-		nmap <silent> <localleader>T :<C-u>CocList symbols<CR>
-		nmap <silent> <localleader>t :<C-u>CocList outline<CR>
-		nmap <silent> <localleader>cd :<C-u>CocList diagnostics<CR>
-		nmap <silent> <localleader>d :call CocActionAsync('diagnosticInfoFloat')<CR>
-		nmap <silent> <localleader>q <Plug>(coc-references)
-		nmap <silent> <localleader>cl <Plug>(coc-codelens-action)
-		nmap <silent> <localleader>cc <Plug>(coc-codeaction)
-		vmap <silent> <localleader>cc <Plug>(coc-codeaction-selected)
-		nmap <silent> <localleader>cf :CocFix<CR>
-		xmap <silent> <localleader>cf :CocFix<CR>
+		nmap <silent> <buffer> <localleader>gd <Plug>(coc-definition)
+		nmap <silent> <buffer> <localleader>gy <Plug>(coc-type-definition)
+		nmap <silent> <buffer> <localleader>gi <Plug>(coc-implementation)
+		nmap <silent> <buffer> <localleader>r :call CocAction('rename')<CR>
+		nmap <silent> <buffer> <localleader>i :call CocActionAsync('doHover')<CR>
+		nmap <silent> <buffer> <localleader>s :call CocActionAsync('highlight')<CR>
+		nmap <silent> <buffer> <localleader>T :<C-u>CocList symbols<CR>
+		nmap <silent> <buffer> <localleader>t :<C-u>CocList outline<CR>
+		nmap <silent> <buffer> <localleader>cd :<C-u>CocList diagnostics<CR>
+		nmap <silent> <buffer> <localleader>d :call CocActionAsync('diagnosticInfoFloat')<CR>
+		nmap <silent> <buffer> <localleader>q <Plug>(coc-references)
+		nmap <silent> <buffer> <localleader>cl <Plug>(coc-codelens-action)
+		nmap <silent> <buffer> <localleader>cc <Plug>(coc-codeaction)
+		vmap <silent> <buffer> <localleader>cc <Plug>(coc-codeaction-selected)
+		nmap <silent> <buffer> <localleader>cf :CocFix<CR>
+		xmap <silent> <buffer> <localleader>cf :CocFix<CR>
 
 		autocmd BufWritePre <buffer> call s:lc_autoformat()
 	endif
