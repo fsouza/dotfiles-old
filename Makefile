@@ -22,7 +22,6 @@ plug-setup: install-vim-plug
 
 .PHONY: install-vim-plug
 install-vim-plug:
-	mkdir -p "$(mkfile_dir)autoload"
 	cp "$(mkfile_dir)vim-plug/plug.vim" "$(mkfile_dir)autoload/plug.vim"
 
 .PHONY: bootstrap
