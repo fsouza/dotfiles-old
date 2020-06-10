@@ -25,6 +25,7 @@ Plug 'fsouza/coc.nvim',
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'michaeljsmith/vim-indent-object'
