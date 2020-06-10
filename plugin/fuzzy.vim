@@ -1,10 +1,6 @@
-function! s:fzf_grep()
-	let what = input('rg\ ')
-	execute 'FzfRg '.what
-endfunction
-
 let g:fzf_command_prefix = 'Fzf'
-command! FzfGrep call s:fzf_grep()
+
+command! FzfGrep call fsouza#fuzzy#Rg()
 
 nmap <silent> <leader>ff :FzfFiles<CR>
 nmap <silent> <leader>fc :FzfCommands<CR>
