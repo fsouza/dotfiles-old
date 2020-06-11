@@ -24,6 +24,7 @@ Plug 'ncm2/float-preview.nvim'
 Plug 'ocaml/vim-ocaml', { 'for': 'ocaml' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
