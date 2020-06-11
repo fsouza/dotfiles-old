@@ -1,13 +1,10 @@
 nnoremap <Space> <nop>
-let mapleader = " "
-let maplocalleader = " "
+let mapleader = ' '
+let maplocalleader = ' '
 
-let $VIMHOME = expand('~/.config/nvim')
-if !isdirectory($VIMHOME)
-	let $VIMHOME = expand('~/.vim')
-endif
-
+let $VIMHOME = resolve(expand('<sfile>:p:h'))
 let $PATH = $VIMHOME.'/bin:'.$PATH
+
 if isdirectory($VIRTUALENVS)
 	let $PATH = $VIRTUALENVS.'/vim/bin:'.$PATH
 	let g:python3_host_prog = $VIRTUALENVS.'/vim/bin/python'
@@ -16,12 +13,6 @@ endif
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'editorconfig/editorconfig-vim'
-Plug 'fsouza/coc.nvim',
-			\ {
-			\ 'do': 'npx yarn install --frozen-lockfile',
-			\ 'for': ['sh', 'c', 'cpp', 'css', 'dockerfile', 'go', 'gomod', 'html', 'javascript', 'json', 'markdown', 'ocaml', 'python', 'rust', 'typescript', 'vim', 'yaml'],
-			\ 'on': 'CocUpdateSync'
-			\ }
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -35,6 +26,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
+
+if has('nvim')
+	Plug 'neovim/nvim-lsp'
+end
 call plug#end()
 
 set t_Co=256
@@ -45,7 +40,7 @@ filetype plugin indent on
 
 call mkdir($VIMHOME.'/undo-dir', 'p')
 
-set completeopt=menu,longest
+set completeopt=menu,longest,noselect
 set hidden noshowcmd
 set laststatus=0
 set ruler rulerformat=%-14.(%l,%c\ \ \ %o%)

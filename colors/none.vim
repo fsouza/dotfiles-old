@@ -73,25 +73,14 @@ highlight Underlined cterm=NONE ctermbg=NONE ctermfg=NONE
 
 highlight htmlBold cterm=NONE ctermbg=NONE ctermfg=NONE
 
-highlight CocErrorSign cterm=NONE ctermbg=NONE ctermfg=235
-highlight CocHighlightText cterm=NONE ctermbg=252 ctermfg=NONE
-highlight CocHintSign cterm=NONE ctermbg=NONE ctermfg=235
-highlight CocInfoSign cterm=NONE ctermbg=NONE ctermfg=235
-highlight CocWarningSign cterm=NONE ctermbg=NONE ctermfg=235
-
-highlight CocFloating cterm=NONE ctermbg=145 ctermfg=NONE
-highlight CocErrorFloat cterm=NONE ctermbg=145 ctermfg=232
-highlight CocHintFloat cterm=NONE ctermbg=145 ctermfg=232
-highlight CocInfoFloat cterm=NONE ctermbg=145 ctermfg=232
-highlight CocWarningFloat cterm=NONE ctermbg=145 ctermfg=232
-
-highlight CocCodeLens cterm=NONE ctermbg=NONE ctermfg=248
-
-highlight CocUnderline cterm=underline
-highlight CocErrorHighlight cterm=underline
-highlight CocWarningHighlight cterm=underline
-highlight CocInfoHighlight cterm=underline
-highlight CocHintHighlight cterm=underline
+highlight LspDiagnosticsError cterm=NONE ctermbg=NONE ctermfg=248
+highlight LspDiagnosticsErrorSign cterm=NONE ctermbg=253 ctermfg=235
+highlight LspDiagnosticsWarning cterm=NONE ctermbg=NONE ctermfg=248
+highlight LspDiagnosticsWarningSign cterm=NONE ctermbg=253 ctermfg=235
+highlight LspDiagnosticsInformation cterm=NONE ctermbg=NONE ctermfg=248
+highlight LspDiagnosticsInformationSign cterm=NONE ctermbg=253 ctermfg=235
+highlight LspDiagnosticsHint cterm=NONE ctermbg=NONE ctermfg=248
+highlight LspDiagnosticsHintSign cterm=NONE ctermbg=253 ctermfg=235
 
 highlight StatusLine cterm=NONE ctermbg=238 ctermfg=15
 highlight StatusLineNC cterm=NONE ctermfg=238 ctermbg=252

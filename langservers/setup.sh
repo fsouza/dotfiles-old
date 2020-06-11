@@ -8,13 +8,6 @@ function init {
 	git submodule update --init --recursive
 }
 
-function install_yaml_server {
-	pushd "$ROOT/yaml-language-server"
-	npx yarn install --frozen-lockfile
-	npx tsc -p .
-	popd
-}
-
 function install_dune {
 	if ! command -v opam &>/dev/null; then
 		echo skipping opam
@@ -72,7 +65,6 @@ init
 install_dune
 install_servers_from_npm
 install_servers_from_pypi
-install_yaml_server
 install_ocaml_lsp
 install_rust_analyzer
 popd
