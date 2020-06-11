@@ -18,9 +18,6 @@ function fsouza#lc#LC_attached(enable_autoformat)
 		if a:enable_autoformat
 			autocmd BufWritePre <buffer> call s:lc_autoformat()
 		end
-
-		setlocal completeopt+=preview
-		autocmd InsertLeave <buffer> if pumvisible() == 0|silent! pclose|endif
 	endif
 endfunction
 

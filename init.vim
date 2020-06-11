@@ -20,6 +20,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'ncm2/float-preview.nvim'
 Plug 'ocaml/vim-ocaml', { 'for': 'ocaml' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
@@ -56,6 +57,8 @@ set nobackup noswapfile undofile
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
+
+let g:float_preview#docked = 0
 
 nnoremap <Up> <nop>
 nnoremap <Left> <nop>
