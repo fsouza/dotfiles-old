@@ -1,5 +1,7 @@
 local M = {}
 
+local callbacks = require('lc_callbacks')
+
 function M.setup()
   pcall(function ()
     local function on_attach(client, _)
@@ -67,6 +69,7 @@ function M.setup()
         };
       };
       on_attach = on_attach;
+      callbacks = callbacks;
     })
 
     lsp.rust_analyzer.setup({
