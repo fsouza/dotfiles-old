@@ -21,6 +21,9 @@ for file in $xdg_files; do
 	ln -sf ${basedir}/${file} $HOME/.config/${file}
 done
 
+mkdir -p ${HOME}/.config/karabiner
+ln -sf ${basedir}/karabiner.json $HOME/.config/karabiner/karabiner.json
+
 mkdir -p ~/.gnupg
 chmod 700 ~/.gnupg
 ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
