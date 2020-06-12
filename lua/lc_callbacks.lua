@@ -13,10 +13,8 @@ M['textDocument/hover'] = function(_, method, result)
     local bufnr, winnr = vim.lsp.util.fancy_floating_markdown(markdown_lines, {
       pad_left = 1; pad_right = 1;
     })
-    local cwin = vim.api.nvim_get_current_win()
-    vim.api.nvim_set_current_win(winnr)
-    vim.cmd("setlocal nornu readonly")
-    vim.api.nvim_set_current_win(cwin)
+    vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
+    vim.api.nvim_win_set_option(winnr, 'relativenumber', false)
     vim.lsp.util.close_preview_autocmd({'CursorMoved', 'BufHidden', 'InsertCharPre'}, winnr)
     return bufnr, winnr
   end)
