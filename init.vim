@@ -59,6 +59,8 @@ set nobackup noswapfile undofile
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
+nnoremap <Leader>o <cmd>only<CR>
+
 nnoremap <Leader>k <c-w>k
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>l <c-w>l
