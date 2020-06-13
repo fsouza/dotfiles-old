@@ -1,3 +1,8 @@
+if exists('g:fsouza#fuzzy_loaded')
+	finish
+endif
+let g:fsouza#fuzzy_loaded = 1
+
 let g:fzf_command_prefix = 'Fzf'
 
 command! FzfGrep call fsouza#fuzzy#Rg()
