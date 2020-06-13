@@ -3,6 +3,4 @@ if exists('g:fsouza#prettier_loaded')
 endif
 let g:fsouza#prettier_loaded = 1
 
-autocmd! BufEnter *.ts call fsouza#prettier#CheckTSPreferPrettier()
-
-command! PreferPrettier call fsouza#prettier#OverrideLC(v:true)
+command! PrettierFormat call fsouza#prettier#Format()

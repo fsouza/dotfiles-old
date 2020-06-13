@@ -1,21 +1,3 @@
-function! fsouza#prettier#OverrideLC(global)
-	if a:global
-		let g:LC_autoformat = 0
-		let g:Prettier_autoformat = 1
-	else
-		let b:LC_autoformat = 0
-		let b:Prettier_autoformat = 1
-	endif
-endfunction
-
-function! fsouza#prettier#CheckTSPreferPrettier()
-	if get(b:, 'TSPreferPrettier', 0) == 1
-		call s:prefer_prettier(v:false)
-
-		autocmd BufWritePre <buffer> call fsouza#prettier#Format()
-	endif
-endfunction
-
 function! fsouza#prettier#Format()
 	if get(g:, 'Prettier_autoformat', get(b:, 'Prettier_autoformat', 0)) == 1
 		let view = winsaveview()
@@ -29,4 +11,6 @@ function! fsouza#prettier#Format()
 	endif
 endfunction
 
-
+function! fsouza#prettier#Enable_auto_format()
+	autocmd BufWritePre <buffer> call fsouza#prettier#Format()
+endfunction
