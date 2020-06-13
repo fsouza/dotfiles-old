@@ -136,9 +136,9 @@ function M.formatting_sync(options, timeout_ms)
 end
 
 function M.show_line_diagnostics()
-  local prefix = "- "
-  local indent = "  "
-  local lines = {"Diagnostics:", ""}
+  local prefix = '- '
+  local indent = '  '
+  local lines = {'Diagnostics:', ''}
   local line_diagnostics = vim.lsp.util.get_line_diagnostics()
   if vim.tbl_isempty(line_diagnostics) then return end
 
