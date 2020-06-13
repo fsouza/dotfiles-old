@@ -13,6 +13,7 @@ endif
 
 call plug#begin($VIMHOME.'/plugged')
 Plug 'editorconfig/editorconfig-vim'
+Plug 'fszymanski/fzf-quickfix', {'on': 'FzfQuickfix'}
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
