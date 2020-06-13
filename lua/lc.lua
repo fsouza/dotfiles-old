@@ -70,10 +70,19 @@ function M.setup()
       callbacks = callbacks;
     })
 
+    local pyls_root_pattern = lsp.util.root_pattern('.git', 'requirements.txt')
     lsp.pyls.setup({
       cmd = { 'python', '-m', 'pyls' };
+      root_dir = function (fname)
+        local ancestor = pyls_root_pattern(fname)
+        if not ancestor then
+          return lsp.util.path.dirname(fname)
+        end
+        return ancestor
+      end;
       settings = {
         pyls = {
+          enable = true;
           plugins = {
             jedi_completion = {
               enabled = true;
