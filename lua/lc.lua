@@ -39,6 +39,15 @@ function M.setup()
           ST1000 = false;
         };
       };
+      capabilities = {
+        textDocument = {
+          completion = {
+            completionItem = {
+              snippetSupport = false;
+            };
+          };
+        };
+      };
       on_attach = on_attach;
       callbacks = callbacks;
     })
