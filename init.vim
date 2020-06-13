@@ -69,3 +69,4 @@ nnoremap <Leader>k <c-w>k
 nnoremap <Leader>h <c-w>h
 nnoremap <Leader>l <c-w>l
 nnoremap <Leader>j <c-w>j
+nnoremap <Leader>w <c-w>w
