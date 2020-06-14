@@ -73,6 +73,10 @@ highlight Underlined cterm=NONE ctermbg=NONE ctermfg=NONE
 
 highlight htmlBold cterm=NONE ctermbg=NONE ctermfg=NONE
 
+highlight LspReferenceText cterm=NONE ctermbg=252 ctermfg=NONE
+highlight LspReferenceRead cterm=NONE ctermbg=252 ctermfg=NONE
+highlight LspReferenceWrite cterm=NONE ctermbg=252 ctermfg=NONE
+
 highlight LspDiagnosticsError cterm=NONE ctermbg=NONE ctermfg=248
 highlight LspDiagnosticsErrorSign cterm=NONE ctermbg=253 ctermfg=235
 highlight LspDiagnosticsWarning cterm=NONE ctermbg=NONE ctermfg=248
