@@ -17,12 +17,8 @@ update-spell:
 		curl -sLO http://ftp.vim.org/vim/runtime/spell/pt.utf-8.spl
 
 .PHONY: plug-setup
-plug-setup: install-vim-plug
+plug-setup:
 	if command -v nvim &>/dev/null; then nvim --headless +'PlugInstall|qa' +cq; fi
-
-.PHONY: install-vim-plug
-install-vim-plug:
-	cp "$(mkfile_dir)vim-plug/plug.vim" "$(mkfile_dir)autoload/plug.vim"
 
 .PHONY: bootstrap
 bootstrap: submodules pip setup-langservers plug-setup
