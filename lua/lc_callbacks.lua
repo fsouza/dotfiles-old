@@ -12,12 +12,18 @@ local function fzf_symbol_callback(_, _, result, _, bufnr)
   if not result or vim.tbl_isempty(result) then return end
 
   local items = vim.lsp.util.symbols_to_items(result, bufnr)
-  vim.api.nvim_call_function('fsouza#lc#Fzf_symbol', { format_items_for_fzf(items) })
+  vim.api.nvim_call_function('fsouza#lc#Fzf', { format_items_for_fzf(items) })
 end
 
 M['textDocument/documentSymbol'] = fzf_symbol_callback
 
 M['workspace/symbol'] = fzf_symbol_callback
+
+M['textDocument/references'] = function(_, _, result)
+  if not result then return end
+  local items = vim.lsp.util.locations_to_items(result)
+  vim.api.nvim_call_function('fsouza#lc#Fzf', { format_items_for_fzf(items) })
+end
 
 M['textDocument/hover'] = function(_, method, result)
   vim.lsp.util.focusable_float(method, function()

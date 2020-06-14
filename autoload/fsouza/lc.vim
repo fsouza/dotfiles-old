@@ -36,7 +36,7 @@ function s:handle_lsp_line(line)
 	normal! zz
 endfunction
 
-function fsouza#lc#Fzf_symbol(items)
+function fsouza#lc#Fzf(items)
 	call fzf#run(fzf#wrap(fzf#vim#with_preview({
 				\ 'source': a:items,
 				\ 'sink': function('s:handle_lsp_line'),
