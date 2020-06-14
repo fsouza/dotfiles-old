@@ -1,5 +1,24 @@
 local M = {}
 
+local function format_items_for_fzf(items)
+  local lines = {}
+  for _, item in pairs(items) do
+    table.insert(lines, string.format('%s:%d:%d:%s', item.filename, item.lnum, item.col, item.text))
+  end
+  return lines
+end
+
+local function fzf_symbol_callback(_, _, result, _, bufnr)
+  if not result or vim.tbl_isempty(result) then return end
+
+  local items = vim.lsp.util.symbols_to_items(result, bufnr)
+  vim.api.nvim_call_function('fsouza#lc#Fzf_symbol', { format_items_for_fzf(items) })
+end
+
+M['textDocument/documentSymbol'] = fzf_symbol_callback
+
+M['workspace/symbol'] = fzf_symbol_callback
+
 M['textDocument/hover'] = function(_, method, result)
   vim.lsp.util.focusable_float(method, function()
     if not (result and result.contents) then

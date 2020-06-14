@@ -21,6 +21,28 @@ function fsouza#lc#LC_attached(enable_autoformat)
 	endif
 endfunction
 
+function s:handle_lsp_line(line)
+	let match = matchlist(a:line, '\v^([^:]+):(\d+):(\d+)')[1:3]
+	if empty(match) || empty(match[0])
+		return
+	endif
+
+	let filename = match[0]
+	let lnum = match[1]
+	let cnum = match[2]
+
+	execute 'buffer ' . bufnr(filename)
+	call cursor(lnum, cnum)
+	normal! zz
+endfunction
+
+function fsouza#lc#Fzf_symbol(items)
+	call fzf#run(fzf#wrap(fzf#vim#with_preview({
+				\ 'source': a:items,
+				\ 'sink': function('s:handle_lsp_line'),
+				\ })))
+endfunction
+
 function s:lc_autoformat()
 	if get(g:, 'LC_autoformat', 1) != 0 && get(b:, 'LC_autoformat', 1) != 0
 		lua require('lc').formatting_sync({timeout_ms=500})
