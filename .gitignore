@@ -6,4 +6,3 @@ plugged
 view
 plugin/local-*.vim
 langservers/node_modules
-autoload/plug.vim
