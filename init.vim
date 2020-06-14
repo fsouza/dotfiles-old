@@ -21,10 +21,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'ncm2/float-preview.nvim'
 Plug 'ocaml/vim-ocaml', { 'for': 'ocaml' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-lsp'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -33,7 +30,10 @@ Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 
 if has('nvim')
+	Plug 'ncm2/float-preview.nvim'
 	Plug 'neovim/nvim-lsp'
+	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	Plug 'Shougo/deoplete-lsp'
 end
 call plug#end()
 
