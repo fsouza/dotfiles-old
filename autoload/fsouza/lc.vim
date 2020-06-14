@@ -31,7 +31,7 @@ function s:handle_lsp_line(line)
 	let lnum = match[1]
 	let cnum = match[2]
 
-	execute 'buffer ' . bufnr(filename)
+	execute 'edit' filename
 	call cursor(lnum, cnum)
 	normal! zz
 endfunction
