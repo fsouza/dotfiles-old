@@ -8,21 +8,51 @@ local function format_items_for_fzf(items)
   return lines
 end
 
+local function send_items_to_fzf(items)
+  vim.api.nvim_call_function('fsouza#lc#Fzf', { format_items_for_fzf(items) })
+end
+
 local function fzf_symbol_callback(_, _, result, _, bufnr)
   if not result or vim.tbl_isempty(result) then return end
 
   local items = vim.lsp.util.symbols_to_items(result, bufnr)
-  vim.api.nvim_call_function('fsouza#lc#Fzf', { format_items_for_fzf(items) })
+  send_items_to_fzf(items)
 end
 
 M['textDocument/documentSymbol'] = fzf_symbol_callback
 
 M['workspace/symbol'] = fzf_symbol_callback
 
+local function fzf_location_callback(_, method, result)
+  local log = require('vim.lsp.log')
+  if result == nil or vim.tbl_isempty(result) then
+    local _ = log.info() and log.info(method, 'No location found')
+    return nil
+  end
+
+  -- textDocument/definition can return Location or Location[]
+  -- https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_definition
+  if vim.tbl_islist(result) then
+    vim.lsp.util.jump_to_location(result[1])
+
+    if #result > 1 then
+      local items = vim.lsp.util.locations_to_items(result)
+      send_items_to_fzf(items)
+    end
+  else
+    vim.lsp.util.jump_to_location(result)
+  end
+end
+
+M['textDocument/declaration'] = fzf_location_callback
+M['textDocument/definition'] = fzf_location_callback
+M['textDocument/typeDefinition'] = fzf_location_callback
+M['textDocument/implementation'] = fzf_location_callback
+
 M['textDocument/references'] = function(_, _, result)
   if not result then return end
   local items = vim.lsp.util.locations_to_items(result)
-  vim.api.nvim_call_function('fsouza#lc#Fzf', { format_items_for_fzf(items) })
+  send_items_to_fzf(items)
 end
 
 M['textDocument/hover'] = function(_, method, result)
