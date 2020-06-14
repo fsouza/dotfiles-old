@@ -30,8 +30,6 @@ local function fzf_location_callback(_, method, result)
     return nil
   end
 
-  -- textDocument/definition can return Location or Location[]
-  -- https://microsoft.github.io/language-server-protocol/specifications/specification-current/#textDocument_definition
   if vim.tbl_islist(result) then
     vim.lsp.util.jump_to_location(result[1])
 
