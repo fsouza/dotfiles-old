@@ -5,4 +5,4 @@ call deoplete#custom#option({
 
 call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
 
-inoremap <expr> <silent> <c-x><c-o> fsouza#complete#Complete()
+imap <expr> <silent> <c-x><c-o> fsouza#complete#Complete()

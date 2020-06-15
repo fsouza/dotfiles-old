@@ -1,5 +1,5 @@
-nnoremap <Space> <nop>
 nmap Q <nop>
+nmap <Space> <nop>
 
 let mapleader = ' '
 let maplocalleader = ' '
@@ -62,11 +62,11 @@ let g:deoplete#enable_at_startup = 1
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
-inoremap <c-d> <del>
-nnoremap <Leader>o <cmd>only<CR>
+imap <c-d> <del>
+nmap <Leader>o <cmd>only<CR>
 
-nnoremap <Leader>k <c-w>k
-nnoremap <Leader>h <c-w>h
-nnoremap <Leader>l <c-w>l
-nnoremap <Leader>j <c-w>j
-nnoremap <Leader>w <c-w>w
+nmap <Leader>k <cmd>wincmd k<CR>
+nmap <Leader>h <cmd>wincmd h<CR>
+nmap <Leader>l <cmd>wincmd l<CR>
+nmap <Leader>j <cmd>wincmd j<CR>
+nmap <Leader>w <cmd>wincmd w<CR>
