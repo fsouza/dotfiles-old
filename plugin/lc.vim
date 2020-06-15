@@ -3,6 +3,4 @@ if exists('g:fsouza#lc_loaded')
 endif
 let g:fsouza#lc_loaded = 1
 
-if has('nvim')
-	lua require('lc').setup()
-endif
+lua require('lc').setup()
