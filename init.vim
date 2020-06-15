@@ -36,7 +36,7 @@ Plug 'tpope/vim-surround'
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': 'python' }
 call plug#end()
 
-set t_Co=256
+set termguicolors
 syntax on
 colorscheme none
 
