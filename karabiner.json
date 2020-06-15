@@ -216,14 +216,14 @@
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ],
                                         "mandatory": [
                                             "right_shift",
                                             "right_command",
                                             "right_control",
                                             "right_option"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
@@ -238,14 +238,14 @@
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ],
                                         "mandatory": [
                                             "right_shift",
                                             "right_command",
                                             "right_control",
                                             "right_option"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
@@ -260,14 +260,14 @@
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ],
                                         "mandatory": [
                                             "right_shift",
                                             "right_command",
                                             "right_control",
                                             "right_option"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
@@ -282,44 +282,20 @@
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ],
                                         "mandatory": [
                                             "right_shift",
                                             "right_command",
                                             "right_control",
                                             "right_option"
+                                        ],
+                                        "optional": [
+                                            "any"
                                         ]
                                     }
                                 },
                                 "to": [
                                     {
                                         "key_code": "right_arrow"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "control + backspace for delete",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "delete_or_backspace",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ],
-                                        "mandatory": [
-                                            "left_control"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_forward"
                                     }
                                 ],
                                 "type": "basic"
