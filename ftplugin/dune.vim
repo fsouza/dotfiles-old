@@ -1,1 +1,1 @@
-autocmd! BufWritePre dune call fsouza#dune#Format()
+autocmd! BufWritePre dune call fsouza#format#Dune()
