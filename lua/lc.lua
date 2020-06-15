@@ -2,8 +2,12 @@ local M = {}
 
 local callbacks = require('lc_callbacks')
 
+local get_local_cmd = function(cmd)
+  return string.format('%s/%s/%s', vim.fn.stdpath('config'), 'lsp-bin', cmd)
+end
+
 function M.setup()
-  pcall(function ()
+  local status, err = pcall(function ()
     local function on_attach(client, _)
       local all_clients = vim.lsp.get_active_clients()
       for _, c in pairs(all_clients) do
@@ -17,15 +21,16 @@ function M.setup()
     end
 
     local lsp = require('nvim_lsp')
+    local vim_node_ls = get_local_cmd('nodels')
 
     lsp.bashls.setup({
-      cmd = { 'vim-nodels', 'bash-language-server', 'start' };
+      cmd = { vim_node_ls, 'bash-language-server', 'start' };
       on_attach = on_attach;
       callbacks = callbacks;
     })
 
     lsp.cssls.setup({
-      cmd = { 'vim-nodels', 'css-laguageserver', '--stdio' };
+      cmd = { vim_node_ls, 'css-laguageserver', '--stdio' };
       on_attach = on_attach;
       callbacks = callbacks;
     })
@@ -53,19 +58,19 @@ function M.setup()
     })
 
     lsp.html.setup({
-      cmd = { 'vim-nodels', 'html-langserver', '--stdio' };
+      cmd = { vim_node_ls, 'html-langserver', '--stdio' };
       on_attach = on_attach;
       callbacks = callbacks;
     })
 
     lsp.jsonls.setup({
-      cmd = { 'vim-nodels', 'vscode-json-languageserver', '--stdio' };
+      cmd = { vim_node_ls, 'vscode-json-languageserver', '--stdio' };
       on_attach = on_attach;
       callbacks = callbacks;
     })
 
     lsp.ocamllsp.setup({
-      cmd = { 'vim-ocaml-lsp' };
+      cmd = { get_local_cmd('ocaml-lsp') };
       on_attach = on_attach;
       callbacks = callbacks;
     })
@@ -97,28 +102,33 @@ function M.setup()
     })
 
     lsp.rust_analyzer.setup({
+      cmd = { get_local_cmd('rust-analyzer') };
       on_attach = on_attach;
       callbacks = callbacks;
     })
 
     lsp.tsserver.setup({
-      cmd = { 'vim-nodels', 'typescript-language-server', '--stdio' };
+      cmd = { vim_node_ls, 'typescript-language-server', '--stdio' };
       on_attach = on_attach;
       callbacks = callbacks;
     })
 
     lsp.vimls.setup({
-      cmd = { 'vim-nodels',  'vim-language-server', '--stdio' };
+      cmd = { vim_node_ls,  'vim-language-server', '--stdio' };
       on_attach = on_attach;
       callbacks = callbacks;
     })
 
     lsp.yamlls.setup({
-      cmd = { 'vim-nodels', 'yaml-language-server', '--stdio' };
+      cmd = { vim_node_ls, 'yaml-language-server', '--stdio' };
       on_attach = on_attach;
       callbacks = callbacks;
     })
   end)
+
+  if vim.loop.os_getenv('NVIM_DEBUG') and not status then
+    print('failed to setup lc: ' .. err)
+  end
 end
 
 -- TODO: nvim-lsp will eventually support this, so once the pending PR is
