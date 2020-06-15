@@ -34,7 +34,7 @@ if has('nvim')
 	Plug 'neovim/nvim-lsp'
 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 	Plug 'Shougo/deoplete-lsp'
-end
+endif
 call plug#end()
 
 set t_Co=256

@@ -5,4 +5,4 @@ let g:fsouza#lc_loaded = 1
 
 if has('nvim')
 	lua require('lc').setup()
-end
+endif
