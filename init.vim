@@ -60,6 +60,7 @@ let g:deoplete#enable_at_startup = 1
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 
+inoremap <c-d> <del>
 nnoremap <Leader>o <cmd>only<CR>
 
 nnoremap <Leader>k <c-w>k
