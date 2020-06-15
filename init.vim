@@ -1,4 +1,6 @@
 nnoremap <Space> <nop>
+nmap Q <nop>
+
 let mapleader = ' '
 let maplocalleader = ' '
 
