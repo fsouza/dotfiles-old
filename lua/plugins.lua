@@ -51,7 +51,7 @@ local setup_ultisnips = function()
 end
 
 local setup_float_preview = function()
-  vim.api.nvim_set_var('float_preview#auto_complete', 0)
+  vim.api.nvim_set_var('float_preview#auto_close', 0)
   vim.api.nvim_command([[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
 end
 
