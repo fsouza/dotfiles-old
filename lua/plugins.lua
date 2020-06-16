@@ -38,9 +38,22 @@ local setup_deoplete = function()
   })
 end
 
+local setup_ultisnips = function()
+  local vars = {
+    UltiSnipsExpandTrigger = '<tab>';
+    UltiSnipsJumpForwardTrigger = '<c-j>';
+    UltiSnipsJumpBackwardTrigger = '<c-k>';
+  }
+
+  for name, value in pairs(vars) do
+    vim.api.nvim_set_var(name, value)
+  end
+end
+
 function M.setup_async()
   vim.schedule(setup_fzf_mappings)
   vim.schedule(setup_deoplete)
+  vim.schedule(setup_ultisnips)
 end
 
 return M
