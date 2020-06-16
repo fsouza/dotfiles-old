@@ -59,6 +59,7 @@ function M.setup_async()
   vim.schedule(setup_fzf_mappings)
   vim.schedule(setup_deoplete)
   vim.schedule(setup_ultisnips)
+  vim.schedule(setup_float_preview)
 end
 
 return M
