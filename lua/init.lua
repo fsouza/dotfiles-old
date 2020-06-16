@@ -64,6 +64,8 @@ local set_global_options = function()
   local vars = {
     netrw_banner = 0;
     netrw_liststyle = 3;
+    fzf_command_prefix = 'Fzf';
+    ['deoplete#enable_at_startup'] = true;
   }
   for name, value in pairs(vars) do
     api.nvim_set_var(name, value)
