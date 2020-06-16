@@ -72,6 +72,15 @@ local set_global_options = function()
   end
 end
 
+local set_window_options = function()
+  local options = {
+    relativenumber = true;
+  }
+  for key, value in pairs(options) do
+    api.nvim_win_set_option(0, key, value)
+  end
+end
+
 function setup_global_mappings()
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
   local maps = {
@@ -98,6 +107,7 @@ function M.setup ()
   remap_leader_key()
   setup_python()
   set_global_options()
+  set_window_options()
   setup_global_mappings()
   setup_plug()
 
