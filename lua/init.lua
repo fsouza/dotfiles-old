@@ -76,22 +76,17 @@ function setup_global_mappings()
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
   local maps = {
     n = {
-      ['<leader>o'] = helpers.cmd_map('only');
+      ['<leader>o'] = { helpers.cmd_map('only') };
     };
     i = {
-      ['<c-d>'] = '<del>';
+      ['<c-d>'] = { '<del>' };
     };
   }
 
   for _, key in ipairs(win_mov_keys) do
     api.nvim_set_keymap('n', '<leader>' .. key, helpers.cmd_map('wincmd ' .. key), {})
   end
-
-  for kind, rules in pairs(maps) do
-    for lhs, rhs in pairs(rules) do
-      api.nvim_set_keymap(kind, lhs, rhs, {})
-    end
-  end
+  helpers.create_mappings(maps)
 end
 
 local setup_plug = function()
@@ -106,6 +101,7 @@ function M.setup ()
   setup_global_mappings()
   setup_plug()
   vim.schedule(require('lc').setup)
+  require('plugins').setup_async()
 end
 
 return M
