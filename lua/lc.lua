@@ -21,7 +21,7 @@ function M.setup()
     end
 
     local lsp = require('nvim_lsp')
-    local vim_node_ls = get_local_cmd('nodels')
+    local vim_node_ls = get_local_cmd('node-lsp')
 
     lsp.bashls.setup({
       cmd = { vim_node_ls, 'bash-language-server', 'start' };
