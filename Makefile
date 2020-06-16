@@ -18,7 +18,7 @@ update-spell:
 
 .PHONY: plug-setup
 plug-setup: install-vim-plug
-	if command -v nvim &>/dev/null; then nvim --headless +'PlugInstall|qa' +cq; fi
+	if command -v nvim &>/dev/null; then env NVIM_BOOTSTRAP=1 nvim --headless +'PlugInstall|qa' +cq; fi
 
 .PHONY: install-vim-plug
 install-vim-plug:

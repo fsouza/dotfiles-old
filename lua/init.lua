@@ -100,6 +100,11 @@ function M.setup ()
   set_global_options()
   setup_global_mappings()
   setup_plug()
+
+  if loop.os_getenv('NVIM_BOOTSTRAP') then
+    return
+  end
+
   vim.schedule(require('lc').setup)
   require('plugins').setup_async()
 end
