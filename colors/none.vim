@@ -73,9 +73,9 @@ highlight Underlined cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE gu
 
 highlight htmlBold cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guibg=NONE guifg=NONE
 
-highlight LspReferenceText cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#5f0000 guifg=NONE
-highlight LspReferenceRead cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#5f0000 guifg=NONE
-highlight LspReferenceWrite cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#5f0000 guifg=NONE
+highlight LspReferenceText cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
+highlight LspReferenceRead cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
+highlight LspReferenceWrite cterm=NONE ctermbg=252 ctermfg=NONE gui=NONE guibg=#d0d0d0 guifg=NONE
 
 highlight LspDiagnosticsError cterm=NONE ctermbg=NONE ctermfg=248 gui=NONE guibg=NONE guifg=#a8a8a8
 highlight LspDiagnosticsErrorSign cterm=NONE ctermbg=253 ctermfg=235 gui=NONE guibg=#dadada guifg=#262626
@@ -87,7 +87,7 @@ highlight LspDiagnosticsHint cterm=NONE ctermbg=NONE ctermfg=248 gui=NONE guibg=
 highlight LspDiagnosticsHintSign cterm=NONE ctermbg=253 ctermfg=235 gui=NONE guibg=#dadada guifg=#262626
 
 highlight StatusLine cterm=NONE ctermbg=238 ctermfg=231 gui=NONE guibg=#444444 guifg=#ffffff
-highlight StatusLineNC cterm=NONE ctermfg=238 ctermbg=252 gui=NONE guifg=#444444 guibg=#5f0000
+highlight StatusLineNC cterm=NONE ctermfg=238 ctermbg=252 gui=NONE guifg=#444444 guibg=#d0d0d0
 
 highlight HlYank cterm=NONE ctermbg=225 ctermfg=NONE gui=NONE guibg=#ffd7ff guifg=NONE
 highlight netrwMarkfile cterm=bold gui=bold
