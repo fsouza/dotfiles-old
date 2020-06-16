@@ -103,7 +103,7 @@ function M.setup ()
   set_global_options()
   setup_global_mappings()
   setup_plug()
-  require('lc').setup()
+  vim.schedule(require('lc').setup)
 end
 
 return M
