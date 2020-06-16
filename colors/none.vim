@@ -91,3 +91,5 @@ highlight StatusLineNC cterm=NONE ctermfg=238 ctermbg=252 gui=NONE guifg=#444444
 
 highlight HlYank cterm=NONE ctermbg=225 ctermfg=NONE gui=NONE guibg=#ffd7ff guifg=NONE
 highlight netrwMarkfile cterm=bold gui=bold
+
+highlight BadWhitespace ctermbg=160 guibg=#d70000
