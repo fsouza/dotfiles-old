@@ -10,6 +10,7 @@ local input_collector = function(stream_handle)
   return result
 end
 
+-- TODO(fsouza): make this less messy and support async formatting.
 local format_stdin = function(gate_var, format_cmd, format_args, timeout_ms)
   timeout_ms = timeout_ms or 2000
   local bufnr = vim.api.nvim_get_current_buf()
