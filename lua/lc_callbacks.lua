@@ -19,7 +19,9 @@ local function send_items_to_fzf(items)
 end
 
 local function fzf_symbol_callback(_, _, result, _, bufnr)
-  if not result or vim.tbl_isempty(result) then return end
+  if not result or vim.tbl_isempty(result) then
+    return
+  end
 
   local items = vim.lsp.util.symbols_to_items(result, bufnr)
   send_items_to_fzf(items)
@@ -54,17 +56,23 @@ M['textDocument/typeDefinition'] = fzf_location_callback
 M['textDocument/implementation'] = fzf_location_callback
 
 M['textDocument/references'] = function(_, _, result)
-  if not result then return end
+  if not result then
+    return
+  end
   local items = vim.lsp.util.locations_to_items(result)
   send_items_to_fzf(items)
 end
 
 M['textDocument/hover'] = function(_, method, result)
   vim.lsp.util.focusable_float(method, function()
-    if not (result and result.contents) then return end
+    if not (result and result.contents) then
+      return
+    end
     local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
     markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
-    if vim.tbl_isempty(markdown_lines) then return end
+    if vim.tbl_isempty(markdown_lines) then
+      return
+    end
     local bufnr, winnr = vim.lsp.util.fancy_floating_markdown(markdown_lines, {
       pad_left = 1;
       pad_right = 1

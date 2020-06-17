@@ -2,6 +2,7 @@ column_limit: 90
 continuation_indent_width: 2
 double_quote_to_single_quote: true
 indent_width: 2
+keep_simple_control_block_one_line: false
 keep_simple_function_one_line: false
 tab_width: 2
 table_sep: ";"

@@ -23,11 +23,15 @@ end
 
 local setup_python = function()
   local venvs_dir = loop.os_getenv('VIRTUALENVS')
-  if not venvs_dir then return end
+  if not venvs_dir then
+    return
+  end
 
   venvs_dir = string.gsub(venvs_dir, '/+$', '')
   local stat = loop.fs_stat(venvs_dir)
-  if not stat or stat.type ~= 'directory' then return end
+  if not stat or stat.type ~= 'directory' then
+    return
+  end
 
   local vim_venv_bin = venvs_dir .. '/vim/bin'
   loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
@@ -43,7 +47,9 @@ local set_global_vars = function()
     fzf_command_prefix = 'Fzf';
     ['deoplete#enable_at_startup'] = true
   }
-  for name, value in pairs(vars) do api.nvim_set_var(name, value) end
+  for name, value in pairs(vars) do
+    api.nvim_set_var(name, value)
+  end
 end
 
 local set_global_options = function()
@@ -73,12 +79,16 @@ local set_global_options = function()
     swapfile = false;
     undofile = true
   }
-  for key, value in pairs(options) do api.nvim_set_option(key, value) end
+  for key, value in pairs(options) do
+    api.nvim_set_option(key, value)
+  end
 end
 
 local set_window_options = function()
   local options = {relativenumber = true}
-  for key, value in pairs(options) do api.nvim_win_set_option(0, key, value) end
+  for key, value in pairs(options) do
+    api.nvim_win_set_option(0, key, value)
+  end
 end
 
 function setup_global_mappings()
@@ -111,7 +121,9 @@ function M.setup()
   setup_python()
   setup_plug()
 
-  if loop.os_getenv('NVIM_BOOTSTRAP') then return end
+  if loop.os_getenv('NVIM_BOOTSTRAP') then
+    return
+  end
 
   vim.schedule(require('lc').setup)
   require('plugins').setup_async()

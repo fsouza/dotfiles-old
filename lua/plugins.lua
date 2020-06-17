@@ -37,7 +37,9 @@ local setup_ultisnips = function()
     UltiSnipsJumpBackwardTrigger = '<c-k>'
   }
 
-  for name, value in pairs(vars) do vim.api.nvim_set_var(name, value) end
+  for name, value in pairs(vars) do
+    vim.api.nvim_set_var(name, value)
+  end
 end
 
 local setup_float_preview = function()

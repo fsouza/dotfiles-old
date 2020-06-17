@@ -10,7 +10,11 @@ function M.setup()
   local status, err = pcall(function()
     local function on_attach(client, _)
       local all_clients = vim.lsp.get_active_clients()
-      for _, c in pairs(all_clients) do if c.name == client.name then client = c end end
+      for _, c in pairs(all_clients) do
+        if c.name == client.name then
+          client = c
+        end
+      end
 
       local enable_autoformat = client.resolved_capabilities.document_formatting
       vim.api.nvim_call_function('fsouza#lc#LC_attached', {enable_autoformat})
@@ -67,7 +71,9 @@ function M.setup()
       cmd = {'python'; '-m'; 'pyls'};
       root_dir = function(fname)
         local ancestor = pyls_root_pattern(fname)
-        if not ancestor then return lsp.util.path.dirname(fname) end
+        if not ancestor then
+          return lsp.util.path.dirname(fname)
+        end
         return ancestor
       end;
       settings = {
@@ -127,8 +133,12 @@ function M.formatting_sync(options, timeout_ms)
   local params = formatting_params(options)
   local result = vim.lsp
                    .buf_request_sync(0, 'textDocument/formatting', params, timeout_ms)
-  if not result then return end
-  if not result[1] then return end
+  if not result then
+    return
+  end
+  if not result[1] then
+    return
+  end
   result = result[1].result
   vim.lsp.util.apply_text_edits(result)
 end
@@ -138,12 +148,16 @@ function M.show_line_diagnostics()
   local indent = '  '
   local lines = {'Diagnostics:'; ''}
   local line_diagnostics = vim.lsp.util.get_line_diagnostics()
-  if vim.tbl_isempty(line_diagnostics) then return end
+  if vim.tbl_isempty(line_diagnostics) then
+    return
+  end
 
   for _, diagnostic in pairs(line_diagnostics) do
     local message_lines = vim.split(diagnostic.message, '\n', true)
     table.insert(lines, prefix .. message_lines[1])
-    for j = 2, #message_lines do table.insert(lines, indent .. message_lines[j]) end
+    for j = 2, #message_lines do
+      table.insert(lines, indent .. message_lines[j])
+    end
   end
   return vim.lsp.util.open_floating_preview(lines, 'plaintext')
 end
