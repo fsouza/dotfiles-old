@@ -15,7 +15,7 @@ local function format_items_for_fzf(items)
 end
 
 local function send_items_to_fzf(items)
-  vim.api.nvim_call_function('fsouza#lc#Fzf', {format_items_for_fzf(items)})
+  vim.api.nvim_call_function('local#Lsp_fzf', {format_items_for_fzf(items)})
 end
 
 local function fzf_symbol_callback(_, _, result, _, bufnr)

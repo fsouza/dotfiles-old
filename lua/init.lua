@@ -109,6 +109,10 @@ local setup_plug = function()
   require('vim-plug')(path)
 end
 
+local setup_lua_globals = function()
+  _G.lc_helpers = require('global/lc_helpers')
+end
+
 function M.setup()
   vim.schedule(set_window_options)
 
@@ -125,6 +129,7 @@ function M.setup()
     return
   end
 
+  setup_lua_globals()
   vim.schedule(require('lc').setup)
   require('plugins').setup_async()
 end

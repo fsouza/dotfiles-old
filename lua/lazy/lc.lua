@@ -66,4 +66,5 @@ function M.attached(bufnr, enable_autoformat)
     end
   end)
 end
+
 return M
