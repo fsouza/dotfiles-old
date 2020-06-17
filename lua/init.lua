@@ -7,8 +7,8 @@ local M = {}
 local remap_leader_key = function()
   api.nvim_set_keymap('n', 'Q', '', {})
   api.nvim_set_keymap('n', '<Space>', '', {})
-  api.nvim_set_var('mapleader', ' ')
-  api.nvim_set_var('maplocalleader', ' ')
+  vim.g.mapleader = ' '
+  vim.g.maplocalleader = ' '
 end
 
 local setup_syntax_and_filetype = function()
@@ -36,56 +36,48 @@ local setup_python = function()
   local vim_venv_bin = venvs_dir .. '/vim/bin'
   loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
 
-  api.nvim_set_var('python3_host_prog', vim_venv_bin .. '/python')
-  api.nvim_set_var('python3_host_skip_check', 1)
+  vim.g.python3_host_prog = vim_venv_bin .. '/python'
+  vim.g.python3_host_skip_check = true
 end
 
 local set_global_vars = function()
-  local vars = {
-    netrw_banner = 0;
-    netrw_liststyle = 3;
-    fzf_command_prefix = 'Fzf';
-    ['deoplete#enable_at_startup'] = true
-  }
-  for name, value in pairs(vars) do
-    api.nvim_set_var(name, value)
-  end
+  vim.g.netrw_banner = 0
+  vim.g.netrw_liststyle = 3
+  vim.g.fzf_command_prefix = 'Fzf'
+  vim.g['deoplete#enable_at_startup'] = true
+end
+
+local set_ui_options = function()
+  vim.o.termguicolors = true
+  vim.o.showcmd = false
+  vim.o.laststatus = 0
+  vim.o.ruler = true
+  vim.o.rulerformat = [[%-14.(%l,%c   %o%)]]
+  vim.o.guicursor = ''
+  vim.o.mouse = ''
+  vim.o.shortmess = 'filnxtToOFI'
 end
 
 local set_global_options = function()
-  local options = {
-    termguicolors = true;
-    completeopt = 'menu,longest,noselect';
-    hidden = true;
-    showcmd = false;
-    laststatus = 0;
-    ruler = true;
-    rulerformat = [[%-14.(%l,%c   %o%)]];
-    backspace = 'indent,eol,start';
-    hlsearch = false;
-    incsearch = false;
-    foldenable = false;
-    smartcase = true;
-    wildmenu = true;
-    wildmode = 'list:longest';
-    autoindent = true;
-    smartindent = true;
-    smarttab = true;
-    guicursor = '';
-    mouse = '';
-    shortmess = 'filnxtToOFI';
-    errorbells = false;
-    backup = false;
-    swapfile = false;
-    undofile = true
-  }
-  for key, value in pairs(options) do
-    api.nvim_set_option(key, value)
-  end
+  vim.o.completeopt = 'menu,longest,noselect'
+  vim.o.hidden = true
+  vim.o.backspace = 'indent,eol,start'
+  vim.o.hlsearch = false
+  vim.o.incsearch = false
+  vim.o.foldenable = false
+  vim.o.smartcase = true
+  vim.o.wildmenu = true
+  vim.o.wildmode = 'list:longest'
+  vim.o.autoindent = true
+  vim.o.smartindent = true
+  vim.o.smarttab = true
+  vim.o.errorbells = false
+  vim.o.backup = false
+  vim.o.swapfile = false
 end
 
 local set_window_options = function()
-  api.nvim_win_set_option(0, 'relativenumber', true)
+  vim.wo.relativenumber = true
   api.nvim_command([[autocmd WinEnter * set relativenumber]])
 end
 
@@ -110,10 +102,11 @@ end
 
 function M.setup()
   vim.schedule(set_window_options)
+  vim.schedule(set_global_options)
 
   remap_leader_key()
   setup_syntax_and_filetype()
-  set_global_options()
+  set_ui_options()
   set_global_vars()
   setup_global_mappings()
 
