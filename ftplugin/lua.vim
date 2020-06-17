@@ -1,1 +1,1 @@
-autocmd BufWritePre *.lua lua require('autoload/format').lua_format()
+autocmd BufWritePre *.lua lua require('lazy/format').lua_format()
