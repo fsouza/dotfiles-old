@@ -117,7 +117,7 @@ function M.setup()
     return
   end
 
-  setup_global_ns()
+  vim.schedule(setup_global_ns)
   vim.schedule(require('lc').setup)
   require('plugins').setup_async()
 end
