@@ -13,7 +13,9 @@ local setup_fzf_mappings = function()
       ['<leader>zb'] = {helpers.cmd_map('FzfBuffers'); {silent = true}};
       ['<leader>zl'] = {helpers.cmd_map('FzfLines'); {silent = true}};
       ['<leader>zq'] = {helpers.cmd_map('FzfQuickfix'); {silent = true}};
-      ['<leader>gg'] = {helpers.cmd_map('call fsouza#fuzzy#Rg()'); {silent = true}}
+      ['<leader>gg'] = {
+        helpers.cmd_map('lua require(\'autoload/fuzzy\').rg()'); {silent = true}
+      }
     }
   })
 end
