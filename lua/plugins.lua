@@ -28,19 +28,13 @@ local setup_deoplete = function()
 end
 
 local setup_ultisnips = function()
-  local vars = {
-    UltiSnipsExpandTrigger = '<tab>';
-    UltiSnipsJumpForwardTrigger = '<c-j>';
-    UltiSnipsJumpBackwardTrigger = '<c-k>'
-  }
-
-  for name, value in pairs(vars) do
-    vim.api.nvim_set_var(name, value)
-  end
+  vim.g.UltiSnipsExpandTrigger = '<tab>'
+  vim.g.UltiSnipsJumpForwardTrigger = '<c-j>'
+  vim.g.UltiSnipsJumpBackwardTrigger = '<c-k>'
 end
 
 local setup_float_preview = function()
-  vim.api.nvim_set_var('float_preview#auto_close', 0)
+  vim.g['float_preview#auto_close'] = false
   vim.api.nvim_command(
     [[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
 end
