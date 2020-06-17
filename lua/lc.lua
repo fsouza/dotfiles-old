@@ -8,7 +8,7 @@ end
 
 function M.setup()
   local status, err = pcall(function()
-    local function on_attach(client, _)
+    local function on_attach(client, bufnr)
       local all_clients = vim.lsp.get_active_clients()
       for _, c in pairs(all_clients) do
         if c.name == client.name then
@@ -17,7 +17,7 @@ function M.setup()
       end
 
       local enable_autoformat = client.resolved_capabilities.document_formatting
-      vim.api.nvim_call_function('fsouza#lc#LC_attached', {enable_autoformat})
+      require('lazy/lc').attached(bufnr, enable_autoformat)
     end
 
     local lsp = require('nvim_lsp')
@@ -160,6 +160,16 @@ function M.show_line_diagnostics()
     end
   end
   return vim.lsp.util.open_floating_preview(lines, 'plaintext')
+end
+
+function M.auto_format()
+  local g = vim.g.LC_autoformat
+  local b = vim.b.LC_autoformat
+  local timeout_ms = vim.b.LC_autoformat_timeout_ms or 500
+
+  if g ~= false and b ~= false then
+    M.formatting_sync({timeout_ms = timeout_ms})
+  end
 end
 
 return M
