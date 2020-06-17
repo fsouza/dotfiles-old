@@ -85,10 +85,8 @@ local set_global_options = function()
 end
 
 local set_window_options = function()
-  local options = {relativenumber = true}
-  for key, value in pairs(options) do
-    api.nvim_win_set_option(0, key, value)
-  end
+  api.nvim_win_set_option(0, 'relativenumber', true)
+  api.nvim_command([[autocmd WinEnter * set relativenumber]])
 end
 
 function setup_global_mappings()
