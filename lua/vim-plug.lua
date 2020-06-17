@@ -3,19 +3,16 @@ local get_pkgs = function()
 
   return {
     {repo = 'editorconfig/editorconfig-vim'};
-    {repo = 'fszymanski/fzf-quickfix'; opts = {on = 'FzfQuickfix'}};
-    {repo = 'godlygeek/tabular'}; {repo = brew_prefix .. '/opt/fzf'};
-    {repo = 'junegunn/fzf.vim'}; {repo = 'justinmk/vim-dirvish'};
-    {repo = 'justinmk/vim-sneak'};
+    {repo = 'fszymanski/fzf-quickfix'; opts = {on = 'FzfQuickfix'}}; {repo = 'godlygeek/tabular'};
+    {repo = brew_prefix .. '/opt/fzf'}; {repo = 'junegunn/fzf.vim'};
+    {repo = 'justinmk/vim-dirvish'}; {repo = 'justinmk/vim-sneak'};
     {repo = 'leafgarland/typescript-vim'; opts = {['for'] = 'typescript'}};
     {repo = 'michaeljsmith/vim-indent-object'};
     {repo = 'neovim/nvim-lsp'; opts = {['as'] = 'nvim-lsp'}; eager = true};
-    {repo = 'ncm2/float-preview.nvim'};
-    {repo = 'ocaml/vim-ocaml'; opts = {['for'] = 'ocaml'}};
+    {repo = 'ncm2/float-preview.nvim'}; {repo = 'ocaml/vim-ocaml'; opts = {['for'] = 'ocaml'}};
     {repo = 'Shougo/deoplete.nvim'; opts = {['do'] = ':UpdateRemotePlugins'}};
-    {repo = 'Shougo/deoplete-lsp'}; {repo = 'SirVer/ultisnips'};
-    {repo = 'honza/vim-snippets'}; {repo = 'tpope/vim-commentary'};
-    {repo = 'tpope/vim-fugitive'}; {repo = 'tpope/vim-repeat'};
+    {repo = 'Shougo/deoplete-lsp'}; {repo = 'SirVer/ultisnips'}; {repo = 'honza/vim-snippets'};
+    {repo = 'tpope/vim-commentary'}; {repo = 'tpope/vim-fugitive'}; {repo = 'tpope/vim-repeat'};
     {repo = 'tpope/vim-surround'};
     {repo = 'Vimjas/vim-python-pep8-indent'; opts = {['for'] = 'python'}}
   }

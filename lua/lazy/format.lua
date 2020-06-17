@@ -36,8 +36,7 @@ local format_stdin = function(gate_var, format_cmd, format_args, timeout_ms)
       vim.loop.close(handle)
     end
 
-    handle = vim.loop.spawn(format_cmd,
-                            {args = format_args; stdio = {stdin; stdout; stderr}},
+    handle = vim.loop.spawn(format_cmd, {args = format_args; stdio = {stdin; stdout; stderr}},
                             function(code, signal)
       r.code = code
       r.signal = signal
@@ -82,8 +81,7 @@ function M.dune()
 end
 
 function M.prettier()
-  format_stdin('Prettier_autoformat', 'npx',
-               {'prettier'; '--stdin-filepath'; vim.fn.expand('%p')})
+  format_stdin('Prettier_autoformat', 'npx', {'prettier'; '--stdin-filepath'; vim.fn.expand('%p')})
 end
 
 function M.lua_format()

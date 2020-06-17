@@ -8,8 +8,7 @@ local function format_items_for_fzf(items)
     if vim.startswith(filename, prefix) then
       filename = string.sub(filename, string.len(prefix) + 1)
     end
-    table.insert(lines,
-                 string.format('%s:%d:%d:%s', filename, item.lnum, item.col, item.text))
+    table.insert(lines, string.format('%s:%d:%d:%s', filename, item.lnum, item.col, item.text))
   end
   return lines
 end
@@ -73,14 +72,11 @@ M['textDocument/hover'] = function(_, method, result)
     if vim.tbl_isempty(markdown_lines) then
       return
     end
-    local bufnr, winnr = vim.lsp.util.fancy_floating_markdown(markdown_lines, {
-      pad_left = 1;
-      pad_right = 1
-    })
+    local bufnr, winnr = vim.lsp.util.fancy_floating_markdown(markdown_lines,
+                                                              {pad_left = 1; pad_right = 1})
     vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
     vim.api.nvim_win_set_option(winnr, 'relativenumber', false)
-    vim.lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'},
-                                       winnr)
+    vim.lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winnr)
     return bufnr, winnr
   end)
 end

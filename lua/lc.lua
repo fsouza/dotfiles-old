@@ -41,9 +41,7 @@ function M.setup()
         staticcheck = true;
         analyses = {unusedparams = true; ST1000 = false}
       };
-      capabilities = {
-        textDocument = {completion = {completionItem = {snippetSupport = false}}}
-      };
+      capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
       on_attach = on_attach;
       callbacks = callbacks
     })
@@ -79,9 +77,7 @@ function M.setup()
       settings = {
         pyls = {
           enable = true;
-          plugins = {
-            jedi_completion = {enabled = true; fuzzy = true; include_params = false}
-          }
+          plugins = {jedi_completion = {enabled = true; fuzzy = true; include_params = false}}
         }
       };
       on_attach = on_attach;
@@ -131,8 +127,7 @@ end
 
 function M.formatting_sync(options, timeout_ms)
   local params = formatting_params(options)
-  local result = vim.lsp
-                   .buf_request_sync(0, 'textDocument/formatting', params, timeout_ms)
+  local result = vim.lsp.buf_request_sync(0, 'textDocument/formatting', params, timeout_ms)
   if not result then
     return
   end

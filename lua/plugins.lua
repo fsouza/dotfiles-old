@@ -13,9 +13,7 @@ local setup_fzf_mappings = function()
       ['<leader>zb'] = {helpers.cmd_map('FzfBuffers'); {silent = true}};
       ['<leader>zl'] = {helpers.cmd_map('FzfLines'); {silent = true}};
       ['<leader>zq'] = {helpers.cmd_map('FzfQuickfix'); {silent = true}};
-      ['<leader>gg'] = {
-        helpers.cmd_map('lua require(\'lazy/fuzzy\').rg()'); {silent = true}
-      }
+      ['<leader>gg'] = {helpers.cmd_map('lua require(\'lazy/fuzzy\').rg()'); {silent = true}}
     }
   })
 end
@@ -23,8 +21,7 @@ end
 local setup_deoplete = function()
   vim.api.nvim_call_function('deoplete#custom#option',
                              {{auto_complete = false; auto_refresh_delay = 0}})
-  vim.api.nvim_call_function('deoplete#custom#source',
-                             {'_'; 'matchers'; {'matcher_full_fuzzy'}})
+  vim.api.nvim_call_function('deoplete#custom#source', {'_'; 'matchers'; {'matcher_full_fuzzy'}})
   helpers.create_mappings({
     i = {['<c-x><c-o>'] = {'local#Complete()'; {expr = true; silent = true}}}
   })
