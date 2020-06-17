@@ -1,1 +1,1 @@
-autocmd! BufWritePre dune call fsouza#format#Dune()
+autocmd! BufWritePre dune lua require('autoload/format').dune()
