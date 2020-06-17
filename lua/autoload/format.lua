@@ -49,7 +49,7 @@ local format_stdin = function(gate_var, format_cmd, format_args, timeout_ms)
     vim.loop.read_start(stdout, stdout_handler.callback)
     vim.loop.read_start(stderr, stderr_handler.callback)
 
-    for _, line in pairs(lines) do
+    for _, line in ipairs(lines) do
       vim.loop.write(stdin, line .. '\n')
     end
     vim.loop.close(stdin)
@@ -68,11 +68,11 @@ local format_stdin = function(gate_var, format_cmd, format_args, timeout_ms)
                           stderr_handler.data))
     end
 
-    local lines = vim.split(stdout_handler.data, '\n')
-    while lines[#lines] == '' do
-      table.remove(lines, #lines)
+    local new_lines = vim.split(stdout_handler.data, '\n')
+    while new_lines[#new_lines] == '' do
+      table.remove(new_lines, #new_lines)
     end
-    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
   end
 end
 
