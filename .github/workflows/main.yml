@@ -22,13 +22,14 @@ jobs:
         run: brew install bash
         if: matrix.os == 'macos'
 
-      - name: install neovim on mac
-        run: brew install neovim
-        if: matrix.os == 'macos'
-
-      - name: install neovim on linux
-        run: sudo apt-get update && sudo apt-get install -y neovim
-        if: matrix.os == 'ubuntu'
+      - name: install neovim nightly
+        run: |
+          if [ "${{ matrix.os }}" = "ubuntu" ]; then
+            suffix=linux64
+          else
+            suffix=${{ matrix.os }}
+          fi
+          curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-${suffix}.tar.gz | sudo tar -C /usr/local --strip 1 -xzf -
 
       - name: install shellcheck on mac
         run: brew install shellcheck
