@@ -14,4 +14,8 @@ function M.create_mappings(mappings)
   end
 end
 
+function M.exec_cmds(cmd_list)
+  vim.api.nvim_command(table.concat(cmd_list, '\n'))
+end
+
 return M

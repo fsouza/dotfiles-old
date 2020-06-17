@@ -11,6 +11,21 @@ local remap_leader_key = function()
   api.nvim_set_var('maplocalleader', ' ')
 end
 
+local setup_syntax_and_filetype = function()
+  helpers.exec_cmds({
+    'syntax enable';
+    'colorscheme none';
+    'filetype plugin indent on';
+  })
+
+  vim.schedule(function ()
+    helpers.exec_cmds({
+      [[match BadWhitespace /\s\+$/]];
+      [[autocmd BufEnter * match BadWhitespace /\s\+$/]];
+    })
+  end)
+end
+
 local setup_python = function()
   local venvs_dir = loop.os_getenv('VIRTUALENVS')
   if not venvs_dir then
@@ -28,6 +43,18 @@ local setup_python = function()
 
   api.nvim_set_var('python3_host_prog', vim_venv_bin .. '/python')
   api.nvim_set_var('python3_host_skip_check', 1)
+end
+
+local set_global_vars = function()
+  local vars = {
+    netrw_banner = 0;
+    netrw_liststyle = 3;
+    fzf_command_prefix = 'Fzf';
+    ['deoplete#enable_at_startup'] = true;
+  }
+  for name, value in pairs(vars) do
+    api.nvim_set_var(name, value)
+  end
 end
 
 local set_global_options = function()
@@ -50,7 +77,7 @@ local set_global_options = function()
     smartindent = true;
     smarttab = true;
     guicursor = '';
-    mouse = nil;
+    mouse = '';
     shortmess = 'filnxtToOFI';
     errorbells = false;
     backup = false;
@@ -59,16 +86,6 @@ local set_global_options = function()
   }
   for key, value in pairs(options) do
     api.nvim_set_option(key, value)
-  end
-
-  local vars = {
-    netrw_banner = 0;
-    netrw_liststyle = 3;
-    fzf_command_prefix = 'Fzf';
-    ['deoplete#enable_at_startup'] = true;
-  }
-  for name, value in pairs(vars) do
-    api.nvim_set_var(name, value)
   end
 end
 
@@ -104,11 +121,15 @@ local setup_plug = function()
 end
 
 function M.setup ()
+  vim.schedule(set_global_options)
+  vim.schedule(set_window_options)
+
   remap_leader_key()
-  setup_python()
-  set_global_options()
-  set_window_options()
+  setup_syntax_and_filetype()
+  set_global_vars()
   setup_global_mappings()
+
+  setup_python()
   setup_plug()
 
   if loop.os_getenv('NVIM_BOOTSTRAP') then
