@@ -96,8 +96,8 @@ local setup_plug = function()
   require('vim-plug')(path)
 end
 
-local setup_lua_globals = function()
-  _G.lc_helpers = require('global/lc_helpers')
+local setup_global_ns = function()
+  _G.f = require('global')
 end
 
 function M.setup()
@@ -117,7 +117,7 @@ function M.setup()
     return
   end
 
-  setup_lua_globals()
+  setup_global_ns()
   vim.schedule(require('lc').setup)
   require('plugins').setup_async()
 end
