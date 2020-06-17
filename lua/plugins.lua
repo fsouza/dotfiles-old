@@ -26,7 +26,7 @@ local setup_deoplete = function()
   vim.api.nvim_call_function('deoplete#custom#source',
                              {'_'; 'matchers'; {'matcher_full_fuzzy'}})
   helpers.create_mappings({
-    i = {['<c-x><c-o>'] = {'fsouza#complete#Complete()'; {expr = true; silent = true}}}
+    i = {['<c-x><c-o>'] = {'local#Complete()'; {expr = true; silent = true}}}
   })
 end
 
