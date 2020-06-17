@@ -19,3 +19,7 @@ function! fsouza#format#Prettier()
 	let l:fmt_cmd = 'npx prettier --stdin-filepath "' . expand('%:p') . '"'
 	call s:format_stdin('Prettier_autoformat', l:fmt_cmd)
 endfunction
+
+function! fsouza#format#LuaFormat()
+	call s:format_stdin('lua_autoformat', 'lua-format')
+endfunction
