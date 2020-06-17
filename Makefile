@@ -23,7 +23,7 @@ plug-setup: install-vim-plug
 .PHONY: install-vim-plug
 install-vim-plug:
 	mkdir -p $(mkfile_dir)autoload
-	curl -sLo $(mkfile_dir)autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -sLo $(mkfile_dir)autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/HEAD/plug.vim
 
 .PHONY: bootstrap
 bootstrap: submodules pip setup-langservers plug-setup
