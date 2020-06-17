@@ -39,23 +39,23 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y shellcheck
         if: matrix.os == 'ubuntu'
 
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2.3.0
 
       - run: make shellcheck
 
-      - uses: actions/setup-node@master
+      - uses: actions/setup-node@v1.4.2
         with:
           node-version: "12.x"
 
-      - uses: avsm/setup-ocaml@master
+      - uses: avsm/setup-ocaml@v1.0.1
         with:
           ocaml-version: "4.10.0"
 
-      - uses: actions/setup-python@master
+      - uses: actions/setup-python@v2.0.1
         with:
           python-version: "3.x"
 
-      - uses: actions-rs/toolchain@master
+      - uses: actions-rs/toolchain@v1.0.6
         with:
           toolchain: stable
 
