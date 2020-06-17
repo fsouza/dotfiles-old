@@ -23,7 +23,7 @@ local setup_deoplete = function()
                              {{auto_complete = false; auto_refresh_delay = 0}})
   vim.api.nvim_call_function('deoplete#custom#source', {'_'; 'matchers'; {'matcher_full_fuzzy'}})
   helpers.create_mappings({
-    i = {['<c-x><c-o>'] = {'local#Complete()'; {expr = true; silent = true}}}
+    i = {['<c-x><c-o>'] = {'v:lua.f.complete()'; {expr = true; silent = true}}}
   })
 end
 
