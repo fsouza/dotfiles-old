@@ -106,12 +106,12 @@ local setup_hlyank = function()
 end
 
 function M.setup()
-  vim.schedule(set_window_options)
   vim.schedule(set_global_options)
 
   remap_leader_key()
   setup_syntax_and_filetype()
   set_ui_options()
+  set_window_options()
   set_global_vars()
   setup_global_mappings()
 
