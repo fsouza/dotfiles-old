@@ -64,22 +64,35 @@ function M.setup()
       callbacks = callbacks
     })
 
-    local pyls_root_pattern = lsp.util.root_pattern('.git', 'requirements.txt')
+    local project_pattern = lsp.util.root_pattern('.git', 'requirements.txt')
     lsp.pyls.setup({
       cmd = {'python'; '-m'; 'pyls'};
       root_dir = function(fname)
-        local ancestor = pyls_root_pattern(fname)
+        local ancestor = project_pattern(fname)
         if not ancestor then
-          return lsp.util.path.dirname(fname)
+          return vim.fn.getcwd()
         end
         return ancestor
       end;
       settings = {
         pyls = {
           enable = true;
-          plugins = {jedi_completion = {enabled = true; fuzzy = true; include_params = false}}
+          plugins = {
+            jedi_completion = {enabled = false};
+            jedi_hover = {enabled = false};
+            jedi_references = {enabled = false};
+            jedi_signature_help = {enabled = false};
+            jedi_symbols = {enabled = false}
+          }
         }
       };
+      on_attach = on_attach;
+      callbacks = callbacks
+    })
+
+    lsp.pyls_ms.setup({
+      cmd = {get_local_cmd('ms-python-lsp')};
+      root_dir = project_pattern;
       on_attach = on_attach;
       callbacks = callbacks
     })
