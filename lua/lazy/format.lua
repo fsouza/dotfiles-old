@@ -53,7 +53,7 @@ local format_stdin = function(gate_var, format_cmd, format_args, timeout_ms)
     for _, line in ipairs(lines) do
       vim.loop.write(stdin, line .. '\n')
     end
-    vim.loop.close(stdin)
+    vim.loop.shutdown(stdin)
 
     local status = vim.wait(timeout_ms, function()
       return r.code ~= nil
