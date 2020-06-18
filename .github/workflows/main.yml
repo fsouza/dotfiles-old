@@ -59,6 +59,10 @@ jobs:
         with:
           toolchain: stable
 
+      - uses: actions/setup-dotnet@v1.5.0
+        with:
+          dotnet-version: "3.x"
+
       - name: copy files to config dir
         run: |
           mkdir -p $HOME/.config

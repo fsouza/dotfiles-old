@@ -60,6 +60,17 @@ function install_servers_from_pypi {
 	pip install -r requirements.txt
 }
 
+function install_ms_python_ls {
+	if ! command -v dotnet; then
+		echo skipping microsoft python-language-server
+		return
+	fi
+
+	pushd "$ROOT/python-language-server/src/LanguageServer/Impl" &&
+		dotnet build &&
+		popd
+}
+
 pushd "$ROOT"
 init
 install_dune
@@ -67,4 +78,5 @@ install_servers_from_npm
 install_servers_from_pypi
 install_ocaml_lsp
 install_rust_analyzer
+install_ms_python_ls
 popd
