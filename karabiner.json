@@ -28,40 +28,7 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "left_command"
-                            },
-                            "to": {
-                                "key_code": "left_option"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_option"
-                            },
-                            "to": {
-                                "key_code": "left_command"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_command"
-                            },
-                            "to": {
-                                "key_code": "right_option"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_option"
-                            },
-                            "to": {
-                                "key_code": "right_command"
-                            }
-                        }
-                    ]
+                    "simple_modifications": []
                 }
             ],
             "fn_function_keys": [
@@ -184,43 +151,14 @@
                 },
                 "rules": [
                     {
-                        "manipulators": [
-                            {
-                                "description": "Change caps_lock to command+control+option+shift.",
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_shift",
-                                        "modifiers": [
-                                            "right_command",
-                                            "right_control",
-                                            "right_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Caps + hjkl for arrows",
+                        "description": "Custom arrow keys with right_control",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "h",
+                                    "key_code": "right_command",
                                     "modifiers": {
                                         "mandatory": [
-                                            "right_shift",
-                                            "right_command",
-                                            "right_control",
-                                            "right_option"
+                                            "right_control"
                                         ],
                                         "optional": [
                                             "any"
@@ -236,13 +174,10 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "j",
+                                    "key_code": "right_alt",
                                     "modifiers": {
                                         "mandatory": [
-                                            "right_shift",
-                                            "right_command",
-                                            "right_control",
-                                            "right_option"
+                                            "right_control"
                                         ],
                                         "optional": [
                                             "any"
@@ -258,13 +193,10 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "slash",
                                     "modifiers": {
                                         "mandatory": [
-                                            "right_shift",
-                                            "right_command",
-                                            "right_control",
-                                            "right_option"
+                                            "right_control"
                                         ],
                                         "optional": [
                                             "any"
@@ -280,13 +212,10 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "l",
+                                    "key_code": "application",
                                     "modifiers": {
                                         "mandatory": [
-                                            "right_shift",
-                                            "right_command",
-                                            "right_control",
-                                            "right_option"
+                                            "right_control"
                                         ],
                                         "optional": [
                                             "any"
@@ -296,6 +225,125 @@
                                 "to": [
                                     {
                                         "key_code": "right_arrow"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "WASD media keys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "page_up",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_control"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "volume_increment"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "page_down",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_control"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "volume_decrement"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "home",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_control"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "stop"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "end",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_control"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "fastforward"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_control"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "rewind"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "insert",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_control"
+                                        ],
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "play_or_pause"
                                     }
                                 ],
                                 "type": "basic"
@@ -327,63 +375,7 @@
                         },
                         {
                             "from": {
-                                "key_code": "end"
-                            },
-                            "to": {
-                                "key_code": "vk_none"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "home"
-                            },
-                            "to": {
-                                "key_code": "vk_none"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "insert"
-                            },
-                            "to": {
-                                "key_code": "vk_none"
-                            }
-                        },
-                        {
-                            "from": {
                                 "key_code": "left_arrow"
-                            },
-                            "to": {
-                                "key_code": "vk_none"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_command"
-                            },
-                            "to": {
-                                "key_code": "left_option"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_option"
-                            },
-                            "to": {
-                                "key_code": "left_command"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "page_down"
-                            },
-                            "to": {
-                                "key_code": "vk_none"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "page_up"
                             },
                             "to": {
                                 "key_code": "vk_none"
@@ -415,22 +407,6 @@
                         },
                         {
                             "from": {
-                                "key_code": "right_command"
-                            },
-                            "to": {
-                                "key_code": "right_option"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "right_option"
-                            },
-                            "to": {
-                                "key_code": "right_command"
-                            }
-                        },
-                        {
-                            "from": {
                                 "key_code": "scroll_lock"
                             },
                             "to": {
@@ -443,6 +419,36 @@
                             },
                             "to": {
                                 "key_code": "vk_none"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 2311,
+                        "vendor_id": 7847
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "left_command"
+                            },
+                            "to": {
+                                "key_code": "left_option"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "left_option"
+                            },
+                            "to": {
+                                "key_code": "left_command"
                             }
                         }
                     ]
