@@ -39,16 +39,11 @@ local setup_float_preview = function()
     [[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
 end
 
-local create_prettier_command = function()
-  vim.api.nvim_command([[command! PrettierFormat lua require('lazy/format').prettier()]])
-end
-
 function M.setup_async()
   vim.schedule(setup_fzf_mappings)
   vim.schedule(setup_deoplete)
   vim.schedule(setup_ultisnips)
   vim.schedule(setup_float_preview)
-  vim.schedule(create_prettier_command)
 end
 
 return M
