@@ -86,7 +86,7 @@ function setup_global_mappings()
   local maps = {n = {['<leader>o'] = {helpers.cmd_map('only')}}; i = {['<c-d>'] = {'<del>'}}}
 
   for _, key in ipairs(win_mov_keys) do
-    api.nvim_set_keymap('n', '<leader>' .. key, helpers.cmd_map('wincmd ' .. key), {})
+    maps.n['<leader>' .. key] = {helpers.cmd_map('wincmd ' .. key)}
   end
   helpers.create_mappings(maps)
 end
