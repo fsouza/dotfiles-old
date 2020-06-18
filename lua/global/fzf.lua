@@ -14,7 +14,7 @@ function M.handle_lsp_line(lines)
     return
   end
 
-  vim.api.nvim_command(string.format('%s "%s"', action, filename))
+  vim.api.nvim_command(string.format('%s %s', action, filename))
   vim.fn.cursor(lnum, cnum)
   vim.api.nvim_input('zz')
 end
