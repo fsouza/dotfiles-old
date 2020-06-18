@@ -81,4 +81,14 @@ M['textDocument/hover'] = function(_, method, result)
   end)
 end
 
+-- TODO(fsouza): remove this once/if https://github.com/neovim/neovim/pull/12501 gets merged.
+M['textDocument/documentHighlight'] = function(_, _, result, _)
+  if not result then
+    return
+  end
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.lsp.util.buf_clear_references(bufnr)
+  vim.lsp.util.buf_highlight_references(bufnr, result)
+end
+
 return M
