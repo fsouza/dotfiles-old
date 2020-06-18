@@ -100,6 +100,11 @@ local setup_global_ns = function()
   _G.f = require('global')
 end
 
+local setup_hlyank = function()
+  vim.api.nvim_command(
+    [[autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('HlYank', 300)]])
+end
+
 function M.setup()
   vim.schedule(set_window_options)
   vim.schedule(set_global_options)
@@ -117,6 +122,7 @@ function M.setup()
     return
   end
 
+  vim.schedule(setup_hlyank)
   vim.schedule(setup_global_ns)
   vim.schedule(require('lc').setup)
   require('plugins').setup_async()
