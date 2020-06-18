@@ -61,7 +61,7 @@ jobs:
 
       - uses: actions/setup-dotnet@v1.5.0
         with:
-          dotnet-version: "3.x"
+          dotnet-version: "3.1.x"
 
       - name: copy files to config dir
         run: |
