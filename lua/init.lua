@@ -83,7 +83,19 @@ end
 
 function setup_global_mappings()
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
-  local maps = {n = {['<leader>o'] = {helpers.cmd_map('only')}}; i = {['<c-d>'] = {'<del>'}}}
+  local maps = {
+    n = {['<leader>o'] = {helpers.cmd_map('only')}};
+    i = {['<c-d>'] = {'<del>'}};
+    c = {
+      ['<c-a>'] = {'<home>'};
+      ['<c-e>'] = {'<end>'};
+      ['<c-f>'] = {'<right>'};
+      ['<c-b>'] = {'<left>'};
+      ['<c-p>'] = {'<up>'};
+      ['<c-n>'] = {'<down>'};
+      ['<c-d>'] = {'<del>'}
+    }
+  }
 
   for _, key in ipairs(win_mov_keys) do
     maps.n['<leader>' .. key] = {helpers.cmd_map('wincmd ' .. key)}
@@ -107,13 +119,13 @@ end
 
 function M.setup()
   vim.schedule(set_global_options)
+  vim.schedule(setup_global_mappings)
 
   remap_leader_key()
   setup_syntax_and_filetype()
   set_ui_options()
   set_window_options()
   set_global_vars()
-  setup_global_mappings()
 
   setup_python()
   setup_plug()
