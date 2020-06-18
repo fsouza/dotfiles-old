@@ -4,5 +4,4 @@ set -e
 
 ROOT=$(cd "$(dirname "${0}")/.." && pwd -P)
 
-
-exec dotnet exec "${ROOT}/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"
+exec dotnet exec "${ROOT}/langservers/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"
