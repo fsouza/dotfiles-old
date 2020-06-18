@@ -78,7 +78,7 @@ end
 
 local set_window_options = function()
   vim.wo.relativenumber = true
-  api.nvim_command([[autocmd WinEnter * set relativenumber]])
+  api.nvim_command([[autocmd WinNew * set relativenumber]])
 end
 
 function setup_global_mappings()
