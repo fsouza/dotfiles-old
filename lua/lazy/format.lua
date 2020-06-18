@@ -21,6 +21,7 @@ local format_stdin = function(gate_var, format_cmd, format_args, timeout_ms)
     var = g_var == nil and true or g_var
   end
   if var then
+    local view = vim.fn.winsaveview()
     local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
 
     local r = {}
@@ -73,6 +74,7 @@ local format_stdin = function(gate_var, format_cmd, format_args, timeout_ms)
       table.remove(new_lines, #new_lines)
     end
     vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
+    vim.fn.winrestview(view)
   end
 end
 
