@@ -43,7 +43,7 @@ jobs:
 
       - run: make shellcheck
 
-      - uses: actions/setup-node@v1.4.2
+      - uses: actions/setup-node@v2.0.0
         with:
           node-version: "12.x"
 
