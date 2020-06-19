@@ -52,8 +52,32 @@ function M.auto_format()
   local timeout_ms = vim.b.LC_autoformat_timeout_ms or 500
 
   if g ~= false and b ~= false then
-    M.formatting_sync({timeout_ms = timeout_ms})
+    formatting_sync({timeout_ms = timeout_ms})
   end
+end
+
+function M.list_file_diagnostics()
+  local fname = vim.fn.expand('%')
+  local bufnr = vim.api.nvim_get_current_buf()
+  local diagnostics = vim.lsp.util.diagnostics_by_buf[bufnr]
+  if not diagnostics then
+    return
+  end
+
+  local items = {}
+  for _, diagnostic in ipairs(diagnostics) do
+    local pos = diagnostic.range.start
+    table.insert(items, {
+      filename = fname;
+      lnum = pos.line;
+      col = pos.character;
+      text = diagnostic.message
+    })
+  end
+  vim.lsp.util.set_qflist(items)
+  vim.api.nvim_command('copen')
+  vim.api.nvim_command('wincmd p')
+  vim.api.nvim_command('cc')
 end
 
 return M

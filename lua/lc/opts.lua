@@ -53,6 +53,10 @@ local attached = function(bufnr, enable_autoformat)
           rhs = helpers.cmd_map('lua require("lc/fn").show_line_diagnostics()');
           opts = {silent = true}
         }; {
+          lhs = '<localleader>ld';
+          rhs = helpers.cmd_map('lua require("lc/fn").list_file_diagnostics()');
+          opts = {silent = true}
+        }; {
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics()');
           opts = {silent = true}
