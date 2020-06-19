@@ -25,8 +25,7 @@ function refresh_go_tools {
 			go get golang.org/x/tools/cmd/goimports@master &&
 			go get golang.org/x/tools/gopls@master golang.org/x/tools@master &&
 			go get github.com/golangci/golangci-lint/cmd/golangci-lint@master &&
-			go get honnef.co/go/tools/cmd/staticcheck@master &&
-			go get golang.org/x/exp/cmd/gorelease@master
+			go get honnef.co/go/tools/cmd/staticcheck@master
 	)
 }
 
