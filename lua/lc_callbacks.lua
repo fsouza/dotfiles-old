@@ -81,7 +81,6 @@ M['textDocument/hover'] = function(_, method, result)
   end)
 end
 
--- TODO(fsouza): remove this once/if https://github.com/neovim/neovim/pull/12501 gets merged.
 M['textDocument/documentHighlight'] = function(_, _, result, _)
   if not result then
     return
