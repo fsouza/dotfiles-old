@@ -108,7 +108,7 @@ local global_mappings = function()
 end
 
 local vim_plug = function()
-  local path = vim.fn.stdpath('config') .. '/plugged'
+  local path = vim.fn.stdpath('data') .. '/vim-plugs'
   require('vim-plug')(path)
 end
 
