@@ -84,8 +84,8 @@ end
 function setup_global_mappings()
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
   local maps = {
-    n = {lhs = '<leader>o'; rhs = helpers.cmd_map('only')};
-    i = {lhs = '<c-d>'; rhs = '<del>'};
+    n = {{lhs = '<leader>o'; rhs = helpers.cmd_map('only')}};
+    i = {{lhs = '<c-d>'; rhs = '<del>'}};
     c = {
       {lhs = '<c-a>'; rhs = '<home>'; opts = {noremap = true}};
       {lhs = '<c-e>'; rhs = '<end>'; opts = {noremap = true}};
@@ -98,7 +98,7 @@ function setup_global_mappings()
   }
 
   for _, key in ipairs(win_mov_keys) do
-    maps.n['<leader>' .. key] = {helpers.cmd_map('wincmd ' .. key)}
+    table.insert(maps.n, {lhs = '<leader>' .. key; rhs = helpers.cmd_map('wincmd ' .. key)})
   end
   helpers.create_mappings(maps)
 end
@@ -136,7 +136,7 @@ function M.setup()
 
   vim.schedule(setup_hlyank)
   vim.schedule(setup_global_ns)
-  vim.schedule(require('lc').setup)
+  vim.schedule(require('lc/init').setup)
   require('plugins').setup_async()
 end
 

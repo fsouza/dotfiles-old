@@ -1,29 +1,12 @@
 local M = {}
 
-local function format_items_for_fzf(items)
-  local lines = {}
-  local prefix = vim.fn.getcwd() .. '/'
-  for _, item in pairs(items) do
-    local filename = item.filename
-    if vim.startswith(filename, prefix) then
-      filename = string.sub(filename, string.len(prefix) + 1)
-    end
-    table.insert(lines, string.format('%s:%d:%d:%s', filename, item.lnum, item.col, item.text))
-  end
-  return lines
-end
-
-local function send_items_to_fzf(items)
-  vim.api.nvim_call_function('local#Lsp_fzf', {format_items_for_fzf(items)})
-end
-
 local function fzf_symbol_callback(_, _, result, _, bufnr)
   if not result or vim.tbl_isempty(result) then
     return
   end
 
   local items = vim.lsp.util.symbols_to_items(result, bufnr)
-  send_items_to_fzf(items)
+  require('lc/fzf').send(items)
 end
 
 M['textDocument/documentSymbol'] = fzf_symbol_callback
@@ -42,7 +25,7 @@ local function fzf_location_callback(_, method, result)
 
     if #result > 1 then
       local items = vim.lsp.util.locations_to_items(result)
-      send_items_to_fzf(items)
+      require('lc/fzf').send(items)
     end
   else
     vim.lsp.util.jump_to_location(result)
@@ -59,7 +42,7 @@ M['textDocument/references'] = function(_, _, result)
     return
   end
   local items = vim.lsp.util.locations_to_items(result)
-  send_items_to_fzf(items)
+  require('lc/fzf').send(items)
 end
 
 M['textDocument/hover'] = function(_, method, result)
