@@ -1,6 +1,6 @@
 local M = {}
 
-function M.format_items(items)
+function format_items(items)
   local lines = {}
   local prefix = vim.fn.getcwd() .. '/'
   for _, item in pairs(items) do
