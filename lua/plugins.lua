@@ -8,12 +8,15 @@ local helpers = require('nvim_helpers')
 local setup_fzf_mappings = function()
   helpers.create_mappings({
     n = {
-      ['<leader>zz'] = {helpers.cmd_map('FzfFiles'); {silent = true}};
-      ['<leader>;'] = {helpers.cmd_map('FzfFiles'); {silent = true}};
-      ['<leader>zb'] = {helpers.cmd_map('FzfBuffers'); {silent = true}};
-      ['<leader>zl'] = {helpers.cmd_map('FzfLines'); {silent = true}};
-      ['<leader>zq'] = {helpers.cmd_map('FzfQuickfix'); {silent = true}};
-      ['<leader>gg'] = {helpers.cmd_map('lua require(\'lazy/fuzzy\').rg()'); {silent = true}}
+      {lhs = '<leader>zz'; rhs = helpers.cmd_map('FzfFiles'); opts = {silent = true}};
+      {lhs = '<leader>;'; rhs = helpers.cmd_map('FzfFiles'); opts = {silent = true}};
+      {lhs = '<leader>zb'; rhs = helpers.cmd_map('FzfBuffers'); opts = {silent = true}};
+      {lhs = '<leader>zl'; rhs = helpers.cmd_map('FzfLines'); opts = {silent = true}};
+      {lhs = '<leader>zq'; rhs = helpers.cmd_map('FzfQuickfix'); opts = {silent = true}}; {
+        lhs = '<leader>gg';
+        rhs = helpers.cmd_map('lua require(\'lazy/fuzzy\').rg()');
+        opts = {silent = true}
+      }
     }
   })
 end
@@ -23,7 +26,7 @@ local setup_deoplete = function()
                              {{auto_complete = false; auto_refresh_delay = 0}})
   vim.api.nvim_call_function('deoplete#custom#source', {'_'; 'matchers'; {'matcher_full_fuzzy'}})
   helpers.create_mappings({
-    i = {['<c-x><c-o>'] = {'v:lua.f.complete()'; {expr = true; silent = true}}}
+    i = {{lhs = '<c-x><c-o>'; rhs = 'v:lua.f.complete()'; opts = {expr = true; silent = true}}}
   })
 end
 

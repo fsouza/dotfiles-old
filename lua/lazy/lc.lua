@@ -6,31 +6,73 @@ function M.attached(bufnr, enable_autoformat)
   vim.schedule(function()
     local mappings = {
       n = {
-        ['<localleader>gd'] = {helpers.cmd_map('lua vim.lsp.buf.definition()'); silent = true};
-        ['<localleader>gy'] = {helpers.cmd_map('lua vim.lsp.buf.declaration()'); silent = true};
-        ['<localleader>gi'] = {helpers.cmd_map('lua vim.lsp.buf.implementation()'); silent = true};
-        ['<localleader>r'] = {helpers.cmd_map('lua vim.lsp.buf.rename()'); silent = true};
-        ['<localleader>i'] = {helpers.cmd_map('lua vim.lsp.buf.hover()'); silent = true};
-        ['<localleader>s'] = {
-          helpers.cmd_map('lua vim.lsp.buf.document_highlight()');
-          silent = true
+        {
+          lhs = '<localleader>gd';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.definition()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>gy';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.declaration()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>gi';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.implementation()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>r';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.rename()');
+          opts = {silent = true}
         };
-        ['<localleader>T'] = {helpers.cmd_map('lua vim.lsp.buf.workspace_symbol()'); silent = true};
-        ['<localleader>t'] = {helpers.cmd_map('lua vim.lsp.buf.document_symbol()'); silent = true};
-        ['<localleader>q'] = {helpers.cmd_map('lua vim.lsp.buf.references()'); silent = true};
-        ['<localleader>cc'] = {helpers.cmd_map('lua vim.lsp.buf.code_action()'); silent = true};
-        ['<localleader>d'] = {
-          helpers.cmd_map('lua require("lc").show_line_diagnostics()');
-          silent = true
+        {
+          lhs = '<localleader>i';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.hover()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>s';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.document_highlight()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>T';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.workspace_symbol()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>t';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.document_symbol()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>q';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.references()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>cc';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.code_action()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>d';
+          rhs = helpers.cmd_map('lua require("lc").show_line_diagnostics()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>cl';
+          rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>f';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.formatting()');
+          opts = {silent = true}
         };
-        ['<localleader>cl'] = {
-          helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics()');
-          silent = true
-        };
-        ['<localleader>f'] = {helpers.cmd_map('lua vim.lsp.buf.formatting()'); silent = true};
-        ['<c-k>'] = {helpers.cmd_map('lua vim.lsp.buf.signature_help()'); silent = true}
+        {
+          lhs = '<c-k>';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.signature_help()');
+          opts = {silent = true}
+        }
       };
-      i = {['<c-k>'] = {helpers.cmd_map('lua vim.lsp.buf.signature_help()'); {silent = true}}}
+      i = {
+        {
+          lhs = '<c-k>';
+          rhs = helpers.cmd_map('lua vim.lsp.buf.signature_help()');
+          opts = {silent = true}
+        }
+      }
     }
     helpers.create_mappings(mappings, bufnr)
 

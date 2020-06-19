@@ -13,10 +13,8 @@ function M.create_mappings(mappings, bufnr)
   end
 
   for mode, rules in pairs(mappings) do
-    for lhs, opts in pairs(rules) do
-      local rhs = opts[1]
-      local opts = opts[2] or {}
-      fn(mode, lhs, rhs, opts)
+    for _, m in ipairs(rules) do
+      fn(mode, m.lhs, m.rhs, m.opts or {})
     end
   end
 end
