@@ -6,11 +6,31 @@ return function()
     return string.format('%s/%s/%s', vim.fn.stdpath('config'), 'lsp-bin', cmd)
   end
 
+  local python_interpreter_props = function(virtual_env)
+    local int_path = virtual_env .. 'bin/python'
+    local props = {InterpreterPath = virtual_env .. 'bin/python'; UseDefaultDatabase = true}
+    local cb = function(r)
+      if r.exit_status ~= 0 then
+        print(string.format('failed to detect python version in the virtualenv $%s: %s',
+                            virtual_env, r.stderr))
+        return
+      end
+      props.Version = r.stdout
+    end
+    require('lib/cmd').run(props.InterpreterPath, {
+      '-c'; 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}", end="")'
+    }, nil, cb)
+    vim.wait(200, function()
+      return props.Version ~= nil
+    end, 25)
+    return props
+  end
+
   local get_pyls_ms_options = function()
     local opts = {cmd = {get_local_cmd('ms-python-lsp')}; root_dir = lc_opts.project_root_pattern}
     local virtual_env = loop.os_getenv('VIRTUAL_ENV')
     if virtual_env then
-      local props = require('lc/helpers').interpreter_properties_from_virtualenv(virtual_env)
+      local props = python_interpreter_props(virtual_env)
       if props.Version then
         opts.init_options = {interpreter = {properties = props}}
       end
