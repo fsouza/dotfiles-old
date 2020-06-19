@@ -1,6 +1,6 @@
 -- This module is available to be used from vim as v:lua.f.<module>.<function>.
 --
--- Members are loaded lazily.
+-- Members are loaded lazily from the global folder.
 local M = {}
 
 local meta = {}
