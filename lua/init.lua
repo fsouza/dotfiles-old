@@ -85,7 +85,7 @@ local rnu = function()
   api.nvim_command([[autocmd BufEnter * if !&readonly|setlocal relativenumber|endif]])
 end
 
-function global_mappings()
+local global_mappings = function()
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
   local maps = {
     n = {{lhs = '<leader>o'; rhs = helpers.cmd_map('only')}};
