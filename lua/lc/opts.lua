@@ -1,7 +1,7 @@
 local M = {}
 
 local lsp = require('nvim_lsp')
-local helpers = require('nvim_helpers')
+local helpers = require('lib/nvim_helpers')
 
 local attached = function(bufnr, enable_autoformat)
   vim.schedule(function()

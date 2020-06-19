@@ -24,7 +24,7 @@ return function(path)
   for _, args in ipairs(get_pkgs()) do
     vim.fn['plug#'](args.repo, args.opts or empty_dict)
 
-    if args[2] and args[2].as then
+    if args.eager and args.opts.as then
       vim.fn['plug#load'](args.opts.as)
     end
   end

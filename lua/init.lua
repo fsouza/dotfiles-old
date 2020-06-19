@@ -1,17 +1,16 @@
-local api = vim.api
-local loop = vim.loop
-local helpers = require('nvim_helpers')
+local helpers = require('lib/nvim_helpers')
 
-local M = {}
+local initial_mappings = function()
+  -- Disable ex mode. I'm not that smart.
+  vim.api.nvim_set_keymap('n', 'Q', '', {})
 
-local remap_leader_key = function()
-  api.nvim_set_keymap('n', 'Q', '', {})
-  api.nvim_set_keymap('n', '<Space>', '', {})
+  -- Remap the leader key.
+  vim.api.nvim_set_keymap('n', '<Space>', '', {})
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ' '
 end
 
-local setup_syntax_and_filetype = function()
+local syntax_and_filetype = function()
   helpers.exec_cmds({'syntax enable'; 'colorscheme none'; 'filetype plugin indent on'})
 
   vim.schedule(function()
@@ -21,33 +20,33 @@ local setup_syntax_and_filetype = function()
   end)
 end
 
-local setup_python = function()
-  local venvs_dir = loop.os_getenv('VIRTUALENVS')
+local py3_host_prog = function()
+  local venvs_dir = vim.loop.os_getenv('VIRTUALENVS')
   if not venvs_dir then
     return
   end
 
   venvs_dir = string.gsub(venvs_dir, '/+$', '')
-  local stat = loop.fs_stat(venvs_dir)
+  local stat = vim.loop.fs_stat(venvs_dir)
   if not stat or stat.type ~= 'directory' then
     return
   end
 
   local vim_venv_bin = venvs_dir .. '/vim/bin'
-  loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
+  vim.loop.os_setenv('PATH', vim_venv_bin .. ':' .. vim.loop.os_getenv('PATH'))
 
   vim.g.python3_host_prog = vim_venv_bin .. '/python'
   vim.g.python3_host_skip_check = true
 end
 
-local set_global_vars = function()
+local global_vars = function()
   vim.g.netrw_banner = 0
   vim.g.netrw_liststyle = 3
   vim.g.fzf_command_prefix = 'Fzf'
   vim.g['deoplete#enable_at_startup'] = true
 end
 
-local set_ui_options = function()
+local ui_options = function()
   vim.o.termguicolors = true
   vim.o.showcmd = false
   vim.o.laststatus = 0
@@ -58,7 +57,7 @@ local set_ui_options = function()
   vim.o.shortmess = 'filnxtToOFI'
 end
 
-local set_global_options = function()
+local global_options = function()
   vim.o.completeopt = 'menu,longest,noselect'
   vim.o.hidden = true
   vim.o.backspace = 'indent,eol,start'
@@ -76,12 +75,14 @@ local set_global_options = function()
   vim.o.swapfile = false
 end
 
-local set_window_options = function()
-  vim.wo.relativenumber = true
-  api.nvim_command([[autocmd WinNew * set relativenumber]])
+local rnu = function()
+  if not vim.bo.readonly then
+    vim.wo.relativenumber = true
+  end
+  vim.api.nvim_command([[autocmd BufEnter * if !&readonly|setlocal relativenumber|endif]])
 end
 
-function setup_global_mappings()
+function global_mappings()
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
   local maps = {
     n = {{lhs = '<leader>o'; rhs = helpers.cmd_map('only')}};
@@ -103,41 +104,28 @@ function setup_global_mappings()
   helpers.create_mappings(maps)
 end
 
-local setup_plug = function()
+local vim_plug = function()
   local path = vim.fn.stdpath('config') .. '/plugged'
   require('vim-plug')(path)
 end
 
-local setup_global_ns = function()
-  _G.f = require('global')
-end
+return function()
+  initial_mappings()
+  syntax_and_filetype()
 
-local setup_hlyank = function()
-  vim.api.nvim_command(
-    [[autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('HlYank', 300)]])
-end
+  vim.schedule(global_options)
+  vim.schedule(global_mappings)
+  vim.schedule(rnu)
 
-function M.setup()
-  vim.schedule(set_global_options)
-  vim.schedule(setup_global_mappings)
+  ui_options()
+  global_vars()
 
-  remap_leader_key()
-  setup_syntax_and_filetype()
-  set_ui_options()
-  set_window_options()
-  set_global_vars()
+  py3_host_prog()
+  vim_plug()
 
-  setup_python()
-  setup_plug()
-
-  if loop.os_getenv('NVIM_BOOTSTRAP') then
+  if vim.loop.os_getenv('NVIM_BOOTSTRAP') then
     return
   end
 
-  vim.schedule(setup_hlyank)
-  vim.schedule(setup_global_ns)
-  vim.schedule(require('lc/init').setup)
-  require('plugins').setup_async()
+  require('plugin/init')()
 end
-
-return M

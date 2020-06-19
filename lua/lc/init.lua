@@ -1,6 +1,4 @@
-local M = {}
-
-function M.setup()
+return function()
   local get_local_cmd = function(cmd)
     return string.format('%s/%s/%s', vim.fn.stdpath('config'), 'lsp-bin', cmd)
   end
@@ -81,5 +79,3 @@ function M.setup()
     print('failed to setup lc: ' .. err)
   end
 end
-
-return M

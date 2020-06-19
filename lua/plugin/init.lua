@@ -1,9 +1,4 @@
--- his is fine because there aren't a lot of plugins. If the number of plugins
--- starts to grow, I may need to look into some alternative (or maybe not, as
--- neovim may support plugin handling in lua in the future.
-local M = {}
-
-local helpers = require('nvim_helpers')
+local helpers = require('lib/nvim_helpers')
 
 local setup_fzf_mappings = function()
   helpers.create_mappings({
@@ -14,7 +9,7 @@ local setup_fzf_mappings = function()
       {lhs = '<leader>zl'; rhs = helpers.cmd_map('FzfLines'); opts = {silent = true}};
       {lhs = '<leader>zq'; rhs = helpers.cmd_map('FzfQuickfix'); opts = {silent = true}}; {
         lhs = '<leader>gg';
-        rhs = helpers.cmd_map('lua require(\'lazy/fuzzy\').rg()');
+        rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg()');
         opts = {silent = true}
       }
     }
@@ -42,11 +37,23 @@ local setup_float_preview = function()
     [[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
 end
 
-function M.setup_async()
+local setup_hlyank = function()
+  vim.api.nvim_command(
+    [[autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('HlYank', 300)]])
+end
+
+local setup_global_ns = function()
+  _G.f = require('plugin/global')
+end
+
+return function()
+  vim.schedule(setup_global_ns)
   vim.schedule(setup_fzf_mappings)
   vim.schedule(setup_deoplete)
   vim.schedule(setup_ultisnips)
   vim.schedule(setup_float_preview)
+  vim.schedule(setup_hlyank)
+  vim.schedule(function()
+    require('lc/init')()
+  end)
 end
-
-return M
