@@ -39,11 +39,15 @@ end
 
 local setup_hlyank = function()
   vim.api.nvim_command(
-    [[autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank('HlYank', 300)]])
+    [[autocmd TextYankPost * silent! lua require('vim.highlight').on_yank('HlYank', 300)]])
 end
 
 local setup_global_ns = function()
   _G.f = require('plugin/global')
+end
+
+local setup_lua_format_command = function()
+  vim.api.nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
 end
 
 return function()
@@ -53,6 +57,7 @@ return function()
   vim.schedule(setup_ultisnips)
   vim.schedule(setup_float_preview)
   vim.schedule(setup_hlyank)
+  vim.schedule(setup_lua_format_command)
   vim.schedule(function()
     require('lc/init')()
   end)
