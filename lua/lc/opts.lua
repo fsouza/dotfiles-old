@@ -1,9 +1,10 @@
 local M = {}
 
+local api = vim.api
 local lsp = require('nvim_lsp')
 local helpers = require('lib/nvim_helpers')
 
-local attached = function(bufnr, enable_autoformat)
+local attached = function(bufnr, client)
   vim.schedule(function()
     local mappings = {
       n = {
@@ -50,19 +51,15 @@ local attached = function(bufnr, enable_autoformat)
           opts = {silent = true}
         }; {
           lhs = '<localleader>d';
-          rhs = helpers.cmd_map('lua require("lc/fn").show_line_diagnostics()');
+          rhs = helpers.cmd_map('lua require("lc/diagnostics").show_line_diagnostics()');
           opts = {silent = true}
         }; {
           lhs = '<localleader>ld';
-          rhs = helpers.cmd_map('lua require("lc/fn").list_file_diagnostics()');
+          rhs = helpers.cmd_map('lua require("lc/diagnostics").list_file_diagnostics()');
           opts = {silent = true}
         }; {
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics()');
-          opts = {silent = true}
-        }; {
-          lhs = '<localleader>f';
-          rhs = helpers.cmd_map('lua vim.lsp.buf.formatting()');
           opts = {silent = true}
         };
         {
@@ -79,11 +76,12 @@ local attached = function(bufnr, enable_autoformat)
         }
       }
     }
-    helpers.create_mappings(mappings, bufnr)
 
-    if enable_autoformat then
-      vim.api.nvim_command([[autocmd BufWritePre <buffer> lua require('lc/fn').auto_format()]])
+    if client.resolved_capabilities.document_formatting then
+      require('lc/formatting').register_client(client, bufnr)
     end
+
+    helpers.create_mappings(mappings, bufnr)
   end)
 end
 
@@ -95,8 +93,7 @@ function on_attach(client, bufnr)
     end
   end
 
-  local enable_autoformat = client.resolved_capabilities.document_formatting
-  attached(bufnr, enable_autoformat)
+  attached(bufnr, client)
 end
 
 function M.with_default_opts(opts)
