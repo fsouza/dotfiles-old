@@ -63,7 +63,7 @@ function M.list_file_diagnostics()
   local fname = vim.fn.expand('%')
   local bufnr = api.nvim_get_current_buf()
   local diagnostics = lsp.util.diagnostics_by_buf[bufnr]
-  if not diagnostics then
+  if not diagnostics or vim.tbl_isempty(diagnostics) then
     return
   end
 
