@@ -1,5 +1,7 @@
 local M = {}
 
+local nvim_call_function = vim.api.nvim_call_function
+
 function format_items(items)
   local lines = {}
   local prefix = vim.fn.getcwd() .. '/'
@@ -14,7 +16,7 @@ function format_items(items)
 end
 
 function M.send(items)
-  vim.api.nvim_call_function('local#Lsp_fzf', {format_items(items)})
+  nvim_call_function('local#Lsp_fzf', {format_items(items)})
 end
 
 return M

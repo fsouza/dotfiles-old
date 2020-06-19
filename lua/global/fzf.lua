@@ -1,9 +1,10 @@
 local M = {}
 
 local fzf_actions = {['ctrl-t'] = 'tabedit'; ['ctrl-x'] = 'split'; ['ctrl-v'] = 'vsplit'}
+local nvim_command = vim.api.nvim_command
+local nvim_input = vim.api.nvim_input
 
 function M.handle_lsp_line(lines)
-  print(vim.inspect(lines))
   if #lines < 2 then
     return
   end
@@ -14,9 +15,9 @@ function M.handle_lsp_line(lines)
     return
   end
 
-  vim.api.nvim_command(string.format('%s %s', action, filename))
+  nvim_command(string.format('%s %s', action, filename))
   vim.fn.cursor(lnum, cnum)
-  vim.api.nvim_input('zz')
+  nvim_input('zz')
 end
 
 return M

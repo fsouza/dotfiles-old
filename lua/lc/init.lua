@@ -1,4 +1,5 @@
 return function()
+  local loop = vim.loop
   local lc_opts = require('lc/opts')
 
   local get_local_cmd = function(cmd)
@@ -7,7 +8,7 @@ return function()
 
   local get_pyls_ms_options = function()
     local opts = {cmd = {get_local_cmd('ms-python-lsp')}; root_dir = lc_opts.project_root_pattern}
-    local virtual_env = vim.loop.os_getenv('VIRTUAL_ENV')
+    local virtual_env = loop.os_getenv('VIRTUAL_ENV')
     if virtual_env then
       local props = require('lc/helpers').interpreter_properties_from_virtualenv(virtual_env)
       if props.Version then
@@ -85,7 +86,7 @@ return function()
     }))
   end)
 
-  if vim.loop.os_getenv('NVIM_DEBUG') and not status then
+  if loop.os_getenv('NVIM_DEBUG') and not status then
     print('failed to setup lc: ' .. err)
   end
 end

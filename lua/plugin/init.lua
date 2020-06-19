@@ -1,3 +1,4 @@
+local api = vim.api
 local helpers = require('lib/nvim_helpers')
 
 local setup_fzf_mappings = function()
@@ -17,9 +18,9 @@ local setup_fzf_mappings = function()
 end
 
 local setup_deoplete = function()
-  vim.api.nvim_call_function('deoplete#custom#option',
+  api.nvim_call_function('deoplete#custom#option',
                              {{auto_complete = false; auto_refresh_delay = 0}})
-  vim.api.nvim_call_function('deoplete#custom#source', {'_'; 'matchers'; {'matcher_full_fuzzy'}})
+  api.nvim_call_function('deoplete#custom#source', {'_'; 'matchers'; {'matcher_full_fuzzy'}})
   helpers.create_mappings({
     i = {{lhs = '<c-x><c-o>'; rhs = 'v:lua.f.complete()'; opts = {expr = true; silent = true}}}
   })
@@ -33,12 +34,12 @@ end
 
 local setup_float_preview = function()
   vim.g['float_preview#auto_close'] = false
-  vim.api.nvim_command(
+  api.nvim_command(
     [[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
 end
 
 local setup_hlyank = function()
-  vim.api.nvim_command(
+  api.nvim_command(
     [[autocmd TextYankPost * silent! lua require('vim.highlight').on_yank('HlYank', 300)]])
 end
 
@@ -47,7 +48,7 @@ local setup_global_ns = function()
 end
 
 local setup_lua_format_command = function()
-  vim.api.nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
+  api.nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
 end
 
 return function()

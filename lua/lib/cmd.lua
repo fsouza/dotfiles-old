@@ -1,5 +1,7 @@
 local M = {}
 
+local loop = vim.loop
+
 local input_collector = function(stream_handle)
   local result = {data = ''}
   function result.callback(err, chunk)
@@ -31,17 +33,17 @@ end
 -- vim.wait.
 function M.run(cmd, args, input_data, on_finished)
   local cmd_handle
-  local stdout = vim.loop.new_pipe(false)
-  local stderr = vim.loop.new_pipe(false)
-  local stdin = vim.loop.new_pipe(false)
+  local stdout = loop.new_pipe(false)
+  local stderr = loop.new_pipe(false)
+  local stdin = loop.new_pipe(false)
 
   local close = function()
-    vim.loop.read_stop(stdout)
-    vim.loop.read_stop(stderr)
-    vim.loop.close(stdout)
-    vim.loop.close(stderr)
-    vim.loop.close(stdin)
-    vim.loop.close(cmd_handle)
+    loop.read_stop(stdout)
+    loop.read_stop(stderr)
+    loop.close(stdout)
+    loop.close(stderr)
+    loop.close(stdin)
+    loop.close(cmd_handle)
   end
 
   local stdout_handler = input_collector(stdout)
@@ -73,15 +75,15 @@ function M.run(cmd, args, input_data, on_finished)
     end)
   end
 
-  cmd_handle = vim.loop.spawn(cmd, {args = args; stdio = {stdin; stdout; stderr}}, onexit)
+  cmd_handle = loop.spawn(cmd, {args = args; stdio = {stdin; stdout; stderr}}, onexit)
 
-  vim.loop.read_start(stdout, stdout_handler.callback)
-  vim.loop.read_start(stderr, stderr_handler.callback)
+  loop.read_start(stdout, stdout_handler.callback)
+  loop.read_start(stderr, stderr_handler.callback)
 
   if input_data then
-    vim.loop.write(stdin, input_data)
+    loop.write(stdin, input_data)
   end
-  vim.loop.shutdown(stdin)
+  loop.shutdown(stdin)
 
   return function(timeout_ms)
     local status, code = vim.wait(timeout_ms, function()
@@ -90,7 +92,7 @@ function M.run(cmd, args, input_data, on_finished)
 
     if not status then
       r.abort = true
-      vim.loop.close(cmd_handle, close)
+      loop.close(cmd_handle, close)
     end
 
     return status, code

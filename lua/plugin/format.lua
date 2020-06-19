@@ -1,9 +1,11 @@
 local M = {}
 
+local api = vim.api
+
 local format_stdin = function(format_cmd, format_args, timeout_ms)
-  local bufnr = vim.api.nvim_get_current_buf()
+  local bufnr = api.nvim_get_current_buf()
   local view = vim.fn.winsaveview()
-  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local lines = api.nvim_buf_get_lines(bufnr, 0, -1, false)
 
   local cmd = require('lib/cmd')
   local block = cmd.run(format_cmd, format_args, table.concat(lines, '\n'), function(r)
@@ -24,7 +26,7 @@ local format_stdin = function(format_cmd, format_args, timeout_ms)
       end
     end
     if write then
-      vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
+      api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
     end
     vim.fn.winrestview(view)
   end)

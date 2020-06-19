@@ -1,11 +1,14 @@
+local api = vim.api
+local loop = vim.loop
+
 local helpers = require('lib/nvim_helpers')
 
 local initial_mappings = function()
   -- Disable ex mode. I'm not that smart.
-  vim.api.nvim_set_keymap('n', 'Q', '', {})
+  api.nvim_set_keymap('n', 'Q', '', {})
 
   -- Remap the leader key.
-  vim.api.nvim_set_keymap('n', '<Space>', '', {})
+  api.nvim_set_keymap('n', '<Space>', '', {})
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ' '
 end
@@ -21,19 +24,19 @@ local syntax_and_filetype = function()
 end
 
 local py3_host_prog = function()
-  local venvs_dir = vim.loop.os_getenv('VIRTUALENVS')
+  local venvs_dir = loop.os_getenv('VIRTUALENVS')
   if not venvs_dir then
     return
   end
 
   venvs_dir = string.gsub(venvs_dir, '/+$', '')
-  local stat = vim.loop.fs_stat(venvs_dir)
+  local stat = loop.fs_stat(venvs_dir)
   if not stat or stat.type ~= 'directory' then
     return
   end
 
   local vim_venv_bin = venvs_dir .. '/vim/bin'
-  vim.loop.os_setenv('PATH', vim_venv_bin .. ':' .. vim.loop.os_getenv('PATH'))
+  loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
 
   vim.g.python3_host_prog = vim_venv_bin .. '/python'
   vim.g.python3_host_skip_check = true
@@ -79,7 +82,7 @@ local rnu = function()
   if not vim.bo.readonly then
     vim.wo.relativenumber = true
   end
-  vim.api.nvim_command([[autocmd BufEnter * if !&readonly|setlocal relativenumber|endif]])
+  api.nvim_command([[autocmd BufEnter * if !&readonly|setlocal relativenumber|endif]])
 end
 
 function global_mappings()
@@ -123,7 +126,7 @@ return function()
   py3_host_prog()
   vim_plug()
 
-  if vim.loop.os_getenv('NVIM_BOOTSTRAP') then
+  if loop.os_getenv('NVIM_BOOTSTRAP') then
     return
   end
 

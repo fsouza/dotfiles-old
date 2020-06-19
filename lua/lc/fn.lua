@@ -1,6 +1,9 @@
 -- Module with functions to be called from Vim on events, mappings or commands.
 local M = {}
 
+local api = vim.api
+local lsp = vim.lsp
+
 -- TODO: nvim-lsp will eventually support this, so once the pending PR is
 -- merged, we should delete this code.
 --
@@ -16,7 +19,7 @@ end
 
 local formatting_sync = function(options, timeout_ms)
   local params = formatting_params(options)
-  local result = vim.lsp.buf_request_sync(0, 'textDocument/formatting', params, timeout_ms)
+  local result = lsp.buf_request_sync(0, 'textDocument/formatting', params, timeout_ms)
   if not result then
     return
   end
@@ -24,14 +27,14 @@ local formatting_sync = function(options, timeout_ms)
     return
   end
   result = result[1].result
-  vim.lsp.util.apply_text_edits(result)
+  lsp.util.apply_text_edits(result)
 end
 
 function M.show_line_diagnostics()
   local prefix = '- '
   local indent = '  '
   local lines = {'Diagnostics:'; ''}
-  local line_diagnostics = vim.lsp.util.get_line_diagnostics()
+  local line_diagnostics = lsp.util.get_line_diagnostics()
   if vim.tbl_isempty(line_diagnostics) then
     return
   end
@@ -43,7 +46,7 @@ function M.show_line_diagnostics()
       table.insert(lines, indent .. message_lines[j])
     end
   end
-  return vim.lsp.util.open_floating_preview(lines, 'plaintext')
+  return lsp.util.open_floating_preview(lines, 'plaintext')
 end
 
 function M.auto_format()
@@ -58,8 +61,8 @@ end
 
 function M.list_file_diagnostics()
   local fname = vim.fn.expand('%')
-  local bufnr = vim.api.nvim_get_current_buf()
-  local diagnostics = vim.lsp.util.diagnostics_by_buf[bufnr]
+  local bufnr = api.nvim_get_current_buf()
+  local diagnostics = lsp.util.diagnostics_by_buf[bufnr]
   if not diagnostics then
     return
   end
@@ -74,10 +77,10 @@ function M.list_file_diagnostics()
       text = diagnostic.message
     })
   end
-  vim.lsp.util.set_qflist(items)
-  vim.api.nvim_command('copen')
-  vim.api.nvim_command('wincmd p')
-  vim.api.nvim_command('cc')
+  lsp.util.set_qflist(items)
+  api.nvim_command('copen')
+  api.nvim_command('wincmd p')
+  api.nvim_command('cc')
 end
 
 return M
