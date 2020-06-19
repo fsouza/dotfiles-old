@@ -14,6 +14,12 @@ local input_collector = function(stream_handle)
   return result
 end
 
+local safe_close = function(h, cb)
+  if not loop.is_closing(h, cb) then
+    loop.close(h)
+  end
+end
+
 -- run takes the given command, args and input_data (used as stdin for the
 -- child process).
 --
@@ -40,10 +46,10 @@ function M.run(cmd, args, input_data, on_finished)
   local close = function()
     loop.read_stop(stdout)
     loop.read_stop(stderr)
-    loop.close(stdout)
-    loop.close(stderr)
-    loop.close(stdin)
-    loop.close(cmd_handle)
+    safe_close(stdout)
+    safe_close(stderr)
+    safe_close(stdin)
+    safe_close(cmd_handle)
   end
 
   local stdout_handler = input_collector(stdout)
@@ -92,7 +98,7 @@ function M.run(cmd, args, input_data, on_finished)
 
     if not status then
       r.abort = true
-      loop.close(cmd_handle, close)
+      safe_close(cmd_handle, close)
     end
 
     return status, code
