@@ -1,12 +1,25 @@
 return function()
+  local lc_opts = require('lc/opts')
+
   local get_local_cmd = function(cmd)
     return string.format('%s/%s/%s', vim.fn.stdpath('config'), 'lsp-bin', cmd)
+  end
+
+  local get_pyls_ms_options = function()
+    local opts = {cmd = {get_local_cmd('ms-python-lsp')}; root_dir = lc_opts.project_root_pattern}
+    local virtual_env = vim.loop.os_getenv('VIRTUAL_ENV')
+    if virtual_env then
+      local props = require('lc/helpers').interpreter_properties_from_virtualenv(virtual_env)
+      if props.Version then
+        opts.init_options = {interpreter = {properties = props}}
+      end
+    end
+    return opts
   end
 
   local status, err = pcall(function()
     local lsp = require('nvim_lsp')
     local vim_node_ls = get_local_cmd('node-lsp')
-    local lc_opts = require('lc/opts')
 
     lsp.bashls.setup(lc_opts.with_default_opts({
       cmd = {vim_node_ls; 'bash-language-server'; 'start'}
@@ -35,7 +48,7 @@ return function()
     lsp.pyls.setup(lc_opts.with_default_opts({
       cmd = {'python'; '-m'; 'pyls'};
       root_dir = function(fname)
-        local ancestor = opts.project_root_pattern(fname)
+        local ancestor = lc_opts.project_root_pattern(fname)
         if not ancestor then
           return vim.fn.getcwd()
         end
@@ -55,10 +68,7 @@ return function()
       }
     }))
 
-    lsp.pyls_ms.setup(lc_opts.with_default_opts({
-      cmd = {get_local_cmd('ms-python-lsp')};
-      root_dir = opts.project_root_pattern
-    }))
+    lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
 
     lsp.rust_analyzer.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('rust-analyzer')}}))
 
