@@ -15,7 +15,17 @@ local format_stdin = function(format_cmd, format_args, timeout_ms)
     while new_lines[#new_lines] == '' do
       table.remove(new_lines, #new_lines)
     end
-    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
+
+    local write = false
+    for i, line in ipairs(new_lines) do
+      if line ~= lines[i] then
+        write = true
+        break
+      end
+    end
+    if write then
+      vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
+    end
     vim.fn.winrestview(view)
   end)
 
