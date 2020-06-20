@@ -18,6 +18,7 @@ function install_dune {
 }
 
 function install_ocaml_lsp {
+	install_dune
 	if ! command -v dune &>/dev/null; then
 		echo skipping ocaml-lsp
 		return
@@ -73,10 +74,10 @@ function install_ms_python_ls {
 
 pushd "$ROOT"
 init
-install_dune
-install_servers_from_npm
-install_servers_from_pypi
-install_ocaml_lsp
-install_rust_analyzer
-install_ms_python_ls
+install_servers_from_npm &
+install_servers_from_pypi &
+install_ocaml_lsp &
+install_rust_analyzer &
+install_ms_python_ls &
+wait
 popd
