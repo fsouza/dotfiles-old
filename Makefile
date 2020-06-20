@@ -9,13 +9,6 @@ pip:
 setup-langservers:
 	cd $(mkfile_dir) && ./langservers/setup.sh
 
-.PHONY: update-spell
-update-spell:
-	cd $(mkfile_dir)/spell && \
-		curl -sLO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl && \
-		curl -sLO http://ftp.vim.org/vim/runtime/spell/en.utf-8.spl && \
-		curl -sLO http://ftp.vim.org/vim/runtime/spell/pt.utf-8.spl
-
 .PHONY: plug-setup
 plug-setup: install-vim-plug
 	env NVIM_BOOTSTRAP=1 nvim --headless +'PlugInstall|qa' +cq
@@ -26,18 +19,7 @@ install-vim-plug:
 	curl -sLo $(mkfile_dir)autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/HEAD/plug.vim
 
 .PHONY: bootstrap
-bootstrap: submodules pip setup-langservers plug-setup
-
-.PHONY: submodules
-submodules:
-	git -C "$(mkfile_dir)" submodule update --init --recursive
-
-.PHONY: clean
-clean:
-	git clean -dfx
-
-.PHONY: rebootstrap
-rebootstrap: clean bootstrap
+bootstrap: pip setup-langservers plug-setup
 
 .PHONY: shellcheck
 shellcheck:
