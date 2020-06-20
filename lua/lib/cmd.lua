@@ -94,7 +94,7 @@ function M.run(cmd, args, input_data, on_finished)
   return function(timeout_ms)
     local status, code = vim.wait(timeout_ms, function()
       return r.finished
-    end, 100)
+    end, 20)
 
     if not status then
       r.abort = true
