@@ -7,7 +7,7 @@ local nvim_input = vim.api.nvim_input
 
 local fzf_actions = {['ctrl-t'] = 'tabedit'; ['ctrl-x'] = 'split'; ['ctrl-v'] = 'vsplit'}
 
-local lines_to_qf = function(lines)
+local lines_to_loc_list = function(lines)
   local items = {}
   for _, line in ipairs(lines) do
     local _, _, filename, lnum, col, text = string.find(line, '([^:]+):(%d+):(%d+):(.*)')
@@ -25,21 +25,21 @@ function M.handle_lsp_line(lines)
 
   local first_line = table.remove(lines, 1)
   local action = fzf_actions[first_line] or 'edit'
-  local qf_list = lines_to_qf(lines)
-  if #qf_list < 1 then
+  local loc_list = lines_to_loc_list(lines)
+  if #loc_list < 1 then
     return
   end
 
-  if #qf_list == 1 then
-    local item = qf_list[1]
+  if #loc_list == 1 then
+    local item = loc_list[1]
     nvim_command(string.format('%s %s', action, item.filename))
     vim.fn.cursor(item.lnum, item.col)
     nvim_input('zz')
   else
-    lsp.util.set_qflist(qf_list)
-    api.nvim_command('copen')
+    lsp.util.set_loclist(loc_list)
+    api.nvim_command('lopen')
     api.nvim_command('wincmd p')
-    api.nvim_command('cc')
+    api.nvim_command('ll')
   end
 end
 
