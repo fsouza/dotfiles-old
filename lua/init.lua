@@ -86,19 +86,21 @@ local rnu = function()
 end
 
 local global_mappings = function()
+  local rl_bindings = {
+    {lhs = '<c-a>'; rhs = '<home>'; opts = {noremap = true}};
+    {lhs = '<c-e>'; rhs = '<end>'; opts = {noremap = true}};
+    {lhs = '<c-f>'; rhs = '<right>'; opts = {noremap = true}};
+    {lhs = '<c-b>'; rhs = '<left>'; opts = {noremap = true}};
+    {lhs = '<c-p>'; rhs = '<up>'; opts = {noremap = true}};
+    {lhs = '<c-n>'; rhs = '<down>'; opts = {noremap = true}};
+    {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}}
+  }
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
   local maps = {
     n = {{lhs = '<leader>o'; rhs = helpers.cmd_map('only')}};
-    i = {{lhs = '<c-d>'; rhs = '<del>'}};
-    c = {
-      {lhs = '<c-a>'; rhs = '<home>'; opts = {noremap = true}};
-      {lhs = '<c-e>'; rhs = '<end>'; opts = {noremap = true}};
-      {lhs = '<c-f>'; rhs = '<right>'; opts = {noremap = true}};
-      {lhs = '<c-b>'; rhs = '<left>'; opts = {noremap = true}};
-      {lhs = '<c-p>'; rhs = '<up>'; opts = {noremap = true}};
-      {lhs = '<c-n>'; rhs = '<down>'; opts = {noremap = true}};
-      {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}}
-    }
+    i = rl_bindings;
+    c = rl_bindings;
+    o = rl_bindings
   }
 
   for _, key in ipairs(win_mov_keys) do
