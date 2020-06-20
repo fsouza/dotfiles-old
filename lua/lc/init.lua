@@ -37,7 +37,7 @@ local get_pyls_ms_options = function()
   return opts
 end
 
-return function()
+do
   local status, err = pcall(function()
     local lsp = require('nvim_lsp')
     local vim_node_ls = get_local_cmd('node-lsp')

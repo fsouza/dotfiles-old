@@ -130,5 +130,5 @@ do
     return
   end
 
-  require('plugin/init')()
+  require('plugin/init')
 end

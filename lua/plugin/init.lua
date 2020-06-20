@@ -51,7 +51,7 @@ local setup_lua_format_command = function()
   api.nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
 end
 
-return function()
+do
   vim.schedule(setup_global_ns)
   vim.schedule(setup_fzf_mappings)
   vim.schedule(setup_deoplete)
@@ -60,6 +60,6 @@ return function()
   vim.schedule(setup_hlyank)
   vim.schedule(setup_lua_format_command)
   vim.schedule(function()
-    require('lc/init')()
+    require('lc/init')
   end)
 end
