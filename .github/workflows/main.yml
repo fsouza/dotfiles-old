@@ -71,4 +71,4 @@ jobs:
       - name: bootstrap from config dir
         run: |
           eval "$(opam env)"
-          make -f $HOME/.config/nvim/Makefile bootstrap
+          make -j -f $HOME/.config/nvim/Makefile bootstrap
