@@ -81,6 +81,7 @@ return function()
           plugins = {
             jedi_completion = {enabled = false};
             jedi_hover = {enabled = false};
+            jedi_rename = {enabled = false};
             jedi_references = {enabled = false};
             jedi_signature_help = {enabled = false};
             jedi_symbols = {enabled = false}
