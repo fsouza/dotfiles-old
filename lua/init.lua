@@ -112,7 +112,7 @@ local vim_plug = function()
   require('vim-plug')(path)
 end
 
-return function()
+do
   initial_mappings()
   syntax_and_filetype()
 
