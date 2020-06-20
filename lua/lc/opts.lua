@@ -21,6 +21,18 @@ local attached = function(bufnr, client)
           rhs = helpers.cmd_map('lua vim.lsp.buf.implementation()');
           opts = {silent = true}
         }; {
+          lhs = '<localleader>pd';
+          rhs = helpers.cmd_map('lua require("lc/locations").preview_definition()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>py';
+          rhs = helpers.cmd_map('lua require("lc/locations").preview_declaration()');
+          opts = {silent = true}
+        }; {
+          lhs = '<localleader>pi';
+          rhs = helpers.cmd_map('lua require("lc/locations").preview_implementation()');
+          opts = {silent = true}
+        }; {
           lhs = '<localleader>r';
           rhs = helpers.cmd_map('lua vim.lsp.buf.rename()');
           opts = {silent = true}
