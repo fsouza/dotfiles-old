@@ -124,11 +124,13 @@ do
   global_vars()
 
   py3_host_prog()
-  vim.schedule(function()
+
+  if loop.os_getenv('NVIM_BOOTSTRAP') then
     vim_plug()
-    if loop.os_getenv('NVIM_BOOTSTRAP') then
-      return
-    end
-    require('plugin/init')
-  end)
+  else
+    vim_plug()
+    vim.schedule(function()
+      require('plugin/init')
+    end)
+  end
 end
