@@ -9,7 +9,6 @@ function M.register_client(client, bufnr)
   for _, filetype in pairs(client.config.filetypes) do
     fmt_clients[filetype] = client
   end
-  print(vim.inspect(client))
 
   api.nvim_command([[autocmd BufWritePre <buffer> lua require('lc/formatting').auto_fmt()]])
   api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
