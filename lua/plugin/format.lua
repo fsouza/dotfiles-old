@@ -8,7 +8,7 @@ local format_stdin = function(format_cmd, format_args, timeout_ms)
   local lines = api.nvim_buf_get_lines(bufnr, 0, -1, false)
 
   local cmd = require('lib/cmd')
-  local block = cmd.run(format_cmd, format_args, table.concat(lines, '\n'), function(r)
+  local block = cmd.run(format_cmd, {args = format_args}, table.concat(lines, '\n'), function(r)
     if r.exit_status ~= 0 then
       error(string.format('%s exited with status code %d: %s', format_cmd, r.exit_status, r.stderr))
     end

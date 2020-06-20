@@ -37,7 +37,7 @@ end
 -- The function returns a function that can be called to wait for the command
 -- to finish. The function takes a timeout and returns the same values as
 -- vim.wait.
-function M.run(cmd, args, input_data, on_finished)
+function M.run(cmd, opts, input_data, on_finished)
   local cmd_handle
   local stdout = loop.new_pipe(false)
   local stderr = loop.new_pipe(false)
@@ -81,7 +81,8 @@ function M.run(cmd, args, input_data, on_finished)
     end)
   end
 
-  cmd_handle = loop.spawn(cmd, {args = args; stdio = {stdin; stdout; stderr}}, onexit)
+  opts = vim.tbl_extend('error', opts, {stdio = {stdin; stdout; stderr}})
+  cmd_handle = loop.spawn(cmd, opts, onexit)
 
   loop.read_start(stdout, stdout_handler.callback)
   loop.read_start(stderr, stderr_handler.callback)
