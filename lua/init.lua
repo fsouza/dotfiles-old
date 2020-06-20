@@ -109,7 +109,7 @@ end
 
 local vim_plug = function()
   local path = vim.fn.stdpath('data') .. '/vim-plugs'
-  require('vim-plug')(path)
+  require('vim-plug').setup(path)
 end
 
 do

@@ -1,4 +1,8 @@
-local get_pkgs = function()
+local M = {}
+
+local nvim_command = vim.api.nvim_command
+
+local pkgs = function()
   local brew_prefix = vim.loop.os_getenv('HOMEBREW_PREFIX') or '/usr/local'
 
   return {
@@ -18,10 +22,10 @@ local get_pkgs = function()
   }
 end
 
-return function(path)
+function M.setup(path)
   local empty_dict = vim.empty_dict()
   vim.fn['plug#begin'](path)
-  for _, args in ipairs(get_pkgs()) do
+  for _, args in ipairs(pkgs()) do
     vim.fn['plug#'](args.repo, args.opts or empty_dict)
 
     if args.eager and args.opts.as then
@@ -29,4 +33,24 @@ return function(path)
     end
   end
   vim.fn['plug#end']()
+  vim.schedule(function()
+    nvim_command([[doautocmd User PluginReady]])
+  end)
 end
+
+local vim_plug_cmd = function(cmd, exit_on_completion)
+  nvim_command(cmd)
+  if exit_on_completion then
+    nvim_command('qa')
+  end
+end
+
+function M.install(exit_on_completion)
+  vim_plug_cmd('PlugInstall', exit_on_completion)
+end
+
+function M.update(exit_on_completion)
+  vim_plug_cmd('PlugUpdate', exit_on_completion)
+end
+
+return M
