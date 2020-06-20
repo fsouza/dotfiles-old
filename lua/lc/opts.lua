@@ -63,7 +63,7 @@ local attached = function(bufnr, client)
     end
 
     if client.resolved_capabilities.document_symbol then
-      table.insert(mapping.n, {
+      table.insert(mappings.n, {
         lhs = '<localleader>t';
         rhs = helpers.cmd_map('lua vim.lsp.buf.document_symbol()');
         opts = {silent = true}
@@ -146,7 +146,9 @@ local attached = function(bufnr, client)
       })
     end
 
-    helpers.create_mappings(mappings, bufnr)
+    vim.schedule(function()
+      helpers.create_mappings(mappings, bufnr)
+    end)
   end)
 end
 
