@@ -40,4 +40,9 @@ function M.preview_implementation()
   lsp.buf_request(0, 'textDocument/implementation', params, preview_location_callback)
 end
 
+function M.preview_type_definition()
+  local params = util.make_position_params()
+  lsp.buf_request(0, 'textDocument/typeDefinition', params, preview_location_callback)
+end
+
 return M
