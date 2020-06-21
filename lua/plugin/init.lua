@@ -14,7 +14,7 @@ local setup_fzf_mappings = function()
         rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg()');
         opts = {silent = true};
       }; {
-        lhs = '<leader>wg';
+        lhs = '<leader>gw';
         rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg_cword()');
         opts = {silent = true};
       };
