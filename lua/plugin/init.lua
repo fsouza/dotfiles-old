@@ -11,13 +11,13 @@ local setup_fzf_mappings = function()
       {lhs = '<leader>zq'; rhs = helpers.cmd_map('FzfQuickfix'); opts = {silent = true}}; {
         lhs = '<leader>gg';
         rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg()');
-        opts = {silent = true}
+        opts = {silent = true};
       }; {
         lhs = '<leader>wg';
         rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg_cword()');
-        opts = {silent = true}
-      }
-    }
+        opts = {silent = true};
+      };
+    };
   })
 end
 
@@ -26,7 +26,7 @@ local setup_deoplete = function()
                          {{auto_complete = false; auto_refresh_delay = 0}})
   api.nvim_call_function('deoplete#custom#source', {'_'; 'matchers'; {'matcher_full_fuzzy'}})
   helpers.create_mappings({
-    i = {{lhs = '<c-x><c-o>'; rhs = 'v:lua.f.complete()'; opts = {expr = true; silent = true}}}
+    i = {{lhs = '<c-x><c-o>'; rhs = 'v:lua.f.complete()'; opts = {expr = true; silent = true}}};
   })
 end
 
@@ -60,9 +60,9 @@ local setup_word_replace = function()
       {
         lhs = '<leader>e';
         rhs = helpers.cmd_map('lua require("plugin/word_sub").run()');
-        opts = {silent = true}
-      }
-    }
+        opts = {silent = true};
+      };
+    };
   })
 end
 

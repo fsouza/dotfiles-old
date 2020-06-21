@@ -17,7 +17,7 @@ local python_interpreter_props = function(virtual_env)
     props.Version = r.stdout
   end
   require('lib/cmd').run(props.InterpreterPath, {
-    '-c'; 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}", end="")'
+    '-c'; 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}", end="")';
   }, nil, cb)
   vim.wait(200, function()
     return props.Version ~= nil
@@ -43,7 +43,7 @@ do
     local vim_node_ls = get_local_cmd('node-lsp')
 
     lsp.bashls.setup(lc_opts.with_default_opts({
-      cmd = {vim_node_ls; 'bash-language-server'; 'start'}
+      cmd = {vim_node_ls; 'bash-language-server'; 'start'};
     }))
 
     lsp.cssls.setup(
@@ -53,15 +53,15 @@ do
       init_options = {
         deepCompletion = false;
         staticcheck = true;
-        analyses = {unusedparams = true; ST1000 = false}
+        analyses = {unusedparams = true; ST1000 = false};
       };
-      capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}}
+      capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
     }))
 
     lsp.html.setup(lc_opts.with_default_opts({cmd = {vim_node_ls; 'html-langserver'; '--stdio'}}))
 
     lsp.jsonls.setup(lc_opts.with_default_opts({
-      cmd = {vim_node_ls; 'vscode-json-languageserver'; '--stdio'}
+      cmd = {vim_node_ls; 'vscode-json-languageserver'; '--stdio'};
     }))
 
     lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
@@ -84,10 +84,10 @@ do
             jedi_rename = {enabled = false};
             jedi_references = {enabled = false};
             jedi_signature_help = {enabled = false};
-            jedi_symbols = {enabled = false}
-          }
-        }
-      }
+            jedi_symbols = {enabled = false};
+          };
+        };
+      };
     }))
 
     lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
@@ -95,15 +95,15 @@ do
     lsp.rust_analyzer.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('rust-analyzer')}}))
 
     lsp.tsserver.setup(lc_opts.with_default_opts({
-      cmd = {vim_node_ls; 'typescript-language-server'; '--stdio'}
+      cmd = {vim_node_ls; 'typescript-language-server'; '--stdio'};
     }))
 
     lsp.vimls.setup(lc_opts.with_default_opts({
-      cmd = {vim_node_ls; 'vim-language-server'; '--stdio'}
+      cmd = {vim_node_ls; 'vim-language-server'; '--stdio'};
     }))
 
     lsp.yamlls.setup(lc_opts.with_default_opts({
-      cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'}
+      cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'};
     }))
   end)
 

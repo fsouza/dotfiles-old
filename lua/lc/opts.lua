@@ -11,29 +11,29 @@ local attached = function(bufnr, client)
         {
           lhs = '<localleader>r';
           rhs = helpers.cmd_map('lua vim.lsp.buf.rename()');
-          opts = {silent = true}
+          opts = {silent = true};
         }; {
           lhs = '<localleader>d';
           rhs = helpers.cmd_map('lua require("lc/diagnostics").show_line_diagnostics()');
-          opts = {silent = true}
+          opts = {silent = true};
         }; {
           lhs = '<localleader>ld';
           rhs = helpers.cmd_map('lua require("lc/diagnostics").list_file_diagnostics()');
-          opts = {silent = true}
+          opts = {silent = true};
         }; {
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics()');
-          opts = {silent = true}
-        }
+          opts = {silent = true};
+        };
       };
-      i = {}
+      i = {};
     }
 
     if client.resolved_capabilities.code_action then
       table.insert(mappings.n, {
         lhs = '<localleader>cc';
         rhs = helpers.cmd_map('lua vim.lsp.buf.code_action()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -41,12 +41,12 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>gy';
         rhs = helpers.cmd_map('lua vim.lsp.buf.declaration()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
       table.insert(mappings.n, {
         lhs = '<localleader>py';
         rhs = helpers.cmd_map('lua require("lc/locations").preview_declaration()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -58,7 +58,7 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>s';
         rhs = helpers.cmd_map('lua vim.lsp.buf.document_highlight()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -66,7 +66,7 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>t';
         rhs = helpers.cmd_map('lua vim.lsp.buf.document_symbol()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -74,7 +74,7 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>q';
         rhs = helpers.cmd_map('lua vim.lsp.buf.references()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -82,12 +82,12 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>gd';
         rhs = helpers.cmd_map('lua vim.lsp.buf.definition()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pd';
         rhs = helpers.cmd_map('lua require("lc/locations").preview_definition()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -95,7 +95,7 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>i';
         rhs = helpers.cmd_map('lua vim.lsp.buf.hover()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -103,12 +103,12 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>gi';
         rhs = helpers.cmd_map('lua vim.lsp.buf.implementation()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pi';
         rhs = helpers.cmd_map('lua require("lc/locations").preview_implementation()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -116,12 +116,12 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<c-k>';
         rhs = helpers.cmd_map('lua vim.lsp.buf.signature_help()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
       table.insert(mappings.i, {
         lhs = '<c-k>';
         rhs = helpers.cmd_map('lua vim.lsp.buf.signature_help()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -129,12 +129,12 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>gt';
         rhs = helpers.cmd_map('lua vim.lsp.buf.type_definition()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pt';
         rhs = helpers.cmd_map('lua require("lc/locations").preview_type_definition()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 
@@ -142,7 +142,7 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>T';
         rhs = helpers.cmd_map('lua vim.lsp.buf.workspace_symbol()');
-        opts = {silent = true}
+        opts = {silent = true};
       })
     end
 

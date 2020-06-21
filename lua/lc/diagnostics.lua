@@ -37,7 +37,7 @@ function M.list_file_diagnostics()
       filename = fname;
       lnum = pos.line;
       col = pos.character;
-      text = diagnostic.message
+      text = diagnostic.message;
     })
   end
   lsp.util.set_qflist(items)

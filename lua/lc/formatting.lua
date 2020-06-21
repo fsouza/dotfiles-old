@@ -20,7 +20,7 @@ local formatting_params = function(bufnr)
   options = {
     tabSize = (sts > 0 and sts) or (sts < 0 and api.nvim_buf_get_option(bufnr, 'shiftwidth')) or
       api.nvim_buf_get_option(bufnr, 'tabstop');
-    insertSpaces = api.nvim_buf_get_option(bufnr, 'expandtab')
+    insertSpaces = api.nvim_buf_get_option(bufnr, 'expandtab');
   }
   return {textDocument = {uri = vim.uri_from_bufnr(bufnr)}; options = options}
 end

@@ -75,7 +75,7 @@ function M.run(cmd, opts, input_data, on_finished)
         signal = signal;
         stdout = stdout_handler.data;
         stderr = stderr_handler.data;
-        errors = errors
+        errors = errors;
       })
       r.finished = true
     end)

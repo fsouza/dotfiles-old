@@ -18,7 +18,7 @@ local syntax_and_filetype = function()
 
   vim.schedule(function()
     helpers.exec_cmds({
-      [[match BadWhitespace /\s\+$/]]; [[autocmd BufEnter * match BadWhitespace /\s\+$/]]
+      [[match BadWhitespace /\s\+$/]]; [[autocmd BufEnter * match BadWhitespace /\s\+$/]];
     })
   end)
 end
@@ -93,7 +93,7 @@ local global_mappings = function()
     {lhs = '<c-b>'; rhs = '<left>'; opts = {noremap = true}};
     {lhs = '<c-p>'; rhs = '<up>'; opts = {noremap = true}};
     {lhs = '<c-n>'; rhs = '<down>'; opts = {noremap = true}};
-    {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}}
+    {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}};
   }
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
   local maps = {
@@ -101,10 +101,10 @@ local global_mappings = function()
     i = {
       {lhs = '<c-f>'; rhs = '<right>'; opts = {noremap = true}};
       {lhs = '<c-b>'; rhs = '<left>'; opts = {noremap = true}};
-      {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}}
+      {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}};
     };
     c = rl_bindings;
-    o = rl_bindings
+    o = rl_bindings;
   }
 
   for _, key in ipairs(win_mov_keys) do

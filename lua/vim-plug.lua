@@ -18,7 +18,7 @@ local pkgs = function()
     {repo = 'Shougo/deoplete-lsp'}; {repo = 'SirVer/ultisnips'}; {repo = 'honza/vim-snippets'};
     {repo = 'tpope/vim-commentary'}; {repo = 'tpope/vim-fugitive'}; {repo = 'tpope/vim-repeat'};
     {repo = 'tpope/vim-surround'};
-    {repo = 'Vimjas/vim-python-pep8-indent'; opts = {['for'] = 'python'}}
+    {repo = 'Vimjas/vim-python-pep8-indent'; opts = {['for'] = 'python'}};
   }
 end
 
