@@ -1,14 +1,16 @@
 local api = vim.api
+local nvim_command = api.nvim_command
+local nvim_set_keymap = api.nvim_set_keymap
 local loop = vim.loop
 
 local helpers = require('lib/nvim_helpers')
 
 local initial_mappings = function()
   -- Disable ex mode. I'm not that smart.
-  api.nvim_set_keymap('n', 'Q', '', {})
+  nvim_set_keymap('n', 'Q', '', {})
 
   -- Remap the leader key.
-  api.nvim_set_keymap('n', '<Space>', '', {})
+  nvim_set_keymap('n', '<Space>', '', {})
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ' '
 end
@@ -58,7 +60,7 @@ local ui_options = function()
   vim.o.guicursor = ''
   vim.o.mouse = ''
   vim.o.shortmess = 'filnxtToOFI'
-  api.nvim_command('colorscheme none')
+  nvim_command('colorscheme none')
 end
 
 local global_options = function()
@@ -83,7 +85,9 @@ local rnu = function()
   if not vim.bo.readonly then
     vim.wo.relativenumber = true
   end
-  api.nvim_command([[autocmd BufEnter * if !&readonly|setlocal relativenumber|endif]])
+  vim.schedule(function()
+    nvim_command([[autocmd BufEnter * if !&readonly|setlocal relativenumber|endif]])
+  end)
 end
 
 local global_mappings = function()
@@ -115,19 +119,22 @@ local global_mappings = function()
 end
 
 do
+  local schedule = vim.schedule
   initial_mappings()
 
-  vim.schedule(global_options)
-  vim.schedule(global_mappings)
-  vim.schedule(rnu)
+  schedule(function()
+    global_options()
+    global_mappings()
+  end)
 
   ui_options()
+  rnu()
   global_vars()
 
   py3_host_prog()
 
   require('pack').setup()
-  vim.schedule(function()
+  schedule(function()
     require('plugin/init')
     syntax_and_filetype()
   end)

@@ -1,9 +1,9 @@
 local M = {}
 
-local api = vim.api
-local lsp = vim.lsp
 local nvim_command = vim.api.nvim_command
+local lsp = vim.lsp
 local nvim_input = vim.api.nvim_input
+local vfn = vim.fn
 
 local fzf_actions = {['ctrl-t'] = 'tabedit'; ['ctrl-x'] = 'split'; ['ctrl-v'] = 'vsplit'}
 
@@ -33,13 +33,13 @@ function M.handle_lsp_line(lines)
   if #loc_list == 1 then
     local item = loc_list[1]
     nvim_command(string.format('%s %s', action, item.filename))
-    vim.fn.cursor(item.lnum, item.col)
+    vfn.cursor(item.lnum, item.col)
     nvim_input('zz')
   else
     lsp.util.set_loclist(loc_list)
-    api.nvim_command('lopen')
-    api.nvim_command('wincmd p')
-    api.nvim_command('ll')
+    nvim_command('lopen')
+    nvim_command('wincmd p')
+    nvim_command('ll')
   end
 end
 

@@ -1,6 +1,8 @@
 local M = {}
 
 local api = vim.api
+local nvim_buf_set_keymap = api.nvim_buf_set_keymap
+local nvim_command = api.nvim_command
 
 function M.cmd_map(cmd)
   return string.format('<cmd>%s<cr>', cmd)
@@ -10,7 +12,7 @@ function M.create_mappings(mappings, bufnr)
   local fn = api.nvim_set_keymap
   if bufnr then
     fn = function(...)
-      api.nvim_buf_set_keymap(bufnr, ...)
+      nvim_buf_set_keymap(bufnr, ...)
     end
   end
 
@@ -22,7 +24,7 @@ function M.create_mappings(mappings, bufnr)
 end
 
 function M.exec_cmds(cmd_list)
-  api.nvim_command(table.concat(cmd_list, '\n'))
+  nvim_command(table.concat(cmd_list, '\n'))
 end
 
 return M

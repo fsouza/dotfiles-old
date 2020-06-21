@@ -1,10 +1,10 @@
 local M = {}
 
-local nvim_call_function = vim.api.nvim_call_function
+local vfn = vim.fn
 
 function format_items(items)
   local lines = {}
-  local prefix = vim.fn.getcwd() .. '/'
+  local prefix = vfn.getcwd() .. '/'
   for _, item in pairs(items) do
     local filename = item.filename
     if vim.startswith(filename, prefix) then
@@ -16,7 +16,7 @@ function format_items(items)
 end
 
 function M.send(items)
-  nvim_call_function('local#Lsp_fzf', {format_items(items)})
+  vfn['local#Lsp_fzf'](format_items(items))
 end
 
 return M

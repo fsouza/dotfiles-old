@@ -1,10 +1,11 @@
 local M = {}
 
 local api = vim.api
+local vfn = vim.fn
 
 local format_stdin = function(format_cmd, format_args, timeout_ms)
   local bufnr = api.nvim_get_current_buf()
-  local view = vim.fn.winsaveview()
+  local view = vfn.winsaveview()
   local lines = api.nvim_buf_get_lines(bufnr, 0, -1, false)
 
   local cmd = require('lib/cmd')
@@ -28,7 +29,7 @@ local format_stdin = function(format_cmd, format_args, timeout_ms)
     if write then
       api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
     end
-    vim.fn.winrestview(view)
+    vfn.winrestview(view)
   end)
 
   if timeout_ms then
@@ -45,7 +46,7 @@ function M.dune(timeout_ms)
 end
 
 function M.prettier(timeout_ms)
-  format_stdin('npx', {'prettier'; '--stdin-filepath'; vim.fn.expand('%p')}, timeout_ms)
+  format_stdin('npx', {'prettier'; '--stdin-filepath'; vfn.expand('%p')}, timeout_ms)
 end
 
 function M.lua(timeout_ms)
