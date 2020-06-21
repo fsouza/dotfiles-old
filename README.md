@@ -18,7 +18,6 @@ initialize the submodules:
 ```
 % git clone --recurse-submodules https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
 % make -f ${HOME}/.config/nvim/Makefile bootstrap
-% nvim +PlugInstall
 ```
 
 ### Using with Vim
