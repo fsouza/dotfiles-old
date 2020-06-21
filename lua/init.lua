@@ -14,7 +14,7 @@ local initial_mappings = function()
 end
 
 local syntax_and_filetype = function()
-  helpers.exec_cmds({'syntax enable'; 'colorscheme none'; 'filetype plugin indent on'})
+  helpers.exec_cmds({'syntax enable'; 'filetype plugin indent on'})
 
   vim.schedule(function()
     helpers.exec_cmds({
@@ -58,6 +58,7 @@ local ui_options = function()
   vim.o.guicursor = ''
   vim.o.mouse = ''
   vim.o.shortmess = 'filnxtToOFI'
+  api.nvim_command('colorscheme none')
 end
 
 local global_options = function()
@@ -114,13 +115,11 @@ local global_mappings = function()
 end
 
 local vim_plug = function()
-  local path = vim.fn.stdpath('data') .. '/vim-plugs'
-  require('vim-plug').setup(path)
+  require('vim-plug').setup()
 end
 
 do
   initial_mappings()
-  syntax_and_filetype()
 
   vim.schedule(global_options)
   vim.schedule(global_mappings)
@@ -137,6 +136,7 @@ do
     vim_plug()
     vim.schedule(function()
       require('plugin/init')
+      syntax_and_filetype()
     end)
   end
 end
