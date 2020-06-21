@@ -15,16 +15,6 @@ local initial_mappings = function()
   vim.g.maplocalleader = ' '
 end
 
-local syntax_and_filetype = function()
-  helpers.exec_cmds({'syntax enable'; 'filetype plugin indent on'})
-
-  vim.schedule(function()
-    helpers.exec_cmds({
-      [[match BadWhitespace /\s\+$/]]; [[autocmd BufEnter * match BadWhitespace /\s\+$/]];
-    })
-  end)
-end
-
 local py3_host_prog = function()
   local venvs_dir = loop.os_getenv('VIRTUALENVS')
   if not venvs_dir then
@@ -136,6 +126,5 @@ do
   require('pack').setup()
   schedule(function()
     require('plugin/init')
-    syntax_and_filetype()
   end)
 end
