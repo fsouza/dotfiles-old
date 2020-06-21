@@ -114,10 +114,6 @@ local global_mappings = function()
   helpers.create_mappings(maps)
 end
 
-local vim_plug = function()
-  require('pack').setup()
-end
-
 do
   initial_mappings()
 
@@ -130,13 +126,9 @@ do
 
   py3_host_prog()
 
-  if loop.os_getenv('NVIM_BOOTSTRAP') then
-    vim_plug()
-  else
-    vim_plug()
-    vim.schedule(function()
-      require('plugin/init')
-      syntax_and_filetype()
-    end)
-  end
+  require('pack').setup()
+  vim.schedule(function()
+    require('plugin/init')
+    syntax_and_filetype()
+  end)
 end
