@@ -54,6 +54,18 @@ local setup_lua_format_command = function()
   api.nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
 end
 
+local setup_word_replace = function()
+  helpers.create_mappings({
+    n = {
+      {
+        lhs = '<leader>e';
+        rhs = helpers.cmd_map('lua require("plugin/word_sub").run()');
+        opts = {silent = true}
+      }
+    }
+  })
+end
+
 do
   vim.schedule(setup_global_ns)
   vim.schedule(setup_fzf_mappings)
@@ -62,6 +74,7 @@ do
   vim.schedule(setup_float_preview)
   vim.schedule(setup_hlyank)
   vim.schedule(setup_lua_format_command)
+  vim.schedule(setup_word_replace)
   vim.schedule(function()
     require('lc/init')
   end)
