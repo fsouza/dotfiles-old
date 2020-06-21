@@ -17,7 +17,8 @@ local python_interpreter_props = function(virtual_env)
     props.Version = r.stdout
   end
   require('lib/cmd').run(props.InterpreterPath, {
-    '-c'; 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}", end="")';
+    '-c';
+    'import sys; print("{}.{}".format(sys.version_info.major, sys.version_info.minor), end="")';
   }, nil, cb)
   vim.wait(200, function()
     return props.Version ~= nil
