@@ -66,6 +66,16 @@ local setup_word_replace = function()
   })
 end
 
+local setup_spell = function()
+  local filetypes = {'gitcommit'; 'markdown'; 'text'}
+  for _, ft in pairs(filetypes) do
+    if vim.bo.filetype == ft then
+      vim.wo.spell = true
+    end
+    nvim_command(string.format([[autocmd FileType %s setlocal spell]], ft))
+  end
+end
+
 do
   local schedule = vim.schedule
   schedule(setup_global_ns)
@@ -76,6 +86,7 @@ do
   schedule(setup_hlyank)
   schedule(setup_lua_format_command)
   schedule(setup_word_replace)
+  schedule(setup_spell)
   schedule(function()
     require('lc/init')
   end)
