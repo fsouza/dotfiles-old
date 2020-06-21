@@ -9,17 +9,8 @@ pip:
 setup-langservers:
 	cd $(mkfile_dir) && ./langservers/setup.sh
 
-.PHONY: plug-setup
-plug-setup: install-vim-plug
-	env NVIM_BOOTSTRAP=1 nvim --headless +'PlugInstall|qa' +cq
-
-.PHONY: install-vim-plug
-install-vim-plug:
-	mkdir -p $(mkfile_dir)autoload
-	curl -sLo $(mkfile_dir)autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/HEAD/plug.vim
-
 .PHONY: bootstrap
-bootstrap: pip setup-langservers plug-setup
+bootstrap: pip setup-langservers
 
 .PHONY: shellcheck
 shellcheck:
