@@ -8,21 +8,13 @@ function init {
 	git submodule update --init --recursive
 }
 
-function install_dune {
+function install_ocaml_lsp {
 	if ! command -v opam &>/dev/null; then
-		echo skipping opam
+		echo skipping ocaml-lsp
 		return
 	fi
 	opam update -y
 	opam install -y dune
-}
-
-function install_ocaml_lsp {
-	install_dune
-	if ! command -v dune &>/dev/null; then
-		echo skipping ocaml-lsp
-		return
-	fi
 
 	pushd "$ROOT/ocaml-lsp" &&
 		git submodule update --init --recursive &&
