@@ -5,7 +5,7 @@
 	path = langservers/python-language-server
 	url = https://github.com/microsoft/python-language-server.git
 [submodule "editorconfig-vim"]
-	path = pack/b/opt/editoconfig-vim
+	path = pack/b/opt/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "fzf-quickfix"]
 	path = pack/b/opt/fzf-quickfix
