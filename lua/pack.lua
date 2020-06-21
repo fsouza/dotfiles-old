@@ -10,12 +10,12 @@ local add_fzf_to_runtimepath = function()
 end
 
 local eager_pkgs = function()
-  return {'nvim-lsp'; 'editorconfig-vim'}
+  return {'nvim-lsp'; 'editorconfig-vim', 'vim-dirvish'}
 end
 
 local pkgs = function()
   return {
-    'fzf-quickfix'; 'tabular'; 'fzf.vim'; 'vim-dirvish'; 'vim-sneak'; 'typescript-vim';
+    'fzf-quickfix'; 'tabular'; 'fzf.vim'; 'vim-sneak'; 'typescript-vim';
     'vim-indent-object'; 'float-preview.nvim'; 'vim-ocaml'; 'deoplete.nvim'; 'deoplete-lsp';
     'ultisnips'; 'vim-commentary'; 'vim-fugitive'; 'vim-surround'; 'vim-python-pep8-indent';
   }
