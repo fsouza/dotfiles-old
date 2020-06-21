@@ -115,7 +115,7 @@ local global_mappings = function()
 end
 
 local vim_plug = function()
-  require('vim-plug').setup()
+  require('pack').setup()
 end
 
 do
