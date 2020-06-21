@@ -37,8 +37,7 @@ function bump_vimfiles {
 		 v vim &&
 			 cd $HOME/.config/nvim &&
 			 git pull &&
-			 make bootstrap &&
-			 env NVIM_BOOTSTRAP=1 nvim --headless -c 'PlugUpdate|qa'
+			 make bootstrap
 	)
 }
 
