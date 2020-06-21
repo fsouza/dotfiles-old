@@ -59,7 +59,7 @@ M['textDocument/hover'] = function(_, method, result)
       return
     end
     local bufnr, winnr = lsp.util.fancy_floating_markdown(markdown_lines,
-                                                              {pad_left = 1; pad_right = 1})
+                                                          {pad_left = 1; pad_right = 1})
     api.nvim_buf_set_option(bufnr, 'modifiable', false)
     api.nvim_win_set_option(winnr, 'relativenumber', false)
     lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winnr)
