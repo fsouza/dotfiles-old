@@ -12,6 +12,10 @@ local setup_fzf_mappings = function()
         lhs = '<leader>gg';
         rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg()');
         opts = {silent = true}
+      }; {
+        lhs = '<leader>wg';
+        rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg_cword()');
+        opts = {silent = true}
       }
     }
   })
@@ -19,7 +23,7 @@ end
 
 local setup_deoplete = function()
   api.nvim_call_function('deoplete#custom#option',
-                             {{auto_complete = false; auto_refresh_delay = 0}})
+                         {{auto_complete = false; auto_refresh_delay = 0}})
   api.nvim_call_function('deoplete#custom#source', {'_'; 'matchers'; {'matcher_full_fuzzy'}})
   helpers.create_mappings({
     i = {{lhs = '<c-x><c-o>'; rhs = 'v:lua.f.complete()'; opts = {expr = true; silent = true}}}
@@ -34,8 +38,7 @@ end
 
 local setup_float_preview = function()
   vim.g['float_preview#auto_close'] = false
-  api.nvim_command(
-    [[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
+  api.nvim_command([[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
 end
 
 local setup_hlyank = function()
