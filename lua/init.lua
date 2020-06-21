@@ -50,7 +50,7 @@ local ui_options = function()
   vim.o.guicursor = ''
   vim.o.mouse = ''
   vim.o.shortmess = 'filnxtToOFI'
-  nvim_command('colorscheme none')
+  require('color')
 end
 
 local global_options = function()
