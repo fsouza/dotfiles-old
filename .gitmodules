@@ -4,3 +4,63 @@
 [submodule "langservers/python-language-server"]
 	path = langservers/python-language-server
 	url = https://github.com/microsoft/python-language-server.git
+[submodule "editorconfig-vim"]
+	path = pack/b/opt/editoconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "fzf-quickfix"]
+	path = pack/b/opt/fzf-quickfix
+	url = https://github.com/fszymanski/fzf-quickfix.git
+[submodule "vim-dirvish"]
+	path = pack/b/opt/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
+[submodule "typescript-vim"]
+	path = pack/b/opt/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "tabular"]
+	path = pack/b/opt/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "fzf.vim"]
+	path = pack/b/opt/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "vim-sneak"]
+	path = pack/b/opt/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
+[submodule "vim-indent-object"]
+	path = pack/b/opt/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "nvim-lsp"]
+	path = pack/b/opt/nvim-lsp
+	url = https://github.com/neovim/nvim-lsp.git
+[submodule "float-preview.nvim"]
+	path = pack/b/opt/float-preview.nvim
+	url = https://github.com/ncm2/float-preview.nvim.git
+[submodule "vim-ocaml"]
+	path = pack/b/opt/vim-ocaml
+	url = https://github.com/ocaml/vim-ocaml.git
+[submodule "deoplete.nvim"]
+	path = pack/b/opt/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim
+[submodule "deoplete-lsp"]
+	path = pack/b/opt/deoplete-lsp
+	url = https://github.com/Shougo/deoplete-lsp
+[submodule "ultisnips"]
+	path = pack/b/opt/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "vim-snippets"]
+	path = pack/b/opt/vim-snippets
+	url = https://github.com/honza/vim-snippets.git
+[submodule "vim-commentary"]
+	path = pack/b/opt/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim-fugitive"]
+	path = pack/b/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim-repeat"]
+	path = pack/b/opt/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim-surround"]
+	path = pack/b/opt/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim-python-pep8-indent"]
+	path = pack/b/opt/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git
