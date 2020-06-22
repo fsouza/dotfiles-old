@@ -35,8 +35,8 @@ function M.list_file_diagnostics()
     local pos = diagnostic.range.start
     table.insert(items, {
       filename = fname;
-      lnum = pos.line;
-      col = pos.character;
+      lnum = pos.line + 1;
+      col = pos.character + 1;
       text = diagnostic.message;
     })
   end
