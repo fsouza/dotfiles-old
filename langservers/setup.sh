@@ -65,7 +65,7 @@ function install_ms_python_ls {
 }
 
 function install_efm_ls {
-	if ! command -v go; then
+	if ! command -v go &>/dev/null; then
 		echo skipping efm
 		return
 	fi
@@ -78,7 +78,7 @@ function install_efm_ls {
 }
 
 function install_gopls {
-	if ! command -v go; then
+	if ! command -v go &>/dev/null; then
 		echo skipping gopls
 		return
 	fi
