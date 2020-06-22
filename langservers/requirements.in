@@ -1,4 +1,4 @@
 pyls-black
 pyls-isort
-git+https://github.com/tomv564/pyls-mypy.git
+mypy
 python-language-server[flake8]
