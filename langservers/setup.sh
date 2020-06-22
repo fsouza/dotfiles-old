@@ -64,6 +64,19 @@ function install_ms_python_ls {
 		popd
 }
 
+function install_efm_ls {
+	if ! command -v go; then
+		echo skipping efm
+		return
+	fi
+	(
+		# shellcheck disable=SC2030,SC2031
+		export GO111MODULE=on GOBIN="${ROOT}/bin"
+		cd /tmp &&
+			go get github.com/mattn/efm-langserver@master
+	)
+}
+
 function install_gopls {
 	if ! command -v go; then
 		echo skipping gopls
@@ -86,6 +99,7 @@ install_servers_from_pypi &
 install_ocaml_lsp &
 install_rust_analyzer &
 install_ms_python_ls &
+install_efm_ls &
 install_gopls &
 wait
 popd
