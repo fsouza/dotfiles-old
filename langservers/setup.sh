@@ -70,8 +70,24 @@ function install_efm_ls {
 		return
 	fi
 	(
+		# shellcheck disable=SC2030,SC2031
+		export GO111MODULE=on GOBIN="${ROOT}/bin"
 		cd /tmp &&
-			env GO111MODULE=on GOBIN="${ROOT}/bin" go get github.com/mattn/efm-langserver@master
+			go get github.com/mattn/efm-langserver@master
+	)
+}
+
+function install_gopls {
+	if ! command -v go; then
+		echo skipping gopls
+		return
+	fi
+	(
+		# shellcheck disable=SC2030,SC2031
+		export GO111MODULE=on GOBIN="${ROOT}/bin"
+		cd /tmp &&
+			go get golang.org/x/tools/gopls@master golang.org/x/tools@master &&
+			go get honnef.co/go/tools/cmd/staticcheck@master
 	)
 }
 
@@ -83,5 +99,6 @@ install_ocaml_lsp &
 install_rust_analyzer &
 install_ms_python_ls &
 install_efm_ls &
+install_gopls &
 wait
 popd

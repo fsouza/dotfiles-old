@@ -1,2 +1,4 @@
 efm-langserver
+gopls
 rust-analyzer
+staticcheck

@@ -51,6 +51,7 @@ do
       lc_opts.with_default_opts({cmd = {vim_node_ls; 'css-laguageserver'; '--stdio'}}))
 
     lsp.gopls.setup(lc_opts.with_default_opts({
+      cmd = {get_local_cmd('go-lsp')};
       init_options = {
         deepCompletion = false;
         staticcheck = true;
