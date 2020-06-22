@@ -193,7 +193,7 @@ local custom_groups = function()
   highlight('BadWhitespace', {ctermbg = '160'; guibg = '#d70000'})
 end
 
-do
+local setup = function()
   nvim_set_option('background', 'light')
   nvim_command('highlight clear')
   nvim_command('syntax reset')
@@ -204,4 +204,10 @@ do
   reversers()
   lsp_highlights()
   custom_groups()
+
+  vim.schedule(function()
+    nvim_command([[command! ResetColors lua require('color').setup()]])
+  end)
 end
+
+return {setup = setup}
