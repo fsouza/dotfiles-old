@@ -14,4 +14,4 @@ bootstrap: pip setup-langservers
 
 .PHONY: shellcheck
 shellcheck:
-	shellcheck lsp-bin/*-lsp langservers/setup.sh
+	shellcheck langservers/bin/*-lsp langservers/setup.sh

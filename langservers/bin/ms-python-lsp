@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e
+
+ROOT=$(cd "$(dirname "${0}")/.." && pwd -P)
+
+exec dotnet exec "${ROOT}/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"

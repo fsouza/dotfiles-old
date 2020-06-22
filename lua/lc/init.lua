@@ -2,7 +2,7 @@ local loop = vim.loop
 local lc_opts = require('lc/opts')
 
 local get_local_cmd = function(cmd)
-  return string.format('%s/%s/%s', vim.fn.stdpath('config'), 'lsp-bin', cmd)
+  return string.format('%s/langservers/bin/%s', vim.fn.stdpath('config'), cmd)
 end
 
 local python_interpreter_props = function(virtual_env)

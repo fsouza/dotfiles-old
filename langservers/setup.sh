@@ -41,8 +41,8 @@ function install_rust_analyzer {
 		return
 	fi
 
-	curl -sLo ../lsp-bin/rust-analyzer "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-${suffix}"
-	chmod +x ../lsp-bin/rust-analyzer
+	curl -sLo "${ROOT}/bin/rust-analyzer" "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-${suffix}"
+	chmod +x "${ROOT}/bin/rust-analyzer"
 }
 
 function install_servers_from_npm {
