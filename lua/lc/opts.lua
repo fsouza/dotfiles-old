@@ -167,6 +167,6 @@ function M.with_default_opts(opts)
   return vim.tbl_extend('keep', opts, {callbacks = require('lc/callbacks'); on_attach = on_attach})
 end
 
-M.project_root_pattern = lsp.util.root_pattern('.git', 'requirements.txt')
+M.project_root_pattern = lsp.util.root_pattern('.git')
 
 return M

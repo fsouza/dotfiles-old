@@ -2,8 +2,10 @@ local vfn = vim.fn
 local loop = vim.loop
 local lc_opts = require('lc/opts')
 
+local config_dir = vfn.stdpath('config')
+
 local get_local_cmd = function(cmd)
-  return string.format('%s/langservers/bin/%s', vim.fn.stdpath('config'), cmd)
+  return string.format('%s/langservers/bin/%s', config_dir, cmd)
 end
 
 local python_interpreter_props = function(virtual_env)
@@ -99,7 +101,7 @@ do
         root_dir = function(fname)
           local ancestor = lc_opts.project_root_pattern(fname)
           if not ancestor then
-            return vim.fn.getcwd()
+            return vfn.getcwd()
           end
           return ancestor
         end;
@@ -126,6 +128,15 @@ do
     local ra = get_local_cmd('rust-analyzer')
     if_executable('ra', function()
       lsp.rust_analyzer.setup(lc_opts.with_default_opts({cmd = {ra}}))
+    end)
+
+    local efm = get_local_cmd('efm-langserver')
+    if_executable(efm, function()
+      lsp.efm.setup(lc_opts.with_default_opts({
+        cmd = {efm; '-c'; string.format('%s/langservers/efm-langserver.yaml', config_dir)};
+        filetypes = {'python'};
+        root_pattern = lc_opts.project_root_pattern;
+      }))
     end)
   end)
 
