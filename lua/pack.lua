@@ -9,15 +9,12 @@ local add_fzf_to_runtimepath = function()
   nvim_command([[set runtimepath+=]] .. fzf_path)
 end
 
-local eager_pkgs = function()
-  return {'nvim-lsp'; 'editorconfig-vim', 'vim-dirvish'}
-end
-
 local pkgs = function()
   return {
-    'fzf-quickfix'; 'tabular'; 'fzf.vim'; 'vim-sneak'; 'typescript-vim';
-    'vim-indent-object'; 'float-preview.nvim'; 'vim-ocaml'; 'deoplete.nvim'; 'deoplete-lsp';
-    'ultisnips'; 'vim-commentary'; 'vim-fugitive'; 'vim-surround'; 'vim-python-pep8-indent';
+    'nvim-lsp'; 'editorconfig-vim'; 'vim-dirvish'; 'fzf-quickfix'; 'tabular'; 'fzf.vim';
+    'vim-sneak'; 'typescript-vim'; 'vim-indent-object'; 'float-preview.nvim'; 'vim-ocaml';
+    'deoplete.nvim'; 'deoplete-lsp'; 'ultisnips'; 'vim-commentary'; 'vim-fugitive'; 'vim-surround';
+    'vim-python-pep8-indent';
   }
 end
 
@@ -33,15 +30,11 @@ end
 function M.setup()
   add_fzf_to_runtimepath()
 
-  for _, pkg in ipairs(eager_pkgs()) do
+  for _, pkg in ipairs(pkgs()) do
     nvim_command('packadd! ' .. pkg)
   end
 
   vim.schedule(function()
-    for _, pkg in ipairs(pkgs()) do
-      nvim_command('packadd ' .. pkg)
-    end
-
     syntax_and_filetype()
     nvim_command([[doautocmd User PluginReady]])
   end)
