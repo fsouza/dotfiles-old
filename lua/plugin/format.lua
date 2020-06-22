@@ -41,10 +41,6 @@ local format_stdin = function(format_cmd, format_args, timeout_ms)
   end
 end
 
-function M.dune(timeout_ms)
-  format_stdin('dune', {'format-dune-file'}, timeout_ms)
-end
-
 function M.prettier(timeout_ms)
   format_stdin('npx', {'prettier'; '--stdin-filepath'; vfn.expand('%p')}, timeout_ms)
 end

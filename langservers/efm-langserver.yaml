@@ -8,7 +8,14 @@ tools:
       - '%f:%l: %tarning: %m'
       - '%f:%l: %tote: %m'
 
+  dune: &dune-fmt
+    format-command: 'dune format-dune-file'
+    format-stdin: true
+
 languages:
 
   python:
     - <<: *dmypy
+
+  dune:
+    - <<: *dune-fmt

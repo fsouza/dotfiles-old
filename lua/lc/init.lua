@@ -134,7 +134,7 @@ do
     if_executable(efm, function()
       lsp.efm.setup(lc_opts.with_default_opts({
         cmd = {efm; '-c'; string.format('%s/langservers/efm-langserver.yaml', config_dir)};
-        filetypes = {'python'};
+        filetypes = {'dune'; 'python'};
         root_pattern = lc_opts.project_root_pattern;
       }))
     end)
