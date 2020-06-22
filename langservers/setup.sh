@@ -64,6 +64,17 @@ function install_ms_python_ls {
 		popd
 }
 
+function install_efm_ls {
+	if ! command -v go; then
+		echo skipping efm
+		return
+	fi
+	(
+		cd /tmp &&
+			env GO111MODULE=on GOBIN="${ROOT}/bin" go get github.com/mattn/efm-langserver@master
+	)
+}
+
 pushd "$ROOT"
 init
 install_servers_from_npm &
@@ -71,5 +82,6 @@ install_servers_from_pypi &
 install_ocaml_lsp &
 install_rust_analyzer &
 install_ms_python_ls &
+install_efm_ls &
 wait
 popd
