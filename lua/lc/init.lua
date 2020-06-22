@@ -95,32 +95,6 @@ do
       lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
     end)
 
-    if_executable('pyls', function()
-      lsp.pyls.setup(lc_opts.with_default_opts({
-        cmd = {'python'; '-m'; 'pyls'};
-        root_dir = function(fname)
-          local ancestor = lc_opts.project_root_pattern(fname)
-          if not ancestor then
-            return vfn.getcwd()
-          end
-          return ancestor
-        end;
-        settings = {
-          pyls = {
-            enable = true;
-            plugins = {
-              jedi_completion = {enabled = false};
-              jedi_hover = {enabled = false};
-              jedi_rename = {enabled = false};
-              jedi_references = {enabled = false};
-              jedi_signature_help = {enabled = false};
-              jedi_symbols = {enabled = false};
-            };
-          };
-        };
-      }))
-    end)
-
     if_executable('dotnet', function()
       lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
     end)

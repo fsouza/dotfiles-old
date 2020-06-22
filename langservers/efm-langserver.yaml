@@ -8,6 +8,14 @@ tools:
       - '%f:%l: %tarning: %m'
       - '%f:%l: %tote: %m'
 
+  black: &black
+    format-command: 'black --fast --quiet -'
+    format-stdin: true
+
+  isort: &isort
+    format-command: 'isort -'
+    format-stdin: true
+
   dune: &dune-fmt
     format-command: 'dune format-dune-file'
     format-stdin: true
@@ -16,6 +24,9 @@ languages:
 
   python:
     - <<: *dmypy
+    - <<: *black
+    - <<: *isort
 
   dune:
     - <<: *dune-fmt
+
