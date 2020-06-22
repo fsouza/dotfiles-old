@@ -63,6 +63,10 @@ jobs:
         with:
           toolchain: stable
 
+      - uses: actions/setup-go@v2.0.3
+        with:
+          go-version: "1.x"
+
       - name: copy files to config dir
         run: |
           mkdir -p $HOME/.config
