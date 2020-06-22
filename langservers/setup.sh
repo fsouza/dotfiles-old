@@ -87,6 +87,7 @@ function install_gopls {
 		export GO111MODULE=on GOBIN="${ROOT}/bin"
 		cd /tmp &&
 			go get golang.org/x/tools/gopls@master golang.org/x/tools@master &&
+			go get golang.org/x/tools/cmd/goimports@master &&
 			go get honnef.co/go/tools/cmd/staticcheck@master
 	)
 }
