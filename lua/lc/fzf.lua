@@ -2,7 +2,7 @@ local M = {}
 
 local vfn = vim.fn
 
-function format_items(items)
+local format_items = function(items)
   local lines = {}
   local prefix = vfn.getcwd() .. '/'
   for _, item in pairs(items) do
