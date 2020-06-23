@@ -50,8 +50,9 @@ local setup_global_ns = function()
   _G.f = require('plugin/global')
 end
 
-local setup_lua_format_command = function()
+local setup_format_comands = function()
   nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
+  nvim_command([[command! PrettierFormat lua require('plugin/format').prettier()]])
 end
 
 local setup_word_replace = function()
@@ -93,7 +94,7 @@ do
   schedule(setup_ultisnips)
   schedule(setup_float_preview)
   schedule(setup_hlyank)
-  schedule(setup_lua_format_command)
+  schedule(setup_format_comands)
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(function()
