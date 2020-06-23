@@ -1,5 +1,6 @@
 local vfn = vim.fn
 local api = vim.api
+local nvim_buf_get_option = api.nvim_buf_get_option
 local nvim_buf_set_option = api.nvim_buf_set_option
 local nvim_command = api.nvim_command
 local cmd = require('lib/cmd')
@@ -48,7 +49,8 @@ local handle_whitespaces = function(v)
   nvim_command('augroup editorconfig_trim_trailing_whitespace')
   nvim_command([[autocmd! BufWritePre <buffer>]])
   if v == 'true' then
-    nvim_command('autocmd BufWritePre <buffer> lua require("plugin/editor_config").trim_whitespace()')
+    nvim_command(
+      'autocmd BufWritePre <buffer> lua require("plugin/editor_config").trim_whitespace()')
   end
   nvim_command('augroup END')
 end
@@ -90,8 +92,10 @@ local set_opts = function(bufnr, opts)
   end
 
   vim.schedule(function()
-    for k, v in pairs(vim_opts) do
-      nvim_buf_set_option(bufnr, k, v)
+    if nvim_buf_get_option(bufnr, 'modifiable') then
+      for k, v in pairs(vim_opts) do
+        nvim_buf_set_option(bufnr, k, v)
+      end
     end
   end)
 end
