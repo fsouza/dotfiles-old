@@ -48,7 +48,7 @@ local handle_whitespaces = function(v)
   nvim_command('augroup editorconfig_trim_trailing_whitespace')
   nvim_command([[autocmd! BufWritePre <buffer>]])
   if v == 'true' then
-    nvim_command('autocmd BufWritePre <buffer> call v:lua.f.whitespace.trim()')
+    nvim_command('autocmd BufWritePre <buffer> lua require("plugin/editor_config").trim_whitespace()')
   end
   nvim_command('augroup END')
 end
@@ -122,6 +122,14 @@ function M.set_config()
     local opts = parse_output(result.stdout)
     set_opts(bufnr, opts)
   end)
+end
+
+function M.trim_whitespace()
+  local view = vfn.winsaveview()
+  pcall(function()
+    nvim_command([[silent! keeppatterns %s/\s\+$//e]])
+  end)
+  vfn.winrestview(view)
 end
 
 return M
