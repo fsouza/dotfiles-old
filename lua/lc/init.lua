@@ -47,74 +47,67 @@ do
     end
   end
 
-  local status, err = pcall(function()
-    local lsp = require('nvim_lsp')
-    local vim_node_ls = get_local_cmd('node-lsp')
+  local lsp = require('nvim_lsp')
+  local vim_node_ls = get_local_cmd('node-lsp')
 
-    if_executable('npx', function()
-      lsp.bashls.setup(lc_opts.with_default_opts({
-        cmd = {vim_node_ls; 'bash-language-server'; 'start'};
-      }))
+  if_executable('npx', function()
+    lsp.bashls.setup(lc_opts.with_default_opts({
+      cmd = {vim_node_ls; 'bash-language-server'; 'start'};
+    }))
 
-      lsp.cssls.setup(lc_opts.with_default_opts({
-        cmd = {vim_node_ls; 'css-laguageserver'; '--stdio'};
-      }))
+    lsp.cssls.setup(
+      lc_opts.with_default_opts({cmd = {vim_node_ls; 'css-laguageserver'; '--stdio'}}))
 
-      lsp.html
-        .setup(lc_opts.with_default_opts({cmd = {vim_node_ls; 'html-langserver'; '--stdio'}}))
+    lsp.html.setup(lc_opts.with_default_opts({cmd = {vim_node_ls; 'html-langserver'; '--stdio'}}))
 
-      lsp.jsonls.setup(lc_opts.with_default_opts({
-        cmd = {vim_node_ls; 'vscode-json-languageserver'; '--stdio'};
-      }))
+    lsp.jsonls.setup(lc_opts.with_default_opts({
+      cmd = {vim_node_ls; 'vscode-json-languageserver'; '--stdio'};
+    }))
 
-      lsp.tsserver.setup(lc_opts.with_default_opts(
-                           {cmd = {vim_node_ls; 'typescript-language-server'; '--stdio'}}))
+    lsp.tsserver.setup(lc_opts.with_default_opts({
+      cmd = {vim_node_ls; 'typescript-language-server'; '--stdio'};
+    }))
 
-      lsp.vimls.setup(lc_opts.with_default_opts({
-        cmd = {vim_node_ls; 'vim-language-server'; '--stdio'};
-      }))
+    lsp.vimls.setup(lc_opts.with_default_opts({
+      cmd = {vim_node_ls; 'vim-language-server'; '--stdio'};
+    }))
 
-      lsp.yamlls.setup(lc_opts.with_default_opts({
-        cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'};
-      }))
-    end)
-
-    if_executable(get_local_cmd('gopls'), function()
-      lsp.gopls.setup(lc_opts.with_default_opts({
-        cmd = {get_local_cmd('go-lsp')};
-        init_options = {
-          deepCompletion = false;
-          staticcheck = true;
-          analyses = {unusedparams = true; ST1000 = false};
-        };
-        capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
-      }))
-    end)
-
-    if_executable('dune', function()
-      lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
-    end)
-
-    if_executable('dotnet', function()
-      lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
-    end)
-
-    local ra = get_local_cmd('rust-analyzer')
-    if_executable('ra', function()
-      lsp.rust_analyzer.setup(lc_opts.with_default_opts({cmd = {ra}}))
-    end)
-
-    local efm = get_local_cmd('efm-langserver')
-    if_executable(efm, function()
-      lsp.efm.setup(lc_opts.with_default_opts({
-        cmd = {efm; '-c'; string.format('%s/langservers/efm-langserver.yaml', config_dir)};
-        filetypes = {'dune'; 'python'; 'sh'};
-        root_pattern = lc_opts.project_root_pattern;
-      }))
-    end)
+    lsp.yamlls.setup(lc_opts.with_default_opts({
+      cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'};
+    }))
   end)
 
-  if loop.os_getenv('NVIM_DEBUG') and not status then
-    print('failed to setup lc: ' .. err)
-  end
+  if_executable(get_local_cmd('gopls'), function()
+    lsp.gopls.setup(lc_opts.with_default_opts({
+      cmd = {get_local_cmd('go-lsp')};
+      init_options = {
+        deepCompletion = false;
+        staticcheck = true;
+        analyses = {unusedparams = true; ST1000 = false};
+      };
+      capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
+    }))
+  end)
+
+  if_executable('dune', function()
+    lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
+  end)
+
+  if_executable('dotnet', function()
+    lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
+  end)
+
+  local ra = get_local_cmd('rust-analyzer')
+  if_executable('ra', function()
+    lsp.rust_analyzer.setup(lc_opts.with_default_opts({cmd = {ra}}))
+  end)
+
+  local efm = get_local_cmd('efm-langserver')
+  if_executable(efm, function()
+    lsp.efm.setup(lc_opts.with_default_opts({
+      cmd = {efm; '-c'; string.format('%s/langservers/efm-langserver.yaml', config_dir)};
+      filetypes = {'dune'; 'lua'; 'python'; 'sh'};
+      root_pattern = lc_opts.project_root_pattern;
+    }))
+  end)
 end

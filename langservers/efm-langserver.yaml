@@ -27,6 +27,11 @@ tools:
       - '%f:%l:%c: %tarning: %m'
       - '%f:%l:%c: %tote: %m'
 
+  luacheck: &luacheck
+    lint-command: 'luacheck --globals vim - --filename ${INPUT} --formatter plain'
+    lint-formats:
+      - '%f:%l:%c: %m'
+
 languages:
 
   python:
@@ -39,3 +44,6 @@ languages:
 
   sh:
     - <<: *shellcheck
+
+  lua:
+    - <<: *luacheck
