@@ -83,7 +83,9 @@ local set_opts = function(bufnr, opts)
     end
 
     if k == 'trim_trailing_whitespace' then
-      handle_whitespaces(v)
+      vim.schedule(function()
+        handle_whitespaces(v)
+      end)
     end
   end
 
