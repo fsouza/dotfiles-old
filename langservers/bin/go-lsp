@@ -4,6 +4,5 @@ set -e
 
 ROOT=$(cd "$(dirname "${0}")/.." && pwd -P)
 export PATH="${ROOT}/bin:${PATH}"
-hash -r
 
 exec "${ROOT}/bin/gopls"
