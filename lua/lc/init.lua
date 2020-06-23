@@ -9,7 +9,6 @@ local get_local_cmd = function(cmd)
 end
 
 local python_interpreter_props = function(virtual_env)
-  local int_path = virtual_env .. 'bin/python'
   local props = {InterpreterPath = virtual_env .. 'bin/python'; UseDefaultDatabase = true}
   local cb = function(r)
     if r.exit_status ~= 0 then
@@ -103,11 +102,10 @@ do
     lsp.rust_analyzer.setup(lc_opts.with_default_opts({cmd = {ra}}))
   end)
 
-  local efm = get_local_cmd('efm-langserver')
-  if_executable(efm, function()
+  if_executable(get_local_cmd('efm-langserver'), function()
     lsp.efm.setup(lc_opts.with_default_opts({
-      cmd = {efm; '-c'; string.format('%s/langservers/efm-langserver.yaml', config_dir)};
-      filetypes = {'dune'; 'lua'; 'python'; 'sh'};
+      cmd = {get_local_cmd('efm-lsp')};
+      filetypes = {'dune'; 'lua'; 'python'; 'sh'; 'typescript'; 'javascript'};
       root_pattern = lc_opts.project_root_pattern;
     }))
   end)
