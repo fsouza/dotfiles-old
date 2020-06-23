@@ -86,7 +86,7 @@ end
 
 do
   local schedule = vim.schedule
-  setup_editorconfig()
+  schedule(setup_editorconfig)
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
   schedule(setup_deoplete)
