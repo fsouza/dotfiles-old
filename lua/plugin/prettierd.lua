@@ -123,4 +123,25 @@ function M.format(cb, is_retry)
   end)
 end
 
+function M.auto_format()
+  if vim.b.prettier_autoformat == false or vim.g.prettier_autoformat == false then
+    return
+  end
+
+  local timeout_ms = vim.b.autoformat_timeout_ms or 200
+  local finished = false
+  pcall(function()
+    M.format(function()
+      finished = true
+    end)
+  end)
+  vim.wait(timeout_ms, function()
+    return finished == true
+  end, 25)
+end
+
+function M.enable_auto_format()
+  api.nvim_command([[autocmd BufWritePre <buffer> lua require('plugin/prettierd').auto_format()]])
+end
+
 return M

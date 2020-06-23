@@ -84,6 +84,12 @@ local setup_editorconfig = function()
   end)
 end
 
+local setup_prettierd = function()
+  vim.schedule(function()
+    nvim_command([[command! PrettierFormat lua require('plugin/prettierd').format()]])
+  end)
+end
+
 do
   local schedule = vim.schedule
   schedule(setup_editorconfig)
@@ -96,6 +102,7 @@ do
   schedule(setup_format_comands)
   schedule(setup_word_replace)
   schedule(setup_spell)
+  schedule(setup_prettierd)
   schedule(function()
     require('lc/init')
   end)
