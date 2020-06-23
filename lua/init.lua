@@ -72,11 +72,9 @@ local global_options = function()
 end
 
 local rnu = function()
-  if not vim.bo.readonly then
-    vim.wo.relativenumber = true
-  end
+  vim.wo.relativenumber = vim.bo.modifiable
   vim.schedule(function()
-    nvim_command([[autocmd BufEnter * if !&readonly|setlocal relativenumber|endif]])
+    nvim_command([[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
   end)
 end
 
