@@ -22,7 +22,7 @@ local attached = function(bufnr, client)
           opts = {silent = true};
         }; {
           lhs = '<localleader>cl';
-          rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics()');
+          rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics(0)');
           opts = {silent = true};
         };
       };
