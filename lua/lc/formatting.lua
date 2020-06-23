@@ -5,21 +5,28 @@ local api = vim.api
 local lsp = vim.lsp
 local fmt_clients = {}
 
--- Because we're using efm, we need to block some filetypes manually.
-local skip_set = {lua = true; sh = true}
-
-local should_skip = function(ft)
+local should_skip_ft = function(ft)
+  local skip_set = {lua = true; sh = true}
   return skip_set[ft] ~= nil
 end
 
+local should_skip_server = function(server_name)
+  local skip_set = {tsserver = true}
+  return skip_set[server_name] ~= nil
+end
+
 function M.register_client(client, bufnr)
+  if should_skip_server(client.name) then
+    return
+  end
+
   for _, filetype in pairs(client.config.filetypes) do
-    if not should_skip(filetype) then
+    if not should_skip_ft(filetype) then
       fmt_clients[filetype] = client
     end
   end
 
-  if not should_skip(api.nvim_buf_get_option(bufnr, 'filetype')) then
+  if not should_skip_ft(api.nvim_buf_get_option(bufnr, 'filetype')) then
     api.nvim_command([[autocmd BufWritePre <buffer> lua require('lc/formatting').auto_fmt()]])
     api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
                             helpers.cmd_map('lua require("lc/formatting").fmt()'), {silent = true})
