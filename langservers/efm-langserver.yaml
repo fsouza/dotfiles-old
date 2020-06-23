@@ -28,7 +28,8 @@ tools:
       - '%f:%l:%c: %tote: %m'
 
   luacheck: &luacheck
-    lint-command: 'luacheck --globals vim - --filename ${INPUT} --formatter plain'
+    lint-command: 'luacheck --globals vim --filename ${INPUT} --formatter plain -'
+    lint-stdin: true
     lint-formats:
       - '%f:%l:%c: %m'
 
