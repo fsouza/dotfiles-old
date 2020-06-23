@@ -76,8 +76,17 @@ local setup_spell = function()
   end
 end
 
+local setup_editorconfig = function()
+  require('plugin/editor_config').enable()
+  vim.schedule(function()
+    nvim_command([[command! EnableEditorConfig lua require('plugin/editor_config').enable()]])
+    nvim_command([[command! DisableEditorConfig lua require('plugin/editor_config').disable()]])
+  end)
+end
+
 do
   local schedule = vim.schedule
+  setup_editorconfig()
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
   schedule(setup_deoplete)
