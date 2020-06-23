@@ -28,7 +28,7 @@ end
 
 local formatting_params = function(bufnr)
   local sts = api.nvim_buf_get_option(bufnr, 'softtabstop')
-  options = {
+  local options = {
     tabSize = (sts > 0 and sts) or (sts < 0 and api.nvim_buf_get_option(bufnr, 'shiftwidth')) or
       api.nvim_buf_get_option(bufnr, 'tabstop');
     insertSpaces = api.nvim_buf_get_option(bufnr, 'expandtab');
@@ -81,7 +81,9 @@ function M.auto_fmt()
   local timeout_ms = vim.b.LC_autoformat_timeout_ms or 500
 
   if g ~= false and b ~= false then
-    M.fmt_sync(timeout_ms)
+    pcall(function()
+      M.fmt_sync(timeout_ms)
+    end)
   end
 end
 
