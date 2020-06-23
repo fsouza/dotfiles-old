@@ -71,7 +71,7 @@ function M.run(cmd, opts, input_data, on_finished)
 
       on_finished({
         exit_status = code;
-        aborted = abort;
+        aborted = r.abort;
         signal = signal;
         stdout = stdout_handler.data;
         stderr = stderr_handler.data;
