@@ -33,10 +33,6 @@ tools:
     lint-formats:
       - '%f:%l:%c: %m'
 
-  prettierd: &prettierd
-    format-command: 'prettierd ${INPUT}'
-    format-stdin: true
-
 languages:
 
   python:
@@ -52,9 +48,3 @@ languages:
 
   lua:
     - <<: *luacheck
-
-  javascript:
-    - <<: *prettierd
-
-  typescript:
-    - <<: *prettierd

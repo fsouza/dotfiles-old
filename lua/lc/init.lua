@@ -102,10 +102,11 @@ do
     lsp.rust_analyzer.setup(lc_opts.with_default_opts({cmd = {ra}}))
   end)
 
-  if_executable(get_local_cmd('efm-langserver'), function()
+  local efm = get_local_cmd('efm-langserver')
+  if_executable(efm, function()
     lsp.efm.setup(lc_opts.with_default_opts({
-      cmd = {get_local_cmd('efm-lsp')};
-      filetypes = {'dune'; 'lua'; 'python'; 'sh'; 'typescript'; 'javascript'};
+      cmd = {efm; '-c'; string.format('%s/langservers/efm-langserver.yaml', config_dir)};
+      filetypes = {'dune'; 'lua'; 'python'; 'sh'};
       root_pattern = lc_opts.project_root_pattern;
     }))
   end)
