@@ -14,7 +14,7 @@ local pkgs = function()
     'nvim-lsp'; 'editorconfig-vim'; 'vim-dirvish'; 'fzf-quickfix'; 'tabular'; 'fzf.vim';
     'vim-sneak'; 'typescript-vim'; 'vim-indent-object'; 'float-preview.nvim'; 'vim-ocaml';
     'deoplete.nvim'; 'deoplete-lsp'; 'ultisnips'; 'vim-snippets'; 'vim-commentary'; 'vim-fugitive';
-    'vim-surround'; 'vim-python-pep8-indent';
+    'vim-surround'; 'vim-python-pep8-indent'; 'vim-repeat';
   }
 end
 
