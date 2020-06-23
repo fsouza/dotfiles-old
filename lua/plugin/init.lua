@@ -52,7 +52,6 @@ end
 
 local setup_format_comands = function()
   nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
-  nvim_command([[command! PrettierFormat lua require('plugin/format').prettier()]])
 end
 
 local setup_word_replace = function()

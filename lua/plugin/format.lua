@@ -41,19 +41,8 @@ local format_stdin = function(format_cmd, format_args, timeout_ms)
   end
 end
 
-function M.prettier(timeout_ms)
-  format_stdin('npx', {'prettier'; '--stdin-filepath'; vfn.expand('%p')}, timeout_ms)
-end
-
 function M.lua(timeout_ms)
   format_stdin('lua-format', {}, timeout_ms)
-end
-
-function M.auto(gate_var, fn)
-  if vim.b[gate_var] == false or (vim.b[gate_var] == nil and vim.g[gate_var] == false) then
-    return
-  end
-  fn(vim.b.autofmt_timeout_ms or vim.g.autofmt_timeout_ms or 2000)
 end
 
 return M
