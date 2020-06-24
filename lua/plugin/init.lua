@@ -98,16 +98,24 @@ end
 
 local setup_prettierd = function()
   local auto_fmt_fts = {'javascript'; 'typescript'; 'css'}
-  vim.schedule(function()
-    nvim_command([[command! PrettierFormat lua require('plugin/prettierd').format()]])
+  nvim_command([[command! PrettierFormat lua require('plugin/prettierd').format()]])
 
-    nvim_command([[augroup auto_prettierd]])
-    nvim_command([[autocmd!]])
-    nvim_command(string.format(
-                   [[autocmd FileType %s lua require('plugin/prettierd').enable_auto_format()]],
-                   table.concat(auto_fmt_fts, ',')))
-    nvim_command([[augroup END]])
-  end)
+  nvim_command([[augroup auto_prettierd]])
+  nvim_command([[autocmd!]])
+  nvim_command(string.format(
+                 [[autocmd FileType %s lua require('plugin/prettierd').enable_auto_format()]],
+                 table.concat(auto_fmt_fts, ',')))
+  nvim_command([[augroup END]])
+end
+
+local ftdetect = function()
+  local p_mapping = {['go.mod'] = 'gomod'}
+  nvim_command([[augroup ftdetect]])
+  nvim_command([[autocmd!]])
+  for pattern, ft in pairs(p_mapping) do
+    nvim_command(string.format([[autocmd BufEnter %s set ft = %s]], pattern, ft))
+  end
+  nvim_command([[augroup END]])
 end
 
 do
@@ -123,6 +131,7 @@ do
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(setup_prettierd)
+  schedule(ftdetect)
   schedule(function()
     require('lc/init')
   end)
