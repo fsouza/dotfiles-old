@@ -18,8 +18,8 @@ jobs:
     name: bootstrap
     runs-on: ${{ matrix.os }}-latest
     steps:
-      - name: install bash on mac
-        run: brew install bash
+      - name: install brew deps on mac
+        run: brew install bash shellcheck ninja
         if: matrix.os == 'macos'
 
       - name: install neovim nightly
@@ -31,12 +31,8 @@ jobs:
           fi
           curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-${suffix}.tar.gz | sudo tar -C /usr/local --strip 1 -xzf -
 
-      - name: install shellcheck on mac
-        run: brew install shellcheck
-        if: matrix.os == 'macos'
-
       - name: install shellcheck on linux
-        run: sudo apt-get update && sudo apt-get install -y shellcheck
+        run: sudo apt-get update && sudo apt-get install -y shellcheck ninja-build
         if: matrix.os == 'ubuntu'
 
       - uses: actions/checkout@v2.3.1
