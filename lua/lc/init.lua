@@ -110,4 +110,8 @@ do
       root_pattern = lc_opts.project_root_pattern;
     }))
   end)
+
+  if_executable('ninja', function()
+    lsp.sumneko_lua.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('lua-lsp')}}))
+  end)
 end
