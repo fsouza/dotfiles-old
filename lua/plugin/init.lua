@@ -76,14 +76,15 @@ end
 
 local setup_spell = function()
   local filetypes = {'gitcommit'; 'markdown'; 'text'}
-  nvim_command([[augroup auto_spell]])
-  nvim_command([[autocmd!]])
   for _, ft in pairs(filetypes) do
     if vim.bo.filetype == ft then
       vim.wo.spell = true
     end
-    nvim_command(string.format([[autocmd FileType %s setlocal spell]], ft))
   end
+
+  nvim_command([[augroup auto_spell]])
+  nvim_command([[autocmd!]])
+  nvim_command(string.format([[autocmd FileType %s setlocal spell]], table.concat(filetypes, ',')))
   nvim_command([[augroup END]])
 end
 
@@ -96,8 +97,16 @@ local setup_editorconfig = function()
 end
 
 local setup_prettierd = function()
+  local auto_fmt_fts = {'javascript'; 'typescript'; 'css'}
   vim.schedule(function()
     nvim_command([[command! PrettierFormat lua require('plugin/prettierd').format()]])
+
+    nvim_command([[augroup auto_prettierd]])
+    nvim_command([[autocmd!]])
+    nvim_command(string.format(
+                   [[autocmd FileType %s lua require('plugin/prettierd').enable_auto_format()]],
+                   table.concat(auto_fmt_fts, ',')))
+    nvim_command([[augroup END]])
   end)
 end
 
