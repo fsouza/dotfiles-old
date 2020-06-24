@@ -2,7 +2,7 @@ local M = {}
 
 local loop = vim.loop
 
-local input_collector = function(stream_handle)
+local input_collector = function()
   local result = {data = ''}
   function result.callback(err, chunk)
     if err then
