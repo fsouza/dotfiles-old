@@ -86,11 +86,8 @@ function M.fmt_sync(timeout_ms)
 end
 
 function M.auto_fmt()
-  local g = vim.g.LC_autoformat
-  local b = vim.b.LC_autoformat
-  local timeout_ms = vim.b.LC_autoformat_timeout_ms or 500
-
-  if g ~= false and b ~= false then
+  local enable, timeout_ms = require('lib/autofmt').config()
+  if enable then
     pcall(function()
       M.fmt_sync(timeout_ms)
     end)

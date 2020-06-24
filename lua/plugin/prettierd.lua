@@ -124,11 +124,11 @@ function M.format(cb, is_retry)
 end
 
 function M.auto_format()
-  if vim.b.prettier_autoformat == false or vim.g.prettier_autoformat == false then
+  local enable, timeout_ms = require('lib/autofmt').config()
+  if not enable then
     return
   end
 
-  local timeout_ms = vim.b.autoformat_timeout_ms or 200
   local finished = false
   pcall(function()
     M.format(function()
