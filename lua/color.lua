@@ -13,147 +13,81 @@ end
 
 local basics = function()
   highlight('CursorLine', {
-    cterm = 'NONE';
     ctermbg = '253';
-    ctermfg = 'NONE';
-    gui = 'NONE';
     guibg = '#dadada';
-    guifg = 'NONE';
   })
   highlight('CursorLineNr', {
     cterm = 'bold';
     ctermbg = '253';
-    ctermfg = 'NONE';
     gui = 'bold';
     guibg = '#dadada';
-    guifg = 'NONE';
   })
   highlight('Directory', {
-    cterm = 'NONE';
-    ctermbg = 'NONE';
     ctermfg = '59';
-    gui = 'NONE';
-    guibg = 'NONE';
     guifg = '#5f5f5f';
   })
   highlight('LineNr', {
-    cterm = 'NONE';
     ctermbg = '253';
-    ctermfg = 'NONE';
-    gui = 'NONE';
     guibg = '#dadada';
-    guifg = 'NONE';
   })
   highlight('MatchParen', {
-    cterm = 'NONE';
     ctermbg = '145';
-    ctermfg = 'NONE';
-    gui = 'NONE';
     guibg = '#afafaf';
-    guifg = 'NONE';
   })
   highlight('Normal', {
-    cterm = 'NONE';
-    ctermbg = 'NONE';
     ctermfg = '235';
-    gui = 'NONE';
-    guibg = 'NONE';
     guifg = '#262626';
   })
   highlight('Floating', {
-    cterm = 'NONE';
-    ctermbg = 'NONE';
     ctermfg = '235';
-    gui = 'NONE';
-    guibg = '#f0f0f0';
+    guibg = '#fcfcfc';
     guifg = '#262626';
   })
   highlight('Pmenu', {
-    cterm = 'NONE';
     ctermbg = '145';
-    ctermfg = 'NONE';
-    gui = 'NONE';
     guibg = '#afafaf';
-    guifg = 'NONE';
   })
   highlight('SignColumn', {
-    cterm = 'NONE';
     ctermbg = '253';
     ctermfg = '232';
-    gui = 'NONE';
     guibg = '#dadada';
     guifg = '#080808';
   })
   highlight('SpecialKey', {
-    cterm = 'NONE';
-    ctermbg = 'NONE';
     ctermfg = '59';
-    gui = 'NONE';
-    guibg = 'NONE';
     guifg = '#5f5f5f';
   })
   highlight('SpellBad', {
-    cterm = 'NONE';
-    ctermbg = 'NONE';
     ctermfg = '196';
-    gui = 'NONE';
-    guibg = 'NONE';
     guifg = '#ff0000';
   })
   highlight('TabLine', {
-    cterm = 'NONE';
     ctermbg = '145';
     ctermfg = '59';
-    gui = 'NONE';
     guibg = '#afafaf';
     guifg = '#5f5f5f';
   })
   highlight('TabLineFill', {
-    cterm = 'NONE';
     ctermbg = '145';
-    ctermfg = 'NONE';
-    gui = 'NONE';
     guibg = '#afafaf';
-    guifg = 'NONE';
   })
   highlight('TabLineSel', {
-    cterm = 'NONE';
-    ctermbg = 'NONE';
     ctermfg = '59';
-    gui = 'NONE';
-    guibg = 'NONE';
     guifg = '#5f5f5f';
   })
   highlight('Title', {
-    cterm = 'NONE';
-    ctermbg = 'NONE';
-    ctermfg = 'NONE';
-    gui = 'NONE';
-    guibg = 'NONE';
-    guifg = 'NONE';
   })
   highlight('ModeMsg', {
-    cterm = 'NONE';
-    ctermbg = 'NONE';
-    ctermfg = 'NONE';
-    gui = 'NONE';
-    guibg = 'NONE';
-    guifg = 'NONE';
   })
   highlight('ErrorMsg', {
-    cterm = 'NONE';
     ctermbg = '160';
     ctermfg = '231';
-    gui = 'NONE';
     guibg = '#d70000';
     guifg = '#ffffff';
   })
   highlight('WarningMsg', {
     cterm = 'None';
-    ctermbg = 'NONE';
     ctermfg = '52';
-    gui = 'None';
-    guibg = 'NONE';
     guifg = '#5f0000';
   })
 end
