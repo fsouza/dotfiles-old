@@ -93,7 +93,7 @@ function install_gopls {
 }
 
 function install_lua_lsp {
-	if ! command ninja &>/dev/null; then
+	if ! command -v ninja &>/dev/null; then
 		echo skipping lua-lsp
 		return
 	fi
