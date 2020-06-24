@@ -20,13 +20,6 @@ tools:
     format-command: 'dune format-dune-file'
     format-stdin: true
 
-  shellcheck: &shellcheck
-    lint-command: 'shellcheck -f gcc -x'
-    lint-formats:
-      - '%f:%l:%c: %trror: %m'
-      - '%f:%l:%c: %tarning: %m'
-      - '%f:%l:%c: %tote: %m'
-
 languages:
 
   python:
@@ -36,6 +29,3 @@ languages:
 
   dune:
     - <<: *dune-fmt
-
-  sh:
-    - <<: *shellcheck
