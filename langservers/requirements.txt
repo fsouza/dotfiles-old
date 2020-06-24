@@ -10,7 +10,7 @@ black==19.10b0            # via -r requirements.in
 click==7.1.2              # via black
 isort==4.3.21             # via -r requirements.in
 mypy-extensions==0.4.3    # via mypy
-mypy==0.781               # via -r requirements.in
+mypy==0.782               # via -r requirements.in
 pathspec==0.8.0           # via black
 regex==2020.5.13          # via black
 toml==0.10.0              # via black
