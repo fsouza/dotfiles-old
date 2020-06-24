@@ -74,7 +74,8 @@ end
 local rnu = function()
   vim.wo.relativenumber = vim.bo.modifiable
   vim.schedule(function()
-    nvim_command([[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
+    nvim_command(
+      [[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
   end)
 end
 
