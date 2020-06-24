@@ -22,7 +22,7 @@ font:
 
 colors:
   primary:
-    background: "#f0f0f0"
+    background: "#fcfcfc"
     foreground: "#000000"
 
   normal:
