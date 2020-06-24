@@ -21,9 +21,12 @@ end
 local syntax_and_filetype = function()
   helpers.exec_cmds({'syntax enable'; 'filetype plugin indent on'})
   vim.schedule(function()
-    helpers.exec_cmds({
-      [[match BadWhitespace /\s\+$/]]; [[autocmd BufEnter * match BadWhitespace /\s\+$/]];
-    })
+    nvim_command([[match BadWhitespace /\s\+$/]])
+
+    nvim_command([[augroup badwhitespace_match]])
+    nvim_command([[autocmd!]])
+    nvim_command([[autocmd BufEnter * match BadWhitespace /\s\+$/]])
+    nvim_command([[augroup END]])
   end)
 end
 

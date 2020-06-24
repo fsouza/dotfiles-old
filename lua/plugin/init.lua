@@ -38,12 +38,18 @@ end
 
 local setup_float_preview = function()
   vim.g['float_preview#auto_close'] = false
+  nvim_command([[augroup float_preview_autoclose]])
+  nvim_command([[autocmd!]])
   nvim_command([[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
+  nvim_command([[augroup END]])
 end
 
 local setup_hlyank = function()
+  nvim_command([[augroup yank_highlight]])
+  nvim_command([[autocmd!]])
   nvim_command(
     [[autocmd TextYankPost * silent! lua require('vim.highlight').on_yank('HlYank', 300)]])
+  nvim_command([[augroup END]])
 end
 
 local setup_global_ns = function()
@@ -68,12 +74,15 @@ end
 
 local setup_spell = function()
   local filetypes = {'gitcommit'; 'markdown'; 'text'}
+  nvim_command([[augroup auto_spell]])
+  nvim_command([[autocmd!]])
   for _, ft in pairs(filetypes) do
     if vim.bo.filetype == ft then
       vim.wo.spell = true
     end
     nvim_command(string.format([[autocmd FileType %s setlocal spell]], ft))
   end
+  nvim_command([[augroup END]])
 end
 
 local setup_editorconfig = function()
