@@ -1,6 +1,2 @@
-.netrwhist
-.init.vim-rplugin~
-*.old
-view
 plugin/local-*.vim
 langservers/node_modules

@@ -2,6 +2,7 @@ local api = vim.api
 local nvim_command = api.nvim_command
 local nvim_set_keymap = api.nvim_set_keymap
 local loop = vim.loop
+local vfn = vim.fn
 
 local helpers = require('lib/nvim_helpers')
 
@@ -35,6 +36,7 @@ local py3_host_prog = function()
 end
 
 local global_vars = function()
+  vim.g.netrw_home = vfn.stdpath('data')
   vim.g.netrw_banner = 0
   vim.g.netrw_liststyle = 3
   vim.g.fzf_command_prefix = 'Fzf'
