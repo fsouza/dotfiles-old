@@ -30,7 +30,7 @@ function M.register_client(client, bufnr)
     api.nvim_command([[augroup lc_autofmt]])
     api.nvim_command([[autocmd!]])
     api.nvim_command([[autocmd BufWritePre <buffer> lua require('lc/formatting').auto_fmt()]])
-    api.nvim_command([[autocmd END]])
+    api.nvim_command([[augroup END]])
     api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
                             helpers.cmd_map('lua require("lc/formatting").fmt()'), {silent = true})
   end
