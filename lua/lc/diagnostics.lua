@@ -26,7 +26,7 @@ function M.list_file_diagnostics()
   local fname = vim.fn.expand('%')
   local bufnr = api.nvim_get_current_buf()
   local diagnostics = lsp.util.diagnostics_by_buf[bufnr]
-  if not diagnostics or vim.tbl_isempty(diagnostics) then
+  if not diagnostics then
     return
   end
 
@@ -41,9 +41,13 @@ function M.list_file_diagnostics()
     })
   end
   lsp.util.set_qflist(items)
-  api.nvim_command('copen')
-  api.nvim_command('wincmd p')
-  api.nvim_command('cc')
+  if vim.tbl_isempty(items) then
+    api.nvim_command('cclose')
+  else
+    api.nvim_command('copen')
+    api.nvim_command('wincmd p')
+    api.nvim_command('cc')
+  end
 end
 
 return M
