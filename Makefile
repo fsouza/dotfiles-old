@@ -1,16 +1,9 @@
 mkfile_path := $(realpath $(lastword $(MAKEFILE_LIST)))
 mkfile_dir := $(dir $(mkfile_path))
 
-.PHONY: pip
-pip:
-	pip install --upgrade pip pynvim pip-tools
-
-.PHONY: setup-langservers
-setup-langservers:
-	cd $(mkfile_dir) && ./langservers/setup.sh
-
 .PHONY: bootstrap
-bootstrap: pip setup-langservers
+bootstrap:
+	env MACOSX_DEPLOYMENT_TARGET=10.15 nvim --headless -E -u NORC -R +'set rtp+=$(mkfile_dir)' +'luafile scripts/bootstrap.lua' +q
 
 .PHONY: shellcheck
 shellcheck:
