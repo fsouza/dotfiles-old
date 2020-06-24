@@ -4,9 +4,6 @@
 [submodule "langservers/python-language-server"]
 	path = langservers/python-language-server
 	url = https://github.com/microsoft/python-language-server.git
-[submodule "fzf-quickfix"]
-	path = pack/b/opt/fzf-quickfix
-	url = https://github.com/fszymanski/fzf-quickfix.git
 [submodule "vim-dirvish"]
 	path = pack/b/opt/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish.git
