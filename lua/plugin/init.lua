@@ -99,13 +99,18 @@ end
 local setup_prettierd = function()
   local auto_fmt_fts = {'javascript'; 'typescript'; 'css'}
   nvim_command([[command! PrettierFormat lua require('plugin/prettierd').format()]])
-
   nvim_command([[augroup auto_prettierd]])
   nvim_command([[autocmd!]])
   nvim_command(string.format(
                  [[autocmd FileType %s lua require('plugin/prettierd').enable_auto_format()]],
                  table.concat(auto_fmt_fts, ',')))
   nvim_command([[augroup END]])
+
+  for _, ft in pairs(auto_fmt_fts) do
+    if vim.b.filetype == ft then
+      require('plugin/prettierd').enable_auto_fmt()
+    end
+  end
 end
 
 local ftdetect = function()
