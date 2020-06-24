@@ -8,13 +8,13 @@ insert_final_line = true
 trim_trailing_whitespace = true
 
 [*.{d,elm,fs,proto,ps1,py,rs,rst,ts}]
-indent_style = space
+indent_style = spaces
 indent_size = 4
 
 [*.{atd,chpl,erb,f90,jsonnet,lua,ml,mli,mll,mly,pony,rb,re,rei,rkt,scala,sls,sml,tf,tfstate,toml,yaml,yml}]
-indent_style = space
+indent_style = spaces
 indent_size = 2
 
 [dune]
-indent_style = space
+indent_style = spaces
 indent_size = 1

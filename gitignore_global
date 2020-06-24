@@ -14,3 +14,4 @@ __pycache__
 .pyre_configuration
 .eslintcache
 *.egg-info
+.luacheckcache
