@@ -16,9 +16,6 @@
 [submodule "tabular"]
 	path = pack/b/opt/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule "fzf.vim"]
-	path = pack/b/opt/fzf.vim
-	url = https://github.com/junegunn/fzf.vim
 [submodule "vim-sneak"]
 	path = pack/b/opt/vim-sneak
 	url = https://github.com/justinmk/vim-sneak.git
