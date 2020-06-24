@@ -92,6 +92,29 @@ function install_gopls {
 	)
 }
 
+function install_lua_lsp {
+	if ! command ninja &>/dev/null; then
+		echo skipping lua-lsp
+		return
+	fi
+
+	if [[ $OSTYPE == darwin* ]]; then
+		ninja_file=ninja/macos.ninja
+	elif [[ $OSTYPE == linux* ]]; then
+		ninja_file=ninja/linux.ninja
+	else
+		echo "install_lua_lsp: unuspported OSTYPE=${OSTYPE}"
+		return
+	fi
+
+	pushd "${ROOT}/lua-language-server" &&
+		cd 3rd/luamake &&
+		ninja -f "${ninja_file}" &&
+		cd ../.. &&
+		./3rd/luamake/luamake rebuild &&
+		popd
+}
+
 pushd "$ROOT"
 init
 install_servers_from_npm &
@@ -101,5 +124,6 @@ install_rust_analyzer &
 install_ms_python_ls &
 install_efm_ls &
 install_gopls &
+install_lua_lsp &
 wait
 popd
