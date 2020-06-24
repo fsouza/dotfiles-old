@@ -113,7 +113,7 @@ local ftdetect = function()
   nvim_command([[augroup ftdetect]])
   nvim_command([[autocmd!]])
   for pattern, ft in pairs(p_mapping) do
-    nvim_command(string.format([[autocmd BufEnter %s set ft = %s]], pattern, ft))
+    nvim_command(string.format([[autocmd BufEnter %s set ft=%s]], pattern, ft))
   end
   nvim_command([[augroup END]])
 end
