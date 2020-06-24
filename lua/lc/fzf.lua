@@ -16,7 +16,7 @@ local format_items = function(items)
 end
 
 function M.send(items)
-  vfn['fzf_preview#runner#fzf_run']({ source = format_items(items) })
+  vfn['fzf_preview#runner#fzf_run']({source = format_items(items)})
 end
 
 return M
