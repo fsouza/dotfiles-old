@@ -11,10 +11,10 @@ end
 
 local pkgs = function()
   return {
-    'nvim-lsp'; 'vim-dirvish'; 'fzf-quickfix'; 'tabular'; 'fzf.vim'; 'vim-sneak'; 'typescript-vim';
+    'nvim-lsp'; 'vim-dirvish'; 'fzf-quickfix'; 'tabular'; 'vim-sneak'; 'typescript-vim';
     'vim-indent-object'; 'float-preview.nvim'; 'vim-ocaml'; 'deoplete.nvim'; 'deoplete-lsp';
     'ultisnips'; 'vim-snippets'; 'vim-commentary'; 'vim-fugitive'; 'vim-surround';
-    'vim-python-pep8-indent'; 'vim-repeat';
+    'vim-python-pep8-indent'; 'vim-repeat'; 'fzf-preview.vim';
   }
 end
 

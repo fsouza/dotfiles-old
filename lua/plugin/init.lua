@@ -5,11 +5,13 @@ local helpers = require('lib/nvim_helpers')
 local setup_fzf_mappings = function()
   helpers.create_mappings({
     n = {
-      {lhs = '<leader>zz'; rhs = helpers.cmd_map('FzfFiles'); opts = {silent = true}};
+      {lhs = '<leader>zz'; rhs = helpers.cmd_map('FzfPreviewProjectFiles'); opts = {silent = true}};
       {lhs = '<leader>;'; rhs = helpers.cmd_map('FzfCommands'); opts = {silent = true}};
-      {lhs = '<leader>zb'; rhs = helpers.cmd_map('FzfBuffers'); opts = {silent = true}};
-      {lhs = '<leader>zl'; rhs = helpers.cmd_map('FzfLines'); opts = {silent = true}};
-      {lhs = '<leader>zq'; rhs = helpers.cmd_map('FzfQuickfix'); opts = {silent = true}}; {
+      {lhs = '<leader>zb'; rhs = helpers.cmd_map('FzfPreviewBuffers'); opts = {silent = true}};
+      {lhs = '<leader>zl'; rhs = helpers.cmd_map('FzfPreviewLines'); opts = {silent = true}};
+      {lhs = '<leader>zq'; rhs = helpers.cmd_map('FzfPreviewQuickfix'); opts = {silent = true}};
+      {lhs = '<leader>gs'; rhs = helpers.cmd_map('FzfPreviewGitStatus'); opts = {silent = true}};
+      {
         lhs = '<leader>gg';
         rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg()');
         opts = {silent = true};

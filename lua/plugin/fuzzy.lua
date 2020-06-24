@@ -5,10 +5,8 @@ local vfn = vim.fn
 function M.rg(input)
   input = input or vfn.input([[rg\ ]])
   if input ~= '' then
-    local cmd =
-      [[rg --column --line-number --hidden --no-heading --color=always --smart-case --glob '!.git' --glob '!.hg' -- ]] ..
-        vfn.shellescape(input)
-    vfn['fzf#vim#grep'](cmd, true)
+    local arg = vfn['fzf_preview#initializer#initialize']('s:project_grep', vim.empty_dict(), input)
+    vfn['fzf_preview#runner#fzf_run'](arg)
   end
 end
 
