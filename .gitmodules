@@ -64,3 +64,6 @@
 [submodule "langservers/lua-language-server"]
 	path = langservers/lua-language-server
 	url = https://github.com/sumneko/lua-language-server
+[submodule "fzf-preview"]
+	path = pack/b/opt/fzf-preview.vim
+	url = https://github.com/yuki-ycino/fzf-preview.vim.git
