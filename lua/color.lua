@@ -60,6 +60,14 @@ local basics = function()
     guibg = 'NONE';
     guifg = '#262626';
   })
+  highlight('Floating', {
+    cterm = 'NONE';
+    ctermbg = 'NONE';
+    ctermfg = '235';
+    gui = 'NONE';
+    guibg = '#f0f0f0';
+    guifg = '#262626';
+  })
   highlight('Pmenu', {
     cterm = 'NONE';
     ctermbg = '145';
