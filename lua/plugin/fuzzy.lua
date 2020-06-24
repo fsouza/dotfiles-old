@@ -1,13 +1,12 @@
 local M = {}
 
 local vfn = vim.fn
+local nvim_command = vim.api.nvim_command
 
 function M.rg(input)
   input = input or vfn.input([[rg\ ]])
   if input ~= '' then
-    local arg =
-      vfn['fzf_preview#initializer#initialize']('s:project_grep', vim.empty_dict(), input)
-    vfn['fzf_preview#runner#fzf_run'](arg)
+    nvim_command([[FzfPreviewProjectGrep ]] .. input)
   end
 end
 
