@@ -80,6 +80,8 @@ local rnu = function()
     nvim_command([[autocmd!]])
     nvim_command(
       [[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
+    nvim_command(
+      [[autocmd WinNew * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
     nvim_command([[augroup END]])
   end)
 end
