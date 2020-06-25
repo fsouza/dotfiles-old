@@ -1,5 +1,4 @@
 local nvim_command = vim.api.nvim_command
-local vfn = vim.fn
 local helpers = require('lib/nvim_helpers')
 
 local setup_fzf_mappings = function()
@@ -21,14 +20,6 @@ local setup_fzf_mappings = function()
         opts = {silent = true};
       };
     };
-  })
-end
-
-local setup_deoplete = function()
-  vfn['deoplete#custom#option']({auto_complete = false; auto_refresh_delay = 0})
-  vfn['deoplete#custom#source']('_', 'matchers', {'matcher_full_fuzzy'})
-  helpers.create_mappings({
-    i = {{lhs = '<c-x><c-o>'; rhs = 'v:lua.f.complete()'; opts = {expr = true; silent = true}}};
   })
 end
 
@@ -128,7 +119,6 @@ do
   schedule(setup_editorconfig)
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
-  schedule(setup_deoplete)
   schedule(setup_ultisnips)
   schedule(setup_float_preview)
   schedule(setup_hlyank)
