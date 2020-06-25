@@ -88,12 +88,12 @@ local rnu = function()
 end
 
 local folding = function()
-  vim.o.foldlevelstart = 0
-  vim.wo.foldmethod = 'indent'
+  vim.o.foldlevelstart = 99
+  vim.wo.foldmethod = 'syntax'
   vim.schedule(function()
     nvim_command([[augroup folding_config]])
     nvim_command([[autocmd!]])
-    nvim_command([[autocmd BufEnter * setlocal foldmethod=indent]])
+    nvim_command([[autocmd BufEnter * setlocal foldmethod=syntax]])
     nvim_command([[autocmd BufWinLeave * mkview]])
     nvim_command([[autocmd BufWinEnter * silent! loadview]])
     nvim_command([[augroup END]])
