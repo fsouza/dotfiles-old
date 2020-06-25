@@ -15,8 +15,8 @@ local format_items = function(items)
   return lines
 end
 
-function M.send(items)
-  vfn['local#Lsp_fzf'](format_items(items))
+function M.send(items, prompt)
+  vfn['local#Lsp_fzf'](format_items(items), prompt)
 end
 
 return M
