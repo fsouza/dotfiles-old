@@ -50,12 +50,12 @@ local ui_options = function()
   vim.o.rulerformat = [[%-14.(%l,%c   %o%)]]
   vim.o.guicursor = ''
   vim.o.mouse = ''
-  vim.o.shortmess = 'filnxtToOFI'
+  vim.o.shortmess = 'filnxtToOFIc'
   require('color').setup()
 end
 
 local global_options = function()
-  vim.o.completeopt = 'menu,longest,noselect'
+  vim.o.completeopt = 'menuone,noinsert,noselect'
   vim.o.hidden = true
   vim.o.backspace = 'indent,eol,start'
   vim.o.hlsearch = false
