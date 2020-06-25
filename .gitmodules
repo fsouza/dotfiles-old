@@ -61,3 +61,6 @@
 [submodule "fzf-preview"]
 	path = pack/b/opt/fzf-preview.vim
 	url = https://github.com/yuki-ycino/fzf-preview.vim.git
+[submodule "completion-nvim"]
+	path = pack/b/opt/completion-nvim
+	url = https://github.com/haorenW1025/completion-nvim.git
