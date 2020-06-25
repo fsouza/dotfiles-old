@@ -34,10 +34,9 @@ function update_neovim {
 
 function bump_vimfiles {
 	(
-		 v vim &&
-			 cd $HOME/.config/nvim &&
+		 cd $HOME/.config/nvim &&
 			 git pull &&
-			 make bootstrap
+			 env NVIM_DEBUG=1 make bootstrap
 	)
 }
 
