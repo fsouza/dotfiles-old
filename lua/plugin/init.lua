@@ -29,14 +29,6 @@ local setup_ultisnips = function()
   vim.g.UltiSnipsJumpBackwardTrigger = '<c-k>'
 end
 
-local setup_float_preview = function()
-  vim.g['float_preview#auto_close'] = false
-  nvim_command([[augroup float_preview_autoclose]])
-  nvim_command([[autocmd!]])
-  nvim_command([[autocmd InsertLeave * if pumvisible() == 0|call float_preview#close()|endif]])
-  nvim_command([[augroup END]])
-end
-
 local setup_hlyank = function()
   nvim_command([[augroup yank_highlight]])
   nvim_command([[autocmd!]])
@@ -120,7 +112,6 @@ do
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
   schedule(setup_ultisnips)
-  schedule(setup_float_preview)
   schedule(setup_hlyank)
   schedule(setup_format_comands)
   schedule(setup_word_replace)
