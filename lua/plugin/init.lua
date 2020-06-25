@@ -24,11 +24,9 @@ local setup_fzf_mappings = function()
 end
 
 local setup_completion = function()
-  vim.g.completion_enable_auto_popup = 1
   vim.g.completion_trigger_on_delete = 1
   vim.g.completion_confirm_key = [[\<C-y>]]
   vim.g.completion_enable_snippet = 'UltiSnips'
-  vim.g.completion_trigger_charater = {'.'; '::'}
   vim.g.completion_matching_strategy_list = {'exact'; 'fuzzy'}
   helpers.create_mappings({
     i = {
