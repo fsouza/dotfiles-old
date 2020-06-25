@@ -30,12 +30,6 @@ local setup_completion = function()
   vim.g.completion_enable_snippet = 'UltiSnips'
   vim.g.completion_trigger_charater = {'.'; '::'}
   vim.g.completion_matching_strategy_list = {'exact'; 'fuzzy'}
-  vim.g.completion_chain_complete_list = {
-    default = {
-      {complete_items = {'lsp'}}; {complete_items = {'snippet'}}; {mode = [[<c-p>]]};
-      {mode = [[<c-n>]]};
-    };
-  }
   helpers.create_mappings({
     i = {
       {
