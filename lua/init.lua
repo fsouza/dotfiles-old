@@ -39,7 +39,6 @@ local global_vars = function()
   vim.g.netrw_home = vfn.stdpath('data')
   vim.g.netrw_banner = 0
   vim.g.netrw_liststyle = 3
-  vim.g.fzf_command_prefix = 'Fzf'
 end
 
 local ui_options = function()
