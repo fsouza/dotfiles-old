@@ -25,8 +25,6 @@ local set_folding = function()
   nvim_command([[autocmd!]])
   nvim_command(string.format([[autocmd FileType %s setlocal foldmethod=expr foldexpr=%s]],
                              table.concat(file_types, ','), foldexpr))
-  nvim_command([[autocmd BufWinLeave * mkview]])
-  nvim_command([[autocmd BufWinEnter * silent! loadview]])
   nvim_command([[augroup END]])
 end
 
@@ -46,4 +44,6 @@ do
     ensure_installed = wanted_parsers;
   })
   set_folding()
+  configs.commands.TSEnableAll.run('highlight')
+  configs.commands.TSEnableAll.run('incremental_selection')
 end
