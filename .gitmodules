@@ -28,12 +28,6 @@
 [submodule "vim-ocaml"]
 	path = pack/b/opt/vim-ocaml
 	url = https://github.com/ocaml/vim-ocaml.git
-[submodule "deoplete.nvim"]
-	path = pack/b/opt/deoplete.nvim
-	url = https://github.com/Shougo/deoplete.nvim
-[submodule "deoplete-lsp"]
-	path = pack/b/opt/deoplete-lsp
-	url = https://github.com/Shougo/deoplete-lsp
 [submodule "ultisnips"]
 	path = pack/b/opt/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
