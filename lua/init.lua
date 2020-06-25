@@ -24,6 +24,16 @@ local py3_host_prog = function()
   vim.g.python3_host_skip_check = true
 end
 
+local hererocks = function()
+  local lua_version = string.gsub(_VERSION, 'Lua ', '')
+  local hererocks_path = vfn.stdpath('data') .. '/hr'
+  local share_path = hererocks_path .. '/share/lua/' .. lua_version
+  local lib_path = hererocks_path .. '/lib/lua/' .. lua_version
+  package.path = package.path .. ';' .. share_path .. '/?.lua' .. ';' .. share_path ..
+                   '/?/init.lua'
+  package.cpath = package.cpath .. ';' .. lib_path .. '?.so'
+end
+
 local global_vars = function()
   vim.g.netrw_home = vfn.stdpath('data')
   vim.g.netrw_banner = 0
@@ -105,6 +115,7 @@ do
   local schedule = vim.schedule
   initial_mappings()
 
+  schedule(hererocks)
   schedule(function()
     global_options()
     global_mappings()
