@@ -1,7 +1,7 @@
 local M = {}
 
 local nvim_command = vim.api.nvim_command
-local helpers = require('lib/nvim_helpers')
+local helpers = require('lib.nvim_helpers')
 
 local add_fzf_to_runtimepath = function()
   local brew_prefix = vim.loop.os_getenv('HOMEBREW_PREFIX') or '/usr/local'

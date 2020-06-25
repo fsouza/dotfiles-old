@@ -1,6 +1,6 @@
 local M = {}
 
-local helpers = require('lib/nvim_helpers')
+local helpers = require('lib.nvim_helpers')
 local api = vim.api
 local lsp = vim.lsp
 local fmt_clients = {}
@@ -29,10 +29,10 @@ function M.register_client(client, bufnr)
   if not should_skip_ft(api.nvim_buf_get_option(bufnr, 'filetype')) then
     api.nvim_command([[augroup lc_autofmt]])
     api.nvim_command([[autocmd!]])
-    api.nvim_command([[autocmd BufWritePre <buffer> lua require('lc/formatting').auto_fmt()]])
+    api.nvim_command([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
     api.nvim_command([[augroup END]])
     api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
-                            helpers.cmd_map('lua require("lc/formatting").fmt()'), {silent = true})
+                            helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})
   end
 end
 
@@ -86,7 +86,7 @@ function M.fmt_sync(timeout_ms)
 end
 
 function M.auto_fmt()
-  local enable, timeout_ms = require('lib/autofmt').config()
+  local enable, timeout_ms = require('lib.autofmt').config()
   if enable then
     pcall(function()
       M.fmt_sync(timeout_ms)

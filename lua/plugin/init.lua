@@ -1,5 +1,5 @@
 local nvim_command = vim.api.nvim_command
-local helpers = require('lib/nvim_helpers')
+local helpers = require('lib.nvim_helpers')
 
 local setup_fzf_mappings = function()
   helpers.create_mappings({
@@ -12,11 +12,11 @@ local setup_fzf_mappings = function()
       {lhs = '<leader>gs'; rhs = helpers.cmd_map('FzfPreviewGitStatus'); opts = {silent = true}};
       {
         lhs = '<leader>gg';
-        rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg()');
+        rhs = helpers.cmd_map('lua require("plugin.fuzzy").rg()');
         opts = {silent = true};
       }; {
         lhs = '<leader>gw';
-        rhs = helpers.cmd_map('lua require("plugin/fuzzy").rg_cword()');
+        rhs = helpers.cmd_map('lua require("plugin.fuzzy").rg_cword()');
         opts = {silent = true};
       };
     };
@@ -54,14 +54,14 @@ local setup_hlyank = function()
 end
 
 local setup_global_ns = function()
-  _G.f = require('plugin/global')
+  _G.f = require('plugin.global')
 end
 
 local setup_format_comands = function()
-  nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
+  nvim_command([[command! LuaFormat lua require('plugin.format').lua()]])
   nvim_command([[augroup auto_lua_format]])
   nvim_command([[autocmd!]])
-  nvim_command([[autocmd FileType lua lua require('plugin/format').enable_lua_auto_format()]])
+  nvim_command([[autocmd FileType lua lua require('plugin.format').enable_lua_auto_format()]])
   nvim_command([[augroup END]])
 end
 
@@ -70,7 +70,7 @@ local setup_word_replace = function()
     n = {
       {
         lhs = '<leader>e';
-        rhs = helpers.cmd_map('lua require("plugin/word_sub").run()');
+        rhs = helpers.cmd_map('lua require("plugin.word_sub").run()');
         opts = {silent = true};
       };
     };
@@ -86,20 +86,20 @@ local setup_spell = function()
 end
 
 local setup_editorconfig = function()
-  require('plugin/editor_config').enable()
+  require('plugin.editor_config').enable()
   vim.schedule(function()
-    nvim_command([[command! EnableEditorConfig lua require('plugin/editor_config').enable()]])
-    nvim_command([[command! DisableEditorConfig lua require('plugin/editor_config').disable()]])
+    nvim_command([[command! EnableEditorConfig lua require('plugin.editor_config').enable()]])
+    nvim_command([[command! DisableEditorConfig lua require('plugin.editor_config').disable()]])
   end)
 end
 
 local setup_prettierd = function()
   local auto_fmt_fts = {'javascript'; 'typescript'; 'css'}
-  nvim_command([[command! PrettierFormat lua require('plugin/prettierd').format()]])
+  nvim_command([[command! PrettierFormat lua require('plugin.prettierd').format()]])
   nvim_command([[augroup auto_prettierd]])
   nvim_command([[autocmd!]])
   nvim_command(string.format(
-                 [[autocmd FileType %s lua require('plugin/prettierd').enable_auto_format()]],
+                 [[autocmd FileType %s lua require('plugin.prettierd').enable_auto_format()]],
                  table.concat(auto_fmt_fts, ',')))
   nvim_command([[augroup END]])
 end
@@ -134,8 +134,8 @@ do
   schedule(setup_prettierd)
   schedule(ftdetect)
   schedule(function()
-    require('lc/init')
-    require('plugin/ts')
+    require('lc.init')
+    require('plugin.ts')
     trigger_ft()
   end)
 end

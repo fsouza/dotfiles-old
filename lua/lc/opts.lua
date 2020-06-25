@@ -1,7 +1,7 @@
 local M = {}
 
 local lsp = require('nvim_lsp')
-local helpers = require('lib/nvim_helpers')
+local helpers = require('lib.nvim_helpers')
 
 local attached = function(bufnr, client)
   vim.schedule(function()
@@ -13,11 +13,11 @@ local attached = function(bufnr, client)
           opts = {silent = true};
         }; {
           lhs = '<localleader>d';
-          rhs = helpers.cmd_map('lua require("lc/diagnostics").show_line_diagnostics()');
+          rhs = helpers.cmd_map('lua require("lc.diagnostics").show_line_diagnostics()');
           opts = {silent = true};
         }; {
           lhs = '<localleader>ld';
-          rhs = helpers.cmd_map('lua require("lc/diagnostics").list_file_diagnostics()');
+          rhs = helpers.cmd_map('lua require("lc.diagnostics").list_file_diagnostics()');
           opts = {silent = true};
         }; {
           lhs = '<localleader>cl';
@@ -44,13 +44,13 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.n, {
         lhs = '<localleader>py';
-        rhs = helpers.cmd_map('lua require("lc/locations").preview_declaration()');
+        rhs = helpers.cmd_map('lua require("lc.locations").preview_declaration()');
         opts = {silent = true};
       })
     end
 
     if client.resolved_capabilities.document_formatting then
-      require('lc/formatting').register_client(client, bufnr)
+      require('lc.formatting').register_client(client, bufnr)
     end
 
     if client.resolved_capabilities.document_highlight then
@@ -85,7 +85,7 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pd';
-        rhs = helpers.cmd_map('lua require("lc/locations").preview_definition()');
+        rhs = helpers.cmd_map('lua require("lc.locations").preview_definition()');
         opts = {silent = true};
       })
     end
@@ -106,7 +106,7 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pi';
-        rhs = helpers.cmd_map('lua require("lc/locations").preview_implementation()');
+        rhs = helpers.cmd_map('lua require("lc.locations").preview_implementation()');
         opts = {silent = true};
       })
     end
@@ -132,7 +132,7 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pt';
-        rhs = helpers.cmd_map('lua require("lc/locations").preview_type_definition()');
+        rhs = helpers.cmd_map('lua require("lc.locations").preview_type_definition()');
         opts = {silent = true};
       })
     end
@@ -165,7 +165,7 @@ local on_attach = function(client, bufnr)
 end
 
 function M.with_default_opts(opts)
-  return vim.tbl_extend('keep', opts, {callbacks = require('lc/callbacks'); on_attach = on_attach})
+  return vim.tbl_extend('keep', opts, {callbacks = require('lc.callbacks'); on_attach = on_attach})
 end
 
 M.project_root_pattern = lsp.util.root_pattern('.git')

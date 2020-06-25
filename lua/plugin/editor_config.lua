@@ -3,7 +3,7 @@ local api = vim.api
 local nvim_buf_get_option = api.nvim_buf_get_option
 local nvim_buf_set_option = api.nvim_buf_set_option
 local nvim_command = api.nvim_command
-local cmd = require('lib/cmd')
+local cmd = require('lib.cmd')
 
 local M = {}
 
@@ -12,7 +12,7 @@ local set_enabled = function(v)
   nvim_command('autocmd!')
   if v then
     nvim_command(
-      [[autocmd BufNewFile,BufReadPost,BufFilePost * lua require("plugin/editor_config").set_config()]])
+      [[autocmd BufNewFile,BufReadPost,BufFilePost * lua require("plugin.editor_config").set_config()]])
   end
   nvim_command('augroup END')
   M.set_config()
@@ -50,7 +50,7 @@ local handle_whitespaces = function(v)
   nvim_command([[autocmd!]])
   if v == 'true' then
     nvim_command(
-      'autocmd BufWritePre <buffer> lua require("plugin/editor_config").trim_whitespace()')
+      'autocmd BufWritePre <buffer> lua require("plugin.editor_config").trim_whitespace()')
   end
   nvim_command('augroup END')
 end

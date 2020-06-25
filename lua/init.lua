@@ -4,7 +4,7 @@ local nvim_set_keymap = api.nvim_set_keymap
 local loop = vim.loop
 local vfn = vim.fn
 
-local helpers = require('lib/nvim_helpers')
+local helpers = require('lib.nvim_helpers')
 
 local initial_mappings = function()
   -- Disable ex mode. I'm not that smart.
@@ -94,8 +94,6 @@ local folding = function()
     nvim_command([[augroup folding_config]])
     nvim_command([[autocmd!]])
     nvim_command([[autocmd BufEnter * setlocal foldmethod=syntax]])
-    nvim_command([[autocmd BufWinLeave * mkview]])
-    nvim_command([[autocmd BufWinEnter * silent! loadview]])
     nvim_command([[augroup END]])
   end)
 end
@@ -147,6 +145,6 @@ do
 
   require('pack').setup()
   schedule(function()
-    require('plugin/init')
+    require('plugin.init')
   end)
 end

@@ -1,6 +1,6 @@
 local vfn = vim.fn
 local loop = vim.loop
-local lc_opts = require('lc/opts')
+local lc_opts = require('lc.opts')
 
 local config_dir = vfn.stdpath('config')
 
@@ -18,7 +18,7 @@ local python_interpreter_props = function(virtual_env)
     end
     props.Version = r.stdout
   end
-  require('lib/cmd').run(props.InterpreterPath, {
+  require('lib.cmd').run(props.InterpreterPath, {
     '-c'; 'import sys; print("f{sys.version_info.major}.{sys.version_info.minor}"), end="")';
   }, nil, cb)
   vim.wait(200, function()

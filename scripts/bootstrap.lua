@@ -1,6 +1,6 @@
 local vfn = vim.fn
 local loop = vim.loop
-local cmd = require('lib/cmd')
+local cmd = require('lib.cmd')
 
 local second_ms = 1000
 local minute_ms = 60 * second_ms
