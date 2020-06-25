@@ -46,10 +46,6 @@ if command -v rbenv &>/dev/null; then
 	eval "$(rbenv init -)"
 fi
 
-if command -v luarocks &>/dev/null; then
-	eval "$(luarocks path --bin)"
-fi
-
 source ${basedir}/extra/tmux
 
 fpath=(/usr/local/share/zsh-completions $fpath)
