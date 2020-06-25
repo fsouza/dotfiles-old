@@ -53,10 +53,6 @@ local setup_hlyank = function()
   nvim_command([[augroup END]])
 end
 
-local setup_global_ns = function()
-  _G.f = require('plugin/global')
-end
-
 local setup_format_comands = function()
   nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
 end
@@ -126,7 +122,6 @@ do
   local schedule = vim.schedule
   schedule(setup_completion)
   schedule(setup_editorconfig)
-  schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
   schedule(setup_ultisnips)
   schedule(setup_hlyank)
