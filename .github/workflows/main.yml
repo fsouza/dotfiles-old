@@ -55,6 +55,8 @@ jobs:
         with:
           python-version: "3.x"
 
+      - run: pip install virtualenv
+
       - uses: actions-rs/toolchain@v1.0.6
         with:
           toolchain: stable
