@@ -67,7 +67,7 @@ local set_opts = function(bufnr, opts)
     end
 
     if k == 'indent_style' then
-      vim_opts.expandtab = v == 'spaces'
+      vim_opts.expandtab = v == 'spaces' or v == 'space'
     end
 
     if k == 'insert_final_line' or k == 'insert_final_newline' then
