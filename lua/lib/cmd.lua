@@ -98,8 +98,16 @@ function M.run(cmd, opts, input_data, on_finished, debug_fn)
     end)
   end
 
+  local pid_or_err
   opts = vim.tbl_extend('error', opts, {stdio = {stdin; stdout; stderr}})
-  cmd_handle = loop.spawn(cmd, opts, onexit)
+  cmd_handle, pid_or_err = loop.spawn(cmd, opts, onexit)
+
+  if not cmd_handle then
+    vim.schedule(function()
+      on_finished({exit_status = -1; stderr = pid_or_err})
+    end)
+    return
+  end
 
   loop.read_start(stdout, stdout_handler.callback)
   loop.read_start(stderr, stderr_handler.callback)
