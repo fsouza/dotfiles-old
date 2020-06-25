@@ -42,7 +42,28 @@ local format_stdin = function(format_cmd, format_args, timeout_ms)
 end
 
 function M.lua(timeout_ms)
-  format_stdin('lua-format', {}, timeout_ms)
+  if vfn.filereadable('.lua-format') == 1 then
+    format_stdin('lua-format', {}, timeout_ms)
+  end
+end
+
+function M.auto(fn)
+  local enable, timeout_ms = require('lib/autofmt').config()
+  if not enable then
+    return
+  end
+
+  pcall(function()
+    fn(timeout_ms)
+  end)
+end
+
+function M.enable_lua_auto_format()
+  api.nvim_command([[augroup prettierd_autofmt]])
+  api.nvim_command([[autocmd!]])
+  api.nvim_command(
+    [[autocmd BufWritePre <buffer> lua require('plugin/format').auto(require('plugin/format').lua)]])
+  api.nvim_command([[augroup END]])
 end
 
 return M

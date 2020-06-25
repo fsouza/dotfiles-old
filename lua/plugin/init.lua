@@ -53,8 +53,12 @@ local setup_hlyank = function()
   nvim_command([[augroup END]])
 end
 
-local setup_format_comands = function()
+local setup_lua_format = function()
   nvim_command([[command! LuaFormat lua require('plugin/format').lua()]])
+  nvim_command([[augroup auto_lua_format]])
+  nvim_command([[autocmd!]])
+  nvim_command([[autocmd FileType lua lua require('plugin/format').enable_lua_auto_format()]])
+  nvim_command([[augroup END]])
 end
 
 local setup_word_replace = function()
@@ -119,7 +123,7 @@ do
   schedule(setup_fzf_mappings)
   schedule(setup_ultisnips)
   schedule(setup_hlyank)
-  schedule(setup_format_comands)
+  schedule(setup_lua_format)
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(setup_prettierd)
