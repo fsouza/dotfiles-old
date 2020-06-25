@@ -58,3 +58,6 @@
 [submodule "completion-nvim"]
 	path = pack/b/opt/completion-nvim
 	url = https://github.com/haorenW1025/completion-nvim.git
+[submodule "nvim-treesitter"]
+	path = pack/b/opt/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
