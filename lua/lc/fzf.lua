@@ -10,7 +10,7 @@ local format_items = function(items)
     if vim.startswith(filename, prefix) then
       filename = string.sub(filename, string.len(prefix) + 1)
     end
-    table.insert(lines, string.format('%s:%d:%d:%s', filename, item.lnum, item.col, item.text))
+    table.insert(lines, string.format('%s:%d:[%d]:%s', filename, item.lnum, item.col, item.text))
   end
   return lines
 end
