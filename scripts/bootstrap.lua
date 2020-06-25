@@ -1,4 +1,5 @@
 local vfn = vim.fn
+local loop = vim.loop
 local cmd = require('lib/cmd')
 
 local second_ms = 1000
@@ -8,10 +9,16 @@ local config_dir = vfn.stdpath('config')
 local data_dir = vfn.stdpath('data')
 
 local pip_packages = {
-  'pip'; 'pip-tools'; 'pynvim'; 'git+https://github.com/luarocks/hererocks.git'; '-r';
+  'pip'; 'pip-tools'; 'pynvim'; 'git+https://github.com/luarocks/hererocks.git';
 }
 
 local rocks = {'lyaml'; 'httpclient'}
+
+local debug = function(msg)
+  if loop.os_getenv('NVIM_DEBUG') then
+    print('[DEBUG] ' .. msg)
+  end
+end
 
 local cmd_to_string = function(cmd, args)
   local quoted_args = {}
@@ -56,23 +63,21 @@ local run_cmds = function(cmds)
     end
 
     local cmd_str = cmd_to_string(c.executable, c.opts.args)
-    results[cmd_str] = nil
-    local block = cmd.run(c.executable, c.opts, nil, function(result)
+    results[cmd_str] = 0
+    debug(string.format('running "%s"', cmd_str))
+    cmd.run(c.executable, c.opts, nil, function(result)
       results[cmd_str] = result
-    end)
-    vim.schedule(function()
-      block(timeout_ms)
-    end)
+    end, debug)
   end
 
   local status = vim.wait(total_timeout_ms, function()
     for _, r in pairs(results) do
-      if r == nil then
+      if r == 0 then
         return false
       end
     end
     return true
-  end, 20)
+  end, 500)
 
   if not status then
     local statuses = {}
@@ -86,21 +91,17 @@ end
 
 local ensure_virtualenv = function()
   local venv_dir = data_dir .. '/venv'
-  if not vfn.isdirectory(venv_dir) then
-    run_cmds({
-      {
-        executable = 'virtualenv';
-        opts = {args = {'-p'; 'python3'; venv_dir}};
-        timeout_ms = 5 * second_ms;
-      };
-    })
+  if vfn.isdirectory(venv_dir) == 0 then
+    run_cmds({{executable = 'virtualenv'; opts = {args = {'-p'; 'python3'; venv_dir}}}})
   end
   run_cmds({
     {
       executable = data_dir .. '/venv/bin/pip';
       opts = {
-        args = vim.tbl_flatten({{'install'; '--upgrade'}, pip_packages,
-                              {'-r'; config_dir .. '/langservers/requirements.txt'}});
+        args = vim.tbl_flatten({
+          {'install'; '--upgrade'}; pip_packages;
+          {'-r'; config_dir .. '/langservers/requirements.txt'};
+        });
       };
     };
   })
@@ -109,7 +110,7 @@ end
 
 local ensure_hererocks = function(virtualenv)
   local hr_dir = data_dir .. '/hr'
-  if not vfn.isdirectory(hr_dir) then
+  if vfn.isdirectory(hr_dir) == 0 then
     run_cmds({
       {
         executable = virtualenv .. '/bin/hererocks';
@@ -117,28 +118,25 @@ local ensure_hererocks = function(virtualenv)
       };
     })
   end
-  run_cmds({
-    {
-      executable = hr_dir .. '/bin/luarocks';
-      opts = { args = vim.tbl_flatten({'install'}, rocks) };
-    };
-  })
+
+  for _, rock in pairs(rocks) do
+    run_cmds({{executable = hr_dir .. '/bin/luarocks'; opts = {args = {'install'; rock}}}})
+  end
+
   return hr_dir
 end
 
 -- TODO: use lua instead of sh?
 local setup_langservers = function()
   run_cmds({
-    {
-      executable = config_dir .. '/langservers/setup.sh';
-      opts = {};
-      timeout = 20 * minute_ms;
-    };
+    {executable = config_dir .. '/langservers/setup.sh'; opts = {}; timeout = 20 * minute_ms};
   })
 end
 
 do
   local virtualenv = ensure_virtualenv()
-  ensure_hererocks(virtualenv)
+  debug(string.format('created virtualenv at "%s"\n', virtualenv))
+  local hr_dir = ensure_hererocks(virtualenv)
+  debug(string.format('created hererocks at "%s"\n', hr_dir))
   setup_langservers()
 end
