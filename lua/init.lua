@@ -71,6 +71,7 @@ local global_options = function()
   vim.o.errorbells = false
   vim.o.backup = false
   vim.o.swapfile = false
+  vim.o.inccommand = 'split'
 end
 
 local rnu = function()
