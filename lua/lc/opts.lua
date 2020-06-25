@@ -1,6 +1,5 @@
 local M = {}
 
-local api = vim.api
 local lsp = require('nvim_lsp')
 local helpers = require('lib/nvim_helpers')
 
@@ -152,7 +151,7 @@ local attached = function(bufnr, client)
   end)
 end
 
-function on_attach(client, bufnr)
+local on_attach = function(client, bufnr)
   local all_clients = vim.lsp.get_active_clients()
   for _, c in pairs(all_clients) do
     if c.name == client.name then
