@@ -71,12 +71,6 @@ end
 
 local setup_spell = function()
   local filetypes = {'gitcommit'; 'markdown'; 'text'}
-  for _, ft in pairs(filetypes) do
-    if vim.bo.filetype == ft then
-      vim.wo.spell = true
-    end
-  end
-
   nvim_command([[augroup auto_spell]])
   nvim_command([[autocmd!]])
   nvim_command(string.format([[autocmd FileType %s setlocal spell]], table.concat(filetypes, ',')))
@@ -100,12 +94,6 @@ local setup_prettierd = function()
                  [[autocmd FileType %s lua require('plugin/prettierd').enable_auto_format()]],
                  table.concat(auto_fmt_fts, ',')))
   nvim_command([[augroup END]])
-
-  for _, ft in pairs(auto_fmt_fts) do
-    if vim.b.filetype == ft then
-      require('plugin/prettierd').enable_auto_fmt()
-    end
-  end
 end
 
 local ftdetect = function()
@@ -116,6 +104,12 @@ local ftdetect = function()
     nvim_command(string.format([[autocmd BufEnter %s set ft=%s]], pattern, ft))
   end
   nvim_command([[augroup END]])
+end
+
+local trigger_ft = function()
+  if vim.bo.filetype and vim.bo.filetype ~= '' then
+    nvim_command([[doautocmd FileType ]] .. vim.bo.filetype)
+  end
 end
 
 do
@@ -132,5 +126,6 @@ do
   schedule(ftdetect)
   schedule(function()
     require('lc/init')
+    trigger_ft()
   end)
 end
