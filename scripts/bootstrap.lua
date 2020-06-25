@@ -92,7 +92,13 @@ end
 local ensure_virtualenv = function()
   local venv_dir = data_dir .. '/venv'
   if vfn.isdirectory(venv_dir) == 0 then
-    run_cmds({{executable = 'virtualenv'; opts = {args = {'-p'; 'python3'; venv_dir}}}})
+    run_cmds({
+      {
+        executable = 'virtualenv';
+        opts = {args = {'-p'; 'python3'; venv_dir}};
+        timeout_ms = 5 * minute_ms;
+      };
+    })
   end
   run_cmds({
     {
