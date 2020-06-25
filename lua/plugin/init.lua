@@ -23,6 +23,30 @@ local setup_fzf_mappings = function()
   })
 end
 
+local setup_completion = function()
+  vim.g.completion_enable_auto_popup = 1
+  vim.g.completion_trigger_on_delete = 1
+  vim.g.completion_confirm_key = [[\<C-y>]]
+  vim.g.completion_enable_snippet = 'UltiSnips'
+  vim.g.completion_trigger_charater = {'.'; '::'}
+  vim.g.completion_matching_strategy_list = {'exact'; 'fuzzy'}
+  vim.g.completion_chain_complete_list = {
+    default = {
+      {complete_items = {'lsp'}}; {complete_items = {'snippet'}}; {mode = [[<c-p>]]};
+      {mode = [[<c-n>]]};
+    };
+  }
+  helpers.create_mappings({
+    i = {
+      {
+        lhs = '<c-x><c-o>';
+        rhs = 'completion#trigger_completion()';
+        opts = {expr = true; silent = true};
+      };
+    };
+  })
+end
+
 local setup_ultisnips = function()
   vim.g.UltiSnipsExpandTrigger = '<tab>'
   vim.g.UltiSnipsJumpForwardTrigger = '<c-j>'
@@ -108,6 +132,7 @@ end
 
 do
   local schedule = vim.schedule
+  schedule(setup_completion)
   schedule(setup_editorconfig)
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
