@@ -12,84 +12,24 @@ local highlight = function(group, opts)
 end
 
 local basics = function()
-  highlight('CursorLine', {
-    ctermbg = '253';
-    guibg = '#dadada';
-  })
-  highlight('CursorLineNr', {
-    cterm = 'bold';
-    ctermbg = '253';
-    gui = 'bold';
-    guibg = '#dadada';
-  })
-  highlight('Directory', {
-    ctermfg = '59';
-    guifg = '#5f5f5f';
-  })
-  highlight('LineNr', {
-    ctermbg = '253';
-    guibg = '#dadada';
-  })
-  highlight('MatchParen', {
-    ctermbg = '145';
-    guibg = '#afafaf';
-  })
-  highlight('Normal', {
-    ctermfg = '235';
-    guifg = '#262626';
-  })
-  highlight('Floating', {
-    ctermfg = '235';
-    guibg = '#fcfcfc';
-    guifg = '#262626';
-  })
-  highlight('Pmenu', {
-    ctermbg = '145';
-    guibg = '#afafaf';
-  })
-  highlight('SignColumn', {
-    ctermbg = '253';
-    ctermfg = '232';
-    guibg = '#dadada';
-    guifg = '#080808';
-  })
-  highlight('SpecialKey', {
-    ctermfg = '59';
-    guifg = '#5f5f5f';
-  })
-  highlight('SpellBad', {
-    ctermfg = '196';
-    guifg = '#ff0000';
-  })
-  highlight('TabLine', {
-    ctermbg = '145';
-    ctermfg = '59';
-    guibg = '#afafaf';
-    guifg = '#5f5f5f';
-  })
-  highlight('TabLineFill', {
-    ctermbg = '145';
-    guibg = '#afafaf';
-  })
-  highlight('TabLineSel', {
-    ctermfg = '59';
-    guifg = '#5f5f5f';
-  })
-  highlight('Title', {
-  })
-  highlight('ModeMsg', {
-  })
-  highlight('ErrorMsg', {
-    ctermbg = '160';
-    ctermfg = '231';
-    guibg = '#d70000';
-    guifg = '#ffffff';
-  })
-  highlight('WarningMsg', {
-    cterm = 'None';
-    ctermfg = '52';
-    guifg = '#5f0000';
-  })
+  highlight('CursorLine', {ctermbg = '253'; guibg = '#dadada'})
+  highlight('CursorLineNr', {cterm = 'bold'; ctermbg = '253'; gui = 'bold'; guibg = '#dadada'})
+  highlight('Directory', {ctermfg = '59'; guifg = '#5f5f5f'})
+  highlight('LineNr', {ctermbg = '253'; guibg = '#dadada'})
+  highlight('MatchParen', {ctermbg = '145'; guibg = '#afafaf'})
+  highlight('Normal', {ctermfg = '235'; guifg = '#262626'})
+  highlight('Floating', {ctermfg = '235'; guibg = '#fcfcfc'; guifg = '#262626'})
+  highlight('Pmenu', {ctermbg = '145'; guibg = '#afafaf'})
+  highlight('SignColumn', {ctermbg = '253'; ctermfg = '232'; guibg = '#dadada'; guifg = '#080808'})
+  highlight('SpecialKey', {ctermfg = '59'; guifg = '#5f5f5f'})
+  highlight('SpellBad', {ctermfg = '196'; guifg = '#ff0000'})
+  highlight('TabLine', {ctermbg = '145'; ctermfg = '59'; guibg = '#afafaf'; guifg = '#5f5f5f'})
+  highlight('TabLineFill', {ctermbg = '145'; guibg = '#afafaf'})
+  highlight('TabLineSel', {ctermfg = '59'; guifg = '#5f5f5f'})
+  highlight('Title', {})
+  highlight('ModeMsg', {})
+  highlight('ErrorMsg', {ctermbg = '160'; ctermfg = '231'; guibg = '#d70000'; guifg = '#ffffff'})
+  highlight('WarningMsg', {cterm = 'None'; ctermfg = '52'; guifg = '#5f0000'})
 end
 
 local noners = function()
