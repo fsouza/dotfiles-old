@@ -12,7 +12,7 @@ local pip_packages = {
   'pip'; 'pip-tools'; 'pynvim'; 'git+https://github.com/luarocks/hererocks.git';
 }
 
-local rocks = {'lyaml'; 'httpclient'}
+local rocks = {'lyaml'; 'httpclient'; 'luacheck'}
 
 local debug = function(msg)
   if loop.os_getenv('NVIM_DEBUG') then
