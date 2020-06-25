@@ -30,6 +30,8 @@ local basics = function()
   highlight('ModeMsg', {})
   highlight('ErrorMsg', {ctermbg = '160'; ctermfg = '231'; guibg = '#d70000'; guifg = '#ffffff'})
   highlight('WarningMsg', {cterm = 'None'; ctermfg = '52'; guifg = '#5f0000'})
+  highlight('Folded', {ctermbg = '253'; guibg = '#dadada'})
+  highlight('FoldColumn', {ctermbg = '253'; guibg = '#dadada'})
 end
 
 local noners = function()

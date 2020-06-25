@@ -87,6 +87,19 @@ local rnu = function()
   end)
 end
 
+local folding = function()
+  vim.o.foldlevelstart = 0
+  vim.wo.foldmethod = 'indent'
+  vim.schedule(function()
+    nvim_command([[augroup folding_config]])
+    nvim_command([[autocmd!]])
+    nvim_command([[autocmd BufEnter * setlocal foldmethod=indent]])
+    nvim_command([[autocmd BufWinLeave * mkview]])
+    nvim_command([[autocmd BufWinEnter * silent! loadview]])
+    nvim_command([[augroup END]])
+  end)
+end
+
 local global_mappings = function()
   local rl_bindings = {
     {lhs = '<c-a>'; rhs = '<home>'; opts = {noremap = true}};
@@ -127,6 +140,7 @@ do
 
   ui_options()
   rnu()
+  folding()
   global_vars()
 
   py3_host_prog()
