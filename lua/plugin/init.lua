@@ -135,6 +135,7 @@ do
   schedule(ftdetect)
   schedule(function()
     require('lc/init')
+    require('plugin/ts')
     trigger_ft()
   end)
 end
