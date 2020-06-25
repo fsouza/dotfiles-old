@@ -2,13 +2,30 @@ local M = {}
 
 local loop = vim.loop
 
-local input_collector = function()
+local make_debug = function(prefix, debug_fn)
+  if debug_fn == nil then
+    return function()
+    end
+  end
+
+  return function(data)
+    for _, line in ipairs(vim.split(data, '\n')) do
+      if line ~= '' then
+        debug_fn(string.format('%s: %s', prefix, line))
+      end
+    end
+  end
+end
+
+local input_collector = function(prefix, debug_fn)
+  local debug = make_debug(prefix, debug_fn)
   local result = {data = ''}
   function result.callback(err, chunk)
     if err then
       result.err = err
     elseif chunk then
       result.data = result.data .. chunk
+      debug(chunk)
     end
   end
   return result
@@ -37,7 +54,7 @@ end
 -- The function returns a function that can be called to wait for the command
 -- to finish. The function takes a timeout and returns the same values as
 -- vim.wait.
-function M.run(cmd, opts, input_data, on_finished)
+function M.run(cmd, opts, input_data, on_finished, debug_fn)
   local cmd_handle
   local stdout = loop.new_pipe(false)
   local stderr = loop.new_pipe(false)
@@ -52,8 +69,8 @@ function M.run(cmd, opts, input_data, on_finished)
     safe_close(cmd_handle)
   end
 
-  local stdout_handler = input_collector(stdout)
-  local stderr_handler = input_collector(stderr)
+  local stdout_handler = input_collector('STDOUT', debug_fn)
+  local stderr_handler = input_collector('STDERR', debug_fn)
 
   local r = {abort = false; finished = false}
   local onexit = function(code, signal)
