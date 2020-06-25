@@ -17,18 +17,7 @@ local initial_mappings = function()
 end
 
 local py3_host_prog = function()
-  local venvs_dir = loop.os_getenv('VIRTUALENVS')
-  if not venvs_dir then
-    return
-  end
-
-  venvs_dir = string.gsub(venvs_dir, '/+$', '')
-  local stat = loop.fs_stat(venvs_dir)
-  if not stat or stat.type ~= 'directory' then
-    return
-  end
-
-  local vim_venv_bin = venvs_dir .. '/vim/bin'
+  local vim_venv_bin = vfn.stdpath('data') .. '/venv/bin'
   loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
 
   vim.g.python3_host_prog = vim_venv_bin .. '/python'
