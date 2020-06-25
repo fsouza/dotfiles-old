@@ -6,7 +6,7 @@ local second_ms = 1000
 local minute_ms = 60 * second_ms
 
 local config_dir = vfn.stdpath('config')
-local data_dir = vfn.stdpath('data')
+local cache_dir = vfn.stdpath('cache')
 
 local pip_packages = {
   'pip'; 'pip-tools'; 'pynvim'; 'git+https://github.com/luarocks/hererocks.git';
@@ -90,7 +90,7 @@ local run_cmds = function(cmds)
 end
 
 local ensure_virtualenv = function()
-  local venv_dir = data_dir .. '/venv'
+  local venv_dir = cache_dir .. '/venv'
   if vfn.isdirectory(venv_dir) == 0 then
     run_cmds({
       {
@@ -102,7 +102,7 @@ local ensure_virtualenv = function()
   end
   run_cmds({
     {
-      executable = data_dir .. '/venv/bin/pip';
+      executable = cache_dir .. '/venv/bin/pip';
       opts = {
         args = vim.tbl_flatten({
           {'install'; '--upgrade'}; pip_packages;
@@ -115,7 +115,7 @@ local ensure_virtualenv = function()
 end
 
 local ensure_hererocks = function(virtualenv)
-  local hr_dir = data_dir .. '/hr'
+  local hr_dir = cache_dir .. '/hr'
   if vfn.isdirectory(hr_dir) == 0 then
     run_cmds({
       {

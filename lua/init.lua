@@ -17,7 +17,7 @@ local initial_mappings = function()
 end
 
 local py3_host_prog = function()
-  local vim_venv_bin = vfn.stdpath('data') .. '/venv/bin'
+  local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
   loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
 
   vim.g.python3_host_prog = vim_venv_bin .. '/python'
@@ -26,12 +26,15 @@ end
 
 local hererocks = function()
   local lua_version = string.gsub(_VERSION, 'Lua ', '')
-  local hererocks_path = vfn.stdpath('data') .. '/hr'
+  local hererocks_path = vfn.stdpath('cache') .. '/hr'
+  local bin_path = hererocks_path .. '/bin'
   local share_path = hererocks_path .. '/share/lua/' .. lua_version
   local lib_path = hererocks_path .. '/lib/lua/' .. lua_version
   package.path = package.path .. ';' .. share_path .. '/?.lua' .. ';' .. share_path ..
                    '/?/init.lua'
   package.cpath = package.cpath .. ';' .. lib_path .. '?.so'
+
+  loop.os_setenv('PATH', bin_path .. ':' .. loop.os_getenv('PATH'))
 end
 
 local global_vars = function()
