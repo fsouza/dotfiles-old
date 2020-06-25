@@ -9,7 +9,7 @@ local get_local_cmd = function(cmd)
 end
 
 local python_interpreter_props = function(virtual_env)
-  local props = {InterpreterPath = virtual_env .. 'bin/python'; UseDefaultDatabase = true}
+  local props = {InterpreterPath = virtual_env .. '/bin/python'; UseDefaultDatabase = true}
   local cb = function(r)
     if r.exit_status ~= 0 then
       print(string.format('failed to detect python version in the virtualenv $%s: %s', virtual_env,
