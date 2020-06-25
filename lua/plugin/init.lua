@@ -34,7 +34,7 @@ local setup_completion = function()
         lhs = '<c-x><c-o>';
         rhs = 'completion#trigger_completion()';
         opts = {expr = true; silent = true};
-      };
+      }; {lhs = '<cr>'; rhs = [[pumvisible() ? "\<c-e>\<cr>" : "\<cr>"]]; opts = {expr = true}};
     };
   })
 end
