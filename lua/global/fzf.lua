@@ -34,7 +34,7 @@ function M.handle_lsp_line(lines)
     local item = loc_list[1]
     vcmd(string.format('%s %s', action, item.filename))
     vfn.cursor(item.lnum, item.col)
-    nvim_input('zz')
+    nvim_input('zvzz')
   else
     lsp.util.set_loclist(loc_list)
     vcmd('lopen')
