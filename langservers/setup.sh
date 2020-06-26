@@ -96,6 +96,7 @@ function install_lua_lsp {
 }
 
 pushd "$ROOT"
+git submodule update --init --recursive
 install_servers_from_npm &
 install_ocaml_lsp &
 install_rust_analyzer &
