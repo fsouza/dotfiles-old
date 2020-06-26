@@ -65,7 +65,7 @@ do
 
     lsp.tsserver.setup(lc_opts.with_default_opts({
       cmd = {vim_node_ls; 'typescript-language-server'; '--stdio'};
-      filetypes = {'typescript'; 'typescriptreact'; 'typescript.tsx'};
+      filetypes = {'javascript'; 'typescript'; 'typescriptreact'; 'typescript.tsx'};
     }))
 
     lsp.vimls.setup(lc_opts.with_default_opts({
