@@ -62,7 +62,7 @@ end
 
 local setup_format_comands = function()
   vcmd([[command! LuaFormat lua require('plugin.format').lua()]])
-  vcmd([[augroup auto_lua_format]])
+  vcmd([[augroup filetype_lua]])
   vcmd([[autocmd!]])
   vcmd([[autocmd FileType lua lua require('plugin.format').enable_lua_auto_format()]])
   vcmd([[augroup END]])

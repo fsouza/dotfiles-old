@@ -60,7 +60,7 @@ function M.auto(fn)
 end
 
 function M.enable_lua_auto_format()
-  vcmd([[augroup prettierd_autofmt]])
+  vcmd([[augroup lua_autoformat]])
   vcmd([[autocmd!]])
   vcmd(
     [[autocmd BufWritePre <buffer> lua require('plugin.format').auto(require('plugin.format').lua)]])
