@@ -132,7 +132,6 @@ local ensure_hererocks = function(virtualenv)
   return hr_dir
 end
 
--- TODO: use lua instead of sh?
 local setup_langservers = function()
   run_cmds({
     {executable = config_dir .. '/langservers/setup.sh'; opts = {}; timeout = 20 * minute_ms};
