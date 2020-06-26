@@ -1,5 +1,6 @@
 local M = {}
 
+local loop = vim.loop
 local vfn = vim.fn
 
 local get_dmypy = function()
@@ -9,8 +10,16 @@ local get_dmypy = function()
   }
 end
 
+local setup_blackd_logs_dir = function(base_dir)
+  local logs_dir = base_dir .. '/blackd-logs'
+  vfn.mkdir(logs_dir, 'p')
+  loop.os_setenv('BLACKD_LOGS_DIR', logs_dir)
+end
+
 local get_black = function()
-  return {['format-command'] = 'black --fast --quiet -'; ['format-stdin'] = true}
+  local nvim_config_path = vfn.stdpath('config')
+  local bin = nvim_config_path .. '/langservers/bin/blackd-format'
+  return {['format-command'] = bin; ['format-stdin'] = true}
 end
 
 local get_isort = function()
@@ -33,8 +42,8 @@ local get_config_str = function()
     version = 2;
     tools = {
       dmypy = get_dmypy();
-      black = get_black();
       sort = get_isort();
+      black = get_black();
       dune = get_dune();
       shellcheck = get_shellcheck();
     };
@@ -48,7 +57,9 @@ local get_config_str = function()
 end
 
 function M.config_file()
-  local config_file = vfn.stdpath('cache') .. '/efm-langserver.yaml'
+  local cache_dir = vfn.stdpath('cache')
+  setup_blackd_logs_dir(cache_dir)
+  local config_file = cache_dir .. '/efm-langserver.yaml'
   local h = io.open(config_file, 'w')
   h:write(get_config_str())
   h:close()
