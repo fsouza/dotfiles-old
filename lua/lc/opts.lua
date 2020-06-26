@@ -5,6 +5,7 @@ local helpers = require('lib.nvim_helpers')
 
 local attached = function(bufnr, client)
   vim.schedule(function()
+    vim.g.vista_default_executive = 'nvim_lsp'
     local mappings = {
       n = {
         {
@@ -22,6 +23,11 @@ local attached = function(bufnr, client)
         }; {
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics(0)');
+          opts = {silent = true};
+        };
+        {
+          lhs = '<localleader><localleader>';
+          rhs = helpers.cmd_map('Vista!!');
           opts = {silent = true};
         };
       };
