@@ -1,5 +1,4 @@
-local nvim_command = vim.api.nvim_command
-local nvim_set_option = vim.api.nvim_set_option
+local vcmd = vim.cmd
 
 local keys = {'cterm'; 'ctermbg'; 'ctermfg'; 'gui'; 'guibg'; 'guifg'}
 
@@ -8,7 +7,7 @@ local highlight = function(group, opts)
   for _, k in pairs(keys) do
     table.insert(cmd_args, string.format('%s=%s', k, opts[k] or 'NONE'))
   end
-  nvim_command('highlight ' .. table.concat(cmd_args, ' '))
+  vcmd('highlight ' .. table.concat(cmd_args, ' '))
 end
 
 local basics = function()
@@ -78,9 +77,9 @@ local custom_groups = function()
 end
 
 local setup = function()
-  nvim_set_option('background', 'light')
-  nvim_command('highlight clear')
-  nvim_command('syntax reset')
+  vim.o.background = 'light'
+  vcmd('highlight clear')
+  vcmd('syntax reset')
   vim.g.colors_name = 'none'
 
   basics()
@@ -90,7 +89,7 @@ local setup = function()
   custom_groups()
 
   vim.schedule(function()
-    nvim_command([[command! ResetColors lua require('color').setup()]])
+    vcmd([[command! ResetColors lua require('color').setup()]])
   end)
 end
 

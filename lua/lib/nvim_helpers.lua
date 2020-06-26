@@ -2,7 +2,7 @@ local M = {}
 
 local api = vim.api
 local nvim_buf_set_keymap = api.nvim_buf_set_keymap
-local nvim_command = api.nvim_command
+local vcmd = vim.cmd
 
 function M.cmd_map(cmd)
   return string.format('<cmd>%s<cr>', cmd)
@@ -24,7 +24,7 @@ function M.create_mappings(mappings, bufnr)
 end
 
 function M.exec_cmds(cmd_list)
-  nvim_command(table.concat(cmd_list, '\n'))
+  vcmd(table.concat(cmd_list, '\n'))
 end
 
 return M

@@ -2,6 +2,7 @@ local M = {}
 
 local api = vim.api
 local vfn = vim.fn
+local vcmd = vim.cmd
 
 local format_stdin = function(format_cmd, format_args, timeout_ms)
   local bufnr = api.nvim_get_current_buf()
@@ -59,11 +60,11 @@ function M.auto(fn)
 end
 
 function M.enable_lua_auto_format()
-  api.nvim_command([[augroup prettierd_autofmt]])
-  api.nvim_command([[autocmd!]])
-  api.nvim_command(
+  vcmd([[augroup prettierd_autofmt]])
+  vcmd([[autocmd!]])
+  vcmd(
     [[autocmd BufWritePre <buffer> lua require('plugin.format').auto(require('plugin.format').lua)]])
-  api.nvim_command([[augroup END]])
+  vcmd([[augroup END]])
 end
 
 return M

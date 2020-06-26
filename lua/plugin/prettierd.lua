@@ -1,4 +1,5 @@
 local api = vim.api
+local vcmd = vim.cmd
 local vfn = vim.fn
 local loop = vim.loop
 local cmd = require('lib.cmd')
@@ -141,10 +142,10 @@ function M.auto_format()
 end
 
 function M.enable_auto_format()
-  api.nvim_command([[augroup prettierd_autofmt]])
-  api.nvim_command([[autocmd!]])
-  api.nvim_command([[autocmd BufWritePre <buffer> lua require('plugin.prettierd').auto_format()]])
-  api.nvim_command([[augroup END]])
+  vcmd([[augroup prettierd_autofmt]])
+  vcmd([[autocmd!]])
+  vcmd([[autocmd BufWritePre <buffer> lua require('plugin.prettierd').auto_format()]])
+  vcmd([[augroup END]])
 end
 
 return M

@@ -2,6 +2,7 @@ local M = {}
 
 local api = vim.api
 local lsp = vim.lsp
+local vcmd = vim.cmd
 
 function M.show_line_diagnostics()
   local prefix = '- '
@@ -42,11 +43,11 @@ function M.list_file_diagnostics()
   end
   lsp.util.set_qflist(items)
   if vim.tbl_isempty(items) then
-    api.nvim_command('cclose')
+    vcmd('cclose')
   else
-    api.nvim_command('copen')
-    api.nvim_command('wincmd p')
-    api.nvim_command('cc')
+    vcmd('copen')
+    vcmd('wincmd p')
+    vcmd('cc')
   end
 end
 

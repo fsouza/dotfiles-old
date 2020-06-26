@@ -1,7 +1,7 @@
 local api = vim.api
-local nvim_command = api.nvim_command
 local nvim_set_keymap = api.nvim_set_keymap
 local loop = vim.loop
+local vcmd = vim.cmd
 local vfn = vim.fn
 
 local helpers = require('lib.nvim_helpers')
@@ -77,13 +77,13 @@ end
 local rnu = function()
   vim.wo.relativenumber = vim.bo.modifiable
   vim.schedule(function()
-    nvim_command([[augroup auto_rnu]])
-    nvim_command([[autocmd!]])
-    nvim_command(
+    vcmd([[augroup auto_rnu]])
+    vcmd([[autocmd!]])
+    vcmd(
       [[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
-    nvim_command(
+    vcmd(
       [[autocmd WinNew * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
-    nvim_command([[augroup END]])
+    vcmd([[augroup END]])
   end)
 end
 
@@ -91,10 +91,10 @@ local folding = function()
   vim.o.foldlevelstart = 99
   vim.wo.foldmethod = 'syntax'
   vim.schedule(function()
-    nvim_command([[augroup folding_config]])
-    nvim_command([[autocmd!]])
-    nvim_command([[autocmd BufEnter * setlocal foldmethod=syntax]])
-    nvim_command([[augroup END]])
+    vcmd([[augroup folding_config]])
+    vcmd([[autocmd!]])
+    vcmd([[autocmd BufEnter * setlocal foldmethod=syntax]])
+    vcmd([[augroup END]])
   end)
 end
 

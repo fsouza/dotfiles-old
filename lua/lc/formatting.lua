@@ -1,8 +1,10 @@
 local M = {}
 
-local helpers = require('lib.nvim_helpers')
 local api = vim.api
 local lsp = vim.lsp
+local vcmd = vim.cmd
+local helpers = require('lib.nvim_helpers')
+
 local fmt_clients = {}
 
 local should_skip_ft = function(ft)
@@ -27,10 +29,10 @@ function M.register_client(client, bufnr)
   end
 
   if not should_skip_ft(api.nvim_buf_get_option(bufnr, 'filetype')) then
-    api.nvim_command([[augroup lc_autofmt]])
-    api.nvim_command([[autocmd!]])
-    api.nvim_command([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
-    api.nvim_command([[augroup END]])
+    vcmd([[augroup lc_autofmt]])
+    vcmd([[autocmd!]])
+    vcmd([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
+    vcmd([[augroup END]])
     api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
                             helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})
   end

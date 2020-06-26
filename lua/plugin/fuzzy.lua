@@ -1,12 +1,12 @@
 local M = {}
 
 local vfn = vim.fn
-local nvim_command = vim.api.nvim_command
+local vcmd = vim.cmd
 
 function M.rg(input)
   input = input or vfn.input([[rg\ ]])
   if input ~= '' then
-    nvim_command(string.format([[FzfPreviewProjectGrep "%s"]], input))
+    vcmd(string.format([[FzfPreviewProjectGrep "%s"]], input))
   end
 end
 

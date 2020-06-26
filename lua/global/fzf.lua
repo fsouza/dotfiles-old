@@ -1,6 +1,6 @@
 local M = {}
 
-local nvim_command = vim.api.nvim_command
+local vcmd = vim.cmd
 local lsp = vim.lsp
 local nvim_input = vim.api.nvim_input
 local vfn = vim.fn
@@ -32,14 +32,14 @@ function M.handle_lsp_line(lines)
 
   if #loc_list == 1 then
     local item = loc_list[1]
-    nvim_command(string.format('%s %s', action, item.filename))
+    vcmd(string.format('%s %s', action, item.filename))
     vfn.cursor(item.lnum, item.col)
     nvim_input('zz')
   else
     lsp.util.set_loclist(loc_list)
-    nvim_command('lopen')
-    nvim_command('wincmd p')
-    nvim_command('ll')
+    vcmd('lopen')
+    vcmd('wincmd p')
+    vcmd('ll')
   end
 end
 

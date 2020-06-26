@@ -1,20 +1,20 @@
 local vfn = vim.fn
+local vcmd = vim.cmd
 local api = vim.api
 local nvim_buf_get_option = api.nvim_buf_get_option
 local nvim_buf_set_option = api.nvim_buf_set_option
-local nvim_command = api.nvim_command
 local cmd = require('lib.cmd')
 
 local M = {}
 
 local set_enabled = function(v)
-  nvim_command('augroup editorconfig')
-  nvim_command('autocmd!')
+  vcmd('augroup editorconfig')
+  vcmd('autocmd!')
   if v then
-    nvim_command(
+    vcmd(
       [[autocmd BufNewFile,BufReadPost,BufFilePost * lua require("plugin.editor_config").set_config()]])
   end
-  nvim_command('augroup END')
+  vcmd('augroup END')
   M.set_config()
 end
 
@@ -46,13 +46,12 @@ local get_vim_fileformat = function(editorconfig_eol)
 end
 
 local handle_whitespaces = function(v)
-  nvim_command('augroup editorconfig_trim_trailing_whitespace')
-  nvim_command([[autocmd!]])
+  vcmd('augroup editorconfig_trim_trailing_whitespace')
+  vcmd([[autocmd!]])
   if v == 'true' then
-    nvim_command(
-      'autocmd BufWritePre <buffer> lua require("plugin.editor_config").trim_whitespace()')
+    vcmd('autocmd BufWritePre <buffer> lua require("plugin.editor_config").trim_whitespace()')
   end
-  nvim_command('augroup END')
+  vcmd('augroup END')
 end
 
 local set_opts = function(bufnr, opts)
@@ -131,7 +130,7 @@ end
 function M.trim_whitespace()
   local view = vfn.winsaveview()
   pcall(function()
-    nvim_command([[silent! keeppatterns %s/\s\+$//e]])
+    vcmd([[silent! keeppatterns %s/\s\+$//e]])
   end)
   vfn.winrestview(view)
 end
