@@ -94,7 +94,7 @@ local setup_editorconfig = function()
 end
 
 local setup_prettierd = function()
-  local auto_fmt_fts = {'javascript'; 'typescript'; 'css'}
+  local auto_fmt_fts = {'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'}
   nvim_command([[command! PrettierFormat lua require('plugin.prettierd').format()]])
   nvim_command([[augroup auto_prettierd]])
   nvim_command([[autocmd!]])
