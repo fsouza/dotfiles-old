@@ -23,6 +23,10 @@ local setup_fzf_mappings = function()
   })
 end
 
+local setup_terminal_commands = function()
+  vcmd([[command! T lua require('plugin.terminal').terminal_here()]])
+end
+
 local setup_completion = function()
   vim.g.completion_trigger_on_delete = 1
   vim.g.completion_confirm_key = [[\<C-y>]]
@@ -127,6 +131,7 @@ do
   schedule(setup_ultisnips)
   schedule(setup_hlyank)
   schedule(setup_format_comands)
+  schedule(setup_terminal_commands)
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(setup_prettierd)
