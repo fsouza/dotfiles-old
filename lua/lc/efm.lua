@@ -30,28 +30,11 @@ local get_dune = function()
   return {['format-command'] = 'dune format-dune-file'; ['format-stdin'] = true}
 end
 
-local get_shellcheck = function()
-  return {
-    ['lint-command'] = 'shellcheck -f gcc -x';
-    ['lint-formats'] = {'%f:%l:%c: %trror: %m'; '%f:%l:%c: %tarning: %m'; '%f:%l:%c: %tote: %m'};
-  }
-end
-
 local get_config_str = function()
   local cfg = {
     version = 2;
-    tools = {
-      dmypy = get_dmypy();
-      sort = get_isort();
-      black = get_black();
-      dune = get_dune();
-      shellcheck = get_shellcheck();
-    };
-    languages = {
-      python = {get_dmypy(); get_black(); get_isort()};
-      dune = {get_dune()};
-      sh = {get_shellcheck()};
-    };
+    tools = {dmypy = get_dmypy(); sort = get_isort(); black = get_black(); dune = get_dune()};
+    languages = {python = {get_dmypy(); get_black(); get_isort()}; dune = {get_dune()}};
   }
   return require('lyaml').dump({cfg})
 end
