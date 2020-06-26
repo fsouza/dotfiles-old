@@ -93,7 +93,7 @@ local setup_editorconfig = function()
 end
 
 local setup_prettierd = function()
-  local auto_fmt_fts = {'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'}
+  local auto_fmt_fts = {'json'; 'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'}
   vcmd([[command! PrettierFormat lua require('plugin.prettierd').format()]])
   vcmd([[augroup auto_prettierd]])
   vcmd([[autocmd!]])

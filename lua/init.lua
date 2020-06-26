@@ -140,7 +140,6 @@ do
   rnu()
   folding()
   global_vars()
-
   py3_host_prog()
 
   require('pack').setup()
