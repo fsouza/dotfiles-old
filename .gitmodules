@@ -61,3 +61,6 @@
 [submodule "nvim-treesitter"]
 	path = pack/b/opt/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "vista.vim"]
+	path = pack/b/opt/vista.vim
+	url = https://github.com/liuchengxu/vista.vim.git
