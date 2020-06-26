@@ -76,6 +76,7 @@ local global_options = function()
   vim.o.backup = false
   vim.o.swapfile = false
   vim.o.inccommand = 'split'
+  vim.o.timeoutlen = 500
 end
 
 local config_column = function()
