@@ -48,7 +48,7 @@ end
 local setup_hlyank = function()
   vcmd([[augroup yank_highlight]])
   vcmd([[autocmd!]])
-  vcmd([[autocmd TextYankPost * silent! lua require('plugin.hlyank').on_yank('HlYank', 300)]])
+  vcmd([[autocmd TextYankPost * silent! lua require('vim.highlight').on_yank('HlYank', 300)]])
   vcmd([[augroup END]])
 end
 
