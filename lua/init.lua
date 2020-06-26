@@ -14,6 +14,10 @@ local initial_mappings = function()
   nvim_set_keymap('n', '<Space>', '', {})
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ' '
+
+  -- Remap jj
+  nvim_set_keymap('i', 'jj', '<esc>', {})
+  nvim_set_keymap('t', 'jj', [[<c-\><c-n>]], {})
 end
 
 local py3_host_prog = function()
