@@ -36,7 +36,7 @@ local hererocks = function()
   local lib_path = hererocks_path .. '/lib/lua/' .. lua_version
   package.path = package.path .. ';' .. share_path .. '/?.lua' .. ';' .. share_path ..
                    '/?/init.lua'
-  package.cpath = package.cpath .. ';' .. lib_path .. '?.so'
+  package.cpath = package.cpath .. ';' .. lib_path .. '/?.so'
 
   loop.os_setenv('PATH', bin_path .. ':' .. loop.os_getenv('PATH'))
 end
