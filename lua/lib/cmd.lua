@@ -32,8 +32,8 @@ local input_collector = function(prefix, debug_fn)
 end
 
 local safe_close = function(h, cb)
-  if not loop.is_closing(h, cb) then
-    loop.close(h)
+  if not loop.is_closing(h) then
+    loop.close(h, cb)
   end
 end
 
@@ -95,6 +95,7 @@ function M.run(cmd, opts, input_data, on_finished, debug_fn)
         errors = errors;
       })
       r.finished = true
+      close()
     end)
   end
 
