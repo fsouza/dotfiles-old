@@ -79,16 +79,15 @@ local global_options = function()
   vim.o.timeoutlen = 500
 end
 
-local config_column = function()
+local rnu = function()
   vim.wo.relativenumber = vim.bo.modifiable
-  vim.wo.signcolumn = vim.bo.modifiable and 'yes' or 'auto'
   vim.schedule(function()
     vcmd([[augroup auto_rnu]])
     vcmd([[autocmd!]])
     vcmd(
-      [[autocmd BufEnter * if &modifiable|setlocal relativenumber signcolumn=yes|else|setlocal norelativenumber signcolumn=auto|endif]])
+      [[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
     vcmd(
-      [[autocmd WinNew * if &modifiable|setlocal relativenumber signcolumn=yes|else|setlocal norelativenumber signcolumn=auto|endif]])
+      [[autocmd WinNew * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
     vcmd([[augroup END]])
   end)
 end
@@ -143,7 +142,7 @@ do
   end)
 
   ui_options()
-  config_column()
+  rnu()
   folding()
   global_vars()
   py3_host_prog()
