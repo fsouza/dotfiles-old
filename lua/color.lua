@@ -73,7 +73,6 @@ end
 
 local custom_groups = function()
   highlight('HlYank', {ctermbg = '225'; guibg = '#ffd7ff'})
-  highlight('BadWhitespace', {ctermbg = '160'; guibg = '#d70000'})
 end
 
 local setup = function()
