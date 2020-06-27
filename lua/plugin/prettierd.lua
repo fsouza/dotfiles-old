@@ -73,6 +73,10 @@ function M.format(cb, is_retry)
       table.remove(new_lines, #new_lines)
     end
 
+    if vim.tbl_isempty(new_lines) then
+      return
+    end
+
     if string.find(new_lines[#new_lines], '^# exit %d+') then
       error(string.format('failed to format with prettier: %s', data))
     end
