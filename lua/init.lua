@@ -113,7 +113,10 @@ local global_mappings = function()
   }
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
   local maps = {
-    n = {{lhs = '<leader>o'; rhs = helpers.cmd_map('only') .. helpers.cmd_map('tabonly')}};
+    n = {
+      {lhs = '<leader>o'; rhs = helpers.cmd_map('only')};
+      {lhs = '<leader>O'; rhs = helpers.cmd_map('only') .. helpers.cmd_map('tabonly')};
+    };
     i = {
       {lhs = '<c-f>'; rhs = '<right>'; opts = {noremap = true}};
       {lhs = '<c-b>'; rhs = '<left>'; opts = {noremap = true}};
