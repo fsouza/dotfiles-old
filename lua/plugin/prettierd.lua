@@ -143,6 +143,7 @@ end
 
 function M.enable_auto_format()
   vcmd([[augroup prettierd_autofmt]])
+  vcmd([[autocmd!]])
   vcmd([[autocmd BufWritePre <buffer> lua require('plugin.prettierd').auto_format()]])
   vcmd([[augroup END]])
 end

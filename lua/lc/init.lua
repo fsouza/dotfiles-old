@@ -124,7 +124,7 @@ do
   local clangd = loop.os_getenv('HOMEBREW_PREFIX') .. '/opt/llvm/bin/clangd'
   if_executable(clangd, function()
     lsp.clangd.setup(lc_opts.with_default_opts({
-      cmd = {clangd; '--background-index'; '--pch-storage=memory'};
+      cmd = {clangd; '--background-index', '--pch-storage=memory'};
     }))
   end)
 end

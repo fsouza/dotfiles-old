@@ -9,6 +9,7 @@ local M = {}
 
 local set_enabled = function(v)
   vcmd('augroup editorconfig')
+  vcmd('autocmd!')
   if v then
     vcmd(
       [[autocmd BufNewFile,BufReadPost,BufFilePost * lua require("plugin.editor_config").set_config()]])
@@ -46,6 +47,7 @@ end
 
 local handle_whitespaces = function(v)
   vcmd('augroup editorconfig_trim_trailing_whitespace')
+  vcmd([[autocmd!]])
   if v == 'true' then
     vcmd('autocmd BufWritePre <buffer> lua require("plugin.editor_config").trim_whitespace()')
   end
