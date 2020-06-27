@@ -64,3 +64,6 @@
 [submodule "vista.vim"]
 	path = pack/b/opt/vista.vim
 	url = https://github.com/liuchengxu/vista.vim.git
+[submodule "completion-buffers"]
+	path = pack/b/opt/completion-buffers
+	url = https://github.com/steelsojka/completion-buffers.git
