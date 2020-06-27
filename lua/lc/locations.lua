@@ -14,12 +14,12 @@ local ts_range = function(loc)
   if not lang or lang == '' then
     return loc
   end
-
-  local bufnr = vim.uri_to_bufnr(loc.uri)
-  vim.api.nvim_buf_set_option(bufnr, 'buflisted', true)
   if not parsers.has_parser(lang) then
     return loc
   end
+
+  local bufnr = vim.uri_to_bufnr(loc.uri)
+  vim.api.nvim_buf_set_option(bufnr, 'buflisted', true)
 
   local start_pos = loc.range.start
   local end_pos = loc.range['end']
