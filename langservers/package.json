@@ -4,7 +4,7 @@
   "scripts": {},
   "license": "ISC",
   "dependencies": {
-    "@fsouza/prettierd": "0.5.0",
+    "@fsouza/prettierd": "0.6.0",
     "bash-language-server": "^1.16.1",
     "typescript-language-server": "^0.4.0",
     "vim-language-server": "^1.9.0",
