@@ -6,9 +6,6 @@ local parsers = require('nvim-treesitter.parsers')
 local ts_utils = require('nvim-treesitter.ts_utils')
 
 local ts_range = function(loc)
-  local start_pos = loc.range.start
-  local end_pos = loc.range['end']
-
   if not loc.uri then
     return loc
   end
@@ -24,6 +21,8 @@ local ts_range = function(loc)
     return loc
   end
 
+  local start_pos = loc.range.start
+  local end_pos = loc.range['end']
   local parser = parsers.get_parser(bufnr, lang)
   local root = parser.tree:root()
   local node = root:named_descendant_for_range(start_pos.line, start_pos.character, end_pos.line,
