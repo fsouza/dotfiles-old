@@ -30,8 +30,11 @@ end
 local setup_completion = function()
   vim.g.completion_trigger_on_delete = 1
   vim.g.completion_confirm_key = [[\<C-y>]]
-  vim.g.completion_enable_snippet = 'UltiSnips'
   vim.g.completion_matching_strategy_list = {'exact'; 'fuzzy'}
+  vim.g.completion_chain_complete_list = {
+    {complete_items = {'lsp'}}; {complete_items = {'buffers'}}; {mode = {'<c-p>'}};
+    {mode = {'<c-n>'}};
+  }
   helpers.create_mappings({
     i = {
       {
