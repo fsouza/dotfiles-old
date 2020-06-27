@@ -20,9 +20,11 @@ local ts_range = function(loc)
 
   local bufnr = vim.uri_to_bufnr(loc.uri)
   vim.api.nvim_buf_set_option(bufnr, 'buflisted', true)
+  vim.api.nvim_buf_set_option(bufnr, 'filetype', vim.bo.filetype)
 
   local start_pos = loc.range.start
   local end_pos = loc.range['end']
+
   local parser = parsers.get_parser(bufnr, lang)
   local root = parser.tree:root()
   local node = root:named_descendant_for_range(start_pos.line, start_pos.character, end_pos.line,
