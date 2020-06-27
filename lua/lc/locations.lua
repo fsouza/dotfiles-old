@@ -1,47 +1,70 @@
 local M = {}
 
 local lsp = vim.lsp
-local util = require('vim.lsp.util')
+local lap_util = require('vim.lsp.util')
+local parsers = require('nvim-treesitter.parsers')
+local ts_utils = require('nvim-treesitter.ts_utils')
 
-local min = function(x, y)
-  if x < y then
-    return x
-  else
-    return y
+local ts_range = function(loc)
+  local start_pos = loc.range.start
+  local end_pos = loc.range['end']
+
+  if not loc.uri then
+    return loc
   end
+
+  local lang = parsers.ft_to_lang(vim.bo.filetype)
+  if not lang or lang == '' then
+    return loc
+  end
+
+  local bufnr = vim.uri_to_bufnr(loc.uri)
+  vim.api.nvim_buf_set_option(bufnr, 'buflisted', true)
+  local parser = parsers.get_parser(bufnr, lang)
+  if not parser then
+    return loc
+  end
+
+  local root = parser.tree:root()
+  local node = root:named_descendant_for_range(start_pos.line, start_pos.character, end_pos.line,
+                                               end_pos.character)
+  local scope = ts_utils.containing_scope(node)
+  if scope:type() == 'function_declaration' or scope:type() == 'method_declaration' then
+    local sl, sc, el, ec = scope:range()
+    loc.range.start.line = sl
+    loc.range.start.character = sc
+    loc.range['end'].line = el
+    loc.range['end'].character = ec
+  end
+  return loc
 end
 
 local preview_location_callback = function(_, _, result)
-  print(vim.inspect(result))
   if not result or vim.tbl_isempty(result) then
     return
   end
 
-  local loc = result[1]
-
-  -- this is a hack
-  local end_line = loc.range['end'].line
-  loc.range['end'].line = end_line + 20
-  util.preview_location(loc)
+  local loc = ts_range(result[1])
+  lap_util.preview_location(loc)
 end
 
 function M.preview_definition()
-  local params = util.make_position_params()
+  local params = lap_util.make_position_params()
   lsp.buf_request(0, 'textDocument/definition', params, preview_location_callback)
 end
 
 function M.preview_declaration()
-  local params = util.make_position_params()
+  local params = lap_util.make_position_params()
   lsp.buf_request(0, 'textDocument/declaration', params, preview_location_callback)
 end
 
 function M.preview_implementation()
-  local params = util.make_position_params()
+  local params = lap_util.make_position_params()
   lsp.buf_request(0, 'textDocument/implementation', params, preview_location_callback)
 end
 
 function M.preview_type_definition()
-  local params = util.make_position_params()
+  local params = lap_util.make_position_params()
   lsp.buf_request(0, 'textDocument/typeDefinition', params, preview_location_callback)
 end
 
