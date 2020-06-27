@@ -106,7 +106,7 @@ do
   if_executable(efm, function()
     lsp.efm.setup(lc_opts.with_default_opts({
       cmd = {efm; '-c'; require('lc/efm').config_file()};
-      filetypes = {'dune'; 'python';};
+      filetypes = {'dune'; 'python'};
       root_dir = lc_opts.cwd_root_pattern;
     }))
   end)
@@ -119,5 +119,12 @@ do
           Lua = {runtime = {version = 'LuaJIT'}; diagnostics = {enable = true; globals = {'vim'}}};
         };
       }))
+  end)
+
+  local clangd = loop.os_getenv('HOMEBREW_PREFIX') .. '/opt/llvm/bin/clangd'
+  if_executable(clangd, function()
+    lsp.clangd.setup(lc_opts.with_default_opts({
+      cmd = {clangd; '--background-index', '--pch-storage=memory'};
+    }))
   end)
 end
