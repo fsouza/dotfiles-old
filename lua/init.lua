@@ -87,6 +87,7 @@ local rnu = function()
       [[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
     vcmd(
       [[autocmd WinNew * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
+    vcmd([[autocmd TermOpen * setlocal norelativenumber]])
     vcmd([[augroup END]])
   end)
 end
