@@ -1,5 +1,6 @@
 local vcmd = vim.cmd
 local parsers = require('nvim-treesitter.parsers')
+local ts_utils = require('nvim-treesitter.ts_utils')
 
 local wanted_parsers = {
   'bash'; 'css'; 'go'; 'html'; 'javascript'; 'json'; 'lua'; 'ocaml'; 'python'; 'rust'; 'tsx';
@@ -47,3 +48,18 @@ do
   configs.commands.TSEnableAll.run('highlight')
   configs.commands.TSEnableAll.run('incremental_selection')
 end
+
+return {
+  debug = function()
+    local node = ts_utils.get_node_at_cursor()
+    print(node:type())
+    print(node:sexpr())
+    print(node:range())
+    print(ts_utils.get_node_text(node, 0))
+    print(ts_utils.containing_scope(node):type())
+    print(ts_utils.containing_scope(node):range())
+
+    print(ts_utils.get_previous_node(node, false, false):type())
+    print(ts_utils.get_previous_node(node, false, false):range())
+  end;
+}
