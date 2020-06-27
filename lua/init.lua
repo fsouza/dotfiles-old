@@ -83,7 +83,6 @@ local rnu = function()
   vim.wo.relativenumber = vim.bo.modifiable
   vim.schedule(function()
     vcmd([[augroup auto_rnu]])
-    vcmd([[autocmd!]])
     vcmd(
       [[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
     vcmd(
@@ -97,7 +96,6 @@ local folding = function()
   vim.wo.foldmethod = 'syntax'
   vim.schedule(function()
     vcmd([[augroup folding_config]])
-    vcmd([[autocmd!]])
     vcmd([[autocmd BufEnter * setlocal foldmethod=syntax]])
     vcmd([[augroup END]])
   end)

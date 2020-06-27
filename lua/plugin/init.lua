@@ -51,7 +51,6 @@ end
 
 local setup_hlyank = function()
   vcmd([[augroup yank_highlight]])
-  vcmd([[autocmd!]])
   vcmd([[autocmd TextYankPost * silent! lua require('vim.highlight').on_yank('HlYank', 300)]])
   vcmd([[augroup END]])
 end
@@ -63,7 +62,6 @@ end
 local setup_format_comands = function()
   vcmd([[command! LuaFormat lua require('plugin.format').lua()]])
   vcmd([[augroup filetype_lua]])
-  vcmd([[autocmd!]])
   vcmd([[autocmd FileType lua lua require('plugin.format').enable_lua_auto_format()]])
   vcmd([[augroup END]])
 end
@@ -83,7 +81,6 @@ end
 local setup_spell = function()
   local filetypes = {'gitcommit'; 'markdown'; 'text'}
   vcmd([[augroup auto_spell]])
-  vcmd([[autocmd!]])
   vcmd(string.format([[autocmd FileType %s setlocal spell]], table.concat(filetypes, ',')))
   vcmd([[augroup END]])
 end
@@ -100,7 +97,6 @@ local setup_prettierd = function()
   local auto_fmt_fts = {'json'; 'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'}
   vcmd([[command! PrettierFormat lua require('plugin.prettierd').format()]])
   vcmd([[augroup auto_prettierd]])
-  vcmd([[autocmd!]])
   vcmd(string.format([[autocmd FileType %s lua require('plugin.prettierd').enable_auto_format()]],
                      table.concat(auto_fmt_fts, ',')))
   vcmd([[augroup END]])
@@ -108,8 +104,7 @@ end
 
 local ftdetect = function()
   local p_mapping = {['go.mod'] = 'gomod'}
-  vcmd([[augroup ftdetect]])
-  vcmd([[autocmd!]])
+  vcmd([[augroup custom_ftdetect]])
   for pattern, ft in pairs(p_mapping) do
     vcmd(string.format([[autocmd BufEnter %s set ft=%s]], pattern, ft))
   end

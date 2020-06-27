@@ -30,7 +30,6 @@ function M.register_client(client, bufnr)
 
   if not should_skip_ft(api.nvim_buf_get_option(bufnr, 'filetype')) then
     vcmd([[augroup lc_autofmt]])
-    vcmd([[autocmd!]])
     vcmd([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
     vcmd([[augroup END]])
     api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',

@@ -24,7 +24,6 @@ local syntax_and_filetype = function()
     vcmd([[match BadWhitespace /\s\+$/]])
 
     vcmd([[augroup badwhitespace_match]])
-    vcmd([[autocmd!]])
     vcmd([[autocmd BufEnter * match BadWhitespace /\s\+$/]])
     vcmd([[augroup END]])
   end)
