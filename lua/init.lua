@@ -116,7 +116,15 @@ local global_mappings = function()
   local maps = {
     n = {
       {lhs = '<leader>o'; rhs = helpers.cmd_map('only')};
-      {lhs = '<leader>O'; rhs = helpers.cmd_map('only') .. helpers.cmd_map('tabonly')};
+      {lhs = '<leader>O'; rhs = helpers.cmd_map('only') .. helpers.cmd_map('tabonly')}; {
+        lhs = 'j';
+        rhs = [[(v:count > 8 ? "m'" . v:count : '') . 'j']];
+        opts = {expr = true; noremap = true};
+      }; {
+        lhs = 'k';
+        rhs = [[(v:count > 8 ? "m'" . v:count : '') . 'k']];
+        opts = {expr = true; noremap = true};
+      };
     };
     i = {
       {lhs = '<c-f>'; rhs = '<right>'; opts = {noremap = true}};
