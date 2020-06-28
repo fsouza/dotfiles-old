@@ -64,7 +64,15 @@ local setup_global_ns = function()
 end
 
 local setup_format_comands = function()
-  vcmd([[command! LuaFormat lua require('plugin.format').lua()]])
+  helpers.create_mappings({
+    n = {
+      {
+        lhs = '<leader>f';
+        rhs = helpers.cmd_map('lua require("plugin.format").lua()');
+        {silent = true};
+      };
+    };
+  })
   vcmd([[augroup filetype_lua]])
   vcmd([[autocmd!]])
   vcmd([[autocmd FileType lua lua require('plugin.format').enable_lua_auto_format()]])
@@ -103,7 +111,15 @@ local setup_prettierd = function()
   local auto_fmt_fts = {
     'json'; 'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'; 'yaml';
   }
-  vcmd([[command! PrettierFormat lua require('plugin.prettierd').format()]])
+  helpers.create_mappings({
+    n = {
+      {
+        lhs = '<leader>f';
+        rhs = helpers.cmd_map('lua require("plugin.prettierd").format()');
+        {silent = true};
+      };
+    };
+  })
   vcmd([[augroup auto_prettierd]])
   vcmd([[autocmd!]])
   vcmd(string.format([[autocmd FileType %s lua require('plugin.prettierd').enable_auto_format()]],
