@@ -25,12 +25,7 @@ local attached = function(bufnr, client)
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics(0)');
           opts = {silent = true};
-        };
-        {
-          lhs = '<localleader><localleader>';
-          rhs = helpers.cmd_map('Vista!!');
-          opts = {silent = true};
-        };
+        }; {lhs = '<localleader>v'; rhs = helpers.cmd_map('Vista!!'); opts = {silent = true}};
       };
       i = {};
     }
