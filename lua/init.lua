@@ -81,6 +81,12 @@ end
 
 local rnu = function()
   vcmd('set relativenumber')
+  vim.schedule(function()
+    vcmd([[augroup auto_rnu]])
+    vcmd([[autocmd!]])
+    vcmd([[autocmd TermOpen * setlocal norelativenumber]])
+    vcmd([[augroup END]])
+  end)
 end
 
 local folding = function()
