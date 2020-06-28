@@ -64,18 +64,11 @@ local setup_global_ns = function()
 end
 
 local setup_format_comands = function()
-  helpers.create_mappings({
-    n = {
-      {
-        lhs = '<leader>f';
-        rhs = helpers.cmd_map('lua require("plugin.format").lua()');
-        {silent = true};
-      };
-    };
-  })
   vcmd([[augroup filetype_lua]])
   vcmd([[autocmd!]])
   vcmd([[autocmd FileType lua lua require('plugin.format').enable_lua_auto_format()]])
+  vcmd(string.format(
+         [[autocmd FileType lua nmap <buffer> <silent> <leader>f <cmd>lua require('plugin.format').lua()<cr>']]))
   vcmd([[augroup END]])
 end
 
@@ -111,19 +104,13 @@ local setup_prettierd = function()
   local auto_fmt_fts = {
     'json'; 'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'; 'yaml';
   }
-  helpers.create_mappings({
-    n = {
-      {
-        lhs = '<leader>f';
-        rhs = helpers.cmd_map('lua require("plugin.prettierd").format()');
-        {silent = true};
-      };
-    };
-  })
   vcmd([[augroup auto_prettierd]])
   vcmd([[autocmd!]])
   vcmd(string.format([[autocmd FileType %s lua require('plugin.prettierd').enable_auto_format()]],
                      table.concat(auto_fmt_fts, ',')))
+  vcmd(string.format(
+         [[autocmd FileType %s nmap <buffer> <silent> <leader>f <cmd>lua require('plugin.prettierd').format()<cr>']],
+         table.concat(auto_fmt_fts, ',')))
   vcmd([[augroup END]])
 end
 

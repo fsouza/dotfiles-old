@@ -80,15 +80,7 @@ local global_options = function()
 end
 
 local rnu = function()
-  vim.wo.relativenumber = vim.bo.modifiable
-  vim.schedule(function()
-    vcmd([[augroup auto_rnu]])
-    vcmd([[autocmd!]])
-    vcmd(
-      [[autocmd BufEnter * if &modifiable|setlocal relativenumber|else|setlocal norelativenumber|endif]])
-    vcmd([[autocmd TermOpen * setlocal norelativenumber]])
-    vcmd([[augroup END]])
-  end)
+  vcmd('set relativenumber')
 end
 
 local folding = function()
