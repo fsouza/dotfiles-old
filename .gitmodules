@@ -7,9 +7,6 @@
 [submodule "vim-dirvish"]
 	path = pack/b/opt/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish.git
-[submodule "typescript-vim"]
-	path = pack/b/opt/typescript-vim
-	url = https://github.com/leafgarland/typescript-vim.git
 [submodule "tabular"]
 	path = pack/b/opt/tabular
 	url = https://github.com/godlygeek/tabular.git
@@ -25,9 +22,6 @@
 [submodule "float-preview.nvim"]
 	path = pack/b/opt/float-preview.nvim
 	url = https://github.com/ncm2/float-preview.nvim.git
-[submodule "vim-ocaml"]
-	path = pack/b/opt/vim-ocaml
-	url = https://github.com/ocaml/vim-ocaml.git
 [submodule "ultisnips"]
 	path = pack/b/opt/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
@@ -46,9 +40,6 @@
 [submodule "vim-surround"]
 	path = pack/b/opt/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim-python-pep8-indent"]
-	path = pack/b/opt/vim-python-pep8-indent
-	url = https://github.com/Vimjas/vim-python-pep8-indent.git
 [submodule "langservers/lua-language-server"]
 	path = langservers/lua-language-server
 	url = https://github.com/sumneko/lua-language-server
@@ -67,3 +58,6 @@
 [submodule "completion-buffers"]
 	path = pack/b/opt/completion-buffers
 	url = https://github.com/steelsojka/completion-buffers.git
+[submodule "vim-polyglot"]
+	path = pack/b/opt/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
