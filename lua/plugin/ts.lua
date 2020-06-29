@@ -25,7 +25,7 @@ local set_folding = function()
   vcmd([[augroup folding_config]])
   vcmd([[autocmd!]])
   vcmd(string.format([[autocmd FileType %s setlocal foldmethod=expr foldexpr=%s]],
-                     table.concat(file_types, ','), foldexpr))
+                     table.concat(vim.tbl_flatten(file_types), ','), foldexpr))
   vcmd([[augroup END]])
 end
 
