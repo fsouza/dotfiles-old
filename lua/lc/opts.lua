@@ -61,6 +61,11 @@ local attached = function(bufnr, client)
         rhs = helpers.cmd_map('lua vim.lsp.buf.document_highlight()');
         opts = {silent = true};
       })
+      table.insert(mappings.n, {
+        lhs = '<localleader>S';
+        rhs = helpers.cmd_map('lua vim.lsp.buf.clear_references()');
+        opts = {silent = true};
+      })
     end
 
     if client.resolved_capabilities.document_symbol then
