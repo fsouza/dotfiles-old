@@ -32,7 +32,7 @@ end
 do
   local configs = require('nvim-treesitter.configs')
   configs.setup({
-    highlight = {enable = true};
+    highlight = {enable = true; disable = {'go'}};
     incremental_selection = {
       enable = true;
       keymaps = {
