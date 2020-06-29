@@ -114,16 +114,6 @@ local setup_prettierd = function()
   vcmd([[augroup END]])
 end
 
-local ftdetect = function()
-  local p_mapping = {['go.mod'] = 'gomod'}
-  vcmd([[augroup ftdetect]])
-  vcmd([[autocmd!]])
-  for pattern, ft in pairs(p_mapping) do
-    vcmd(string.format([[autocmd BufEnter %s set ft=%s]], pattern, ft))
-  end
-  vcmd([[augroup END]])
-end
-
 local trigger_ft = function()
   if vim.bo.filetype and vim.bo.filetype ~= '' then
     vcmd([[doautocmd FileType ]] .. vim.bo.filetype)
@@ -143,7 +133,6 @@ do
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(setup_prettierd)
-  schedule(ftdetect)
   schedule(function()
     require('lc.init')
     require('plugin.ts')
