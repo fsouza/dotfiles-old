@@ -54,7 +54,7 @@ local reversers = function()
   end
 end
 
-local lsp_highlights = function()
+local language_highlights = function()
   local diagnostics = {guifg = '#a8a8a8'; ctermfg = '248'}
   local diagnostics_sign = {guifg = '#262626'; ctermfg = '235'; guibg = '#dadada'; ctermbg = '253'}
 
@@ -69,6 +69,9 @@ local lsp_highlights = function()
   for _, ref_type in pairs({'Text'; 'Read'; 'Write'}) do
     highlight('LspReference' .. ref_type, reference)
   end
+
+  highlight('TSDefinitionUsage', reference)
+  highlight('TSDefinition', reference)
 end
 
 local custom_groups = function()
@@ -84,7 +87,7 @@ local setup = function()
   basics()
   noners()
   reversers()
-  lsp_highlights()
+  language_highlights()
   custom_groups()
 
   vim.schedule(function()
