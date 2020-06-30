@@ -44,10 +44,35 @@ local setup_completion = function()
   })
 end
 
-local setup_ultisnips = function()
-  vim.g.UltiSnipsExpandTrigger = '<tab>'
-  vim.g.UltiSnipsJumpForwardTrigger = '<c-j>'
-  vim.g.UltiSnipsJumpBackwardTrigger = '<c-k>'
+local vim_vsnip_mappings = function()
+  helpers.create_mappings({
+    i = {
+      {
+        lhs = '<tab>';
+        rhs = [[vsnip#available(1) ? '<Plug>(vsnip-expand)' : '<tab>']];
+        opts = {expr = true};
+      }; {
+        lhs = '<c-j>';
+        rhs = [[vsnip#available(1) ? '<Plug>(vsnip-jump-next)' : '<c-j>']];
+        opts = {expr = true};
+      }; {
+        lhs = '<c-k>';
+        rhs = [[vsnip#available(1) ? '<Plug>(vsnip-jump-prev)' : '<c-k>']];
+        opts = {expr = true};
+      };
+    };
+    s = {
+      {
+        lhs = '<c-j>';
+        rhs = [[vsnip#available(1) ? '<Plug>(vsnip-jump-next)' : '<c-j>']];
+        opts = {expr = true};
+      }; {
+        lhs = '<c-k>';
+        rhs = [[vsnip#available(1) ? '<Plug>(vsnip-jump-prev)' : '<c-k>']];
+        opts = {expr = true};
+      };
+    };
+  })
 end
 
 local setup_hlyank = function()
@@ -124,7 +149,7 @@ do
   schedule(setup_editorconfig)
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
-  schedule(setup_ultisnips)
+  schedule(vim_vsnip_mappings)
   schedule(setup_hlyank)
   schedule(setup_format_comands)
   schedule(setup_terminal_commands)

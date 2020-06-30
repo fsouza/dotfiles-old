@@ -85,7 +85,6 @@ do
         staticcheck = true;
         analyses = {unusedparams = true; ST1000 = false};
       };
-      capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
     }))
   end)
 
@@ -94,8 +93,7 @@ do
   end)
 
   if_executable('jedi-language-server', function()
-    lsp.jedi_language_server.setup(lc_opts.with_default_opts(
-                                     {init_options = {completion = {disableSnippets = true}}}))
+    lsp.jedi_language_server.setup(lc_opts.with_default_opts({}))
   end)
 
   local ra = get_local_cmd('rust-analyzer')
