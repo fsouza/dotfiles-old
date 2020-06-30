@@ -42,11 +42,17 @@ do
         node_decremental = '<s-tab>';
       };
     };
+    refactor = {
+      smart_rename = {enable = true; keymaps = {smart_rename = 'grr'}};
+      navigation = {enable = true; keymaps = {goto_definition = 'gd'; list_defitinions = 'gnD'}};
+    };
     ensure_installed = wanted_parsers;
   })
   set_folding()
   configs.commands.TSEnableAll.run('highlight')
   configs.commands.TSEnableAll.run('incremental_selection')
+  configs.commands.TSEnableAll.run('refactor.smart_rename')
+  configs.commands.TSEnableAll.run('refactor.navigation')
 end
 
 return {
