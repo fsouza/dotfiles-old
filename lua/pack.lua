@@ -13,8 +13,7 @@ local pkgs = function()
   return {
     'completion-nvim'; 'fzf.vim'; 'nvim-lsp'; 'tabular'; 'vim-commentary'; 'vim-dirvish';
     'vim-fugitive'; 'vim-indent-object'; 'vim-repeat'; 'vim-sneak'; 'vim-surround';
-    'nvim-treesitter'; 'vista.vim'; 'completion-buffers'; 'vim-polyglot'; 'vim-vsnip';
-    'vim-vsnip-integ';
+    'nvim-treesitter'; 'vista.vim'; 'completion-buffers'; 'vim-polyglot';
   }
 end
 

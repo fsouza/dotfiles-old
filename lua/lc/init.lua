@@ -54,6 +54,9 @@ do
         staticcheck = true;
         analyses = {unusedparams = true; ST1000 = false};
       };
+      capabilities = vim.tbl_deep_extend('keep', {
+        textDocument = {completion = {completionItem = {snippetSupport = false}}};
+      }, require('vim.lsp.protocol').make_client_capabilities());
     }))
   end)
 
@@ -62,7 +65,8 @@ do
   end)
 
   if_executable('jedi-language-server', function()
-    lsp.jedi_language_server.setup(lc_opts.with_default_opts({}))
+    lsp.jedi_language_server.setup(lc_opts.with_default_opts(
+                                     {{init_options = {completion = {disableSnippets = true}}}}))
   end)
 
   local ra = get_local_cmd('rust-analyzer')
