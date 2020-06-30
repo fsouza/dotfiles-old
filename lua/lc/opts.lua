@@ -25,7 +25,7 @@ local ts_highlight = function(mappings)
   })
   table.insert(mappings.n, {
     lhs = '<localleader>S';
-    rhs = helpers.cmd_map('lua require("nvim-treesitter.refactor.highlight_definitions").clear_highlight_usages()');
+    rhs = helpers.cmd_map('lua require("nvim-treesitter.refactor.highlight_definitions").clear_usage_highlights()');
     opts = {silent = true};
   })
 end
