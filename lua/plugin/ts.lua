@@ -51,15 +51,23 @@ end
 
 return {
   debug = function()
-    local node = ts_utils.get_node_at_cursor()
-    print(node:type())
-    print(node:sexpr())
-    print(node:range())
-    print(ts_utils.get_node_text(node, 0))
-    print(ts_utils.containing_scope(node):type())
-    print(ts_utils.containing_scope(node):range())
+    local ts_locals = require('nvim-treesitter.locals')
 
-    print(ts_utils.get_previous_node(node, false, false):type())
-    print(ts_utils.get_previous_node(node, false, false):range())
+    local definitions = ts_locals.get_references()
+    for _, def in pairs(definitions) do
+      print(def:type())
+      print(vim.inspect(ts_utils.get_node_text(def, 0)))
+    end
+
+    -- local node = ts_utils.get_node_at_cursor()
+    -- print(node:type())
+    -- print(node:sexpr())
+    -- print(node:range())
+    -- print(ts_utils.get_node_text(node, 0))
+    -- print(ts_utils.containing_scope(node):type())
+    -- print(ts_utils.containing_scope(node):range())
+    -- print(ts_utils.get_previous_node(node, false, false):type())
+    -- print(ts_utils.get_previous_node(node, false, false):range())
+
   end;
 }
