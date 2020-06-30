@@ -16,7 +16,6 @@ local initial_mappings = function()
   vim.g.maplocalleader = ' '
 
   -- Remap jj
-  nvim_set_keymap('i', 'jj', '<esc>', {})
   nvim_set_keymap('t', 'jj', [[<c-\><c-n>]], {})
 end
 
