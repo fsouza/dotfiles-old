@@ -1,9 +1,6 @@
 [submodule "langservers/ocaml-lsp"]
 	path = langservers/ocaml-lsp
 	url = https://github.com/ocaml/ocaml-lsp.git
-[submodule "langservers/python-language-server"]
-	path = langservers/python-language-server
-	url = https://github.com/microsoft/python-language-server.git
 [submodule "vim-dirvish"]
 	path = pack/b/opt/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish.git
