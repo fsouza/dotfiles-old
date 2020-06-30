@@ -54,9 +54,6 @@ do
         staticcheck = true;
         analyses = {unusedparams = true; ST1000 = false};
       };
-      capabilities = vim.tbl_deep_extend('keep', {
-        textDocument = {completion = {completionItem = {snippetSupport = false}}};
-      }, require('vim.lsp.protocol').make_client_capabilities());
     }))
   end)
 

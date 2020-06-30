@@ -20,12 +20,14 @@ end
 local ts_highlight = function(mappings)
   table.insert(mappings.n, {
     lhs = '<localleader>s';
-    rhs = helpers.cmd_map('lua require("nvim-treesitter.refactor.highlight_definitions").highlight_usages()');
+    rhs = helpers.cmd_map(
+      'lua require("nvim-treesitter.refactor.highlight_definitions").highlight_usages()');
     opts = {silent = true};
   })
   table.insert(mappings.n, {
     lhs = '<localleader>S';
-    rhs = helpers.cmd_map('lua require("nvim-treesitter.refactor.highlight_definitions").clear_usage_highlights()');
+    rhs = helpers.cmd_map(
+      'lua require("nvim-treesitter.refactor.highlight_definitions").clear_usage_highlights()');
     opts = {silent = true};
   })
 end
@@ -198,7 +200,13 @@ local on_attach = function(client, bufnr)
 end
 
 function M.with_default_opts(opts)
-  return vim.tbl_extend('keep', opts, {callbacks = require('lc.callbacks'); on_attach = on_attach})
+  return vim.tbl_extend('keep', opts, {
+    callbacks = require('lc.callbacks');
+    on_attach = on_attach;
+    capabilities = vim.tbl_deep_extend('keep', opts.capabilities or {}, {
+      textDocument = {completion = {completionItem = {snippetSupport = false}}};
+    }, require('vim.lsp.protocol').make_client_capabilities());
+  });
 end
 
 M.project_root_pattern = lsp.util.root_pattern('.git')
