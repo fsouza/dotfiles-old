@@ -45,7 +45,7 @@ local global_vars = function()
   vim.g.netrw_banner = 0
   vim.g.netrw_liststyle = 3
   vim.g.fzf_command_prefix = 'Fzf'
-  vim.g.fzf_height = '70%'
+  vim.g.fzf_height = '80%'
 end
 
 local ui_options = function()
