@@ -5,4 +5,4 @@ set -e
 ROOT=$(cd "$(dirname "${0}")/.." && pwd -P)
 export PATH="${ROOT}/bin:${PATH}"
 
-exec "${ROOT}/bin/gopls"
+exec "${ROOT}/bin/gopls" "$@"
