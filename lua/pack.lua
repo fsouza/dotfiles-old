@@ -11,7 +11,7 @@ end
 
 local pkgs = function()
   return {
-    'completion-nvim'; 'fzf-preview.vim'; 'nvim-lsp'; 'tabular'; 'ultisnips'; 'vim-commentary';
+    'completion-nvim'; 'fzf.vim'; 'nvim-lsp'; 'tabular'; 'ultisnips'; 'vim-commentary';
     'vim-dirvish'; 'vim-fugitive'; 'vim-indent-object'; 'vim-repeat'; 'vim-sneak'; 'vim-snippets';
     'vim-surround'; 'nvim-treesitter'; 'vista.vim'; 'completion-buffers'; 'vim-polyglot';
   }

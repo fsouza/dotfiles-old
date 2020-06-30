@@ -1,12 +1,14 @@
 local M = {}
 
 local vfn = vim.fn
-local vcmd = vim.cmd
 
 function M.rg(input)
-  input = input or vfn.input([[rg\ ]])
+  input = input or vfn.input([[rg：]])
   if input ~= '' then
-    vcmd(string.format([[FzfPreviewProjectGrep "%s"]], input))
+    local cmd =
+      [[rg --column --line-number --hidden --no-heading --color=always --smart-case --glob '!.git' --glob '!.hg' -- ]] ..
+        vfn.shellescape(input)
+    vfn['fzf#vim#grep'](cmd, true)
   end
 end
 
