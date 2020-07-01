@@ -25,7 +25,7 @@ local attached = function(bufnr, client)
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map('lua vim.lsp.util.buf_clear_diagnostics(0)');
           opts = {silent = true};
-        }; {lhs = '<localleader>v'; rhs = helpers.cmd_map('Vista!!'); opts = {silent = true}};
+        };
       };
       i = {};
     }
@@ -70,6 +70,11 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<localleader>t';
         rhs = helpers.cmd_map('lua vim.lsp.buf.document_symbol()');
+        opts = {silent = true};
+      })
+      table.insert(mappings.n, {
+        lhs = '<localleader>v';
+        rhs = helpers.cmd_map('Vista!!');
         opts = {silent = true};
       })
     end
@@ -156,17 +161,17 @@ local attached = function(bufnr, client)
   end)
 end
 
-local on_attach = function(client, bufnr)
-  require('completion').on_attach(client)
+local on_attach = function(client_id, bufnr)
+  require('completion').on_attach(client_id)
 
   local all_clients = vim.lsp.get_active_clients()
   for _, c in pairs(all_clients) do
-    if c.name == client.name then
-      client = c
+    if c.name == client_id.name then
+      client_id = c
     end
   end
 
-  attached(bufnr, client)
+  attached(bufnr, client_id)
 end
 
 function M.with_default_opts(opts)
