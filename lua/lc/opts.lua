@@ -4,39 +4,6 @@ local vfn = vim.fn
 local lsp = require('nvim_lsp')
 local helpers = require('lib.nvim_helpers')
 
-local lsp_highlight = function(mappings)
-  table.insert(mappings.n, {
-    lhs = '<localleader>s';
-    rhs = helpers.cmd_map('lua vim.lsp.buf.document_highlight()');
-    opts = {silent = true};
-  })
-  table.insert(mappings.n, {
-    lhs = '<localleader>S';
-    rhs = helpers.cmd_map('lua vim.lsp.buf.clear_references()');
-    opts = {silent = true};
-  })
-end
-
-local ts_highlight = function(mappings)
-  table.insert(mappings.n, {
-    lhs = '<localleader>s';
-    rhs = helpers.cmd_map(
-      'lua require("nvim-treesitter.refactor.highlight_definitions").highlight_usages()');
-    opts = {silent = true};
-  })
-  table.insert(mappings.n, {
-    lhs = '<localleader>S';
-    rhs = helpers.cmd_map(
-      'lua require("nvim-treesitter.refactor.highlight_definitions").clear_usage_highlights()');
-    opts = {silent = true};
-  })
-end
-
-local ts_supported = function()
-  local parsers = require('nvim-treesitter.parsers')
-  return parsers.has_parser()
-end
-
 local attached = function(bufnr, client)
   vim.schedule(function()
     vim.g.vista_default_executive = 'nvim_lsp'
@@ -47,11 +14,11 @@ local attached = function(bufnr, client)
           rhs = helpers.cmd_map('lua vim.lsp.buf.rename()');
           opts = {silent = true};
         }; {
-          lhs = '<localleader>d';
+          lhs = '<localleader>dl';
           rhs = helpers.cmd_map('lua require("lc.diagnostics").show_line_diagnostics()');
           opts = {silent = true};
         }; {
-          lhs = '<localleader>ld';
+          lhs = '<localleader>df';
           rhs = helpers.cmd_map('lua require("lc.diagnostics").list_file_diagnostics()');
           opts = {silent = true};
         }; {
@@ -88,13 +55,16 @@ local attached = function(bufnr, client)
       require('lc.formatting').register_client(client, bufnr)
     end
 
-    if client.resolved_capabilities.document_highlight then
-      if ts_supported() then
-        ts_highlight(mappings)
-      else
-        lsp_highlight(mappings)
-      end
-    end
+    table.insert(mappings.n, {
+      lhs = '<localleader>s';
+      rhs = helpers.cmd_map('lua vim.lsp.buf.document_highlight()');
+      opts = {silent = true};
+    })
+    table.insert(mappings.n, {
+      lhs = '<localleader>S';
+      rhs = helpers.cmd_map('lua vim.lsp.buf.clear_references()');
+      opts = {silent = true};
+    })
 
     if client.resolved_capabilities.document_symbol then
       table.insert(mappings.n, {
