@@ -85,7 +85,15 @@ do
                             {
         cmd = {get_local_cmd('lua-lsp')};
         settings = {
-          Lua = {runtime = {version = 'LuaJIT'}; diagnostics = {enable = true; globals = {'vim'}}};
+          Lua = {
+            runtime = {version = 'LuaJIT'};
+            diagnostics = {
+              enable = true;
+              globals = {
+                'vim'; 'describe'; 'it'; 'before_each'; 'after_each'; 'teardown'; 'pending';
+              };
+            };
+          };
         };
       }))
   end)
