@@ -3,6 +3,7 @@ local M = {}
 local vfn = vim.fn
 
 function M.rg(input)
+  vfn['plug#load']('fzf.vim')
   input = input or vfn.input([[rg：]])
   if input ~= '' then
     local cmd =

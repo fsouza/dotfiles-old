@@ -138,7 +138,7 @@ local setup_langservers = function()
   })
 end
 
-local install_fzf_vim = function()
+local install_autoload_plugins = function()
   run_cmds({
     {
       executable = 'curl';
@@ -146,6 +146,14 @@ local install_fzf_vim = function()
         args = {
           '-Lo'; config_dir .. '/autoload/fzf.vim';
           'https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim';
+        };
+      };
+    }; {
+      executable = 'curl';
+      opts = {
+        args = {
+          '-Lo'; config_dir .. '/autoload/plug.vim';
+          'https://raw.githubusercontent.com/junegunn/vim-plug/HEAD/plug.vim';
         };
       };
     };
@@ -157,6 +165,6 @@ do
   debug(string.format('created virtualenv at "%s"\n', virtualenv))
   local hr_dir = ensure_hererocks(virtualenv)
   debug(string.format('created hererocks at "%s"\n', hr_dir))
-  install_fzf_vim()
+  install_autoload_plugins()
   setup_langservers()
 end

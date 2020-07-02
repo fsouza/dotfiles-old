@@ -1,54 +1,6 @@
 [submodule "langservers/ocaml-lsp"]
 	path = langservers/ocaml-lsp
 	url = https://github.com/ocaml/ocaml-lsp.git
-[submodule "vim-dirvish"]
-	path = pack/b/opt/vim-dirvish
-	url = https://github.com/justinmk/vim-dirvish.git
-[submodule "tabular"]
-	path = pack/b/opt/tabular
-	url = https://github.com/godlygeek/tabular.git
-[submodule "fzf.vim"]
-	path = pack/b/opt/fzf.vim
-	url = https://github.com/junegunn/fzf.vim
-[submodule "vim-sneak"]
-	path = pack/b/opt/vim-sneak
-	url = https://github.com/justinmk/vim-sneak.git
-[submodule "vim-indent-object"]
-	path = pack/b/opt/vim-indent-object
-	url = https://github.com/michaeljsmith/vim-indent-object.git
-[submodule "nvim-lsp"]
-	path = pack/b/opt/nvim-lsp
-	url = https://github.com/neovim/nvim-lsp.git
-[submodule "float-preview.nvim"]
-	path = pack/b/opt/float-preview.nvim
-	url = https://github.com/ncm2/float-preview.nvim.git
-[submodule "vim-commentary"]
-	path = pack/b/opt/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
-[submodule "vim-fugitive"]
-	path = pack/b/opt/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim-repeat"]
-	path = pack/b/opt/vim-repeat
-	url = https://github.com/tpope/vim-repeat.git
-[submodule "vim-surround"]
-	path = pack/b/opt/vim-surround
-	url = https://github.com/tpope/vim-surround.git
 [submodule "langservers/lua-language-server"]
 	path = langservers/lua-language-server
 	url = https://github.com/sumneko/lua-language-server
-[submodule "completion-nvim"]
-	path = pack/b/opt/completion-nvim
-	url = https://github.com/nvim-lua/completion-nvim.git
-[submodule "nvim-treesitter"]
-	path = pack/b/opt/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "vista.vim"]
-	path = pack/b/opt/vista.vim
-	url = https://github.com/liuchengxu/vista.vim.git
-[submodule "completion-buffers"]
-	path = pack/b/opt/completion-buffers
-	url = https://github.com/steelsojka/completion-buffers.git
-[submodule "vim-polyglot"]
-	path = pack/b/opt/vim-polyglot
-	url = https://github.com/sheerun/vim-polyglot.git
