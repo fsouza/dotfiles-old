@@ -32,15 +32,6 @@ local setup_completion = function()
     {complete_items = {'lsp'}}; {complete_items = {'buffers'}}; {mode = {'<c-p>'}};
     {mode = {'<c-n>'}};
   }
-  helpers.create_mappings({
-    i = {
-      {
-        lhs = '<c-x><c-o>';
-        rhs = 'completion#trigger_completion()';
-        opts = {expr = true; silent = true};
-      }; {lhs = '<cr>'; rhs = [[pumvisible() ? "\<c-e>\<cr>" : "\<cr>"]]; opts = {expr = true}};
-    };
-  })
 end
 
 local setup_hlyank = function()

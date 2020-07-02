@@ -10,10 +10,6 @@ local attached = function(bufnr, client)
     local mappings = {
       n = {
         {
-          lhs = '<localleader>r';
-          rhs = helpers.cmd_map('lua vim.lsp.buf.rename()');
-          opts = {silent = true};
-        }; {
           lhs = '<localleader>dl';
           rhs = helpers.cmd_map('lua require("lc.diagnostics").show_line_diagnostics()');
           opts = {silent = true};
@@ -29,6 +25,28 @@ local attached = function(bufnr, client)
       };
       i = {};
     }
+
+    if client.resolved_capabilities.completion then
+      require('completion').on_attach()
+      table.insert(mappings.i, {
+        lhs = '<c-x><c-o>';
+        rhs = 'completion#trigger_completion()';
+        opts = {expr = true; silent = true};
+      })
+      table.insert(mappings.i, {
+        lhs = '<cr>';
+        rhs = [[pumvisible() ? "\<c-e>\<cr>" : "\<cr>"]];
+        opts = {expr = true};
+      })
+    end
+
+    if client.resolved_capabilities.rename then
+      table.insert(mappings.n, {
+        lhs = '<localleader>r';
+        rhs = helpers.cmd_map('lua vim.lsp.buf.rename()');
+        opts = {silent = true};
+      })
+    end
 
     if client.resolved_capabilities.code_action then
       table.insert(mappings.n, {
@@ -162,8 +180,6 @@ local attached = function(bufnr, client)
 end
 
 local on_attach = function(client, bufnr)
-  require('completion').on_attach(client)
-
   local all_clients = vim.lsp.get_active_clients()
   for _, c in pairs(all_clients) do
     if c.name == client.name then
