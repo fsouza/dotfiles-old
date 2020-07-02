@@ -31,14 +31,15 @@ local basics = function()
   highlight('WarningMsg', {cterm = 'None'; ctermfg = '52'; guifg = '#5f0000'})
   highlight('Folded', {ctermbg = '253'; guibg = '#dadada'})
   highlight('FoldColumn', {ctermbg = '253'; guibg = '#dadada'})
+  highlight('Error', {ctermbg = '160'; ctermfg = '231'; guibg = '#d70000'; guifg = '#ffffff'})
 end
 
 local noners = function()
   local noners = {
     'Boolean'; 'Character'; 'Comment'; 'Conceal'; 'Conditional'; 'Constant'; 'Debug'; 'Define';
-    'Delimiter'; 'Error'; 'Exception'; 'Float'; 'Function'; 'Identifier'; 'Ignore'; 'Include';
-    'Keyword'; 'Label'; 'Macro'; 'NonText'; 'Number'; 'Operator'; 'PmenuSbar'; 'PmenuSel';
-    'PmenuThumb'; 'Question'; 'Search'; 'PreCondit'; 'PreProc'; 'Repeat'; 'Special'; 'SpecialChar';
+    'Delimiter'; 'Exception'; 'Float'; 'Function'; 'Identifier'; 'Ignore'; 'Include'; 'Keyword';
+    'Label'; 'Macro'; 'NonText'; 'Number'; 'Operator'; 'PmenuSbar'; 'PmenuSel'; 'PmenuThumb';
+    'Question'; 'Search'; 'PreCondit'; 'PreProc'; 'Repeat'; 'Special'; 'SpecialChar';
     'SpecialComment'; 'Statement'; 'StorageClass'; 'String'; 'Structure'; 'Tag'; 'Todo'; 'Type';
     'Typedef'; 'Underlined'; 'htmlBold';
   }
