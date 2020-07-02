@@ -19,10 +19,6 @@ local initial_mappings = function()
   nvim_set_keymap('t', 'jj', [[<c-\><c-n>]], {})
 end
 
-local syntax_and_filetype = function()
-  helpers.exec_cmds({'syntax enable'; 'filetype plugin indent on'})
-end
-
 local py3_host_prog = function()
   local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
   loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
@@ -147,7 +143,6 @@ end
 do
   local schedule = vim.schedule
   initial_mappings()
-  syntax_and_filetype()
 
   schedule(hererocks)
   schedule(function()
