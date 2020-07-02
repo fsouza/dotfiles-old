@@ -161,17 +161,17 @@ local attached = function(bufnr, client)
   end)
 end
 
-local on_attach = function(client_id, bufnr)
-  require('completion').on_attach(client_id)
+local on_attach = function(client, bufnr)
+  require('completion').on_attach(client)
 
   local all_clients = vim.lsp.get_active_clients()
   for _, c in pairs(all_clients) do
-    if c.name == client_id.name then
-      client_id = c
+    if c.name == client.name then
+      client = c
     end
   end
 
-  attached(bufnr, client_id)
+  attached(bufnr, client)
 end
 
 function M.with_default_opts(opts)
