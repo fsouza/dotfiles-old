@@ -5,7 +5,8 @@ local plugins = {
   {repo = 'godlygeek/tabular'; opts = {on = 'Tabularize'}}; {
     repo = 'junegunn/fzf.vim';
     opts = {as = 'fzf.vim'; on = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
-  }; {repo = 'justinmk/vim-dirvish'}; {repo = 'justinmk/vim-sneak'};
+  }; {repo = 'justinmk/vim-dirvish'};
+  {repo = 'justinmk/vim-sneak'; opts = {on = {'<Plug>Sneak_s'; '<Plug>Sneak_;'; '<Plug>Sneak_,'}}};
   {repo = 'liuchengxu/vista.vim'; opts = {on = {'Vista!!'}}};
   {repo = 'michaeljsmith/vim-indent-object'};
   {repo = 'neovim/nvim-lsp'; opts = {as = 'nvim-lsp'}; eager = true};
@@ -29,20 +30,29 @@ local plugins = {
 local manual_mappings = function()
   local helpers = require('lib.nvim_helpers')
   local vim_commentary = {lhs = 'gc'; rhs = '<Plug>Commentary'}
-
-  helpers.create_mappings({
+  local sneak_common = {{lhs = ';'; rhs = '<Plug>Sneak_;'}; {lhs = ','; rhs = '<Plug>Sneak_,'}};
+  local mappings = {
     n = {
       vim_commentary; {lhs = 'gcc'; rhs = '<Plug>CommentaryLine'};
       {lhs = 'gS'; rhs = '<Plug>VgSurround'}; {lhs = 'ds'; rhs = '<Plug>Dsurround'};
       {lhs = 'cs'; rhs = '<Plug>Csurround'}; {lhs = 'cS'; rhs = '<Plug>CSurround'};
       {lhs = 'ys'; rhs = '<Plug>Ysurround'}; {lhs = 'yS'; rhs = '<Plug>YSurround'};
       {lhs = 'yss'; rhs = '<Plug>Yssurround'}; {lhs = 'ySs'; rhs = '<Plug>YSsurround'};
+      {lhs = 's'; rhs = '<Plug>Sneak_s'}; {lhs = 'S'; rhs = '<Plug>Sneak_s'};
     };
-    o = {vim_commentary};
+    o = {vim_commentary; {lhs = 'z'; rhs = '<Plug>Sneak_s'}; {lhs = 'Z'; rhs = '<Plug>Sneak_s'}};
     x = {
       vim_commentary; {lhs = 'S'; rhs = '<Plug>VSurround'}; {lhs = 'gS'; rhs = '<Plug>VgSurround'};
     };
-  })
+  }
+
+  for _, entry in pairs(sneak_common) do
+    table.insert(mappings.n, entry)
+    table.insert(mappings.o, entry)
+    table.insert(mappings.x, entry)
+  end
+
+  helpers.create_mappings(mappings)
 end
 
 do
