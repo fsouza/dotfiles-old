@@ -1,12 +1,10 @@
 local M = {}
 
-local vfn = vim.fn
 local lsp = require('nvim_lsp')
-local helpers = require('lib.nvim_helpers')
 
 local attached = function(bufnr, client)
+  local helpers = require('lib.nvim_helpers')
   vim.schedule(function()
-    vim.g.vista_default_executive = 'nvim_lsp'
     local mappings = {
       n = {
         {
@@ -85,6 +83,7 @@ local attached = function(bufnr, client)
     })
 
     if client.resolved_capabilities.document_symbol then
+      vim.g.vista_default_executive = 'nvim_lsp'
       table.insert(mappings.n, {
         lhs = '<localleader>t';
         rhs = helpers.cmd_map('lua vim.lsp.buf.document_symbol()');
@@ -203,7 +202,7 @@ end
 M.project_root_pattern = lsp.util.root_pattern('.git')
 
 M.cwd_root_pattern = function()
-  return vfn.getcwd()
+  return vim.fn.getcwd()
 end
 
 return M
