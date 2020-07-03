@@ -79,3 +79,4 @@ key_bindings:
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: Space, mods: Control, chars: "\x00" }
