@@ -1,4 +1,3 @@
 black[d]
 isort
 mypy
-jedi-language-server
