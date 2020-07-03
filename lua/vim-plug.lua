@@ -7,11 +7,7 @@ local helpers = require('lib.nvim_helpers')
 local plugins = {
   {repo = 'godlygeek/tabular'; opts = {on = 'Tabularize'}}; {
     repo = 'junegunn/fzf.vim';
-    opts = {
-      as = 'fzf.vim';
-      on = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'};
-      ['do'] = 'curl -sLo autoload/fzf.vim https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim';
-    };
+    opts = {as = 'fzf.vim'; on = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
   }; {repo = 'justinmk/vim-dirvish'};
   {repo = 'justinmk/vim-sneak'; opts = {on = {'<Plug>Sneak_s'; '<Plug>Sneak_;'; '<Plug>Sneak_,'}}};
   {repo = 'liuchengxu/vista.vim'; opts = {on = {'Vista!!'}}};

@@ -138,9 +138,17 @@ local setup_langservers = function()
   })
 end
 
-local install_vim_plug = function()
+local install_autoload_plugins = function()
   run_cmds({
     {
+      executable = 'curl';
+      opts = {
+        args = {
+          '-sLo'; config_dir .. '/autoload/fzf.vim';
+          'https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim';
+        };
+      };
+    }; {
       executable = 'curl';
       opts = {
         args = {
@@ -155,7 +163,7 @@ end
 do
   local autoload_done = false
   vim.schedule(function()
-    install_vim_plug()
+    install_autoload_plugins()
     autoload_done = true
   end)
   local virtualenv = ensure_virtualenv()
