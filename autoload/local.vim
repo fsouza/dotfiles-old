@@ -1,4 +1,5 @@
 function local#Lsp_fzf(items, prompt)
+	call plug#load('fzf.vim')
 	let prompt = a:prompt . '：'
 	call fzf#run(fzf#wrap(fzf#vim#with_preview({
 				\ 'source': a:items,
