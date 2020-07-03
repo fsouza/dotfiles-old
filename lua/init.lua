@@ -110,7 +110,7 @@ local global_mappings = function()
     {lhs = '<c-n>'; rhs = '<down>'; opts = {noremap = true}};
     {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}};
   }
-  local win_mov_keys = {'h'; 'j'; 'k'; 'l'; 'w'}
+  local win_mov_keys = {'h'; 'j'; 'k'; 'l'}
   local maps = {
     n = {
       {lhs = '<leader>o'; rhs = helpers.cmd_map('only')};
