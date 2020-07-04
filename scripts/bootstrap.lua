@@ -12,7 +12,9 @@ local pip_packages = {
   'pip'; 'pip-tools'; 'pynvim'; 'git+https://github.com/luarocks/hererocks.git';
 }
 
-local rocks = {'lyaml'; 'httpclient'; 'luacheck'}
+local rocks = {
+  'lyaml'; 'httpclient'; 'luacheck'; {'--server=https://luarocks.org/dev'; 'luaformatter'};
+}
 
 local debug = function(msg)
   if loop.os_getenv('NVIM_DEBUG') then
@@ -126,7 +128,9 @@ local ensure_hererocks = function(virtualenv)
   end
 
   for _, rock in pairs(rocks) do
-    run_cmds({{executable = hr_dir .. '/bin/luarocks'; opts = {args = {'install'; rock}}}})
+    run_cmds({
+      {executable = hr_dir .. '/bin/luarocks'; opts = {args = vim.tbl_flatten({'install'; rock})}};
+    })
   end
 
   return hr_dir
