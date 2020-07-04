@@ -1,6 +1,5 @@
 local M = {}
 
-local loop = vim.loop
 local vfn = vim.fn
 
 local get_dmypy = function()
@@ -8,12 +7,6 @@ local get_dmypy = function()
     ['lint-command'] = 'dmypy run';
     ['lint-formats'] = {'%f:%l: %trror: %m'; '%f:%l: %tarning: %m'; '%f:%l: %tote: %m'};
   }
-end
-
-local setup_blackd_logs_dir = function(base_dir)
-  local logs_dir = base_dir .. '/blackd-logs'
-  vfn.mkdir(logs_dir, 'p')
-  loop.os_setenv('BLACKD_LOGS_DIR', logs_dir)
 end
 
 local get_black = function()
@@ -45,7 +38,12 @@ local get_shellcheck = function()
   }
 end
 
-local get_config_str = function()
+local get_config = function()
+  local languages = {
+    python = {get_flake8(); get_dmypy(); get_black(); get_isort()};
+    dune = {get_dune()};
+    sh = {get_shellcheck()};
+  }
   local cfg = {
     version = 2;
     tools = {
@@ -56,23 +54,18 @@ local get_config_str = function()
       dune = get_dune();
       shellcheck = get_shellcheck();
     };
-    languages = {
-      python = {get_flake8(); get_dmypy(); get_black(); get_isort()};
-      dune = {get_dune()};
-      sh = {get_shellcheck()};
-    };
+    languages = languages;
   }
-  return require('lyaml').dump({cfg})
+  return require('lyaml').dump({cfg}), vim.tbl_keys(languages)
 end
 
-function M.config_file()
-  local cache_dir = vfn.stdpath('cache')
-  setup_blackd_logs_dir(cache_dir)
-  local config_file = cache_dir .. '/efm-langserver.yaml'
+function M.gen_config()
+  local config_str, fts = get_config()
+  local config_file = os.tmpname()
   local h = io.open(config_file, 'w')
-  h:write(get_config_str())
+  h:write(config_str)
   h:close()
-  return config_file
+  return config_file, fts
 end
 
 return M

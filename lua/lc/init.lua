@@ -73,9 +73,10 @@ do
 
   local efm = get_local_cmd('efm-langserver')
   if_executable(efm, function()
+    local config_file, filetypes = require('lc.efm').gen_config()
     lsp.efm.setup(lc_opts.with_default_opts({
-      cmd = {efm; '-c'; require('lc.efm').config_file()};
-      filetypes = {'dune'; 'python'; 'sh'};
+      cmd = {efm; '-c'; config_file};
+      filetypes = filetypes;
       root_dir = lc_opts.cwd_root_pattern;
     }))
   end)
