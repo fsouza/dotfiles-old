@@ -77,4 +77,8 @@ M['textDocument/documentHighlight'] = function(_, _, result, _)
   lsp.util.buf_highlight_references(bufnr, result)
 end
 
+M['textDocument/publishDiagnostics'] = function(err, method, result, client_id)
+  require('lc/buf_diagnostic').publishDiagnostics(err, method, result, client_id)
+end
+
 return M
