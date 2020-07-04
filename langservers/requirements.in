@@ -1,4 +1,5 @@
 black[d]
+flake8
 isort
-mypy
 jedi-language-server
+mypy

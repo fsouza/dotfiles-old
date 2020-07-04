@@ -26,6 +26,14 @@ local get_isort = function()
   return {['format-command'] = 'isort -'; ['format-stdin'] = true}
 end
 
+local get_flake8 = function()
+  return {
+    ['lint-command'] = 'flake8 --stdin-display-name ${INPUT} -';
+    ['lint-stdin'] = true;
+    ['lint-formats'] = {[[%f:%l:%c: %m]]};
+  }
+end
+
 local get_dune = function()
   return {['format-command'] = 'dune format-dune-file'; ['format-stdin'] = true}
 end
@@ -42,13 +50,14 @@ local get_config_str = function()
     version = 2;
     tools = {
       dmypy = get_dmypy();
+      flake8 = get_flake8();
       sort = get_isort();
       black = get_black();
       dune = get_dune();
       shellcheck = get_shellcheck();
     };
     languages = {
-      python = {get_dmypy(); get_black(); get_isort()};
+      python = {get_flake8(); get_dmypy(); get_black(); get_isort()};
       dune = {get_dune()};
       sh = {get_shellcheck()};
     };
