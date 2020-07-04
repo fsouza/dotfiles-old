@@ -75,7 +75,7 @@ do
   if_executable(efm, function()
     lsp.efm.setup(lc_opts.with_default_opts({
       cmd = {efm; '-c'; require('lc/efm').config_file()};
-      filetypes = {'dune'; 'python'};
+      filetypes = {'dune'; 'python'; 'sh'};
       root_dir = lc_opts.cwd_root_pattern;
     }))
   end)
