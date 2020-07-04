@@ -7,7 +7,7 @@ function M.rg(input)
   input = input or vfn.input([[rg：]])
   if input ~= '' then
     local cmd =
-      [[rg --column --line-number --hidden --no-heading --color=always --smart-case --glob '!.git' --glob '!.hg' -- ]] ..
+      [[rg --column -n --hidden --no-heading --color=always -S --glob '!.git' --glob '!.hg' -- ]] ..
         vfn.shellescape(input)
     vfn['fzf#vim#grep'](cmd, true, vfn['fzf#vim#with_preview']())
   end

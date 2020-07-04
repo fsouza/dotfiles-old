@@ -20,12 +20,12 @@ local debug = function(msg)
   end
 end
 
-local cmd_to_string = function(cmd, args)
+local cmd_to_string = function(cmd_name, args)
   local quoted_args = {}
   for i, arg in ipairs(args or {}) do
     quoted_args[i] = string.format('"%s"', arg)
   end
-  return string.format('%s %s', cmd, table.concat(quoted_args, ' '))
+  return string.format('%s %s', cmd_name, table.concat(quoted_args, ' '))
 end
 
 local cmd_status = function(result)
