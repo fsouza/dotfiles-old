@@ -1,5 +1,5 @@
 local vcmd = vim.cmd
-local helpers = require('lib/nvim_helpers')
+local helpers = require('lib.nvim_helpers')
 
 local M = {}
 

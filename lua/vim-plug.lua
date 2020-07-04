@@ -39,12 +39,12 @@ local plugins = {
 }
 
 local ts_mappings = function()
-  local plugin_ts = require('plugin/ts')
+  local plugin_ts = require('plugin.ts')
   plugin_ts.set_mappings()
 
   vcmd([[augroup ts_mappings]])
   vcmd([[autocmd!]])
-  vcmd(string.format([[autocmd FileType %s lua require('plugin/ts').set_mappings()]],
+  vcmd(string.format([[autocmd FileType %s lua require('plugin.ts').set_mappings()]],
                      table.concat(vim.tbl_flatten(plugin_ts.fts), ',')))
   vcmd([[augroup END]])
 end
