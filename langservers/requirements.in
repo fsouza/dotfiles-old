@@ -1,5 +1,13 @@
+add_trailing_comma
+autoflake
+autopep8
 black[d]
 flake8
+flake8-bugbear
+flake8-builtins
+flake8-comprehensions
+flake8-tidy-imports
 isort
 jedi-language-server
 mypy
+reorder_python_imports
