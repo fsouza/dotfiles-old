@@ -52,7 +52,7 @@ end
 
 local make_if_filename = function(languages)
   return function(fname, cb)
-    if vfn.filereadable(fname) then
+    if vfn.filereadable(fname) == 1 then
       cb(languages)
     end
   end
