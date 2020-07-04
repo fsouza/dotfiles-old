@@ -43,7 +43,7 @@ jobs:
         with:
           node-version: "14.x"
 
-      - uses: avsm/setup-ocaml@v1.0.1
+      - uses: avsm/setup-ocaml@v1.1.0
         with:
           ocaml-version: "4.10.0"
 
