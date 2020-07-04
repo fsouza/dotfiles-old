@@ -26,6 +26,7 @@ end
 
 local setup_completion = function()
   vim.g.completion_trigger_on_delete = 1
+  vim.g.completion_auto_change_source = 1
   vim.g.completion_confirm_key = [[\<C-y>]]
   vim.g.completion_matching_strategy_list = {'exact'; 'fuzzy'}
   vim.g.completion_chain_complete_list = {
