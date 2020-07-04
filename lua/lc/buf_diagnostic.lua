@@ -87,7 +87,7 @@ local save_all_positions = function(bufnr, client_id, diagnostics)
     diagnostics_by_buf[bufnr] = {}
     api.nvim_buf_attach(bufnr, false, {
       on_detach = function(b)
-        M.diagnostics_by_buf[b] = nil
+        diagnostics_by_buf[b] = nil
       end;
     })
   end
