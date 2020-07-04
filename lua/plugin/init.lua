@@ -46,15 +46,6 @@ local setup_global_ns = function()
   _G.f = require('plugin.global')
 end
 
-local setup_format_comands = function()
-  vcmd([[augroup filetype_lua]])
-  vcmd([[autocmd!]])
-  vcmd([[autocmd FileType lua lua require('plugin.format').enable_lua_auto_format()]])
-  vcmd(string.format(
-         [[autocmd FileType lua nmap <buffer> <silent> <leader>f <cmd>lua require('plugin.format').lua()<cr>]]))
-  vcmd([[augroup END]])
-end
-
 local setup_word_replace = function()
   helpers.create_mappings({
     n = {
@@ -104,7 +95,6 @@ do
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
   schedule(setup_hlyank)
-  schedule(setup_format_comands)
   schedule(setup_terminal_commands)
   schedule(setup_word_replace)
   schedule(setup_spell)

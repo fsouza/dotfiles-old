@@ -8,7 +8,7 @@ local helpers = require('lib.nvim_helpers')
 local fmt_clients = {}
 
 local should_skip_ft = function(ft)
-  local skip_set = {lua = true; sh = true}
+  local skip_set = {sh = true}
   return skip_set[ft] ~= nil
 end
 

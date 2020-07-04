@@ -38,12 +38,51 @@ local get_shellcheck = function()
   }
 end
 
+local get_luacheck = function()
+  return {
+    ['lint-command'] = 'luacheck --formatter plain --filename ${INPUT} -';
+    ['lint-stdin'] = true;
+    ['lint-formats'] = {'%f:%l:%c: %m'};
+  }
+end
+
+local get_luaformat = function()
+  return {['format-command'] = 'lua-format'; ['format-stdin'] = true}
+end
+
+local make_if_filename = function(languages)
+  return function(fname, cb)
+    if vfn.filereadable(fname) then
+      cb(languages)
+    end
+  end
+end
+
+local add_luaformat = function(languages)
+  if languages.lua == nil then
+    languages.lua = {}
+  end
+  table.insert(languages.lua, get_luaformat())
+end
+
+local add_luacheck = function(languages)
+  if languages.lua == nil then
+    languages.lua = {}
+  end
+  table.insert(languages.lua, get_luacheck())
+end
+
 local get_config = function()
   local languages = {
     python = {get_flake8(); get_dmypy(); get_black(); get_isort()};
     dune = {get_dune()};
     sh = {get_shellcheck()};
   }
+
+  local if_filename = make_if_filename(languages)
+  if_filename('.luacheckrc', add_luacheck)
+  if_filename('.lua-format', add_luaformat)
+
   local cfg = {
     version = 2;
     tools = {
@@ -53,6 +92,8 @@ local get_config = function()
       black = get_black();
       dune = get_dune();
       shellcheck = get_shellcheck();
+      luaformat = get_luaformat();
+      luacheck = get_luacheck();
     };
     languages = languages;
   }
