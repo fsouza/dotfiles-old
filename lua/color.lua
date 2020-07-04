@@ -59,7 +59,7 @@ local language_highlights = function()
   local diagnostics = {guifg = '#a8a8a8'; ctermfg = '248'}
   local diagnostics_sign = {guifg = '#262626'; ctermfg = '235'; guibg = '#dadada'; ctermbg = '253'}
 
-  for _, level in pairs({'Error'; 'Warning'; 'Information'; 'Hint'}) do
+  for _, level in pairs({''; 'Error'; 'Warning'; 'Information'; 'Hint'}) do
     local base_group = 'LspDiagnostics' .. level
     local sign_group = base_group .. 'Sign'
     highlight(base_group, diagnostics)
