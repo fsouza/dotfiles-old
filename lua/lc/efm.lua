@@ -27,6 +27,22 @@ local get_flake8 = function()
   }
 end
 
+local get_add_trailing_comma = function()
+  return {['format-command'] = 'add-trailing-comma -'; ['format-stdin'] = true}
+end
+
+local get_reorder_python_imports = function()
+  return {['format-command'] = 'reorder-python-imports -'; ['format-stdin'] = true}
+end
+
+local get_autopep8 = function()
+  return {['format-command'] = 'autopep8 -'; ['format-stdin'] = true}
+end
+
+local get_autoflake = function()
+  return {['format-command'] = 'autoflake ${INPUT}'}
+end
+
 local get_dune = function()
   return {['format-command'] = 'dune format-dune-file'; ['format-stdin'] = true}
 end
@@ -72,13 +88,48 @@ local add_luacheck = function(languages)
   table.insert(languages.lua, get_luacheck())
 end
 
-local get_config = function()
-  local languages = {
-    python = {get_flake8(); get_dmypy(); get_black(); get_isort()};
-    dune = {get_dune()};
-    sh = {get_shellcheck()};
-  }
+local read_precommit_config = function(file_path)
+  local lyaml = require('lyaml')
+  local f = io.open(file_path, 'r')
+  local content = f:read('all*')
+  f:close()
+  return lyaml.load(content)
+end
 
+local add_python_language = function(languages)
+  local pre_commit_config_file_path = '.pre-commit-config.yaml'
+  if vfn.filereadable(pre_commit_config_file_path) == 0 then
+    return {get_flake8(); get_dmypy(); get_black(); get_isort()}
+  end
+
+  local pc_repo_map = {
+    ['https://github.com/asottile/add-trailing-comma'] = get_add_trailing_comma;
+    ['https://github.com/asottile/reorder_python_imports'] = get_reorder_python_imports;
+    ['https://github.com/haltwise/mirrors-autoflake'] = get_autoflake;
+    ['https://github.com/pre-commit/mirrors-autopep8'] = get_autopep8;
+    ['https://github.com/pre-commit/mirrors-isort'] = get_isort;
+    ['https://github.com/pre-commit/mirrors-mypy'] = get_dmypy;
+    ['https://github.com/psf/black'] = get_black;
+    ['https://gitlab.com/pycqa/flake8'] = get_flake8;
+  }
+  local pre_commit_config = read_precommit_config(pre_commit_config_file_path)
+  local result = {}
+  for _, repo in ipairs(pre_commit_config.repos) do
+    local fn = pc_repo_map[repo.repo]
+    if fn ~= nil then
+      table.insert(result, fn())
+    end
+  end
+
+  if not vim.tbl_isempty(result) then
+    languages.python = result
+  end
+end
+
+local get_config = function()
+  local languages = {dune = {get_dune()}; sh = {get_shellcheck()}}
+
+  add_python_language(languages)
   local if_filename = make_if_filename(languages)
   if_filename('.luacheckrc', add_luacheck)
   if_filename('.lua-format', add_luaformat)
@@ -88,6 +139,10 @@ local get_config = function()
     tools = {
       dmypy = get_dmypy();
       flake8 = get_flake8();
+      add_trailing_comma = get_add_trailing_comma();
+      reorder_python_imports = get_reorder_python_imports();
+      autopep8 = get_autopep8();
+      autoflake = get_autoflake();
       sort = get_isort();
       black = get_black();
       dune = get_dune();
