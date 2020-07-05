@@ -4,8 +4,8 @@ local helpers = require('lib.nvim_helpers')
 local M = {}
 
 M.fts = {
-  'sh'; 'css'; 'go'; 'html'; 'javascript'; 'json'; 'lua'; 'ocaml'; 'python'; 'rust';
-  'typescriptreact'; 'typescript'; 'cpp'; 'c'; 'yaml'; 'markdown';
+  'sh'; 'css'; 'go'; 'html'; 'javascript'; 'json'; 'ocaml'; 'rust'; 'typescriptreact';
+  'typescript'; 'cpp'; 'c'; 'yaml'; 'markdown';
 };
 
 function M.set_folding()
