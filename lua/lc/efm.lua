@@ -39,10 +39,6 @@ local get_autopep8 = function()
   return {['format-command'] = 'autopep8 -'; ['format-stdin'] = true}
 end
 
-local get_autoflake = function()
-  return {['format-command'] = 'autoflake ${INPUT}'}
-end
-
 local get_dune = function()
   return {['format-command'] = 'dune format-dune-file'; ['format-stdin'] = true}
 end
@@ -105,7 +101,6 @@ local add_python_language = function(languages)
   local pc_repo_map = {
     ['https://github.com/asottile/add-trailing-comma'] = get_add_trailing_comma;
     ['https://github.com/asottile/reorder_python_imports'] = get_reorder_python_imports;
-    ['https://github.com/haltwise/mirrors-autoflake'] = get_autoflake;
     ['https://github.com/pre-commit/mirrors-autopep8'] = get_autopep8;
     ['https://github.com/pre-commit/mirrors-isort'] = get_isort;
     ['https://github.com/pre-commit/mirrors-mypy'] = get_dmypy;
@@ -142,7 +137,6 @@ local get_config = function()
       add_trailing_comma = get_add_trailing_comma();
       reorder_python_imports = get_reorder_python_imports();
       autopep8 = get_autopep8();
-      autoflake = get_autoflake();
       sort = get_isort();
       black = get_black();
       dune = get_dune();

@@ -11,7 +11,6 @@ appdirs==1.4.4            # via black
 aspy.refactor-imports==2.1.1  # via reorder-python-imports
 async-timeout==3.0.1      # via aiohttp
 attrs==19.3.0             # via aiohttp, black, flake8-bugbear
-autoflake==1.3.1          # via -r requirements.in
 autopep8==1.5.3           # via -r requirements.in
 black[d]==19.10b0         # via -r requirements.in
 cached-property==1.5.1    # via aspy.refactor-imports, jedi-language-server
@@ -34,7 +33,7 @@ mypy==0.782               # via -r requirements.in
 parso==0.7.0              # via jedi
 pathspec==0.8.0           # via black
 pycodestyle==2.6.0        # via autopep8, flake8
-pyflakes==2.2.0           # via autoflake, flake8
+pyflakes==2.2.0           # via flake8
 pygls==0.9.0              # via jedi-language-server
 regex==2020.6.8           # via black
 reorder-python-imports==2.3.1  # via -r requirements.in
