@@ -95,7 +95,8 @@ end
 local add_python_language = function(languages)
   local pre_commit_config_file_path = '.pre-commit-config.yaml'
   if vfn.filereadable(pre_commit_config_file_path) == 0 then
-    return {get_flake8(); get_dmypy(); get_black(); get_isort()}
+    languages.python = {get_flake8(); get_dmypy(); get_black(); get_isort()}
+    return
   end
 
   local pc_repo_map = {
