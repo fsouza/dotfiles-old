@@ -2,7 +2,7 @@
 
 set -e
 
-PORT=25225
+export PORT=25225
 if [ -z "$BLACKD_LOGS_DIR" ]; then
 	echo missing BLACKD_LOGS_DIR >&2
 	exit 2
