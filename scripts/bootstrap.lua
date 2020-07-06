@@ -166,16 +166,20 @@ end
 
 do
   local autoload_done = false
+  local hererocks_done = false
   vim.schedule(function()
     install_autoload_plugins()
     autoload_done = true
   end)
   local virtualenv = ensure_virtualenv()
   debug(string.format('created virtualenv at "%s"\n', virtualenv))
-  local hr_dir = ensure_hererocks(virtualenv)
-  debug(string.format('created hererocks at "%s"\n', hr_dir))
+  vim.schedule(function()
+    local hr_dir = ensure_hererocks(virtualenv)
+    debug(string.format('created hererocks at "%s"\n', hr_dir))
+    hererocks_done = true
+  end)
   setup_langservers()
-  vim.wait(2000, function()
-    return autoload_done
+  vim.wait(10000, function()
+    return autoload_done and hererocks_done
   end, 25)
 end
