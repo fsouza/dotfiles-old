@@ -17,7 +17,7 @@ local attached = function(bufnr, client)
           opts = {silent = true};
         }; {
           lhs = '<localleader>cl';
-          rhs = helpers.cmd_map('lua require("lc/buf_diagnostic").buf_clear_diagnostics(0)');
+          rhs = helpers.cmd_map('lua require("lc.buf_diagnostic").buf_clear_diagnostics(0)');
           opts = {silent = true};
         };
       };
