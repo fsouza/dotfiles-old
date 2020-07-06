@@ -1,9 +1,6 @@
 local vcmd = vim.cmd
 local vfn = vim.fn
 
-local config_path = vfn.stdpath('config')
-local helpers = require('lib.nvim_helpers')
-
 local plugins = {
   {repo = 'godlygeek/tabular'; opts = {on = 'Tabularize'}}; {
     repo = 'junegunn/fzf.vim';
@@ -14,17 +11,8 @@ local plugins = {
   {repo = 'michaeljsmith/vim-indent-object'};
   {repo = 'neovim/nvim-lsp'; opts = {as = 'nvim-lsp'}; eager = true};
   {repo = 'nvim-lua/completion-nvim'};
-  {repo = 'nvim-treesitter/nvim-treesitter'; opts = {as = 'nvim-treesitter'; on = 'TSManual'}}; {
-    repo = config_path .. '/lazy-ts';
-    opts = {
-      as = 'lazy-ts';
-      on = {
-        '<Plug>(ts-init-selection)'; '<Plug>(ts-node-incremental)'; '<Plug>(ts-node-decremental)';
-        '<Plug>(ts-scope-incremental)'; '<Plug>(ts-goto-definition)';
-        '<Plug>(ts-list-definitions)'; '<Plug>(ts-rename)';
-      };
-    };
-  }; {repo = 'sheerun/vim-polyglot'}; {repo = 'steelsojka/completion-buffers'};
+  {repo = 'nvim-treesitter/nvim-treesitter'; opts = {as = 'nvim-treesitter'; on = 'TSManual'}};
+  {repo = 'sheerun/vim-polyglot'}; {repo = 'steelsojka/completion-buffers'};
   {repo = 'tpope/vim-commentary'; opts = {on = {'<Plug>CommentaryLine'; '<Plug>Commentary'}}};
   {repo = 'tpope/vim-fugitive'; opts = {on = {'G'; 'Git'}}}; {repo = 'tpope/vim-repeat'}; {
     repo = 'tpope/vim-surround';
@@ -38,19 +26,9 @@ local plugins = {
   };
 }
 
-local ts_mappings = function()
-  local plugin_ts = require('plugin.ts')
-  plugin_ts.set_mappings()
-
-  vcmd([[augroup ts_mappings]])
-  vcmd([[autocmd!]])
-  vcmd(string.format([[autocmd FileType %s lua require('plugin.ts').set_mappings()]],
-                     table.concat(vim.tbl_flatten(plugin_ts.fts), ',')))
-  vcmd([[augroup END]])
-end
-
 -- manually setup some mappings so lazy loading can work.
 local manual_mappings = function()
+  local helpers = require('lib.nvim_helpers')
   local vim_commentary = {lhs = 'gc'; rhs = '<Plug>Commentary'}
   local sneak_common = {{lhs = ';'; rhs = '<Plug>Sneak_;'}; {lhs = ','; rhs = '<Plug>Sneak_,'}};
   local mappings = {
@@ -94,7 +72,6 @@ do
 
   vim.schedule(function()
     manual_mappings()
-    ts_mappings()
     vcmd([[doautocmd User PluginReady]])
   end)
 end

@@ -89,6 +89,12 @@ local setup_prettierd = function()
   vcmd([[augroup END]])
 end
 
+local trigger_ft = function()
+  if vim.bo.filetype and vim.bo.filetype ~= '' then
+    vcmd([[doautocmd FileType ]] .. vim.bo.filetype)
+  end
+end
+
 do
   local schedule = vim.schedule
   schedule(setup_completion)
@@ -102,7 +108,11 @@ do
   schedule(setup_prettierd)
   schedule(function()
     require('lc.init')
-    require('plugin.ts').set_folding()
-    helpers.trigger_ft()
+    trigger_ft()
+  end)
+  schedule(function()
+    vim.fn['plug#load']('nvim-treesitter')
+    require('plugin.ts')
+    trigger_ft()
   end)
 end

@@ -27,10 +27,4 @@ function M.exec_cmds(cmd_list)
   vcmd(table.concat(cmd_list, '\n'))
 end
 
-function M.trigger_ft()
-  if vim.bo.filetype and vim.bo.filetype ~= '' then
-    vcmd([[doautocmd FileType ]] .. vim.bo.filetype)
-  end
-end
-
 return M
