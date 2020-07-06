@@ -6,7 +6,7 @@ flake8-bugbear
 flake8-builtins
 flake8-comprehensions
 flake8-tidy-imports
-isort
+isort<5
 jedi-language-server
 mypy
 reorder_python_imports
