@@ -1,6 +1,13 @@
 local M = {}
 
 local vfn = vim.fn
+local loop = vim.loop
+
+local setup_blackd_logs_dir = function(base_dir)
+  local logs_dir = base_dir .. '/blackd-logs'
+  vfn.mkdir(logs_dir, 'p')
+  loop.os_setenv('BLACKD_LOGS_DIR', logs_dir)
+end
 
 local get_dmypy = function()
   return {
@@ -151,6 +158,9 @@ local get_config = function()
 end
 
 function M.gen_config()
+  local cache_dir = vfn.stdpath('cache')
+  setup_blackd_logs_dir(cache_dir)
+
   local config_str, fts = get_config()
   local config_file = os.tmpname()
   local h = io.open(config_file, 'w')
