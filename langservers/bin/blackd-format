@@ -16,7 +16,7 @@ function start_blackd() {
 }
 
 function wait_for_blackd() {
-	if ! timeout 10 bash -c 'while ! curl -o /dev/null -m 1 "http://127.0.0.1:${PORT}"; do sleep 1; done'; then
+	if ! timeout 10 bash -c 'while ! curl -so /dev/null -m 1 "http://127.0.0.1:${PORT}"; do sleep 1; done'; then
 		echo "failed to connect to blackd after 10s"
 		exit 1
 	fi
