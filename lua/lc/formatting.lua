@@ -29,7 +29,7 @@ function M.register_client(client, bufnr)
   end
 
   if not should_skip_ft(api.nvim_buf_get_option(bufnr, 'filetype')) then
-    vcmd([[augroup lc_autofmt]])
+    vcmd([[augroup lc_autofmt_]] .. bufnr)
     vcmd([[autocmd!]])
     vcmd([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
     vcmd([[augroup END]])

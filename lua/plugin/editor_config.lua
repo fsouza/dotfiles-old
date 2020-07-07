@@ -45,8 +45,8 @@ local get_vim_fileformat = function(editorconfig_eol)
   return m[editorconfig_eol] or 'unix'
 end
 
-local handle_whitespaces = function(v)
-  vcmd('augroup editorconfig_trim_trailing_whitespace')
+local handle_whitespaces = function(bufnr, v)
+  vcmd('augroup editorconfig_trim_trailing_whitespace_' .. bufnr)
   vcmd([[autocmd!]])
   if v == 'true' then
     vcmd('autocmd BufWritePre <buffer> lua require("plugin.editor_config").trim_whitespace()')
@@ -85,7 +85,7 @@ local set_opts = function(bufnr, opts)
 
     if k == 'trim_trailing_whitespace' then
       vim.schedule(function()
-        handle_whitespaces(v)
+        handle_whitespaces(bufnr, v)
       end)
     end
   end

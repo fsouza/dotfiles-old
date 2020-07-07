@@ -146,7 +146,8 @@ function M.auto_format()
 end
 
 function M.enable_auto_format()
-  vcmd([[augroup prettierd_autofmt]])
+  local bufnr = api.nvim_get_current_buf()
+  vcmd([[augroup prettierd_autofmt_]] .. bufnr)
   vcmd([[autocmd!]])
   vcmd([[autocmd BufWritePre <buffer> lua require('plugin.prettierd').auto_format()]])
   vcmd([[augroup END]])
