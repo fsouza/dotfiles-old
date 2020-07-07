@@ -31,7 +31,7 @@ local attached = function(bufnr, client)
       require('completion').on_attach()
       table.insert(mappings.i, {
         lhs = '<c-x><c-o>';
-        rhs = 'completion#trigger_completion()';
+        rhs = 'v:lua.f.complete()';
         opts = {expr = true; silent = true};
       })
       table.insert(mappings.i, {
