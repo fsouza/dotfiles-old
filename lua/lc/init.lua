@@ -26,7 +26,6 @@ local python_interpreter_props = function(virtual_env)
     end
     props.Version = r.stdout
   end
-  print(props.InterpreterPath)
   require('lib.cmd').run(props.InterpreterPath, {
     args = {
       '-c'; [[import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}", end="")]];
