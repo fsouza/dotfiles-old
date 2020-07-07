@@ -13,6 +13,8 @@ local sign_namespaces = {}
 
 local diagnostic_namespaces = {}
 
+local debouncers = {}
+
 local sign_ns = function(client_id)
   if sign_namespaces[client_id] == nil then
     sign_namespaces[client_id] = string.format('lsp-sign-%d', client_id)
@@ -117,19 +119,7 @@ function M.buf_clear_diagnostics(bufnr)
   sign_namespaces = {}
 end
 
-function M.publishDiagnostics(_, _, result, client_id)
-  if not result then
-    return
-  end
-  local uri = result.uri
-  local bufnr = vim.uri_to_bufnr(uri)
-  if not bufnr then
-    return
-  end
-  if not api.nvim_buf_is_loaded(bufnr) then
-    return
-  end
-
+local handle_publish = function(bufnr, client_id, result)
   buf_clear_diagnostics(bufnr, client_id)
   for _, diagnostic in ipairs(result.diagnostics) do
     if diagnostic.severity == nil then
@@ -142,6 +132,35 @@ function M.publishDiagnostics(_, _, result, client_id)
   buf_diagnostics_virtual_text(bufnr, client_id, result.diagnostics)
   buf_diagnostics_signs(bufnr, client_id, result.diagnostics)
   vim.api.nvim_command('doautocmd User LspDiagnosticsChanged')
+end
+
+function M.publishDiagnostics(_, _, result, client_id)
+  if not result then
+    return
+  end
+  local uri = result.uri
+  local bufnr = vim.uri_to_bufnr(uri)
+  if not bufnr then
+    return
+  end
+  if not api.nvim_buf_is_loaded(bufnr) then
+    return
+  end
+  local debouncer_key = string.format('%d/%s', client_id, uri)
+
+  local handler = debouncers[debouncer_key]
+  if handler == nil then
+    local interval = vim.b.lsp_diagnostic_debouncing_ms or 500
+    handler = require('lib/debounce').debounce(interval, vim.schedule_wrap(handle_publish))
+    debouncers[debouncer_key] = handler
+    api.nvim_buf_attach(bufnr, false, {
+      on_detach = function(_)
+        debouncers[debouncer_key] = nil
+      end;
+    })
+  end
+
+  handler.call(bufnr, client_id, result)
 end
 
 return M
