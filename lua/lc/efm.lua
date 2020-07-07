@@ -9,9 +9,20 @@ local setup_blackd_logs_dir = function(base_dir)
   loop.os_setenv('BLACKD_LOGS_DIR', logs_dir)
 end
 
+local get_python_tool = function(bin_name)
+  local result = bin_name
+  if loop.os_getenv('VIRTUAL_ENV') then
+    local venv_bin_name = loop.os_getenv('VIRTUAL_ENV') .. '/bin/' .. bin_name
+    if vfn.executable(venv_bin_name) then
+      result = venv_bin_name
+    end
+  end
+  return result
+end
+
 local get_dmypy = function()
   return {
-    ['lint-command'] = 'dmypy run';
+    ['lint-command'] = string.format('%s run', get_python_tool('dmypy'));
     ['lint-formats'] = {'%f:%l: %trror: %m'; '%f:%l: %tarning: %m'; '%f:%l: %tote: %m'};
   }
 end
@@ -23,27 +34,40 @@ local get_black = function()
 end
 
 local get_isort = function()
-  return {['format-command'] = 'isort -'; ['format-stdin'] = true}
+  return {
+    ['format-command'] = string.format('%s -', get_python_tool('isort'));
+    ['format-stdin'] = true;
+  }
 end
 
 local get_flake8 = function()
   return {
-    ['lint-command'] = 'flake8 --stdin-display-name ${INPUT} -';
+    ['lint-command'] = string.format('%s --stdin-display-name ${INPUT} -',
+                                     get_python_tool('flake8'));
     ['lint-stdin'] = true;
     ['lint-formats'] = {[[%f:%l:%c: %m]]};
   }
 end
 
 local get_add_trailing_comma = function()
-  return {['format-command'] = 'add-trailing-comma -'; ['format-stdin'] = true}
+  return {
+    ['format-command'] = string.format('%s -', get_python_tool('add-trailing-comma'));
+    ['format-stdin'] = true;
+  }
 end
 
 local get_reorder_python_imports = function()
-  return {['format-command'] = 'reorder-python-imports -'; ['format-stdin'] = true}
+  return {
+    ['format-command'] = string.format('%s -', get_python_tool('reorder-python-imports'));
+    ['format-stdin'] = true;
+  }
 end
 
 local get_autopep8 = function()
-  return {['format-command'] = 'autopep8 -'; ['format-stdin'] = true}
+  return {
+    ['format-command'] = string.format('%s -', get_python_tool('autopep8'));
+    ['format-stdin'] = true;
+  }
 end
 
 local get_dune = function()
