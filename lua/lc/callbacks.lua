@@ -16,10 +16,8 @@ M['textDocument/documentSymbol'] = fzf_symbol_callback
 
 M['workspace/symbol'] = fzf_symbol_callback
 
-local function fzf_location_callback(_, method, result)
-  local log = require('vim.lsp.log')
+local function fzf_location_callback(_, _, result)
   if result == nil or vim.tbl_isempty(result) then
-    local _ = log.info() and log.info(method, 'No location found')
     return nil
   end
 
