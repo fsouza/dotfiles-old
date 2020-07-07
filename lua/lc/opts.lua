@@ -1,5 +1,6 @@
 local M = {}
 
+local api = vim.api
 local lsp = require('nvim_lsp')
 
 local attached = function(bufnr, client)
@@ -188,6 +189,10 @@ local on_attach = function(client, bufnr)
     if c.name == client.name then
       client = c
     end
+  end
+
+  if bufnr == 0 or bufnr == nil then
+    bufnr = api.nvim_get_current_buf()
   end
 
   attached(bufnr, client)
