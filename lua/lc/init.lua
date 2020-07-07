@@ -26,8 +26,11 @@ local python_interpreter_props = function(virtual_env)
     end
     props.Version = r.stdout
   end
+  print(props.InterpreterPath)
   require('lib.cmd').run(props.InterpreterPath, {
-    '-c'; 'import sys; print("f{sys.version_info.major}.{sys.version_info.minor}"), end="")';
+    args = {
+      '-c'; [[import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}", end="")]];
+    };
   }, nil, cb)
   vim.wait(200, function()
     return props.Version ~= nil
@@ -101,9 +104,8 @@ do
     lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
 
-  if_executable('jedi-language-server', function()
-    lsp.jedi_language_server.setup(lc_opts.with_default_opts(
-                                     {{init_options = {completion = {disableSnippets = true}}}}))
+  if_executable('dotnet', function()
+    lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
   end)
 
   local ra = get_local_cmd('rust-analyzer')

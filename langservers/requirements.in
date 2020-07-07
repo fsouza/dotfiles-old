@@ -7,6 +7,5 @@ flake8-builtins
 flake8-comprehensions
 flake8-tidy-imports
 isort<5
-jedi-language-server
 mypy
 reorder_python_imports
