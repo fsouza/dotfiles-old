@@ -8,6 +8,14 @@ local get_local_cmd = function(cmd)
   return string.format('%s/langservers/bin/%s', config_dir, cmd)
 end
 
+local set_log_level = function()
+  local level = 'ERROR'
+  if loop.os_getenv('NVIM_DEBUG') then
+    level = 'TRACE'
+  end
+  require('vim.lsp.log').set_level(level)
+end
+
 do
   local if_executable = function(name, cb)
     if vfn.executable(name) == 1 then
@@ -15,6 +23,7 @@ do
     end
   end
 
+  set_log_level()
   local lsp = require('nvim_lsp')
   local vim_node_ls = get_local_cmd('node-lsp')
 
