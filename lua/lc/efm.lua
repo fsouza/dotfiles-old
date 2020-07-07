@@ -13,7 +13,7 @@ local get_python_tool = function(bin_name)
   local result = bin_name
   if loop.os_getenv('VIRTUAL_ENV') then
     local venv_bin_name = loop.os_getenv('VIRTUAL_ENV') .. '/bin/' .. bin_name
-    if vfn.executable(venv_bin_name) then
+    if vfn.executable(venv_bin_name) == 1 then
       result = venv_bin_name
     end
   end
