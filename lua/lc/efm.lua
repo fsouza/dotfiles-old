@@ -3,6 +3,8 @@ local M = {}
 local vfn = vim.fn
 local loop = vim.loop
 
+local created_files = {}
+
 local setup_blackd_logs_dir = function(base_dir)
   local logs_dir = base_dir .. '/blackd-logs'
   vfn.mkdir(logs_dir, 'p')
@@ -181,6 +183,16 @@ local get_config = function()
   return require('lyaml').dump({cfg}), vim.tbl_keys(languages)
 end
 
+local cleanup = function()
+  for _, file in pairs(created_files) do
+    local ok, err = os.remove(file)
+    if not ok then
+      print(err)
+    end
+  end
+  created_files = {}
+end
+
 function M.gen_config()
   local cache_dir = vfn.stdpath('cache')
   setup_blackd_logs_dir(cache_dir)
@@ -190,7 +202,12 @@ function M.gen_config()
   local h = io.open(config_file, 'w')
   h:write(config_str)
   h:close()
+  table.insert(created_files, config_file)
   return config_file, fts
+end
+
+do
+  require('lib.cleanup').register(cleanup)
 end
 
 return M
