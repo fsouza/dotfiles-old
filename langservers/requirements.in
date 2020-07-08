@@ -6,6 +6,6 @@ flake8-bugbear
 flake8-builtins
 flake8-comprehensions
 flake8-tidy-imports
-isort<5
+isort
 mypy
 reorder_python_imports
