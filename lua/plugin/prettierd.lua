@@ -33,6 +33,12 @@ local start_server = function()
 
     load_state()
   end)
+
+  require('lib.cleanup').register(function()
+    local block = cmd.run('pkill', {args = {'prettierd'}}, nil, function()
+    end)
+    block(500)
+  end)
 end
 
 local wait_for_server = function(timeout_ms)
