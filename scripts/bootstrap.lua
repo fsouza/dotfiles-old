@@ -51,10 +51,10 @@ end
 -- {
 --    executable: string;
 --    opts: table; (note: this should match vim.loop.spawn options, see lib/cmd.lua for details)
---    timeout_ms: number; (defaults to 10 minutes)
+--    timeout_ms: number; (defaults to 20 minutes)
 -- }
 local run_cmds = function(cmds)
-  local ten_minutes_ms = 10 * minute_ms
+  local ten_minutes_ms = 20 * minute_ms
   local results = {}
   local total_timeout_ms = 0
 
