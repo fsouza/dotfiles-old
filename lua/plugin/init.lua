@@ -97,6 +97,9 @@ end
 
 do
   local schedule = vim.schedule
+  schedule(function()
+    require('lib.cleanup').setup()
+  end)
   schedule(setup_completion)
   schedule(setup_editorconfig)
   schedule(setup_global_ns)
