@@ -131,7 +131,7 @@ local handle_publish = function(bufnr, client_id, result)
   buf_diagnostics_underline(bufnr, client_id, result.diagnostics)
   buf_diagnostics_virtual_text(bufnr, client_id, result.diagnostics)
   buf_diagnostics_signs(bufnr, client_id, result.diagnostics)
-  vim.api.nvim_command('doautocmd User LspDiagnosticsChanged')
+  vim.cmd('doautocmd User LspDiagnosticsChanged')
 end
 
 function M.publishDiagnostics(_, _, result, client_id)
@@ -151,7 +151,7 @@ function M.publishDiagnostics(_, _, result, client_id)
   local handler = debouncers[debouncer_key]
   if handler == nil then
     local interval = vim.b.lsp_diagnostic_debouncing_ms or 500
-    handler = require('lib/debounce').debounce(interval, vim.schedule_wrap(handle_publish))
+    handler = require('lib.debounce').debounce(interval, vim.schedule_wrap(handle_publish))
     debouncers[debouncer_key] = handler
     api.nvim_buf_attach(bufnr, false, {
       on_detach = function(_)
