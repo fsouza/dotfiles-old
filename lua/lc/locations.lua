@@ -4,6 +4,21 @@ local lsp = vim.lsp
 local lap_util = require('vim.lsp.util')
 local parsers = require('nvim-treesitter.parsers')
 
+local should_use_ts = function(node)
+  if node == nil then
+    return false
+  end
+
+  local node_type = node:type()
+  local node_types = {'function_declaration'; 'method_declaration'; 'type_spec'}
+  for _, t in pairs(node_types) do
+    if node_type == t then
+      return true
+    end
+  end
+  return false
+end
+
 local ts_range = function(loc)
   if not loc.uri then
     return loc
@@ -31,7 +46,7 @@ local ts_range = function(loc)
                                                end_pos.character)
 
   local parent_node = node:parent()
-  if parent_node:type() == 'function_declaration' or parent_node:type() == 'method_declaration' then
+  if should_use_ts(parent_node) then
     local sl, sc, el, ec = parent_node:range()
     loc.range.start.line = sl
     loc.range.start.character = sc
