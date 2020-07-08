@@ -125,6 +125,20 @@ local read_precommit_config = function(file_path)
   return lyaml.load(content)
 end
 
+local blackd_cleanup_if_needed = function(languages)
+  if type(languages.python) == 'table' then
+    for _, tool in pairs(languages.python) do
+      if tool['format-command'] and vim.endswith(tool['format-command'], '/blackd-format') then
+        require('lib.cleanup').register(function()
+          local block = require('lib/cmd').run('pkill', {args = {'-f'; 'blackd'}}, nil, function()
+          end)
+          block(500)
+        end)
+      end
+    end
+  end
+end
+
 local add_python_language = function(languages)
   local pre_commit_config_file_path = '.pre-commit-config.yaml'
   if vfn.filereadable(pre_commit_config_file_path) == 0 then
@@ -159,6 +173,7 @@ local get_config = function()
   local languages = {dune = {get_dune()}; sh = {get_shellcheck()}}
 
   add_python_language(languages)
+  blackd_cleanup_if_needed(languages)
   local if_filename = make_if_filename(languages)
   if_filename('.luacheckrc', add_luacheck)
   if_filename('.lua-format', add_luaformat)
