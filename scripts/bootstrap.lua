@@ -129,7 +129,11 @@ local ensure_hererocks = function(virtualenv)
 
   for _, rock in pairs(rocks) do
     run_cmds({
-      {executable = hr_dir .. '/bin/luarocks'; opts = {args = vim.tbl_flatten({'install'; rock})}};
+      {
+        executable = hr_dir .. '/bin/luarocks';
+        opts = {args = vim.tbl_flatten({'install'; rock})};
+        timeout_ms = 20 * minute_ms;
+      };
     })
   end
 
