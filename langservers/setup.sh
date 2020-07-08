@@ -54,8 +54,12 @@ function install_efm_ls {
 	(
 		# shellcheck disable=SC2030,SC2031
 		export GO111MODULE=on GOBIN="${ROOT}/bin"
-		cd /tmp &&
-			go get github.com/mattn/efm-langserver@master
+		dir=$(mktemp -d)
+		git clone -b fix-panic-in-handler --depth 1 https://github.com/fsouza/efm-langserver.git "${dir}" &&
+			cd "${dir}" &&
+			go install &&
+			cd - &&
+			rm -rf "${dir}"
 	)
 }
 
