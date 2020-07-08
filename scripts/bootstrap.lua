@@ -89,6 +89,12 @@ local run_cmds = function(cmds)
     error(string.format('failed to complete all commands in %dms\nStatus:\n', total_timeout_ms,
                         table.concat(statuses, '\n')))
   end
+
+  for cmd_str, result in pairs(results) do
+    if result.exit_status ~= 0 then
+      error(string.format('command "%s" failed: %s', cmd_str, cmd_status(result)))
+    end
+  end
 end
 
 local ensure_virtualenv = function()
