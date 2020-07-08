@@ -3,7 +3,6 @@ local M = {}
 local lsp = vim.lsp
 local lap_util = require('vim.lsp.util')
 local parsers = require('nvim-treesitter.parsers')
-local ts_utils = require('nvim-treesitter.ts_utils')
 
 local ts_range = function(loc)
   if not loc.uri then
@@ -26,14 +25,14 @@ local ts_range = function(loc)
   local start_pos = loc.range.start
   local end_pos = loc.range['end']
 
-  local parser = parsers.get_parser(bufnr, lang)
+  local parser = vim.treesitter.get_parser(bufnr, lang)
   local root = parser.tree:root()
   local node = root:named_descendant_for_range(start_pos.line, start_pos.character, end_pos.line,
                                                end_pos.character)
 
-  local scope = ts_utils.containing_scope(node)
-  if scope:type() == 'function_declaration' or scope:type() == 'method_declaration' then
-    local sl, sc, el, ec = scope:range()
+  local parent_node = node:parent()
+  if parent_node:type() == 'function_declaration' or parent_node:type() == 'method_declaration' then
+    local sl, sc, el, ec = parent_node:range()
     loc.range.start.line = sl
     loc.range.start.character = sc
     loc.range['end'].line = el
