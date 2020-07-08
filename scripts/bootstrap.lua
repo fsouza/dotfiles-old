@@ -31,7 +31,7 @@ local cmd_to_string = function(cmd_name, args)
 end
 
 local cmd_status = function(result)
-  if not result then
+  if type(result) ~= 'table' then
     return 'aborted'
   end
 
