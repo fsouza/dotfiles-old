@@ -24,7 +24,7 @@ local set_folding = function()
   helpers.augroup('folding_config', {
     {
       events = {'FileType'};
-      targets = file_types;
+      targets = vim.tbl_flatten(file_types);
       command = [[setlocal foldmethod=expr foldexpr=]] .. foldexpr;
     };
   })
