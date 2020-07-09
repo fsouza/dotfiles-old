@@ -1,3 +1,4 @@
+local vcmd = vim.cmd
 local vfn = vim.fn
 local loop = vim.loop
 local lc_opts = require('lc.opts')
@@ -51,7 +52,7 @@ end
 
 do
   local langservers_bin_path = vfn.stdpath('cache') .. '/langservers/bin'
-  loop.os_setenv('PATH', langservers_bin_path .. ':' .. loop.os_getenv('PATH'))
+  vcmd(string.format([[let $PATH = '%s:'.$PATH]], langservers_bin_path))
 
   local if_executable = function(name, cb)
     if vfn.executable(name) == 1 then
