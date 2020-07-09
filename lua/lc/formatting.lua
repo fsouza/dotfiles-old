@@ -7,11 +7,6 @@ local helpers = require('lib.nvim_helpers')
 
 local fmt_clients = {}
 
-local should_skip_ft = function(ft)
-  local skip_set = {sh = true}
-  return skip_set[ft] ~= nil
-end
-
 local should_skip_server = function(server_name)
   local skip_set = {tsserver = true}
   return skip_set[server_name] ~= nil
@@ -23,23 +18,19 @@ function M.register_client(client, bufnr)
   end
 
   for _, filetype in pairs(client.config.filetypes) do
-    if not should_skip_ft(filetype) then
-      fmt_clients[filetype] = client
-    end
+    fmt_clients[filetype] = client
   end
 
-  if not should_skip_ft(api.nvim_buf_get_option(bufnr, 'filetype')) then
-    vcmd([[augroup lc_autofmt_]] .. bufnr)
-    vcmd([[autocmd!]])
-    vcmd([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
-    vcmd([[augroup END]])
+  vcmd([[augroup lc_autofmt_]] .. bufnr)
+  vcmd([[autocmd!]])
+  vcmd([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
+  vcmd([[augroup END]])
 
-    api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
-                            helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})
-    api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>w',
-                            helpers.cmd_map([[lua require('lc.formatting').format_and_write()]]),
-                            {silent = true})
-  end
+  api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
+                          helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})
+  api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>w',
+                          helpers.cmd_map([[lua require('lc.formatting').format_and_write()]]),
+                          {silent = true})
 end
 
 local formatting_params = function(bufnr)
