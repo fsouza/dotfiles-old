@@ -37,10 +37,13 @@ local setup_completion = function()
 end
 
 local setup_hlyank = function()
-  vcmd([[augroup yank_highlight]])
-  vcmd([[autocmd!]])
-  vcmd([[autocmd TextYankPost * silent! lua require('plugin.yank').on_yank()]])
-  vcmd([[augroup END]])
+  helpers.augroup('yank_highlight', {
+    {
+      events = {'TextYankPost'};
+      targets = {'*'};
+      command = [[lua require('vim.highlight').on_yank({higroup = 'HlYank'; timeout = 200; on_macro = false})]];
+    };
+  })
 end
 
 local setup_global_ns = function()
@@ -60,11 +63,13 @@ local setup_word_replace = function()
 end
 
 local setup_spell = function()
-  local filetypes = {'gitcommit'; 'markdown'; 'text'}
-  vcmd([[augroup auto_spell]])
-  vcmd([[autocmd!]])
-  vcmd(string.format([[autocmd FileType %s setlocal spell]], table.concat(filetypes, ',')))
-  vcmd([[augroup END]])
+  helpers.augroup('auto_spell', {
+    {
+      events = {'FileType'};
+      targets = {'gitcommit'; 'markdown'; 'text'};
+      command = [[setlocal spell]];
+    };
+  })
 end
 
 local setup_editorconfig = function()
@@ -79,14 +84,17 @@ local setup_prettierd = function()
   local auto_fmt_fts = {
     'json'; 'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'; 'yaml';
   }
-  vcmd([[augroup auto_prettierd]])
-  vcmd([[autocmd!]])
-  vcmd(string.format([[autocmd FileType %s lua require('plugin.prettierd').enable_auto_format()]],
-                     table.concat(auto_fmt_fts, ',')))
-  vcmd(string.format(
-         [[autocmd FileType %s nmap <buffer> <silent> <leader>f <cmd>lua require('plugin.prettierd').format()<cr>']],
-         table.concat(auto_fmt_fts, ',')))
-  vcmd([[augroup END]])
+  helpers.augroup('auto_prettierd', {
+    {
+      events = {'FileType'};
+      targets = auto_fmt_fts;
+      ccommand = [[lua require('plugin.pretterd').enable_auto_format]];
+    }; {
+      events = {'FileType'};
+      targets = auto_fmt_fts;
+      command = [[nmap <buffer> <silent> <leader>f <cmd>lua require('plugin.prettierd').format()<cr>]];
+    };
+  })
 end
 
 local trigger_ft = function()

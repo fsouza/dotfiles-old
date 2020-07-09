@@ -1,4 +1,3 @@
-local vcmd = vim.cmd
 local parsers = require('nvim-treesitter.parsers')
 
 local wanted_parsers = {
@@ -7,6 +6,7 @@ local wanted_parsers = {
 };
 
 local set_folding = function()
+  local helpers = require('lib.nvim_helpers')
   local file_types = {}
   for i, lang in ipairs(wanted_parsers) do
     file_types[i] = parsers.lang_to_ft(lang)
@@ -21,11 +21,13 @@ local set_folding = function()
     end
   end
 
-  vcmd([[augroup folding_config]])
-  vcmd([[autocmd!]])
-  vcmd(string.format([[autocmd FileType %s setlocal foldmethod=expr foldexpr=%s]],
-                     table.concat(vim.tbl_flatten(file_types), ','), foldexpr))
-  vcmd([[augroup END]])
+  helpers.augroup('folding_config', {
+    {
+      events = {'FileType'};
+      targets = file_types;
+      command = [[setlocal foldmethod=expr foldexpr=]] .. foldexpr;
+    };
+  })
 end
 
 do

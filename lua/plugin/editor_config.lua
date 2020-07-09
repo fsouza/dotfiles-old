@@ -4,17 +4,20 @@ local api = vim.api
 local nvim_buf_get_option = api.nvim_buf_get_option
 local nvim_buf_set_option = api.nvim_buf_set_option
 local cmd = require('lib.cmd')
+local helpers = require('lib.nvim_helpers')
 
 local M = {}
 
 local set_enabled = function(v)
-  vcmd('augroup editorconfig')
-  vcmd('autocmd!')
+  local commands = {}
   if v then
-    vcmd(
-      [[autocmd BufNewFile,BufReadPost,BufFilePost * lua require("plugin.editor_config").set_config()]])
+    table.insert(commands, {
+      events = {'BufNewFile'; 'BufReadPost'; 'BufFilePost'};
+      targets = {'*'};
+      command = [[lua require('plugin.editor_config').set_config()]];
+    });
   end
-  vcmd('augroup END')
+  helpers.augroup('editorconfig', commands)
   M.set_config()
 end
 
@@ -46,12 +49,15 @@ local get_vim_fileformat = function(editorconfig_eol)
 end
 
 local handle_whitespaces = function(bufnr, v)
-  vcmd('augroup editorconfig_trim_trailing_whitespace_' .. bufnr)
-  vcmd([[autocmd!]])
+  local commands = {}
   if v == 'true' then
-    vcmd('autocmd BufWritePre <buffer> lua require("plugin.editor_config").trim_whitespace()')
+    table.insert(commands, {
+      events = {'BufWritePre'};
+      targets = {'<buffer>'};
+      command = [[lua require('plugin.editor_config').trim_whitespace()']];
+    })
   end
-  vcmd('augroup END')
+  helpers.augroup('editorconfig_trim_trailing_whitespace_' .. bufnr, commands)
 end
 
 local set_opts = function(bufnr, opts)

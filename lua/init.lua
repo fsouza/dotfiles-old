@@ -86,21 +86,20 @@ end
 local rnu = function()
   vcmd('set relativenumber')
   vim.schedule(function()
-    vcmd([[augroup auto_rnu]])
-    vcmd([[autocmd!]])
-    vcmd([[autocmd TermOpen * setlocal norelativenumber]])
-    vcmd([[augroup END]])
+    helpers.augroup('auto_rnu', {
+      {events = {'TermOpen'}; targetfs = {'*'}; command = [[setlocal norelativenumber]]};
+    })
   end)
 end
 
 local folding = function()
+  local fold_method = 'indent'
   vim.o.foldlevelstart = 99
-  vim.wo.foldmethod = 'syntax'
+  vim.wo.foldmethod = fold_method
   vim.schedule(function()
-    vcmd([[augroup folding_config]])
-    vcmd([[autocmd!]])
-    vcmd([[autocmd BufEnter * setlocal foldmethod=syntax]])
-    vcmd([[augroup END]])
+    helpers.augroup('folding_config', {
+      {events = {'BufEnter'}; targets = {'*'}; command = [[setlocal foldmethod=]] .. fold_method};
+    })
   end)
 end
 

@@ -1,4 +1,4 @@
-local vcmd = vim.cmd
+local helpers = require('lib.nvim_helpers')
 
 local cbs = {}
 
@@ -23,10 +23,9 @@ function M.cleanup()
 end
 
 function M.setup()
-  vcmd([[augroup lua_lib_cleanup]])
-  vcmd([[autocmd!]])
-  vcmd([[autocmd VimLeavePre * lua require('lib.cleanup').cleanup()]])
-  vcmd([[augroup END]])
+  helpers.augroup('lua_lib_cleanup', {
+    {events = {'VimLeavePre'}; targets = {'*'}; command = [[lua require('lib.cleanup')]]};
+  })
 end
 
 return M

@@ -21,10 +21,13 @@ function M.register_client(client, bufnr)
     fmt_clients[filetype] = client
   end
 
-  vcmd([[augroup lc_autofmt_]] .. bufnr)
-  vcmd([[autocmd!]])
-  vcmd([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
-  vcmd([[augroup END]])
+  helpers.augroup('lc_autofmt_' .. bufnr, {
+    {
+      events = {'BufWritePre'};
+      targets = {'<buffer>'};
+      command = [[lua require('lc.formatting').auto_fmt()]];
+    };
+  })
 
   api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
                           helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})

@@ -27,4 +27,14 @@ function M.exec_cmds(cmd_list)
   vcmd(table.concat(cmd_list, '\n'))
 end
 
+function M.augroup(name, commands)
+  vcmd('augroup ' .. name)
+  vcmd('autocmd!')
+  for _, c in ipairs(commands) do
+    vcmd(string.format('autocmd %s %s %s', table.concat(c.events, ','),
+                       table.concat(c.targets, ','), c.command))
+  end
+  vcmd('augroup END')
+end
+
 return M
