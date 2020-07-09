@@ -12,28 +12,28 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu
-          - macos
+          - ubuntu-20.04
+          - macos-latest
 
     name: bootstrap
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
     steps:
       - name: install brew deps on mac
         run: brew install bash shellcheck ninja libyaml
-        if: matrix.os == 'macos'
+        if: matrix.os == 'macos-latest'
 
       - name: install neovim nightly
         run: |
-          if [ "${{ matrix.os }}" = "ubuntu" ]; then
+          if [ "${{ matrix.os }}" = "ubuntu-20.04" ]; then
             suffix=linux64
           else
-            suffix=${{ matrix.os }}
+            suffix=macos
           fi
           curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-${suffix}.tar.gz | sudo tar -C /usr/local --strip 1 -xzf -
 
       - name: install apt deps on ubuntu
         run: sudo apt-get update && sudo apt-get install -y shellcheck ninja-build libyaml-dev
-        if: matrix.os == 'ubuntu'
+        if: matrix.os == 'ubuntu-latest'
 
       - uses: actions/checkout@v2.3.1
 
