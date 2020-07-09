@@ -54,7 +54,7 @@ local handle_whitespaces = function(bufnr, v)
     table.insert(commands, {
       events = {'BufWritePre'};
       targets = {'<buffer>'};
-      command = [[lua require('plugin.editor_config').trim_whitespace()']];
+      command = [[lua require('plugin.editor_config').trim_whitespace()]];
     })
   end
   helpers.augroup('editorconfig_trim_trailing_whitespace_' .. bufnr, commands)
