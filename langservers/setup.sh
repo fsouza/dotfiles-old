@@ -2,8 +2,6 @@
 
 set -eu
 
-ROOT=$(cd "$(dirname "${0}")" && pwd -P)
-
 cache_dir=${1}
 
 if [ -z "${cache_dir}" ]; then
@@ -49,8 +47,9 @@ function install_rust_analyzer {
 	elif [[ $OSTYPE == linux* ]]; then
 		suffix=linux
 	fi
-	curl -sLo "${ROOT}/bin/rust-analyzer" "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-${suffix}"
-	chmod +x "${ROOT}/bin/rust-analyzer"
+	mkdir -p "${cache_dir}/bin"
+	curl -sLo "${cache_dir}/bin/rust-analyzer" "https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-${suffix}"
+	chmod +x "${cache_dir}/bin/rust-analyzer"
 }
 
 function install_servers_from_npm {
@@ -76,7 +75,7 @@ function install_efm_ls {
 	fi
 	(
 		# shellcheck disable=SC2030,SC2031
-		export GO111MODULE=on GOBIN="${ROOT}/bin"
+		export GO111MODULE=on GOBIN="${cache_dir}/bin"
 		dir=$(mktemp -d)
 		git clone -b fix-panic-in-handler --depth 1 https://github.com/fsouza/efm-langserver.git "${dir}" &&
 			cd "${dir}" &&
@@ -93,7 +92,7 @@ function install_gopls {
 	fi
 	(
 		# shellcheck disable=SC2030,SC2031
-		export GO111MODULE=on GOBIN="${ROOT}/bin"
+		export GO111MODULE=on GOBIN="${cache_dir}/bin"
 		cd /tmp &&
 			go get golang.org/x/tools/gopls@master golang.org/x/tools@master &&
 			go get golang.org/x/tools/cmd/goimports@master &&
@@ -124,7 +123,7 @@ function install_lua_lsp {
 		popd
 }
 
-pushd "$ROOT"
+pushd "$(dirname "${0}")"
 git submodule update --init --recursive
 mkdir -p "${cache_dir}"
 install_servers_from_npm &

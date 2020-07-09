@@ -50,6 +50,9 @@ local get_pyls_ms_options = function()
 end
 
 do
+  local langservers_bin_path = vfn.stdpath('cache') .. '/langservers/bin'
+  loop.os_setenv('PATH', langservers_bin_path .. ':' .. loop.os_getenv('PATH'))
+
   local if_executable = function(name, cb)
     if vfn.executable(name) == 1 then
       cb()
@@ -88,9 +91,8 @@ do
     }))
   end)
 
-  if_executable(get_local_cmd('gopls'), function()
+  if_executable('gopls', function()
     lsp.gopls.setup(lc_opts.with_default_opts({
-      cmd = {get_local_cmd('go-lsp')};
       init_options = {
         deepCompletion = false;
         staticcheck = true;
@@ -107,16 +109,14 @@ do
     lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
   end)
 
-  local ra = get_local_cmd('rust-analyzer')
-  if_executable('ra', function()
-    lsp.rust_analyzer.setup(lc_opts.with_default_opts({cmd = {ra}}))
+  if_executable('rust-analyzer', function()
+    lsp.rust_analyzer.setup(lc_opts.with_default_opts({}))
   end)
 
-  local efm = get_local_cmd('efm-langserver')
-  if_executable(efm, function()
+  if_executable('efm-langserver', function()
     local config_file, filetypes = require('lc.efm').gen_config()
     lsp.efm.setup(lc_opts.with_default_opts({
-      cmd = {efm; '-c'; config_file};
+      cmd = {'efm-langserver'; '-c'; config_file};
       filetypes = filetypes;
       root_dir = lc_opts.cwd_root_pattern;
     }))
