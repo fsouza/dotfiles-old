@@ -148,7 +148,11 @@ end
 
 local setup_langservers = function()
   run_cmds({
-    {executable = config_dir .. '/langservers/setup.sh'; opts = {}; timeout = 20 * minute_ms};
+    {
+      executable = config_dir .. '/langservers/setup.sh';
+      opts = {args = {cache_dir .. '/langservers'}};
+      timeout = 20 * minute_ms;
+    };
   })
 end
 

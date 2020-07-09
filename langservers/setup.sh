@@ -4,14 +4,35 @@ set -eu
 
 ROOT=$(cd "$(dirname "${0}")" && pwd -P)
 
+cache_dir=${1}
+
+if [ -z "${cache_dir}" ]; then
+	echo "the cache dir is required. Please provide it as a positional parameter" >&2
+	exit 2
+fi
+
+function _clone_or_update {
+	repo=$1
+	path=$2
+
+	if [ -d "${path}" ]; then
+		git -C "${path}" pull
+	else
+		git clone "${repo}" "${path}"
+	fi
+	git -C "${path}" submodule update --init --recursive
+}
+
 function install_ocaml_lsp {
 	if ! command -v opam &>/dev/null; then
 		echo skipping ocaml-lsp
 		return
 	fi
-	opam update -y
-	opam install -y dune ocamlformat
-	pushd "$ROOT/ocaml-lsp" &&
+	path="${cache_dir}/ocaml-lsp"
+	_clone_or_update https://github.com/ocaml/ocaml-lsp.git "${path}" &&
+		opam update -y &&
+		opam install -y dune ocamlformat &&
+		pushd "${path}" &&
 		opam install --deps-only -y . &&
 		dune build @install &&
 		popd
@@ -41,7 +62,9 @@ function install_ms_python_ls {
 		echo skipping microsoft python-language-server
 		return
 	fi
-	pushd "$ROOT/python-language-server/src/LanguageServer/Impl" &&
+	path="${cache_dir}/python-language-server"
+	_clone_or_update https://github.com/microsoft/python-language-server.git "${path}" &&
+		pushd "${path}/src/LanguageServer/Impl" &&
 		dotnet build &&
 		popd
 }
@@ -91,7 +114,9 @@ function install_lua_lsp {
 		echo "install_lua_lsp: unuspported OSTYPE=${OSTYPE}"
 		return
 	fi
-	pushd "${ROOT}/lua-language-server" &&
+	path=${cache_dir}/lua-language-server
+	_clone_or_update https://github.com/sumneko/lua-language-server "${path}" &&
+		pushd "${path}" &&
 		cd 3rd/luamake &&
 		ninja -f "${ninja_file}" &&
 		cd ../.. &&
@@ -101,6 +126,7 @@ function install_lua_lsp {
 
 pushd "$ROOT"
 git submodule update --init --recursive
+mkdir -p "${cache_dir}"
 install_servers_from_npm &
 install_ocaml_lsp &
 install_rust_analyzer &

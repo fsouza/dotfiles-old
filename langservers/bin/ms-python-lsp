@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-set -e
+set -eu
 
-ROOT=$(cd "$(dirname "${0}")/.." && pwd -P)
+ROOT=${NVIM_CACHE_DIR}/langservers
 
 exec dotnet exec "${ROOT}/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"

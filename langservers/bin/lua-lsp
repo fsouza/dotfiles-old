@@ -2,14 +2,12 @@
 
 set -e
 
-ROOT=$(cd "$(dirname "${0}")/.." && pwd -P)
-export PATH="${ROOT}/bin:${PATH}"
+ROOT=${NVIM_CACHE_DIR}/langservers
 
-os_folder=$(uname -s)
-
-if [[ $os_folder == "Darwin" ]]; then
-	os_folder=macOS
+os_folder_name=$(uname -s)
+if [[ $os_folder_name == "Darwin" ]]; then
+	os_folder_name=macOS
 fi
 
 cd "${ROOT}/lua-language-server"
-exec "bin/${os_folder}/lua-language-server" -E ./main.lua
+exec "bin/${os_folder_name}/lua-language-server" -E ./main.lua
