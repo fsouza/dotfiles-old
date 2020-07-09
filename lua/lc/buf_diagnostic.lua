@@ -30,9 +30,30 @@ local diagnostic_ns = function(client_id)
   return diagnostic_namespaces[client_id]
 end
 
+local save_all_positions = function(bufnr, client_id, diagnostics)
+  if not diagnostics_by_buf[bufnr] then
+    diagnostics_by_buf[bufnr] = {}
+    api.nvim_buf_attach(bufnr, false, {
+      on_detach = function(b)
+        diagnostics_by_buf[b] = nil
+      end;
+    })
+  end
+  diagnostics_by_buf[bufnr][client_id] = diagnostics
+
+  local all_diagnostics = {}
+  for _, diagnostic_list in pairs(diagnostics_by_buf[bufnr]) do
+    for _, d in ipairs(diagnostic_list) do
+      table.insert(all_diagnostics, d)
+    end
+  end
+  util.buf_diagnostics_save_positions(bufnr, all_diagnostics)
+end
+
 local buf_clear_diagnostics = function(bufnr, client_id)
   vim.fn.sign_unplace(sign_ns(client_id), {buffer = bufnr})
   api.nvim_buf_clear_namespace(bufnr, diagnostic_ns(client_id), 0, -1)
+  save_all_positions(bufnr, client_id, {})
 end
 
 local buf_diagnostics_underline = function(bufnr, client_id, diagnostics)
@@ -84,26 +105,6 @@ local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
   end
 end
 
-local save_all_positions = function(bufnr, client_id, diagnostics)
-  if not diagnostics_by_buf[bufnr] then
-    diagnostics_by_buf[bufnr] = {}
-    api.nvim_buf_attach(bufnr, false, {
-      on_detach = function(b)
-        diagnostics_by_buf[b] = nil
-      end;
-    })
-  end
-  diagnostics_by_buf[bufnr][client_id] = diagnostics
-
-  local all_diagnostics = {}
-  for _, diagnostic_list in pairs(diagnostics_by_buf[bufnr]) do
-    for _, d in ipairs(diagnostic_list) do
-      table.insert(all_diagnostics, d)
-    end
-  end
-  util.buf_diagnostics_save_positions(bufnr, all_diagnostics)
-end
-
 function M.buf_clear_diagnostics(bufnr)
   if bufnr == 0 then
     bufnr = api.nvim_get_current_buf()
@@ -112,11 +113,11 @@ function M.buf_clear_diagnostics(bufnr)
     api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
   end
   diagnostic_namespaces = {}
-
   for _, ns in pairs(sign_namespaces) do
     vim.fn.sign_unplace(ns, {buffer = bufnr})
   end
   sign_namespaces = {}
+  util.buf_diagnostics_save_positions(bufnr, {})
 end
 
 local handle_publish = function(bufnr, client_id, result)
