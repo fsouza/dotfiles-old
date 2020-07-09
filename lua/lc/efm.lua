@@ -83,6 +83,10 @@ local get_shellcheck = function()
   }
 end
 
+local get_shfmt = function()
+  return {['format-command'] = 'shfmt -'; ['format-stdin'] = true}
+end
+
 local get_luacheck = function()
   return {
     ['lint-command'] = 'luacheck --formatter plain --filename ${INPUT} -';
@@ -103,6 +107,14 @@ local make_if_filename = function(languages)
   end
 end
 
+local make_if_executable = function(languages)
+  return function(bin_name, cb)
+    if vfn.executable(bin_name) == 1 then
+      cb(languages)
+    end
+  end
+end
+
 local add_luaformat = function(languages)
   if languages.lua == nil then
     languages.lua = {}
@@ -115,6 +127,20 @@ local add_luacheck = function(languages)
     languages.lua = {}
   end
   table.insert(languages.lua, get_luacheck())
+end
+
+local add_shellcheck = function(languages)
+  if languages.sh == nil then
+    languages.sh = {}
+  end
+  table.insert(languages.sh, get_shellcheck())
+end
+
+local add_shfmt = function(languages)
+  if languages.sh == nil then
+    languages.sh = {}
+  end
+  table.insert(languages.sh, get_shfmt())
 end
 
 local read_precommit_config = function(file_path)
@@ -170,13 +196,21 @@ local add_python_language = function(languages)
 end
 
 local get_config = function()
-  local languages = {dune = {get_dune()}; sh = {get_shellcheck()}}
+  local languages = {}
 
   add_python_language(languages)
   blackd_cleanup_if_needed(languages)
+  local if_executable = make_if_executable(languages)
   local if_filename = make_if_filename(languages)
+
   if_filename('.luacheckrc', add_luacheck)
   if_filename('.lua-format', add_luaformat)
+
+  if_executable('shellcheck', add_shellcheck)
+  if_executable('shfmt', add_shfmt)
+  if_executable('dune', function(langs)
+    langs.dune = {get_dune()}
+  end)
 
   local cfg = {
     version = 2;
@@ -190,6 +224,7 @@ local get_config = function()
       black = get_black();
       dune = get_dune();
       shellcheck = get_shellcheck();
+      shfmt = get_shfmt();
       luaformat = get_luaformat();
       luacheck = get_luacheck();
     };

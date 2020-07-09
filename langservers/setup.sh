@@ -9,7 +9,7 @@ if [ -z "${cache_dir}" ]; then
 	exit 2
 fi
 
-function _clone_or_update {
+function _clone_or_update() {
 	repo=$1
 	path=$2
 
@@ -21,7 +21,7 @@ function _clone_or_update {
 	git -C "${path}" submodule update --init --recursive
 }
 
-function install_ocaml_lsp {
+function install_ocaml_lsp() {
 	if ! command -v opam &>/dev/null; then
 		echo skipping ocaml-lsp
 		return
@@ -36,7 +36,7 @@ function install_ocaml_lsp {
 		popd
 }
 
-function install_rust_analyzer {
+function install_rust_analyzer() {
 	local suffix
 	if ! command -v cargo &>/dev/null; then
 		echo skipping rust-analyzer
@@ -52,11 +52,11 @@ function install_rust_analyzer {
 	chmod +x "${cache_dir}/bin/rust-analyzer"
 }
 
-function install_servers_from_npm {
+function install_servers_from_npm() {
 	npm ci
 }
 
-function install_ms_python_ls {
+function install_ms_python_ls() {
 	if ! command -v dotnet; then
 		echo skipping microsoft python-language-server
 		return
@@ -68,39 +68,41 @@ function install_ms_python_ls {
 		popd
 }
 
-function install_efm_ls {
+function _go_get() {
+	if ! command -v go &>/dev/null; then
+		echo skipping
+		return
+	fi
+	(
+		# shellcheck disable=SC2068
+		cd /tmp && env GO111MODULE=on GOBIN="${cache_dir}/bin" go get ${@}
+	)
+}
+
+function install_efm_ls() {
 	if ! command -v go &>/dev/null; then
 		echo skipping efm
 		return
 	fi
 	(
-		# shellcheck disable=SC2030,SC2031
-		export GO111MODULE=on GOBIN="${cache_dir}/bin"
 		dir=$(mktemp -d)
 		git clone -b fix-panic-in-handler --depth 1 https://github.com/fsouza/efm-langserver.git "${dir}" &&
 			cd "${dir}" &&
-			go install &&
+			env GOBIN="${cache_dir}/bin" go install &&
 			cd - &&
 			rm -rf "${dir}"
 	)
 }
 
-function install_gopls {
-	if ! command -v go &>/dev/null; then
-		echo skipping gopls
-		return
-	fi
-	(
-		# shellcheck disable=SC2030,SC2031
-		export GO111MODULE=on GOBIN="${cache_dir}/bin"
-		cd /tmp &&
-			go get golang.org/x/tools/gopls@master golang.org/x/tools@master &&
-			go get golang.org/x/tools/cmd/goimports@master &&
-			go get honnef.co/go/tools/cmd/staticcheck@master
-	)
+function install_gopls() {
+	_go_get "golang.org/x/tools/gopls@master golang.org/x/tools@master" golang.org/x/tools/cmd/goimports@master honnef.co/go/tools/cmd/staticcheck@master
 }
 
-function install_lua_lsp {
+function install_shfmt() {
+	_go_get mvdan.cc/sh/v3/cmd/shfmt
+}
+
+function install_lua_lsp() {
 	if ! command -v ninja &>/dev/null; then
 		echo skipping lua-lsp
 		return
@@ -133,5 +135,6 @@ install_ms_python_ls &
 install_efm_ls &
 install_gopls &
 install_lua_lsp &
+install_shfmt &
 wait
 popd
