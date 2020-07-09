@@ -33,8 +33,12 @@ function M.register_client(client, bufnr)
     vcmd([[autocmd!]])
     vcmd([[autocmd BufWritePre <buffer> lua require('lc.formatting').auto_fmt()]])
     vcmd([[augroup END]])
+
     api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
                             helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})
+    api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>w',
+                            helpers.cmd_map([[lua require('lc.formatting').format_and_write()]]),
+                            {silent = true})
   end
 end
 
@@ -67,19 +71,14 @@ end
 function M.fmt_sync(timeout_ms)
   local bufnr = api.nvim_get_current_buf()
   local result
-  local err
-  local _, cancel = fmt(bufnr, function(err_, _, result_, _)
+  local _, cancel = fmt(bufnr, function(_, _, result_, _)
     result = result_
-    err = err_
   end)
 
   vim.wait(timeout_ms or 200, function()
     return result ~= nil
   end, 10)
 
-  if err then
-    error(err)
-  end
   if not result then
     cancel()
     return
@@ -94,6 +93,16 @@ function M.auto_fmt()
       M.fmt_sync(timeout_ms)
     end)
   end
+end
+
+function M.format_and_write()
+  local bufnr = api.nvim_get_current_buf()
+  fmt(bufnr, function(_, _, result, _)
+    if result then
+      lsp.util.apply_text_edits(result, bufnr)
+    end
+    vcmd('noautocmd write')
+  end)
 end
 
 return M
