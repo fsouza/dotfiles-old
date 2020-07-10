@@ -86,7 +86,7 @@ end
 local get_shellcheck = function()
   return {
     command = 'shellcheck';
-    args = {'-f'; 'gcc'; '-x'};
+    args = {'-f'; 'gcc'; '-'};
     sourceName = 'shellcheck';
     debounce = 250;
     formatLines = 1;
