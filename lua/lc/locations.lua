@@ -35,7 +35,6 @@ local ts_range = function(loc)
   local bufnr = vim.uri_to_bufnr(loc.uri)
   vim.api.nvim_buf_set_option(bufnr, 'buflisted', true)
   vim.api.nvim_buf_set_option(bufnr, 'filetype', vim.bo.filetype)
-  vim.fn.bufload(vim.fn.expand(string.format('#%d:p', bufnr)))
 
   local start_pos = loc.range.start
   local end_pos = loc.range['end']
