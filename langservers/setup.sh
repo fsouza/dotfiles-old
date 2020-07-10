@@ -99,7 +99,7 @@ function install_gopls() {
 }
 
 function install_shfmt() {
-	_go_get mvdan.cc/sh/v3/cmd/shfmt
+	_go_get mvdan.cc/sh/v3/cmd/shfmt@master
 }
 
 function install_lua_lsp() {
