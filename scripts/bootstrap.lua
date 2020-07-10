@@ -54,12 +54,12 @@ end
 --    timeout_ms: number; (defaults to 20 minutes)
 -- }
 local run_cmds = function(cmds)
-  local ten_minutes_ms = 20 * minute_ms
+  local twenty_minutes_ms = 20 * minute_ms
   local results = {}
   local total_timeout_ms = 0
 
   for _, c in pairs(cmds) do
-    local timeout_ms = c.timeout_ms or ten_minutes_ms
+    local timeout_ms = c.timeout_ms or twenty_minutes_ms
     if timeout_ms > total_timeout_ms then
       total_timeout_ms = timeout_ms
     end
@@ -135,11 +135,7 @@ local ensure_hererocks = function(virtualenv)
 
   for _, rock in pairs(rocks) do
     run_cmds({
-      {
-        executable = hr_dir .. '/bin/luarocks';
-        opts = {args = vim.tbl_flatten({'install'; rock})};
-        timeout_ms = 20 * minute_ms;
-      };
+      {executable = hr_dir .. '/bin/luarocks'; opts = {args = vim.tbl_flatten({'install'; rock})}};
     })
   end
 
@@ -151,7 +147,6 @@ local setup_langservers = function()
     {
       executable = config_dir .. '/langservers/setup.sh';
       opts = {args = {cache_dir .. '/langservers'}};
-      timeout = 20 * minute_ms;
     };
   })
 end
@@ -193,7 +188,7 @@ do
     hererocks_done = true
   end)
   setup_langservers()
-  vim.wait(10000, function()
+  vim.wait(20 * minute_ms, function()
     return autoload_done and hererocks_done
   end, 25)
 end
