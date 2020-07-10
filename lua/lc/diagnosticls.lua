@@ -40,11 +40,11 @@ end
 local get_black = function()
   local nvim_config_path = vfn.stdpath('config')
   local bin = nvim_config_path .. '/langservers/bin/blackd-format'
-  return {command = bin; rootPatterns = get_root_patterns()}
+  return {command = bin; rootPatterns = get_root_patterns({''})}
 end
 
 local get_isort = function()
-  return {command = get_python_tool('isort'); args = {'-'}; rootPatterns = get_root_patterns()}
+  return {command = get_python_tool('isort'); args = {'-'}; rootPatterns = get_root_patterns({''})}
 end
 
 local get_flake8 = function()
