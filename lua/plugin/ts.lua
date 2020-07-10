@@ -45,7 +45,7 @@ do
     };
     refactor = {
       smart_rename = {enable = true; keymaps = {smart_rename = 'grr'}};
-      navigation = {enable = true; keymaps = {goto_definition = 'gd'; list_defitinions = 'gnD'}};
+      navigation = {enable = true; keymaps = {goto_definition = 'gnd'; list_defitinions = 'gnD'}};
     };
     ensure_installed = wanted_parsers;
   })
