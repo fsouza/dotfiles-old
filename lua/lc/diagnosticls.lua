@@ -27,13 +27,13 @@ end
 local get_dmypy = function()
   return {
     command = get_python_tool('dmypy');
-    args = {'run'};
+    args = {'run'; '%file'};
     debounce = 250;
     sourceName = 'mypy';
     formatLines = 1;
-    formatPattern = {'^[^:]+:(\\d+):\\s+([^:]+)\\s+(.+)$'; {line = 1; security = 2; message = 3}};
+    formatPattern = {'^[^:]+:(\\d+):\\s+([^:]+):\\s+(.+)$'; {line = 1; security = 2; message = 3}};
     securities = {error = 'error'; warning = 'warning'; note = 'info'};
-    rootPatterns = get_root_patterns();
+    rootPatterns = get_root_patterns({''});
   }
 end
 
