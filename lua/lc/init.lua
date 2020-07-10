@@ -90,6 +90,14 @@ do
     lsp.yamlls.setup(lc_opts.with_default_opts({
       cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'};
     }))
+
+    local init_options, filetypes = require('lc.diagnosticls').gen_config()
+    lsp.diagnosticls.setup(lc_opts.with_default_opts(
+                             {
+        cmd = {vim_node_ls; 'diagnostic-languageserver'; '--stdio'};
+        filetypes = filetypes;
+        init_options = init_options;
+      }))
   end)
 
   if_executable('gopls', function()
@@ -112,15 +120,6 @@ do
 
   if_executable('rust-analyzer', function()
     lsp.rust_analyzer.setup(lc_opts.with_default_opts({}))
-  end)
-
-  if_executable('efm-langserver', function()
-    local config_file, filetypes = require('lc.efm').gen_config()
-    lsp.efm.setup(lc_opts.with_default_opts({
-      cmd = {'efm-langserver'; '-c'; config_file};
-      filetypes = filetypes;
-      root_dir = lc_opts.cwd_root_pattern;
-    }))
   end)
 
   if_executable('ninja', function()

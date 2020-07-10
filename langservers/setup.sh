@@ -79,21 +79,6 @@ function _go_get() {
 	)
 }
 
-function install_efm_ls() {
-	if ! command -v go &>/dev/null; then
-		echo skipping efm
-		return
-	fi
-	(
-		dir=$(mktemp -d)
-		git clone -b fix-panic-in-handler --depth 1 https://github.com/fsouza/efm-langserver.git "${dir}" &&
-			cd "${dir}" &&
-			env GOBIN="${cache_dir}/bin" go install &&
-			cd - &&
-			rm -rf "${dir}"
-	)
-}
-
 function install_gopls() {
 	_go_get "golang.org/x/tools/gopls@master golang.org/x/tools@master" golang.org/x/tools/cmd/goimports@master honnef.co/go/tools/cmd/staticcheck@master
 }
@@ -132,7 +117,6 @@ install_servers_from_npm &
 install_ocaml_lsp &
 install_rust_analyzer &
 install_ms_python_ls &
-install_efm_ls &
 install_gopls &
 install_lua_lsp &
 install_shfmt &
