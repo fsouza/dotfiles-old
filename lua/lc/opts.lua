@@ -28,7 +28,18 @@ local attached = function(bufnr, client)
     -- TODO(fsouza): use resolved_capabilities once that's available
     if client.server_capabilities.completionProvider ~= nil and
       client.server_capabilities.completionProvider ~= false then
-      require('completion').on_attach()
+      require('completion').on_attach({
+        trigger_on_delete = 1;
+        auto_change_source = 1;
+        confirm_key = [[\<C-y>]];
+        matching_strategy_list = {'exact'; 'fuzzy'};
+        chain_complete_list = {
+          default = {
+            {complete_items = {'lsp'}}; {complete_items = {'buffers'}}; {mode = {'<c-p>'}};
+            {mode = {'<c-n>'}};
+          };
+        };
+      })
       table.insert(mappings.i, {
         lhs = '<c-x><c-o>';
         rhs = 'v:lua.f.complete()';
