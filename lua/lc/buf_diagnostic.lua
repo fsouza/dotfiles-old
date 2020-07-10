@@ -151,7 +151,7 @@ function M.publishDiagnostics(_, _, result, client_id)
 
   local handler = debouncers[debouncer_key]
   if handler == nil then
-    local interval = vim.b.lsp_diagnostic_debouncing_ms or 500
+    local interval = vim.b.lsp_diagnostic_debouncing_ms or 100
     handler = require('lib.debounce').debounce(interval, vim.schedule_wrap(handle_publish))
     debouncers[debouncer_key] = handler
     api.nvim_buf_attach(bufnr, false, {
