@@ -1,5 +1,4 @@
 local api = vim.api
-local vcmd = vim.cmd
 local vfn = vim.fn
 local loop = vim.loop
 local cmd = require('lib.cmd')

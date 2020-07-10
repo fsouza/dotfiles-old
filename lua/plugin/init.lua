@@ -88,7 +88,7 @@ local setup_prettierd = function()
     {
       events = {'FileType'};
       targets = auto_fmt_fts;
-      ccommand = [[lua require('plugin.pretterd').enable_auto_format]];
+      command = [[lua require('plugin.prettierd').enable_auto_format()]];
     }; {
       events = {'FileType'};
       targets = auto_fmt_fts;
