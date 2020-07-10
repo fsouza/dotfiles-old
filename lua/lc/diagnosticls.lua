@@ -3,6 +3,8 @@ local M = {}
 local vfn = vim.fn
 local loop = vim.loop
 
+local root_patterns = {'.git'}
+
 local setup_blackd_logs_dir = function(base_dir)
   local logs_dir = base_dir .. '/blackd-logs'
   vfn.mkdir(logs_dir, 'p')
@@ -29,17 +31,18 @@ local get_dmypy = function()
     formatLines = 1;
     formatPattern = {'^[^:]+:(\\d+):\\s+([^:]+)\\s+(.+)$'; {line = 1; security = 2; message = 3}};
     securities = {error = 'error'; warning = 'warning'; note = 'info'};
+    rootPatterns = root_patterns;
   }
 end
 
 local get_black = function()
   local nvim_config_path = vfn.stdpath('config')
   local bin = nvim_config_path .. '/langservers/bin/blackd-format'
-  return {command = bin}
+  return {command = bin; rootPatterns = root_patterns}
 end
 
 local get_isort = function()
-  return {command = get_python_tool('isort'); args = {'-'}}
+  return {command = get_python_tool('isort'); args = {'-'}; rootPatterns = root_patterns}
 end
 
 local get_flake8 = function()
@@ -50,23 +53,32 @@ local get_flake8 = function()
     debounce = 500;
     formatLines = 1;
     formatPattern = {'^[^:]+:(\\d+):(\\d+):\\s+(.+)$'; {line = 1; column = 2; message = 3}};
+    rootPatterns = root_patterns;
   }
 end
 
 local get_add_trailing_comma = function()
-  return {command = get_python_tool('add-trailing-comma'); args = {'-'}}
+  return {
+    command = get_python_tool('add-trailing-comma');
+    args = {'-'};
+    rootPatterns = root_patterns;
+  }
 end
 
 local get_reorder_python_imports = function()
-  return {command = get_python_tool('reorder-python-imports'); args = {'-'}}
+  return {
+    command = get_python_tool('reorder-python-imports');
+    args = {'-'};
+    rootPatterns = root_patterns;
+  }
 end
 
 local get_autopep8 = function()
-  return {command = get_python_tool('autopep8'); args = {'-'}}
+  return {command = get_python_tool('autopep8'); args = {'-'}; rootPatterns = root_patterns}
 end
 
 local get_dune = function()
-  return {command = 'dune'; args = {'format-dune-file'}}
+  return {command = 'dune'; args = {'format-dune-file'}; rootPatterns = root_patterns}
 end
 
 local get_shellcheck = function()
@@ -81,11 +93,12 @@ local get_shellcheck = function()
       {line = 1; column = 2; message = 4; security = 3};
     };
     securities = {error = 'error'; warning = 'warning'; note = 'info'};
+    rootPatterns = root_patterns;
   }
 end
 
 local get_shfmt = function()
-  return {command = 'shfmt'; args = {'-'}}
+  return {command = 'shfmt'; args = {'-'}; rootPatterns = root_patterns}
 end
 
 local get_luacheck = function()
@@ -96,12 +109,13 @@ local get_luacheck = function()
     debounce = 800;
     formatLines = 1;
     formatPattern = {'^[^:]+:(\\d+):(\\d+):\\s+(.+)$'; {line = 1; column = 2; message = 3}};
+    rootPatterns = root_patterns;
     requiredFiles = {'.luacheckrc'};
   }
 end
 
 local get_luaformat = function()
-  return {command = 'lua-format'; requiredFiles = {'.lua-format'}}
+  return {command = 'lua-format'; rootPatterns = root_patterns; requiredFiles = {'.lua-format'}}
 end
 
 local read_precommit_config = function(file_path)
