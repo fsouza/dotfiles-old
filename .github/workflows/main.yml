@@ -14,6 +14,8 @@ jobs:
         os:
           - ubuntu-20.04
           - macos-latest
+        ocaml-version:
+          - 4.10.0
 
     name: bootstrap
     runs-on: ${{ matrix.os }}
@@ -43,9 +45,16 @@ jobs:
         with:
           node-version: "14.x"
 
+      - name: opam cache
+        id: opam-cache
+        uses: actions/cache@v2.0.0
+        with:
+          path: ~/.opam
+          key: "${{ matrix.os }}-${{ matrix.ocaml-version }}"
+
       - uses: avsm/setup-ocaml@v1.1.0
         with:
-          ocaml-version: "4.10.0"
+          ocaml-version: "${{ matrix.ocaml-version }}"
 
       - uses: actions/setup-python@v2.0.1
         with:
