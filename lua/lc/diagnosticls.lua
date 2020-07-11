@@ -150,8 +150,7 @@ end
 local get_python_linters_and_formatters = function()
   local pre_commit_config_file_path = '.pre-commit-config.yaml'
   if vfn.filereadable(pre_commit_config_file_path) == 0 then
-    return {dmypy = get_dmypy(); flake8 = get_flake8()},
-           {blackd = get_black(); isort = get_isort()}
+    return {flake8 = get_flake8()}, {blackd = get_black(); isort = get_isort()}
   end
 
   local pc_linters_repo_map = {
