@@ -95,6 +95,14 @@ local trigger_ft = function()
   end
 end
 
+local setup_lsp = function()
+  require('lc.init')
+  trigger_ft()
+  vim.schedule(function()
+    vcmd([[command! LspRestart lua require('lc/restart')()]])
+  end)
+end
+
 do
   local schedule = vim.schedule
   schedule(function()
@@ -109,10 +117,7 @@ do
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(setup_prettierd)
-  schedule(function()
-    require('lc.init')
-    trigger_ft()
-  end)
+  schedule(setup_lsp)
   schedule(function()
     vim.fn['plug#load']('nvim-treesitter')
     require('plugin.ts')
