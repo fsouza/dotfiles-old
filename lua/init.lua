@@ -81,17 +81,18 @@ local global_options = function()
   vim.o.swapfile = false
   vim.o.inccommand = 'split'
   vim.o.timeoutlen = 500
-  vim.o.listchars = [[trail:·,nbsp:␣]]
 end
 
-local vcmd_options = function()
+local display_options = function()
   vcmd('set relativenumber')
-  vcmd('set list')
   vim.schedule(function()
     helpers.augroup('auto_rnu', {
       {events = {'TermOpen'}; targets = {'*'}; command = [[setlocal norelativenumber]]};
     })
   end)
+
+  vcmd('set list')
+  vim.o.listchars = [[trail:·,nbsp:␣,tab:  ]]
 end
 
 local folding = function()
@@ -156,7 +157,7 @@ do
   end)
 
   ui_options()
-  vcmd_options()
+  display_options()
   folding()
   global_vars()
   py3_host_prog()
