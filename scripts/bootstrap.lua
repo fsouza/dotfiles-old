@@ -152,6 +152,7 @@ local setup_langservers = function()
 end
 
 local install_autoload_plugins = function()
+  vfn.mkdir(config_dir .. '/autoload', 'p')
   run_cmds({
     {
       executable = 'curl';
