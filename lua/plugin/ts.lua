@@ -33,7 +33,7 @@ end
 do
   local configs = require('nvim-treesitter.configs')
   configs.setup({
-    highlight = {enable = true};
+    highlight = {enable = false};
     incremental_selection = {
       enable = true;
       keymaps = {
@@ -50,7 +50,6 @@ do
     ensure_installed = wanted_parsers;
   })
   set_folding()
-  configs.commands.TSEnableAll.run('highlight')
   configs.commands.TSEnableAll.run('incremental_selection')
   configs.commands.TSEnableAll.run('refactor.smart_rename')
   configs.commands.TSEnableAll.run('refactor.navigation')
