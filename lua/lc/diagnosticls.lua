@@ -137,7 +137,7 @@ local blackd_cleanup_if_needed = function(init_options)
     for _, tool in pairs(tools) do
       if tool == 'blackd' then
         require('lib.cleanup').register(function()
-          local block = require('lib/cmd').run('pkill', {args = {'-f'; 'blackd'}}, nil, function()
+          local block = require('lib.cmd').run('pkill', {args = {'-f'; 'blackd'}}, nil, function()
           end)
           block(500)
         end)
