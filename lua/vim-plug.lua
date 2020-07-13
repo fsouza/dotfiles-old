@@ -23,7 +23,7 @@ local plugins = {
         '<Plug>VgSurround';
       };
     };
-  };
+  }; {repo = 'kana/vim-textobj-user'}; {repo = 'lucapette/vim-textobj-underscore'};
 }
 
 -- manually setup some mappings so lazy loading can work.
