@@ -32,18 +32,16 @@ local basics = function()
   highlight('Folded', {ctermbg = '253'; guibg = '#dadada'})
   highlight('FoldColumn', {ctermbg = '253'; guibg = '#dadada'})
   highlight('Error', {ctermfg = '88'; guifg = '#990000'})
-  highlight('Whitespace', {guifg = '#a8a8a8'; ctermfg = '248'})
-  highlight('NonText', {guifg = '#a8a8a8'; ctermfg = '248'})
 end
 
 local noners = function()
   local noners = {
     'Boolean'; 'Character'; 'Comment'; 'Conceal'; 'Conditional'; 'Constant'; 'Debug'; 'Define';
     'Delimiter'; 'Exception'; 'Float'; 'Function'; 'Identifier'; 'Ignore'; 'Include'; 'Keyword';
-    'Label'; 'Macro'; 'Number'; 'Operator'; 'PmenuSbar'; 'PmenuSel'; 'PmenuThumb'; 'Question';
-    'Search'; 'PreCondit'; 'PreProc'; 'Repeat'; 'Special'; 'SpecialChar'; 'SpecialComment';
-    'Statement'; 'StorageClass'; 'String'; 'Structure'; 'Tag'; 'Todo'; 'Type'; 'Typedef';
-    'Underlined'; 'htmlBold';
+    'Label'; 'Macro'; 'NonText'; 'Number'; 'Operator'; 'PmenuSbar'; 'PmenuSel'; 'PmenuThumb';
+    'Question'; 'Search'; 'PreCondit'; 'PreProc'; 'Repeat'; 'Special'; 'SpecialChar';
+    'SpecialComment'; 'Statement'; 'StorageClass'; 'String'; 'Structure'; 'Tag'; 'Todo'; 'Type';
+    'Typedef'; 'Underlined'; 'htmlBold';
   }
   for _, group in pairs(noners) do
     highlight(group, {})
