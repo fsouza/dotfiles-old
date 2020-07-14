@@ -24,7 +24,7 @@ local plugins = {
       };
     };
   }; {repo = 'kana/vim-textobj-user'}; {repo = 'lucapette/vim-textobj-underscore'};
-  {repo = 'adriaanzon/vim-textobj-matchit'}; {repo = 'NLKNguyen/papercolor-theme'};
+  {repo = 'NLKNguyen/papercolor-theme'};
 }
 
 -- manually setup some mappings so lazy loading can work.
