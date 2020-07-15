@@ -47,10 +47,22 @@ do
       smart_rename = {enable = true; keymaps = {smart_rename = 'grr'}};
       navigation = {enable = true; keymaps = {goto_definition = 'gnd'; list_defitinions = 'gnD'}};
     };
+    textobjects = {
+      enable = true;
+      keymaps = {
+        af = '@function.outer';
+        ['if'] = '@function.inner';
+        aC = '@class.outer';
+        iC = '@class.inner';
+        al = '@block.outer';
+        il = '@block.inner';
+      };
+    };
     ensure_installed = wanted_parsers;
   })
   set_folding()
   configs.commands.TSEnableAll.run('incremental_selection')
   configs.commands.TSEnableAll.run('refactor.smart_rename')
   configs.commands.TSEnableAll.run('refactor.navigation')
+  configs.commands.TSEnableAll.run('textobjects')
 end
