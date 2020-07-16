@@ -25,9 +25,11 @@ local get_python_tool = function(bin_name)
 end
 
 local get_dmypy = function()
+  local nvim_config_path = vfn.stdpath('config')
+  local bin = nvim_config_path .. '/langservers/bin/mypy-wrapper'
   return {
-    command = get_python_tool('dmypy');
-    args = {'run'; '%file'};
+    command = bin;
+    args = {get_python_tool('dmypy'); 'run'; '%file'};
     debounce = 250;
     sourceName = 'mypy';
     formatLines = 1;
