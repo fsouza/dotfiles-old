@@ -127,11 +127,7 @@ local global_mappings = function()
         opts = {expr = true; noremap = true};
       }; {lhs = '<leader><leader>'; rhs = helpers.cmd_map('e #'); opts = {silent = true}};
     };
-    i = {
-      {lhs = '<c-f>'; rhs = '<right>'; opts = {noremap = true}};
-      {lhs = '<c-b>'; rhs = '<left>'; opts = {noremap = true}};
-      {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}};
-    };
+    i = {{lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}}};
     c = rl_bindings;
     o = rl_bindings;
   }
