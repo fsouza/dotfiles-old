@@ -174,14 +174,14 @@ local get_python_linters_and_formatters = function()
   for _, repo in ipairs(pre_commit_config.repos) do
     local t = pc_linters_repo_map[repo.repo]
     if t ~= nil then
-      for k, fn in ipairs(t) do
+      for k, fn in pairs(t) do
         linters[k] = fn()
       end
     end
 
     t = pc_formatters_repo_map[repo.repo]
     if t ~= nil then
-      for k, fn in ipairs(t) do
+      for k, fn in pairs(t) do
         formatters[k] = fn()
       end
     end
