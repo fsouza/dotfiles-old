@@ -80,3 +80,4 @@ key_bindings:
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
   - { key: Space, mods: Control, chars: "\x00" }
+  - { key: Space, mods: Shift|Control, action: None }
