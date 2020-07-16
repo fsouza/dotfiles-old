@@ -64,7 +64,7 @@ end
 local get_add_trailing_comma = function()
   return {
     command = get_python_tool('add-trailing-comma');
-    args = {'-'};
+    args = {'--exit-zero-even-if-changed'; '-'};
     rootPatterns = get_root_patterns();
   }
 end
@@ -72,7 +72,7 @@ end
 local get_reorder_python_imports = function()
   return {
     command = get_python_tool('reorder-python-imports');
-    args = {'-'};
+    args = {'--exit-zero-even-if-changed'; '-'};
     rootPatterns = get_root_patterns();
   }
 end
