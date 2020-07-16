@@ -37,4 +37,14 @@ function M.augroup(name, commands)
   vcmd('augroup END')
 end
 
+function M.ensure_path_relative_to_prefix(prefix, path)
+  if not vim.endswith(prefix, '/') then
+    prefix = prefix .. '/'
+  end
+  if vim.startswith(path, prefix) then
+    return string.sub(path, string.len(prefix) + 1)
+  end
+  return path
+end
+
 return M

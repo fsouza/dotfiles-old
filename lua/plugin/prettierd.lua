@@ -52,13 +52,6 @@ local wait_for_server = function(timeout_ms)
   end
 end
 
-local ensure_relative_path = function(cwd, fpath)
-  if vim.startswith(fpath, cwd) then
-    return string.sub(fpath, string.len(cwd) + 1)
-  end
-  return fpath
-end
-
 function M.format(cb, is_retry)
   if not state.running then
     start_server()
@@ -70,8 +63,8 @@ function M.format(cb, is_retry)
   local view = vfn.winsaveview()
   local lines = api.nvim_buf_get_lines(bufnr, 0, -1, false)
   local cwd = vfn.getcwd()
-  table.insert(lines, 1,
-               string.format('%s %s %s', state.token, cwd, ensure_relative_path(cwd, fname)))
+  table.insert(lines, 1, string.format('%s %s %s', state.token, cwd,
+                                       helpers.ensure_path_relative_to_prefix(cwd, fname)))
 
   local write_to_buf = function(data)
     local new_lines = vim.split(data, '\n')
