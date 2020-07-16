@@ -1,8 +1,8 @@
 function _go_to_tmux {
 	if command tmux has-session; then
-		command tmux -f $HOME/.config/tmux.conf attach
+		command tmux -u -f $HOME/.config/tmux.conf attach
 	else
-		command tmux -f $HOME/.config/tmux.conf new
+		command tmux -u -f $HOME/.config/tmux.conf new
 	fi
 }
 
