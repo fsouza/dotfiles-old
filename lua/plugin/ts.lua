@@ -54,8 +54,10 @@ do
         ['if'] = '@function.inner';
         aC = '@class.outer';
         iC = '@class.inner';
-        al = '@block.outer';
-        il = '@block.inner';
+        al = '@loop.outer';
+        il = '@loop.inner';
+        ac = '@conditional.outer';
+        ic = '@conditional.outer';
       };
     };
     ensure_installed = wanted_parsers;
