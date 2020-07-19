@@ -1,5 +1,7 @@
 local vcmd = vim.cmd
 
+local M = {}
+
 local keys = {'cterm'; 'ctermbg'; 'ctermfg'; 'gui'; 'guibg'; 'guifg'}
 
 local highlight = function(group, opts)
@@ -55,6 +57,14 @@ local reversers = function()
   end
 end
 
+local setup_lsp_reference = function(opts)
+  for _, ref_type in pairs({'Text'; 'Read'; 'Write'}) do
+    highlight('LspReference' .. ref_type, opts)
+  end
+  highlight('TSDefinitionUsage', opts)
+  highlight('TSDefinition', opts)
+end
+
 local language_highlights = function()
   local diagnostics = {guifg = '#a8a8a8'; ctermfg = '248'}
   local diagnostics_sign = {guifg = '#262626'; ctermfg = '235'; guibg = '#dadada'; ctermbg = '253'}
@@ -66,20 +76,19 @@ local language_highlights = function()
     highlight(sign_group, diagnostics_sign)
   end
 
-  local reference = {guibg = '#d0d0d0'; ctermbg = '252'}
-  for _, ref_type in pairs({'Text'; 'Read'; 'Write'}) do
-    highlight('LspReference' .. ref_type, reference)
-  end
-
-  highlight('TSDefinitionUsage', reference)
-  highlight('TSDefinition', reference)
+  setup_lsp_reference({guibg = '#d0d0d0'; ctermbg = '252'})
 end
 
 local custom_groups = function()
   highlight('HlYank', {ctermbg = '225'; guibg = '#ffd7ff'})
 end
 
-local setup = function()
+function M.setup_papercolor()
+  vcmd('color PaperColor')
+  setup_lsp_reference({ctermbg = '31'; ctermfg = '231'; guifg = '#eeeeee'; guibg = '#0087af'})
+end
+
+function M.setup_none()
   vim.o.background = 'light'
   vcmd('highlight clear')
   vcmd('syntax reset')
@@ -92,8 +101,9 @@ local setup = function()
   custom_groups()
 
   vim.schedule(function()
-    vcmd([[command! ResetColors lua require('color').setup()]])
+    vcmd([[command! NoneColor lua require('color').setup_none()]])
+    vcmd([[command! PaperColor lua require('color').setup_papercolor()]])
   end)
 end
 
-return {setup = setup}
+return M
