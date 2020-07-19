@@ -65,7 +65,7 @@ local setup_lsp_reference = function(opts)
   highlight('TSDefinition', opts)
 end
 
-local language_highlights = function()
+local setup_lsp_diagnostics = function()
   local diagnostics = {guifg = '#a8a8a8'; ctermfg = '248'}
   local diagnostics_sign = {guifg = '#262626'; ctermfg = '235'; guibg = '#dadada'; ctermbg = '253'}
 
@@ -75,7 +75,10 @@ local language_highlights = function()
     highlight(base_group, diagnostics)
     highlight(sign_group, diagnostics_sign)
   end
+end
 
+local language_highlights = function()
+  setup_lsp_diagnostics()
   setup_lsp_reference({guibg = '#d0d0d0'; ctermbg = '252'})
 end
 
@@ -85,6 +88,7 @@ end
 
 function M.setup_papercolor()
   vcmd('color PaperColor')
+  setup_lsp_diagnostics()
   setup_lsp_reference({ctermbg = '31'; ctermfg = '231'; guifg = '#eeeeee'; guibg = '#0087af'})
 end
 
