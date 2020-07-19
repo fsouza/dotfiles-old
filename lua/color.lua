@@ -86,16 +86,26 @@ local custom_groups = function()
   highlight('HlYank', {ctermbg = '225'; guibg = '#ffd7ff'})
 end
 
+local setup_common = function()
+  vim.o.background = 'light'
+  vcmd('highlight clear')
+  vcmd('syntax reset')
+
+  vim.schedule(function()
+    vcmd([[command! NoneColor lua require('color').setup_none()]])
+    vcmd([[command! PaperColor lua require('color').setup_papercolor()]])
+  end)
+end
+
 function M.setup_papercolor()
+  setup_common()
   vcmd('color PaperColor')
   setup_lsp_diagnostics()
   setup_lsp_reference({ctermbg = '31'; ctermfg = '231'; guifg = '#eeeeee'; guibg = '#0087af'})
 end
 
 function M.setup_none()
-  vim.o.background = 'light'
-  vcmd('highlight clear')
-  vcmd('syntax reset')
+  setup_common()
   vim.g.colors_name = 'none'
 
   basics()
@@ -103,11 +113,6 @@ function M.setup_none()
   reversers()
   language_highlights()
   custom_groups()
-
-  vim.schedule(function()
-    vcmd([[command! NoneColor lua require('color').setup_none()]])
-    vcmd([[command! PaperColor lua require('color').setup_papercolor()]])
-  end)
 end
 
 return M
