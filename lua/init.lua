@@ -50,6 +50,7 @@ local global_vars = function()
   vim.g.netrw_liststyle = 3
   vim.g.fzf_command_prefix = 'Fzf'
   vim.g.fzf_height = '80%'
+  vim.g.polyglot_disabled = {'markdown'}
 end
 
 local ui_options = function()
