@@ -74,7 +74,7 @@ end
 
 local setup_prettierd = function()
   local auto_fmt_fts = {
-    'json'; 'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'; 'yaml';
+    'json'; 'javascript'; 'typescript'; 'css'; 'html'; 'typescriptreact'; 'yaml'; 'markdown';
   }
   helpers.augroup('auto_prettierd', {
     {
