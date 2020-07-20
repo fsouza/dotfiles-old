@@ -4,7 +4,7 @@
   "scripts": {},
   "license": "ISC",
   "dependencies": {
-    "@fsouza/prettierd": "0.7.2",
+    "@fsouza/prettierd": "0.8.1",
     "bash-language-server": "^1.16.1",
     "diagnostic-languageserver": "^1.5.0",
     "typescript-language-server": "^0.4.0",
