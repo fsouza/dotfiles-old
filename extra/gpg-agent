@@ -1,6 +1,1 @@
-if [[ $OS_NAME == "Darwin" ]]; then
-	pinentry=$(which pinentry-mac)
-else
-	pinentry=$(which pinentry)
-fi
-gpg-agent --daemon --disable-scdaemon --log-file ~/.gpg-agent.log --pinentry-program ${pinentry} 2>/dev/null
+gpg-agent --daemon --disable-scdaemon --log-file ~/.gpg-agent.log 2>/dev/null
