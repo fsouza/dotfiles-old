@@ -43,28 +43,10 @@ do
         node_decremental = '<s-tab>';
       };
     };
-    refactor = {
-      smart_rename = {enable = true; keymaps = {smart_rename = 'grr'}};
-      navigation = {enable = true; keymaps = {goto_definition = 'gnd'; list_defitinions = 'gnD'}};
-    };
-    textobjects = {
-      enable = true;
-      keymaps = {
-        af = '@function.outer';
-        ['if'] = '@function.inner';
-        aC = '@class.outer';
-        iC = '@class.inner';
-        al = '@loop.outer';
-        il = '@loop.inner';
-        ac = '@conditional.outer';
-        ic = '@conditional.outer';
-      };
-    };
+    refactor = {smart_rename = {enable = false}; navigation = {enable = false}};
+    textobjects = {enable = false};
     ensure_installed = wanted_parsers;
   })
   set_folding()
   configs.commands.TSEnableAll.run('incremental_selection')
-  configs.commands.TSEnableAll.run('refactor.smart_rename')
-  configs.commands.TSEnableAll.run('refactor.navigation')
-  configs.commands.TSEnableAll.run('textobjects')
 end
