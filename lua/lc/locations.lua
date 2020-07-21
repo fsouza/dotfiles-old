@@ -1,7 +1,7 @@
 local M = {}
 
 local lsp = vim.lsp
-local lap_util = require('vim.lsp.util')
+local lsp_util = require('vim.lsp.util')
 local parsers = require('nvim-treesitter.parsers')
 
 local should_use_ts = function(node)
@@ -61,26 +61,26 @@ local peek_location_callback = function(_, _, result)
   end
 
   local loc = ts_range(result[1])
-  lap_util.preview_location(loc)
+  lsp_util.preview_location(loc)
 end
 
 function M.preview_definition()
-  local params = lap_util.make_position_params()
+  local params = lsp_util.make_position_params()
   lsp.buf_request(0, 'textDocument/definition', params, peek_location_callback)
 end
 
 function M.preview_declaration()
-  local params = lap_util.make_position_params()
+  local params = lsp_util.make_position_params()
   lsp.buf_request(0, 'textDocument/declaration', params, peek_location_callback)
 end
 
 function M.preview_implementation()
-  local params = lap_util.make_position_params()
+  local params = lsp_util.make_position_params()
   lsp.buf_request(0, 'textDocument/implementation', params, peek_location_callback)
 end
 
 function M.preview_type_definition()
-  local params = lap_util.make_position_params()
+  local params = lsp_util.make_position_params()
   lsp.buf_request(0, 'textDocument/typeDefinition', params, peek_location_callback)
 end
 
