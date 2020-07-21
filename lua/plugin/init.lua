@@ -24,6 +24,10 @@ local setup_terminal_commands = function()
   vcmd([[command! T lua require('plugin.terminal').terminal_here()]])
 end
 
+local setup_autofmt_commands = function()
+  vcmd([[command! ToggleAutofmt lua require('lib.autofmt').toggle()]])
+end
+
 local setup_completion = function()
   vim.g.completion_enable_auto_popup = 0
 end
@@ -114,6 +118,7 @@ do
   schedule(setup_fzf_mappings)
   schedule(setup_hlyank)
   schedule(setup_terminal_commands)
+  schedule(setup_autofmt_commands)
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(setup_prettierd)

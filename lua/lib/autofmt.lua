@@ -14,4 +14,12 @@ function M.config()
   return true, timeout_ms
 end
 
+function M.toggle()
+  if vim.b.autoformat == false then
+    vim.b.autoformat = true
+  else
+    vim.b.autoformat = false
+  end
+end
+
 return M
