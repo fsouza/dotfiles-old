@@ -1,9 +1,6 @@
 local parsers = require('nvim-treesitter.parsers')
 
-local wanted_parsers = {
-  'bash'; 'css'; 'go'; 'html'; 'javascript'; 'json'; 'ocaml'; 'rust'; 'tsx'; 'typescript'; 'cpp';
-  'c'; 'yaml'; 'lua'; 'python';
-};
+local wanted_parsers = {'go'; 'javascript'; 'ocaml'; 'rust'; 'tsx'; 'typescript'; 'lua'; 'python'};
 
 local set_folding = function()
   local helpers = require('lib.nvim_helpers')
