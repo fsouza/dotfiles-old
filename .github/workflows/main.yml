@@ -56,7 +56,7 @@ jobs:
         with:
           ocaml-version: "${{ matrix.ocaml-version }}"
 
-      - uses: actions/setup-python@v2.1.0
+      - uses: actions/setup-python@v2.1.1
         with:
           python-version: "3.x"
 
