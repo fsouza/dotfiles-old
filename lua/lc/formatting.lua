@@ -23,16 +23,16 @@ function M.register_client(client, bufnr)
 
   helpers.augroup('lc_autofmt_' .. bufnr, {
     {
-      events = {'BufWritePre'};
+      events = {'BufWritePost'};
       targets = {'<buffer>'};
-      command = [[lua require('lc.formatting').auto_fmt()]];
+      command = [[lua require('lc.formatting').autofmt_and_write()]];
     };
   })
 
   api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
                           helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})
   api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>w',
-                          helpers.cmd_map([[lua require('lc.formatting').format_and_write()]]),
+                          helpers.cmd_map([[lua require('lc.formatting').autofmt_and_write()]]),
                           {silent = true})
 end
 
@@ -89,7 +89,11 @@ function M.auto_fmt()
   end
 end
 
-function M.format_and_write()
+function M.autofmt_and_write()
+  local enable, _ = require('lib.autofmt').config()
+  if not enable then
+    return
+  end
   local bufnr = api.nvim_get_current_buf()
   fmt(bufnr, function(_, _, result, _)
     if result then
