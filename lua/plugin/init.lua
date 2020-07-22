@@ -26,6 +26,7 @@ end
 
 local setup_autofmt_commands = function()
   vcmd([[command! ToggleAutofmt lua require('lib.autofmt').toggle()]])
+  vcmd([[command! ToggleGlobalAutofmt lua require('lib.autofmt').toggle_g()]])
 end
 
 local setup_completion = function()

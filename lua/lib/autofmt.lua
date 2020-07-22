@@ -14,12 +14,20 @@ function M.config()
   return true, timeout_ms
 end
 
-function M.toggle()
-  if vim.b.autoformat == false then
-    vim.b.autoformat = true
+local toggle = function(ns)
+  if ns.autoformat == false then
+    ns.autoformat = true
   else
-    vim.b.autoformat = false
+    ns.autoformat = false
   end
+end
+
+function M.toggle()
+  toggle(vim.b)
+end
+
+function M.toggle_g()
+  toggle(vim.g)
 end
 
 return M
