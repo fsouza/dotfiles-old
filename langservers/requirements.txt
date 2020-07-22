@@ -35,7 +35,7 @@ pycodestyle==2.6.0        # via autopep8, flake8
 pyflakes==2.2.0           # via flake8
 pygls==0.9.0              # via jedi-language-server
 regex==2020.6.8           # via black
-reorder-python-imports==2.3.1  # via -r requirements.in
+reorder_python_imports==2.3.2  # via -r requirements.in
 tokenize-rt==4.0.0        # via add-trailing-comma
 toml==0.10.1              # via autopep8, black
 typed-ast==1.4.1          # via black, mypy
