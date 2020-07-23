@@ -3,6 +3,7 @@ local M = {}
 local api = vim.api
 local nvim_buf_set_keymap = api.nvim_buf_set_keymap
 local vcmd = vim.cmd
+local vfn = vim.fn
 
 function M.cmd_map(cmd)
   return string.format('<cmd>%s<cr>', cmd)
@@ -45,6 +46,22 @@ function M.ensure_path_relative_to_prefix(prefix, path)
     return string.sub(path, string.len(prefix) + 1)
   end
   return path
+end
+
+function M.rewrite_wrap(fn)
+  local orig_lineno = vfn.line('.')
+  local orig_colno = vfn.col('.')
+  local orig_line = vfn.getline(orig_lineno)
+  local orig_nlines = vfn.line('$')
+  local view = vfn.winsaveview()
+
+  fn()
+
+  vfn.winrestview(view)
+  local line_offset = vfn.line('$') - orig_nlines
+  local lineno = orig_lineno + line_offset
+  local col_offset = string.len(vfn.getline(lineno)) - string.len(orig_line)
+  vfn.cursor(lineno, orig_colno + col_offset)
 end
 
 return M

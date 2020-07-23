@@ -58,13 +58,8 @@ function M.format(cb, is_retry)
     wait_for_server(1000)
   end
 
-  local orig_lineno = vfn.line('.')
-  local orig_colno = vfn.col('.')
-  local orig_line = vfn.getline(orig_lineno)
-
   local fname = vfn.expand('%')
   local bufnr = vfn.bufnr(fname)
-  local view = vfn.winsaveview()
   local lines = api.nvim_buf_get_lines(bufnr, 0, -1, false)
   local cwd = vfn.getcwd()
   table.insert(lines, 1, string.format('%s %s %s', state.token, cwd,
@@ -84,26 +79,22 @@ function M.format(cb, is_retry)
       error(string.format('failed to format with prettier: %s', data))
     end
 
-    local write = false
-    for i, line in ipairs(new_lines) do
-      if line ~= lines[i] then
-        write = true
-        break
+    helpers.rewrite_wrap(function()
+      local write = false
+      for i, line in ipairs(new_lines) do
+        if line ~= lines[i] then
+          write = true
+          break
+        end
       end
-    end
-    if write then
-      api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
-    end
-    vfn.winrestview(view)
+      if write then
+        api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
+      end
 
-    local line_offset = #new_lines - #lines
-    local lineno = orig_lineno + line_offset
-    local col_offset = string.len(vfn.getline(lineno)) - string.len(orig_line)
-    vfn.cursor(lineno, orig_colno + col_offset)
-
-    if cb ~= nil then
-      cb()
-    end
+      if cb ~= nil then
+        cb()
+      end
+    end)
   end
 
   local client = loop.new_tcp()

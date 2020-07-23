@@ -3,7 +3,6 @@ local M = {}
 local api = vim.api
 local lsp = vim.lsp
 local vcmd = vim.cmd
-local vfn = vim.fn
 local helpers = require('lib.nvim_helpers')
 
 local fmt_clients = {}
@@ -55,19 +54,9 @@ local apply_edits = function(result, bufnr)
     return
   end
 
-  local orig_lineno = vfn.line('.')
-  local orig_colno = vfn.col('.')
-  local orig_line = vfn.getline(orig_lineno)
-  local orig_nlines = vfn.line('$')
-  local view = vfn.winsaveview()
-
-  lsp.util.apply_text_edits(result, bufnr)
-
-  vfn.winrestview(view)
-  local line_offset = vfn.line('$') - orig_nlines
-  local lineno = orig_lineno + line_offset
-  local col_offset = string.len(vfn.getline(lineno)) - string.len(orig_line)
-  vfn.cursor(lineno, orig_colno + col_offset)
+  helpers.rewrite_wrap(function()
+    lsp.util.apply_text_edits(result, bufnr)
+  end)
 end
 
 local fmt = function(bufnr, cb)
