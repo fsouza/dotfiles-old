@@ -3,6 +3,7 @@ local M = {}
 local api = vim.api
 local lsp = vim.lsp
 local vcmd = vim.cmd
+local vfn = vim.fn
 local helpers = require('lib.nvim_helpers')
 
 local fmt_clients = {}
@@ -46,6 +47,29 @@ local formatting_params = function(bufnr)
   return {textDocument = {uri = vim.uri_from_bufnr(bufnr)}; options = options}
 end
 
+local apply_edits = function(result, bufnr)
+  -- sanity check. I could switch to bufnr, apply the changes and come back,
+  -- but that would be a weird experience.
+  local curbuf = api.nvim_get_current_buf()
+  if curbuf ~= bufnr then
+    return
+  end
+
+  local orig_lineno = vfn.line('.')
+  local orig_colno = vfn.col('.')
+  local orig_line = vfn.getline(orig_lineno)
+  local orig_nlines = vfn.line('$')
+  local view = vfn.winsaveview()
+
+  lsp.util.apply_text_edits(result, bufnr)
+
+  vfn.winrestview(view)
+  local line_offset = vfn.line('$') - orig_nlines
+  local lineno = orig_lineno + line_offset
+  local col_offset = string.len(vfn.getline(lineno)) - string.len(orig_line)
+  vfn.cursor(lineno, orig_colno + col_offset)
+end
+
 local fmt = function(bufnr, cb)
   local client = fmt_clients[vim.bo.filetype]
   if not client then
@@ -77,7 +101,7 @@ function M.fmt_sync(timeout_ms)
     cancel()
     return
   end
-  lsp.util.apply_text_edits(result, bufnr)
+  apply_edits(result, bufnr)
 end
 
 function M.auto_fmt()
@@ -97,7 +121,7 @@ function M.autofmt_and_write()
   local bufnr = api.nvim_get_current_buf()
   fmt(bufnr, function(_, _, result, _)
     if result then
-      lsp.util.apply_text_edits(result, bufnr)
+      apply_edits(result, bufnr)
     end
     vcmd('noautocmd write')
   end)

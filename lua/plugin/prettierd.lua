@@ -58,6 +58,10 @@ function M.format(cb, is_retry)
     wait_for_server(1000)
   end
 
+  local orig_lineno = vfn.line('.')
+  local orig_colno = vfn.col('.')
+  local orig_line = vfn.getline(orig_lineno)
+
   local fname = vfn.expand('%')
   local bufnr = vfn.bufnr(fname)
   local view = vfn.winsaveview()
@@ -91,6 +95,12 @@ function M.format(cb, is_retry)
       api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
     end
     vfn.winrestview(view)
+
+    local line_offset = #new_lines - #lines
+    local lineno = orig_lineno + line_offset
+    local col_offset = string.len(vfn.getline(lineno)) - string.len(orig_line)
+    vfn.cursor(lineno, orig_colno + col_offset)
+
     if cb ~= nil then
       cb()
     end
