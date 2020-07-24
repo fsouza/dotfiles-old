@@ -86,6 +86,7 @@ end
 
 local rnu = function()
   vcmd('set relativenumber')
+  vcmd('set signcolumn=number')
   vim.schedule(function()
     helpers.augroup('auto_rnu', {
       {events = {'TermOpen'}; targets = {'*'}; command = [[setlocal norelativenumber]]};
