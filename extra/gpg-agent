@@ -1,0 +1,1 @@
+gpg-agent --daemon --disable-scdaemon --log-file ~/.gpg-agent.log 2>/dev/null

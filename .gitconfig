@@ -1,5 +1,9 @@
 [user]
 	useConfigOnly = true
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
 [core]
 	editor = nvim
 	excludesfile = ~/.config/gitignore_global
