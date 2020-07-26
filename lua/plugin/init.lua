@@ -20,8 +20,14 @@ local setup_fzf_mappings = function()
   })
 end
 
-local setup_terminal_commands = function()
+local setup_terminal_commands_and_mapping = function()
   vcmd([[command! -nargs=? T lua require('plugin.terminal').terminal_here(<f-args>)]])
+  helpers.create_mappings({
+    n = {
+      {lhs = '<c-t>'; rhs = helpers.cmd_map([[lua require('plugin.terminal').terminal_cmd()]])};
+      {lhs = '<c-s-t>'; rhs = helpers.cmd_map([[lua require('plugin.terminal').terminal_here()]])};
+    };
+  })
 end
 
 local setup_autofmt_commands = function()
@@ -118,7 +124,7 @@ do
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
   schedule(setup_hlyank)
-  schedule(setup_terminal_commands)
+  schedule(setup_terminal_commands_and_mapping)
   schedule(setup_autofmt_commands)
   schedule(setup_word_replace)
   schedule(setup_spell)
