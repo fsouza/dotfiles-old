@@ -15,7 +15,7 @@ autopep8==1.5.3           # via -r requirements.in
 black[d]==19.10b0         # via -r requirements.in
 cached-property==1.5.1    # via aspy.refactor-imports
 chardet==3.0.4            # via aiohttp
-click==7.1.2              # via black, jedi-language-server
+click==7.1.2              # via black
 flake8-bugbear==20.1.4    # via -r requirements.in
 flake8-builtins==1.5.3    # via -r requirements.in
 flake8-comprehensions==3.2.3  # via -r requirements.in
@@ -23,21 +23,17 @@ flake8-tidy-imports==4.1.0  # via -r requirements.in
 flake8==3.8.3             # via -r requirements.in, flake8-bugbear, flake8-builtins, flake8-comprehensions, flake8-tidy-imports
 idna==2.10                # via yarl
 isort==5.1.4              # via -r requirements.in
-jedi-language-server==0.19.0  # via -r requirements.in
-jedi==0.17.1              # via jedi-language-server
 mccabe==0.6.1             # via flake8
 multidict==4.7.6          # via aiohttp, yarl
 mypy-extensions==0.4.3    # via mypy
 mypy==0.782               # via -r requirements.in
-parso==0.7.0              # via jedi
 pathspec==0.8.0           # via black
 pycodestyle==2.6.0        # via autopep8, flake8
 pyflakes==2.2.0           # via flake8
-pygls==0.9.0              # via jedi-language-server
-regex==2020.6.8           # via black
-reorder_python_imports==2.3.2  # via -r requirements.in
+regex==2020.7.14          # via black
+reorder-python-imports==2.3.2  # via -r requirements.in
 tokenize-rt==4.0.0        # via add-trailing-comma
 toml==0.10.1              # via autopep8, black
 typed-ast==1.4.1          # via black, mypy
-typing-extensions==3.7.4.2  # via mypy
-yarl==1.4.2               # via aiohttp
+typing-extensions==3.7.4.2  # via mypy, yarl
+yarl==1.5.0               # via aiohttp

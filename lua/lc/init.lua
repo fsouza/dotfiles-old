@@ -17,6 +17,39 @@ local set_log_level = function()
   require('vim.lsp.log').set_level(level)
 end
 
+local python_interpreter_props = function(virtual_env)
+  local props = {InterpreterPath = virtual_env .. '/bin/python'; UseDefaultDatabase = true}
+  local cb = function(r)
+    if r.exit_status ~= 0 then
+      print(string.format('failed to detect python version in the virtualenv $%s: %s', virtual_env,
+                          r.stderr))
+      return
+    end
+    props.Version = r.stdout
+  end
+  require('lib.cmd').run(props.InterpreterPath, {
+    args = {
+      '-c'; [[import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}", end="")]];
+    };
+  }, nil, cb)
+  vim.wait(200, function()
+    return props.Version ~= nil
+  end, 25)
+  return props
+end
+
+local get_pyls_ms_options = function()
+  local opts = {cmd = {get_local_cmd('ms-python-lsp')}; root_dir = lc_opts.project_root_pattern}
+  local virtual_env = loop.os_getenv('VIRTUAL_ENV')
+  if virtual_env then
+    local props = python_interpreter_props(virtual_env)
+    if props.Version then
+      opts.init_options = {interpreter = {properties = props}}
+    end
+  end
+  return opts
+end
+
 do
   local langservers_bin_path = vfn.stdpath('cache') .. '/langservers/bin'
   vcmd(string.format([[let $PATH = '%s:'.$PATH]], langservers_bin_path))
@@ -81,9 +114,8 @@ do
     lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
 
-  if_executable('jedi-language-server', function()
-    lsp.jedi_language_server.setup(lc_opts.with_default_opts(
-                                     {{init_options = {completion = {disableSnippets = true}}}}))
+  if_executable('dotnet', function()
+    lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
   end)
 
   if_executable('rust-analyzer', function()

@@ -56,6 +56,18 @@ function install_servers_from_npm() {
 	npm ci
 }
 
+function install_ms_python_ls() {
+	if ! command -v dotnet; then
+		echo skipping microsoft python-language-server
+		return
+	fi
+	path="${cache_dir}/python-language-server"
+	_clone_or_update https://github.com/microsoft/python-language-server.git "${path}" &&
+		pushd "${path}/src/LanguageServer/Impl" &&
+		dotnet build &&
+		popd
+}
+
 function _go_get() {
 	if ! command -v go &>/dev/null; then
 		echo skipping
@@ -104,6 +116,7 @@ mkdir -p "${cache_dir}"
 install_servers_from_npm &
 install_ocaml_lsp &
 install_rust_analyzer &
+install_ms_python_ls &
 install_gopls &
 install_lua_lsp &
 install_shfmt &
