@@ -3,4 +3,4 @@ if [[ $OS_NAME == "Darwin" ]]; then
 else
 	pinentry=$(which pinentry)
 fi
-gpg-agent --daemon --disable-scdaemon --log-file ~/.gpg-agent.log --pinentry-program ${pinentry} 2>/dev/null
+gpg-agent --daemon --disable-scdaemon --log-file ~/.cache/gpg-agent.log --default-cache-ttl 21600 --max-cache-ttl 86400 --pinentry-program ${pinentry} 2>/dev/null
