@@ -8,16 +8,18 @@ local run_in_terminal = function(wd, cmd)
   vcmd(string.format('belowright split | resize 20 | lcd %s | term %s', wd, cmd))
 end
 
-function M.terminal_cmd(wd)
+function M.terminal_cmd(wd, cmd)
   if wd == nil then
     wd = vfn.getcwd()
   end
-  local cmd = vfn.input('＞ ')
+  if cmd == nil then
+    cmd = vfn.input('＞ ')
+  end
   run_in_terminal(wd, cmd)
 end
 
-function M.terminal_here()
-  M.terminal_cmd(vfn.expand('%:h'))
+function M.terminal_here(cmd)
+  M.terminal_cmd(vfn.expand('%:h'), cmd)
 end
 
 return M

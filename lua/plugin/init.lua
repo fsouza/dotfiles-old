@@ -21,7 +21,7 @@ local setup_fzf_mappings = function()
 end
 
 local setup_terminal_commands = function()
-  vcmd([[command! T lua require('plugin.terminal').terminal_here()]])
+  vcmd([[command! -nargs=? T lua require('plugin.terminal').terminal_here(<f-args>)]])
 end
 
 local setup_autofmt_commands = function()
