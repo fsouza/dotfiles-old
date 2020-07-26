@@ -57,11 +57,12 @@ function M.rewrite_wrap(fn)
 
   fn()
 
-  vfn.winrestview(view)
   local line_offset = vfn.line('$') - orig_nlines
   local lineno = orig_lineno + line_offset
   local col_offset = string.len(vfn.getline(lineno)) - string.len(orig_line)
-  vfn.cursor(lineno, orig_colno + col_offset)
+  view.lnum = lineno
+  view.col = orig_colno + col_offset - 1
+  vfn.winrestview(view)
 end
 
 return M
