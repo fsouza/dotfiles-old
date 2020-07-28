@@ -110,7 +110,7 @@ local setup_lsp = function()
   require('lc.init')
   trigger_ft()
   vim.schedule(function()
-    vcmd([[command! LspRestart lua require('lc/restart')()]])
+    vcmd([[command! LspStop lua require('lc/restart').stop()]])
   end)
 end
 
