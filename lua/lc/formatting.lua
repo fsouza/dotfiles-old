@@ -112,7 +112,7 @@ function M.autofmt_and_write()
     if result then
       apply_edits(result, bufnr)
     end
-    vcmd('noautocmd write')
+    vcmd(string.format('%dbufdo noautocmd write', bufnr))
   end)
 end
 
