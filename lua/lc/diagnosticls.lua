@@ -25,16 +25,15 @@ local get_python_tool = function(bin_name)
 end
 
 local get_dmypy = function()
+  local nvim_config_path = vfn.stdpath('config')
+  local bin = nvim_config_path .. '/langservers/bin/mypy-wrapper'
   return {
-    command = get_python_tool('dmypy');
-    args = {'run'; '%file'};
+    command = bin;
+    args = {get_python_tool('dmypy'); 'run'; '%file'};
     debounce = 250;
     sourceName = 'mypy';
     formatLines = 1;
-    formatPattern = {
-      '(^[^:]+):(\\d+):\\s+([^:]+):\\s+(.+)$';
-      {sourceName = 1; line = 2; security = 3; message = 4};
-    };
+    formatPattern = {'^[^:]+:(\\d+):\\s+([^:]+):\\s+(.+)$'; {line = 1; security = 2; message = 3}};
     securities = {error = 'error'; warning = 'warning'; note = 'info'};
     rootPatterns = get_root_patterns({''});
   }
