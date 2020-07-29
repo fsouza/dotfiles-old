@@ -69,8 +69,9 @@ do
       cmd = {vim_node_ls; 'bash-language-server'; 'start'};
     }))
 
-    lsp.cssls.setup(
-      lc_opts.with_default_opts({cmd = {vim_node_ls; 'css-laguageserver'; '--stdio'}}))
+    lsp.cssls.setup(lc_opts.with_default_opts({
+      cmd = {vim_node_ls; 'css-languageserver'; '--stdio'};
+    }))
 
     lsp.html.setup(lc_opts.with_default_opts({cmd = {vim_node_ls; 'html-langserver'; '--stdio'}}))
 
