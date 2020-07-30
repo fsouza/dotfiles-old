@@ -7,6 +7,8 @@ local helpers = require('lib.nvim_helpers')
 
 local fmt_clients = {}
 
+local slow_formatters = {python = true}
+
 local should_skip_server = function(server_name)
   local skip_set = {tsserver = true}
   return skip_set[server_name] ~= nil
@@ -17,17 +19,31 @@ function M.register_client(client, bufnr)
     return
   end
 
+  local slow = false
   for _, filetype in pairs(client.config.filetypes) do
     fmt_clients[filetype] = client
+    if slow_formatters[filetype] then
+      slow = true
+    end
   end
 
-  helpers.augroup('lc_autofmt_' .. bufnr, {
-    {
-      events = {'BufWritePost'};
-      targets = {'<buffer>'};
-      command = [[lua require('lc.formatting').autofmt_and_write()]];
-    };
-  })
+  if slow then
+    helpers.augroup('lc_autofmt_' .. bufnr, {
+      {
+        events = {'BufWritePost'};
+        targets = {'<buffer>'};
+        command = [[lua require('lc.formatting').autofmt_and_write()]];
+      };
+    })
+  else
+    helpers.augroup('lc_autofmt_' .. bufnr, {
+      {
+        events = {'BufWritePre'};
+        targets = {'<buffer>'};
+        command = [[lua require('lc.formatting').autofmt()]];
+      };
+    })
+  end
 
   api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
                           helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})
@@ -93,7 +109,7 @@ function M.fmt_sync(timeout_ms)
   apply_edits(result, bufnr)
 end
 
-function M.auto_fmt()
+function M.autofmt()
   local enable, timeout_ms = require('lib.autofmt').config()
   if enable then
     pcall(function()
