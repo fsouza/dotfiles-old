@@ -22,7 +22,7 @@ flake8-comprehensions==3.2.3  # via -r requirements.in
 flake8-tidy-imports==4.1.0  # via -r requirements.in
 flake8==3.8.3             # via -r requirements.in, flake8-bugbear, flake8-builtins, flake8-comprehensions, flake8-tidy-imports
 idna==2.10                # via yarl
-isort==5.2.1              # via -r requirements.in
+isort==5.2.2              # via -r requirements.in
 mccabe==0.6.1             # via flake8
 multidict==4.7.6          # via aiohttp, yarl
 mypy-extensions==0.4.3    # via mypy
@@ -31,7 +31,7 @@ pathspec==0.8.0           # via black
 pycodestyle==2.6.0        # via autopep8, flake8
 pyflakes==2.2.0           # via flake8
 regex==2020.7.14          # via black
-reorder_python_imports==2.3.5  # via -r requirements.in
+reorder-python-imports==2.3.5  # via -r requirements.in
 tokenize-rt==4.0.0        # via add-trailing-comma
 toml==0.10.1              # via autopep8, black
 typed-ast==1.4.1          # via black, mypy
