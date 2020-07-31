@@ -1,5 +1,16 @@
 export VIRTUALENVS=${HOME}/.venvs
 
+VIRTUALENV_PYZ_LOCATION=${VIRTUALENVS}/virtualenv.pyz
+
+function _virtualenv() {
+	if ! [ -f "${VIRTUALENV_PYZ_LOCATION}" ]; then
+		mkdir -p "${VIRTUALENVS}"
+		curl -Lo "${VIRTUALENV_PYZ_LOCATION}" https://bootstrap.pypa.io/virtualenv.pyz
+	fi
+
+	python3 "${VIRTUALENV_PYZ_LOCATION}" "${@}"
+}
+
 function v() {
 	name=${1}
 	if [[ ${name} == "@" ]]; then
@@ -66,7 +77,7 @@ function mkv() {
 
 	# create the env only if it doesn't exist yet
 	if ! [ -d "${VIRTUALENVS}/${name}" ]; then
-		virtualenv -p "$(_find_python)" ${VIRTUALENVS}/${name} && \
+		_virtualenv -p "$(_find_python)" ${VIRTUALENVS}/${name} && \
 			"${VIRTUALENVS}/${name}/bin/pip" install --upgrade pip
 	fi
 
