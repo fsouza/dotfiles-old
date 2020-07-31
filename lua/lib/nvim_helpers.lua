@@ -57,6 +57,9 @@ function M.rewrite_wrap(fn)
 
   fn()
 
+  -- note: this isn't 100% correct, if the lines change below the current one,
+  -- the position won't be the same, but this is optmistic: if the file was
+  -- already formatted before, the lines below will mostly do the right thing.
   local line_offset = vfn.line('$') - orig_nlines
   local lineno = orig_lineno + line_offset
   local col_offset = string.len(vfn.getline(lineno)) - string.len(orig_line)
