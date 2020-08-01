@@ -103,10 +103,6 @@ local setup_common = function()
   vim.o.background = 'light'
   vcmd('highlight clear')
   vcmd('syntax reset')
-
-  vim.schedule(function()
-    vcmd([[command! NoneColor lua require('color').setup_none()]])
-  end)
 end
 
 function M.setup_none()
@@ -118,6 +114,13 @@ function M.setup_none()
   reversers()
   language_highlights()
   custom_groups()
+end
+
+function M.setup()
+  helpers.augroup('none_colorscheme', {
+    {events = {'ColorScheme'}; targets = {'none'}; command = [[lua require('color').setup_none()]]};
+  })
+  vcmd([[color none]])
 end
 
 return M

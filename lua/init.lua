@@ -62,7 +62,7 @@ local ui_options = function()
   vim.o.guicursor = ''
   vim.o.mouse = ''
   vim.o.shortmess = 'filnxtToOFIc'
-  require('color').setup_none()
+  require('color').setup()
 end
 
 local global_options = function()
