@@ -116,9 +116,22 @@ function M.setup_none()
   custom_groups()
 end
 
+function M.customize_paper_color()
+  highlight('Normal', {})
+  highlight('CursorLineNr', {cterm = 'bold'; ctermbg = '253'; gui = 'bold'; guibg = '#dadada'})
+  highlight('LineNr', {ctermbg = '253'; guibg = '#dadada'})
+end
+
 function M.setup()
   helpers.augroup('none_colorscheme', {
     {events = {'ColorScheme'}; targets = {'none'}; command = [[lua require('color').setup_none()]]};
+  })
+  helpers.augroup('papercolor_customizations', {
+    {
+      events = {'ColorScheme'};
+      targets = {'PaperColor'};
+      command = [[lua require('color').customize_paper_color()]];
+    };
   })
   vcmd([[color none]])
 end
