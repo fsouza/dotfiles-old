@@ -1,15 +1,27 @@
 local vcmd = vim.cmd
 
+local helpers = require('lib.nvim_helpers')
+
 local M = {}
 
 local keys = {'cterm'; 'ctermbg'; 'ctermfg'; 'gui'; 'guibg'; 'guifg'}
 
-local highlight = function(group, opts)
+local _highlight_cmd = function(group, opts)
   local cmd_args = {group}
   for _, k in pairs(keys) do
     table.insert(cmd_args, string.format('%s=%s', k, opts[k] or 'NONE'))
   end
-  vcmd('highlight ' .. table.concat(cmd_args, ' '))
+  return 'highlight ' .. table.concat(cmd_args, ' ')
+end
+
+local highlight = function(group, opts)
+  vcmd(_highlight_cmd(group, opts))
+end
+
+local always_highlight = function(augroup, group, opts)
+  local h_cmd = _highlight_cmd(group, opts)
+  vcmd(h_cmd)
+  helpers.augroup(augroup, {{events = {'ColorScheme'}; targets = {'*'}; command = h_cmd}})
 end
 
 local basics = function()
@@ -59,10 +71,11 @@ end
 
 local setup_lsp_reference = function(opts)
   for _, ref_type in pairs({'Text'; 'Read'; 'Write'}) do
-    highlight('LspReference' .. ref_type, opts)
+    always_highlight(string.format('lsp_reference_%s_au', ref_type), 'LspReference' .. ref_type,
+                     opts)
   end
-  highlight('TSDefinitionUsage', opts)
-  highlight('TSDefinition', opts)
+  always_highlight('TSDefinitionUsage_au', 'TSDefinitionUsage', opts)
+  always_highlight('TSDefinition_au', 'TSDefinition', opts)
 end
 
 local setup_lsp_diagnostics = function()
@@ -72,8 +85,8 @@ local setup_lsp_diagnostics = function()
   for _, level in pairs({''; 'Error'; 'Warning'; 'Information'; 'Hint'}) do
     local base_group = 'LspDiagnostics' .. level
     local sign_group = base_group .. 'Sign'
-    highlight(base_group, diagnostics)
-    highlight(sign_group, diagnostics_sign)
+    always_highlight(base_group .. '_au', base_group, diagnostics)
+    always_highlight(sign_group .. '_au', sign_group, diagnostics_sign)
   end
 end
 
@@ -83,7 +96,7 @@ local language_highlights = function()
 end
 
 local custom_groups = function()
-  highlight('HlYank', {ctermbg = '225'; guibg = '#ffd7ff'})
+  always_highlight('hlhyank_highlight', 'HlYank', {ctermbg = '225'; guibg = '#ffd7ff'})
 end
 
 local setup_common = function()
@@ -93,15 +106,7 @@ local setup_common = function()
 
   vim.schedule(function()
     vcmd([[command! NoneColor lua require('color').setup_none()]])
-    vcmd([[command! PaperColor lua require('color').setup_papercolor()]])
   end)
-end
-
-function M.setup_papercolor()
-  setup_common()
-  vcmd('color PaperColor')
-  setup_lsp_diagnostics()
-  setup_lsp_reference({ctermbg = '31'; ctermfg = '231'; guifg = '#eeeeee'; guibg = '#0087af'})
 end
 
 function M.setup_none()
