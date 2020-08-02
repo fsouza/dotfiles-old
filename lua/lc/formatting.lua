@@ -19,15 +19,12 @@ function M.register_client(client, bufnr)
     return
   end
 
-  local slow = false
   for _, filetype in pairs(client.config.filetypes) do
     fmt_clients[filetype] = client
-    if slow_formatters[filetype] then
-      slow = true
-    end
   end
 
-  if slow then
+  local slow = slow_formatters[api.nvim_buf_get_option(bufnr, 'filetype')]
+  if slow == true then
     helpers.augroup('lc_autofmt_' .. bufnr, {
       {
         events = {'BufWritePost'};
