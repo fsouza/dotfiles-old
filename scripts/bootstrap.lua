@@ -95,13 +95,27 @@ local run_cmds = function(cmds)
   end
 end
 
+local download_virtualenv_pyz = function()
+  local file_name = cache_dir .. '/virtualenv.pyz'
+  if vfn.filereadable(file_name) == 0 then
+    run_cmds({
+      {
+        executable = 'curl';
+        opts = {args = {'-sLo'; file_name; 'https://bootstrap.pypa.io/virtualenv.pyz'}};
+      };
+    })
+  end
+  return file_name
+end
+
 local ensure_virtualenv = function()
   local venv_dir = cache_dir .. '/venv'
   if vfn.isdirectory(venv_dir) == 0 then
+    local venv_pyz = download_virtualenv_pyz()
     run_cmds({
       {
-        executable = 'virtualenv';
-        opts = {args = {'-p'; 'python3'; venv_dir}};
+        executable = 'python3';
+        opts = {args = {venv_pyz; '-p'; 'python3'; venv_dir}};
         timeout_ms = 5 * minute_ms;
       };
     })
