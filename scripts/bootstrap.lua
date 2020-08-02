@@ -193,6 +193,7 @@ do
     install_autoload_plugins()
     autoload_done = true
   end)
+  vfn.mkdir(cache_dir, 'p')
   local virtualenv = ensure_virtualenv()
   debug(string.format('created virtualenv at "%s"\n', virtualenv))
   vim.schedule(function()
