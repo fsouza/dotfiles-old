@@ -11,7 +11,7 @@ appdirs==1.4.4            # via black
 aspy.refactor-imports==2.1.1  # via reorder-python-imports
 async-timeout==3.0.1      # via aiohttp
 attrs==19.3.0             # via aiohttp, black, flake8-bugbear
-autopep8==1.5.3           # via -r requirements.in
+autopep8==1.5.4           # via -r requirements.in
 black[d]==19.10b0         # via -r requirements.in
 cached-property==1.5.1    # via aspy.refactor-imports
 chardet==3.0.4            # via aiohttp
