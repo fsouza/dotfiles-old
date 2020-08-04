@@ -118,6 +118,7 @@ end
 
 function M.customize_paper_color()
   highlight('Normal', {})
+  highlight('NonText', {})
   highlight('CursorLineNr', {cterm = 'bold'; ctermbg = '253'; gui = 'bold'; guibg = '#dadada'})
   highlight('LineNr', {ctermbg = '253'; guibg = '#dadada'})
 end
