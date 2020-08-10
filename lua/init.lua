@@ -26,9 +26,6 @@ end
 local py3_host_prog = function()
   local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
   loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
-
-  vim.g.python3_host_prog = vim_venv_bin .. '/python'
-  vim.g.python3_host_skip_check = true
 end
 
 local hererocks = function()

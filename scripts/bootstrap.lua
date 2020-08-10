@@ -8,9 +8,7 @@ local minute_ms = 60 * second_ms
 local config_dir = vfn.stdpath('config')
 local cache_dir = vfn.stdpath('cache')
 
-local pip_packages = {
-  'pip'; 'pip-tools'; 'pynvim'; 'git+https://github.com/luarocks/hererocks.git';
-}
+local pip_packages = {'pip'; 'pip-tools'; 'git+https://github.com/luarocks/hererocks.git'}
 
 local rocks = {'lyaml'; 'luacheck'}
 
