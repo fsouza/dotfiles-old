@@ -2,7 +2,6 @@
 basedir=$(dirname $(realpath ${(%):-%N}))
 source ${basedir}/extra/init-functions
 
-export RBENV_ROOT=${HOME}/.rbenv
 export MANPATH=/usr/share/man:/usr/local/share/man:${basedir}/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 export EDITOR=vim PAGER=less MANPAGER=less
@@ -40,10 +39,6 @@ export PS1="％ " PS2="\\ "
 
 if command -v fnm &>/dev/null; then
 	eval "$(fnm env --multi)"
-fi
-
-if command -v rbenv &>/dev/null; then
-	eval "$(rbenv init -)"
 fi
 
 source ${basedir}/extra/tmux
