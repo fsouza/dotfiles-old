@@ -30,7 +30,6 @@ local get_dmypy = function()
   return {
     command = bin;
     args = {get_python_tool('dmypy'); 'run'; '%file'};
-    debounce = 250;
     sourceName = 'mypy';
     formatLines = 1;
     formatPattern = {'^[^:]+:(\\d+):\\s+([^:]+):\\s+(.+)$'; {line = 1; security = 2; message = 3}};
@@ -54,7 +53,6 @@ local get_flake8 = function()
     command = get_python_tool('flake8');
     args = {'--stdin-display-name'; '%filepath'; '-'};
     sourceName = 'flake8';
-    debounce = 250;
     formatLines = 1;
     formatPattern = {'^[^:]+:(\\d+):(\\d+):\\s+(.+)$'; {line = 1; column = 2; message = 3}};
     rootPatterns = get_root_patterns({''});
@@ -90,7 +88,6 @@ local get_shellcheck = function()
     command = 'shellcheck';
     args = {'-f'; 'gcc'; '-'};
     sourceName = 'shellcheck';
-    debounce = 250;
     formatLines = 1;
     formatPattern = {
       '^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$';
@@ -110,7 +107,6 @@ local get_luacheck = function()
     command = 'luacheck';
     args = {'--formatter'; 'plain'; '--filename'; '%filepath'; '-'};
     sourceName = 'luacheck';
-    debounce = 250;
     formatLines = 1;
     formatPattern = {'^[^:]+:(\\d+):(\\d+):\\s+(.+)$'; {line = 1; column = 2; message = 3}};
     rootPatterns = get_root_patterns();
