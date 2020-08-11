@@ -12,7 +12,7 @@ local plugins = {
   {repo = 'neovim/nvim-lsp'; opts = {as = 'nvim-lsp'}; eager = true};
   {repo = 'nvim-lua/completion-nvim'};
   {repo = 'nvim-treesitter/nvim-treesitter'; opts = {as = 'nvim-treesitter'; on = 'TSManual'}};
-  {repo = 'sheerun/vim-polyglot'}; {repo = 'steelsojka/completion-buffers'};
+  {repo = 'sheerun/vim-polyglot'};
   {repo = 'tpope/vim-commentary'; opts = {on = {'<Plug>CommentaryLine'; '<Plug>Commentary'}}};
   {repo = 'tpope/vim-fugitive'; opts = {on = {'G'; 'Git'}}}; {repo = 'tpope/vim-repeat'}; {
     repo = 'tpope/vim-surround';
