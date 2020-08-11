@@ -3,6 +3,15 @@
 set -eu
 
 cache_dir=${1}
+exit_status=0
+
+function process_child() {
+	if [[ ${1} -gt 0 ]]; then
+		exit_status=${1}
+	fi
+}
+
+trap 'process_child $?' CHLD
 
 if [ -z "${cache_dir}" ]; then
 	echo "the cache dir is required. Please provide it as a positional parameter" >&2
@@ -80,9 +89,9 @@ function _go_get() {
 }
 
 function install_gopls() {
-	_go_get "golang.org/x/tools/gopls@master golang.org/x/tools@master"
-	_go_get golang.org/x/tools/cmd/goimports@master
-	_go_get honnef.co/go/tools/cmd/staticcheck@master
+	_go_get "golang.org/x/tools/gopls@master golang.org/x/tools@master" &&
+		_go_get golang.org/x/tools/cmd/goimports@master &&
+		_go_get honnef.co/go/tools/cmd/staticcheck@master
 }
 
 function install_shfmt() {
@@ -124,3 +133,5 @@ install_lua_lsp &
 install_shfmt &
 wait
 popd
+
+exit "${exit_status}"
