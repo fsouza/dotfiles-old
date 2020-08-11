@@ -130,9 +130,4 @@ do
   schedule(setup_spell)
   schedule(setup_prettierd)
   schedule(setup_lsp)
-  schedule(function()
-    vim.fn['plug#load']('nvim-treesitter')
-    require('plugin.ts')
-    trigger_ft()
-  end)
 end
