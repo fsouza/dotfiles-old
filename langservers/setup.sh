@@ -80,7 +80,9 @@ function _go_get() {
 }
 
 function install_gopls() {
-	_go_get "golang.org/x/tools/gopls@master golang.org/x/tools@master" golang.org/x/tools/cmd/goimports@master honnef.co/go/tools/cmd/staticcheck@master
+	_go_get "golang.org/x/tools/gopls@master golang.org/x/tools@master"
+	_go_get golang.org/x/tools/cmd/goimports@master
+	_go_get honnef.co/go/tools/cmd/staticcheck@master
 }
 
 function install_shfmt() {
