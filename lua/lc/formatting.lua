@@ -3,6 +3,7 @@ local M = {}
 local api = vim.api
 local lsp = vim.lsp
 local vcmd = vim.cmd
+local vfn = vim.fn
 local helpers = require('lib.nvim_helpers')
 
 local fmt_clients = {}
@@ -122,6 +123,9 @@ function M.autofmt_and_write()
   end
   local bufnr = api.nvim_get_current_buf()
   fmt(bufnr, function(_, _, result, _)
+    if vfn.mode() ~= 'n' then
+      return
+    end
     if result then
       apply_edits(result, bufnr)
     end
