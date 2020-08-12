@@ -2,6 +2,10 @@ local M = {}
 
 local vfn = vim.fn
 
+function M.fzf_here()
+  vfn['fzf#vim#files'](vfn.expand('%:p:h'))
+end
+
 function M.rg(input)
   vfn['plug#load']('fzf.vim')
   input = input or vfn.input([[rg：]])

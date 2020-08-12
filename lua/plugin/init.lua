@@ -8,6 +8,10 @@ local setup_fzf_mappings = function()
       {lhs = '<leader>;'; rhs = helpers.cmd_map('FzfCommands'); opts = {silent = true}};
       {lhs = '<leader>zb'; rhs = helpers.cmd_map('FzfBuffers'); opts = {silent = true}};
       {lhs = '<leader>zl'; rhs = helpers.cmd_map('FzfLines'); opts = {silent = true}}; {
+        lhs = '<leader>zj';
+        rhs = helpers.cmd_map([[lua require('plugin.fuzzy').fzf_here()]]);
+        opts = {silent = true};
+      }; {
         lhs = '<leader>gg';
         rhs = helpers.cmd_map('lua require("plugin.fuzzy").rg()');
         opts = {silent = true};
