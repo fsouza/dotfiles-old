@@ -25,15 +25,15 @@ local always_highlight = function(augroup, group, opts)
 end
 
 local basics = function()
-  highlight('CursorLine', {ctermbg = '253'; guibg = '#dadada'})
-  highlight('CursorLineNr', {cterm = 'bold'; ctermbg = '253'; gui = 'bold'; guibg = '#dadada'})
+  highlight('CursorLine', {ctermbg = '253'; guibg = '#d0d0d0'})
+  highlight('CursorLineNr', {cterm = 'bold'; ctermbg = '253'; gui = 'bold'; guibg = '#d0d0d0'})
   highlight('Directory', {ctermfg = '59'; guifg = '#5f5f5f'})
-  highlight('LineNr', {ctermbg = '253'; guibg = '#dadada'})
+  highlight('LineNr', {ctermbg = '253'; guibg = '#d0d0d0'})
   highlight('MatchParen', {ctermbg = '145'; guibg = '#afafaf'})
   highlight('Normal', {ctermfg = '235'; guifg = '#262626'})
   highlight('Floating', {ctermfg = '235'; guibg = '#f0f0f0'; guifg = '#262626'})
   highlight('Pmenu', {ctermbg = '145'; guibg = '#afafaf'})
-  highlight('SignColumn', {ctermbg = '253'; ctermfg = '232'; guibg = '#dadada'; guifg = '#080808'})
+  highlight('SignColumn', {ctermbg = '253'; ctermfg = '232'; guibg = '#d0d0d0'; guifg = '#080808'})
   highlight('SpecialKey', {ctermfg = '59'; guifg = '#5f5f5f'})
   highlight('SpellBad', {ctermfg = '196'; guifg = '#ff0000'})
   highlight('TabLine', {ctermbg = '145'; ctermfg = '59'; guibg = '#afafaf'; guifg = '#5f5f5f'})
@@ -43,8 +43,8 @@ local basics = function()
   highlight('ModeMsg', {})
   highlight('ErrorMsg', {ctermbg = '160'; ctermfg = '231'; guibg = '#d70000'; guifg = '#ffffff'})
   highlight('WarningMsg', {cterm = 'None'; ctermfg = '52'; guifg = '#5f0000'})
-  highlight('Folded', {ctermbg = '253'; guibg = '#dadada'})
-  highlight('FoldColumn', {ctermbg = '253'; guibg = '#dadada'})
+  highlight('Folded', {ctermbg = '253'; guibg = '#d0d0d0'})
+  highlight('FoldColumn', {ctermbg = '253'; guibg = '#d0d0d0'})
   highlight('Error', {ctermfg = '88'; guifg = '#990000'})
 end
 
@@ -80,7 +80,7 @@ end
 
 local setup_lsp_diagnostics = function()
   local diagnostics = {guifg = '#a8a8a8'; ctermfg = '248'}
-  local diagnostics_sign = {guifg = '#262626'; ctermfg = '235'; guibg = '#dadada'; ctermbg = '253'}
+  local diagnostics_sign = {guifg = '#262626'; ctermfg = '235'; guibg = '#d0d0d0'; ctermbg = '253'}
 
   for _, level in pairs({''; 'Error'; 'Warning'; 'Information'; 'Hint'}) do
     local base_group = 'LspDiagnostics' .. level
@@ -119,8 +119,8 @@ end
 function M.customize_paper_color()
   highlight('Normal', {})
   highlight('NonText', {})
-  highlight('CursorLineNr', {cterm = 'bold'; ctermbg = '253'; gui = 'bold'; guibg = '#dadada'})
-  highlight('LineNr', {ctermbg = '253'; guibg = '#dadada'})
+  highlight('CursorLineNr', {cterm = 'bold'; ctermbg = '253'; gui = 'bold'; guibg = '#d0d0d0'})
+  highlight('LineNr', {ctermbg = '253'; guibg = '#d0d0d0'})
 end
 
 function M.setup()
