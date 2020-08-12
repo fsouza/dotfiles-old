@@ -23,9 +23,10 @@ local bootstrap_env = function()
   loop.os_setenv('NVIM_CACHE_DIR', vfn.stdpath('cache'))
 end
 
-local py3_host_prog = function()
+local py3_editor_venv = function()
   local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
   loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
+  vcmd(string.format([[let $PATH = '%s:'.$PATH]], vim_venv_bin))
 end
 
 local hererocks = function()
@@ -39,6 +40,7 @@ local hererocks = function()
   package.cpath = package.cpath .. ';' .. lib_path .. '/?.so'
 
   loop.os_setenv('PATH', bin_path .. ':' .. loop.os_getenv('PATH'))
+  vcmd(string.format([[let $PATH = '%s:'.$PATH]], bin_path))
 end
 
 local global_vars = function()
@@ -151,7 +153,7 @@ do
   rnu()
   folding()
   global_vars()
-  py3_host_prog()
+  py3_editor_venv()
 
   require('vim-plug')
   if not loop.os_getenv('NVIM_BOOTSTRAP') then
