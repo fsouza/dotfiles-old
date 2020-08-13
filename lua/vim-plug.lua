@@ -7,13 +7,11 @@ local plugins = {
     opts = {as = 'fzf.vim'; on = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
   }; {repo = 'justinmk/vim-dirvish'};
   {repo = 'justinmk/vim-sneak'; opts = {on = {'<Plug>Sneak_s'; '<Plug>Sneak_;'; '<Plug>Sneak_,'}}};
-  {repo = 'liuchengxu/vista.vim'; opts = {on = {'Vista!!'}}};
   {repo = 'michaeljsmith/vim-indent-object'};
   {repo = 'neovim/nvim-lsp'; opts = {as = 'nvim-lsp'}; eager = true};
-  {repo = 'nvim-lua/completion-nvim'};
-  {repo = 'sheerun/vim-polyglot'};
+  {repo = 'nvim-lua/completion-nvim'}; {repo = 'sheerun/vim-polyglot'};
   {repo = 'tpope/vim-commentary'; opts = {on = {'<Plug>CommentaryLine'; '<Plug>Commentary'}}};
-  {repo = 'tpope/vim-fugitive'; opts = {on = {'G'; 'Git'}}}; {repo = 'tpope/vim-repeat'}; {
+  {repo = 'tpope/vim-repeat'}; {
     repo = 'tpope/vim-surround';
     opts = {
       on = {
@@ -22,8 +20,7 @@ local plugins = {
         '<Plug>VgSurround';
       };
     };
-  }; {repo = 'kana/vim-textobj-user'}; {repo = 'lucapette/vim-textobj-underscore'};
-  {repo = 'NLKNguyen/papercolor-theme'}; {repo = 'morhetz/gruvbox'};
+  }; {repo = 'NLKNguyen/papercolor-theme'}; {repo = 'morhetz/gruvbox'};
 }
 
 -- manually setup some mappings so lazy loading can work.
