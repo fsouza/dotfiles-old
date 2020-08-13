@@ -11,7 +11,7 @@ local fzf_actions = {['ctrl-t'] = 'tabedit'; ['ctrl-x'] = 'split'; ['ctrl-v'] = 
 local lines_to_loc_list = function(lines)
   local items = {}
   for _, line in ipairs(lines) do
-    local _, _, filename, lnum, col, text = string.find(line, [[([^:]+):(%d+):%[(%d+)%]:(.*)]])
+    local _, _, filename, lnum, col, text = string.find(line, [[([^:]+):(%d+):(%d+):(.*)]])
     if filename then
       table.insert(items, {filename = filename; lnum = lnum; col = col; text = text})
     end
@@ -50,7 +50,7 @@ local format_items = function(items)
   for _, item in pairs(items) do
     local filename = item.filename
     table.insert(lines,
-                 string.format('%s:%d:[%d]:%s',
+                 string.format('%s:%d:%d:%s',
                                helpers.ensure_path_relative_to_prefix(prefix, filename), item.lnum,
                                item.col, item.text))
   end
