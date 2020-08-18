@@ -21,6 +21,8 @@ local plugins = {
       };
     };
   }; {repo = 'NLKNguyen/papercolor-theme'}; {repo = 'morhetz/gruvbox'};
+  {repo = 'ChicoCodes/filewatch.nvim'; opts = {branch = 'main'}};
+  {repo = 'flazz/vim-colorschemes'};
 }
 
 -- manually setup some mappings so lazy loading can work.

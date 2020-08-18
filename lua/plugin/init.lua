@@ -134,4 +134,7 @@ do
   schedule(setup_spell)
   schedule(setup_prettierd)
   schedule(setup_lsp)
+  schedule(function()
+    vcmd([[command! TwitchStart lua require('plugin/colorscheme').setup_filewatcher()]])
+  end)
 end
