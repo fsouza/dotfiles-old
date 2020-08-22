@@ -81,6 +81,8 @@ local global_options = function()
   vim.o.swapfile = false
   vim.o.inccommand = 'split'
   vim.o.timeoutlen = 500
+  vim.o.splitbelow = true
+  vim.o.splitright = true
 end
 
 local rnu = function()
