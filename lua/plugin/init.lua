@@ -114,14 +114,14 @@ local setup_lsp = function()
   require('lc.init')
   trigger_ft()
   vim.schedule(function()
-    vcmd([[command! LspStop lua require('lc/restart').stop()]])
+    vcmd([[command! LspStop lua require('lc.restart').stop()]])
   end)
 end
 
 local detect_twitch = function()
-  vcmd([[command! TwitchStart lua require('plugin/colorscheme').setup_filewatcher()]])
+  vcmd([[command! TwitchStart lua require('plugin.colorscheme').setup_filewatcher()]])
   if vim.loop.os_getenv('TWITCH') then
-    require('plugin/colorscheme').setup_filewatcher()
+    require('plugin.colorscheme').setup_filewatcher()
   end
 end
 
