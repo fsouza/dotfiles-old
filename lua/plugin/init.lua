@@ -120,7 +120,7 @@ end
 
 local detect_twitch = function()
   vcmd([[command! TwitchStart lua require('plugin.colorscheme').setup_filewatcher()]])
-  if vim.loop.os_getenv('TWITCH') then
+  if os.getenv('TWITCH') then
     require('plugin.colorscheme').setup_filewatcher()
   end
 end

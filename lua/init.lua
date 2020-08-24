@@ -1,6 +1,5 @@
 local api = vim.api
 local nvim_set_keymap = api.nvim_set_keymap
-local loop = vim.loop
 local vcmd = vim.cmd
 local vfn = vim.fn
 
@@ -20,12 +19,11 @@ local initial_mappings = function()
 end
 
 local bootstrap_env = function()
-  loop.os_setenv('NVIM_CACHE_DIR', vfn.stdpath('cache'))
+  vcmd(string.format([[let $NVIM_CACHE_DIR = '%s']], vfn.stdpath('cache')))
 end
 
 local py3_editor_venv = function()
   local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
-  loop.os_setenv('PATH', vim_venv_bin .. ':' .. loop.os_getenv('PATH'))
   vcmd(string.format([[let $PATH = '%s:'.$PATH]], vim_venv_bin))
 end
 
@@ -39,7 +37,6 @@ local hererocks = function()
                    '/?/init.lua'
   package.cpath = package.cpath .. ';' .. lib_path .. '/?.so'
 
-  loop.os_setenv('PATH', bin_path .. ':' .. loop.os_getenv('PATH'))
   vcmd(string.format([[let $PATH = '%s:'.$PATH]], bin_path))
 end
 
@@ -158,7 +155,7 @@ do
   py3_editor_venv()
 
   require('vim-plug')
-  if not loop.os_getenv('NVIM_BOOTSTRAP') then
+  if not os.getenv('NVIM_BOOTSTRAP') then
     schedule(function()
       require('plugin.init')
     end)

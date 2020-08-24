@@ -1,6 +1,5 @@
 local vcmd = vim.cmd
 local vfn = vim.fn
-local loop = vim.loop
 local lc_opts = require('lc.opts')
 
 local config_dir = vfn.stdpath('config')
@@ -11,7 +10,7 @@ end
 
 local set_log_level = function()
   local level = 'ERROR'
-  if loop.os_getenv('NVIM_DEBUG') then
+  if os.getenv('NVIM_DEBUG') then
     level = 'TRACE'
   end
   require('vim.lsp.log').set_level(level)
@@ -40,7 +39,7 @@ end
 
 local get_pyls_ms_options = function()
   local opts = {cmd = {get_local_cmd('ms-python-lsp')}; root_dir = lc_opts.project_root_pattern}
-  local virtual_env = loop.os_getenv('VIRTUAL_ENV')
+  local virtual_env = os.getenv('VIRTUAL_ENV')
   if virtual_env then
     local props = python_interpreter_props(virtual_env)
     if props.Version then
@@ -141,7 +140,7 @@ do
       }))
   end)
 
-  local clangd = loop.os_getenv('HOMEBREW_PREFIX') .. '/opt/llvm/bin/clangd'
+  local clangd = os.getenv('HOMEBREW_PREFIX') .. '/opt/llvm/bin/clangd'
   if_executable(clangd, function()
     lsp.clangd.setup(lc_opts.with_default_opts({
       cmd = {clangd; '--background-index'; '--pch-storage=memory'};

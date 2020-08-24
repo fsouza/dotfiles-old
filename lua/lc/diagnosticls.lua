@@ -1,7 +1,7 @@
 local M = {}
 
 local vfn = vim.fn
-local loop = vim.loop
+local vcmd = vim.cmd
 
 local get_root_patterns = function(patterns)
   return vim.tbl_flatten({'.git'; patterns or {}})
@@ -10,13 +10,13 @@ end
 local setup_blackd_logs_dir = function(base_dir)
   local logs_dir = base_dir .. '/blackd-logs'
   vfn.mkdir(logs_dir, 'p')
-  loop.os_setenv('BLACKD_LOGS_DIR', logs_dir)
+  vcmd(string.format([[let $BLACKD_LOGS_DIR = '%s']], logs_dir))
 end
 
 local get_python_tool = function(bin_name)
   local result = bin_name
-  if loop.os_getenv('VIRTUAL_ENV') then
-    local venv_bin_name = loop.os_getenv('VIRTUAL_ENV') .. '/bin/' .. bin_name
+  if os.getenv('VIRTUAL_ENV') then
+    local venv_bin_name = os.getenv('VIRTUAL_ENV') .. '/bin/' .. bin_name
     if vfn.executable(venv_bin_name) == 1 then
       result = venv_bin_name
     end

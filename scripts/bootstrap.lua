@@ -1,5 +1,4 @@
 local vfn = vim.fn
-local loop = vim.loop
 local cmd = require('lib.cmd')
 
 local second_ms = 1000
@@ -13,7 +12,7 @@ local pip_packages = {'pip'; 'pip-tools'; 'git+https://github.com/luarocks/herer
 local rocks = {'lyaml'; 'luacheck'}
 
 local debug = function(msg)
-  if loop.os_getenv('NVIM_DEBUG') then
+  if os.getenv('NVIM_DEBUG') then
     print('[DEBUG] ' .. msg)
   end
 end
