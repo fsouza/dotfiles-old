@@ -10,9 +10,9 @@ aiohttp==3.6.2            # via aiohttp-cors, black
 appdirs==1.4.4            # via black
 aspy.refactor-imports==2.1.1  # via reorder-python-imports
 async-timeout==3.0.1      # via aiohttp
-attrs==19.3.0             # via aiohttp, black, flake8-bugbear
+attrs==19.3.0             # via aiohttp, flake8-bugbear
 autopep8==1.5.4           # via -r requirements.in
-black[d]==19.10b0         # via -r requirements.in
+black[d]==20.8b1          # via -r requirements.in
 cached-property==1.5.1    # via aspy.refactor-imports
 chardet==3.0.4            # via aiohttp
 click==7.1.2              # via black
@@ -25,7 +25,7 @@ idna==2.10                # via yarl
 isort==5.4.2              # via -r requirements.in
 mccabe==0.6.1             # via flake8
 multidict==4.7.6          # via aiohttp, yarl
-mypy-extensions==0.4.3    # via mypy
+mypy-extensions==0.4.3    # via black, mypy
 mypy==0.782               # via -r requirements.in
 pathspec==0.8.0           # via black
 pycodestyle==2.6.0        # via autopep8, flake8
@@ -35,5 +35,5 @@ reorder-python-imports==2.3.5  # via -r requirements.in
 tokenize-rt==4.0.0        # via add-trailing-comma
 toml==0.10.1              # via autopep8, black
 typed-ast==1.4.1          # via black, mypy
-typing-extensions==3.7.4.2  # via mypy, yarl
+typing-extensions==3.7.4.2  # via black, mypy, yarl
 yarl==1.5.0               # via aiohttp
