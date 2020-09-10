@@ -6,7 +6,7 @@
 	program = gpg
 [core]
 	editor = nvim
-	excludesfile = ~/.config/gitignore_global
+	excludesfile = ~/.config/git/gitignore
 	filemode = true
 [diff]
 	compactionHeuristic = 1

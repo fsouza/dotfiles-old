@@ -10,16 +10,20 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=(.zshrc .clang-format .gitconfig .editorconfig .isort.cfg .utoprc .fdignore)
+files=(.zshrc .clang-format .editorconfig .isort.cfg .utoprc .fdignore)
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
 
 mkdir -p $HOME/.config
-xdg_files=(flake8 gitignore_global tmux.conf tmux.${os}.conf alacritty.yml)
+xdg_files=(flake8 tmux.conf tmux.${os}.conf alacritty.yml)
 for file in $xdg_files; do
 	ln -sf ${basedir}/${file} $HOME/.config/${file}
 done
+
+mkdir -p $HOME/.config/git
+ln -sf ${basedir}/gitconfig ${HOME}/.config/git/config
+ln -sf ${basedir}/gitignore_global ${HOME}/.config/git/gitignore
 
 mkdir -p ~/.gnupg
 chmod 700 ~/.gnupg
