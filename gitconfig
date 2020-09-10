@@ -29,5 +29,4 @@
 [credential]
 	helper = !zsh -c 'exec ${HOMEBREW_PREFIX}/opt/git/libexec/git-core/git-credential-netrc get'
 [fetch]
-	pruneTags = true
 	prune = true
