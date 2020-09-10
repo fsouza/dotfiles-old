@@ -22,10 +22,6 @@
 	pretty = medium
 [push]
 	default = current
-[http "https://gopkg.in"]
-	followRedirects = true
-[url "https://"]
-	insteadOf = git://
 [pull]
 	rebase = true
 [rebase]
