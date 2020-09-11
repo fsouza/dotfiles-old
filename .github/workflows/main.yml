@@ -52,7 +52,7 @@ jobs:
           path: ~/.opam
           key: "${{ matrix.os }}-${{ matrix.ocaml-version }}"
 
-      - uses: avsm/setup-ocaml@v1.1.1
+      - uses: avsm/setup-ocaml@v1.1.2
         with:
           ocaml-version: "${{ matrix.ocaml-version }}"
 
