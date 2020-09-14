@@ -23,7 +23,7 @@ font:
 schemes:
   default-theme: &default-theme
     primary:
-      background: "#dadada"
+      background: "#e8e8e8"
       foreground: "#000000"
 
     normal:
