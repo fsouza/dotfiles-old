@@ -162,6 +162,7 @@ key_bindings:
   - { key: C, mods: Command, action: Copy }
   - { key: F, mods: Alt, chars: "\x1bf" }
   - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: D, mods: Alt, chars: "\x1bd" }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
