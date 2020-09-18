@@ -129,7 +129,7 @@ function M.autofmt_and_write()
     if result then
       apply_edits(result, bufnr)
     end
-    local curr_bufnr = vfn.bufnr()
+    local curr_bufnr = api.nvim_get_current_buf()
     vcmd(string.format('%dbufdo noautocmd write', bufnr))
     if curr_bufnr ~= bufnr then
       vcmd(string.format('buffer %d', curr_bufnr))
