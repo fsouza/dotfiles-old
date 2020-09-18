@@ -129,7 +129,11 @@ function M.autofmt_and_write()
     if result then
       apply_edits(result, bufnr)
     end
+    local curr_bufnr = vfn.bufnr()
     vcmd(string.format('%dbufdo noautocmd write', bufnr))
+    if curr_bufnr ~= bufnr then
+      vcmd(string.format('buffer %d', curr_bufnr))
+    end
   end)
 end
 
