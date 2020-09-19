@@ -77,6 +77,19 @@ function install_ms_python_ls() {
 		popd
 }
 
+function install_fsharp_language_server() {
+	if ! command -v dotnet; then
+		echo skipping fsharp-language-server
+		return
+	fi
+	path="${cache_dir}/fsharp-language-server"
+	_clone_or_update https://github.com/fsprojects/fsharp-language-server.git "${path}" &&
+		pushd "${path}" &&
+		npm ci &&
+		dotnet build -c Release &&
+		popd
+}
+
 function _go_get() {
 	if ! command -v go &>/dev/null; then
 		echo skipping
@@ -128,6 +141,7 @@ install_servers_from_npm &
 install_ocaml_lsp &
 install_rust_analyzer &
 install_ms_python_ls &
+install_fsharp_language_server &
 install_gopls &
 install_lua_lsp &
 install_shfmt &
