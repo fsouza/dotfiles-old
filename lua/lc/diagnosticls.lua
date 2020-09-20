@@ -126,6 +126,10 @@ local get_luaformat = function()
   }
 end
 
+local get_fantomas = function()
+  return {command = 'dotnet'; args = {'fantomas'; '--stdin'}; rootPatterns = {'.config', '.git'}}
+end
+
 local read_precommit_config = function(file_path)
   local lyaml = require('lyaml')
   local f = io.open(file_path, 'r')
@@ -234,6 +238,7 @@ local get_init_options = function()
   add_linters_and_formatters(init_options, 'dune', {}, {dune = get_dune()})
   add_linters_and_formatters(init_options, 'lua', {luacheck = get_luacheck()},
                              {luaformat = get_luaformat()})
+  add_linters_and_formatters(init_options, 'fsharp', {}, {fantomas = get_fantomas()})
   return init_options
 end
 
