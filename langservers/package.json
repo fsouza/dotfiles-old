@@ -12,6 +12,6 @@
     "vscode-css-languageserver-bin": "^1.4.0",
     "vscode-html-languageserver-bin": "^1.4.0",
     "vscode-json-languageserver": "^1.2.3",
-    "yaml-language-server": "^0.10.1"
+    "yaml-language-server": "^0.11.0"
   }
 }
