@@ -4,7 +4,10 @@
 # symlinks and copying any required files.
 
 os=$(uname -s)
-basedir=$(cd $(dirname $0)/..; pwd -P)
+basedir=$(
+	cd $(dirname $0)/..
+	pwd -P
+)
 
 pushd $basedir
 git submodule update --init --recursive
