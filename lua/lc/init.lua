@@ -117,7 +117,7 @@ do
   if_executable('dotnet', function()
     lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
 
-    require('lc.fsharp-lsp').setup(lc_opts.with_default_opts(
+    require('lc.custom.fsharp').setup(lc_opts.with_default_opts(
                                      {
         cmd = {get_local_cmd('fsharp-lsp')};
         root_dir = lc_opts.project_root_pattern;
