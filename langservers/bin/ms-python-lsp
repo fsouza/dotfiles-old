@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -eu
-
-ROOT=${NVIM_CACHE_DIR}/langservers
-
-exec dotnet exec "${ROOT}/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"

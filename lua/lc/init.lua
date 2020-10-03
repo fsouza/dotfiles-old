@@ -16,39 +16,6 @@ local set_log_level = function()
   require('vim.lsp.log').set_level(level)
 end
 
-local python_interpreter_props = function(virtual_env)
-  local props = {InterpreterPath = virtual_env .. '/bin/python'; UseDefaultDatabase = true}
-  local cb = function(r)
-    if r.exit_status ~= 0 then
-      print(string.format('failed to detect python version in the virtualenv $%s: %s', virtual_env,
-                          r.stderr))
-      return
-    end
-    props.Version = r.stdout
-  end
-  require('lib.cmd').run(props.InterpreterPath, {
-    args = {
-      '-c'; [[import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}", end="")]];
-    };
-  }, nil, cb)
-  vim.wait(200, function()
-    return props.Version ~= nil
-  end, 25)
-  return props
-end
-
-local get_pyls_ms_options = function()
-  local opts = {cmd = {get_local_cmd('ms-python-lsp')}; root_dir = lc_opts.project_root_pattern}
-  local virtual_env = os.getenv('VIRTUAL_ENV')
-  if virtual_env then
-    local props = python_interpreter_props(virtual_env)
-    if props.Version then
-      opts.init_options = {interpreter = {properties = props}}
-    end
-  end
-  return opts
-end
-
 do
   local langservers_bin_path = vfn.stdpath('cache') .. '/langservers/bin'
   vcmd(string.format([[let $PATH = '%s:'.$PATH]], langservers_bin_path))
@@ -98,6 +65,12 @@ do
         filetypes = filetypes;
         init_options = init_options;
       }))
+
+    require('lc.custom.pyright').setup(lc_opts.with_default_opts(
+                                         {
+        cmd = {vim_node_ls; 'pyright-langserver'; '--stdio'};
+        root_dir = lc_opts.cwd_root_pattern;
+      }))
   end)
 
   if_executable('gopls', function()
@@ -115,10 +88,8 @@ do
   end)
 
   if_executable('dotnet', function()
-    lsp.pyls_ms.setup(lc_opts.with_default_opts(get_pyls_ms_options()))
-
     require('lc.custom.fsharp').setup(lc_opts.with_default_opts(
-                                     {
+                                        {
         cmd = {get_local_cmd('fsharp-lsp')};
         root_dir = lc_opts.project_root_pattern;
       }))
