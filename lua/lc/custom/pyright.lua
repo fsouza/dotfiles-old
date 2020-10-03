@@ -14,7 +14,12 @@ local pyright_settings = function()
   local virtual_env = os.getenv('VIRTUAL_ENV')
   if virtual_env then
     local venv_path, venv = split_path(virtual_env)
-    settings.pyright = {useLibraryCodeForTypes = true; venvPath = venv_path; venv = venv}
+    settings.pyright = {
+      useLibraryCodeForTypes = true;
+      venvPath = venv_path;
+      venv = venv;
+      typeCheckingMode = 'strict';
+    }
   end
   return settings
 end
