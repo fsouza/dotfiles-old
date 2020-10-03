@@ -129,6 +129,9 @@ local handle_publish = function(bufnr, client_id, result)
   end
 
   save_all_positions(bufnr, client_id, result.diagnostics)
+  if not api.nvim_buf_is_loaded(bufnr) then
+    return
+  end
   buf_diagnostics_underline(bufnr, client_id, result.diagnostics)
   buf_diagnostics_virtual_text(bufnr, client_id, result.diagnostics)
   buf_diagnostics_signs(bufnr, client_id, result.diagnostics)
@@ -142,9 +145,6 @@ function M.publishDiagnostics(_, _, result, client_id)
   local uri = result.uri
   local bufnr = vim.uri_to_bufnr(uri)
   if not bufnr then
-    return
-  end
-  if not api.nvim_buf_is_loaded(bufnr) then
     return
   end
   local debouncer_key = string.format('%d/%s', client_id, uri)
