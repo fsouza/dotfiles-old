@@ -17,6 +17,10 @@ local attached = function(bufnr, client)
           rhs = helpers.cmd_map('lua require("lc.diagnostics").list_file_diagnostics()');
           opts = {silent = true};
         }; {
+          lhs = '<localleader>dw';
+          rhs = helpers.cmd_map('lua require("lc.diagnostics").list_workspace_diagnostics()');
+          opts = {silent = true};
+        }; {
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map('lua require("lc.buf_diagnostic").buf_clear_diagnostics(0)');
           opts = {silent = true};
