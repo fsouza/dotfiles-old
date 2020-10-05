@@ -22,11 +22,11 @@ local function fzf_location_callback(_, _, result)
   end
 
   if vim.tbl_islist(result) then
-    lsp.util.jump_to_location(result[1])
-
     if #result > 1 then
       local items = lsp.util.locations_to_items(result)
       require('lc.fzf').send(items, 'Locations')
+    else
+      lsp.util.jump_to_location(result[1])
     end
   else
     lsp.util.jump_to_location(result)
