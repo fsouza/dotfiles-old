@@ -10,11 +10,23 @@ local split_path = function(p)
 end
 
 local pyright_settings = function()
-  local settings = {analysis = {autoSearchPaths = true}; pyright = {useLibraryCodeForTypes = true}}
+  local settings = {
+    pyright = {disableOrganizeImports = true};
+    python = {
+      analysis = {
+        autoImportCompletions = true;
+        autoSearchPaths = true;
+        diagnosticMode = 'workspace';
+        typeCheckingMode = 'strict';
+        useLibraryCodeForTypes = true;
+      };
+    };
+  }
   local virtual_env = os.getenv('VIRTUAL_ENV')
   if virtual_env then
-    local venv_path, venv = split_path(virtual_env)
-    settings.pyright = {useLibraryCodeForTypes = true; venvPath = venv_path; venv = venv}
+    local venv_path, _ = split_path(virtual_env)
+    settings.python.venvPath = venv_path
+    settings.python.pythonPath = string.format('%s/bin/python', virtual_env)
   end
   return settings
 end
