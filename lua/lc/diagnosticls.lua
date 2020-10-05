@@ -41,7 +41,7 @@ local get_flake8 = function()
     sourceName = 'flake8';
     debounce = 250;
     formatLines = 1;
-    formatPattern = {'^[^:]+:(\\d+):(\\d+):\\s+(.+)$'; {line = 1; column = 2; message = 3}};
+    formatPattern = {'^[^:]+:(\\d+):(\\d+:)?\\s+(.+)$'; {line = 1; column = 2; message = 3}};
     rootPatterns = get_root_patterns({''});
   }
 end
