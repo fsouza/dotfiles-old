@@ -24,21 +24,6 @@ local get_python_tool = function(bin_name)
   return result
 end
 
-local get_dmypy = function()
-  local nvim_config_path = vfn.stdpath('config')
-  local bin = nvim_config_path .. '/langservers/bin/mypy-wrapper'
-  return {
-    command = bin;
-    args = {get_python_tool('dmypy'); 'run'; '%file'};
-    debounce = 250;
-    sourceName = 'mypy';
-    formatLines = 1;
-    formatPattern = {'^[^:]+:(\\d+):\\s+([^:]+):\\s+(.+)$'; {line = 1; security = 2; message = 3}};
-    securities = {error = 'error'; warning = 'warning'; note = 'info'};
-    rootPatterns = get_root_patterns({''});
-  }
-end
-
 local get_black = function()
   local nvim_config_path = vfn.stdpath('config')
   local bin = nvim_config_path .. '/langservers/bin/blackd-format'
@@ -127,7 +112,7 @@ local get_luaformat = function()
 end
 
 local get_fantomas = function()
-  return {command = 'dotnet'; args = {'fantomas'; '--stdin'}; rootPatterns = {'.config', '.git'}}
+  return {command = 'dotnet'; args = {'fantomas'; '--stdin'}; rootPatterns = {'.config'; '.git'}}
 end
 
 local read_precommit_config = function(file_path)
@@ -164,7 +149,6 @@ local get_python_linters_and_formatters = function()
   end
 
   local pc_linters_repo_map = {
-    ['https://github.com/pre-commit/mirrors-mypy'] = {dmypy = get_dmypy};
     ['https://github.com/psf/black'] = {blackd = get_black};
     ['https://gitlab.com/pycqa/flake8'] = {flake8 = get_flake8};
   }
