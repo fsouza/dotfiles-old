@@ -61,7 +61,7 @@ do
     local init_options, filetypes = require('lc.diagnosticls').gen_config()
     lsp.diagnosticls.setup(lc_opts.with_default_opts(
                              {
-        cmd = {vim_node_ls; 'diagnostic-languageserver'; '--stdio'};
+        cmd = {vim_node_ls; 'diagnostic-languageserver'; '--stdio'; '--log-level'; '4'};
         filetypes = filetypes;
         init_options = init_options;
       }))
