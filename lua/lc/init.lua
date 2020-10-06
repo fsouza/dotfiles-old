@@ -9,7 +9,7 @@ local get_local_cmd = function(cmd)
 end
 
 local set_log_level = function()
-  local level = 'ERROR'
+  local level = 'DEBUG'
   if os.getenv('NVIM_DEBUG') then
     level = 'TRACE'
   end
