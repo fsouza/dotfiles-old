@@ -16,7 +16,13 @@ local set_log_level = function()
   require('vim.lsp.log').set_level(level)
 end
 
+local disable_unsupported_method = function()
+  vim.lsp._unsupported_methood = function()
+  end
+end
+
 do
+  disable_unsupported_method()
   local langservers_bin_path = vfn.stdpath('cache') .. '/langservers/bin'
   vcmd(string.format([[let $PATH = '%s:'.$PATH]], langservers_bin_path))
 
