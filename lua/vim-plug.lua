@@ -20,7 +20,19 @@ local plugins = {
         '<Plug>VgSurround';
       };
     };
-  }; {repo = 'mattn/emmet-vim'};
+  }; {
+    repo = 'mattn/emmet-vim';
+    opts = {
+      on = {
+        'Emmet'; 'EmmetInstall'; '<Plug>(emmet-merge-lines)'; '<Plug>(emmet-anchorize-summary)';
+        '<Plug>(emmet-anchorize-url)'; '<Plug>(emmet-remove-tag)'; '<Plug>(emmet-split-join-tag)';
+        '<Plug>(emmet-toggle-comment)'; '<Plug>(emmet-image-encode)'; '<Plug>(emmet-image-size)';
+        '<Plug>(emmet-move-prev)'; '<Plug>(emmet-move-next)'; '<Plug>(emmet-balance-tag-outword)';
+        '<Plug>(emmet-balance-tag-inward)'; '<Plug>(emmet-update-tag)';
+        '<Plug>(emmet-expand-word)'; '<Plug>(emmet-expand-abbr)'; '<Plug>(emmet-code-pretty)';
+      };
+    };
+  };
 }
 
 -- manually setup some mappings so lazy loading can work.
@@ -28,6 +40,7 @@ local manual_mappings = function()
   local helpers = require('lib.nvim_helpers')
   local vim_commentary = {lhs = 'gc'; rhs = '<Plug>Commentary'}
   local sneak_common = {{lhs = ';'; rhs = '<Plug>Sneak_;'}; {lhs = ','; rhs = '<Plug>Sneak_,'}};
+
   local mappings = {
     n = {
       vim_commentary; {lhs = 'gcc'; rhs = '<Plug>CommentaryLine'};
@@ -40,6 +53,26 @@ local manual_mappings = function()
     o = {vim_commentary; {lhs = 'z'; rhs = '<Plug>Sneak_s'}; {lhs = 'Z'; rhs = '<Plug>Sneak_s'}};
     x = {
       vim_commentary; {lhs = 'S'; rhs = '<Plug>VSurround'}; {lhs = 'gS'; rhs = '<Plug>VgSurround'};
+      {lhs = '<C-Y>,'; rhs = '<Plug>(emmet-expand-abbr)'};
+      {lhs = '<C-Y>D'; rhs = '<Plug>(emmet-balance-tag-outword)'};
+      {lhs = '<C-Y>d'; rhs = '<Plug>(emmet-balance-tag-inward)'};
+    };
+    i = {
+      {lhs = '<C-Y>m'; rhs = '<Plug>(emmet-merge-lines)'};
+      {lhs = '<C-Y>A'; rhs = '<Plug>(emmet-anchorize-summary)'};
+      {lhs = '<C-Y>a'; rhs = '<Plug>(emmet-anchorize-url)'};
+      {lhs = '<C-Y>k'; rhs = '<Plug>(emmet-remove-tag)'};
+      {lhs = '<C-Y>j'; rhs = '<Plug>(emmet-split-join-tag)'};
+      {lhs = '<C-Y>/'; rhs = '<Plug>(emmet-toggle-comment)'};
+      {lhs = '<C-Y>I'; rhs = '<Plug>(emmet-image-encode)'};
+      {lhs = '<C-Y>i'; rhs = '<Plug>(emmet-image-size)'};
+      {lhs = '<C-Y>N'; rhs = '<Plug>(emmet-move-prev)'};
+      {lhs = '<C-Y>n'; rhs = '<Plug>(emmet-move-next)'};
+      {lhs = '<C-Y>D'; rhs = '<Plug>(emmet-balance-tag-outword)'};
+      {lhs = '<C-Y>d'; rhs = '<Plug>(emmet-balance-tag-inward)'};
+      {lhs = '<C-Y>u'; rhs = '<Plug>(emmet-update-tag)'};
+      {lhs = '<C-Y>;'; rhs = '<Plug>(emmet-expand-word)'};
+      {lhs = '<C-Y>,'; rhs = '<Plug>(emmet-expand-abbr)'};
     };
   }
 
