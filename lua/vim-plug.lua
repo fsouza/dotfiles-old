@@ -20,7 +20,7 @@ local plugins = {
         '<Plug>VgSurround';
       };
     };
-  };
+  }; {repo = 'mattn/emmet-vim'};
 }
 
 -- manually setup some mappings so lazy loading can work.
