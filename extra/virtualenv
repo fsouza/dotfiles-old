@@ -61,7 +61,7 @@ function d() {
 }
 
 function _find_python() {
-	python=${PYTHON:-python3}
+	python=${PYTHON:-python3.9}
 	if [ -z "$(command -v "${python}")" ] && [[ -v HOMEBREW_PREFIX ]]; then
 		path=$(ls ${HOMEBREW_PREFIX}/opt/python@*/bin/${python} | head -1)
 		if [ -n "$path" ]; then
