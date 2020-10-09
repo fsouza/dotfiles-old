@@ -53,7 +53,7 @@ end
 function M.list_file_diagnostics()
   local bufnr = api.nvim_get_current_buf()
   local diagnostics = lsp.util.diagnostics_by_buf[bufnr]
-  if not diagnostics or vim.tbl_isempty(diagnostics) then
+  if not diagnostics then
     return
   end
 
