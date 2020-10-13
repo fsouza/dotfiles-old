@@ -78,6 +78,7 @@ local global_options = function()
   vim.o.swapfile = false
   vim.o.inccommand = 'split'
   vim.o.timeoutlen = 500
+  vim.o.jumpoptions = 'stack'
 end
 
 local rnu = function()
