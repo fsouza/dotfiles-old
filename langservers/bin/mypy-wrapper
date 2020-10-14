@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-
-file=$(realpath --relative-to "${PWD}" "$3")
-
-"${@}" | grep "^${file}"
