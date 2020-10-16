@@ -56,10 +56,6 @@ do
       filetypes = {'javascript'; 'typescript'; 'typescriptreact'; 'typescript.tsx'};
     }))
 
-    lsp.vimls.setup(lc_opts.with_default_opts({
-      cmd = {vim_node_ls; 'vim-language-server'; '--stdio'};
-    }))
-
     lsp.yamlls.setup(lc_opts.with_default_opts({
       cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'};
     }))
