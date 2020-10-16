@@ -44,7 +44,7 @@ fi
 
 source ${basedir}/extra/tmux
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(/usr/local/share/zsh-completions ~/.zfunc $fpath)
 export ZLE_SPACE_SUFFIX_CHARS=$'|&'
 
 autoload -Uz compinit && compinit -u
