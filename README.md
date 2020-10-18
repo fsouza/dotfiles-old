@@ -4,7 +4,7 @@
 
 ## Getting started
 
-If you like what you see here and wants to use it in your configuration, I
+If you like what you see here and want to use it in your configuration, I
 recommend forking it, as this is basically a personal configuration repo, so
 it's unlikely that I'll accept pull requests changing configuration parameters.
 I'll take PRs fixing or improving my code though :)
