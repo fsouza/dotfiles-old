@@ -2,24 +2,18 @@
 
 [![Build Status](https://github.com/fsouza/vimfiles/workflows/Build/badge.svg)](https://github.com/fsouza/vimfiles/actions?query=branch:main+workflow:Build)
 
-[mergify]: https://mergify.io
-[mergify-status]: https://img.shields.io/endpoint.svg?url=https://dashboard.mergify.io/badges/fsouza/vimfiles&style=flat
-
 ## Getting started
 
-If you want to use this repository, you'll need to download and install it, and
-also install all its dependencies.
+If like what you see here and wants to use it in your configuration, I
+recommend forking it, as this is basically a personal configuration repo, so
+it's unlikely that I'll accept pull requests changing configuration parameters.
+I'll take PRs fixing or improving my code though :)
 
 ### Using with Neovim
 
-All you need to do is clone the repository in your ``$VIMHOME`` and then
-initialize the submodules:
+Clone it in the configuration directory and use `make bootstrap`:
 
 ```
-% git clone --recurse-submodules https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
+% git clone https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
 % make -f ${HOME}/.config/nvim/Makefile bootstrap
 ```
-
-### Using with Vim
-
-Not really possible, sorry x)
