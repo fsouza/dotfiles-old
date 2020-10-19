@@ -79,4 +79,11 @@ M['textDocument/publishDiagnostics'] = function(err, method, result, client_id)
   require('lc.buf_diagnostic').publishDiagnostics(err, method, result, client_id)
 end
 
+M['textDocument/signatureHelp'] = function(err, method, result)
+  if result and result.activeSignature == vim.NIL then
+    result.activeSignature = 0
+  end
+  vim.lsp.callbacks['textDocument/signatureHelp'](err, method, result)
+end
+
 return M
