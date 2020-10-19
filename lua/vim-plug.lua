@@ -9,7 +9,7 @@ local plugins = {
   {repo = 'justinmk/vim-sneak'; opts = {on = {'<Plug>Sneak_s'; '<Plug>Sneak_;'; '<Plug>Sneak_,'}}};
   {repo = 'michaeljsmith/vim-indent-object'};
   {repo = 'neovim/nvim-lspconfig'; opts = {as = 'nvim-lspconfig'}; eager = true};
-  {repo = 'nvim-lua/completion-nvim'};
+  {repo = 'nvim-lua/completion-nvim'}; {repo = 'sheerun/vim-polyglot'};
   {repo = 'tpope/vim-commentary'; opts = {on = {'<Plug>CommentaryLine'; '<Plug>Commentary'}}};
   {repo = 'tpope/vim-repeat'}; {
     repo = 'tpope/vim-surround';
