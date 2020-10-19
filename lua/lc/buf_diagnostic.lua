@@ -1,4 +1,5 @@
 local api = vim.api
+local vfn = vim.fn
 local util = vim.lsp.util
 local protocol = vim.lsp.protocol
 local highlight = require('vim.highlight')
@@ -105,19 +106,20 @@ local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
   end
 end
 
-function M.buf_clear_diagnostics(bufnr)
-  if bufnr == 0 then
-    bufnr = api.nvim_get_current_buf()
-  end
-  for _, ns in pairs(diagnostic_namespaces) do
-    api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+function M.buf_clear_diagnostics()
+  local all_buffers = vfn.getbufinfo()
+  for _, buffer in ipairs(all_buffers) do
+    local bufnr = buffer.bufnr
+    for _, ns in pairs(diagnostic_namespaces) do
+      api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
+    end
+    for _, ns in pairs(sign_namespaces) do
+      vim.fn.sign_unplace(ns, {buffer = bufnr})
+    end
+    util.buf_diagnostics_save_positions(bufnr, {})
   end
   diagnostic_namespaces = {}
-  for _, ns in pairs(sign_namespaces) do
-    vim.fn.sign_unplace(ns, {buffer = bufnr})
-  end
   sign_namespaces = {}
-  util.buf_diagnostics_save_positions(bufnr, {})
 end
 
 local handle_publish = function(bufnr, client_id, result)
