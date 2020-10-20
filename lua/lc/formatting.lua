@@ -126,7 +126,7 @@ function M.autofmt_and_write()
     if vfn.mode() ~= 'n' then
       return
     end
-    if result then
+    if result and result ~= vim.NIL then
       apply_edits(result, bufnr)
     end
     local curr_buf = api.nvim_get_current_buf()
