@@ -25,6 +25,7 @@ local always_highlight = function(augroup, group, opts)
 end
 
 local basics = function()
+  highlight('CursorColumn', {ctermbg = '253'; guibg = '#dadada'})
   highlight('CursorLine', {ctermbg = '253'; guibg = '#dadada'})
   highlight('CursorLineNr', {cterm = 'bold'; ctermbg = '253'; gui = 'bold'; guibg = '#dadada'})
   highlight('Directory', {ctermfg = '59'; guifg = '#5f5f5f'})
