@@ -86,6 +86,10 @@ do
     }))
   end)
 
+  if_executable('golangci-lint-langserver', function()
+    require('lc.custom.golangcilint').setup(lc_opts.with_default_opts({}))
+  end)
+
   if_executable('dune', function()
     lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
