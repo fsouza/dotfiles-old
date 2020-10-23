@@ -6,7 +6,6 @@ local vcmd = vim.cmd
 local vfn = vim.fn
 
 function M.show_line_diagnostics()
-  local prefix = '- '
   local indent = '  '
   local lines = {'Diagnostics:'; ''}
   local line_diagnostics = lsp.util.get_line_diagnostics()
@@ -16,7 +15,7 @@ function M.show_line_diagnostics()
 
   for _, diagnostic in pairs(line_diagnostics) do
     local message_lines = vim.split(diagnostic.message, '\n', true)
-    table.insert(lines, prefix .. message_lines[1])
+    table.insert(lines, string.format('- [%s] %s', diagnostic.source, message_lines[1]))
     for j = 2, #message_lines do
       table.insert(lines, indent .. message_lines[j])
     end
