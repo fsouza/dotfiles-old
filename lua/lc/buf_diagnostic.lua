@@ -86,8 +86,10 @@ local buf_diagnostics_virtual_text = function(bufnr, client_id, diagnostics)
       table.insert(virt_texts, {'■'; 'LspDiagnostics'})
     end
     local last = line_diags[#line_diags]
-    table.insert(virt_texts,
-                 {'■ ' .. last.message:gsub('\r', ''):gsub('\n', '  '); 'LspDiagnostics'})
+    table.insert(virt_texts, {
+      string.format('■ [%s] %s', last.source, last.message:gsub('\r', ''):gsub('\n', '  '));
+      'LspDiagnostics';
+    })
     api.nvim_buf_set_virtual_text(bufnr, diagnostic_ns(client_id), line, virt_texts, {})
   end
 end
