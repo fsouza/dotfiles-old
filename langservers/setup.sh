@@ -99,6 +99,11 @@ function install_shfmt() {
 	_go_get mvdan.cc/sh/v3/cmd/shfmt@master
 }
 
+function install_golangci_lint_langserver() {
+	_go_get github.com/fsouza/golangci-lint-langserver@forked-path &&
+		_go_get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+}
+
 function install_lua_lsp() {
 	if ! command -v ninja &>/dev/null; then
 		echo skipping lua-lsp
@@ -132,6 +137,7 @@ install_fsharp_language_server &
 install_gopls &
 install_lua_lsp &
 install_shfmt &
+install_golangci_lint_langserver &
 wait
 popd
 
