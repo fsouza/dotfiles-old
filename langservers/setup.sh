@@ -100,7 +100,7 @@ function install_shfmt() {
 }
 
 function install_golangci_lint_langserver() {
-	_go_get github.com/fsouza/golangci-lint-langserver@forked-path &&
+	_go_get github.com/nametake/golangci-lint-langserver@master &&
 		_go_get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 }
 
