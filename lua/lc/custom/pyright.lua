@@ -5,7 +5,7 @@ local vfn = vim.fn
 local M = {}
 
 local set_from_poetry = function(settings)
-  if vfn.filereadable('poetry.lock') then
+  if vfn.filereadable('poetry.lock') ~= 0 then
     local f = io.popen('poetry env info -p 2>/dev/null', 'r')
     if f then
       local virtual_env = f:read()
