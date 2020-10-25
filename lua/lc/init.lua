@@ -94,18 +94,6 @@ do
     lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
 
-  if_executable('dotnet', function()
-    require('lc.custom.fsharp').setup(lc_opts.with_default_opts(
-                                        {
-        cmd = {get_local_cmd('fsharp-lsp')};
-        root_dir = lc_opts.project_root_pattern;
-      }))
-  end)
-
-  if_executable('rust-analyzer', function()
-    lsp.rust_analyzer.setup(lc_opts.with_default_opts({}))
-  end)
-
   if_executable('ninja', function()
     lsp.sumneko_lua.setup(lc_opts.with_default_opts(
                             {

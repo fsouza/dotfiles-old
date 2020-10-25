@@ -8,7 +8,7 @@ local helpers = require('lib.nvim_helpers')
 
 local fmt_clients = {}
 
-local slow_formatters = {python = true; fsharp = true}
+local slow_formatters = {python = true}
 
 local should_skip_server = function(server_name)
   local skip_set = {tsserver = true}

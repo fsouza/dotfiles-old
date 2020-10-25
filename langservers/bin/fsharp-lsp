@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-set -eu
-
-ROOT=${NVIM_CACHE_DIR}/langservers
-
-exec dotnet exec "${ROOT}/fsharp-language-server/src/FSharpLanguageServer/bin/Release/netcoreapp3.0/FSharpLanguageServer.dll"
