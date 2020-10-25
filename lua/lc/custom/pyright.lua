@@ -1,12 +1,34 @@
 local nvim_lsp = require('nvim_lsp')
 local configs = require('nvim_lsp/configs')
+local vfn = vim.fn
 
 local M = {}
 
-local split_path = function(p)
-  local parts = vim.split(p, '/');
-  local filename = table.remove(parts, #parts);
-  return table.concat(parts, '/'), filename
+local set_from_poetry = function(settings)
+  if vfn.filereadable('poetry.lock') then
+    local f = io.popen('poetry env info -p 2>/dev/null', 'r')
+    if f then
+      local virtual_env = f:read()
+      settings.python.pythonPath = string.format('%s/bin/python', virtual_env)
+      f:close()
+    end
+  end
+end
+
+local set_from_env_var = function(settings)
+  local virtual_env = os.getenv('VIRTUAL_ENV')
+  if virtual_env then
+    settings.python.pythonPath = string.format('%s/bin/python', virtual_env)
+    return true
+  end
+  return false
+end
+
+local detect_virtual_env = function(settings)
+  local modified = set_from_env_var(settings)
+  if not modified then
+    set_from_poetry(settings)
+  end
 end
 
 local pyright_settings = function()
@@ -22,12 +44,7 @@ local pyright_settings = function()
       };
     };
   }
-  local virtual_env = os.getenv('VIRTUAL_ENV')
-  if virtual_env then
-    local venv_path, _ = split_path(virtual_env)
-    settings.python.venvPath = venv_path
-    settings.python.pythonPath = string.format('%s/bin/python', virtual_env)
-  end
+  detect_virtual_env(settings)
   return settings
 end
 
