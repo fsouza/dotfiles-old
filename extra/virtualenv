@@ -100,5 +100,6 @@ function upgrade_pip() {
 }
 
 export PIP_REQUIRE_VIRTUALENV=1
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 alias cv="which python"
