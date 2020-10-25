@@ -29,9 +29,8 @@ local attached = function(bufnr, client)
       i = {};
     }
 
-    -- TODO(fsouza): use resolved_capabilities once that's available
-    if client.server_capabilities.completionProvider ~= nil and
-      client.server_capabilities.completionProvider ~= false then
+    if client.resolved_capabilities.completion ~= nil and client.resolved_capabilities.completion ~=
+      false then
       require('completion').on_attach({
         trigger_on_delete = 1;
         auto_change_source = 1;
@@ -56,9 +55,7 @@ local attached = function(bufnr, client)
       })
     end
 
-    -- TODO(fsouza): use resolved_capabilities once that's available
-    if client.server_capabilities.renameProvider ~= nil and
-      client.server_capabilities.renameProvider ~= false then
+    if client.resolved_capabilities.rename ~= nil and client.resolved_capabilities.rename ~= false then
       table.insert(mappings.n, {
         lhs = '<localleader>r';
         rhs = helpers.cmd_map('lua vim.lsp.buf.rename()');
