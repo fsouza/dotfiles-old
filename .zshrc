@@ -40,7 +40,7 @@ cond_source "${basedir}/extra/${OS_NAME}-functions"
 export PS1="％ " PS2="\\ "
 
 if command -v fnm &>/dev/null; then
-	eval "$(fnm env --multi)"
+	eval "$(fnm env)"
 fi
 
 source ${basedir}/extra/tmux
