@@ -3,6 +3,7 @@ local M = {}
 local vfn = vim.fn
 
 function M.fzf_here()
+  vfn['plug#load']('fzf.vim')
   vfn['fzf#vim#files'](vfn.expand('%:p:h'))
 end
 
