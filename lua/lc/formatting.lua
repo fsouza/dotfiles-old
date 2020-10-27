@@ -30,7 +30,7 @@ function M.register_client(client, bufnr)
       {
         events = {'BufWritePost'};
         targets = {'<buffer>'};
-        command = [[lua require('lc.formatting').autofmt_and_write()]];
+        command = string.format([[lua require('lc.formatting').autofmt_and_write(%d)]], bufnr);
       };
     })
   else
@@ -38,7 +38,7 @@ function M.register_client(client, bufnr)
       {
         events = {'BufWritePre'};
         targets = {'<buffer>'};
-        command = [[lua require('lc.formatting').autofmt()]];
+        command = string.format([[lua require('lc.formatting').autofmt(%d)]], bufnr);
       };
     })
   end
@@ -58,8 +58,6 @@ local formatting_params = function(bufnr)
 end
 
 local apply_edits = function(result, bufnr)
-  -- sanity check. I could switch to bufnr, apply the changes and come back,
-  -- but that would be a weird experience.
   local curbuf = api.nvim_get_current_buf()
   if curbuf ~= bufnr then
     return
@@ -86,8 +84,7 @@ function M.fmt()
   fmt(api.nvim_get_current_buf(), nil)
 end
 
-function M.fmt_sync(timeout_ms)
-  local bufnr = api.nvim_get_current_buf()
+function M.fmt_sync(bufnr, timeout_ms)
   local result
   local _, cancel = fmt(bufnr, function(_, _, result_, _)
     result = result_
@@ -104,21 +101,20 @@ function M.fmt_sync(timeout_ms)
   apply_edits(result, bufnr)
 end
 
-function M.autofmt()
+function M.autofmt(bufnr)
   local enable, timeout_ms = require('lib.autofmt').config()
   if enable then
     pcall(function()
-      M.fmt_sync(timeout_ms)
+      M.fmt_sync(bufnr, timeout_ms)
     end)
   end
 end
 
-function M.autofmt_and_write()
+function M.autofmt_and_write(bufnr)
   local enable, _ = require('lib.autofmt').config()
   if not enable then
     return
   end
-  local bufnr = api.nvim_get_current_buf()
   fmt(bufnr, function(_, _, result, _)
     local curr_buf = api.nvim_get_current_buf()
     if curr_buf ~= bufnr or vfn.mode() ~= 'n' then
