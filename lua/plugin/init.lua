@@ -95,11 +95,11 @@ local setup_prettierd = function()
     {
       events = {'FileType'};
       targets = auto_fmt_fts;
-      command = [[lua require('plugin.prettierd').enable_auto_format()]];
+      command = [[lua require('plugin.prettierd').enable_auto_format(vim.fn.expand('<abuf>'))]];
     }; {
       events = {'FileType'};
       targets = auto_fmt_fts;
-      command = [[nmap <buffer> <silent> <leader>f <cmd>lua require('plugin.prettierd').format()<cr>]];
+      command = [[nmap <buffer> <silent> <leader>f <cmd>lua require('plugin.prettierd').format(vim.fn.expand('<abuf>'))<cr>]];
     };
   })
 end

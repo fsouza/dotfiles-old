@@ -52,14 +52,13 @@ local wait_for_server = function(timeout_ms)
   end
 end
 
-function M.format(cb, is_retry)
+function M.format(bufnr, cb, is_retry)
   if not state.running then
     start_server()
     wait_for_server(1000)
   end
 
-  local fname = vfn.expand('%')
-  local bufnr = vfn.bufnr(fname)
+  local fname = vfn.bufname(bufnr)
   local lines = api.nvim_buf_get_lines(bufnr, 0, -1, false)
   local cwd = vfn.getcwd()
   table.insert(lines, 1, string.format('%s %s %s', state.token, cwd,
@@ -104,7 +103,7 @@ function M.format(cb, is_retry)
       if is_retry then
         error('failed to connect to prettierd: ' .. err)
       else
-        return M.format(cb, true)
+        return M.format(bufnr, cb, true)
       end
     end
 
@@ -128,7 +127,7 @@ function M.format(cb, is_retry)
   end)
 end
 
-function M.auto_format()
+function M.auto_format(bufnr)
   local enable, timeout_ms = require('lib.autofmt').config()
   if not enable then
     return
@@ -136,7 +135,7 @@ function M.auto_format()
 
   local finished = false
   pcall(function()
-    M.format(function()
+    M.format(bufnr, function()
       finished = true
     end)
   end)
@@ -145,13 +144,12 @@ function M.auto_format()
   end, 25)
 end
 
-function M.enable_auto_format()
-  local bufnr = api.nvim_get_current_buf()
+function M.enable_auto_format(bufnr)
   helpers.augroup('prettierd_autofmt_' .. bufnr, {
     {
       events = {'BufWritePre'};
       targets = {'<buffer>'};
-      command = [[lua require('plugin.prettierd').auto_format()]];
+      command = string.format([[lua require('plugin.prettierd').auto_format(%d)]], bufnr);
     };
   })
 end
