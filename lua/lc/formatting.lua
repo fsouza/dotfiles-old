@@ -120,14 +120,12 @@ function M.autofmt_and_write()
   end
   local bufnr = api.nvim_get_current_buf()
   fmt(bufnr, function(_, _, result, _)
-    if vfn.mode() ~= 'n' then
+    local curr_buf = api.nvim_get_current_buf()
+    if curr_buf ~= bufnr or vfn.mode() ~= 'n' then
       return
     end
     if result and result ~= vim.NIL then
       apply_edits(result, bufnr)
-    end
-    local curr_buf = api.nvim_get_current_buf()
-    if curr_buf == bufnr then
       vcmd('noautocmd write')
     end
   end)
