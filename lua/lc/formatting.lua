@@ -10,9 +10,10 @@ local fmt_clients = {}
 
 local slow_formatters = {python = true}
 
+local langservers_skip_set = {tsserver = true}
+
 local should_skip_server = function(server_name)
-  local skip_set = {tsserver = true}
-  return skip_set[server_name] ~= nil
+  return langservers_skip_set[server_name] ~= nil
 end
 
 function M.register_client(client, bufnr)
@@ -20,9 +21,8 @@ function M.register_client(client, bufnr)
     return
   end
 
-  for _, filetype in pairs(client.config.filetypes) do
-    fmt_clients[filetype] = client
-  end
+  -- TODO(fsouza): support multiple formatters per buffer?
+  fmt_clients[bufnr] = client
 
   local slow = slow_formatters[api.nvim_buf_get_option(bufnr, 'filetype')]
   if slow == true then
@@ -74,9 +74,9 @@ local apply_edits = function(result, bufnr)
 end
 
 local fmt = function(bufnr, cb)
-  local client = fmt_clients[vim.bo.filetype]
+  local client = fmt_clients[bufnr]
   if not client then
-    error(string.format('cannot format %s files, no lsp client registered', vim.bo.filetype))
+    error(string.format('cannot format the buffer %d, no lsp client registered', bufnr))
   end
 
   local _, req_id = client.request('textDocument/formatting', formatting_params(bufnr), cb, bufnr)
