@@ -77,7 +77,6 @@ do
 
   if_executable('gopls', function()
     lsp.gopls.setup(lc_opts.with_default_opts({
-      cmd = {'gopls'; '-logfile'; '/tmp/gopls.log'; '-debug'; '127.0.0.1:6363'};
       init_options = {
         deepCompletion = false;
         staticcheck = true;
