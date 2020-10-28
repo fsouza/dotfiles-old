@@ -134,4 +134,8 @@ do
   schedule(setup_spell)
   schedule(setup_prettierd)
   schedule(setup_lsp)
+  schedule(function()
+    require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'})
+    trigger_ft()
+  end)
 end
