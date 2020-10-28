@@ -144,11 +144,9 @@ local get_python_linters_and_formatters = function()
     }
   end
 
-  local pc_linters_repo_map = {
-    ['https://github.com/psf/black'] = {blackd = get_black};
-    ['https://gitlab.com/pycqa/flake8'] = {flake8 = get_flake8};
-  }
+  local pc_linters_repo_map = {['https://gitlab.com/pycqa/flake8'] = {flake8 = get_flake8}}
   local pc_formatters_repo_map = {
+    ['https://github.com/psf/black'] = {blackd = get_black};
     ['https://github.com/asottile/add-trailing-comma'] = {
       add_trailing_comma = get_add_trailing_comma;
     };
