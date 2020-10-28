@@ -34,7 +34,6 @@ function M.register_client(client, bufnr)
     return
   end
 
-  -- TODO(fsouza): support multiple formatters per buffer?
   fmt_clients[bufnr] = client
 
   local slow = slow_formatters[api.nvim_buf_get_option(bufnr, 'filetype')]
