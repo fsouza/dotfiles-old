@@ -14,8 +14,8 @@ local initial_mappings = function()
   vim.g.mapleader = ' '
   vim.g.maplocalleader = ' '
 
-  -- Remap jj
-  nvim_set_keymap('t', 'jj', [[<c-\><c-n>]], {})
+  -- Remap terminal escaping
+  nvim_set_keymap('t', [[<c-\><c-\>]], [[<c-\><c-n>]], {})
 end
 
 local bootstrap_env = function()
