@@ -122,7 +122,7 @@ local global_mappings = function()
         lhs = 'k';
         rhs = [[(v:count > 8 ? "m'" . v:count : '') . 'k']];
         opts = {expr = true; noremap = true};
-      }; {lhs = '<leader><leader>'; rhs = helpers.cmd_map('e #'); opts = {silent = true}};
+      };
     };
     i = {{lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}}};
     c = rl_bindings;
