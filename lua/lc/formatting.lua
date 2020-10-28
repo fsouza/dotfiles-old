@@ -102,7 +102,7 @@ function M.fmt_sync(bufnr, timeout_ms)
 end
 
 function M.autofmt(bufnr)
-  local enable, timeout_ms = require('lib.autofmt').config()
+  local enable, timeout_ms = require('lib.autofmt').config(bufnr)
   if enable then
     pcall(function()
       M.fmt_sync(bufnr, timeout_ms)
@@ -111,7 +111,7 @@ function M.autofmt(bufnr)
 end
 
 function M.autofmt_and_write(bufnr)
-  local enable, _ = require('lib.autofmt').config()
+  local enable, _ = require('lib.autofmt').config(bufnr)
   if not enable then
     return
   end

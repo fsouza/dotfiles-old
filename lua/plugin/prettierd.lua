@@ -128,7 +128,7 @@ function M.format(bufnr, cb, is_retry)
 end
 
 function M.auto_format(bufnr)
-  local enable, timeout_ms = require('lib.autofmt').config()
+  local enable, timeout_ms = require('lib.autofmt').config(bufnr)
   if not enable then
     return
   end
