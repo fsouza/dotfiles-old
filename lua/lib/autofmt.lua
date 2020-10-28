@@ -1,20 +1,10 @@
-local vfn = vim.fn
-
 local M = {}
 
 -- returns the autofmt configuration in a tuple (<enabled>, <timeout_ms).
 --
 -- For enabled, we first look at vim.b, then vim.g (and it defaults to true).
-function M.config(bufnr)
+function M.config()
   local timeout_ms = vim.b.autoformat_timeout_ms or 500
-  local file_path = vim.api.nvim_buf_get_name(bufnr)
-  local prefix = vfn.getcwd()
-  if not vim.endswith(prefix, '/') then
-    prefix = prefix .. '/'
-  end
-  if not vim.startswith(file_path, prefix) then
-    return false, timeout_ms
-  end
   if vim.b.autoformat ~= nil then
     return vim.b.autoformat, timeout_ms
   end

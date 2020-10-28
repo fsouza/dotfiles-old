@@ -12,11 +12,24 @@ local slow_formatters = {python = true}
 
 local langservers_skip_set = {tsserver = true}
 
+local should_skip_buffer = function(bufnr)
+  local file_path = vim.api.nvim_buf_get_name(bufnr)
+  local prefix = vfn.getcwd()
+  if not vim.endswith(prefix, '/') then
+    prefix = prefix .. '/'
+  end
+  return not vim.startswith(file_path, prefix)
+end
+
 local should_skip_server = function(server_name)
   return langservers_skip_set[server_name] ~= nil
 end
 
 function M.register_client(client, bufnr)
+  if should_skip_buffer(bufnr) then
+    return
+  end
+
   if should_skip_server(client.name) then
     return
   end
@@ -102,7 +115,7 @@ function M.fmt_sync(bufnr, timeout_ms)
 end
 
 function M.autofmt(bufnr)
-  local enable, timeout_ms = require('lib.autofmt').config(bufnr)
+  local enable, timeout_ms = require('lib.autofmt').config()
   if enable then
     pcall(function()
       M.fmt_sync(bufnr, timeout_ms)
@@ -111,7 +124,7 @@ function M.autofmt(bufnr)
 end
 
 function M.autofmt_and_write(bufnr)
-  local enable, _ = require('lib.autofmt').config(bufnr)
+  local enable, _ = require('lib.autofmt').config()
   if not enable then
     return
   end
