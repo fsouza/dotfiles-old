@@ -140,4 +140,11 @@ function M.autofmt_and_write(bufnr)
   end)
 end
 
+function M.reset()
+  for bufnr, _ in pairs(fmt_clients) do
+    helpers.augroup('lc_autofmt_' .. bufnr, {})
+  end
+  fmt_clients = {}
+end
+
 return M
