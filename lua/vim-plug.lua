@@ -32,7 +32,7 @@ local plugins = {
         '<Plug>(emmet-expand-word)'; '<Plug>(emmet-expand-abbr)'; '<Plug>(emmet-code-pretty)';
       };
     };
-  };
+  }; {repo = 'rhysd/git-messenger.vim'; opts = {on = {'GitMessenger'; '<Plug>(git-messenger)'}}};
 }
 
 -- manually setup some mappings so lazy loading can work.
@@ -49,6 +49,7 @@ local manual_mappings = function()
       {lhs = 'ys'; rhs = '<Plug>Ysurround'}; {lhs = 'yS'; rhs = '<Plug>YSurround'};
       {lhs = 'yss'; rhs = '<Plug>Yssurround'}; {lhs = 'ySs'; rhs = '<Plug>YSsurround'};
       {lhs = 's'; rhs = '<Plug>Sneak_s'}; {lhs = 'S'; rhs = '<Plug>Sneak_s'};
+      {lhs = '<leader>gm'; rhs = '<Plug>(git-messenger)'};
     };
     o = {vim_commentary; {lhs = 'z'; rhs = '<Plug>Sneak_s'}; {lhs = 'Z'; rhs = '<Plug>Sneak_s'}};
     x = {
