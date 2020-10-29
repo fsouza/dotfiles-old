@@ -135,7 +135,7 @@ do
   schedule(setup_prettierd)
   schedule(setup_lsp)
   schedule(function()
-    require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'})
+    require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'; 'htmldjango'})
     trigger_ft()
   end)
 end
