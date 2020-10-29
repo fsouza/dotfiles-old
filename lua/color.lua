@@ -91,9 +91,17 @@ local setup_lsp_diagnostics = function()
   end
 end
 
+local setup_lsp_code_action_popup = function()
+  highlight('LspActionsNormal',
+            {ctermfg = '232'; ctermbg = '145'; guifg = '#080808'; guibg = '#afafaf'});
+  highlight('LspActionsCurrent', {guibg = '#dddddd'})
+  highlight('LspActionsLineNr', {})
+end
+
 local language_highlights = function()
   setup_lsp_diagnostics()
   setup_lsp_reference({guibg = '#d0d0d0'; ctermbg = '252'})
+  setup_lsp_code_action_popup()
 end
 
 local custom_groups = function()

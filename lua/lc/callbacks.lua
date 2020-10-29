@@ -79,4 +79,11 @@ M['textDocument/publishDiagnostics'] = function(err, method, result, client_id)
   require('lc.buf_diagnostic').publishDiagnostics(err, method, result, client_id)
 end
 
+M['textDocument/codeAction'] = function(_, _, actions)
+  if not actions or vim.tbl_isempty(actions) then
+    return
+  end
+  require('lc.code_action').handle_actions(actions)
+end
+
 return M
