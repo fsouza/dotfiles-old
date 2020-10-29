@@ -13,7 +13,7 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=(.zshrc .clang-format .editorconfig .utoprc)
+files=(.zshrc .editorconfig .utoprc)
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
