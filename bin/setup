@@ -13,13 +13,13 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=(.zshrc .clang-format .editorconfig .isort.cfg .utoprc .fdignore)
+files=(.zshrc .clang-format .editorconfig .utoprc .fdignore)
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
 
 mkdir -p $HOME/.config
-xdg_files=(flake8 tmux.conf tmux.${os}.conf alacritty.yml rgrc)
+xdg_files=(tmux.conf tmux.${os}.conf alacritty.yml rgrc)
 for file in $xdg_files; do
 	ln -sf ${basedir}/${file} $HOME/.config/${file}
 done
