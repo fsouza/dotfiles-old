@@ -35,7 +35,7 @@ function M.handle_actions(actions)
   api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
   local win_opts = {
     relative = 'cursor';
-    width = 40;
+    width = 50;
     height = #lines;
     col = 0;
     row = 1;
@@ -46,6 +46,7 @@ function M.handle_actions(actions)
   vim.bo.modifiable = false
   vim.wo.cursorline = true
   vim.wo.number = true
+  vim.wo.wrap = false
   vim.wo.winhl =
     'Normal:LspActionsNormal,CursorLine:LspActionsCurrent,LineNr:LspActionsLineNr,CursorLineNr:LspActionsCurrent'
 
