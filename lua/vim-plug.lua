@@ -33,7 +33,7 @@ local plugins = {
       };
     };
   }; {repo = 'rhysd/git-messenger.vim'; opts = {on = {'GitMessenger'; '<Plug>(git-messenger)'}}};
-  {repo = 'norcalli/nvim-colorizer.lua'};
+  {repo = 'norcalli/nvim-colorizer.lua'}; {repo = 'RishabhRD/popfix'}; {repo = 'RishabhRD/nvim-lsputils'};
 }
 
 -- manually setup some mappings so lazy loading can work.
