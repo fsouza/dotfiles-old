@@ -11,6 +11,7 @@ function M.handle_selection(winnr)
   if index < 1 or index > #M.actions then
     return
   end
+  api.nvim_win_close(winnr, false)
   local action_chosen = M.actions[index]
   if action_chosen.edit or type(action_chosen.command) == 'table' then
     if action_chosen.edit then
@@ -22,7 +23,6 @@ function M.handle_selection(winnr)
   else
     buf.execute_command(action_chosen)
   end
-  api.nvim_win_close(winnr, false)
 end
 
 function M.handle_actions(actions)
