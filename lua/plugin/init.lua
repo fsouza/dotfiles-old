@@ -13,11 +13,11 @@ local setup_fzf_mappings = function()
         opts = {silent = true};
       }; {
         lhs = '<leader>gg';
-        rhs = helpers.cmd_map('lua require("plugin.fuzzy").rg()');
+        rhs = helpers.cmd_map([[lua require('plugin.fuzzy').rg()]]);
         opts = {silent = true};
       }; {
         lhs = '<leader>gw';
-        rhs = helpers.cmd_map('lua require("plugin.fuzzy").rg_cword()');
+        rhs = helpers.cmd_map([[lua require('plugin.fuzzy').rg_cword()]]);
         opts = {silent = true};
       };
     };
@@ -62,7 +62,7 @@ local setup_word_replace = function()
     n = {
       {
         lhs = '<leader>e';
-        rhs = helpers.cmd_map('lua require("plugin.word_sub").run()');
+        rhs = helpers.cmd_map([[lua require('plugin.word_sub').run()]]);
         opts = {silent = true};
       };
     };

@@ -10,19 +10,19 @@ local attached = function(bufnr, client)
       n = {
         {
           lhs = '<localleader>dl';
-          rhs = helpers.cmd_map('lua require("lc.diagnostics").show_line_diagnostics()');
+          rhs = helpers.cmd_map([[lua require('lc.diagnostics').show_line_diagnostics()]]);
           opts = {silent = true};
         }; {
           lhs = '<localleader>df';
-          rhs = helpers.cmd_map('lua require("lc.diagnostics").list_file_diagnostics()');
+          rhs = helpers.cmd_map([[lua require('lc.diagnostics').list_file_diagnostics()]]);
           opts = {silent = true};
         }; {
           lhs = '<localleader>dw';
-          rhs = helpers.cmd_map('lua require("lc.diagnostics").list_workspace_diagnostics()');
+          rhs = helpers.cmd_map([[lua require('lc.diagnostics').list_workspace_diagnostics()]]);
           opts = {silent = true};
         }; {
           lhs = '<localleader>cl';
-          rhs = helpers.cmd_map('lua require("lc.buf_diagnostic").buf_clear_diagnostics()');
+          rhs = helpers.cmd_map([[lua require('lc.buf_diagnostic').buf_clear_diagnostics()]]);
           opts = {silent = true};
         };
       };
@@ -74,7 +74,7 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.n, {
         lhs = '<localleader>py';
-        rhs = helpers.cmd_map('lua require("lc.locations").preview_declaration()');
+        rhs = helpers.cmd_map([[lua require('lc.locations').preview_declaration()]]);
         opts = {silent = true};
       })
     end
@@ -124,7 +124,7 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pd';
-        rhs = helpers.cmd_map('lua require("lc.locations").preview_definition()');
+        rhs = helpers.cmd_map([[lua require('lc.locations').preview_definition()]]);
         opts = {silent = true};
       })
     end
@@ -145,7 +145,7 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pi';
-        rhs = helpers.cmd_map('lua require("lc.locations").preview_implementation()');
+        rhs = helpers.cmd_map([[lua require('lc.locations').preview_implementation()]]);
         opts = {silent = true};
       })
     end
@@ -171,7 +171,7 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.n, {
         lhs = '<localleader>pt';
-        rhs = helpers.cmd_map('lua require("lc.locations").preview_type_definition()');
+        rhs = helpers.cmd_map([[lua require('lc.locations').preview_type_definition()]]);
         opts = {silent = true};
       })
     end

@@ -56,7 +56,7 @@ function M.register_client(client, bufnr)
   end
 
   api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f',
-                          helpers.cmd_map('lua require("lc.formatting").fmt()'), {silent = true})
+                          helpers.cmd_map([[lua require('lc.formatting').fmt()]]), {silent = true})
 end
 
 local formatting_params = function(bufnr)
