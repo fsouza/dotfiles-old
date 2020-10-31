@@ -30,3 +30,5 @@
 	helper = !zsh -c 'exec ${HOMEBREW_PREFIX}/opt/git/libexec/git-core/git-credential-netrc get'
 [fetch]
 	prune = true
+[protocol]
+	version = 2
