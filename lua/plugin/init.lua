@@ -123,9 +123,6 @@ end
 local setup_shortcuts = function()
   require('plugin.shortcut').register('Vimfiles', vfn.stdpath('config'))
   require('plugin.shortcut').register('Dotfiles', vfn.expand('~/.dotfiles'))
-  helpers.create_mappings({
-    n = {{lhs = '<leader>vv'; rhs = helpers.cmd_map('Vimfiles'); opts = {silent = true}}};
-  })
 end
 
 do
