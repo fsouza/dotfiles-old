@@ -149,4 +149,8 @@ do
     require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'; 'htmldjango'})
     trigger_ft()
   end)
+  schedule(function()
+    require('plugin.ts')
+    trigger_ft()
+  end)
 end
