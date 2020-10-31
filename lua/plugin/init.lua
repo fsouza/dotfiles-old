@@ -123,6 +123,9 @@ end
 local setup_shortcuts = function()
   require('plugin.shortcut').register('Vimfiles', vfn.stdpath('config'))
   require('plugin.shortcut').register('Dotfiles', vfn.expand('~/.dotfiles'))
+  vim.schedule(function()
+    vcmd([[command! Git lua require('plugin.shortcut').cd_git(vim.fn.expand('%:p'))]])
+  end)
 end
 
 do
