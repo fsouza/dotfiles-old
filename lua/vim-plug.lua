@@ -36,6 +36,7 @@ local plugins = {
   {repo = 'thinca/vim-textobj-between'}; {repo = 'kana/vim-textobj-indent'};
   {repo = 'nvim-treesitter/nvim-treesitter'};
   {repo = 'nvim-treesitter/nvim-treesitter-textobjects'};
+  {repo = 'romgrk/nvim-treesitter-context'};
 }
 
 -- manually setup some mappings so lazy loading can work.
