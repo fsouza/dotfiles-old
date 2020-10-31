@@ -1,4 +1,5 @@
 local vcmd = vim.cmd
+local vfn = vim.fn
 local helpers = require('lib.nvim_helpers')
 
 local setup_fzf_mappings = function()
@@ -120,8 +121,8 @@ local setup_lsp = function()
 end
 
 local setup_shortcuts = function()
-  vcmd([[command! Vimfiles lua require('plugin.shortcut').vimfiles()]])
-  vcmd([[command! Dotfiles lua require('plugin.shortcut').dotfiles()]])
+  require('plugin.shortcut').register('Vimfiles', vfn.stdpath('config'))
+  require('plugin.shortcut').register('Dotfiles', vfn.expand('~/.dotfiles'))
   helpers.create_mappings({
     n = {{lhs = '<leader>vv'; rhs = helpers.cmd_map('Vimfiles'); opts = {silent = true}}};
   })
