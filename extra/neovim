@@ -43,7 +43,18 @@ function bump_vimfiles {
 
 if [ -x "$NEOVIM_INSTALL_PREFIX/bin/nvim" ]; then
 	prepend_to_path "$NEOVIM_INSTALL_PREFIX/bin"
-	alias zvim="nvim +'autocmd User PluginReady FzfFiles'"
+
+	function zvim {
+		nvim +'autocmd User PluginReady FzfFiles'
+	}
+
+	function zv {
+		cwd=${PWD}
+		z "${1}"
+		if [[ ${cwd} != ${PWD} ]]; then
+			zvim
+		fi
+	}
 
 	export EDITOR=nvim
 fi
