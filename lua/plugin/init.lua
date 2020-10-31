@@ -99,7 +99,8 @@ local setup_prettierd = function()
     }; {
       events = {'FileType'};
       targets = auto_fmt_fts;
-      command = [[nmap <buffer> <silent> <leader>f <cmd>lua require('plugin.prettierd').format(vim.fn.expand('<abuf>'))<cr>]];
+      command = [[nmap <buffer> <silent> <leader>f ]] ..
+        [[<cmd>lua require('plugin.prettierd').format(vim.fn.expand('<abuf>'))<cr>]];
     };
   })
 end
@@ -118,6 +119,14 @@ local setup_lsp = function()
   end)
 end
 
+local setup_shortcuts = function()
+  vcmd([[command! Vimfiles lua require('plugin.shortcut').vimfiles()]])
+  vcmd([[command! Dotfiles lua require('plugin.shortcut').dotfiles()]])
+  helpers.create_mappings({
+    n = {{lhs = '<leader>vv'; rhs = helpers.cmd_map('Vimfiles'); opts = {silent = true}}};
+  })
+end
+
 do
   local schedule = vim.schedule
   schedule(function()
@@ -134,6 +143,7 @@ do
   schedule(setup_spell)
   schedule(setup_prettierd)
   schedule(setup_lsp)
+  schedule(setup_shortcuts)
   schedule(function()
     require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'; 'htmldjango'})
     trigger_ft()
