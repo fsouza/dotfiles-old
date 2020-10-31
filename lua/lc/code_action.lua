@@ -6,12 +6,12 @@ local helpers = require('lib.nvim_helpers')
 
 local M = {actions = {}}
 
-function M.handle_selection(winnr)
+function M.handle_selection(win_id)
   local index = vfn.line('.')
   if index < 1 or index > #M.actions then
     return
   end
-  api.nvim_win_close(winnr, false)
+  api.nvim_win_close(win_id, false)
   local action_chosen = M.actions[index]
   if action_chosen.edit or type(action_chosen.command) == 'table' then
     if action_chosen.edit then
@@ -41,7 +41,7 @@ function M.handle_actions(actions)
     row = 1;
     style = 'minimal';
   }
-  local winnr = api.nvim_open_win(bufnr, true, win_opts)
+  local win_id = api.nvim_open_win(bufnr, true, win_opts)
   vim.bo.readonly = true
   vim.bo.modifiable = false
   vim.wo.cursorline = true
@@ -54,11 +54,11 @@ function M.handle_actions(actions)
     n = {
       {
         lhs = '<esc>';
-        rhs = helpers.cmd_map(string.format([[lua vim.api.nvim_win_close(%d, false)]], winnr));
+        rhs = helpers.cmd_map(string.format([[lua vim.api.nvim_win_close(%d, false)]], win_id));
       }; {
         lhs = '<cr>';
         rhs = helpers.cmd_map(string.format([[lua require('lc.code_action').handle_selection(%d)]],
-                                            winnr));
+                                            win_id));
       };
     };
   }, bufnr)
