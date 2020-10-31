@@ -30,16 +30,26 @@ jobs:
           curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-${suffix}.tar.gz | sudo tar -C /usr/local --strip 1 -xzf -
 
       - name: install brew deps on mac
-        run: brew install bash shellcheck ninja libyaml
+        run: brew install bash shellcheck ninja libyaml luarocks
         if: matrix.os == 'macos-latest'
 
       - name: install apt deps on ubuntu
-        run: sudo apt-get update && sudo apt-get install -y shellcheck ninja-build libyaml-dev
+        run: sudo apt-get update && sudo apt-get install -y shellcheck ninja-build libyaml-dev luarocks
         if: matrix.os == 'ubuntu-20.04'
+
+      - name: install luacheck
+        run: |
+          if [ "${{ matrix.os }}" = "ubuntu-20.04" ]; then
+            sudo luarocks install luacheck
+          else
+            luarocks install luacheck
+          fi
 
       - uses: actions/checkout@v2.3.3
 
       - run: make shellcheck
+
+      - run: make luacheck
 
       - uses: actions/setup-node@v2.1.2
         with:
