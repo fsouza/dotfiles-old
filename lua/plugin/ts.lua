@@ -42,13 +42,20 @@ do
         node_decremental = '<s-tab>';
       };
     };
-    refactor = {smart_rename = {enable = false}; navigation = {enable = false}};
-    textobjects = {enable = false};
+    textobjects = {
+      select = {
+        enable = true;
+        keymaps = {
+          af = '@function.outer';
+          ['if'] = '@function.inner';
+          al = '@block.outer';
+          il = '@block.inner';
+          ac = '@class.outer';
+          ic = '@class.inner';
+        };
+      };
+    };
     ensure_installed = wanted_parsers;
-    indent = {enable = true};
   })
   set_folding()
-  configs.commands.TSEnableAll.run('highlight')
-  configs.commands.TSEnableAll.run('incremental_selection')
-  configs.commands.TSEnableAll.run('indent')
 end

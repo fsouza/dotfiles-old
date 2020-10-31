@@ -35,6 +35,7 @@ local plugins = {
   {repo = 'norcalli/nvim-colorizer.lua'}; {repo = 'kana/vim-textobj-user'};
   {repo = 'thinca/vim-textobj-between'}; {repo = 'kana/vim-textobj-indent'};
   {repo = 'nvim-treesitter/nvim-treesitter'};
+  {repo = 'nvim-treesitter/nvim-treesitter-textobjects'};
 }
 
 -- manually setup some mappings so lazy loading can work.
