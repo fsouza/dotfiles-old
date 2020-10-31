@@ -7,7 +7,6 @@ local plugins = {
     opts = {as = 'fzf.vim'; on = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
   }; {repo = 'justinmk/vim-dirvish'};
   {repo = 'justinmk/vim-sneak'; opts = {on = {'<Plug>Sneak_s'; '<Plug>Sneak_;'; '<Plug>Sneak_,'}}};
-  {repo = 'michaeljsmith/vim-indent-object'};
   {repo = 'neovim/nvim-lspconfig'; opts = {as = 'nvim-lspconfig'}; eager = true};
   {repo = 'nvim-lua/completion-nvim'}; {repo = 'sheerun/vim-polyglot'};
   {repo = 'tpope/vim-commentary'; opts = {on = {'<Plug>CommentaryLine'; '<Plug>Commentary'}}};
@@ -33,7 +32,9 @@ local plugins = {
       };
     };
   }; {repo = 'rhysd/git-messenger.vim'; opts = {on = {'GitMessenger'; '<Plug>(git-messenger)'}}};
-  {repo = 'norcalli/nvim-colorizer.lua'};
+  {repo = 'norcalli/nvim-colorizer.lua'}; {repo = 'kana/vim-textobj-user'};
+  {repo = 'thinca/vim-textobj-between'}; {repo = 'kana/vim-textobj-indent'};
+  {repo = 'jceb/vim-textobj-uri'};
 }
 
 -- manually setup some mappings so lazy loading can work.
