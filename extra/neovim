@@ -48,13 +48,5 @@ if [ -x "$NEOVIM_INSTALL_PREFIX/bin/nvim" ]; then
 		nvim +'autocmd User PluginReady FzfFiles'
 	}
 
-	function zz {
-		cwd=${PWD}
-		z "${1}"
-		if [[ ${cwd} != ${PWD} ]]; then
-			zvim
-		fi
-	}
-
 	export EDITOR=nvim
 fi
