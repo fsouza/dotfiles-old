@@ -34,7 +34,6 @@ local plugins = {
   }; {repo = 'rhysd/git-messenger.vim'; opts = {on = {'GitMessenger'; '<Plug>(git-messenger)'}}};
   {repo = 'norcalli/nvim-colorizer.lua'}; {repo = 'kana/vim-textobj-user'};
   {repo = 'thinca/vim-textobj-between'}; {repo = 'kana/vim-textobj-indent'};
-  {repo = 'jceb/vim-textobj-uri'};
 }
 
 -- manually setup some mappings so lazy loading can work.
