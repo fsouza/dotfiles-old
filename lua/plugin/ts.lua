@@ -2,6 +2,7 @@ local parsers = require('nvim-treesitter.parsers')
 
 local wanted_parsers = {
   'go'; 'javascript'; 'ocaml'; 'ocaml_interface'; 'rust'; 'tsx'; 'typescript'; 'lua'; 'python';
+  'query';
 };
 
 local set_folding = function()
@@ -42,6 +43,7 @@ do
         node_decremental = '<s-tab>';
       };
     };
+    playground = {enable = true; updatetime = 30};
     textobjects = {
       select = {
         enable = true;

@@ -35,7 +35,7 @@ local plugins = {
   {repo = 'norcalli/nvim-colorizer.lua'}; {repo = 'kana/vim-textobj-user'};
   {repo = 'thinca/vim-textobj-between'}; {repo = 'kana/vim-textobj-indent'};
   {repo = 'nvim-treesitter/nvim-treesitter'};
-  {repo = 'nvim-treesitter/nvim-treesitter-textobjects'};
+  {repo = 'nvim-treesitter/nvim-treesitter-textobjects'}; {repo = 'nvim-treesitter/playground'};
   {repo = 'romgrk/nvim-treesitter-context'};
 }
 
