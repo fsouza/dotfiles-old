@@ -129,6 +129,7 @@ local setup_shortcuts = function()
 end
 
 do
+  setup_shortcuts()
   local schedule = vim.schedule
   schedule(function()
     require('lib.cleanup').setup()
@@ -144,7 +145,6 @@ do
   schedule(setup_spell)
   schedule(setup_prettierd)
   schedule(setup_lsp)
-  schedule(setup_shortcuts)
   schedule(function()
     require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'; 'htmldjango'})
     trigger_ft()

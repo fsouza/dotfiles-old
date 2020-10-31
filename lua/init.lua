@@ -152,8 +152,6 @@ do
 
   require('vim-plug')
   if not os.getenv('NVIM_BOOTSTRAP') then
-    schedule(function()
-      require('plugin.init')
-    end)
+    require('plugin.init')
   end
 end
