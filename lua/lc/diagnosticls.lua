@@ -178,6 +178,15 @@ local get_python_linters_and_formatters = function()
   return linters, formatters
 end
 
+local get_lua_linters_and_formatters = function()
+  local linters = {luacheck = get_luacheck()}
+  local formatters = {}
+  if vfn.filereadable('.lua-format') ~= 0 then
+    formatters.luaformat = get_luaformat()
+  end
+  return linters, formatters
+end
+
 local add_linters_and_formatters = function(init_options, ft, linters, formatters)
   init_options.linters = vim.tbl_extend('keep', init_options.linters or {}, linters)
   init_options.formatters = vim.tbl_extend('keep', init_options.formatters or {}, formatters)
@@ -214,8 +223,9 @@ local get_init_options = function()
   add_linters_and_formatters(init_options, 'sh', {shellcheck = get_shellcheck()},
                              {shfmt = get_shfmt()})
   add_linters_and_formatters(init_options, 'dune', {}, {dune = get_dune()})
-  add_linters_and_formatters(init_options, 'lua', {luacheck = get_luacheck()},
-                             {luaformat = get_luaformat()})
+
+  local lua_linters, lua_formatters = get_lua_linters_and_formatters()
+  add_linters_and_formatters(init_options, 'lua', lua_linters, lua_formatters)
   return init_options
 end
 
