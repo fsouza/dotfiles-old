@@ -33,10 +33,9 @@ local plugins = {
     };
   }; {repo = 'rhysd/git-messenger.vim'; opts = {on = {'GitMessenger'; '<Plug>(git-messenger)'}}};
   {repo = 'norcalli/nvim-colorizer.lua'}; {repo = 'kana/vim-textobj-user'};
-  {repo = 'thinca/vim-textobj-between'}; {repo = 'kana/vim-textobj-indent'};
-  {repo = 'nvim-treesitter/nvim-treesitter'};
+  {repo = 'thinca/vim-textobj-between'}; {repo = 'nvim-treesitter/nvim-treesitter'};
   {repo = 'nvim-treesitter/nvim-treesitter-textobjects'}; {repo = 'nvim-treesitter/playground'};
-  {repo = 'romgrk/nvim-treesitter-context'};
+  {repo = 'romgrk/nvim-treesitter-context'}; {repo = 'michaeljsmith/vim-indent-object'};
 }
 
 -- manually setup some mappings so lazy loading can work.
