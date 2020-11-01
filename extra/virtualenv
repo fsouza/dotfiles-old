@@ -7,7 +7,6 @@ function _virtualenv() {
 		mkdir -p "${VIRTUALENVS}"
 		curl -Lo "${VIRTUALENV_PYZ_LOCATION}" https://bootstrap.pypa.io/virtualenv.pyz
 	fi
-
 	python3 "${VIRTUALENV_PYZ_LOCATION}" "${@}"
 }
 
@@ -16,10 +15,9 @@ function v() {
 	if [[ ${name} == "@" ]]; then
 		name=$(basename "$PWD")
 	fi
-
 	virtualenvpath=${VIRTUALENVS}/${name}
 	if [ -z "${name}" ]; then
-		ls ${VIRTUALENVS}
+		ls -F "${VIRTUALENVS}" | grep '/$' | sed -e 's,/$,,'
 	elif [ -d "${virtualenvpath}" ]; then
 		if [ -z "${oldpath}" ]; then
 			export oldpath=$PATH
@@ -49,41 +47,48 @@ function d() {
 
 function _find_python() {
 	python=${PYTHON:-python3.9}
-	if [ -z "$(command -v "${python}")" ] && [[ -v HOMEBREW_PREFIX ]]; then
-		path=$(ls ${HOMEBREW_PREFIX}/opt/python@*/bin/${python} | head -1)
+	if ! command -v "${python}" &>/dev/null && [[ -v HOMEBREW_PREFIX ]]; then
+		path=$(fd -L "${python}"$ --type f "${HOMEBREW_PREFIX}"/opt/python*/bin | head -1)
 		if [ -n "$path" ]; then
 			python=$path
 		fi
 	fi
-	echo $python
+	echo "${python}"
 }
 
 function mkv() {
-	test -d ${VIRTUALENVS} || mkdir -p ${VIRTUALENVS}
+	test -d "${VIRTUALENVS}" || mkdir -p "${VIRTUALENVS}"
 	name=${1:-$(basename "${PWD}")}
 
 	# create the env only if it doesn't exist yet
 	if ! [ -d "${VIRTUALENVS}/${name}" ]; then
-		_virtualenv -p "$(_find_python)" ${VIRTUALENVS}/${name} && \
+		_virtualenv -p "$(_find_python)" "${VIRTUALENVS}"/"${name}" &&
 			"${VIRTUALENVS}/${name}/bin/pip" install --upgrade pip
 	fi
 
-	v $name
+	v "${name}"
 }
 
 function rmv() {
 	if [ -z "${1}" ]; then
-		echo >&2 "Please specify the virtualenv you want to remove"
+		echo >&2 "Please specify at least one virtualenv to remove"
 		return 2
 	fi
-	dir=${VIRTUALENVS}/${1}
-	rm -rf ${dir}
+	for venv in "${@}"; do
+		venv_dir=${VIRTUALENVS}/${venv}
+		rm -rf "${venv_dir}"
+	done
 }
 
 function upgrade_pip() {
 	for env in $(v); do
-		${VIRTUALENVS}/${env}/bin/pip install -U pip
+		"${VIRTUALENVS}"/"${env}"/bin/pip install -U pip
 	done
+}
+
+function python() {
+	echo >&2 "please be explicit abou the version of python you want to use"
+	return 1
 }
 
 export PIP_REQUIRE_VIRTUALENV=1
