@@ -48,8 +48,8 @@ do
       select = {
         enable = true;
         keymaps = {
-          af = '@function.outer';
-          ['if'] = '@function.inner';
+          am = '@function.outer';
+          ['im'] = '@function.inner';
           al = '@block.outer';
           il = '@block.inner';
           ac = '@class.outer';
