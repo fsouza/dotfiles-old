@@ -2,27 +2,27 @@ NEOVIM_INSTALL_PREFIX=$HOME/opt/neovim
 NEOVIM_SRC_DIR=$HOME/Projects/os/3/neovim
 
 function _ensure_neovim_src {
-	if ! [ -d $NEOVIM_SRC_DIR ]; then
-		git clone https://github.com/neovim/neovim.git $NEOVIM_SRC_DIR
+	if ! [ -d "${NEOVIM_SRC_DIR}" ]; then
+		git clone https://github.com/neovim/neovim.git "${NEOVIM_SRC_DIR}"
 	fi
 }
 
 function _update_neovim {
 	_ensure_neovim_src
-	pushd $NEOVIM_SRC_DIR &&
+	pushd "${NEOVIM_SRC_DIR}" &&
 		git pull &&
 		make \
 			CMAKE_BUILD_TYPE=RelWithDebInfo \
-			CMAKE_INSTALL_PREFIX=$NEOVIM_INSTALL_PREFIX \
+			CMAKE_INSTALL_PREFIX="${NEOVIM_INSTALL_PREFIX}" \
 			CMAKE_EXTRA_FLAGS="-DCMAKE_FIND_FRAMEWORK=LAST" \
 			BUNDLED_CMAKE_FLAG="-DUSE_BUNDLED_GPERF=OFF" &&
 		make install &&
-		popd
+		popd || return
 }
 
 function rebootstrap_neovim {
 	_ensure_neovim_src
-	pushd $NEOVIM_SRC_DIR &&
+	pushd "${NEOVIM_SRC_DIR}" &&
 		make distclean &&
 		git clean -dfx &&
 		_update_neovim
@@ -34,10 +34,10 @@ function update_neovim {
 
 function bump_vimfiles {
 	(
-		 cd $HOME/.config/nvim &&
-			 git pull &&
-			 env NVIM_DEBUG=1 make bootstrap &&
-			 nvim -R --headless +'PlugUpdate --sync|qa' +cq
+		cd "${HOME}"/.config/nvim &&
+			git pull &&
+			env NVIM_DEBUG=1 make bootstrap &&
+			nvim -R --headless +'PlugUpdate --sync|qa' +cq
 	)
 }
 
