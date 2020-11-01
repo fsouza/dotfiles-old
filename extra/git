@@ -10,8 +10,8 @@ function git_config {
 		return 1
 	fi
 	git config user.name "$name"
-	git config user.email $email
-	git config user.signingkey $email
+	git config user.email "${email}"
+	git config user.signingkey "${email}"
 }
 
 function gh_clone {
@@ -22,7 +22,7 @@ function gh_clone {
 		return 2
 	fi
 	git clone --recurse-submodules "git@github.com:${1}/${2}.git" "${dest}" &&
-		cd "${dest}"
+		cd "${dest}" || return
 }
 
 function c {

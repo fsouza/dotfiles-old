@@ -10,7 +10,7 @@ function gimme {
 			old_gimme_type=$GIMME_TYPE
 			export GIMME_TYPE=git
 		fi
-		eval "$(command gimme ${1})"
+		eval "$(command gimme "${1}")"
 		if [ -n "$old_gimme_type" ]; then
 			export GIMME_TYPE=$old_gimme_type
 			unset old_gimme_type
@@ -35,11 +35,9 @@ function update_go_tip {
 }
 
 function set_private_goproxy {
-	# assumes that the private GOPROXY is an athens server, so /healthz
-	# should work.
 	proxy_host=${1}
 	timeout=${2:-0.1}
-	if curl -fm ${timeout} https://${proxy_host}/healthz &>/dev/null; then
+	if curl -fm "${timeout}" "https://${proxy_host}" &>/dev/null; then
 		export GOPROXY=https://$proxy_host
 	elif [[ -v GOPROXY ]]; then
 		unset GOPROXY

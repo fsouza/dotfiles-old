@@ -9,7 +9,7 @@ function rclone_mount {
 		return 2
 	fi
 
-	rclone mount $1 $2 \
+	rclone mount "${1}" "${2}" \
 		--daemon \
 		--dir-cache-time 60s \
 		--dir-perms 0755 \
@@ -24,15 +24,15 @@ function ensure_rclone_mount {
 	local_path=$2
 
 	if ! rclone listremotes | grep -q "^${remote}\$"; then
-		echo >&2 remote ${remote} not defined in rclone
+		echo >&2 "remote ${remote} not defined in rclone"
 		return 2
 	fi
 
-	mkdir -p $local_path
+	mkdir -p "${local_path}"
 	if ! (mount | grep -q ^"${remote} on ${local_path} "); then
-		rclone_mount ${remote} ${local_path}
+		rclone_mount "${remote}" "${local_path}"
 	fi
 }
 
-ensure_rclone_mount gd: $HOME/gd
-export _Z_EXCLUDE_DIRS=($HOME/gd)
+ensure_rclone_mount gd: "${HOME}"/gd
+export _Z_EXCLUDE_DIRS=("${HOME}"/gd)

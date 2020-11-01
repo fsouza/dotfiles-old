@@ -1,38 +1,37 @@
-# on mac, coreutils is needed to get realpath.
-basedir=$(dirname $(realpath ${(%):-%N}))
-source ${basedir}/extra/init-functions
+basedir=$(dirname "$(realpath "${(%):-%N}")")
+source "${basedir}"/extra/init-functions
 
-export MANPATH=/usr/share/man:/usr/local/share/man:${basedir}/extra/z
+export MANPATH=/usr/share/man:/usr/local/share/man:"${basedir}"/extra/z
 export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 export EDITOR=vim PAGER=less MANPAGER=less
 export RIPGREP_CONFIG_PATH=${HOME}/.config/rgrc
 
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
-	${basedir}/extra/gimme \
+	"${basedir}"/extra/gimme \
 	/usr/local/sbin \
 	/usr/local/bin \
-	${HOME}/.cargo/bin \
-	${HOME}/.local/bin \
-	${basedir}/bin \
-	${GOBIN}
+	"${HOME}"/.cargo/bin \
+	"${HOME}"/.local/bin \
+	"${basedir}"/bin \
+	"${GOBIN}"
 
-source ${basedir}/extra/brew
+source "${basedir}"/extra/brew
 
 cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 cond_source "${HOME}/.gimme/envs/gotip.env"
 cond_source "${basedir}/extra/z/z.sh"
 
-source ${basedir}/extra/virtualenv
-source ${basedir}/extra/gpg-agent
+source "${basedir}"/extra/virtualenv
+source "${basedir}"/extra/gpg-agent
 
-source ${basedir}/extra/git
-source ${basedir}/extra/go
-source ${basedir}/extra/mail
-source ${basedir}/extra/ocaml
-source ${basedir}/extra/neovim
-source ${basedir}/extra/rclone
-source ${basedir}/extra/poetry
+source "${basedir}"/extra/git
+source "${basedir}"/extra/go
+source "${basedir}"/extra/mail
+source "${basedir}"/extra/ocaml
+source "${basedir}"/extra/neovim
+source "${basedir}"/extra/rclone
+source "${basedir}"/extra/poetry
 
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/${OS_NAME}-functions"
@@ -43,7 +42,7 @@ if command -v fnm &>/dev/null; then
 	eval "$(fnm env)"
 fi
 
-source ${basedir}/extra/tmux
+source "${basedir}"/extra/tmux
 
 fpath=(/usr/local/share/zsh-completions ~/.zfunc $fpath)
 export ZLE_SPACE_SUFFIX_CHARS=$'|&'
@@ -63,5 +62,5 @@ setopt SHARE_HISTORY
 
 bindkey -e
 
-source ${basedir}/extra/fzf
+source "${basedir}"/extra/fzf
 unset basedir

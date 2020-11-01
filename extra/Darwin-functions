@@ -1,3 +1,4 @@
 export TMUX_COPY_CMD=pbcopy
 
-export MACOSX_DEPLOYMENT_TARGET=$(sw_vers -productVersion)
+MACOSX_DEPLOYMENT_TARGET=$(sw_vers -productVersion)
+export MACOSX_DEPLOYMENT_TARGET
