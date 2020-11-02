@@ -17,9 +17,13 @@ local fzf_dir = function(directory, cd)
   end
 end
 
-function M.register(command, directory, cd)
+function M.register(command, path, cd)
   M[command] = function()
-    fzf_dir(directory, cd)
+    if vfn.isdirectory(path) == 1 then
+      fzf_dir(path, cd)
+    else
+      vcmd('edit ' .. path)
+    end
   end
   vcmd(string.format([[command! %s lua require('plugin.shortcut')['%s']()]], command, command))
 end
