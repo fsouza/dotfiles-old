@@ -132,7 +132,7 @@ function M.autofmt_and_write(bufnr)
     if curr_buf ~= bufnr or vfn.mode() ~= 'n' then
       return
     end
-    if result and result ~= vim.NIL then
+    if result then
       apply_edits(result, bufnr)
       vcmd('noautocmd write')
     end
