@@ -12,4 +12,3 @@ return function()
   })
   return trigger_completion()
 end
-
