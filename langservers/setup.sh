@@ -2,22 +2,6 @@
 
 set -eu
 
-cache_dir=${1}
-exit_status=0
-
-function process_child() {
-	if [[ ${1} -gt 0 ]]; then
-		exit_status=${1}
-	fi
-}
-
-trap 'process_child $?' CHLD
-
-if [ -z "${cache_dir}" ]; then
-	echo "the cache dir is required. Please provide it as a positional parameter" >&2
-	exit 2
-fi
-
 function _clone_or_update() {
 	repo=$1
 	path=$2
@@ -100,9 +84,6 @@ function install_lua_lsp() {
 		ninja_file=ninja/macos.ninja
 	elif [[ $OSTYPE == linux* ]]; then
 		ninja_file=ninja/linux.ninja
-	else
-		echo "install_lua_lsp: unuspported OSTYPE=${OSTYPE}"
-		return
 	fi
 	path=${cache_dir}/lua-language-server
 	_clone_or_update https://github.com/sumneko/lua-language-server "${path}" &&
@@ -113,6 +94,22 @@ function install_lua_lsp() {
 		./3rd/luamake/luamake rebuild &&
 		popd
 }
+
+cache_dir=${1}
+exit_status=0
+
+function process_child() {
+	if [[ ${1} -gt 0 ]]; then
+		exit_status=${1}
+	fi
+}
+
+trap 'process_child $?' CHLD
+
+if [ -z "${cache_dir}" ]; then
+	echo "the cache dir is required. Please provide it as a positional parameter" >&2
+	exit 2
+fi
 
 pushd "$(dirname "${0}")"
 git submodule update --init --recursive
