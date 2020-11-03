@@ -75,7 +75,8 @@ jobs:
         with:
           go-version: "1.x"
 
-      - uses: actions/setup-elixir@v1.4.2
+      - uses: fsouza/setup-elixir@fix-31
+        if: matrix.os == 'ubuntu-20.04'
         with:
           otp-version: '23.x'
           elixir-version: '1.x'
