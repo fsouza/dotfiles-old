@@ -48,7 +48,7 @@ local global_vars = function()
   vim.g.fzf_height = '80%'
   vim.g.polyglot_disabled = {'markdown'; 'sensible'; 'autoindent'}
   vim.g.user_emmet_mode = 'i'
-  vim.g.user_emmet_keader_key = [[<C-x>]]
+  vim.g.user_emmet_leader_key = [[<C-x>]]
 end
 
 local ui_options = function()
