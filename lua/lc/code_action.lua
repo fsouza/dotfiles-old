@@ -54,7 +54,8 @@ function M.handle_actions(actions)
       {
         lhs = '<esc>';
         rhs = helpers.cmd_map(string.format([[lua vim.api.nvim_win_close(%d, false)]], win_id));
-      }; {
+      };
+      {
         lhs = '<cr>';
         rhs = helpers.cmd_map(string.format([[lua require('lc.code_action').handle_selection(%d)]],
                                             win_id));

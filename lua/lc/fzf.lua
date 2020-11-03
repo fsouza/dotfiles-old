@@ -63,8 +63,17 @@ function M.send(items, prompt)
   local opts = {
     source = format_items(items);
     options = {
-      '--expect'; 'ctrl-t,ctrl-x,ctrl-v'; '--multi'; '--bind'; 'ctrl-q:select-all';
-      '--preview-window'; '+{2}-5'; '--delimiter'; ':'; '--prompt'; prompt;
+      '--expect';
+      'ctrl-t,ctrl-x,ctrl-v';
+      '--multi';
+      '--bind';
+      'ctrl-q:select-all';
+      '--preview-window';
+      '+{2}-5';
+      '--delimiter';
+      ':';
+      '--prompt';
+      prompt;
     };
   }
   opts = vfn['fzf#wrap'](vfn['fzf#vim#with_preview'](opts))

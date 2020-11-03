@@ -103,7 +103,13 @@ do
             diagnostics = {
               enable = true;
               globals = {
-                'vim'; 'describe'; 'it'; 'before_each'; 'after_each'; 'teardown'; 'pending';
+                'vim';
+                'describe';
+                'it';
+                'before_each';
+                'after_each';
+                'teardown';
+                'pending';
               };
             };
           };

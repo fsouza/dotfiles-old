@@ -122,7 +122,8 @@ local ensure_virtualenv = function()
       executable = cache_dir .. '/venv/bin/pip';
       opts = {
         args = vim.tbl_flatten({
-          {'install'; '--upgrade'}; pip_packages;
+          {'install'; '--upgrade'};
+          pip_packages;
           {'-r'; config_dir .. '/langservers/requirements.txt'};
         });
       };
@@ -167,15 +168,18 @@ local install_autoload_plugins = function()
       executable = 'curl';
       opts = {
         args = {
-          '-sLo'; config_dir .. '/autoload/fzf.vim';
+          '-sLo';
+          config_dir .. '/autoload/fzf.vim';
           'https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim';
         };
       };
-    }; {
+    };
+    {
       executable = 'curl';
       opts = {
         args = {
-          '-sLo'; config_dir .. '/autoload/plug.vim';
+          '-sLo';
+          config_dir .. '/autoload/plug.vim';
           'https://raw.githubusercontent.com/junegunn/vim-plug/HEAD/plug.vim';
         };
       };

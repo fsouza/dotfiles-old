@@ -30,12 +30,48 @@ end
 
 local noners = function(ns)
   local noners = {
-    'Boolean'; 'Character'; 'Comment'; 'Conceal'; 'Conditional'; 'Constant'; 'Debug'; 'Define';
-    'Delimiter'; 'Exception'; 'Float'; 'Function'; 'Identifier'; 'Ignore'; 'Include'; 'Keyword';
-    'Label'; 'Macro'; 'NonText'; 'Number'; 'Operator'; 'PmenuSbar'; 'PmenuSel'; 'PmenuThumb';
-    'Question'; 'Search'; 'PreCondit'; 'PreProc'; 'Repeat'; 'Special'; 'SpecialChar';
-    'SpecialComment'; 'Statement'; 'StorageClass'; 'String'; 'Structure'; 'Tag'; 'Todo'; 'Type';
-    'Typedef'; 'Underlined'; 'htmlBold';
+    'Boolean';
+    'Character';
+    'Comment';
+    'Conceal';
+    'Conditional';
+    'Constant';
+    'Debug';
+    'Define';
+    'Delimiter';
+    'Exception';
+    'Float';
+    'Function';
+    'Identifier';
+    'Ignore';
+    'Include';
+    'Keyword';
+    'Label';
+    'Macro';
+    'NonText';
+    'Number';
+    'Operator';
+    'PmenuSbar';
+    'PmenuSel';
+    'PmenuThumb';
+    'Question';
+    'Search';
+    'PreCondit';
+    'PreProc';
+    'Repeat';
+    'Special';
+    'SpecialChar';
+    'SpecialComment';
+    'Statement';
+    'StorageClass';
+    'String';
+    'Structure';
+    'Tag';
+    'Todo';
+    'Type';
+    'Typedef';
+    'Underlined';
+    'htmlBold';
   }
   for _, group in pairs(noners) do
     nvim_set_hl(ns, group, {})

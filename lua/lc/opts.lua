@@ -12,15 +12,18 @@ local attached = function(bufnr, client)
           lhs = '<localleader>dl';
           rhs = helpers.cmd_map([[lua require('lc.diagnostics').show_line_diagnostics()]]);
           opts = {silent = true};
-        }; {
+        };
+        {
           lhs = '<localleader>df';
           rhs = helpers.cmd_map([[lua require('lc.diagnostics').list_file_diagnostics()]]);
           opts = {silent = true};
-        }; {
+        };
+        {
           lhs = '<localleader>dw';
           rhs = helpers.cmd_map([[lua require('lc.diagnostics').list_workspace_diagnostics()]]);
           opts = {silent = true};
-        }; {
+        };
+        {
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map([[lua require('lc.buf_diagnostic').buf_clear_diagnostics()]]);
           opts = {silent = true};
@@ -38,7 +41,9 @@ local attached = function(bufnr, client)
         matching_strategy_list = {'exact'; 'fuzzy'};
         chain_complete_list = {
           default = {
-            {complete_items = {'lsp'}}; {complete_items = {'buffers'}}; {mode = {'<c-p>'}};
+            {complete_items = {'lsp'}};
+            {complete_items = {'buffers'}};
+            {mode = {'<c-p>'}};
             {mode = {'<c-n>'}};
           };
         };

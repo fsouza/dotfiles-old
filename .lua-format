@@ -1,5 +1,7 @@
 align_table_field: true
 column_limit: 99
+chop_down_kv_table: true
+chop_down_table: true
 continuation_indent_width: 2
 double_quote_to_single_quote: true
 extra_sep_at_table_end: true
