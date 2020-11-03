@@ -113,7 +113,9 @@ do
     use({'michaeljsmith/vim-indent-object'})
   end)
   add_sync_commands()
-  vcmd([[doautocmd User PluginReady]])
+  vim.schedule(function()
+    vcmd([[doautocmd User PluginReady]])
+  end)
 end
 
 return M
