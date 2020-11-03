@@ -53,11 +53,8 @@ local attached = function(bufnr, client)
         rhs = 'v:lua.f.complete()';
         opts = {expr = true; silent = true};
       })
-      table.insert(mappings.i, {
-        lhs = '<cr>';
-        rhs = [[pumvisible() ? "\<c-e>\<cr>" : "\<cr>"]];
-        opts = {expr = true};
-      })
+      table.insert(mappings.i,
+                   {lhs = '<cr>'; rhs = 'v:lua.f.cr()'; opts = {expr = true; noremap = true}})
     end
 
     if client.resolved_capabilities.rename ~= nil and client.resolved_capabilities.rename ~= false then
