@@ -9,7 +9,7 @@ local plugins = {
   };
   {repo = 'justinmk/vim-dirvish'};
   {repo = 'justinmk/vim-sneak'; opts = {on = {'<Plug>Sneak_s'; '<Plug>Sneak_;'; '<Plug>Sneak_,'}}};
-  {repo = 'neovim/nvim-lspconfig'; opts = {as = 'nvim-lspconfig'}; eager = true};
+  {repo = 'neovim/nvim-lspconfig'};
   {repo = 'nvim-lua/completion-nvim'};
   {repo = 'sheerun/vim-polyglot'};
   {repo = 'tpope/vim-commentary'; opts = {on = {'<Plug>CommentaryLine'; '<Plug>Commentary'}}};
@@ -128,12 +128,8 @@ do
 
   vfn['plug#begin'](path)
   local plug = vfn['plug#']
-  local load = vfn['plug#load']
   for _, plugin in pairs(plugins) do
     plug(plugin.repo, plugin.opts or empty_dict)
-    if plugin.eager and plugin.opts and plugin.opts.as then
-      load(plugin.opts.as)
-    end
   end
   vfn['plug#end']()
 
