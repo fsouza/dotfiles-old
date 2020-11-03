@@ -1,14 +1,19 @@
 local M = {}
 
+local vcmd = vim.cmd
 local vfn = vim.fn
 
+function M.ensure_fzf()
+  vcmd('packadd fzf.vim')
+end
+
 function M.fzf_here()
-  vfn['plug#load']('fzf.vim')
+  M.ensure_fzf()
   vfn['fzf#vim#files'](vfn.expand('%:p:h'))
 end
 
 function M.rg(input)
-  vfn['plug#load']('fzf.vim')
+  M.ensure_fzf()
   input = input or vfn.input([[rg：]])
   if input ~= '' then
     local cmd =

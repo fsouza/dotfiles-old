@@ -8,7 +8,7 @@ local _ = vfn['fzf#run']
 local M = {}
 
 local fzf_dir = function(directory, cd)
-  vfn['plug#load']('fzf.vim')
+  require('plugin.fuzzy').ensure_fzf()
   if cd then
     api.nvim_set_current_dir(directory)
     vcmd('FzfFiles')

@@ -174,25 +174,37 @@ local install_autoload_plugins = function()
         };
       };
     };
-    {
-      executable = 'curl';
-      opts = {
-        args = {
-          '-sLo';
-          config_dir .. '/autoload/plug.vim';
-          'https://raw.githubusercontent.com/junegunn/vim-plug/HEAD/plug.vim';
+  })
+end
+
+local ensure_packer_nvim = function()
+  local directory = string.format('%s/site/pack/packer/opt/packer.nvim', vfn.stdpath('data'))
+  vfn.mkdir(directory, 'p')
+  if vfn.isdirectory(directory .. '/.git') == 1 then
+    run_cmds({{executable = 'git'; opts = {args = {'-C'; directory; 'pull'}}}})
+  else
+    run_cmds({
+      {
+        executable = 'git';
+        opts = {
+          args = {'clone'; '--depth=1'; 'https://github.com/wbthomason/packer.nvim'; directory};
         };
       };
-    };
-  })
+    })
+  end
 end
 
 do
   local autoload_done = false
+  local packer_done = false
   local hererocks_done = false
   vim.schedule(function()
     install_autoload_plugins()
     autoload_done = true
+  end)
+  vim.schedule(function()
+    ensure_packer_nvim()
+    packer_done = true
   end)
   vfn.mkdir(cache_dir, 'p')
   local virtualenv = ensure_virtualenv()
@@ -204,6 +216,6 @@ do
   end)
   setup_langservers()
   vim.wait(20 * minute_ms, function()
-    return autoload_done and hererocks_done
+    return autoload_done and hererocks_done and packer_done
   end, 25)
 end

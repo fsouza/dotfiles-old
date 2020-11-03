@@ -152,7 +152,7 @@ do
   global_vars()
   py3_editor_venv()
 
-  require('vim-plug')
+  require('packed')
   if not os.getenv('NVIM_BOOTSTRAP') then
     schedule(function()
       require('plugin.init')

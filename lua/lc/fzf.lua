@@ -58,7 +58,7 @@ local format_items = function(items)
 end
 
 function M.send(items, prompt)
-  vfn['plug#load']('fzf.vim')
+  require('plugin.fuzzy').ensure_fzf()
   prompt = prompt .. '：'
   local opts = {
     source = format_items(items);
