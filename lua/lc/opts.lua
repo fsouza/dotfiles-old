@@ -34,6 +34,7 @@ local attached = function(bufnr, client)
 
     if client.resolved_capabilities.completion ~= nil and client.resolved_capabilities.completion ~=
       false then
+      vim.cmd('packadd completion-nvim')
       require('completion').on_attach({
         trigger_on_delete = 1;
         auto_change_source = 1;

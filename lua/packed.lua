@@ -56,7 +56,7 @@ do
       };
     });
     use({'neovim/nvim-lspconfig'})
-    use({'nvim-lua/completion-nvim'})
+    use({'nvim-lua/completion-nvim'; opt = true})
     use({'sheerun/vim-polyglot'})
     use({
       'tpope/vim-commentary';
