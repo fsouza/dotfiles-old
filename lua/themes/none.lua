@@ -67,16 +67,9 @@ local setup_lsp_diagnostics = function(ns)
   end
 end
 
-local setup_lsp_code_action_popup = function(ns)
-  nvim_set_hl(ns, 'LspActionsNormal', {fg = colors.black; bg = colors.gray});
-  nvim_set_hl(ns, 'LspActionsCurrent', {link = 'CursorLine'})
-  nvim_set_hl(ns, 'LspActionsLineNr', {})
-end
-
 local language_highlights = function(ns)
   setup_lsp_diagnostics(ns)
   setup_lsp_reference(ns, {bg = colors.light_gray})
-  setup_lsp_code_action_popup(ns)
 end
 
 local custom_groups = function(ns)

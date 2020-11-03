@@ -47,8 +47,7 @@ function M.handle_actions(actions)
   vim.wo.cursorline = true
   vim.wo.number = true
   vim.wo.wrap = false
-  vim.wo.winhl =
-    'Normal:LspActionsNormal,CursorLine:LspActionsCurrent,LineNr:LspActionsLineNr,CursorLineNr:LspActionsCurrent'
+  require('color').setup_popup(win_id, 'fsouza__code_action')
 
   helpers.create_mappings({
     n = {

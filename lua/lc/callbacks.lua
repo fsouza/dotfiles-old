@@ -1,6 +1,7 @@
 local M = {}
 
 local api = vim.api
+local vfn = vim.fn
 local lsp = vim.lsp
 
 local function fzf_symbol_callback(_, _, result, _, bufnr)
@@ -56,13 +57,14 @@ M['textDocument/hover'] = function(_, method, result)
     if vim.tbl_isempty(markdown_lines) then
       return
     end
-    local bufnr, winnr = lsp.util.fancy_floating_markdown(markdown_lines,
+    local bufnr, winid = lsp.util.fancy_floating_markdown(markdown_lines,
                                                           {pad_left = 1; pad_right = 1})
     api.nvim_buf_set_option(bufnr, 'readonly', true)
     api.nvim_buf_set_option(bufnr, 'modifiable', false)
-    api.nvim_win_set_option(winnr, 'relativenumber', false)
-    lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winnr)
-    return bufnr, winnr
+    api.nvim_win_set_option(winid, 'relativenumber', false)
+    lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winid)
+    require('color').setup_popup(winid, 'fsouza__hover')
+    return bufnr, winid
   end)
 end
 
@@ -84,6 +86,16 @@ M['textDocument/codeAction'] = function(_, _, actions)
     return
   end
   require('lc.code_action').handle_actions(actions)
+end
+
+M['textDocument/signatureHelp'] = function(err, method, result)
+  vim.lsp.callbacks[method](err, method, result)
+  for _, window in ipairs(vfn.getwininfo()) do
+    if window.variables[method] then
+      require('color').setup_popup(window.winid, 'fsouza__sighelp')
+      return
+    end
+  end
 end
 
 return M

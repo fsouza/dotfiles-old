@@ -60,7 +60,8 @@ local peek_location_callback = function(_, _, result)
     return
   end
   local loc = ts_range(result[1])
-  lsp_util.preview_location(loc)
+  local _, win_id = lsp_util.preview_location(loc)
+  require('color').setup_popup(win_id, 'fsouza__peek_location')
 end
 
 function M.preview_definition()
