@@ -32,7 +32,7 @@ jobs:
       - name: install deps on mac
         if: matrix.os == 'macos-latest'
         run: |
-          brew install bash shellcheck ninja libyaml luarocks
+          brew install bash shellcheck ninja libyaml luarocks elixir
           luarocks install luacheck
 
       - name: install deps on ubuntu
