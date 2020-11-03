@@ -93,6 +93,12 @@ do
     lsp.ocamllsp.setup(lc_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
 
+  if_executable('mix', function()
+    lsp.elixirls.setup(lc_opts.with_default_opts({
+      cmd = {vfn.stdpath('cache') .. '/langservers/elixir-ls/release/language_server.sh'};
+    }))
+  end)
+
   if_executable('ninja', function()
     lsp.sumneko_lua.setup(lc_opts.with_default_opts(
                             {
