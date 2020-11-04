@@ -1,7 +1,6 @@
 local M = {}
 
 local api = vim.api
-local lsp = require('nvim_lsp')
 
 local attached = function(bufnr, client)
   local helpers = require('lib.nvim_helpers')
@@ -223,7 +222,9 @@ function M.with_default_opts(opts)
   });
 end
 
-M.project_root_pattern = lsp.util.root_pattern('.git')
+M.project_root_pattern = function()
+  return require('nvim_lsp').util.root_pattern('.git')
+end
 
 M.cwd_root_pattern = function()
   return vim.fn.getcwd()

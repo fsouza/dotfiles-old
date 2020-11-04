@@ -33,6 +33,7 @@ do
   end
 
   set_log_level()
+  vcmd([[packadd nvim-lspconfig]])
   local lsp = require('nvim_lsp')
   local vim_node_ls = get_local_cmd('node-lsp')
 
