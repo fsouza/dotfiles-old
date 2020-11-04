@@ -1,5 +1,3 @@
-local parsers = require('nvim-treesitter.parsers')
-
 local wanted_parsers = {
   'bash';
   'c';
@@ -19,6 +17,7 @@ local wanted_parsers = {
 };
 
 local set_folding = function()
+  local parsers = require('nvim-treesitter.parsers')
   local helpers = require('lib.nvim_helpers')
   local file_types = {}
   for i, lang in ipairs(wanted_parsers) do
@@ -44,6 +43,10 @@ local set_folding = function()
 end
 
 do
+  vim.cmd([[
+    packadd nvim-treesitter
+    packadd nvim-treesitter-textobjects
+  ]])
   local configs = require('nvim-treesitter.configs')
   configs.setup({
     highlight = {enable = true};

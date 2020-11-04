@@ -81,8 +81,8 @@ local deps = {
     opt = true;
     keys = {{'x'; 'if'}; {'x'; 'af'}; {'o'; 'if'}; {'o'; 'af'}};
   };
-  {'nvim-treesitter/nvim-treesitter'};
-  {'nvim-treesitter/nvim-treesitter-textobjects'};
+  {'nvim-treesitter/nvim-treesitter'; opt = true};
+  {'nvim-treesitter/nvim-treesitter-textobjects'; opt = true};
   {'nvim-treesitter/playground'; opt = true; cmd = {'TSPlaygroundToggle'}};
   {'romgrk/nvim-treesitter-context'; opt = true; cmd = {'TSContextEnable'}};
   {
