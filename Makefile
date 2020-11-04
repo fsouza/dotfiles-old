@@ -5,7 +5,7 @@ LUACHECK := $(if $(shell command -v luacheck 2>/dev/null), luacheck, $(shell nvi
 
 .PHONY: bootstrap
 bootstrap:
-	env MACOSX_DEPLOYMENT_TARGET=10.15 nvim --headless -E --clean -R +'set rtp+=$(mkfile_dir)' +'luafile scripts/bootstrap.lua' +qa
+	env MACOSX_DEPLOYMENT_TARGET=10.15 nvim --headless -E --clean +'set rtp+=$(mkfile_dir)' +'luafile scripts/bootstrap.lua' +qa
 
 .PHONY: shellcheck
 shellcheck:
