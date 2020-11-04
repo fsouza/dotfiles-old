@@ -45,7 +45,7 @@ if [ -x "$NEOVIM_INSTALL_PREFIX/bin/nvim" ]; then
 	prepend_to_path "$NEOVIM_INSTALL_PREFIX/bin"
 
 	function zvim {
-		nvim +'autocmd User PluginReady FzfFiles'
+		nvim +'autocmd User PluginReady ++once FzfFiles'
 	}
 
 	export EDITOR=nvim
