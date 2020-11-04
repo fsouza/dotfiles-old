@@ -138,6 +138,16 @@ local setup_shortcuts = function()
   end)
 end
 
+local setup_git_messenger = function()
+  helpers.augroup('git-messenger-popup', {
+    {
+      events = {'FileType'};
+      targets = {'gitmessengerpopup'};
+      command = [[lua require('plugin.popup').set_theme_to_gitmessenger_popup()]];
+    };
+  })
+end
+
 do
   local schedule = vim.schedule
   schedule(function()
@@ -155,6 +165,7 @@ do
   schedule(setup_prettierd)
   schedule(setup_lsp)
   schedule(setup_shortcuts)
+  schedule(setup_git_messenger)
   schedule(function()
     require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'; 'htmldjango'})
     trigger_ft()

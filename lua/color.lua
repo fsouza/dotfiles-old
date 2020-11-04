@@ -4,6 +4,8 @@ local colors = require('themes.colors')
 
 local M = {}
 
+-- TODO(fsouza): potentially remove this once nvim_set_hl can be set to
+-- windows?
 function M.setup_popup(winid, ns_name)
   local theme = require('themes.popup')(ns_name)
   api.nvim_set_hl(theme, 'Normal', {fg = colors.black; bg = colors.gray});
