@@ -104,7 +104,7 @@ local deps = {
 
 function M.reload()
   package.loaded['packed'] = nil
-  require('packed').setup(true)
+  require('packed').setup()
   require('packer').sync()
 end
 
@@ -116,14 +116,12 @@ local setup_auto_commands = function()
   })
 end
 
-function M.setup(reloading)
+function M.setup()
   require('packer').startup({deps; config = {compile_on_sync = true}})
   setup_auto_commands()
-  if not reloading then
-    vim.schedule(function()
-      vcmd([[doautocmd User PluginReady]])
-    end)
-  end
+  vim.schedule(function()
+    vcmd([[doautocmd User PluginReady]])
+  end)
 end
 
 return M
