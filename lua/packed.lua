@@ -5,24 +5,6 @@ vcmd('packadd packer.nvim')
 
 local M = {}
 
-local minute_ms = 60000
-
-function M.sync(op, timeout_ms)
-  local a = require('packer.async')
-  local async = a.sync
-  local done = false
-
-  async(function()
-    require('packer')[op]()
-    done = true
-  end)()
-
-  timeout_ms = timeout_ms or (5 * minute_ms)
-  vim.wait(timeout_ms, function()
-    return done
-  end, 50)
-end
-
 function M.reload()
   package.loaded['packed'] = nil
   require('packed')
@@ -141,16 +123,18 @@ local setup_packer = function(use)
   })
 end
 
-do
+function M.setup(reloading)
   require('packer').startup({
     setup_packer;
     config = {compile_on_sync = true; disable_commands = true};
   })
   add_sync_commands()
   setup_auto_commands()
-  vim.schedule(function()
-    vcmd([[doautocmd User PluginReady]])
-  end)
+  if not reloading then
+    vim.schedule(function()
+      vcmd([[doautocmd User PluginReady]])
+    end)
+  end
 end
 
 return M
