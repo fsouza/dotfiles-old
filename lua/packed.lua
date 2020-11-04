@@ -99,6 +99,7 @@ local deps = {
       {'o'; 'aI'};
     };
   };
+  {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'Gdelete'; 'GBrowse'}};
 }
 
 function M.reload()
