@@ -1,4 +1,5 @@
 local vcmd = vim.cmd
+local vfn = vim.fn
 
 vcmd('packadd packer.nvim')
 
@@ -22,10 +23,25 @@ function M.sync(op, timeout_ms)
   end, 50)
 end
 
+function M.reload()
+  package.loaded['packed'] = nil
+  require('packed')
+  require('packer').sync()
+end
+
 local add_sync_commands = function()
   vcmd([[command! -bar PackerInstallSync lua require('packed').sync('install')]])
   vcmd([[command! -bar PackerUpdateSync lua require('packed').sync('update')]])
   vcmd([[command! -bar PackerSyncSync lua require('packed').sync('sync')]])
+end
+
+local setup_auto_commands = function()
+  local helpers = require('lib.nvim_helpers')
+
+  local fpath = vfn.stdpath('config') .. '/lua/packed.lua'
+  helpers.augroup('packer-auto-sync', {
+    {events = {'BufWritePost'}; targets = {fpath}; command = [[lua require('packed').reload()]]};
+  })
 end
 
 local setup_packer = function(use)
@@ -131,6 +147,7 @@ do
     config = {compile_on_sync = true; disable_commands = true};
   })
   add_sync_commands()
+  setup_auto_commands()
   vim.schedule(function()
     vcmd([[doautocmd User PluginReady]])
   end)
