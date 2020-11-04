@@ -15,7 +15,7 @@ indent_size = 4
 indent_style = spaces
 indent_size = 4
 
-[*.{atd,chpl,erb,f90,jsonnet,lua,ml,mli,mll,mly,pony,rb,re,rei,rkt,scala,scm,sls,sml,tf,tfstate,toml,yaml,yml}]
+[*.{atd,chpl,erb,erl,ex,exs,f90,jsonnet,lua,ml,mli,mll,mly,pony,rb,re,rei,rkt,scala,scm,sls,sml,tf,tfstate,toml,yaml,yml}]
 indent_style = spaces
 indent_size = 2
 
