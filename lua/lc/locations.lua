@@ -40,7 +40,7 @@ local ts_range = function(loc)
   local end_pos = loc.range['end']
 
   local parser = vim.treesitter.get_parser(bufnr, lang)
-  local root = parser.tree:root()
+  local root = parser._tree:root()
   local node = root:named_descendant_for_range(start_pos.line, start_pos.character, end_pos.line,
                                                end_pos.character)
 
