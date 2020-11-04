@@ -37,7 +37,7 @@ function bump_vimfiles {
 		cd "${HOME}"/.config/nvim &&
 			git pull &&
 			env NVIM_DEBUG=1 make bootstrap &&
-			nvim -R --headless +'PlugUpdate --sync|qa' +cq
+			nvim --headless +'PackerSyncSync|qa' +cq
 	)
 }
 
