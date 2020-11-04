@@ -178,18 +178,23 @@ local install_autoload_plugins = function()
 end
 
 local ensure_packer_nvim = function()
-  local directory = string.format('%s/site/pack/packer/opt/packer.nvim', vfn.stdpath('data'))
-  vfn.mkdir(directory, 'p')
-  if vfn.isdirectory(directory .. '/.git') == 0 then
+  local site_dir = string.format('%s/site', vfn.stdpath('data'))
+  local packer_dir = string.format('%s/pack/packer/opt/packer.nvim', site_dir)
+  vfn.mkdir(packer_dir, 'p')
+  if vfn.isdirectory(packer_dir .. '/.git') == 0 then
     run_cmds({
       {
         executable = 'git';
         opts = {
-          args = {'clone'; '--depth=1'; 'https://github.com/wbthomason/packer.nvim'; directory};
+          args = {'clone'; '--depth=1'; 'https://github.com/wbthomason/packer.nvim'; packer_dir};
         };
       };
     })
   end
+
+  vim.o.packpath = string.format('%s,%s', site_dir, vim.o.packpath)
+  require('packed').setup()
+  require('packer').install()
 end
 
 do
