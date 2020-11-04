@@ -18,7 +18,11 @@ local should_skip_buffer = function(bufnr)
   if not vim.endswith(prefix, '/') then
     prefix = prefix .. '/'
   end
-  return not vim.startswith(file_path, prefix)
+  local skip = not vim.startswith(file_path, prefix)
+  if skip then
+    print(string.format([[[DEBUG] skipping %s because it's not in %s]], file_path, prefix))
+  end
+  return skip
 end
 
 local should_skip_server = function(server_name)
