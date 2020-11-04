@@ -11,12 +11,6 @@ function M.reload()
   require('packer').sync()
 end
 
-local add_sync_commands = function()
-  vcmd([[command! -bar PackerInstallSync lua require('packed').sync('install')]])
-  vcmd([[command! -bar PackerUpdateSync lua require('packed').sync('update')]])
-  vcmd([[command! -bar PackerSyncSync lua require('packed').sync('sync')]])
-end
-
 local setup_auto_commands = function()
   local helpers = require('lib.nvim_helpers')
 
@@ -126,9 +120,8 @@ end
 function M.setup(reloading)
   require('packer').startup({
     setup_packer;
-    config = {compile_on_sync = true; disable_commands = true};
+    config = {compile_on_sync = true};
   })
-  add_sync_commands()
   setup_auto_commands()
   if not reloading then
     vim.schedule(function()
