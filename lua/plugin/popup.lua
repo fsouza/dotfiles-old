@@ -4,7 +4,6 @@ local M = {}
 
 function M.set_theme_to_gitmessenger_popup()
   local bufinfo = vfn.getbufinfo()
-  print(vim.inspect(bufinfo))
   for _, buffer in ipairs(bufinfo) do
     if buffer.variables.current_syntax == 'gitmessengerpopup' then
       for _, win_id in ipairs(buffer.windows) do
