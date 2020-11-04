@@ -194,7 +194,7 @@ local ensure_packer_nvim = function()
 
   vim.o.packpath = string.format('%s,%s', site_dir, vim.o.packpath)
   require('packed').setup()
-  require('packer').install()
+  require('packer').sync()
 end
 
 do
