@@ -28,7 +28,7 @@ local deps = {
   };
   {'neovim/nvim-lspconfig'};
   {'nvim-lua/completion-nvim'; opt = true};
-  {'sheerun/vim-polyglot'};
+  {'sheerun/vim-polyglot'; opt = true; ft = {'javascript'; 'lua'; 'python'; 'typescript'}};
   {
     'tpope/vim-commentary';
     opt = true;
