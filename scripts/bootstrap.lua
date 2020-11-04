@@ -180,9 +180,7 @@ end
 local ensure_packer_nvim = function()
   local directory = string.format('%s/site/pack/packer/opt/packer.nvim', vfn.stdpath('data'))
   vfn.mkdir(directory, 'p')
-  if vfn.isdirectory(directory .. '/.git') == 1 then
-    run_cmds({{executable = 'git'; opts = {args = {'-C'; directory; 'pull'}}}})
-  else
+  if vfn.isdirectory(directory .. '/.git') == 0 then
     run_cmds({
       {
         executable = 'git';
