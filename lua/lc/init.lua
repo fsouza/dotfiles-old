@@ -23,8 +23,9 @@ end
 
 do
   disable_unsupported_method()
+  local process = require('environ.process')
   local langservers_bin_path = vfn.stdpath('cache') .. '/langservers/bin'
-  vcmd(string.format([[let $PATH = '%s:'.$PATH]], langservers_bin_path))
+  process.ENV.PATH = string.format('%s:%s', langservers_bin_path, process.ENV.PATH)
 
   local if_executable = function(name, cb)
     if vfn.executable(name) == 1 then

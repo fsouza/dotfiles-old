@@ -19,12 +19,14 @@ local initial_mappings = function()
 end
 
 local bootstrap_env = function()
-  vcmd(string.format([[let $NVIM_CACHE_DIR = '%s']], vfn.stdpath('cache')))
+  local process = require('environ.process')
+  process.ENV.NVIM_CACHE_DIR = vfn.stdpath('cache')
 end
 
 local py3_editor_venv = function()
+  local process = require('environ.process')
   local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
-  vcmd(string.format([[let $PATH = '%s:'.$PATH]], vim_venv_bin))
+  process.ENV.PATH = string.format('%s:%s', vim_venv_bin, process.ENV.PATH)
 end
 
 local hererocks = function()
@@ -36,8 +38,8 @@ local hererocks = function()
   package.path = package.path .. ';' .. share_path .. '/?.lua' .. ';' .. share_path ..
                    '/?/init.lua'
   package.cpath = package.cpath .. ';' .. lib_path .. '/?.so'
-
-  vcmd(string.format([[let $PATH = '%s:'.$PATH]], bin_path))
+  local process = require('environ.process')
+  process.ENV.PATH = string.format('%s:%s', bin_path, process.ENV.PATH)
 end
 
 local global_vars = function()
@@ -138,9 +140,9 @@ end
 do
   local schedule = vim.schedule
   initial_mappings()
+  hererocks()
   bootstrap_env()
 
-  schedule(hererocks)
   schedule(function()
     global_options()
     global_mappings()

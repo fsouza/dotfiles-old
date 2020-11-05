@@ -1,16 +1,16 @@
 local M = {}
 
 local vfn = vim.fn
-local vcmd = vim.cmd
 
 local get_root_patterns = function(patterns)
   return vim.tbl_flatten({'.git'; patterns or {}})
 end
 
 local setup_blackd_logs_dir = function(base_dir)
+  local process = require('environ.process')
   local logs_dir = base_dir .. '/blackd-logs'
   vfn.mkdir(logs_dir, 'p')
-  vcmd(string.format([[let $BLACKD_LOGS_DIR = '%s']], logs_dir))
+  process.ENV.BLACKD_LOGS_DIR = logs_dir
 end
 
 local get_python_tool = function(bin_name)
