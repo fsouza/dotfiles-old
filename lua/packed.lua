@@ -75,11 +75,12 @@ local deps = {
   };
   {'rhysd/git-messenger.vim'; opt = true; cmd = {'GitMessenger'}; keys = {'<leader>gm'}};
   {'norcalli/nvim-colorizer.lua'};
-  {'kana/vim-textobj-user'};
+  {'kana/vim-textobj-user'; opt = true};
   {
     'thinca/vim-textobj-between';
     opt = true;
     keys = {{'x'; 'if'}; {'x'; 'af'}; {'o'; 'if'}; {'o'; 'af'}};
+    setup = [[vim.cmd('packadd vim-textobj-user')]];
   };
   {'nvim-treesitter/nvim-treesitter'; opt = true};
   {'nvim-treesitter/nvim-treesitter-textobjects'; opt = true};
@@ -99,7 +100,7 @@ local deps = {
       {'o'; 'aI'};
     };
   };
-  {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'Gdelete'; 'GBrowse'}};
+  {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
 }
 
 function M.reload()
