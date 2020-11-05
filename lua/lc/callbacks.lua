@@ -63,7 +63,7 @@ M['textDocument/hover'] = function(_, method, result)
     api.nvim_buf_set_option(bufnr, 'modifiable', false)
     api.nvim_win_set_option(winid, 'relativenumber', false)
     lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winid)
-    require('color').setup_popup(winid, 'fsouza__hover')
+    require('color').set_popup_winid(winid)
     return bufnr, winid
   end)
 end
@@ -92,7 +92,7 @@ M['textDocument/signatureHelp'] = function(err, method, result)
   vim.lsp.callbacks[method](err, method, result)
   for _, window in ipairs(vfn.getwininfo()) do
     if window.variables[method] then
-      require('color').setup_popup(window.winid, 'fsouza__sighelp')
+      require('color').set_popup_winid(window.winid)
       return
     end
   end
