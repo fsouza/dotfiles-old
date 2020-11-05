@@ -224,6 +224,15 @@ local add_linters_and_formatters = function(init_options, ft, linters, formatter
   init_options.formatFiletypes[ft] = ft_formatters
 end
 
+local filter_empty = function(t)
+  for k, v in pairs(t) do
+    if vim.tbl_isempty(v) then
+      t[k] = nil
+    end
+  end
+  return t
+end
+
 local get_init_options = function()
   local init_options = {}
 
@@ -238,7 +247,9 @@ local get_init_options = function()
 
   local lua_linters, lua_formatters = get_lua_linters_and_formatters()
   add_linters_and_formatters(init_options, 'lua', lua_linters, lua_formatters)
-  return init_options
+  init_options.filetypes = filter_empty(init_options.filetypes)
+  init_options.formatFiletypes = filter_empty(init_options.formatFiletypes)
+  return filter_empty(init_options)
 end
 
 function M.gen_config()
