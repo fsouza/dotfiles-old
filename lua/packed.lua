@@ -6,10 +6,13 @@ vcmd('packadd packer.nvim')
 local M = {}
 
 local deps = {
+  {'justinmk/vim-dirvish'};
+  {'norcalli/nvim-colorizer.lua'};
+
   {'wbthomason/packer.nvim'; opt = true};
+  {'tpope/vim-repeat'; opt = true};
   {'godlygeek/tabular'; opt = true; cmd = {'Tabularize'}};
   {'junegunn/fzf.vim'; opt = true; cmd = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
-  {'justinmk/vim-dirvish'};
   {
     'justinmk/vim-sneak';
     opt = true;
@@ -25,6 +28,7 @@ local deps = {
       {'o'; ';'};
       {'o'; ','};
     };
+    setup = [[vim.cmd('packadd vim-repeat')]];
   };
   {'neovim/nvim-lspconfig'; opt = true};
   {'nvim-lua/completion-nvim'; opt = true};
@@ -34,7 +38,6 @@ local deps = {
     opt = true;
     keys = {{'n'; 'gcc'}; {'x'; 'gc'}; {'o'; 'gc'}; {'n'; 'gc'}};
   };
-  {'tpope/vim-repeat'};
   {
     'tpope/vim-surround';
     opt = true;
@@ -50,6 +53,7 @@ local deps = {
       {'x'; 'S'};
       {'x'; 'gS'};
     };
+    setup = [[vim.cmd('packadd vim-repeat')]];
   };
   {
     'mattn/emmet-vim';
@@ -74,7 +78,6 @@ local deps = {
     cmd = {'Emmet'; 'EmmetInstall'};
   };
   {'rhysd/git-messenger.vim'; opt = true; cmd = {'GitMessenger'}; keys = {'<leader>gm'}};
-  {'norcalli/nvim-colorizer.lua'};
   {'kana/vim-textobj-user'; opt = true};
   {
     'thinca/vim-textobj-between';
