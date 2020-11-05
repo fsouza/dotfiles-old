@@ -66,6 +66,17 @@ local get_autopep8 = function()
   return {command = get_python_tool('autopep8'); args = {'-'}; rootPatterns = get_root_patterns()}
 end
 
+local get_buildifier = function()
+  if vfn.executable('buildifier') == 1 then
+    return {
+      command = 'buildifier';
+      args = {'--lint=fix'; '--warnings=all'; '-'};
+      rootPatterns = get_root_patterns();
+    }
+  end
+  return {}
+end
+
 local get_dune = function()
   return {command = 'dune'; args = {'format-dune-file'}; rootPatterns = get_root_patterns()}
 end
@@ -223,6 +234,7 @@ local get_init_options = function()
   add_linters_and_formatters(init_options, 'sh', {shellcheck = get_shellcheck()},
                              {shfmt = get_shfmt()})
   add_linters_and_formatters(init_options, 'dune', {}, {dune = get_dune()})
+  add_linters_and_formatters(init_options, 'bzl', {}, {buildifier = get_buildifier()})
 
   local lua_linters, lua_formatters = get_lua_linters_and_formatters()
   add_linters_and_formatters(init_options, 'lua', lua_linters, lua_formatters)
