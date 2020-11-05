@@ -25,17 +25,39 @@ function M.handle_selection(win_id)
   end
 end
 
+local max = function(x, y)
+  if x > y then
+    return x
+  end
+  return y
+end
+
+local min = function(x, y)
+  if x < y then
+    return x
+  end
+  return y
+end
+
 function M.handle_actions(actions)
   local lines = {}
   M.actions = actions
+  local longest = 0
   for _, action in ipairs(actions) do
     table.insert(lines, action.title)
+    if #action.title > longest then
+      longest = #action.title
+    end
   end
+  longest = longest * 2
+  local min_width = 50
+  local max_width = 3 * min_width
+  local width = min(longest, min_width)
   local bufnr = api.nvim_create_buf(false, true)
   api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
   local win_opts = {
     relative = 'cursor';
-    width = 50;
+    width = max(width, max_width);
     height = #lines;
     col = 0;
     row = 1;
