@@ -121,7 +121,8 @@ local setup_auto_commands = function()
 end
 
 function M.setup()
-  require('packer').startup({deps; config = {compile_on_sync = true}})
+  local compile_path = vfn.stdpath('data') .. '/site/plugin/packer_compiled.vim'
+  require('packer').startup({deps; config = {compile_on_sync = true; compile_path = compile_path}})
   setup_auto_commands()
   vim.schedule(function()
     vcmd([[doautocmd User PluginReady]])

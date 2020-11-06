@@ -6,6 +6,7 @@ local minute_ms = 60 * second_ms
 
 local config_dir = vfn.stdpath('config')
 local cache_dir = vfn.stdpath('cache')
+local site_dir = string.format('%s/site', vfn.stdpath('data'))
 
 local pip_packages = {'pip'; 'pip-tools'; 'git+https://github.com/luarocks/hererocks.git'}
 
@@ -162,14 +163,14 @@ local setup_langservers = function()
 end
 
 local install_autoload_plugins = function()
-  vfn.mkdir(config_dir .. '/autoload', 'p')
+  vfn.mkdir(site_dir .. '/autoload', 'p')
   run_cmds({
     {
       executable = 'curl';
       opts = {
         args = {
           '-sLo';
-          config_dir .. '/autoload/fzf.vim';
+          site_dir .. '/autoload/fzf.vim';
           'https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim';
         };
       };
@@ -178,7 +179,6 @@ local install_autoload_plugins = function()
 end
 
 local ensure_packer_nvim = function()
-  local site_dir = string.format('%s/site', vfn.stdpath('data'))
   local packer_dir = string.format('%s/pack/packer/opt/packer.nvim', site_dir)
   vfn.mkdir(packer_dir, 'p')
   if vfn.isdirectory(packer_dir .. '/.git') == 0 then
