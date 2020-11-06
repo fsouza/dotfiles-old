@@ -32,8 +32,10 @@ local setup_qf_mappings = function()
   helpers.create_mappings({
     n = {
       {lhs = '<cr>'; rhs = helpers.cmd_map('cc')};
-      {lhs = '<c-j>'; rhs = helpers.cmd_map('cnext')};
-      {lhs = '<c-k>'; rhs = helpers.cmd_map('cprevious')};
+      {lhs = '<c-n>'; rhs = helpers.cmd_map('cnext')};
+      {lhs = '<c-p>'; rhs = helpers.cmd_map('cprevious')};
+      {lhs = '<down>'; rhs = helpers.cmd_map('cnext')};
+      {lhs = '<up>'; rhs = helpers.cmd_map('cprevious')};
     };
   })
 end
