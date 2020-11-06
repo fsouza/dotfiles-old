@@ -67,12 +67,10 @@ local get_autopep8 = function()
 end
 
 local get_buildifier = function()
+  local nvim_config_path = vfn.stdpath('config')
+  local bin = nvim_config_path .. '/langservers/bin/buildifierw'
   if vfn.executable('buildifier') == 1 then
-    return {
-      command = 'buildifier';
-      args = {'--lint=fix'; '--warnings=all'; '-'};
-      rootPatterns = get_root_patterns();
-    }
+    return {command = bin; args = {'%filepath'}; rootPatterns = get_root_patterns()}
   end
   return {}
 end

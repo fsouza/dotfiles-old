@@ -1,0 +1,21 @@
+#!/bin/bash -e
+
+file_name=$(basename "${1}")
+base_name=${file_name%.*}
+
+function get_type() {
+	case ${1} in
+	BUILD)
+		echo "build"
+		;;
+	WORKSPACE)
+		echo "workspace"
+		;;
+	*)
+		echo "default"
+		;;
+	esac
+}
+
+type=$(get_type "${base_name}")
+exec buildifier --lint=fix --warnings=all --type="${type}"
