@@ -9,7 +9,7 @@ local cache_dir = vfn.stdpath('cache')
 
 local pip_packages = {'pip'; 'pip-tools'; 'git+https://github.com/luarocks/hererocks.git'}
 
-local rocks = {'lyaml'; 'luacheck'; 'environ'}
+local rocks = {'lyaml'; 'luacheck'; 'environ'; 'fun'}
 
 local debug = function(msg)
   if os.getenv('NVIM_DEBUG') then
