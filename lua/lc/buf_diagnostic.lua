@@ -1,12 +1,12 @@
 local fun = require('fun')
+local highlight = require('vim.highlight')
+
+local M = {}
 
 local api = vim.api
 local vfn = vim.fn
 local util = vim.lsp.util
 local protocol = vim.lsp.protocol
-local highlight = require('vim.highlight')
-
-local M = {}
 
 local diagnostics_by_buf = {}
 
@@ -44,11 +44,11 @@ local save_all_positions = function(bufnr, client_id, diagnostics)
   end
   diagnostics_by_buf[bufnr][client_id] = diagnostics
 
-  util.buf_diagnostics_save_positions(bufnr,
-                                      fun.iter(diagnostics_by_buf[bufnr]):map(fun.iter):foldl(
-                                        function(acc, item)
+  local buf_diagnostics = fun.iter(diagnostics_by_buf[bufnr]):map(fun.iter):foldl(
+                            function(acc, item)
       return acc:chain(item)
-    end, fun.iter({})):totable())
+    end, fun.iter({}))
+  util.buf_diagnostics_save_positions(bufnr, buf_diagnostics:totable())
 end
 
 local buf_clear_diagnostics = function(bufnr, client_id)
@@ -81,18 +81,20 @@ local buf_diagnostics_virtual_text = function(bufnr, client_id, diagnostics)
   end
   local buffer_line_diagnostics = util.diagnostics_group_by_line(diagnostics)
 
-  for line, line_diags in pairs(buffer_line_diagnostics) do
-    local virt_texts = {}
-    for _ = 1, #line_diags - 1 do
-      table.insert(virt_texts, {'■'; 'LspDiagnostics'})
-    end
+  local helpers = require('lib.fun_helpers')
+  helpers.tbl_kvs(buffer_line_diagnostics):each(function(kv)
+    local line, line_diags = kv[1], kv[2]
+    local virt_texts = helpers.range(#line_diags - 1):map(
+                         function()
+        return {'■'; 'LspDiagnostics'}
+      end):totable()
     local last = line_diags[#line_diags]
     table.insert(virt_texts, {
       string.format('■ [%s] %s', last.source, last.message:gsub('\r', ''):gsub('\n', '  '));
       'LspDiagnostics';
     })
     api.nvim_buf_set_virtual_text(bufnr, diagnostic_ns(client_id), line, virt_texts, {})
-  end
+  end)
 end
 
 local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
