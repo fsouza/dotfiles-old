@@ -74,13 +74,6 @@ function M.split_str(s, sep)
   end)
 end
 
-function M.partial(fn, ...)
-  local curried = {...}
-  return function(...)
-    return fn(unpack(vim.tbl_flatten({curried; {...}})))
-  end
-end
-
 M.empty = fun.iter({})
 
 -- flattens an iter of iters into a single iter.
