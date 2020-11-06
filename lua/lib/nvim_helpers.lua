@@ -1,9 +1,11 @@
-local M = {}
+local fun = require('lib.fun_wrapper')
 
 local api = vim.api
 local nvim_buf_set_keymap = api.nvim_buf_set_keymap
 local vcmd = vim.cmd
 local vfn = vim.fn
+
+local M = {}
 
 function M.cmd_map(cmd)
   return string.format('<cmd>%s<cr>', cmd)
@@ -17,11 +19,11 @@ function M.create_mappings(mappings, bufnr)
     end
   end
 
-  for mode, rules in pairs(mappings) do
-    for _, m in ipairs(rules) do
+  fun.iter(mappings):each(function(mode, rules)
+    fun.iter(rules):each(function(m)
       fn(mode, m.lhs, m.rhs, m.opts or {})
-    end
-  end
+    end)
+  end)
 end
 
 function M.exec_cmds(cmd_list)
@@ -31,10 +33,10 @@ end
 function M.augroup(name, commands)
   vcmd('augroup ' .. name)
   vcmd('autocmd!')
-  for _, c in ipairs(commands) do
+  fun.iter(commands):each(function(c)
     vcmd(string.format('autocmd %s %s %s', table.concat(c.events, ','),
                        table.concat(c.targets, ','), c.command))
-  end
+  end)
   vcmd('augroup END')
 end
 

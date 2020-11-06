@@ -3,8 +3,6 @@ local nvim_set_keymap = api.nvim_set_keymap
 local vcmd = vim.cmd
 local vfn = vim.fn
 
-local helpers = require('lib.nvim_helpers')
-
 local initial_mappings = function()
   -- Disable ex mode. I'm not that smart.
   nvim_set_keymap('n', 'Q', '', {})
@@ -90,6 +88,7 @@ local rnu = function()
 end
 
 local folding = function()
+  local helpers = require('lib.nvim_helpers')
   local fold_method = 'indent'
   vim.o.foldlevelstart = 99
   vim.wo.foldmethod = fold_method
@@ -101,6 +100,7 @@ local folding = function()
 end
 
 local global_mappings = function()
+  local helpers = require('lib.nvim_helpers')
   local rl_bindings = {
     {lhs = '<c-a>'; rhs = '<home>'; opts = {noremap = true}};
     {lhs = '<c-e>'; rhs = '<end>'; opts = {noremap = true}};
@@ -131,9 +131,10 @@ local global_mappings = function()
   }
 
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'}
-  require('fun').each(function(key)
-    table.insert(maps.n, {lhs = '<leader>' .. key; rhs = helpers.cmd_map('wincmd ' .. key)})
-  end, win_mov_keys)
+  require('lib.fun_wrapper').iter(win_mov_keys):each(
+    function(key)
+      table.insert(maps.n, {lhs = '<leader>' .. key; rhs = helpers.cmd_map('wincmd ' .. key)})
+    end)
   helpers.create_mappings(maps)
 end
 

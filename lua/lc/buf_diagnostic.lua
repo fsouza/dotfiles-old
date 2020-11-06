@@ -1,6 +1,5 @@
-local fun = require('fun')
 local highlight = require('vim.highlight')
-local fun_helpers = require('lib.fun_helpers')
+local fun = require('lib.fun_wrapper')
 
 local M = {}
 
@@ -52,10 +51,7 @@ local save_all_positions = function(bufnr, client_id, diagnostics)
   end
   diagnostics_by_buf[bufnr][client_id] = diagnostics
 
-  local buf_diagnostics = fun.iter(diagnostics_by_buf[bufnr]):foldl(
-                            function(acc, item)
-      return acc:chain(item)
-    end, fun.iter({}))
+  local buf_diagnostics = fun.flatten(fun.iter(diagnostics_by_buf[bufnr]))
   util.buf_diagnostics_save_positions(bufnr, buf_diagnostics:totable())
 end
 
@@ -85,20 +81,19 @@ end
 
 local buf_diagnostics_virtual_text = function(bufnr, client_id, diagnostics)
   local buffer_line_diagnostics = util.diagnostics_group_by_line(diagnostics:totable())
-  fun_helpers.tbl_kvs(buffer_line_diagnostics):each(
-    function(kv)
-      local line, line_diags = kv[1], kv[2]
-      local virt_texts = fun.iter(line_diags):drop_n(1):map(
-                           function()
-          return {'■'; 'LspDiagnostics'}
-        end):totable()
-      local last = line_diags[#line_diags]
-      table.insert(virt_texts, {
-        string.format('■ [%s] %s', last.source, last.message:gsub('\r', ''):gsub('\n', '  '));
-        'LspDiagnostics';
-      })
-      api.nvim_buf_set_virtual_text(bufnr, diagnostic_ns(client_id), line, virt_texts, {})
-    end)
+  fun.tbl_kvs(buffer_line_diagnostics):each(function(kv)
+    local line, line_diags = kv[1], kv[2]
+    local virt_texts = fun.iter(line_diags):drop_n(1):map(
+                         function()
+        return {'■'; 'LspDiagnostics'}
+      end):totable()
+    local last = line_diags[#line_diags]
+    table.insert(virt_texts, {
+      string.format('■ [%s] %s', last.source, last.message:gsub('\r', ''):gsub('\n', '  '));
+      'LspDiagnostics';
+    })
+    api.nvim_buf_set_virtual_text(bufnr, diagnostic_ns(client_id), line, virt_texts, {})
+  end)
 end
 
 local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
@@ -116,8 +111,8 @@ local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
 end
 
 function M.buf_clear_diagnostics()
-  local d_ns = fun_helpers.tbl_values(diagnostic_namespaces)
-  local s_ns = fun_helpers.tbl_values(sign_namespaces)
+  local d_ns = fun.tbl_values(diagnostic_namespaces)
+  local s_ns = fun.tbl_values(sign_namespaces)
   fun.iter(vfn.getbufinfo()):each(function(buffer)
     local bufnr = buffer.bufnr
     d_ns:each(function(ns)
@@ -139,7 +134,7 @@ local handle_publish = function(bufnr, client_id, result)
       if diagnostic.severity == nil then
         diagnostic.severity = protocol.DiagnosticSeverity.Error
       end
-      fun_helpers.tbl_values(sign_namespaces)
+      fun.tbl_values(sign_namespaces)
       return diagnostic
     end)
 

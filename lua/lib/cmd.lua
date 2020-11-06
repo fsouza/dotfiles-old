@@ -1,3 +1,5 @@
+local fun = require('lib.fun_wrapper')
+
 local M = {}
 
 local loop = vim.loop
@@ -9,11 +11,11 @@ local make_debug = function(prefix, debug_fn)
   end
 
   return function(data)
-    for _, line in ipairs(vim.split(data, '\n')) do
+    fun.split_str(data, '\n'):each(function(line)
       if line ~= '' then
         debug_fn(string.format('%s: %s', prefix, line))
       end
-    end
+    end)
   end
 end
 

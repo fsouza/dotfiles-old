@@ -1,3 +1,5 @@
+local fun = require('lib.fun_wrapper')
+
 local api = vim.api
 local vfn = vim.fn
 local loop = vim.loop
@@ -79,17 +81,14 @@ function M.format(bufnr, cb, is_retry)
     end
 
     helpers.rewrite_wrap(function()
-      local write = false
-      for i, line in ipairs(new_lines) do
-        if line ~= lines[i] then
-          write = true
-          break
-        end
-      end
+      local write = fun.iter(new_lines):enumerate():any(
+                      function(i, line)
+          return line ~= lines[i]
+        end)
+      print(write)
       if write then
         api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
       end
-
       if cb ~= nil then
         cb()
       end

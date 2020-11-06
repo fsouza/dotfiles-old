@@ -1,4 +1,4 @@
-local fun = require('fun')
+local fun = require('lib.fun_wrapper')
 
 local vfn = vim.fn
 local vcmd = vim.cmd
@@ -24,8 +24,7 @@ local set_enabled = function(v)
 end
 
 local parse_output = function(data)
-  local lines = vim.split(data, '\n')
-  return fun.iter(lines):map(function(line)
+  return fun.split_str(data, '\n'):map(function(line)
     return vim.split(line, '=')
   end):filter(function(parts)
     return #parts == 2
@@ -62,46 +61,52 @@ local handle_whitespaces = function(bufnr, v)
 end
 
 local set_opts = function(bufnr, opts)
-  local vim_opts = {}
-  opts:each(function(k, v)
+  local vim_opts = opts:map(function(k, v)
     if k == 'charset' then
-      vim_opts.fileencoding, vim_opts.bomb = get_vim_fenc(v)
+      local fenc, bomb = get_vim_fenc(v)
+      return {{'fileencoding'; fenc}; {'bomb'; bomb}}
     end
 
     if k == 'end_of_line' then
-      vim_opts.fileformat = get_vim_fileformat(v)
+      return {{'fileformat'; get_vim_fileformat(v)}}
     end
 
     if k == 'indent_style' then
-      vim_opts.expandtab = v == 'spaces' or v == 'space'
+      return {{'expandtab'; v == 'spaces' or v == 'space'}}
     end
 
     if k == 'insert_final_line' or k == 'insert_final_newline' then
-      vim_opts.fixendofline = v == 'true'
+      return {{'fixendofline'; v == 'true'}}
     end
 
     if k == 'indent_size' then
+      -- indent_size can be set to 'tab', in which case we don't want to do
+      -- anything.
       local indent_size = tonumber(v)
-      vim_opts.shiftwidth = indent_size
-      vim_opts.softtabstop = indent_size
+      if indent_size then
+        return {{'shiftwidth'; indent_size}; {'softtabstop'; indent_size}}
+      end
     end
 
     if k == 'tab_width' then
-      vim_opts.tabstop = tonumber(v)
+      return {{'tabstop'; tonumber(v)}}
     end
 
+    -- side-effect alert :)
     if k == 'trim_trailing_whitespace' then
       vim.schedule(function()
         handle_whitespaces(bufnr, v)
       end)
     end
-  end)
+
+    return {}
+  end):filter(fun.negate(vim.tbl_isempty)):map(fun.iter)
 
   vim.schedule(function()
     if nvim_buf_get_option(bufnr, 'modifiable') then
-      for k, v in pairs(vim_opts) do
-        nvim_buf_set_option(bufnr, k, v)
-      end
+      fun.flatten(vim_opts):each(function(opt)
+        nvim_buf_set_option(bufnr, opt[1], opt[2])
+      end)
     end
   end)
 end

@@ -1,4 +1,4 @@
-local fun = require('fun')
+local fun = require('lib.fun_wrapper')
 
 local api = vim.api
 local vfn = vim.fn

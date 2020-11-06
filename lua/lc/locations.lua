@@ -1,3 +1,5 @@
+local fun = require('lib.fun_wrapper')
+
 local M = {}
 
 local lsp = vim.lsp
@@ -8,15 +10,11 @@ local should_use_ts = function(node)
   if node == nil then
     return false
   end
-
   local node_type = node:type()
-  local node_types = {'function_declaration'; 'method_declaration'; 'type_spec'}
-  for _, t in pairs(node_types) do
-    if node_type == t then
-      return true
-    end
-  end
-  return false
+  local supported_types = fun.iter({'function_declaration'; 'method_declaration'; 'type_spec'})
+  return supported_types:any(function(t)
+    return node_type == t
+  end)
 end
 
 local ts_range = function(loc)

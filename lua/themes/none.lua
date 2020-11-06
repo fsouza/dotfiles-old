@@ -1,4 +1,4 @@
-local fun = require('fun')
+local fun = require('lib.fun_wrapper')
 local api = vim.api
 local nvim_set_hl = api.nvim_set_hl
 
