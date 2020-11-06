@@ -33,16 +33,8 @@ local make_iter = function(fn)
   end
 end
 
-local zero_range = function(n)
-  if n > 0 then
-    return fun.range(n)
-  end
-  return fun.iter({})
-end
-
 return {
   tbl_keys = make_iter(tbl_keys);
   tbl_values = make_iter(tbl_values);
   tbl_kvs = make_iter(tbl_kvs);
-  range = zero_range;
 }
