@@ -1,3 +1,4 @@
+local fun = require('fun')
 local M = {}
 
 local api = vim.api
@@ -90,12 +91,11 @@ end
 
 M['textDocument/signatureHelp'] = function(err, method, result)
   vim.lsp.callbacks[method](err, method, result)
-  for _, window in ipairs(vfn.getwininfo()) do
-    if window.variables[method] then
-      require('color').set_popup_winid(window.winid)
-      return
-    end
-  end
+  fun.iter(vfn.getwininfo()):filter(function(window)
+    return window.variables[method]
+  end):take_n(1):each(function(window)
+    require('color').set_popup_winid(window.winid)
+  end)
 end
 
 return M

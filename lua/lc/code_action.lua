@@ -1,3 +1,5 @@
+local fun = require('fun')
+
 local api = vim.api
 local vfn = vim.fn
 local buf = require('vim.lsp.buf')
@@ -40,24 +42,21 @@ local min = function(x, y)
 end
 
 function M.handle_actions(actions)
-  local lines = {}
   M.actions = actions
-  local longest = 0
-  for _, action in ipairs(actions) do
-    table.insert(lines, action.title)
-    if #action.title > longest then
-      longest = #action.title
-    end
-  end
-  longest = longest * 2
+  local lines_iter = fun.iter(actions):map(function(action)
+    return action.title
+  end)
+  local width = lines_iter:map(function(line)
+    return #line
+  end):max() * 2
   local min_width = 50
   local max_width = 3 * min_width
-  local width = min(longest, min_width)
+  local lines = lines_iter:totable()
   local bufnr = api.nvim_create_buf(false, true)
   api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
   local win_opts = {
     relative = 'cursor';
-    width = max(width, max_width);
+    width = max(min(width, max_width), min_width);
     height = #lines;
     col = 0;
     row = 1;
@@ -69,7 +68,7 @@ function M.handle_actions(actions)
   vim.wo.cursorline = true
   vim.wo.number = true
   vim.wo.wrap = false
-  require('color').set_popup_winid(win_id, 'fsouza__code_action')
+  require('color').set_popup_winid(win_id)
 
   helpers.create_mappings({
     n = {

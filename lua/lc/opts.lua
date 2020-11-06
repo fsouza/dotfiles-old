@@ -1,3 +1,5 @@
+local fun = require('fun')
+
 local M = {}
 
 local api = vim.api
@@ -199,11 +201,9 @@ end
 
 local on_attach = function(client, bufnr)
   local all_clients = vim.lsp.get_active_clients()
-  for _, c in pairs(all_clients) do
-    if c.name == client.name then
-      client = c
-    end
-  end
+  client = fun.iter(all_clients):filter(function(c)
+    return c.id == client.id
+  end):head()
 
   if bufnr == 0 or bufnr == nil then
     bufnr = api.nvim_get_current_buf()

@@ -1,3 +1,5 @@
+local fun = require('fun')
+
 local wanted_parsers = {
   'bash';
   'c';
@@ -19,24 +21,23 @@ local wanted_parsers = {
 local set_folding = function()
   local parsers = require('nvim-treesitter.parsers')
   local helpers = require('lib.nvim_helpers')
-  local file_types = {}
-  for i, lang in ipairs(wanted_parsers) do
-    file_types[i] = parsers.lang_to_ft(lang)
-  end
 
+  local file_types = fun.iter(wanted_parsers):map(parsers.lang_to_ft):map(fun.iter):foldl(
+                       function(acc, item)
+      return acc:chain(item)
+    end, fun.iter({}))
   local foldexpr = 'nvim_treesitter#foldexpr()'
-
-  for _, ft in pairs(file_types) do
+  file_types:each(function(ft)
     if ft == vim.bo.filetype then
       vim.wo.foldmethod = 'expr'
       vim.wo.foldexpr = foldexpr
     end
-  end
+  end)
 
   helpers.augroup('folding_config', {
     {
       events = {'FileType'};
-      targets = vim.tbl_flatten(file_types);
+      targets = file_types:totable();
       command = [[setlocal foldmethod=expr foldexpr=]] .. foldexpr;
     };
   })

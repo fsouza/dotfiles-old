@@ -131,9 +131,9 @@ local global_mappings = function()
   }
 
   local win_mov_keys = {'h'; 'j'; 'k'; 'l'}
-  for _, key in ipairs(win_mov_keys) do
+  require('fun').each(function(key)
     table.insert(maps.n, {lhs = '<leader>' .. key; rhs = helpers.cmd_map('wincmd ' .. key)})
-  end
+  end, win_mov_keys)
   helpers.create_mappings(maps)
 end
 

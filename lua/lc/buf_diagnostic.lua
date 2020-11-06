@@ -1,3 +1,5 @@
+local fun = require('fun')
+
 local api = vim.api
 local vfn = vim.fn
 local util = vim.lsp.util
@@ -42,13 +44,11 @@ local save_all_positions = function(bufnr, client_id, diagnostics)
   end
   diagnostics_by_buf[bufnr][client_id] = diagnostics
 
-  local all_diagnostics = {}
-  for _, diagnostic_list in pairs(diagnostics_by_buf[bufnr]) do
-    for _, d in ipairs(diagnostic_list) do
-      table.insert(all_diagnostics, d)
-    end
-  end
-  util.buf_diagnostics_save_positions(bufnr, all_diagnostics)
+  util.buf_diagnostics_save_positions(bufnr,
+                                      fun.iter(diagnostics_by_buf[bufnr]):map(fun.iter):foldl(
+                                        function(acc, item)
+      return acc:chain(item)
+    end, fun.iter({})):totable())
 end
 
 local buf_clear_diagnostics = function(bufnr, client_id)
@@ -58,7 +58,7 @@ local buf_clear_diagnostics = function(bufnr, client_id)
 end
 
 local buf_diagnostics_underline = function(bufnr, client_id, diagnostics)
-  for _, diagnostic in ipairs(diagnostics) do
+  fun.iter(diagnostics):each(function(diagnostic)
     local start = diagnostic.range['start']
     local finish = diagnostic.range['end']
 
@@ -72,7 +72,7 @@ local buf_diagnostics_underline = function(bufnr, client_id, diagnostics)
     highlight.range(bufnr, diagnostic_ns(client_id),
                     underline_highlight_name .. hlmap[diagnostic.severity],
                     {start.line; start.character}, {finish.line; finish.character})
-  end
+  end)
 end
 
 local buf_diagnostics_virtual_text = function(bufnr, client_id, diagnostics)
@@ -80,6 +80,7 @@ local buf_diagnostics_virtual_text = function(bufnr, client_id, diagnostics)
     return
   end
   local buffer_line_diagnostics = util.diagnostics_group_by_line(diagnostics)
+
   for line, line_diags in pairs(buffer_line_diagnostics) do
     local virt_texts = {}
     for _ = 1, #line_diags - 1 do
@@ -102,10 +103,10 @@ local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
     [protocol.DiagnosticSeverity.Hint] = 'LspDiagnosticsHintSign';
   }
 
-  for _, diagnostic in ipairs(diagnostics) do
+  fun.iter(diagnostics):each(function(diagnostic)
     vim.fn.sign_place(0, sign_ns(client_id), diagnostic_severity_map[diagnostic.severity], bufnr,
                       {lnum = (diagnostic.range.start.line + 1)})
-  end
+  end)
 end
 
 function M.buf_clear_diagnostics()

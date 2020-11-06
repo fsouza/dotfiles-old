@@ -148,9 +148,9 @@ function M.autofmt_and_write(bufnr)
 end
 
 function M.reset()
-  for bufnr, _ in pairs(fmt_clients) do
+  require('fun').iter(fmt_clients):each(function(bufnr)
     helpers.augroup('lc_autofmt_' .. bufnr, {})
-  end
+  end)
   fmt_clients = {}
 end
 

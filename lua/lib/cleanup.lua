@@ -1,3 +1,4 @@
+local fun = require('fun')
 local helpers = require('lib.nvim_helpers')
 
 local cbs = {}
@@ -10,12 +11,12 @@ end
 
 function M.cleanup()
   local finished = 0
-  for _, cb in pairs(cbs) do
+  fun.iter(cbs):each(function(cb)
     vim.schedule(function()
       cb()
       finished = finished + 1
     end)
-  end
+  end)
 
   vim.wait(500, function()
     return finished == #cbs

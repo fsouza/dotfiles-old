@@ -1,3 +1,5 @@
+local fun = require('fun')
+
 local vfn = vim.fn
 local vcmd = vim.cmd
 local api = vim.api
@@ -23,14 +25,13 @@ end
 
 local parse_output = function(data)
   local lines = vim.split(data, '\n')
-  local opts = {}
-  for _, line in ipairs(lines) do
-    local parts = vim.split(line, '=')
-    if #parts == 2 then
-      opts[parts[1]] = parts[2]
-    end
-  end
-  return opts
+  return fun.iter(lines):map(function(line)
+    return vim.split(line, '=')
+  end):filter(function(parts)
+    return #parts == 2
+  end):map(function(parts)
+    return parts[1], parts[2]
+  end)
 end
 
 local get_vim_fenc = function(editorconfig_charset)
@@ -62,7 +63,7 @@ end
 
 local set_opts = function(bufnr, opts)
   local vim_opts = {}
-  for k, v in pairs(opts) do
+  opts:each(function(k, v)
     if k == 'charset' then
       vim_opts.fileencoding, vim_opts.bomb = get_vim_fenc(v)
     end
@@ -94,7 +95,7 @@ local set_opts = function(bufnr, opts)
         handle_whitespaces(bufnr, v)
       end)
     end
-  end
+  end)
 
   vim.schedule(function()
     if nvim_buf_get_option(bufnr, 'modifiable') then

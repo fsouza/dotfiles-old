@@ -1,3 +1,4 @@
+local fun = require('fun')
 local api = vim.api
 local nvim_set_hl = api.nvim_set_hl
 
@@ -29,7 +30,7 @@ local basics = function(ns)
 end
 
 local noners = function(ns)
-  local noners = {
+  local groups = {
     'Boolean';
     'Character';
     'Comment';
@@ -73,34 +74,35 @@ local noners = function(ns)
     'Underlined';
     'htmlBold';
   }
-  for _, group in pairs(noners) do
-    nvim_set_hl(ns, group, {})
-  end
+  fun.iter(groups):each(function(g)
+    nvim_set_hl(ns, g, {})
+  end)
 end
 
 local reversers = function(ns)
-  local reversers = {'MoreMsg'; 'StatusLine'; 'StatusLineNC'; 'Visual'};
-  for _, group in pairs(reversers) do
-    nvim_set_hl(ns, group, {reverse = true})
-  end
+  local groups = {'MoreMsg'; 'StatusLine'; 'StatusLineNC'; 'Visual'};
+  fun.iter(groups):each(function(g)
+    nvim_set_hl(ns, g, {reverse = true})
+  end)
 end
 
 local setup_lsp_reference = function(ns, hl_opts)
-  for _, ref_type in pairs({'Text'; 'Read'; 'Write'}) do
+  fun.iter({'Text'; 'Read'; 'Write'}):each(function(ref_type)
     nvim_set_hl(ns, 'LspReference' .. ref_type, hl_opts)
-  end
+  end)
 end
 
 local setup_lsp_diagnostics = function(ns)
   local diagnostics = {fg = colors.gray}
   local diagnostics_sign = {link = 'SignColumn'}
 
-  for _, level in pairs({''; 'Error'; 'Warning'; 'Information'; 'Hint'}) do
-    local base_group = 'LspDiagnostics' .. level
-    local sign_group = base_group .. 'Sign'
-    nvim_set_hl(ns, base_group, diagnostics)
-    nvim_set_hl(ns, sign_group, diagnostics_sign)
-  end
+  fun.iter({''; 'Error'; 'Warning'; 'Information'; 'Hint'}):each(
+    function(level)
+      local base_group = 'LspDiagnostics' .. level
+      local sign_group = base_group .. 'Sign'
+      nvim_set_hl(ns, base_group, diagnostics)
+      nvim_set_hl(ns, sign_group, diagnostics_sign)
+    end)
 end
 
 local language_highlights = function(ns)
