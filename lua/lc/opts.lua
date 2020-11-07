@@ -200,7 +200,7 @@ end
 local on_attach = function(client, bufnr)
   local all_clients = vim.lsp.get_active_clients()
   for _, c in pairs(all_clients) do
-    if c.name == client.name then
+    if c.id == client.id then
       client = c
     end
   end
