@@ -20,7 +20,9 @@ function M.show_line_diagnostics()
       table.insert(lines, indent .. message_lines[j])
     end
   end
-  return lsp.util.open_floating_preview(lines, 'plaintext')
+  local bufnr, winid = lsp.util.open_floating_preview(lines, 'plaintext')
+  require('color').set_popup_winid(winid)
+  return bufnr, winid
 end
 
 local items_from_diagnostics = function(bufnr, diagnostics)
