@@ -51,7 +51,7 @@ function M.negate(fn)
 end
 
 function M.split(iter, pred)
-  local helper = function()
+  local aux = function()
     return function(_, state)
       if state:is_null() then
         return
@@ -60,7 +60,7 @@ function M.split(iter, pred)
       return new_state:drop_n(1), value
     end, nil, iter
   end
-  return fun.iter(helper())
+  return fun.iter(aux())
 end
 
 -- takes a string and a separatator, and returns a generator of strings
@@ -77,11 +77,16 @@ end
 
 M.empty = fun.iter({})
 
--- flattens an iter of iters into a single iter.
+-- TODO(fsouza): figure out what's up with internal state in fun (or how I'm
+-- fucking this up).
+--
+-- This should be implementable with foldl like below:
+--
+-- function M.flatten(iter)
+--   return iter:foldl(fun.chain, M.empty)
+-- end
 function M.flatten(iter)
-  return iter:foldl(function(curr, next)
-    return curr:chain(next)
-  end, M.empty)
+  return fun.chain(unpack(iter:totable()))
 end
 
 function M.safe_iter(v)

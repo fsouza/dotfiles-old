@@ -206,8 +206,8 @@ local add_linters_and_formatters = function(init_options, ft, linters, formatter
 
   -- fun fact: if I unvert this chaining, it doesn't work. Will write a custom
   -- chain function.
-  init_options.filetypes[ft] = fun.tbl_keys(linters):chain(fun.safe_iter(init_options.filetypes[ft]))
-                                 :totable()
+  init_options.filetypes[ft] = fun.tbl_keys(linters):chain(
+                                 fun.safe_iter(init_options.filetypes[ft])):totable()
   init_options.formatFiletypes[ft] = fun.tbl_keys(formatters):chain(
                                        fun.safe_iter(init_options.formatFiletypes[ft])):totable()
 

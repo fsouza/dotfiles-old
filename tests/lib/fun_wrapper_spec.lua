@@ -104,4 +104,19 @@ describe('fun_wrapper', function()
       assert.are.same({}, iter:totable())
     end)
   end)
+
+  describe('flatten', function()
+    it('combines an iterator of iterators in a single one', function()
+      local iters = fun.iter({
+        fun.iter({1; 2; 3});
+        fun.iter({4; 5; 6; 7});
+        fun.iter({8; 9; 10; 11});
+      })
+      local iter = fun.flatten(iters)
+      local expected = {1; 2; 3; 4; 5; 6; 7; 8; 9; 10; 11}
+
+      assert.are.same(expected, iter:totable())
+    end)
+  end)
+
 end)

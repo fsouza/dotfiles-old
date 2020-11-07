@@ -11,7 +11,8 @@ local should_use_ts = function(node)
     return false
   end
   local node_type = node:type()
-  local supported_types = fun.safe_iter({'function_declaration'; 'method_declaration'; 'type_spec'})
+  local supported_types =
+    fun.safe_iter({'function_declaration'; 'method_declaration'; 'type_spec'})
   return supported_types:any(function(t)
     return node_type == t
   end)
