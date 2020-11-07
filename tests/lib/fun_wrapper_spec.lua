@@ -43,6 +43,14 @@ describe('fun_wrapper', function()
 
       assert.are.same({}, iter:totable())
     end)
+
+    it('keys and values can be chainable', function()
+      local t = {key1 = 'value1'; key2 = 'value2'}
+      local expected = {'key1'; 'key2'; 'value1'; 'value2'}
+      local iter = fun.empty:chain(fun.tbl_keys(t)):chain(fun.tbl_values(t))
+
+      assert.are.same(expected, iter:totable())
+    end)
   end)
 
   describe('negate', function()
@@ -105,7 +113,7 @@ describe('fun_wrapper', function()
     end)
   end)
 
-  describe('flatten', function()
+  describe('#flatten', function()
     it('combines an iterator of iterators in a single one', function()
       local iters = fun.iter({
         fun.iter({1; 2; 3});
