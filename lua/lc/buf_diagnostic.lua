@@ -51,7 +51,7 @@ local save_all_positions = function(bufnr, client_id, diagnostics)
   end
   diagnostics_by_buf[bufnr][client_id] = diagnostics
 
-  local buf_diagnostics = fun.flatten(fun.safe_iter(diagnostics_by_buf[bufnr]))
+  local buf_diagnostics = fun.flatten(fun.tbl_values(diagnostics_by_buf[bufnr]))
   util.buf_diagnostics_save_positions(bufnr, buf_diagnostics:totable())
 end
 
