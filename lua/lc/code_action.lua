@@ -52,12 +52,11 @@ function M.handle_actions(actions)
   longest = longest * 2
   local min_width = 50
   local max_width = 3 * min_width
-  local width = min(longest, min_width)
   local bufnr = api.nvim_create_buf(false, true)
   api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
   local win_opts = {
     relative = 'cursor';
-    width = max(width, max_width);
+    width = min(max(longest, min_width), max_width);
     height = #lines;
     col = 0;
     row = 1;
@@ -69,7 +68,7 @@ function M.handle_actions(actions)
   vim.wo.cursorline = true
   vim.wo.number = true
   vim.wo.wrap = false
-  require('color').set_popup_winid(win_id, 'fsouza__code_action')
+  require('color').set_popup_winid(win_id)
 
   helpers.create_mappings({
     n = {

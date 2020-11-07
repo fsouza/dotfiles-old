@@ -26,6 +26,7 @@ local set_folding = function()
 
   local foldexpr = 'nvim_treesitter#foldexpr()'
 
+  file_types = vim.tbl_flatten(file_types)
   for _, ft in pairs(file_types) do
     if ft == vim.bo.filetype then
       vim.wo.foldmethod = 'expr'
@@ -36,7 +37,7 @@ local set_folding = function()
   helpers.augroup('folding_config', {
     {
       events = {'FileType'};
-      targets = vim.tbl_flatten(file_types);
+      targets = file_types;
       command = [[setlocal foldmethod=expr foldexpr=]] .. foldexpr;
     };
   })
