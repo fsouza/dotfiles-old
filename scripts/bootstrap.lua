@@ -10,7 +10,7 @@ local site_dir = string.format('%s/site', vfn.stdpath('data'))
 
 local pip_packages = {'pip'; 'pip-tools'; 'git+https://github.com/luarocks/hererocks.git'}
 
-local rocks = {'lyaml'; 'luacheck'; 'environ'; 'fun'; 'busted'}
+local rocks = {'lyaml'; 'luacheck'; 'environ'; 'busted'}
 
 local debug = function(msg)
   if os.getenv('NVIM_DEBUG') then

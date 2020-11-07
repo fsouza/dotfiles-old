@@ -1,20 +1,11 @@
-local highlight = require('vim.highlight')
-local fun = require('lib.fun_wrapper')
-
-local M = {}
-
 local api = vim.api
 local vfn = vim.fn
 local util = vim.lsp.util
 local protocol = vim.lsp.protocol
+local highlight = require('vim.highlight')
 
--- table of tables of iterators, indexed by buffer and client_id, respectively.
---
--- Example:
---
--- { [1] = { [5] = <iterator> } }
---
--- This has diagnostics provided by client_id 5 in buffer 1.
+local M = {}
+
 local diagnostics_by_buf = {}
 
 local underline_highlight_name = 'LspDiagnosticsUnderline'
@@ -51,18 +42,23 @@ local save_all_positions = function(bufnr, client_id, diagnostics)
   end
   diagnostics_by_buf[bufnr][client_id] = diagnostics
 
-  local buf_diagnostics = fun.flatten(fun.tbl_values(diagnostics_by_buf[bufnr]))
-  util.buf_diagnostics_save_positions(bufnr, buf_diagnostics:totable())
+  local all_diagnostics = {}
+  for _, diagnostic_list in pairs(diagnostics_by_buf[bufnr]) do
+    for _, d in ipairs(diagnostic_list) do
+      table.insert(all_diagnostics, d)
+    end
+  end
+  util.buf_diagnostics_save_positions(bufnr, all_diagnostics)
 end
 
 local buf_clear_diagnostics = function(bufnr, client_id)
   vim.fn.sign_unplace(sign_ns(client_id), {buffer = bufnr})
   api.nvim_buf_clear_namespace(bufnr, diagnostic_ns(client_id), 0, -1)
-  save_all_positions(bufnr, client_id, fun.safe_iter({}))
+  save_all_positions(bufnr, client_id, {})
 end
 
 local buf_diagnostics_underline = function(bufnr, client_id, diagnostics)
-  diagnostics:each(function(diagnostic)
+  for _, diagnostic in ipairs(diagnostics) do
     local start = diagnostic.range['start']
     local finish = diagnostic.range['end']
 
@@ -76,24 +72,26 @@ local buf_diagnostics_underline = function(bufnr, client_id, diagnostics)
     highlight.range(bufnr, diagnostic_ns(client_id),
                     underline_highlight_name .. hlmap[diagnostic.severity],
                     {start.line; start.character}, {finish.line; finish.character})
-  end)
+  end
 end
 
 local buf_diagnostics_virtual_text = function(bufnr, client_id, diagnostics)
-  local buffer_line_diagnostics = util.diagnostics_group_by_line(diagnostics:totable())
-  fun.tbl_kvs(buffer_line_diagnostics):each(function(kv)
-    local line, line_diags = kv[1], kv[2]
-    local virt_texts = fun.safe_iter(line_diags):drop_n(1):map(
-                         function()
-        return {'■'; 'LspDiagnostics'}
-      end):totable()
+  if not diagnostics then
+    return
+  end
+  local buffer_line_diagnostics = util.diagnostics_group_by_line(diagnostics)
+  for line, line_diags in pairs(buffer_line_diagnostics) do
+    local virt_texts = {}
+    for _ = 1, #line_diags - 1 do
+      table.insert(virt_texts, {'■'; 'LspDiagnostics'})
+    end
     local last = line_diags[#line_diags]
     table.insert(virt_texts, {
       string.format('■ [%s] %s', last.source, last.message:gsub('\r', ''):gsub('\n', '  '));
       'LspDiagnostics';
     })
     api.nvim_buf_set_virtual_text(bufnr, diagnostic_ns(client_id), line, virt_texts, {})
-  end)
+  end
 end
 
 local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
@@ -104,47 +102,43 @@ local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
     [protocol.DiagnosticSeverity.Hint] = 'LspDiagnosticsHintSign';
   }
 
-  diagnostics:each(function(diagnostic)
+  for _, diagnostic in ipairs(diagnostics) do
     vim.fn.sign_place(0, sign_ns(client_id), diagnostic_severity_map[diagnostic.severity], bufnr,
                       {lnum = (diagnostic.range.start.line + 1)})
-  end)
+  end
 end
 
 function M.buf_clear_diagnostics()
-  local d_ns = fun.tbl_values(diagnostic_namespaces)
-  local s_ns = fun.tbl_values(sign_namespaces)
-  fun.safe_iter(vfn.getbufinfo()):each(function(buffer)
+  local all_buffers = vfn.getbufinfo()
+  for _, buffer in ipairs(all_buffers) do
     local bufnr = buffer.bufnr
-    d_ns:each(function(ns)
+    for _, ns in pairs(diagnostic_namespaces) do
       api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
-    end)
-    s_ns:each(function(ns)
+    end
+    for _, ns in pairs(sign_namespaces) do
       vim.fn.sign_unplace(ns, {buffer = bufnr})
-    end)
+    end
     util.buf_diagnostics_save_positions(bufnr, {})
-  end)
+  end
   diagnostic_namespaces = {}
   sign_namespaces = {}
 end
 
 local handle_publish = function(bufnr, client_id, result)
   buf_clear_diagnostics(bufnr, client_id)
-  local diagnostics = fun.safe_iter(result.diagnostics):map(
-                        function(diagnostic)
-      if diagnostic.severity == nil then
-        diagnostic.severity = protocol.DiagnosticSeverity.Error
-      end
-      fun.tbl_values(sign_namespaces)
-      return diagnostic
-    end)
+  for _, diagnostic in ipairs(result.diagnostics) do
+    if diagnostic.severity == nil then
+      diagnostic.severity = protocol.DiagnosticSeverity.Error
+    end
+  end
 
-  save_all_positions(bufnr, client_id, diagnostics)
+  save_all_positions(bufnr, client_id, result.diagnostics)
   if not api.nvim_buf_is_loaded(bufnr) then
     return
   end
-  buf_diagnostics_underline(bufnr, client_id, diagnostics)
-  buf_diagnostics_virtual_text(bufnr, client_id, diagnostics)
-  buf_diagnostics_signs(bufnr, client_id, diagnostics)
+  buf_diagnostics_underline(bufnr, client_id, result.diagnostics)
+  buf_diagnostics_virtual_text(bufnr, client_id, result.diagnostics)
+  buf_diagnostics_signs(bufnr, client_id, result.diagnostics)
   vim.cmd('doautocmd User LspDiagnosticsChanged')
 end
 

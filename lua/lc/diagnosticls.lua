@@ -1,5 +1,3 @@
-local fun = require('lib.fun_wrapper')
-
 local M = {}
 
 local vfn = vim.fn
@@ -127,20 +125,22 @@ local read_precommit_config = function(file_path)
   local f = io.open(file_path, 'r')
   local content = f:read('all*')
   f:close()
-  return fun.safe_iter(lyaml.load(content).repos)
+  return lyaml.load(content)
 end
 
 local blackd_cleanup_if_needed = function(init_options)
-  fun.tbl_values(init_options.formatFiletypes['python']):filter(
-    function(tool)
-      return tool == 'blackd'
-    end):each(function()
-    require('lib.cleanup').register(function()
-      local block = require('lib.cmd').run('pkill', {args = {'-f'; 'blackd'}}, nil, function()
-      end)
-      block(500)
-    end)
-  end)
+  for _, tools in pairs(init_options.formatFiletypes) do
+    for _, tool in pairs(tools) do
+      if tool == 'blackd' then
+        require('lib.cleanup').register(function()
+          local block = require('lib.cmd').run('pkill', {args = {'-f'; 'blackd'}}, nil, function()
+          end)
+          block(500)
+        end)
+        break
+      end
+    end
+  end
 end
 
 local get_python_linters_and_formatters = function()
@@ -165,20 +165,24 @@ local get_python_linters_and_formatters = function()
     ['https://github.com/pre-commit/mirrors-autopep8'] = {autopep8 = get_autopep8};
     ['https://github.com/pre-commit/mirrors-isort'] = {isort = get_isort};
   }
-  local repos = read_precommit_config(pre_commit_config_file_path)
+  local pre_commit_config = read_precommit_config(pre_commit_config_file_path)
   local linters = {}
   local formatters = {}
-  repos:each(function(repo)
-    fun.safe_iter(pc_linters_repo_map[repo.repo]):each(
-      function(k, fn)
+  for _, repo in ipairs(pre_commit_config.repos) do
+    local t = pc_linters_repo_map[repo.repo]
+    if t ~= nil then
+      for k, fn in pairs(t) do
         linters[k] = fn()
-      end)
+      end
+    end
 
-    fun.safe_iter(pc_formatters_repo_map[repo.repo]):each(
-      function(k, fn)
+    t = pc_formatters_repo_map[repo.repo]
+    if t ~= nil then
+      for k, fn in pairs(t) do
         formatters[k] = fn()
-      end)
-  end)
+      end
+    end
+  end
 
   return linters, formatters
 end
@@ -204,19 +208,27 @@ local add_linters_and_formatters = function(init_options, ft, linters, formatter
     init_options.formatFiletypes = {}
   end
 
-  -- fun fact: if I unvert this chaining, it doesn't work. Will write a custom
-  -- chain function.
-  init_options.filetypes[ft] = fun.tbl_keys(linters):chain(
-                                 fun.safe_iter(init_options.filetypes[ft])):totable()
-  init_options.formatFiletypes[ft] = fun.tbl_keys(formatters):chain(
-                                       fun.safe_iter(init_options.formatFiletypes[ft])):totable()
+  local ft_linters = init_options.filetypes[ft] or {}
+  local ft_formatters = init_options.formatFiletypes[ft] or {}
 
-  if vim.tbl_isempty(init_options.filetypes[ft]) then
-    init_options.filetypes[ft] = nil
+  for tool in pairs(linters) do
+    table.insert(ft_linters, tool)
   end
-  if vim.tbl_isempty(init_options.formatFiletypes[ft]) then
-    init_options.formatFiletypes[ft] = nil
+  init_options.filetypes[ft] = ft_linters
+
+  for tool in pairs(formatters) do
+    table.insert(ft_formatters, tool)
   end
+  init_options.formatFiletypes[ft] = ft_formatters
+end
+
+local filter_empty = function(t)
+  for k, v in pairs(t) do
+    if vim.tbl_isempty(v) then
+      t[k] = nil
+    end
+  end
+  return t
 end
 
 local get_init_options = function()
@@ -233,7 +245,9 @@ local get_init_options = function()
 
   local lua_linters, lua_formatters = get_lua_linters_and_formatters()
   add_linters_and_formatters(init_options, 'lua', lua_linters, lua_formatters)
-  return init_options
+  init_options.filetypes = filter_empty(init_options.filetypes)
+  init_options.formatFiletypes = filter_empty(init_options.formatFiletypes)
+  return filter_empty(init_options)
 end
 
 function M.gen_config()
@@ -241,12 +255,13 @@ function M.gen_config()
   setup_blackd_logs_dir(cache_dir)
 
   local init_options = get_init_options()
-  local linter_fts = fun.tbl_keys(init_options.filetypes)
-  local formatter_fts = fun.tbl_keys(init_options.formatFiletypes):filter(
-                          function(ft)
-      return init_options.filetypes[ft] == nil
-    end)
-  return init_options, linter_fts:chain(formatter_fts):totable()
+  local fts = vim.tbl_keys(init_options.filetypes)
+  for ft in pairs(init_options.formatFiletypes) do
+    if init_options.filetypes[ft] == nil then
+      table.insert(fts, ft)
+    end
+  end
+  return init_options, fts
 end
 
 return M

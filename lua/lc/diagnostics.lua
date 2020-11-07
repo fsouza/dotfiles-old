@@ -1,5 +1,3 @@
-local fun = require('lib.fun_wrapper')
-
 local M = {}
 
 local api = vim.api
@@ -9,43 +7,40 @@ local vfn = vim.fn
 
 function M.show_line_diagnostics()
   local indent = '  '
+  local lines = {'Diagnostics:'; ''}
   local line_diagnostics = lsp.util.get_line_diagnostics()
   if vim.tbl_isempty(line_diagnostics) then
     return
   end
 
-  local prefix = fun.safe_iter({'Diagnostics:'; ''})
-  local diagnostic_messages = fun.safe_iter(line_diagnostics):map(
-                                function(diagnostic)
-      local hd, tl = fun.split_str(diagnostic.message, '\n'):span(1)
-      return hd:map(function(line)
-        return string.format('- [%s] %s', diagnostic.source, line)
-      end):chain(tl:map(function(line)
-        return indent .. line
-      end))
-    end)
-  local bufnr, winid = lsp.util.open_floating_preview(
-                         prefix:chain(fun.flatten(diagnostic_messages)):totable(), 'plaintext')
-  require('color').set_popup_winid(winid)
-  return bufnr, winid
+  for _, diagnostic in pairs(line_diagnostics) do
+    local message_lines = vim.split(diagnostic.message, '\n', true)
+    table.insert(lines, string.format('- [%s] %s', diagnostic.source, message_lines[1]))
+    for j = 2, #message_lines do
+      table.insert(lines, indent .. message_lines[j])
+    end
+  end
+  return lsp.util.open_floating_preview(lines, 'plaintext')
 end
 
 local items_from_diagnostics = function(bufnr, diagnostics)
   local fname = vfn.bufname(bufnr)
-  return fun.safe_iter(diagnostics):map(function(diagnostic)
+  local items = {}
+  for _, diagnostic in ipairs(diagnostics) do
     local pos = diagnostic.range.start
-    return {
+    table.insert(items, {
       filename = fname;
       lnum = pos.line + 1;
       col = pos.character + 1;
       text = diagnostic.message;
-    }
-  end)
+    })
+  end
+  return items
 end
 
 local render_diagnostics = function(items)
-  lsp.util.set_qflist(items:totable())
-  if items:is_null() then
+  lsp.util.set_qflist(items)
+  if vim.tbl_isempty(items) then
     vcmd('cclose')
   else
     vcmd('copen')
@@ -66,11 +61,14 @@ function M.list_file_diagnostics()
 end
 
 function M.list_workspace_diagnostics()
-  local items = fun.tbl_kvs(lsp.utils.diagnostics_by_buf):map(
-                  function(kv)
-      return items_from_diagnostics(kv[1], kv[2])
-    end)
-  render_diagnostics(fun.flatten(items))
+  local items_list = {}
+  for bufnr, diagnostics in pairs(lsp.util.diagnostics_by_buf) do
+    local d_items = items_from_diagnostics(bufnr, diagnostics)
+    for _, item in ipairs(d_items) do
+      table.insert(items_list, item)
+    end
+  end
+  render_diagnostics(items_list)
 end
 
 return M

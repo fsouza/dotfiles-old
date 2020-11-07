@@ -1,19 +1,18 @@
-local fun = require('lib.fun_wrapper')
-
 local vfn = vim.fn
 
 local M = {}
 
 function M.set_theme_to_gitmessenger_popup()
-  fun.safe_iter(vfn.getbufinfo()):filter(function(b)
-    return b.variables.current_syntax == 'gitmessengerpopup'
-  end):filter(function(b)
-    return #b.windows > 0
-  end):map(function(b)
-    return b.windows[1]
-  end):take_n(1):each(function(winid)
-    require('color').set_popup_winid(winid)
-  end)
+  local bufinfo = vfn.getbufinfo()
+  for _, buffer in ipairs(bufinfo) do
+    if buffer.variables.current_syntax == 'gitmessengerpopup' then
+      local _, win_id = next(buffer.windows)
+      if win_id then
+        require('color').set_popup_winid(win_id)
+      end
+      return
+    end
+  end
 end
 
 return M

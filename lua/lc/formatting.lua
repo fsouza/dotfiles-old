@@ -148,10 +148,9 @@ function M.autofmt_and_write(bufnr)
 end
 
 function M.reset()
-  require('lib.fun_helpers').tbl_keys(fmt_clients):each(
-    function(bufnr)
-      helpers.augroup('lc_autofmt_' .. bufnr, {})
-    end)
+  for bufnr, _ in pairs(fmt_clients) do
+    helpers.augroup('lc_autofmt_' .. bufnr, {})
+  end
   fmt_clients = {}
 end
 

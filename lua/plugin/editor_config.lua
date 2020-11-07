@@ -1,5 +1,3 @@
-local fun = require('lib.fun_wrapper')
-
 local vfn = vim.fn
 local vcmd = vim.cmd
 local api = vim.api
@@ -24,13 +22,15 @@ local set_enabled = function(v)
 end
 
 local parse_output = function(data)
-  return fun.split_str(data, '\n'):map(function(line)
-    return vim.split(line, '=')
-  end):filter(function(parts)
-    return #parts == 2
-  end):map(function(parts)
-    return parts[1], parts[2]
-  end)
+  local lines = vim.split(data, '\n')
+  local opts = {}
+  for _, line in ipairs(lines) do
+    local parts = vim.split(line, '=')
+    if #parts == 2 then
+      opts[parts[1]] = parts[2]
+    end
+  end
+  return opts
 end
 
 local get_vim_fenc = function(editorconfig_charset)
@@ -61,52 +61,46 @@ local handle_whitespaces = function(bufnr, v)
 end
 
 local set_opts = function(bufnr, opts)
-  local vim_opts = opts:map(function(k, v)
+  local vim_opts = {}
+  for k, v in pairs(opts) do
     if k == 'charset' then
-      local fenc, bomb = get_vim_fenc(v)
-      return {{'fileencoding'; fenc}; {'bomb'; bomb}}
+      vim_opts.fileencoding, vim_opts.bomb = get_vim_fenc(v)
     end
 
     if k == 'end_of_line' then
-      return {{'fileformat'; get_vim_fileformat(v)}}
+      vim_opts.fileformat = get_vim_fileformat(v)
     end
 
     if k == 'indent_style' then
-      return {{'expandtab'; v == 'spaces' or v == 'space'}}
+      vim_opts.expandtab = v == 'spaces' or v == 'space'
     end
 
     if k == 'insert_final_line' or k == 'insert_final_newline' then
-      return {{'fixendofline'; v == 'true'}}
+      vim_opts.fixendofline = v == 'true'
     end
 
     if k == 'indent_size' then
-      -- indent_size can be set to 'tab', in which case we don't want to do
-      -- anything.
       local indent_size = tonumber(v)
-      if indent_size then
-        return {{'shiftwidth'; indent_size}; {'softtabstop'; indent_size}}
-      end
+      vim_opts.shiftwidth = indent_size
+      vim_opts.softtabstop = indent_size
     end
 
     if k == 'tab_width' then
-      return {{'tabstop'; tonumber(v)}}
+      vim_opts.tabstop = tonumber(v)
     end
 
-    -- side-effect alert :)
     if k == 'trim_trailing_whitespace' then
       vim.schedule(function()
         handle_whitespaces(bufnr, v)
       end)
     end
-
-    return {}
-  end):filter(fun.negate(vim.tbl_isempty)):map(fun.iter)
+  end
 
   vim.schedule(function()
     if nvim_buf_get_option(bufnr, 'modifiable') then
-      fun.flatten(vim_opts):each(function(opt)
-        nvim_buf_set_option(bufnr, opt[1], opt[2])
-      end)
+      for k, v in pairs(vim_opts) do
+        nvim_buf_set_option(bufnr, k, v)
+      end
     end
   end)
 end
