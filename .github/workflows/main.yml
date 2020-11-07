@@ -32,21 +32,17 @@ jobs:
       - name: install deps on mac
         if: matrix.os == 'macos-latest'
         run: |
-          brew install bash shellcheck ninja libyaml luarocks elixir
-          luarocks install luacheck
+          brew install bash shellcheck ninja libyaml elixir
 
       - name: install deps on ubuntu
         if: matrix.os == 'ubuntu-20.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y shellcheck ninja-build libyaml-dev luarocks
-          sudo luarocks install luacheck
+          sudo apt-get install -y shellcheck ninja-build libyaml-dev
 
       - uses: actions/checkout@v2.3.4
 
       - run: make shellcheck
-
-      - run: make luacheck
 
       - uses: actions/setup-node@v2.1.2
         with:
@@ -86,3 +82,9 @@ jobs:
         run: |
           eval "$(opam env)"
           make -j -f $HOME/.config/nvim/Makefile bootstrap
+
+      - name: run luacheck from config dir
+        run: make -f $HOME/.config/nvim/Makefile luacheck
+
+      - name: run tests from config dir
+        run: make -f $HOME/.config/nvim/Makefile test
