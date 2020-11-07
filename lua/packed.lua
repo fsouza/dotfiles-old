@@ -123,10 +123,12 @@ end
 function M.setup()
   local compile_path = vfn.stdpath('data') .. '/site/plugin/packer_compiled.vim'
   require('packer').startup({deps; config = {compile_on_sync = true; compile_path = compile_path}})
-  setup_auto_commands()
-  vim.schedule(function()
-    vcmd([[doautocmd User PluginReady]])
-  end)
+  if not os.getenv('NVIM_BOOTSTRAP') then
+    vim.schedule(function()
+      setup_auto_commands()
+      vcmd([[doautocmd User PluginReady]])
+    end)
+  end
 end
 
 return M
