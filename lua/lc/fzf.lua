@@ -11,7 +11,7 @@ local helpers = require('lib.nvim_helpers')
 local fzf_actions = {['ctrl-t'] = 'tabedit'; ['ctrl-x'] = 'split'; ['ctrl-v'] = 'vsplit'}
 
 local lines_to_qf_list = function(lines)
-  return fun.iter(lines):map(function(line)
+  return fun.safe_iter(lines):map(function(line)
     local _, _, filename, lnum, col, text = string.find(line, [[([^:]+):(%d+):(%d+):(.*)]])
     return {filename = filename; lnum = lnum; col = col; text = text}
   end):filter(function(item)
@@ -46,7 +46,7 @@ end
 
 local format_items = function(items)
   local prefix = vfn.getcwd() .. '/'
-  return fun.iter(items):map(function(item)
+  return fun.safe_iter(items):map(function(item)
     return string.format('%s:%d:%d:%s',
                          helpers.ensure_path_relative_to_prefix(prefix, item.filename), item.lnum,
                          item.col, item.text)

@@ -74,20 +74,20 @@ local noners = function(ns)
     'Underlined';
     'htmlBold';
   }
-  fun.iter(groups):each(function(g)
+  fun.safe_iter(groups):each(function(g)
     nvim_set_hl(ns, g, {})
   end)
 end
 
 local reversers = function(ns)
   local groups = {'MoreMsg'; 'StatusLine'; 'StatusLineNC'; 'Visual'};
-  fun.iter(groups):each(function(g)
+  fun.safe_iter(groups):each(function(g)
     nvim_set_hl(ns, g, {reverse = true})
   end)
 end
 
 local setup_lsp_reference = function(ns, hl_opts)
-  fun.iter({'Text'; 'Read'; 'Write'}):each(function(ref_type)
+  fun.safe_iter({'Text'; 'Read'; 'Write'}):each(function(ref_type)
     nvim_set_hl(ns, 'LspReference' .. ref_type, hl_opts)
   end)
 end
@@ -96,7 +96,7 @@ local setup_lsp_diagnostics = function(ns)
   local diagnostics = {fg = colors.gray}
   local diagnostics_sign = {link = 'SignColumn'}
 
-  fun.iter({''; 'Error'; 'Warning'; 'Information'; 'Hint'}):each(
+  fun.safe_iter({''; 'Error'; 'Warning'; 'Information'; 'Hint'}):each(
     function(level)
       local base_group = 'LspDiagnostics' .. level
       local sign_group = base_group .. 'Sign'

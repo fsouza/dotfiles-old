@@ -81,7 +81,7 @@ function M.format(bufnr, cb, is_retry)
     end
 
     helpers.rewrite_wrap(function()
-      local write = fun.iter(new_lines):enumerate():any(
+      local write = fun.safe_iter(new_lines):enumerate():any(
                       function(i, line)
           return line ~= lines[i]
         end)

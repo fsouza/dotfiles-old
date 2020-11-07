@@ -91,7 +91,7 @@ end
 
 M['textDocument/signatureHelp'] = function(err, method, result)
   vim.lsp.callbacks[method](err, method, result)
-  fun.iter(vfn.getwininfo()):filter(function(window)
+  fun.safe_iter(vfn.getwininfo()):filter(function(window)
     return window.variables[method]
   end):take_n(1):each(function(window)
     require('color').set_popup_winid(window.winid)

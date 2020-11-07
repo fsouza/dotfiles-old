@@ -11,7 +11,7 @@ end
 
 function M.cleanup()
   local finished = 0
-  fun.iter(cbs):each(function(cb)
+  fun.safe_iter(cbs):each(function(cb)
     vim.schedule(function()
       cb()
       finished = finished + 1

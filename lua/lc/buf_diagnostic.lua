@@ -51,14 +51,14 @@ local save_all_positions = function(bufnr, client_id, diagnostics)
   end
   diagnostics_by_buf[bufnr][client_id] = diagnostics
 
-  local buf_diagnostics = fun.flatten(fun.iter(diagnostics_by_buf[bufnr]))
+  local buf_diagnostics = fun.flatten(fun.safe_iter(diagnostics_by_buf[bufnr]))
   util.buf_diagnostics_save_positions(bufnr, buf_diagnostics:totable())
 end
 
 local buf_clear_diagnostics = function(bufnr, client_id)
   vim.fn.sign_unplace(sign_ns(client_id), {buffer = bufnr})
   api.nvim_buf_clear_namespace(bufnr, diagnostic_ns(client_id), 0, -1)
-  save_all_positions(bufnr, client_id, fun.iter({}))
+  save_all_positions(bufnr, client_id, fun.safe_iter({}))
 end
 
 local buf_diagnostics_underline = function(bufnr, client_id, diagnostics)
@@ -83,7 +83,7 @@ local buf_diagnostics_virtual_text = function(bufnr, client_id, diagnostics)
   local buffer_line_diagnostics = util.diagnostics_group_by_line(diagnostics:totable())
   fun.tbl_kvs(buffer_line_diagnostics):each(function(kv)
     local line, line_diags = kv[1], kv[2]
-    local virt_texts = fun.iter(line_diags):drop_n(1):map(
+    local virt_texts = fun.safe_iter(line_diags):drop_n(1):map(
                          function()
         return {'■'; 'LspDiagnostics'}
       end):totable()
@@ -113,7 +113,7 @@ end
 function M.buf_clear_diagnostics()
   local d_ns = fun.tbl_values(diagnostic_namespaces)
   local s_ns = fun.tbl_values(sign_namespaces)
-  fun.iter(vfn.getbufinfo()):each(function(buffer)
+  fun.safe_iter(vfn.getbufinfo()):each(function(buffer)
     local bufnr = buffer.bufnr
     d_ns:each(function(ns)
       api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
@@ -129,7 +129,7 @@ end
 
 local handle_publish = function(bufnr, client_id, result)
   buf_clear_diagnostics(bufnr, client_id)
-  local diagnostics = fun.iter(result.diagnostics):map(
+  local diagnostics = fun.safe_iter(result.diagnostics):map(
                         function(diagnostic)
       if diagnostic.severity == nil then
         diagnostic.severity = protocol.DiagnosticSeverity.Error

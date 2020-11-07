@@ -127,7 +127,7 @@ local read_precommit_config = function(file_path)
   local f = io.open(file_path, 'r')
   local content = f:read('all*')
   f:close()
-  return fun.iter(lyaml.load(content).repos)
+  return fun.safe_iter(lyaml.load(content).repos)
 end
 
 local blackd_cleanup_if_needed = function(init_options)
@@ -169,12 +169,12 @@ local get_python_linters_and_formatters = function()
   local linters = {}
   local formatters = {}
   repos:each(function(repo)
-    fun.iter(pc_linters_repo_map[repo.repo]):each(
+    fun.safe_iter(pc_linters_repo_map[repo.repo]):each(
       function(k, fn)
         linters[k] = fn()
       end)
 
-    fun.iter(pc_formatters_repo_map[repo.repo]):each(
+    fun.safe_iter(pc_formatters_repo_map[repo.repo]):each(
       function(k, fn)
         formatters[k] = fn()
       end)
@@ -206,10 +206,10 @@ local add_linters_and_formatters = function(init_options, ft, linters, formatter
 
   -- fun fact: if I unvert this chaining, it doesn't work. Will write a custom
   -- chain function.
-  init_options.filetypes[ft] = fun.tbl_keys(linters):chain(fun.iter(init_options.filetypes[ft]))
+  init_options.filetypes[ft] = fun.tbl_keys(linters):chain(fun.safe_iter(init_options.filetypes[ft]))
                                  :totable()
   init_options.formatFiletypes[ft] = fun.tbl_keys(formatters):chain(
-                                       fun.iter(init_options.formatFiletypes[ft])):totable()
+                                       fun.safe_iter(init_options.formatFiletypes[ft])):totable()
 
   if vim.tbl_isempty(init_options.filetypes[ft]) then
     init_options.filetypes[ft] = nil

@@ -19,8 +19,8 @@ function M.create_mappings(mappings, bufnr)
     end
   end
 
-  fun.iter(mappings):each(function(mode, rules)
-    fun.iter(rules):each(function(m)
+  fun.safe_iter(mappings):each(function(mode, rules)
+    fun.safe_iter(rules):each(function(m)
       fn(mode, m.lhs, m.rhs, m.opts or {})
     end)
   end)
@@ -33,7 +33,7 @@ end
 function M.augroup(name, commands)
   vcmd('augroup ' .. name)
   vcmd('autocmd!')
-  fun.iter(commands):each(function(c)
+  fun.safe_iter(commands):each(function(c)
     vcmd(string.format('autocmd %s %s %s', table.concat(c.events, ','),
                        table.concat(c.targets, ','), c.command))
   end)

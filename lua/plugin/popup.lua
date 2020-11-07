@@ -5,7 +5,7 @@ local vfn = vim.fn
 local M = {}
 
 function M.set_theme_to_gitmessenger_popup()
-  fun.iter(vfn.getbufinfo()):filter(function(b)
+  fun.safe_iter(vfn.getbufinfo()):filter(function(b)
     return b.variables.current_syntax == 'gitmessengerpopup'
   end):filter(function(b)
     return #b.windows > 0

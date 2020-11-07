@@ -14,8 +14,8 @@ function M.show_line_diagnostics()
     return
   end
 
-  local prefix = fun.iter({'Diagnostics:'; ''})
-  local diagnostic_messages = fun.iter(line_diagnostics):map(
+  local prefix = fun.safe_iter({'Diagnostics:'; ''})
+  local diagnostic_messages = fun.safe_iter(line_diagnostics):map(
                                 function(diagnostic)
       local hd, tl = fun.split_str(diagnostic.message, '\n'):span(1)
       return hd:map(function(line)
@@ -32,7 +32,7 @@ end
 
 local items_from_diagnostics = function(bufnr, diagnostics)
   local fname = vfn.bufname(bufnr)
-  return fun.iter(diagnostics):map(function(diagnostic)
+  return fun.safe_iter(diagnostics):map(function(diagnostic)
     local pos = diagnostic.range.start
     return {
       filename = fname;

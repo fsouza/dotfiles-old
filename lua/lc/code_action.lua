@@ -43,7 +43,7 @@ end
 
 function M.handle_actions(actions)
   M.actions = actions
-  local lines_iter = fun.iter(actions):map(function(action)
+  local lines_iter = fun.safe_iter(actions):map(function(action)
     return action.title
   end)
   local width = lines_iter:map(function(line)

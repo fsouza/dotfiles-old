@@ -22,7 +22,7 @@ local set_folding = function()
   local parsers = require('nvim-treesitter.parsers')
   local helpers = require('lib.nvim_helpers')
 
-  local file_types = fun.flatten(fun.iter(wanted_parsers):map(parsers.lang_to_ft):map(fun.iter))
+  local file_types = fun.flatten(fun.safe_iter(wanted_parsers):map(parsers.lang_to_ft):map(fun.iter))
   local foldexpr = 'nvim_treesitter#foldexpr()'
   file_types:each(function(ft)
     if ft == vim.bo.filetype then

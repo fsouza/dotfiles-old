@@ -84,8 +84,10 @@ function M.flatten(iter)
   end, M.empty)
 end
 
-function M.iter(v)
-  v = v and v or {}
+function M.safe_iter(v)
+  if not v then
+    return M.empty
+  end
   return fun.iter(v)
 end
 

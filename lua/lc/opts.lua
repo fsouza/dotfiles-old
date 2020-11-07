@@ -201,7 +201,7 @@ end
 
 local on_attach = function(client, bufnr)
   local all_clients = vim.lsp.get_active_clients()
-  client = fun.iter(all_clients):filter(function(c)
+  client = fun.safe_iter(all_clients):filter(function(c)
     return c.id == client.id
   end):head()
 
