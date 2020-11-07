@@ -33,6 +33,7 @@ end
 
 local make_iter = function(fn)
   return function(t)
+    t = t or {}
     return fun.iter(fn(t))
   end
 end

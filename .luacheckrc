@@ -3,4 +3,4 @@ cache = true
 
 self = false
 
-globals = {'vim'}
+globals = {'vim'; 'describe'; 'it'; 'insulate'}

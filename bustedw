@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+NVIM_CACHE_DIR=$(nvim --headless -E -u NORC -R +'echo stdpath("cache")' +q 2>&1)
+hr_dir=${NVIM_CACHE_DIR}/hr/bin
+hr_luarocks=${hr_dir}/luarocks
+hr_busted=${hr_dir}/busted
+
+function find_busted() {
+	if command -v hr_busted &>/dev/null; then
+		echo hr_busted
+		return 0
+	fi
+
+	if [ -x "${hr_luarocks}" ] && [ -x "${hr_busted}" ]; then
+		echo "${hr_busted}"
+	fi
+	return 0
+
+	return 1
+}
+
+function main() {
+	busted=$(find_busted)
+	if [ -x "${hr_luarocks}" ]; then
+		eval "$(${hr_luarocks} path --no-bin --append)"
+	fi
+	"${busted}" --lpath "${PWD}/lua/?.lua" "${@}" tests
+}
+
+main "${@}"

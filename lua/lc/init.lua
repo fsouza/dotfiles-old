@@ -112,6 +112,7 @@ do
               enable = true;
               globals = {
                 'vim';
+                'insulate';
                 'describe';
                 'it';
                 'before_each';
