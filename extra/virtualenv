@@ -91,7 +91,13 @@ function python() {
 	return 1
 }
 
+function cv() {
+	if [[ -v VIRTUALENV ]]; then
+		which python3
+	else
+		echo "no virtualenv active"
+	fi
+}
+
 export PIP_REQUIRE_VIRTUALENV=1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-alias cv="which python"
