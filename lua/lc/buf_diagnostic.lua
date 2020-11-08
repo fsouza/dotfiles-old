@@ -36,11 +36,12 @@ function M.publish_diagnostics(err, method, result, client_id)
     return
   end
   local debouncer_key = string.format('%d/%s', client_id, uri)
+  local _handler = make_handler()
   local handler = debouncers[debouncer_key]
 
   if handler == nil then
     local interval = vim.b.lsp_diagnostic_debouncing_ms or 250
-    handler = require('lib.debounce').debounce(interval, vim.schedule_wrap(make_handler()))
+    handler = require('lib.debounce').debounce(interval, vim.schedule_wrap(_handler))
     debouncers[debouncer_key] = handler
     api.nvim_buf_attach(bufnr, false, {
       on_detach = function(_)
