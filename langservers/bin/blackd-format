@@ -27,11 +27,13 @@ if ! pgrep -f blackd &>/dev/null; then
 	wait_for_blackd
 fi
 
-original_source=$(cat -)
-formatted_source=$(curl -sfH "X-Fast-Or-Safe: fast" -XPOST "http://127.0.0.1:${PORT}/" -d "${original_source}")
+tmp_source_file=$(mktemp)
+trap 'rm -f ${tmp_source_file}' EXIT
+
+formatted_source=$(cat - | tee "${tmp_source_file}" | curl -sH "X-Fast-Or-Safe: fast" -XPOST "http://127.0.0.1:${PORT}/" --data-binary @-)
 
 if [[ ${formatted_source} == "" ]]; then
-	echo "${original_source}"
+	cat "${tmp_source_file}"
 else
 	echo "${formatted_source}"
 fi
