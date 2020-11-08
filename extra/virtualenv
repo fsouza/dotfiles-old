@@ -92,7 +92,7 @@ function python() {
 }
 
 function cv() {
-	if [[ -v VIRTUALENV ]]; then
+	if [[ -v VIRTUAL_ENV ]]; then
 		which python3
 	else
 		echo "no virtualenv active"
