@@ -165,18 +165,28 @@ local get_python_linters_and_formatters = function()
     ['https://github.com/pre-commit/mirrors-autopep8'] = {autopep8 = get_autopep8};
     ['https://github.com/pre-commit/mirrors-isort'] = {isort = get_isort};
   }
+  local local_repos_mapping = {['black'] = 'https://github.com/psf/black'}
   local pre_commit_config = read_precommit_config(pre_commit_config_file_path)
   local linters = {}
   local formatters = {}
   for _, repo in ipairs(pre_commit_config.repos) do
-    local t = pc_linters_repo_map[repo.repo]
+    local repo_url = repo.repo
+    -- special case for black repo, but kinda setup to work with other tools
+    -- too.
+    if repo.repo == 'local' then
+      -- should we loop through?
+      if repo.hooks[1] then
+        repo_url = local_repos_mapping[repo.hooks[1].id]
+      end
+    end
+    local t = pc_linters_repo_map[repo_url]
     if t ~= nil then
       for k, fn in pairs(t) do
         linters[k] = fn()
       end
     end
 
-    t = pc_formatters_repo_map[repo.repo]
+    t = pc_formatters_repo_map[repo_url]
     if t ~= nil then
       for k, fn in pairs(t) do
         formatters[k] = fn()
