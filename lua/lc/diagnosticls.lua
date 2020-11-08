@@ -2,9 +2,7 @@ local M = {}
 
 local vfn = vim.fn
 
-local get_root_patterns = function(patterns)
-  return vim.tbl_flatten({'.git'; patterns or {}})
-end
+local default_root_patterns = {'.git'}
 
 local setup_blackd_logs_dir = function(base_dir)
   local process = require('environ.process')
@@ -27,11 +25,15 @@ end
 local get_black = function()
   local nvim_config_path = vfn.stdpath('config')
   local bin = nvim_config_path .. '/langservers/bin/blackd-format'
-  return {command = bin; rootPatterns = get_root_patterns({''})}
+  return {command = bin; rootPatterns = {'.git'; ''}}
 end
 
 local get_isort = function()
-  return {command = get_python_tool('isort'); args = {'-'}; rootPatterns = get_root_patterns({''})}
+  return {
+    command = get_python_tool('isort');
+    args = {'-'};
+    rootPatterns = {'.isort.cfg'; '.git'; ''};
+  }
 end
 
 local get_flake8 = function()
@@ -42,7 +44,7 @@ local get_flake8 = function()
     debounce = 250;
     formatLines = 1;
     formatPattern = {'^[^:]+:(\\d+):((\\d+):)?\\s+(.+)$'; {line = 1; column = 3; message = 4}};
-    rootPatterns = get_root_patterns({''});
+    rootPatterns = {'.flake8'; '.git'; ''};
   }
 end
 
@@ -50,7 +52,7 @@ local get_add_trailing_comma = function()
   return {
     command = get_python_tool('add-trailing-comma');
     args = {'--exit-zero-even-if-changed'; '-'};
-    rootPatterns = get_root_patterns();
+    rootPatterns = default_root_patterns;
   }
 end
 
@@ -58,25 +60,29 @@ local get_reorder_python_imports = function()
   return {
     command = get_python_tool('reorder-python-imports');
     args = {'--exit-zero-even-if-changed'; '-'};
-    rootPatterns = get_root_patterns();
+    rootPatterns = default_root_patterns;
   }
 end
 
 local get_autopep8 = function()
-  return {command = get_python_tool('autopep8'); args = {'-'}; rootPatterns = get_root_patterns()}
+  return {
+    command = get_python_tool('autopep8');
+    args = {'-'};
+    rootPatterns = default_root_patterns;
+  }
 end
 
 local get_buildifier = function()
   local nvim_config_path = vfn.stdpath('config')
   local bin = nvim_config_path .. '/langservers/bin/buildifierw'
   if vfn.executable('buildifier') == 1 then
-    return {command = bin; args = {'%filepath'}; rootPatterns = get_root_patterns()}
+    return {command = bin; args = {'%filepath'}; rootPatterns = default_root_patterns}
   end
   return {}
 end
 
 local get_dune = function()
-  return {command = 'dune'; args = {'format-dune-file'}; rootPatterns = get_root_patterns()}
+  return {command = 'dune'; args = {'format-dune-file'}; rootPatterns = default_root_patterns}
 end
 
 local get_shellcheck = function()
@@ -91,12 +97,12 @@ local get_shellcheck = function()
       {line = 1; column = 2; message = 4; security = 3};
     };
     securities = {error = 'error'; warning = 'warning'; note = 'info'};
-    rootPatterns = get_root_patterns();
+    rootPatterns = default_root_patterns;
   }
 end
 
 local get_shfmt = function()
-  return {command = 'shfmt'; args = {'-'}; rootPatterns = get_root_patterns()}
+  return {command = 'shfmt'; args = {'-'}; rootPatterns = default_root_patterns}
 end
 
 local get_luacheck = function()
@@ -107,7 +113,7 @@ local get_luacheck = function()
     debounce = 250;
     formatLines = 1;
     formatPattern = {'^[^:]+:(\\d+):(\\d+):\\s+(.+)$'; {line = 1; column = 2; message = 3}};
-    rootPatterns = get_root_patterns();
+    rootPatterns = default_root_patterns;
     requiredFiles = {'.luacheckrc'};
   }
 end
@@ -115,7 +121,7 @@ end
 local get_luaformat = function()
   return {
     command = 'lua-format';
-    rootPatterns = get_root_patterns();
+    rootPatterns = default_root_patterns;
     requiredFiles = {'.lua-format'};
   }
 end
