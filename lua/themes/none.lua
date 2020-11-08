@@ -94,7 +94,7 @@ end
 local setup_lsp_diagnostics = function(ns)
   local diagnostics_virtual_text = {fg = colors.gray}
   local diagnostics_floating = {fg = colors.black}
-  local diagnostics_sign = {bg = colors.lighter_gray; fg = colors.black}
+  local diagnostics_sign = {link = 'SignColumn'}
 
   for _, level in pairs({'Error'; 'Warning'; 'Information'; 'Hint'}) do
     local virtual_text_group = 'LspDiagnosticsVirtualText' .. level

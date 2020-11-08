@@ -21,7 +21,25 @@ local disable_unsupported_method = function()
   end
 end
 
+local setup_hl = function()
+  vcmd([[
+highlight LspDiagnosticsVirtualTextError guifg=#afafaf
+highlight LspDiagnosticsVirtualTextError guifg=#262626
+highlight link LspDiagnosticsSignError SignColumn
+highlight LspDiagnosticsVirtualTextWarning guifg=#afafaf
+highlight LspDiagnosticsVirtualTextWarning guifg=#262626
+highlight link LspDiagnosticsSignWarning SignColumn
+highlight LspDiagnosticsVirtualTextInformation guifg=#afafaf
+highlight LspDiagnosticsVirtualTextInformation guifg=#262626
+highlight link LspDiagnosticsSignInformation SignColumn
+highlight LspDiagnosticsVirtualTextHint guifg=#afafaf
+highlight LspDiagnosticsVirtualTextHint guifg=#262626
+highlight link LspDiagnosticsSignHint SignColumn
+]])
+end
+
 do
+  vim.schedule(setup_hl)
   disable_unsupported_method()
 
   local if_executable = function(name, cb)
