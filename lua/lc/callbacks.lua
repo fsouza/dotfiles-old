@@ -4,13 +4,22 @@ local api = vim.api
 local vfn = vim.fn
 local lsp = vim.lsp
 
-local function fzf_symbol_callback(_, _, result, _, bufnr)
+local fzf_symbol_callback = function(_, _, result, _, bufnr)
   if not result or vim.tbl_isempty(result) then
     return
   end
 
   local items = lsp.util.symbols_to_items(result, bufnr)
   require('lc.fzf').send(items, 'Symbols')
+end
+
+local set_popup_for_method = function(method)
+  for _, window in ipairs(vfn.getwininfo()) do
+    if window.variables[method] then
+      require('color').set_popup_winid(window.winid)
+      return
+    end
+  end
 end
 
 M['textDocument/documentSymbol'] = fzf_symbol_callback
@@ -48,10 +57,10 @@ M['textDocument/references'] = function(_, _, result)
 end
 
 M['textDocument/hover'] = function(_, method, result)
+  if not result or not result.contents then
+    return
+  end
   lsp.util.focusable_float(method, function()
-    if not (result and result.contents) then
-      return
-    end
     local markdown_lines = lsp.util.convert_input_to_markdown_lines(result.contents)
     markdown_lines = lsp.util.trim_empty_lines(markdown_lines)
     if vim.tbl_isempty(markdown_lines) then
@@ -63,9 +72,9 @@ M['textDocument/hover'] = function(_, method, result)
     api.nvim_buf_set_option(bufnr, 'modifiable', false)
     api.nvim_win_set_option(winid, 'relativenumber', false)
     lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winid)
-    require('color').set_popup_winid(winid)
     return bufnr, winid
   end)
+  set_popup_for_method(method)
 end
 
 M['textDocument/documentHighlight'] = function(_, _, result, _)
@@ -90,12 +99,7 @@ end
 
 M['textDocument/signatureHelp'] = function(err, method, result)
   vim.lsp.callbacks[method](err, method, result)
-  for _, window in ipairs(vfn.getwininfo()) do
-    if window.variables[method] then
-      require('color').set_popup_winid(window.winid)
-      return
-    end
-  end
+  set_popup_for_method(method)
 end
 
 return M
