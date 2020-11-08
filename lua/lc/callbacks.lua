@@ -93,4 +93,8 @@ M['textDocument/signatureHelp'] = function(err, method, result)
   set_popup_for_method(method)
 end
 
+M['textDocument/publishDiagnostics'] = function(err, method, result, client_id)
+  require('lc.buf_diagnostic').publish_diagnostics(err, method, result, client_id)
+end
+
 return M
