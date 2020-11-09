@@ -21,25 +21,23 @@ end
 local bootstrap_env = function()
   local process = require('environ.process')
   process.ENV.NVIM_CACHE_DIR = vfn.stdpath('cache')
-end
 
-local py3_editor_venv = function()
-  local process = require('environ.process')
   local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
-  process.ENV.PATH = string.format('%s:%s', vim_venv_bin, process.ENV.PATH)
+  local hererocks_bin = vfn.stdpath('cache') .. '/hr/bin'
+  local langservers_bin = vfn.stdpath('cache') .. '/langservers/bin'
+
+  process.ENV.PATH = string.format('%s:%s:%s:%s', langservers_bin, hererocks_bin, vim_venv_bin,
+                                   process.ENV.PATH)
 end
 
 local hererocks = function()
   local lua_version = string.gsub(_VERSION, 'Lua ', '')
   local hererocks_path = vfn.stdpath('cache') .. '/hr'
-  local bin_path = hererocks_path .. '/bin'
   local share_path = hererocks_path .. '/share/lua/' .. lua_version
   local lib_path = hererocks_path .. '/lib/lua/' .. lua_version
   package.path = package.path .. ';' .. share_path .. '/?.lua' .. ';' .. share_path ..
                    '/?/init.lua'
   package.cpath = package.cpath .. ';' .. lib_path .. '/?.so'
-  local process = require('environ.process')
-  process.ENV.PATH = string.format('%s:%s', bin_path, process.ENV.PATH)
 end
 
 local global_vars = function()
@@ -151,7 +149,6 @@ do
   rnu()
   folding()
   global_vars()
-  py3_editor_venv()
 
   require('packed').setup()
   if not os.getenv('NVIM_BOOTSTRAP') then
