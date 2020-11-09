@@ -6,6 +6,8 @@ local helpers = require('lib.nvim_helpers')
 
 local M = {actions = {}}
 
+local win_var_identifier = 'fsouza__code_action'
+
 function M.handle_selection(win_id)
   local index = vfn.line('.')
   if index < 1 or index > #M.actions then
@@ -39,6 +41,15 @@ local min = function(x, y)
   return y
 end
 
+local close_others = function()
+  local windows = vfn.getwininfo()
+  for _, window in ipairs(windows) do
+    if window.variables[win_var_identifier] then
+      api.nvim_win_close(window.winid, true)
+    end
+  end
+end
+
 function M.handle_actions(actions)
   local lines = {}
   M.actions = actions
@@ -62,12 +73,14 @@ function M.handle_actions(actions)
     row = 1;
     style = 'minimal';
   }
+  close_others()
   local win_id = api.nvim_open_win(bufnr, true, win_opts)
   vim.bo.readonly = true
   vim.bo.modifiable = false
   vim.wo.cursorline = true
   vim.wo.number = true
   vim.wo.wrap = false
+  vim.w[win_var_identifier] = true
   require('color').set_popup_winid(win_id)
 
   helpers.create_mappings({
