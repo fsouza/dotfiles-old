@@ -101,6 +101,10 @@ do
     }))
   end)
 
+  if_executable('rust-analyzer', function()
+    lsp.rust_analyzer.setup(lc_opts.with_default_opts({}))
+  end)
+
   if_executable('ninja', function()
     lsp.sumneko_lua.setup(lc_opts.with_default_opts(
                             {
