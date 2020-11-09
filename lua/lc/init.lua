@@ -28,7 +28,7 @@ do
   process.ENV.PATH = string.format('%s:%s', langservers_bin_path, process.ENV.PATH)
 
   local if_executable = function(name, cb)
-    if vfn.executable(name) == 1 then
+    if vfn.executable(name) == 1 or vfn.executable(langservers_bin_path .. '/' .. name) then
       cb()
     end
   end
