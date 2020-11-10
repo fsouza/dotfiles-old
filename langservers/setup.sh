@@ -49,30 +49,34 @@ function install_servers_from_npm() {
 	npm ci
 }
 
-function _go_get() {
+function _go_install() {
 	if ! command -v go &>/dev/null; then
-		echo skipping
+		echo skipping "${@}"
 		return
 	fi
 	(
-		# shellcheck disable=SC2068
-		cd /tmp && env GO111MODULE=on GOBIN="${cache_dir}/bin" go get ${@}
+		cd /tmp && env GOBIN="${cache_dir}/bin" go install "${@}"
 	)
 }
 
 function install_gopls() {
-	_go_get "golang.org/x/tools/gopls@master golang.org/x/tools@master" &&
-		_go_get golang.org/x/tools/cmd/goimports@master &&
-		_go_get honnef.co/go/tools/cmd/staticcheck@master
+	if ! command -v go &>/dev/null; then
+		echo skipping gopls
+		return
+	fi
+	dir="${cache_dir}/tools"
+	_clone_or_update https://github.com/golang/tools.git "${dir}" &&
+		pushd "${dir}/gopls" &&
+		env GOBIN="${cache_dir}/bin" go install
 }
 
 function install_shfmt() {
-	_go_get mvdan.cc/sh/v3/cmd/shfmt@master
+	_go_install mvdan.cc/sh/v3/cmd/shfmt@master
 }
 
 function install_golangci_lint_langserver() {
-	_go_get github.com/nametake/golangci-lint-langserver@master &&
-		_go_get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	_go_install github.com/nametake/golangci-lint-langserver@master &&
+		_go_install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 }
 
 function install_lua_lsp() {
