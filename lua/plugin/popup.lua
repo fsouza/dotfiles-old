@@ -1,15 +1,13 @@
-local vfn = vim.fn
+local api = vim.api
 
 local M = {}
 
 function M.set_theme_to_gitmessenger_popup()
-  local bufinfo = vfn.getbufinfo()
-  for _, buffer in ipairs(bufinfo) do
-    if buffer.variables.current_syntax == 'gitmessengerpopup' then
-      local _, win_id = next(buffer.windows)
-      if win_id then
-        require('color').set_popup_winid(win_id)
-      end
+  for _, winid in ipairs(api.nvim_list_wins()) do
+    local bufnr = api.nvim_win_get_buf(winid)
+    local _, current_syntax = pcall(api.nvim_buf_get_var, bufnr, 'current_syntax')
+    if current_syntax == 'gitmessengerpopup' then
+      require('color').set_popup_winid(winid)
       return
     end
   end

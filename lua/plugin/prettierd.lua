@@ -58,7 +58,7 @@ function M.format(bufnr, cb, is_retry)
     wait_for_server(1000)
   end
 
-  local fname = vfn.bufname(bufnr)
+  local fname = api.nvim_buf_get_name(bufnr)
   local lines = api.nvim_buf_get_lines(bufnr, 0, -1, false)
   local cwd = vfn.getcwd()
   table.insert(lines, 1, string.format('%s %s %s', state.token, cwd,

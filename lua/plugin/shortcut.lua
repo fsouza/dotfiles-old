@@ -30,7 +30,7 @@ end
 
 function M.cd_git(file_path)
   local dir = require('nvim_lsp').util.search_ancestors(file_path, function(p)
-    return vim.fn.isdirectory(p .. '/.git') == 1
+    return vfn.isdirectory(p .. '/.git') == 1
   end)
   if dir then
     api.nvim_set_current_dir(dir)

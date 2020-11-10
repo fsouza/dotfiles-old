@@ -42,10 +42,9 @@ local min = function(x, y)
 end
 
 local close_others = function()
-  local windows = vfn.getwininfo()
-  for _, window in ipairs(windows) do
-    if window.variables[win_var_identifier] then
-      api.nvim_win_close(window.winid, true)
+  for _, winid in ipairs(api.nvim_list_wins()) do
+    if pcall(api.nvim_win_get_var, winid, win_var_identifier) then
+      api.nvim_win_close(winid, true)
     end
   end
 end

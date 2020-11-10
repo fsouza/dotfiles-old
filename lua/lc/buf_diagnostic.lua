@@ -1,7 +1,7 @@
 local api = vim.api
-local vfn = vim.fn
 local util = vim.lsp.util
 local protocol = vim.lsp.protocol
+local vfn = vim.fn
 local highlight = require('vim.highlight')
 
 local M = {}
@@ -52,7 +52,7 @@ local save_all_positions = function(bufnr, client_id, diagnostics)
 end
 
 local buf_clear_diagnostics = function(bufnr, client_id)
-  vim.fn.sign_unplace(sign_ns(client_id), {buffer = bufnr})
+  vfn.sign_unplace(sign_ns(client_id), {buffer = bufnr})
   api.nvim_buf_clear_namespace(bufnr, diagnostic_ns(client_id), 0, -1)
   save_all_positions(bufnr, client_id, {})
 end
@@ -103,20 +103,18 @@ local buf_diagnostics_signs = function(bufnr, client_id, diagnostics)
   }
 
   for _, diagnostic in ipairs(diagnostics) do
-    vim.fn.sign_place(0, sign_ns(client_id), diagnostic_severity_map[diagnostic.severity], bufnr,
-                      {lnum = (diagnostic.range.start.line + 1)})
+    vfn.sign_place(0, sign_ns(client_id), diagnostic_severity_map[diagnostic.severity], bufnr,
+                   {lnum = (diagnostic.range.start.line + 1)})
   end
 end
 
 function M.buf_clear_diagnostics()
-  local all_buffers = vfn.getbufinfo()
-  for _, buffer in ipairs(all_buffers) do
-    local bufnr = buffer.bufnr
+  for _, bufnr in ipairs(api.nvim_list_bufs()) do
     for _, ns in pairs(diagnostic_namespaces) do
       api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
     end
     for _, ns in pairs(sign_namespaces) do
-      vim.fn.sign_unplace(ns, {buffer = bufnr})
+      vfn.sign_unplace(ns, {buffer = bufnr})
     end
     util.buf_diagnostics_save_positions(bufnr, {})
   end

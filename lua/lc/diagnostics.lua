@@ -3,7 +3,6 @@ local M = {}
 local api = vim.api
 local lsp = vim.lsp
 local vcmd = vim.cmd
-local vfn = vim.fn
 
 function M.show_line_diagnostics()
   local indent = '  '
@@ -26,7 +25,7 @@ function M.show_line_diagnostics()
 end
 
 local items_from_diagnostics = function(bufnr, diagnostics)
-  local fname = vfn.bufname(bufnr)
+  local fname = api.nvim_buf_get_name(bufnr)
   local items = {}
   for _, diagnostic in ipairs(diagnostics) do
     local pos = diagnostic.range.start

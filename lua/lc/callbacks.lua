@@ -1,7 +1,6 @@
 local M = {}
 
 local api = vim.api
-local vfn = vim.fn
 local lsp = vim.lsp
 
 local fzf_symbol_callback = function(_, _, result, _, bufnr)
@@ -14,10 +13,9 @@ local fzf_symbol_callback = function(_, _, result, _, bufnr)
 end
 
 local set_popup_for_method = function(method)
-  for _, window in ipairs(vfn.getwininfo()) do
-    if window.variables[method] then
-      require('color').set_popup_winid(window.winid)
-      return
+  for _, winid in ipairs(api.nvim_list_wins()) do
+    if pcall(api.nvim_win_get_var, winid, method) then
+      require('color').set_popup_winid(winid)
     end
   end
 end

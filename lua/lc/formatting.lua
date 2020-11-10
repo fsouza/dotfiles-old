@@ -137,7 +137,7 @@ function M.autofmt_and_write(bufnr)
   end
   fmt(bufnr, function(_, _, result, _)
     local curr_buf = api.nvim_get_current_buf()
-    if curr_buf ~= bufnr or vfn.mode() ~= 'n' then
+    if curr_buf ~= bufnr or api.nvim_get_mode().mode ~= 'n' then
       return
     end
     if result then
