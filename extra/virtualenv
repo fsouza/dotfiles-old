@@ -10,6 +10,17 @@ function _virtualenv() {
 	python3 "${VIRTUALENV_PYZ_LOCATION}" "${@}"
 }
 
+function _disable_bare_python() {
+	function python() {
+		echo >&2 "please be explicit abou the version of python you want to use"
+		return 1
+	}
+}
+
+function _enable_bare_python() {
+	unset -f python
+}
+
 function v() {
 	name=${1}
 	if [[ ${name} == "@" ]]; then
@@ -26,6 +37,7 @@ function v() {
 		alias cdvirtualenv='cd ${virtualenvpath}'
 		alias cdsitepackages='cd ${virtualenvpath}/lib/python*/site-packages'
 		export VIRTUAL_ENV=${virtualenvpath}
+		_enable_bare_python
 		hash -r
 	else
 		echo >&2 "virtualenv ${name} not found"
@@ -42,6 +54,7 @@ function d() {
 	unalias cdvirtualenv cdsitepackages
 	unset oldpath
 	unset VIRTUAL_ENV
+	_disable_bare_python
 	hash -r
 }
 
@@ -86,11 +99,6 @@ function upgrade_pip() {
 	done
 }
 
-function python() {
-	echo >&2 "please be explicit abou the version of python you want to use"
-	return 1
-}
-
 function cv() {
 	if [[ -v VIRTUAL_ENV ]]; then
 		which python3
@@ -99,5 +107,6 @@ function cv() {
 	fi
 }
 
+_disable_bare_python
 export PIP_REQUIRE_VIRTUALENV=1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
