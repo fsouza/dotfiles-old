@@ -36,7 +36,7 @@ local deps = {
     'sheerun/vim-polyglot';
     opt = true;
     ft = {'bzl'; 'javascript'; 'lua'; 'python'; 'typescript'};
-    event = {'BufEnter *.ex,*.exs'};
+    event = {'BufEnter *.ex,*.exs,*.ts,*.tsx'};
   };
   {
     'tpope/vim-commentary';
