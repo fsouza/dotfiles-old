@@ -30,7 +30,7 @@ fi
 tmp_source_file=$(mktemp)
 trap 'rm -f ${tmp_source_file}' EXIT
 
-formatted_source=$(cat - | tee "${tmp_source_file}" | curl -sH "X-Fast-Or-Safe: fast" -XPOST "http://127.0.0.1:${PORT}/" --data-binary @-)
+formatted_source=$(cat - | tee "${tmp_source_file}" | curl -sfH "X-Fast-Or-Safe: fast" -XPOST "http://127.0.0.1:${PORT}/" --data-binary @-)
 
 if [[ ${formatted_source} == "" ]]; then
 	cat "${tmp_source_file}"
