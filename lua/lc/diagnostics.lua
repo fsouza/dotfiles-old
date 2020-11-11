@@ -43,10 +43,9 @@ end
 
 function M.list_workspace_diagnostics()
   local items_list = {}
-  local all_buffers = vfn.getbufinfo()
-  for _, buffer in ipairs(all_buffers) do
-    local diagnostics = vim.lsp.diagnostic.get(buffer.bufnr)
-    local d_items = items_from_diagnostics(buffer.bufnr, diagnostics)
+  for _, bufnr in ipairs(api.nvim_list_bufs()) do
+    local diagnostics = vim.lsp.diagnostic.get(bufnr)
+    local d_items = items_from_diagnostics(bufnr, diagnostics)
     for _, item in ipairs(d_items) do
       table.insert(items_list, item)
     end
