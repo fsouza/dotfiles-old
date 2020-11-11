@@ -21,7 +21,7 @@ local deps = {
     'sheerun/vim-polyglot';
     opt = true;
     ft = {'bzl'; 'javascript'; 'lua'; 'python'};
-    event = {'BufEnter *.ex,*.exs,*.ts,*.tsx'};
+    event = {'BufEnter *.ex,*.exs'};
   };
   {'leafgarland/typescript-vim'; opt = true; ft = {'typescript'}};
   {
