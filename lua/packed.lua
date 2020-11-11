@@ -7,29 +7,14 @@ local M = {}
 
 local deps = {
   {'justinmk/vim-dirvish'};
+  {'justinmk/vim-sneak'};
   {'norcalli/nvim-colorizer.lua'};
+  {'tpope/vim-repeat'};
+  {'tpope/vim-surround'};
 
   {'wbthomason/packer.nvim'; opt = true};
-  {'tpope/vim-repeat'; opt = true};
   {'godlygeek/tabular'; opt = true; cmd = {'Tabularize'}};
   {'junegunn/fzf.vim'; opt = true; cmd = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
-  {
-    'justinmk/vim-sneak';
-    opt = true;
-    keys = {
-      {'n'; 's'};
-      {'n'; 'S'};
-      {'o'; 'z'};
-      {'o'; 'Z'};
-      {'n'; ';'};
-      {'n'; ','};
-      {'x'; ';'};
-      {'x'; ','};
-      {'o'; ';'};
-      {'o'; ','};
-    };
-    setup = [[vim.cmd('packadd vim-repeat')]];
-  };
   {'neovim/nvim-lspconfig'; opt = true};
   {'nvim-lua/completion-nvim'; opt = true};
   {
@@ -42,23 +27,6 @@ local deps = {
     'tpope/vim-commentary';
     opt = true;
     keys = {{'n'; 'gcc'}; {'x'; 'gc'}; {'o'; 'gc'}; {'n'; 'gc'}};
-  };
-  {
-    'tpope/vim-surround';
-    opt = true;
-    keys = {
-      {'n'; 'gS'};
-      {'n'; 'ds'};
-      {'n'; 'cs'};
-      {'n'; 'cS'};
-      {'n'; 'ys'};
-      {'n'; 'yS'};
-      {'n'; 'yss'};
-      {'n'; 'ySs'};
-      {'x'; 'S'};
-      {'x'; 'gS'};
-    };
-    setup = [[vim.cmd('packadd vim-repeat')]];
   };
   {
     'mattn/emmet-vim';
