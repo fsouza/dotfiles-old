@@ -24,7 +24,7 @@ end
 
 function M.setup()
   helpers.augroup('lua_lib_cleanup', {
-    {events = {'VimLeavePre'}; targets = {'*'}; command = [[lua require('lib.cleanup')]]};
+    {events = {'VimLeavePre'}; targets = {'*'}; command = [[lua require('lib.cleanup').cleanup()]]};
   })
 end
 
