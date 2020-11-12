@@ -136,7 +136,6 @@ end
 
 local setup_lsp = function()
   require('lc.init')
-  trigger_ft()
   vim.schedule(function()
     vcmd([[command! LspStop lua require('lc.restart').stop()]])
   end)
@@ -181,10 +180,12 @@ do
   schedule(setup_git_messenger)
   schedule(function()
     require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'; 'htmldjango'})
-    trigger_ft()
   end)
   schedule(function()
     require('plugin.ts')
-    trigger_ft()
   end)
+  schedule(function()
+    require('plugin.ft').setup()
+  end)
+  schedule(trigger_ft)
 end
