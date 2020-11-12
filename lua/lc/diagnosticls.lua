@@ -5,10 +5,10 @@ local vfn = vim.fn
 local default_root_patterns = {'.git'}
 
 local setup_blackd_logs_dir = function(base_dir)
-  local process = require('environ.process')
+  local setenv = require('posix.stdlib').setenv
   local logs_dir = base_dir .. '/blackd-logs'
   vfn.mkdir(logs_dir, 'p')
-  process.ENV.BLACKD_LOGS_DIR = logs_dir
+  setenv('BLACKD_LOGS_DIR', logs_dir)
 end
 
 local get_python_tool = function(bin_name)

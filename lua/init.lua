@@ -19,15 +19,15 @@ local initial_mappings = function()
 end
 
 local bootstrap_env = function()
-  local process = require('environ.process')
-  process.ENV.NVIM_CACHE_DIR = vfn.stdpath('cache')
+  local stdlib = require('posix.stdlib')
+  stdlib.setenv('NVIM_CACHE_DIR', vfn.stdpath('cache'))
 
   local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
   local hererocks_bin = vfn.stdpath('cache') .. '/hr/bin'
   local langservers_bin = vfn.stdpath('cache') .. '/langservers/bin'
 
-  process.ENV.PATH = string.format('%s:%s:%s:%s', langservers_bin, hererocks_bin, vim_venv_bin,
-                                   process.ENV.PATH)
+  stdlib.setenv('PATH', string.format('%s:%s:%s:%s', langservers_bin, hererocks_bin, vim_venv_bin,
+                                      stdlib.getenv('PATH')))
 end
 
 local hererocks = function()
