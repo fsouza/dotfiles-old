@@ -54,25 +54,22 @@ M['textDocument/references'] = function(_, _, result)
   require('lc.fzf').send(items, 'References')
 end
 
-M['textDocument/hover'] = function(_, method, result)
+M['textDocument/hover'] = function(_, _, result)
   if not result or not result.contents then
     return
   end
-  lsp.util.focusable_float(method, function()
-    local markdown_lines = lsp.util.convert_input_to_markdown_lines(result.contents)
-    markdown_lines = lsp.util.trim_empty_lines(markdown_lines)
-    if vim.tbl_isempty(markdown_lines) then
-      return
-    end
-    local bufnr, winid = lsp.util.fancy_floating_markdown(markdown_lines,
-                                                          {pad_left = 1; pad_right = 1})
-    api.nvim_buf_set_option(bufnr, 'readonly', true)
-    api.nvim_buf_set_option(bufnr, 'modifiable', false)
-    api.nvim_win_set_option(winid, 'relativenumber', false)
-    lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winid)
-    return bufnr, winid
-  end)
-  set_popup_for_method(method)
+  local markdown_lines = lsp.util.convert_input_to_markdown_lines(result.contents)
+  markdown_lines = lsp.util.trim_empty_lines(markdown_lines)
+  if vim.tbl_isempty(markdown_lines) then
+    return
+  end
+  local bufnr, winid = lsp.util.fancy_floating_markdown(markdown_lines,
+                                                        {pad_left = 1; pad_right = 1})
+  api.nvim_buf_set_option(bufnr, 'readonly', true)
+  api.nvim_buf_set_option(bufnr, 'modifiable', false)
+  api.nvim_win_set_option(winid, 'relativenumber', false)
+  lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winid)
+  require('color').set_popup_winid(winid)
 end
 
 M['textDocument/documentHighlight'] = function(_, _, result, _)
