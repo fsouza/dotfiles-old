@@ -45,7 +45,11 @@ function M.publish_diagnostics(err, method, result, client_id)
     debouncers[debouncer_key] = handler
     api.nvim_buf_attach(bufnr, false, {
       on_detach = function(_)
-        debouncers[debouncer_key] = nil
+        -- idk if neovim can call this more than once, let's be safe.
+        if debouncers[debouncer_key] then
+          debouncers[debouncer_key].stop()
+          debouncers[debouncer_key] = nil
+        end
       end;
     })
   end
