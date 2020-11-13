@@ -19,7 +19,7 @@ for file in $files; do
 done
 
 mkdir -p ${HOME}/.config
-xdg_files=(tmux.conf tmux.${os}.conf alacritty.yml rgrc)
+xdg_files=(tmux.conf tmux.${os}.conf rgrc)
 for file in $xdg_files; do
 	ln -sf ${basedir}/${file} ${HOME}/.config/${file}
 done
@@ -30,6 +30,9 @@ ln -sf ${basedir}/gitignore_global ${HOME}/.config/git/gitignore
 
 mkdir -p ${HOME}/.config/fd
 ln -sf ${basedir}/fdignore ${HOME}/.config/fd/ignore
+
+mkdir -p ${HOME}/.config/kitty
+ln -sf ${basedir}/kitty.conf ${HOME}/.config/kitty/kitty.conf
 
 mkdir -p ~/.gnupg
 chmod 700 ~/.gnupg
