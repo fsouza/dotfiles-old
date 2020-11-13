@@ -1,6 +1,7 @@
 local M = {}
 
 local vfn = vim.fn
+local loop = vim.loop
 
 local default_root_patterns = {'.git'}
 
@@ -151,7 +152,7 @@ end
 
 local get_python_linters_and_formatters = function()
   local pre_commit_config_file_path = '.pre-commit-config.yaml'
-  if vfn.filereadable(pre_commit_config_file_path) == 0 then
+  if not loop.fs_stat(pre_commit_config_file_path) then
     return {flake8 = get_flake8()}, {
       add_trailing_comma = get_add_trailing_comma();
       blackd = get_black();
@@ -206,7 +207,7 @@ end
 local get_lua_linters_and_formatters = function()
   local linters = {luacheck = get_luacheck()}
   local formatters = {}
-  if vfn.filereadable('.lua-format') ~= 0 then
+  if loop.fs_stat('.lua-format') then
     formatters.luaformat = get_luaformat()
   end
   return linters, formatters

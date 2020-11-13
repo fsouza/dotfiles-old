@@ -1,4 +1,5 @@
 local vfn = vim.fn
+local loop = vim.loop
 local cmd = require('lib.cmd')
 
 local second_ms = 1000
@@ -95,7 +96,7 @@ end
 
 local download_virtualenv_pyz = function()
   local file_name = cache_dir .. '/virtualenv.pyz'
-  if vfn.filereadable(file_name) == 0 then
+  if not loop.fs_stat(file_name) then
     run_cmds({
       {
         executable = 'curl';
