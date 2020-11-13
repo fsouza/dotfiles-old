@@ -9,7 +9,7 @@ local attached = function(bufnr, client)
       n = {
         {
           lhs = '<localleader>dl';
-          rhs = helpers.cmd_map([[lua require('lc.diagnostics').show_line_diagnostics()]]);
+          rhs = helpers.cmd_map([[lua vim.lsp.diagnostic.show_line_diagnostics()]]);
           opts = {silent = true};
         };
         {
@@ -25,6 +25,26 @@ local attached = function(bufnr, client)
         {
           lhs = '<localleader>cl';
           rhs = helpers.cmd_map([[lua require('lc.buf_diagnostic').buf_clear_all_diagnostics()]]);
+          opts = {silent = true};
+        };
+        {
+          lhs = '<c-n>';
+          rhs = helpers.cmd_map([[lua vim.lsp.diagnostic.goto_next()]]);
+          opts = {silent = true};
+        };
+        {
+          lhs = '<c-p>';
+          rhs = helpers.cmd_map([[lua vim.lsp.diagnostic.goto_prev()]]);
+          opts = {silent = true};
+        };
+        {
+          lhs = '<down>';
+          rhs = helpers.cmd_map([[lua vim.lsp.diagnostic.goto_next()]]);
+          opts = {silent = true};
+        };
+        {
+          lhs = '<up>';
+          rhs = helpers.cmd_map([[lua vim.lsp.diagnostic.goto_prev()]]);
           opts = {silent = true};
         };
       };

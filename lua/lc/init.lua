@@ -16,8 +16,19 @@ local set_log_level = function()
   require('vim.lsp.log').set_level(level)
 end
 
-local disable_unsupported_method = function()
+-- override some stuff in vim.lsp
+local patch_lsp = function()
+  -- disable unsupported method so I don't get random errors.
   vim.lsp._unsupported_methood = function()
+  end
+
+  -- override show_line_diagnostics so I can get the proper theme in the popup
+  -- window.
+  local original_show_line_diagnostics = vim.lsp.diagnostic.show_line_diagnostics
+  vim.lsp.diagnostic.show_line_diagnostics = function(opts)
+    local bufnr, winid = original_show_line_diagnostics(opts)
+    require('color').set_popup_winid(winid)
+    return bufnr, winid
   end
 end
 
@@ -42,7 +53,7 @@ end
 
 do
   vim.schedule(setup_hl)
-  disable_unsupported_method()
+  patch_lsp()
 
   local if_executable = function(name, cb)
     if vfn.executable(name) == 1 then
