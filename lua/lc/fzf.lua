@@ -2,7 +2,7 @@ local M = {}
 
 local vcmd = vim.cmd
 local lsp = vim.lsp
-local nvim_input = vim.api.nvim_input
+local api = vim.api
 local vfn = vim.fn
 local loop = vim.loop
 local helpers = require('lib.nvim_helpers')
@@ -35,8 +35,8 @@ local handle_lsp_lines = function(lines)
   if #qf_list == 1 then
     local item = qf_list[1]
     vcmd(string.format('%s %s', action, item.filename))
-    vfn.cursor(item.lnum, item.col)
-    nvim_input('zvzz')
+    api.nvim_win_set_cursor(0, item.lnum, item.col)
+    api.nvim_input('zvzz')
   else
     lsp.util.set_qflist(qf_list)
     vcmd('copen')
