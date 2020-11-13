@@ -12,7 +12,7 @@ scrolling:
 font:
   normal:
     family: "JetBrains Mono"
-    style: Light
+    style: ExtraLight
 
   bold:
     style: Medium
