@@ -5,9 +5,12 @@ local loop = vim.loop
 
 local default_root_patterns = {'.git'}
 
-local setup_blackd_logs_dir = function(base_dir)
+local config_dir = vfn.stdpath('config')
+
+local setup_blackd_logs_dir = function()
+  local cache_dir = vfn.stdpath('cache')
   local setenv = require('posix.stdlib').setenv
-  local logs_dir = base_dir .. '/blackd-logs'
+  local logs_dir = cache_dir .. '/blackd-logs'
   vfn.mkdir(logs_dir, 'p')
   setenv('BLACKD_LOGS_DIR', logs_dir)
 end
@@ -24,7 +27,7 @@ local get_python_tool = function(bin_name)
 end
 
 local get_black = function()
-  local nvim_config_path = vfn.stdpath('config')
+  local nvim_config_path = config_dir
   local bin = nvim_config_path .. '/langservers/bin/blackd-format'
   return {command = bin; rootPatterns = {'.git'; ''}}
 end
@@ -74,7 +77,7 @@ local get_autopep8 = function()
 end
 
 local get_buildifier = function()
-  local nvim_config_path = vfn.stdpath('config')
+  local nvim_config_path = config_dir
   local bin = nvim_config_path .. '/langservers/bin/buildifierw'
   if vfn.executable('buildifier') == 1 then
     return {command = bin; args = {'%filepath'}; rootPatterns = default_root_patterns}
@@ -268,8 +271,7 @@ local get_init_options = function()
 end
 
 function M.gen_config()
-  local cache_dir = vfn.stdpath('cache')
-  setup_blackd_logs_dir(cache_dir)
+  setup_blackd_logs_dir()
 
   local init_options = get_init_options()
   local fts = vim.tbl_keys(init_options.filetypes)

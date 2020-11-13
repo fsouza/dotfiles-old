@@ -3,6 +3,9 @@ local nvim_set_keymap = api.nvim_set_keymap
 local vcmd = vim.cmd
 local vfn = vim.fn
 
+local cache_dir = vfn.stdpath('cache')
+local data_dir = vfn.stdpath('data')
+
 local helpers = require('lib.nvim_helpers')
 
 local initial_mappings = function()
@@ -20,11 +23,11 @@ end
 
 local bootstrap_env = function()
   local stdlib = require('posix.stdlib')
-  stdlib.setenv('NVIM_CACHE_DIR', vfn.stdpath('cache'))
+  stdlib.setenv('NVIM_CACHE_DIR', cache_dir)
 
-  local vim_venv_bin = vfn.stdpath('cache') .. '/venv/bin'
-  local hererocks_bin = vfn.stdpath('cache') .. '/hr/bin'
-  local langservers_bin = vfn.stdpath('cache') .. '/langservers/bin'
+  local vim_venv_bin = cache_dir .. '/venv/bin'
+  local hererocks_bin = cache_dir .. '/hr/bin'
+  local langservers_bin = cache_dir .. '/langservers/bin'
 
   stdlib.setenv('PATH', string.format('%s:%s:%s:%s', langservers_bin, hererocks_bin, vim_venv_bin,
                                       stdlib.getenv('PATH')))
@@ -32,7 +35,7 @@ end
 
 local hererocks = function()
   local lua_version = string.gsub(_VERSION, 'Lua ', '')
-  local hererocks_path = vfn.stdpath('cache') .. '/hr'
+  local hererocks_path = cache_dir .. '/hr'
   local share_path = hererocks_path .. '/share/lua/' .. lua_version
   local lib_path = hererocks_path .. '/lib/lua/' .. lua_version
   package.path = package.path .. ';' .. share_path .. '/?.lua' .. ';' .. share_path ..
@@ -41,7 +44,7 @@ local hererocks = function()
 end
 
 local global_vars = function()
-  vim.g.netrw_home = vfn.stdpath('data')
+  vim.g.netrw_home = data_dir
   vim.g.netrw_banner = 0
   vim.g.netrw_liststyle = 3
   vim.g.fzf_command_prefix = 'Fzf'
