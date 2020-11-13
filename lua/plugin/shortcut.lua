@@ -1,9 +1,8 @@
 local api = vim.api
 local vcmd = vim.cmd
-local vfn = vim.fn
 
 -- workaround for fzf loading issue. I should just switch to telescope.nvim.
-local _ = vfn['fzf#run']
+local _ = vim.fn['fzf#run']
 
 local M = {}
 
@@ -18,23 +17,17 @@ local fzf_dir = function(directory, cd)
 end
 
 function M.register(command, path, cd)
-  M[command] = function()
-    if vfn.isdirectory(path) == 1 then
+  local is_dir_cb = function(is_dir)
+    if is_dir then
       fzf_dir(path, cd)
     else
       vcmd('edit ' .. path)
     end
   end
-  vcmd(string.format([[command! %s lua require('plugin.shortcut')['%s']()]], command, command))
-end
-
-function M.cd_git(file_path)
-  local dir = require('nvim_lsp').util.search_ancestors(file_path, function(p)
-    return vfn.isdirectory(p .. '/.git') == 1
-  end)
-  if dir then
-    api.nvim_set_current_dir(dir)
+  M[command] = function()
+    require('lib.fs').check_directory(path, vim.schedule_wrap(is_dir_cb))
   end
+  vcmd(string.format([[command! %s lua require('plugin.shortcut')['%s']()]], command, command))
 end
 
 return M
