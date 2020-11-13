@@ -4,7 +4,10 @@ local M = {}
 
 function M.handle()
   if vim.bo.filetype and vim.bo.filetype ~= '' then
-    pcall(require, 'plugin.ft.' .. vim.bo.filetype)
+    local status, ft_plugin = pcall(require, 'plugin.ft.' .. vim.bo.filetype)
+    if status then
+      ft_plugin()
+    end
   end
 end
 
