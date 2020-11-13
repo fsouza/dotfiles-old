@@ -11,8 +11,8 @@ scrolling:
 
 font:
   normal:
-    family: "JetBrains Mono"
-    style: ExtraLight
+    family: "SF Mono"
+    style: Light
 
   bold:
     style: Medium
