@@ -2,13 +2,6 @@
 
 basedir=$(cd $(dirname $0)/..; pwd -P)
 
-function install_source_code_pro {
-	cp ${basedir}/extra/source-code-pro/*.ttf ${HOME}/Library/Fonts/
-}
-
-# This script is based on the work of Mathias Bynens at
-# https://github.com/mathiasbynens/dotfiles/blob/master/.osx.
-
 # Increase window resize speed for Cocoa applications
 defaults write -g NSWindowResizeTime -float 0.001
 
@@ -160,4 +153,3 @@ defaults write com.apple.controlstrip MiniCustomized -array com.apple.system.bri
 	com.apple.system.mute
 
 defaults write com.apple.touchbar.agent PresentationModeFnModes -dict appWithControlStrip fullControlStrip
-install_source_code_pro
