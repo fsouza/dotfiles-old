@@ -49,10 +49,9 @@ function M.ensure_path_relative_to_prefix(prefix, path)
 end
 
 function M.rewrite_wrap(fn)
-  local orig_lineno = vfn.line('.')
-  local orig_colno = vfn.col('.')
-  local orig_line = vfn.getline(orig_lineno)
-  local orig_nlines = vfn.line('$')
+  local orig_lineno, orig_colno = api.nvim_win_get_cursor(0)
+  local orig_line = api.nvim_buf_get_lines(0, orig_lineno - 1, orig_lineno, true)[1]
+  local orig_nlines = api.nvim_buf_line_count(0)
   local view = vfn.winsaveview()
 
   fn()
@@ -60,9 +59,10 @@ function M.rewrite_wrap(fn)
   -- note: this isn't 100% correct, if the lines change below the current one,
   -- the position won't be the same, but this is optmistic: if the file was
   -- already formatted before, the lines below will mostly do the right thing.
-  local line_offset = vfn.line('$') - orig_nlines
+  local line_offset = api.nvim_buf_line_count(0) - orig_nlines
   local lineno = orig_lineno + line_offset
-  local col_offset = string.len(vfn.getline(lineno)) - string.len(orig_line)
+  local col_offset = string.len(api.nvim_buf_get_lines(0, lineno - 1, lineno, true)[1]) -
+                       string.len(orig_line)
   view.lnum = lineno
   view.col = orig_colno + col_offset - 1
   vfn.winrestview(view)

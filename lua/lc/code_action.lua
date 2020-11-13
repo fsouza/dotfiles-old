@@ -1,5 +1,4 @@
 local api = vim.api
-local vfn = vim.fn
 local buf = require('vim.lsp.buf')
 local util = require('vim.lsp.util')
 local helpers = require('lib.nvim_helpers')
@@ -9,7 +8,7 @@ local M = {actions = {}}
 local win_var_identifier = 'fsouza__code_action'
 
 function M.handle_selection(win_id)
-  local index = vfn.line('.')
+  local index, _ = api.nvim_win_get_cursor(0)
   if index < 1 or index > #M.actions then
     return
   end
