@@ -1,5 +1,9 @@
 #!/bin/zsh -e
 
+function install_sfmono_user {
+	cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/* ${HOME}/Library/Fonts
+}
+
 basedir=$(cd $(dirname $0)/..; pwd -P)
 
 # Increase window resize speed for Cocoa applications
@@ -153,3 +157,4 @@ defaults write com.apple.controlstrip MiniCustomized -array com.apple.system.bri
 	com.apple.system.mute
 
 defaults write com.apple.touchbar.agent PresentationModeFnModes -dict appWithControlStrip fullControlStrip
+install_sfmono_user
