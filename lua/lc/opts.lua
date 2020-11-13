@@ -9,7 +9,7 @@ local attached = function(bufnr, client)
       n = {
         {
           lhs = '<localleader>dl';
-          rhs = helpers.cmd_map([[lua vim.lsp.diagnostic.show_line_diagnostics()]]);
+          rhs = helpers.cmd_map([[lua require('lc.diagnostics').show_line_diagnostics()]]);
           opts = {silent = true};
         };
         {

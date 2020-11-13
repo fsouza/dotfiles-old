@@ -53,4 +53,9 @@ function M.list_workspace_diagnostics()
   render_diagnostics(items_list)
 end
 
+function M.show_line_diagnostics()
+  local _, winid = vim.lsp.diagnostic.show_line_diagnostics()
+  require('color').set_popup_winid(winid)
+end
+
 return M
