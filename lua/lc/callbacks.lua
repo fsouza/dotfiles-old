@@ -12,7 +12,8 @@ local fzf_symbol_callback = function(_, _, result, _, bufnr)
   require('lc.fzf').send(items, 'Symbols')
 end
 
-local set_popup_for_method = function(method)
+local popup_callback = function(err, method, result)
+  vim.lsp.callbacks[method](err, method, result)
   for _, winid in ipairs(api.nvim_list_wins()) do
     if pcall(api.nvim_win_get_var, winid, method) then
       require('color').set_popup_winid(winid)
@@ -54,24 +55,6 @@ M['textDocument/references'] = function(_, _, result)
   require('lc.fzf').send(items, 'References')
 end
 
-M['textDocument/hover'] = function(_, _, result)
-  if not result or not result.contents then
-    return
-  end
-  local markdown_lines = lsp.util.convert_input_to_markdown_lines(result.contents)
-  markdown_lines = lsp.util.trim_empty_lines(markdown_lines)
-  if vim.tbl_isempty(markdown_lines) then
-    return
-  end
-  local bufnr, winid = lsp.util.fancy_floating_markdown(markdown_lines,
-                                                        {pad_left = 1; pad_right = 1})
-  api.nvim_buf_set_option(bufnr, 'readonly', true)
-  api.nvim_buf_set_option(bufnr, 'modifiable', false)
-  api.nvim_win_set_option(winid, 'relativenumber', false)
-  lsp.util.close_preview_autocmd({'CursorMoved'; 'BufHidden'; 'InsertCharPre'}, winid)
-  require('color').set_popup_winid(winid)
-end
-
 M['textDocument/documentHighlight'] = function(_, _, result, _)
   if not result then
     return
@@ -88,10 +71,9 @@ M['textDocument/codeAction'] = function(_, _, actions)
   require('lc.code_action').handle_actions(actions)
 end
 
-M['textDocument/signatureHelp'] = function(err, method, result)
-  vim.lsp.callbacks[method](err, method, result)
-  set_popup_for_method(method)
-end
+M['textDocument/hover'] = popup_callback
+
+M['textDocument/signatureHelp'] = popup_callback
 
 M['textDocument/publishDiagnostics'] = function(err, method, result, client_id)
   require('lc.buf_diagnostic').publish_diagnostics(err, method, result, client_id)
