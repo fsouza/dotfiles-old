@@ -1,14 +1,12 @@
 local api = vim.api
-local vfn = vim.fn
 
 local M = {}
 
 local debouncers = {}
 
 function M.buf_clear_all_diagnostics()
-  local all_buffers = vfn.getbufinfo()
-  for _, buffer in ipairs(all_buffers) do
-    vim.lsp.diagnostic.clear(buffer.bufnr)
+  for _, bufnr in ipairs(api.nvim_list_bufs()) do
+    vim.lsp.diagnostic.clear(bufnr)
   end
 end
 
