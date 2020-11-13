@@ -24,16 +24,18 @@ end
 local setup_hl = function()
   vcmd([[
 highlight LspDiagnosticsVirtualTextError guifg=#afafaf
-highlight LspDiagnosticsVirtualTextError guifg=#262626
-highlight link LspDiagnosticsSignError SignColumn
 highlight LspDiagnosticsVirtualTextWarning guifg=#afafaf
-highlight LspDiagnosticsVirtualTextWarning guifg=#262626
-highlight link LspDiagnosticsSignWarning SignColumn
 highlight LspDiagnosticsVirtualTextInformation guifg=#afafaf
-highlight LspDiagnosticsVirtualTextInformation guifg=#262626
-highlight link LspDiagnosticsSignInformation SignColumn
 highlight LspDiagnosticsVirtualTextHint guifg=#afafaf
-highlight LspDiagnosticsVirtualTextHint guifg=#262626
+
+highlight LspDiagnosticsFloatingError guifg=#262626
+highlight LspDiagnosticsFloatingWarning guifg=#262626
+highlight LspDiagnosticsFloatingInformation guifg=#262626
+highlight LspDiagnosticsFloatingHint guifg=#262626
+
+highlight link LspDiagnosticsSignError SignColumn
+highlight link LspDiagnosticsSignWarning SignColumn
+highlight link LspDiagnosticsSignInformation SignColumn
 highlight link LspDiagnosticsSignHint SignColumn
 ]])
 end
