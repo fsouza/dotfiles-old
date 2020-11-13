@@ -37,12 +37,9 @@ local patch_lsp = function()
       if #line_diags == 0 then
         return nil
       end
-      local prefix = '■'
       local virt_texts = {{'    '}}
-      for _ = 1, #line_diags - 1 do
-        table.insert(virt_texts, {prefix; 'LspDiagnosticsVirtualText'})
-      end
       local last = line_diags[#line_diags]
+      local prefix = '～'
       if last.message then
         table.insert(virt_texts, {
           string.format('%s [%s] %s', prefix, last.source,
