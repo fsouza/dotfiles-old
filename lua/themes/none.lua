@@ -97,10 +97,12 @@ local setup_lsp_diagnostics = function(ns)
   local diagnostics_sign = {link = 'SignColumn'}
 
   for _, level in pairs({'Error'; 'Warning'; 'Information'; 'Hint'}) do
-    local virtual_text_group = 'LspDiagnosticsVirtualText' .. level
+    local virtual_text_group_prefix = 'LspDiagnosticsVirtualText'
+    local virtual_text_group = virtual_text_group_prefix .. level
     local sign_group = 'LspDiagnosticsSign' .. level
     local floating_group = 'LspDiagnosticsFloating' .. level
 
+    nvim_set_hl(ns, virtual_text_group_prefix, diagnostics_virtual_text)
     nvim_set_hl(ns, virtual_text_group, diagnostics_virtual_text)
     nvim_set_hl(ns, floating_group, diagnostics_floating)
     nvim_set_hl(ns, sign_group, diagnostics_sign)
