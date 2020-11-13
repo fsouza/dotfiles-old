@@ -11,8 +11,8 @@ scrolling:
 
 font:
   normal:
-    family: "Source Code Pro"
-    style: Regular
+    family: "SF Mono"
+    style: Light
 
   bold:
     style: Semibold
