@@ -109,7 +109,7 @@ end
 
 local ensure_virtualenv = function()
   local venv_dir = cache_dir .. '/venv'
-  if vfn.isdirectory(venv_dir) == 0 then
+  if not loop.fs_stat(venv_dir) then
     local venv_pyz = download_virtualenv_pyz()
     run_cmds({
       {
@@ -136,7 +136,7 @@ end
 
 local ensure_hererocks = function(virtualenv)
   local hr_dir = cache_dir .. '/hr'
-  if vfn.isdirectory(hr_dir) == 0 then
+  if not loop.fs_stat(hr_dir) then
     run_cmds({
       {
         executable = virtualenv .. '/bin/hererocks';
@@ -182,7 +182,7 @@ end
 local ensure_packer_nvim = function()
   local packer_dir = string.format('%s/pack/packer/opt/packer.nvim', site_dir)
   vfn.mkdir(packer_dir, 'p')
-  if vfn.isdirectory(packer_dir .. '/.git') == 0 then
+  if not loop.fs_stat(packer_dir .. '/.git') then
     run_cmds({
       {
         executable = 'git';
