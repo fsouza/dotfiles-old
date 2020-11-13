@@ -247,7 +247,7 @@ M.project_root_pattern = function()
 end
 
 M.cwd_root_pattern = function()
-  return vim.fn.getcwd()
+  return vim.loop.cwd()
 end
 
 return M

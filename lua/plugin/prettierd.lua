@@ -60,7 +60,7 @@ function M.format(bufnr, cb, is_retry)
 
   local fname = api.nvim_buf_get_name(bufnr)
   local lines = api.nvim_buf_get_lines(bufnr, 0, -1, false)
-  local cwd = vfn.getcwd()
+  local cwd = loop.cwd()
   table.insert(lines, 1, string.format('%s %s %s', state.token, cwd,
                                        helpers.ensure_path_relative_to_prefix(cwd, fname)))
 

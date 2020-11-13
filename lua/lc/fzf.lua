@@ -4,6 +4,7 @@ local vcmd = vim.cmd
 local lsp = vim.lsp
 local nvim_input = vim.api.nvim_input
 local vfn = vim.fn
+local loop = vim.loop
 local helpers = require('lib.nvim_helpers')
 
 local fzf_actions = {['ctrl-t'] = 'tabedit'; ['ctrl-x'] = 'split'; ['ctrl-v'] = 'vsplit'}
@@ -46,7 +47,7 @@ end
 
 local format_items = function(items)
   local lines = {}
-  local prefix = vfn.getcwd() .. '/'
+  local prefix = loop.cwd() .. '/'
   for _, item in pairs(items) do
     local filename = item.filename
     table.insert(lines,

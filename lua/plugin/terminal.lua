@@ -2,6 +2,7 @@ local M = {}
 
 local vcmd = vim.cmd
 local vfn = vim.fn
+local loop = vim.loop
 
 local run_in_terminal = function(wd, cmd)
   -- Use vfn.termopen() instead?
@@ -10,7 +11,7 @@ end
 
 function M.terminal_cmd(wd, cmd)
   if wd == nil then
-    wd = vfn.getcwd()
+    wd = loop.cwd()
   end
   if cmd == nil then
     cmd = vfn.input('＞ ')

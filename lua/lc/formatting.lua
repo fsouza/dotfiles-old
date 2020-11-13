@@ -3,7 +3,7 @@ local M = {}
 local api = vim.api
 local lsp = vim.lsp
 local vcmd = vim.cmd
-local vfn = vim.fn
+local loop = vim.loop
 local helpers = require('lib.nvim_helpers')
 
 local fmt_clients = {}
@@ -14,7 +14,7 @@ local langservers_skip_set = {tsserver = true}
 
 local should_skip_buffer = function(bufnr)
   local file_path = vim.api.nvim_buf_get_name(bufnr)
-  local prefix = vfn.getcwd()
+  local prefix = loop.cwd()
   if not vim.endswith(prefix, '/') then
     prefix = prefix .. '/'
   end
