@@ -117,11 +117,11 @@ function M.set_config()
   if not vim.bo.modifiable then
     return
   end
-  local filename = vfn.expand('%:p')
+  local bufnr = api.nvim_get_current_buf()
+  local filename = api.nvim_buf_get_name(bufnr)
   if filename == '' then
     return
   end
-  local bufnr = vfn.bufnr(filename)
 
   cmd.run('editorconfig', {args = {filename}}, nil, function(result)
     if result.exit_status ~= 0 then
