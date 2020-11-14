@@ -211,7 +211,13 @@ local attached = function(bufnr, client)
     -- should use resolved_capabilities here, but this is not supported by nvim
     -- yet.
     if client.server_capabilities.codeLensProvider then
-      require('lc.code_lens').on_attach({bufnr = bufnr; client = client})
+      require('lc.code_lens').on_attach({
+        bufnr = bufnr;
+        client = client;
+        mapping = '<leader><cr>';
+        can_resolve = client.server_capabilities.codeLensProvider.resolveProvider == true;
+        supports_command = client.resolved_capabilities.execute_command;
+      })
     end
 
     vim.schedule(function()
