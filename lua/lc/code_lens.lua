@@ -1,4 +1,5 @@
 local api = vim.api
+local vcmd = vim.cmd
 local helpers = require('lib.nvim_helpers')
 
 local M = {}
@@ -25,18 +26,12 @@ local remove_results = function(bufnr)
   code_lenses[bufnr] = nil
 end
 
-local codelenses_handler = function(_, _, codelenses, _, bufnr)
-  if not codelenses then
-    return
-  end
-
-  local grouped = group_by_line(codelenses)
-  code_lenses[bufnr] = grouped
+local render_virtual_text = function(bufnr)
   local ns = api.nvim_create_namespace('fsouza__code_lens')
   api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
 
   local prefix = ' '
-  for line, items in pairs(grouped) do
+  for line, items in pairs(code_lenses[bufnr]) do
     local titles = {}
     for _, item in ipairs(items) do
       table.insert(titles, item.command.title)
@@ -46,6 +41,15 @@ local codelenses_handler = function(_, _, codelenses, _, bufnr)
     }
     api.nvim_buf_set_virtual_text(bufnr, ns, line, chunks, {})
   end
+end
+
+local codelenses_handler = function(_, _, codelenses, _, bufnr)
+  if not codelenses then
+    return
+  end
+
+  code_lenses[bufnr] = group_by_line(codelenses)
+  render_virtual_text(bufnr)
 end
 
 local codelenses = function(bufnr)
@@ -96,7 +100,11 @@ local execute_codelenses = function(bufnr, items)
     if client.supports_resolve then
       client.lsp_client.request('codeLens/resolve', selected, resolve_handler, bufnr)
     elseif client.supports_command then
-      client.lsp_client.request('workspace/executeCommand', selected.command)
+      client.lsp_client.request('workspace/executeCommand', selected.command, function(err)
+        if not err then
+          vcmd([[checktime]])
+        end
+      end)
     end
   end
 
@@ -144,7 +152,7 @@ function M.on_attach(opts)
   local augroup_id = 'lsp_codelens_' .. bufnr
   helpers.augroup(augroup_id, {
     {
-      events = {'InsertLeave'; 'BufWritePost'};
+      events = {'InsertLeave'; 'BufWritePost'; 'FileChangedShellPost'};
       targets = {string.format('<buffer=%d>', bufnr)};
       command = string.format([[lua require('lc.code_lens').codelens(%d)]], bufnr);
     };
