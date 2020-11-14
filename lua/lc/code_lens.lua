@@ -152,7 +152,7 @@ function M.on_attach(opts)
   local augroup_id = 'lsp_codelens_' .. bufnr
   helpers.augroup(augroup_id, {
     {
-      events = {'InsertLeave'; 'BufWritePost'; 'FileChangedShellPost'};
+      events = {'InsertLeave'; 'BufWritePost'};
       targets = {string.format('<buffer=%d>', bufnr)};
       command = string.format([[lua require('lc.code_lens').codelens(%d)]], bufnr);
     };

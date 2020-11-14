@@ -51,6 +51,10 @@ local attached = function(bufnr, client)
       i = {};
     }
 
+    if client.resolved_capabilities.text_document_did_change then
+      require('lc.shell_post').on_attach({bufnr = bufnr; client = client})
+    end
+
     if client.resolved_capabilities.completion ~= nil and client.resolved_capabilities.completion ~=
       false then
       vim.cmd('packadd completion-nvim')
