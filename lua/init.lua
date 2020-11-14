@@ -15,7 +15,6 @@ local initial_mappings = function()
   -- Remap the leader key.
   nvim_set_keymap('n', '<Space>', '', {})
   vim.g.mapleader = ' '
-  vim.g.maplocalleader = ' '
 
   -- Remap terminal escaping
   nvim_set_keymap('t', [[<c-\><c-\>]], [[<c-\><c-n>]], {})
