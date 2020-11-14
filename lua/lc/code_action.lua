@@ -2,28 +2,28 @@ local api = vim.api
 local buf = require('vim.lsp.buf')
 local util = require('vim.lsp.util')
 
-local M = {actions = {}}
-
-local handle_selection = function(index)
-  local action_chosen = M.actions[index]
-  if action_chosen.edit or type(action_chosen.command) == 'table' then
-    if action_chosen.edit then
-      util.apply_workspace_edit(action_chosen.edit)
-    end
-    if type(action_chosen.command) == 'table' then
-      buf.execute_command(action_chosen.command)
-    end
-  else
-    buf.execute_command(action_chosen)
-  end
-end
+local M = {}
 
 function M.handle_actions(actions)
   local lines = {}
-  M.actions = actions
   for _, action in ipairs(actions) do
     table.insert(lines, action.title)
   end
+
+  local handle_selection = function(index)
+    local action_chosen = actions[index]
+    if action_chosen.edit or type(action_chosen.command) == 'table' then
+      if action_chosen.edit then
+        util.apply_workspace_edit(action_chosen.edit)
+      end
+      if type(action_chosen.command) == 'table' then
+        buf.execute_command(action_chosen.command)
+      end
+    else
+      buf.execute_command(action_chosen)
+    end
+  end
+
   require('lib.popup_picker').open(lines, handle_selection)
 end
 
