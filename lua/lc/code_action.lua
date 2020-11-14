@@ -8,7 +8,7 @@ local M = {actions = {}}
 local win_var_identifier = 'fsouza__code_action'
 
 function M.handle_selection(win_id)
-  local index, _ = api.nvim_win_get_cursor(0)
+  local index = api.nvim_win_get_cursor(0)[1]
   if index < 1 or index > #M.actions then
     return
   end
