@@ -10,19 +10,19 @@ local clients = {}
 -- stores result by bufnr & line (range.start.line)
 local code_lenses = {}
 
-local save_results = function(bufnr, codelenses)
+local group_by_line = function(codelenses)
   local by_line = {}
   for _, codelens in ipairs(codelenses) do
-    local line_id = tostring(codelens.range.start.line)
+    local line_id = codelens.range.start.line
     local curr = by_line[line_id] or {}
     table.insert(curr, codelens)
     by_line[line_id] = curr
   end
-  code_lenses[tostring(bufnr)] = by_line
+  return by_line
 end
 
 local remove_results = function(bufnr)
-  code_lenses[tostring(bufnr)] = nil
+  code_lenses[bufnr] = nil
 end
 
 local codelenses_handler = function(_, _, codelenses, _, bufnr)
@@ -30,16 +30,21 @@ local codelenses_handler = function(_, _, codelenses, _, bufnr)
     return
   end
 
-  save_results(bufnr, codelenses)
+  local grouped = group_by_line(codelenses)
+  code_lenses[bufnr] = grouped
   local ns = api.nvim_create_namespace('fsouza__code_lens')
   api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
 
   local prefix = ' '
-  for _, codelens in ipairs(codelenses) do
+  for line, items in pairs(grouped) do
+    local titles = {}
+    for _, item in ipairs(items) do
+      table.insert(titles, item.command.title)
+    end
     local chunks = {
-      {string.format('%s%s', prefix, codelens.command.title); 'LspCodeLensVirtualText'};
+      {string.format('%s%s', prefix, table.concat(titles, ' | ')); 'LspCodeLensVirtualText'};
     }
-    api.nvim_buf_set_virtual_text(bufnr, ns, codelens.range.start.line, chunks, {})
+    api.nvim_buf_set_virtual_text(bufnr, ns, line, chunks, {})
   end
 end
 
@@ -55,7 +60,7 @@ local codelenses = function(bufnr)
 end
 
 function M.codelens(bufnr)
-  local debouncer_key = tostring(bufnr)
+  local debouncer_key = bufnr
   local debounced = debouncers[debouncer_key]
   if debounced == nil then
     local interval = vim.b.lsp_codelens_debouncing_ms or 50
@@ -112,8 +117,8 @@ function M.execute()
   local winid = api.nvim_get_current_win()
   local bufnr = api.nvim_win_get_buf(winid)
   local cursor = api.nvim_win_get_cursor(winid)
-  local line_id = tostring(cursor[1] - 1)
-  local buffer_results = code_lenses[tostring(bufnr)]
+  local line_id = cursor[1] - 1
+  local buffer_results = code_lenses[bufnr]
   if not buffer_results then
     return
   end
