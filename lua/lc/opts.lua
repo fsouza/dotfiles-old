@@ -8,7 +8,7 @@ local attached = function(bufnr, client)
     local mappings = {
       n = {
         {
-          lhs = '<localleader>dl';
+          lhs = '<localleader><localleader>';
           rhs = helpers.cmd_map([[lua vim.lsp.diagnostic.show_line_diagnostics()]]);
           opts = {silent = true};
         };
@@ -209,6 +209,12 @@ local attached = function(bufnr, client)
         rhs = helpers.cmd_map('lua vim.lsp.buf.workspace_symbol()');
         opts = {silent = true};
       })
+    end
+
+    -- should use resolved_capabilities here, but this is not supported by nvim
+    -- yet.
+    if client.server_capabilities.codeLensProvider then
+      require('lc.code_lens').on_attach({bufnr = bufnr; client = client})
     end
 
     vim.schedule(function()

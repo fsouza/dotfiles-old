@@ -30,34 +30,10 @@ local patch_lsp = function()
     require('color').set_popup_winid(winid)
     return bufnr, winid
   end
-
-  -- override the virtualtext to include source.
-  vim.lsp.diagnostic.get_virtual_text_chunks_for_line =
-    function(_, _, line_diags)
-      if #line_diags == 0 then
-        return nil
-      end
-      local virt_texts = {{'    '}}
-      local last = line_diags[#line_diags]
-      local prefix = '～'
-      if last.message then
-        table.insert(virt_texts, {
-          string.format('%s [%s] %s', prefix, last.source,
-                        last.message:gsub('\r', ''):gsub('\n', '  '));
-          'LspDiagnosticsVirtualText';
-        })
-        return virt_texts
-      end
-    end
 end
 
 local setup_hl = function()
   vcmd([[
-highlight LspDiagnosticsVirtualTextError guifg=#afafaf
-highlight LspDiagnosticsVirtualTextWarning guifg=#afafaf
-highlight LspDiagnosticsVirtualTextInformation guifg=#afafaf
-highlight LspDiagnosticsVirtualTextHint guifg=#afafaf
-
 highlight LspDiagnosticsFloatingError guifg=#262626
 highlight LspDiagnosticsFloatingWarning guifg=#262626
 highlight LspDiagnosticsFloatingInformation guifg=#262626

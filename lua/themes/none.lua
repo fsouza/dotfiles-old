@@ -85,33 +85,33 @@ local reversers = function(ns)
   end
 end
 
-local setup_lsp_reference = function(ns, hl_opts)
+local setup_lsp_reference = function(ns)
   for _, ref_type in pairs({'Text'; 'Read'; 'Write'}) do
-    nvim_set_hl(ns, 'LspReference' .. ref_type, hl_opts)
+    nvim_set_hl(ns, 'LspReference' .. ref_type, {bg = colors.light_gray})
   end
 end
 
 local setup_lsp_diagnostics = function(ns)
-  local diagnostics_virtual_text = {fg = colors.gray}
   local diagnostics_floating = {fg = colors.black}
   local diagnostics_sign = {link = 'SignColumn'}
 
   for _, level in pairs({'Error'; 'Warning'; 'Information'; 'Hint'}) do
-    local virtual_text_group_prefix = 'LspDiagnosticsVirtualText'
-    local virtual_text_group = virtual_text_group_prefix .. level
     local sign_group = 'LspDiagnosticsSign' .. level
     local floating_group = 'LspDiagnosticsFloating' .. level
 
-    nvim_set_hl(ns, virtual_text_group_prefix, diagnostics_virtual_text)
-    nvim_set_hl(ns, virtual_text_group, diagnostics_virtual_text)
     nvim_set_hl(ns, floating_group, diagnostics_floating)
     nvim_set_hl(ns, sign_group, diagnostics_sign)
   end
 end
 
+local setup_lsp_codelens = function(ns)
+  nvim_set_hl(ns, 'LspCodeLensVirtualText', {fg = colors.gray})
+end
+
 local language_highlights = function(ns)
   setup_lsp_diagnostics(ns)
-  setup_lsp_reference(ns, {bg = colors.light_gray})
+  setup_lsp_reference(ns)
+  setup_lsp_codelens(ns)
 end
 
 local custom_groups = function(ns)
