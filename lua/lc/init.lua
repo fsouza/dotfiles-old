@@ -27,7 +27,7 @@ local patch_lsp = function()
   local original_show_line_diagnostics = vim.lsp.diagnostic.show_line_diagnostics
   vim.lsp.diagnostic.show_line_diagnostics = function(opts)
     local bufnr, winid = original_show_line_diagnostics(opts)
-    require('color').set_popup_winid(winid)
+    require('color').set_popup_bufnr(bufnr)
     return bufnr, winid
   end
 end
