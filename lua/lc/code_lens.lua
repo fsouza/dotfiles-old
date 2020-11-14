@@ -68,8 +68,9 @@ function M.on_attach(opts)
     M.codelens(bufnr)
   end)
 
+  local augroup_id = 'lsp_codelens_' .. bufnr
   local command = string.format([[lua require('lc.code_lens').codelens(%d)]], bufnr)
-  helpers.augroup('lsp_codelens_' .. bufnr, {
+  helpers.augroup(augroup_id, {
     {
       events = {'InsertLeave'; 'BufWritePost'};
       targets = {string.format('<buffer=%d>', bufnr)};
@@ -78,12 +79,13 @@ function M.on_attach(opts)
   })
 
   vim.schedule(function()
-    local hook_id = 'code_lens_' .. bufnr
+    local hook_id = augroup_id
     require('lc.buf_diagnostic').register_hook(hook_id, function()
       M.codelens(bufnr)
     end)
     api.nvim_buf_attach(bufnr, false, {
       on_detach = function()
+        helpers.augroup(augroup_id, {})
         require('lc.buf_diagnostic').unregister_hook(hook_id)
         clients[bufnr] = nil
       end;
