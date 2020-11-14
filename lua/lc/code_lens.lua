@@ -87,13 +87,24 @@ local execute_codelenses = function(bufnr, items)
     return
   end
 
-  -- TODO: if there's more than one option, pick which one we want.
-  local selected = items[1]
+  local execute_item = function(selected)
+    if client.supports_resolve then
+      client.lsp_client.request('codeLens/resolve', selected, resolve_handler, bufnr)
+    elseif client.supports_command then
+      client.lsp_client.request('workspace/executeCommand', selected.command)
+    end
+  end
 
-  if client.supports_resolve then
-    client.lsp_client.request('codeLens/resolve', selected, resolve_handler, bufnr)
-  elseif client.supports_command then
-    client.lsp_client.request('workspace/executeCommand', selected.command)
+  if #items > 1 then
+    local popup_lines = {}
+    for _, item in ipairs(items) do
+      table.insert(popup_lines, item.command.title)
+    end
+    require('lib.popup_picker').open(popup_lines, function(index)
+      execute_item(items[index])
+    end)
+  else
+    execute_item(items[1])
   end
 end
 
