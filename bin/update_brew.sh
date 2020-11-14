@@ -4,6 +4,6 @@ brew update
 brew upgrade
 
 brew cleanup -s --prune 3
-if [[ $OS_NAME == "Darwin" ]]; then
+if [[ ${OSTYPE} == darwin* ]]; then
 	brew services cleanup
 fi

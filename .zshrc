@@ -34,7 +34,7 @@ source "${basedir}"/extra/rclone
 source "${basedir}"/extra/poetry
 
 cond_source "${basedir}/extra/local-functions"
-cond_source "${basedir}/extra/${OS_NAME}-functions"
+cond_source "${basedir}/extra/$(uname -s)-functions"
 
 export PS1="％ " PS2="\\ "
 
