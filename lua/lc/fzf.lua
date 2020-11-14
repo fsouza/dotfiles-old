@@ -14,7 +14,8 @@ local lines_to_qf_list = function(lines)
   for _, line in ipairs(lines) do
     local _, _, filename, lnum, col, text = string.find(line, [[([^:]+):(%d+):(%d+):(.*)]])
     if filename then
-      table.insert(items, {filename = filename; lnum = lnum; col = col; text = text})
+      table.insert(items,
+                   {filename = filename; lnum = tonumber(lnum); col = tonumber(col); text = text})
     end
   end
   return items
@@ -35,7 +36,7 @@ local handle_lsp_lines = function(lines)
   if #qf_list == 1 then
     local item = qf_list[1]
     vcmd(string.format('%s %s', action, item.filename))
-    api.nvim_win_set_cursor(0, item.lnum, item.col)
+    api.nvim_win_set_cursor(0, {item.lnum; item.col})
     api.nvim_input('zvzz')
   else
     lsp.util.set_qflist(qf_list)
