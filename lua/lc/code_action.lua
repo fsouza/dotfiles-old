@@ -96,4 +96,28 @@ function M.handle_actions(actions)
   }, bufnr)
 end
 
+local code_action_for_buf = function()
+  local bufnr = api.nvim_get_current_buf()
+  local context = {diagnostics = vim.lsp.diagnostic.get(bufnr)}
+  local params = {textDocument = {uri = vim.uri_from_bufnr(bufnr)}; context = context}
+  vim.lsp.buf_request(bufnr, 'textDocument/codeAction', params)
+end
+
+local code_action_for_line = function(cb)
+  local context = {diagnostics = vim.lsp.diagnostic.get_line_diagnostics()}
+  local params = util.make_range_params()
+  params.context = context
+  vim.lsp.buf_request(0, 'textDocument/codeAction', params, cb)
+end
+
+function M.code_action()
+  code_action_for_line(function(_, _, actions)
+    if not actions or vim.tbl_isempty(actions) then
+      return code_action_for_buf()
+    end
+
+    M.handle_actions(actions)
+  end)
+end
+
 return M

@@ -88,7 +88,7 @@ local attached = function(bufnr, client)
     if client.resolved_capabilities.code_action then
       table.insert(mappings.n, {
         lhs = '<localleader>cc';
-        rhs = helpers.cmd_map('lua vim.lsp.buf.code_action()');
+        rhs = helpers.cmd_map([[lua require('lc.code_action').code_action()]]);
         opts = {silent = true};
       })
     end
