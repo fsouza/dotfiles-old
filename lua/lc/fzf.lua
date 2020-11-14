@@ -36,7 +36,7 @@ local handle_lsp_lines = function(lines)
   if #qf_list == 1 then
     local item = qf_list[1]
     vcmd(string.format('%s %s', action, item.filename))
-    api.nvim_win_set_cursor(0, {item.lnum; item.col})
+    api.nvim_win_set_cursor(0, {item.lnum; item.col - 1})
     api.nvim_input('zvzz')
   else
     lsp.util.set_qflist(qf_list)
