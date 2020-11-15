@@ -55,7 +55,7 @@ local add_to_config = function()
       cmd = {'pyright-langserver'; '--stdio'};
       filetypes = {'python'};
       root_dir = function(fname)
-        return nvim_lsp.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+        return nvim_lsp.util.find_git_ancestor(fname) or vim.loop.cwd()
       end;
       settings = pyright_settings();
       before_init = function(initialize_params)
