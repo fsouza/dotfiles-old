@@ -76,6 +76,10 @@ local ensure_packer_nvim = function()
   require('packer').sync()
 end
 
+local build = function()
+  os.execute('make build')
+end
+
 do
   local autoload_done = false
   local packer_done = false
@@ -93,6 +97,7 @@ do
   debug(string.format('created virtualenv at "%s"\n', virtualenv))
   local hr_dir = ensure_hererocks(virtualenv)
   debug(string.format('created hererocks at "%s"\n', hr_dir))
+  build()
   vim.schedule(function()
     ensure_packer_nvim()
     packer_done = true
