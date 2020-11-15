@@ -77,6 +77,7 @@ local deps = {
     };
   };
   {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
+  {'teal-language/vim-teal'; opt = true; ft = {'teal'}; event = 'BufEnter *.tl'};
 }
 
 function M.reload()
