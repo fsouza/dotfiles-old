@@ -1,5 +1,7 @@
 local api = vim.api
-local buf = require('vim.lsp.buf')
+local vfn = vim.fn
+local buf = vim.lsp.buf
+
 local util = require('vim.lsp.util')
 
 local M = {}
@@ -49,6 +51,12 @@ function M.code_action()
 
     M.handle_actions(actions)
   end)
+end
+
+function M.visual_code_action()
+  local start_pos = vfn.getpos([['<]])
+  local end_pos = vfn.getpos([['>]])
+  vim.lsp.buf.range_code_action(nil, {start_pos[2]; start_pos[3]}, {end_pos[2]; end_pos[3]})
 end
 
 return M

@@ -49,6 +49,7 @@ local attached = function(bufnr, client)
         };
       };
       i = {};
+      x = {};
     }
 
     if client.resolved_capabilities.text_document_did_change then
@@ -93,6 +94,11 @@ local attached = function(bufnr, client)
       table.insert(mappings.n, {
         lhs = '<leader>cc';
         rhs = helpers.cmd_map([[lua require('lc.code_action').code_action()]]);
+        opts = {silent = true};
+      })
+      table.insert(mappings.x, {
+        lhs = '<leader>cc';
+        rhs = helpers.vcmd_map([[lua require('lc.code_action').visual_code_action()]]);
         opts = {silent = true};
       })
     end

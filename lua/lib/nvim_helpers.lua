@@ -8,6 +8,10 @@ function M.cmd_map(cmd)
   return string.format('<cmd>%s<cr>', cmd)
 end
 
+function M.vcmd_map(cmd)
+  return string.format([[<cmd>'<,'>%s<cr>]], cmd)
+end
+
 function M.create_mappings(mappings, bufnr)
   local fn = api.nvim_set_keymap
   if bufnr then
