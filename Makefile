@@ -13,8 +13,4 @@ shellcheck:
 
 .PHONY: luacheck
 luacheck:
-	cd $(mkfile_dir) && $(LUACHECK) lua tests
-
-.PHONY: test
-test:
-	cd $(mkfile_dir) && ./bustedw
+	cd $(mkfile_dir) && $(LUACHECK) lua

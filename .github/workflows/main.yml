@@ -85,6 +85,3 @@ jobs:
 
       - name: run luacheck from config dir
         run: make -f $HOME/.config/nvim/Makefile luacheck
-
-      - name: run tests from config dir
-        run: make -f $HOME/.config/nvim/Makefile test
