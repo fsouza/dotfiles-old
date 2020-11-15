@@ -134,7 +134,6 @@ local attached = function(bufnr, client)
     end
 
     if client.resolved_capabilities.document_symbol then
-      vim.g.vista_default_executive = 'nvim_lsp'
       table.insert(mappings.n, {
         lhs = '<leader>t';
         rhs = helpers.cmd_map('lua vim.lsp.buf.document_symbol()');
@@ -264,7 +263,7 @@ function M.with_default_opts(opts)
 end
 
 M.project_root_pattern = function()
-  return require('nvim_lsp').util.root_pattern('.git')
+  return require('lspconfig').util.root_pattern('.git')
 end
 
 M.cwd_root_pattern = function()

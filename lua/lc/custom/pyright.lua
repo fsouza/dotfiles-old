@@ -1,7 +1,7 @@
 local loop = vim.loop
 
-local nvim_lsp = require('nvim_lsp')
-local configs = require('nvim_lsp/configs')
+local lspconfig = require('lspconfig')
+local configs = require('lspconfig/configs')
 
 local M = {}
 
@@ -55,7 +55,7 @@ local add_to_config = function()
       cmd = {'pyright-langserver'; '--stdio'};
       filetypes = {'python'};
       root_dir = function(fname)
-        return nvim_lsp.util.find_git_ancestor(fname) or vim.loop.cwd()
+        return lspconfig.util.find_git_ancestor(fname) or vim.loop.cwd()
       end;
       settings = pyright_settings();
       before_init = function(initialize_params)
@@ -69,7 +69,7 @@ end
 
 function M.setup(opts)
   add_to_config()
-  nvim_lsp.pyright.setup(opts)
+  lspconfig.pyright.setup(opts)
 end
 
 return M
