@@ -80,12 +80,6 @@ function M.codelens(bufnr)
   debounced.call(bufnr)
 end
 
-local resolve_handler = function(err)
-  if err then
-    error('failed to resolve codelens: ' .. err)
-  end
-end
-
 local execute_codelenses = function(bufnr, items)
   if vim.tbl_isempty(items) then
     return
@@ -96,22 +90,39 @@ local execute_codelenses = function(bufnr, items)
     return
   end
 
+  local run = function(codelens)
+    client.lsp_client.request('workspace/executeCommand', codelens.command, function(err)
+      if not err then
+        vcmd([[checktime]])
+      end
+    end)
+  end
+
   local execute_item = function(selected)
-    if client.supports_resolve then
-      client.lsp_client.request('codeLens/resolve', selected, resolve_handler, bufnr)
-    elseif client.supports_command then
-      client.lsp_client.request('workspace/executeCommand', selected.command, function(err)
-        if not err then
-          vcmd([[checktime]])
+    if not client.supports_command then
+      return
+    end
+    if selected.command.command == '' then
+      if not client.supports_resolve then
+        return
+      end
+
+      client.lsp_client.request('codeLens/resolve', selected, function(_, _, result)
+        if result then
+          run(result)
         end
       end)
+    else
+      run(selected.command)
     end
   end
 
   if #items > 1 then
     local popup_lines = {}
     for _, item in ipairs(items) do
-      table.insert(popup_lines, item.command.title)
+      if item.command then
+        table.insert(popup_lines, item.command.title)
+      end
     end
     require('lib.popup_picker').open(popup_lines, function(index)
       execute_item(items[index])
