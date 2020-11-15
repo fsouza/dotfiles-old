@@ -121,7 +121,7 @@ function install_zls() {
 	path=${cache_dir}/zls
 	_clone_or_update https://github.com/zigtools/zls.git "${path}" &&
 		pushd "${path}" &&
-		zig build -Drelease-fast &&
+		zig build -Drelease-safe &&
 		popd
 }
 
