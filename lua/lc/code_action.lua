@@ -30,10 +30,7 @@ function M.handle_actions(actions)
 end
 
 local code_action_for_buf = function()
-  local bufnr = api.nvim_get_current_buf()
-  local context = {diagnostics = vim.lsp.diagnostic.get(bufnr)}
-  local params = {textDocument = {uri = vim.uri_from_bufnr(bufnr)}; context = context}
-  vim.lsp.buf_request(bufnr, 'textDocument/codeAction', params)
+  vim.lsp.buf.range_code_action(nil, {1; 1}, {api.nvim_buf_line_count(0); 2147483647})
 end
 
 local code_action_for_line = function(cb)
