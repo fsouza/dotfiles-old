@@ -13,7 +13,7 @@ local fzf_symbol_callback = function(_, _, result, _, bufnr)
 end
 
 local popup_callback = function(err, method, result)
-  vim.lsp.callbacks[method](err, method, result)
+  vim.lsp.handlers[method](err, method, result)
   for bufnr, winid in ipairs(api.nvim_list_wins()) do
     if pcall(api.nvim_win_get_var, winid, method) then
       require('color').set_popup_bufnr(bufnr)
