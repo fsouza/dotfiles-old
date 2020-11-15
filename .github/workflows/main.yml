@@ -71,6 +71,10 @@ jobs:
         with:
           go-version: "1.x"
 
+      - uses: goto-bus-stop/setup-zig@v1.3.0
+        with:
+          version: "master"
+
       - name: copy files to config dir
         run: |
           mkdir -p $HOME/.config
