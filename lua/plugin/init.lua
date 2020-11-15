@@ -70,7 +70,7 @@ local setup_hlyank = function()
 end
 
 local setup_global_ns = function()
-  _G.f = require('plugin.global')
+  _G.f = require('global')
 end
 
 local setup_word_replace = function()
