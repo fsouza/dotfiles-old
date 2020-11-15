@@ -113,7 +113,7 @@ local execute_codelenses = function(bufnr, items)
         end
       end)
     else
-      run(selected.command)
+      run(selected)
     end
   end
 
