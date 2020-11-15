@@ -7,7 +7,7 @@ function M.set_theme_to_gitmessenger_popup()
     local bufnr = api.nvim_win_get_buf(winid)
     local _, current_syntax = pcall(api.nvim_buf_get_var, bufnr, 'current_syntax')
     if current_syntax == 'gitmessengerpopup' then
-      require('color').set_popup_bufnr(bufnr)
+      require('color').set_popup_winid(winid)
       return
     end
   end
