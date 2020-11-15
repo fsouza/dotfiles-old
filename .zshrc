@@ -32,6 +32,7 @@ source "${basedir}"/extra/ocaml
 source "${basedir}"/extra/neovim
 source "${basedir}"/extra/rclone
 source "${basedir}"/extra/poetry
+source "${basedir}"/extra/zig
 
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/$(uname -s)-functions"
