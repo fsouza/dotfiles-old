@@ -54,6 +54,12 @@ function M.code_action()
 end
 
 function M.visual_code_action()
+  -- TODO(fsouza): is there a better approach for this?
+  if vfn.visualmode() == '' then
+    return
+  end
+  api.nvim_input('<esc>')
+
   local start_pos = vfn.getpos([['<]])
   local end_pos = vfn.getpos([['>]])
   vim.lsp.buf.range_code_action(nil, {start_pos[2]; start_pos[3]}, {end_pos[2]; end_pos[3]})
