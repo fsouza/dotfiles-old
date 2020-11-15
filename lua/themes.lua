@@ -1,4 +1,4 @@
-local M= {}
+local M = {}
 
 local meta = {}
 function meta:__index(key)
