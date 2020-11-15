@@ -18,6 +18,9 @@ local initial_mappings = function()
 
   -- Remap terminal escaping
   nvim_set_keymap('t', [[<c-\><c-\>]], [[<c-\><c-n>]], {})
+
+  -- <leader>w for writing (with update instead of 'write')
+  nvim_set_keymap('n', '<leader>w', '<cmd>update<cr>', {})
 end
 
 local bootstrap_env = function()
