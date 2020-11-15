@@ -114,16 +114,18 @@ local attached = function(bufnr, client)
       require('lc.formatting').register_client(client, bufnr)
     end
 
-    table.insert(mappings.n, {
-      lhs = '<leader>s';
-      rhs = helpers.cmd_map('lua vim.lsp.buf.document_highlight()');
-      opts = {silent = true};
-    })
-    table.insert(mappings.n, {
-      lhs = '<leader>S';
-      rhs = helpers.cmd_map('lua vim.lsp.buf.clear_references()');
-      opts = {silent = true};
-    })
+    if client.resolved_capabilities.document_highlight then
+      table.insert(mappings.n, {
+        lhs = '<leader>s';
+        rhs = helpers.cmd_map('lua vim.lsp.buf.document_highlight()');
+        opts = {silent = true};
+      })
+      table.insert(mappings.n, {
+        lhs = '<leader>S';
+        rhs = helpers.cmd_map('lua vim.lsp.buf.clear_references()');
+        opts = {silent = true};
+      })
+    end
 
     if client.resolved_capabilities.document_symbol then
       vim.g.vista_default_executive = 'nvim_lsp'
