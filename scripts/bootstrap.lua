@@ -17,14 +17,17 @@ local debug = function(msg)
   end
 end
 
-local fmt_execute = function(pat, ...)
-  os.execute(string.format(pat, ...))
+local execute = function(pat, ...)
+  local status = os.execute(string.format(pat, ...))
+  if status ~= 0 then
+    error(string.format('command exitted with status %d', status))
+  end
 end
 
 local download_virtualenv_pyz = function()
   local file_name = cache_dir .. '/virtualenv.pyz'
   if not loop.fs_stat(file_name) then
-    fmt_execute([[curl -sLo %s https://bootstrap.pypa.io/virtualenv.pyz]], file_name)
+    execute([[curl -sLo %s https://bootstrap.pypa.io/virtualenv.pyz]], file_name)
   end
   return file_name
 end
@@ -33,33 +36,33 @@ local ensure_virtualenv = function()
   local venv_dir = cache_dir .. '/venv'
   if not loop.fs_stat(venv_dir) then
     local venv_pyz = download_virtualenv_pyz()
-    fmt_execute([[python3 %s -p python3 %s]], venv_pyz, venv_dir)
+    execute([[python3 %s -p python3 %s]], venv_pyz, venv_dir)
   end
-  fmt_execute([[%s/venv/bin/pip install --upgrade %s -r ./langservers/requirements.txt]],
-              cache_dir, table.concat(pip_packages, ' '))
+  execute([[%s/venv/bin/pip install --upgrade %s -r ./langservers/requirements.txt]], cache_dir,
+          table.concat(pip_packages, ' '))
   return venv_dir
 end
 
 local ensure_hererocks = function(virtualenv)
   local hr_dir = cache_dir .. '/hr'
   if not loop.fs_stat(hr_dir) then
-    fmt_execute([[%s/bin/hererocks -j latest -r latest %s]], virtualenv, hr_dir)
+    execute([[%s/bin/hererocks -j latest -r latest %s]], virtualenv, hr_dir)
   end
 
   for _, rock in pairs(rocks) do
-    fmt_execute([[%s/bin/luarocks install %s]], hr_dir, rock)
+    execute([[%s/bin/luarocks install %s]], hr_dir, rock)
   end
 
   return hr_dir
 end
 
 local setup_langservers = function()
-  fmt_execute([[./langservers/setup.sh %s/langservers]], cache_dir)
+  execute([[./langservers/setup.sh %s/langservers]], cache_dir)
 end
 
 local install_autoload_plugins = function()
   vfn.mkdir(site_dir .. '/autoload', 'p')
-  fmt_execute(
+  execute(
     [[curl -sLo %s/autoload.fzf.vim https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim]],
     site_dir)
 end
@@ -68,7 +71,7 @@ local ensure_packer_nvim = function()
   local packer_dir = string.format('%s/pack/packer/opt/packer.nvim', site_dir)
   vfn.mkdir(packer_dir, 'p')
   if not loop.fs_stat(packer_dir .. '/.git') then
-    fmt_execute([[git clone --depth=1 https://github.com/wbthomason/packer.nvim %s]], packer_dir)
+    execute([[git clone --depth=1 https://github.com/wbthomason/packer.nvim %s]], packer_dir)
   end
 
   vim.o.packpath = string.format('%s,%s', site_dir, vim.o.packpath)
@@ -77,7 +80,7 @@ local ensure_packer_nvim = function()
 end
 
 local build = function()
-  os.execute('make build')
+  execute('make build')
 end
 
 do
