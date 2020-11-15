@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+ROOT=${NVIM_CACHE_DIR}/langservers
+ZLS_LOCATION=$ROOT/zls
+
+exec "${ZLS_LOCATION}/zig-cache/bin/zls"

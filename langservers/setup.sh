@@ -113,6 +113,18 @@ function install_elixir_langserver {
 		mix elixir_ls.release -o release
 }
 
+function install_zls() {
+	if ! command -v zig &>/dev/null; then
+		echo skipping zls
+		return
+	fi
+	path=${cache_dir}/zls
+	_clone_or_update https://github.com/zigtools/zls.git "${path}" &&
+		pushd "${path}" &&
+		zig build -Drelease-fast &&
+		popd
+}
+
 cache_dir=${1}
 exit_status=0
 
@@ -140,6 +152,7 @@ install_lua_lsp &
 install_shfmt &
 install_golangci_lint_langserver &
 install_elixir_langserver &
+install_zls &
 wait
 popd
 
