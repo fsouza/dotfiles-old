@@ -125,7 +125,7 @@ do
   end)
 
   if_executable('rust-analyzer', function()
-    lsp.rust_analyzer.setup(lc_opts.with_default_opts({}))
+    lsp.rust_analyzer.setup(lc_opts.with_default_opts({settings = {}}))
   end)
 
   if_executable('ninja', function()
