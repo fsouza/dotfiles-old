@@ -8,7 +8,9 @@ local _default_theme
 local _themes = {}
 
 function M.set_popup_bufnr(bufnr)
-  _themes[bufnr] = themes.popup
+  if bufnr then
+    _themes[bufnr] = themes.popup
+  end
 end
 
 function M.set_default_theme(theme_ns)
