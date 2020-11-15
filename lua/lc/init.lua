@@ -1,6 +1,5 @@
 local vcmd = vim.cmd
 local vfn = vim.fn
-local lc_opts = require('lc.opts')
 
 local config_dir = vfn.stdpath('config')
 
@@ -59,9 +58,10 @@ do
   set_log_level()
   vcmd([[packadd nvim-lspconfig]])
   local lsp = require('lspconfig')
-  local vim_node_ls = get_local_cmd('node-lsp')
+  local lc_opts = require('lc.opts')
 
   if_executable('npx', function()
+    local vim_node_ls = get_local_cmd('node-lsp')
     lsp.bashls.setup(lc_opts.with_default_opts({
       cmd = {vim_node_ls; 'bash-language-server'; 'start'};
     }))
