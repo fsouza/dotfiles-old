@@ -254,7 +254,7 @@ end
 
 function M.with_default_opts(opts)
   return vim.tbl_extend('keep', opts, {
-    callbacks = require('lc.callbacks');
+    handlers = require('lc.handlers');
     on_attach = on_attach;
     capabilities = vim.tbl_deep_extend('keep', opts.capabilities or {}, {
       textDocument = {completion = {completionItem = {snippetSupport = false}}};
