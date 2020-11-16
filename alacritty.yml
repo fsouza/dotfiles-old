@@ -16,13 +16,13 @@ scrolling:
 font:
   normal:
     family: "SF Mono"
-    style: Light
+    style: Regular
 
   bold:
     style: Semibold
 
   size: 12.0
-  use_thin_strokes: false
+  use_thin_strokes: true
 
 schemes:
   default-theme: &default-theme
