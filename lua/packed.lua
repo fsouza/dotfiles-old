@@ -16,7 +16,7 @@ local deps = {
   {'godlygeek/tabular'; opt = true; cmd = {'Tabularize'}};
   {'junegunn/fzf.vim'; opt = true; cmd = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
   {'neovim/nvim-lspconfig'; opt = true};
-  {'Iron-E/completion-nvim'; opt = true; branch = 'bugfix/use-handlers'};
+  {'nvim-lua/completion-nvim'; opt = true};
   {
     'sheerun/vim-polyglot';
     opt = true;
