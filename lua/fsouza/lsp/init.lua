@@ -153,7 +153,8 @@ do
   end)
 
   if_executable('zig', function()
-    require('fsouza.lsp.custom.zls').setup(lc_opts.with_default_opts({cmd = {get_local_cmd('zig-lsp')}}))
+    require('fsouza.lsp.custom.zls').setup(lc_opts.with_default_opts(
+                                             {cmd = {get_local_cmd('zig-lsp')}}))
   end)
 
   local clangd = os.getenv('HOMEBREW_PREFIX') .. '/opt/llvm/bin/clangd'
