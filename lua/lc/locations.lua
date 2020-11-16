@@ -60,8 +60,8 @@ local peek_location_callback = function(_, _, result)
     return
   end
   local loc = ts_range(result[1])
-  local bufnr, _ = lsp_util.preview_location(loc)
-  require('color').set_popup_bufnr(bufnr)
+  local _, win_id = lsp_util.preview_location(loc)
+  require('color').set_popup_winid(win_id)
 end
 
 function M.preview_definition()

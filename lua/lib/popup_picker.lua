@@ -76,7 +76,7 @@ function M.open(lines, cb)
   vim.wo.number = true
   vim.wo.wrap = false
   vim.w[win_var_identifier] = true
-  require('color').set_popup_bufnr(bufnr)
+  require('color').set_popup_winid(winid)
 
   helpers.create_mappings({
     n = {

@@ -16,8 +16,7 @@ local popup_callback = function(err, method, result)
   vim.lsp.handlers[method](err, method, result)
   for _, winid in ipairs(api.nvim_list_wins()) do
     if pcall(api.nvim_win_get_var, winid, method) then
-      local bufnr = api.nvim_win_get_buf(winid)
-      require('color').set_popup_bufnr(bufnr)
+      require('color').set_popup_winid(winid)
     end
   end
 end
