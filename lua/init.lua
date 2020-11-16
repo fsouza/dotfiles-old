@@ -158,7 +158,7 @@ do
   require('packed').setup()
   if not os.getenv('NVIM_BOOTSTRAP') then
     schedule(function()
-      require('plugin.init')
+      require('plugin')
     end)
   end
 end
