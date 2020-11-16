@@ -80,14 +80,11 @@ local ensure_packer_nvim = function()
   require('packer').sync()
 end
 
-local build = function()
-  execute('make build')
-end
-
 do
   local autoload_done = false
   local packer_done = false
   local langservers_done = false
+  local hererocks_done = false
   vim.schedule(function()
     install_autoload_plugins()
     autoload_done = true
@@ -99,16 +96,18 @@ do
   vfn.mkdir(cache_dir, 'p')
   local virtualenv = ensure_virtualenv()
   debug(string.format('created virtualenv at "%s"\n', virtualenv))
-  local hr_dir = ensure_hererocks(virtualenv)
-  debug(string.format('created hererocks at "%s"\n', hr_dir))
-  build()
+  vim.schedule(function()
+    local hr_dir = ensure_hererocks(virtualenv)
+    debug(string.format('created hererocks at "%s"\n', hr_dir))
+    hererocks_done = true
+  end)
   vim.schedule(function()
     ensure_packer_nvim()
     packer_done = true
   end)
   local timeout_min = 30
   local status = vim.wait(timeout_min * minute_ms, function()
-    return autoload_done and packer_done and langservers_done
+    return autoload_done and packer_done and langservers_done and hererocks_done
   end, 25)
   if not status then
     error(string.format('timed out after %d minutes', timeout_min))
