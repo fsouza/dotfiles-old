@@ -93,11 +93,10 @@ do
         init_options = init_options;
       }))
 
-    require('lc.custom.pyright').setup(lc_opts.with_default_opts(
-                                         {
+    lsp.pyright.setup(lc_opts.with_default_opts(require('lc.custom.pyright').get_opts(
+                                                  {
         cmd = {vim_node_ls; 'pyright-langserver'; '--stdio'};
-        root_dir = lc_opts.cwd_root_pattern;
-      }))
+      })))
   end)
 
   if_executable('gopls', function()

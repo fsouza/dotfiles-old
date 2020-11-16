@@ -1,7 +1,6 @@
 local loop = vim.loop
 
 local lspconfig = require('lspconfig')
-local configs = require('lspconfig/configs')
 
 local M = {}
 
@@ -49,27 +48,12 @@ local pyright_settings = function()
   return settings
 end
 
-local add_to_config = function()
-  configs.pyright = {
-    default_config = {
-      cmd = {'pyright-langserver'; '--stdio'};
-      filetypes = {'python'};
-      root_dir = function(fname)
-        return lspconfig.util.find_git_ancestor(fname) or vim.loop.cwd()
-      end;
-      settings = pyright_settings();
-      before_init = function(initialize_params)
-        initialize_params['workspaceFolders'] = {
-          {name = 'workspace'; uri = initialize_params['rootUri']};
-        }
-      end;
-    };
-  }
-end
-
-function M.setup(opts)
-  add_to_config()
-  lspconfig.pyright.setup(opts)
+function M.get_opts(opts)
+  opts.root_dir = function(fname)
+    return lspconfig.util.find_git_ancestor(fname) or vim.loop.cwd()
+  end
+  opts.settings = pyright_settings()
+  return opts
 end
 
 return M
