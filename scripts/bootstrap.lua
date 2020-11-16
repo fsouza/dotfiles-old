@@ -21,7 +21,9 @@ local execute = function(pat, ...)
   local cmd = string.format(pat, ...)
   local status = os.execute(cmd)
   if status ~= 0 then
-    error(string.format('command "%s" exitted with status %d', cmd, status))
+    error(string.format(
+            '================\ncommand "%s" exitted with status %d\n================\n', cmd,
+            status))
   end
 end
 
