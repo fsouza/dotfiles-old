@@ -78,7 +78,7 @@ local ensure_packer_nvim = function()
   end
 
   vim.o.packpath = string.format('%s,%s', site_dir, vim.o.packpath)
-  require('packed').setup()
+  require('fsouza.packed').setup()
   require('packer').sync()
 end
 
