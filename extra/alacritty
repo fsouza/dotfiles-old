@@ -1,0 +1,11 @@
+function bump_alacritty {
+	dir=$HOME/Projects/os/3/alacritty
+	if ! [ -d "${dir}" ]; then
+		git clone --recurse-submodules https://github.com/alacritty/alacritty.git "${dir}"
+	fi
+	cd "${dir}" &&
+		git pull &&
+		make app &&
+		cp -Rfv target/release/osx/Alacritty.app /Applications/ &&
+		cd -
+}

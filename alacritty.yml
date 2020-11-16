@@ -1,0 +1,177 @@
+window:
+  padding:
+    x: 2
+    y: 2
+
+  dimensions:
+    columns: 238
+    lines: 68
+
+  dynamic_padding: true
+
+scrolling:
+  history: 50000
+  multiplier: 3
+
+font:
+  normal:
+    family: "SF Mono"
+    style: Regular
+
+  bold:
+    style: Semibold
+
+  size: 12.0
+  use_thin_strokes: true
+
+schemes:
+  default-theme: &default-theme
+    primary:
+      background: "#e8e8e8"
+      foreground: "#000000"
+
+    normal:
+      black: "#000000"
+      red: "#c91b00"
+      green: "#00c200"
+      yellow: "#606000"
+      blue: "#0225c7"
+      magenta: "#c930c6"
+      cyan: "#00c5c7"
+      white: "#c7c7c7"
+
+    bright:
+      black: "#000000"
+      red: "#c91b00"
+      green: "#000000"
+      yellow: "#000000"
+      blue: "#000000"
+      magenta: "#000000"
+      cyan: "#00c5c7"
+      white: "#c7c7c7"
+
+    indexed_colors: []
+
+  themer-dark: &dark
+    primary:
+      background: "#282629"
+      foreground: "#e0dce0"
+
+    cursor:
+      text: "#282629"
+      cursor: "#cc78fa"
+
+    selection:
+      text: "#282629"
+      background: "#66bfff"
+
+    normal:
+      black: "#656066"
+      red: "#ff4050"
+      green: "#a4cc35"
+      yellow: "#ffd24a"
+      blue: "#66bfff"
+      magenta: "#f553bf"
+      cyan: "#26c99e"
+      white: "#e0dce0"
+
+    bright:
+      black: "#847e85"
+      red: "#FF6673"
+      green: "#B6D65D"
+      yellow: "#FFDA6E"
+      blue: "#85CBFF"
+      magenta: "#F775CC"
+      cyan: "#51D3B1"
+      white: "#fffcff"
+
+    dim:
+      black: "#474247"
+      red: "#D43B48"
+      green: "#8BAB33"
+      yellow: "#D4B043"
+      blue: "#5AA0D4"
+      magenta: "#CC4AA1"
+      cyan: "#26A887"
+      white: "#c1bcc2"
+
+  themer-light: &light
+    primary:
+      background: "#fffcff"
+      foreground: "#474247"
+
+    cursor:
+      text: "#fffcff"
+      cursor: "#bf65f0"
+
+    selection:
+      text: "#fffcff"
+      background: "#53a6e1"
+
+    normal:
+      black: "#474247"
+      red: "#f03e4d"
+      green: "#97bd2d"
+      yellow: "#eeba21"
+      blue: "#53a6e1"
+      magenta: "#ee4eb8"
+      cyan: "#1fc598"
+      white: "#c1bcc2"
+
+    bright:
+      black: "#656066"
+      red: "#F36471"
+      green: "#ACCA57"
+      yellow: "#F1C74D"
+      blue: "#75B7E7"
+      magenta: "#F171C6"
+      cyan: "#4CD0AD"
+      white: "#e0dce0"
+
+    dim:
+      black: "#282629"
+      red: "#C83946"
+      green: "#819F2C"
+      yellow: "#C69C23"
+      blue: "#4A8CBC"
+      magenta: "#C6469B"
+      cyan: "#21A582"
+      white: "#a29da3"
+
+colors: *default-theme
+
+mouse:
+  double_click: { threshold: 100 }
+  triple_click: { threshold: 100 }
+
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: true
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+shell:
+  program: /bin/zsh
+  args:
+    - --login
+
+key_bindings:
+  - { key: V, mods: Control|Shift, action: Paste }
+  - { key: C, mods: Control|Shift, action: Copy }
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
+  - { key: F, mods: Alt, chars: "\x1bf" }
+  - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: D, mods: Alt, chars: "\x1bd" }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
+  - { key: Space, mods: Control, chars: "\x00" }
+  - { key: Space, mods: Shift|Control, action: None }
