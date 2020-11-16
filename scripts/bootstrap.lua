@@ -18,9 +18,10 @@ local debug = function(msg)
 end
 
 local execute = function(pat, ...)
-  local status = os.execute(string.format(pat, ...))
+  local cmd = string.format(pat, ...)
+  local status = os.execute(cmd)
   if status ~= 0 then
-    error(string.format('command exitted with status %d', status))
+    error(string.format('command "%s" exitted with status %d', cmd, status))
   end
 end
 
