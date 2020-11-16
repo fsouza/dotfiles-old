@@ -61,7 +61,6 @@ local deps = {
   {'nvim-treesitter/nvim-treesitter'; opt = true};
   {'nvim-treesitter/nvim-treesitter-textobjects'; opt = true};
   {'nvim-treesitter/playground'; opt = true; cmd = {'TSPlaygroundToggle'}};
-  {'romgrk/nvim-treesitter-context'; opt = true; cmd = {'TSContextEnable'}};
   {
     'michaeljsmith/vim-indent-object';
     opt = true;
