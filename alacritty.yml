@@ -21,7 +21,7 @@ font:
   bold:
     style: Semibold
 
-  size: 12.0
+  size: 11.5
   use_thin_strokes: false
 
 schemes:
