@@ -64,5 +64,7 @@ setopt SHARE_HISTORY
 
 bindkey -e
 
+alias bump_dotfiles="cd ${basedir} && git pull && bin/setup && cd -"
+
 source "${basedir}"/extra/fzf
 unset basedir
