@@ -7,8 +7,6 @@ local minute_ms = 60 * second_ms
 local cache_dir = vfn.stdpath('cache')
 local site_dir = string.format('%s/site', vfn.stdpath('data'))
 
-local pip_packages = {'pip'; 'pip-tools'; 'git+https://github.com/luarocks/hererocks.git'}
-
 local rocks = {'lyaml'; 'luacheck'; 'luaposix'}
 
 local debug = function(msg)
@@ -41,15 +39,25 @@ local ensure_virtualenv = function()
     local venv_pyz = download_virtualenv_pyz()
     execute([[python3 %s -p python3 %s]], venv_pyz, venv_dir)
   end
-  execute([[%s/venv/bin/pip install --upgrade %s -r ./langservers/requirements.txt]], cache_dir,
-          table.concat(pip_packages, ' '))
+  execute([[%s/venv/bin/pip install --upgrade -r ./langservers/requirements.txt]], cache_dir)
   return venv_dir
 end
 
-local ensure_hererocks = function(virtualenv)
+local download_hererocks_py = function()
+  local file_name = cache_dir .. '/hererocks.py'
+  if not loop.fs_stat(file_name) then
+    execute(
+      [[curl -sLo %s https://raw.githubusercontent.com/luarocks/hererocks/master/hererocks.py]],
+      file_name)
+  end
+  return file_name
+end
+
+local ensure_hererocks = function()
   local hr_dir = cache_dir .. '/hr'
   if not loop.fs_stat(hr_dir) then
-    execute([[%s/bin/hererocks -j latest -r latest %s]], virtualenv, hr_dir)
+    local hererocks_py = download_hererocks_py()
+    execute([[python3 %s -j latest -r latest %s]], hererocks_py, hr_dir)
   end
 
   for _, rock in pairs(rocks) do
@@ -83,33 +91,35 @@ local ensure_packer_nvim = function()
 end
 
 do
-  local autoload_done = false
-  local packer_done = false
-  local langservers_done = false
-  local hererocks_done = false
-  vim.schedule(function()
-    install_autoload_plugins()
-    autoload_done = true
-  end)
-  vim.schedule(function()
-    setup_langservers()
-    langservers_done = true
-  end)
+  local ops = {
+    autoload = install_autoload_plugins;
+    langservers = setup_langservers;
+    packer = ensure_packer_nvim;
+    virtualenv = ensure_virtualenv;
+    hererocks = ensure_hererocks;
+  }
+  local done = {}
+
+  local sched = function(name, fn)
+    vim.schedule(function()
+      fn()
+      done[name] = true
+    end)
+  end
+
   vfn.mkdir(cache_dir, 'p')
-  local virtualenv = ensure_virtualenv()
-  debug(string.format('created virtualenv at "%s"\n', virtualenv))
-  vim.schedule(function()
-    local hr_dir = ensure_hererocks(virtualenv)
-    debug(string.format('created hererocks at "%s"\n', hr_dir))
-    hererocks_done = true
-  end)
-  vim.schedule(function()
-    ensure_packer_nvim()
-    packer_done = true
-  end)
+  for name, fn in pairs(ops) do
+    sched(name, fn)
+  end
+
   local timeout_min = 30
   local status = vim.wait(timeout_min * minute_ms, function()
-    return autoload_done and packer_done and langservers_done and hererocks_done
+    for name in pairs(ops) do
+      if not done[name] then
+        return false
+      end
+    end
+    return true
   end, 25)
   if not status then
     error(string.format('timed out after %d minutes', timeout_min))
