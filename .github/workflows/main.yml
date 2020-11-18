@@ -63,7 +63,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      - uses: actions-rs/toolchain@v1.0.6
+      - uses: actions-rs/toolchain@v1.0.7
         with:
           toolchain: stable
 
