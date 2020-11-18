@@ -4,17 +4,6 @@ local lspconfig = require('lspconfig')
 
 local M = {}
 
-local set_from_poetry = function(settings)
-  if loop.fs_stat('poetry.lock') then
-    local f = io.popen('poetry env info -p 2>/dev/null', 'r')
-    if f then
-      local virtual_env = f:read()
-      settings.python.pythonPath = string.format('%s/bin/python', virtual_env)
-      f:close()
-    end
-  end
-end
-
 local set_from_env_var = function(settings)
   local virtual_env = os.getenv('VIRTUAL_ENV')
   if virtual_env then
@@ -24,10 +13,38 @@ local set_from_env_var = function(settings)
   return false
 end
 
+local set_from_poetry = function(settings)
+  if loop.fs_stat('poetry.lock') then
+    local f = io.popen('poetry env info -p 2>/dev/null', 'r')
+    if f then
+      local virtual_env = f:read()
+      settings.python.pythonPath = string.format('%s/bin/python', virtual_env)
+      f:close()
+      return true
+    end
+  end
+  return false
+end
+
+local set_from_pipenv = function(settings)
+  if loop.fs_stat('Pipfile.lock') then
+    local f = io.popen('pipenv --venv')
+    if f then
+      local virtual_env = f:read()
+      settings.python.pythonPath = string.format('%s/bin/python', virtual_env)
+      f:close()
+      return true
+    end
+  end
+  return false
+end
+
 local detect_virtual_env = function(settings)
-  local modified = set_from_env_var(settings)
-  if not modified then
-    set_from_poetry(settings)
+  local detectors = {set_from_env_var; set_from_poetry; set_from_pipenv}
+  for _, detect in ipairs(detectors) do
+    if detect(settings) then
+      return
+    end
   end
 end
 
