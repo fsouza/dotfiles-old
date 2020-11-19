@@ -1,4 +1,3 @@
-local vfn = vim.fn
 local vcmd = vim.cmd
 local api = vim.api
 local nvim_buf_get_option = api.nvim_buf_get_option
@@ -134,11 +133,9 @@ function M.set_config()
 end
 
 function M.trim_whitespace()
-  local view = vfn.winsaveview()
   pcall(function()
     vcmd([[silent! keeppatterns %s/\s\+$//e]])
   end)
-  vfn.winrestview(view)
 end
 
 return M
