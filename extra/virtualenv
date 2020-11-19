@@ -18,7 +18,7 @@ function _disable_bare_python() {
 }
 
 function _enable_bare_python() {
-	unset -f python
+	unset -f python &>/dev/null || true
 }
 
 function v() {
