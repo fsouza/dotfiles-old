@@ -50,7 +50,7 @@ end
 
 local pyright_settings = function()
   local settings = {
-    pyright = {disableOrganizeImports = true};
+    pyright = {};
     python = {
       analysis = {
         autoImportCompletions = true;
