@@ -15,7 +15,7 @@ scrolling:
 
 font:
   normal:
-    family: "SF Mono"
+    family: SF Mono
     style: Light
 
   bold:
