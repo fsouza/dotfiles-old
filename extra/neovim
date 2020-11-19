@@ -32,11 +32,22 @@ function update_neovim {
 	_update_neovim || rebootstrap_neovim
 }
 
+# packer isn't very scriptable, so let's workaround it. This isn't great, but
+# works for now.
+function _nvim_packer_pull {
+	for folder in opt start; do
+		for dep in ~/.local/share/nvim/site/pack/packer/${folder}/*; do
+			git -C "${dep}" pull
+		done
+	done
+}
+
 function bump_vimfiles {
 	(
 		cd "${HOME}"/.config/nvim &&
 			git pull &&
-			env NVIM_DEBUG=1 make bootstrap
+			env NVIM_DEBUG=1 make bootstrap &&
+			_nvim_packer_pull
 	)
 }
 
