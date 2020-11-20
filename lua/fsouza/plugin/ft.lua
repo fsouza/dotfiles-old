@@ -6,7 +6,7 @@ function M.handle()
   if vim.bo.filetype and vim.bo.filetype ~= '' then
     local status, ft_plugin = pcall(require, 'fsouza.plugin.ft.' .. vim.bo.filetype)
     if status then
-      ft_plugin()
+      pcall(ft_plugin)
     end
   end
 end
