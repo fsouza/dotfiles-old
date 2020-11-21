@@ -53,7 +53,8 @@ function M.ensure_path_relative_to_prefix(prefix, path)
 end
 
 function M.rewrite_wrap(fn)
-  local orig_lineno, orig_colno = api.nvim_win_get_cursor(0)
+  local cursor = api.nvim_win_get_cursor(0)
+  local orig_lineno, orig_colno = cursor[1], cursor[2]
   local orig_line = api.nvim_buf_get_lines(0, orig_lineno - 1, orig_lineno, true)[1]
   local orig_nlines = api.nvim_buf_line_count(0)
   local view = vfn.winsaveview()
