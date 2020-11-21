@@ -31,22 +31,7 @@ local patch_lsp = function()
   end
 end
 
-local setup_hl = function()
-  vcmd([[
-highlight LspDiagnosticsFloatingError guifg=#262626
-highlight LspDiagnosticsFloatingWarning guifg=#262626
-highlight LspDiagnosticsFloatingInformation guifg=#262626
-highlight LspDiagnosticsFloatingHint guifg=#262626
-
-highlight link LspDiagnosticsSignError SignColumn
-highlight link LspDiagnosticsSignWarning SignColumn
-highlight link LspDiagnosticsSignInformation SignColumn
-highlight link LspDiagnosticsSignHint SignColumn
-]])
-end
-
 do
-  vim.schedule(setup_hl)
   patch_lsp()
 
   local if_executable = function(name, cb)
