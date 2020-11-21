@@ -7,6 +7,13 @@ local _default_theme
 
 local _themes = {}
 
+local _popup_cb
+
+-- Should we support more than one cb?
+function M.add_popup_cb(cb)
+  _popup_cb = cb
+end
+
 function M.set_popup_winid(winid)
   if winid then
     _themes[winid] = themes.popup
@@ -25,11 +32,24 @@ local gc = function()
   end
 end
 
+local find_theme = function(curr_winid)
+  if _popup_cb then
+    local winid = _popup_cb()
+    if winid == curr_winid then
+      return themes.popup
+    end
+  end
+  return _default_theme
+end
+
 function M.setup()
   vim.o.background = 'light'
   _default_theme = themes.none
   local cb = function(_, winid)
-    local theme = _themes[winid] or _default_theme
+    local theme = _themes[winid]
+    if not theme then
+      theme = find_theme(winid)
+    end
     api.nvim_set_hl_ns(theme)
     vim.schedule(gc)
   end

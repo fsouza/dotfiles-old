@@ -82,6 +82,12 @@ local attached = function(bufnr, client)
       })
       table.insert(mappings.i,
                    {lhs = '<cr>'; rhs = 'v:lua.f.cr()'; opts = {expr = true; noremap = true}})
+      require('fsouza.color').add_popup_cb(function()
+        local winid = require('completion.hover').winnr
+        if api.nvim_win_is_valid(winid) then
+          return winid
+        end
+      end)
     end
 
     if client.resolved_capabilities.rename ~= nil and client.resolved_capabilities.rename ~= false then
