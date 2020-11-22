@@ -125,7 +125,7 @@ end
 local get_luaformat = function()
   return {
     command = 'lua-format';
-    rootPatterns = default_root_patterns;
+    rootPatterns = {'.lua-format'; '.git'};
     requiredFiles = {'.lua-format'};
   }
 end
