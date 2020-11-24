@@ -24,7 +24,7 @@ local make_handler = function()
   local lsp_diagnostic = vim.lsp.diagnostic
   local handler = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true;
-    virtual_text = false;
+    virtual_text = true;
     signs = true;
     update_in_insert = true;
   })
