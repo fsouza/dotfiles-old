@@ -12,7 +12,7 @@ function _virtualenv() {
 
 function _disable_bare_python() {
 	function python() {
-		echo >&2 "please be explicit abou the version of python you want to use"
+		echo >&2 "please be explicit about the version of python you want to use"
 		return 1
 	}
 }
