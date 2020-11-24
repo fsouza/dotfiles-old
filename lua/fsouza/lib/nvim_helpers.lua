@@ -69,7 +69,7 @@ function M.rewrite_wrap(fn)
   local col_offset = string.len(api.nvim_buf_get_lines(0, lineno - 1, lineno, true)[1]) -
                        string.len(orig_line)
   view.lnum = lineno
-  view.col = orig_colno + col_offset - 1
+  view.col = orig_colno + col_offset
   vfn.winrestview(view)
 end
 
