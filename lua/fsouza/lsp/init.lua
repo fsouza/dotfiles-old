@@ -132,6 +132,12 @@ do
                 'pending';
               };
             };
+            workspace = {
+              library = {
+                [vfn.expand('$VIMRUNTIME/lua')] = true,
+                [config_dir .. '/lua'] = true,
+              };
+            };
           };
         };
       }))
