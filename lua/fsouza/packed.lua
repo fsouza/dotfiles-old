@@ -81,13 +81,13 @@ local deps = {
 
 function M.reload()
   package.loaded['fsouza.packed'] = nil
-  require('fsouza.packed').setup()
+  require('fsouza.packed').setup(true)
   require('packer').sync()
 end
 
 local setup_auto_commands = function()
   local helpers = require('fsouza.lib.nvim_helpers')
-  local fpath = vfn.stdpath('config') .. '/lua/packed.lua'
+  local fpath = vfn.stdpath('config') .. '/lua/fsouza/packed.lua'
   helpers.augroup('packer-auto-sync', {
     {
       events = {'BufWritePost'};
