@@ -1,8 +1,6 @@
 local vcmd = vim.cmd
 local vfn = vim.fn
 
-vcmd('packadd packer.nvim')
-
 local M = {}
 
 local deps = {
@@ -97,14 +95,24 @@ local setup_auto_commands = function()
   })
 end
 
-function M.setup()
+local packer_startup = function()
+  vcmd('packadd packer.nvim')
   local compile_path = vfn.stdpath('data') .. '/site/plugin/packer_compiled.vim'
   require('packer').startup({deps; config = {compile_on_sync = true; compile_path = compile_path}})
+end
+
+local basic_setup = function()
+  setup_auto_commands()
+  vcmd([[doautocmd User PluginReady]])
+end
+
+function M.setup(force_bootstrap)
+  local bootstrap = force_bootstrap or os.getenv('NVIM_BOOTSTRAP')
+  if bootstrap then
+    packer_startup()
+  end
   if not os.getenv('NVIM_BOOTSTRAP') then
-    vim.schedule(function()
-      setup_auto_commands()
-      vcmd([[doautocmd User PluginReady]])
-    end)
+    vim.schedule(basic_setup)
   end
 end
 
