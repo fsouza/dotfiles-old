@@ -29,6 +29,25 @@ local patch_lsp = function()
     require('fsouza.color').set_popup_winid(winid)
     return bufnr, winid
   end
+
+  -- override the virtualtext to include source.
+  vim.lsp.diagnostic.get_virtual_text_chunks_for_line =
+    function(_, _, line_diags)
+      if #line_diags == 0 then
+        return nil
+      end
+      local virt_texts = {{'    '}}
+      local last = line_diags[#line_diags]
+      local prefix = '～'
+      if last.message then
+        table.insert(virt_texts, {
+          string.format('%s [%s] %s', prefix, last.source,
+                        last.message:gsub('\r', ''):gsub('\n', '  '));
+          'LspDiagnosticsVirtualText';
+        })
+        return virt_texts
+      end
+    end
 end
 
 do
@@ -133,10 +152,7 @@ do
               };
             };
             workspace = {
-              library = {
-                [vfn.expand('$VIMRUNTIME/lua')] = true,
-                [config_dir .. '/lua'] = true,
-              };
+              library = {[vfn.expand('$VIMRUNTIME/lua')] = true; [config_dir .. '/lua'] = true};
             };
           };
         };
