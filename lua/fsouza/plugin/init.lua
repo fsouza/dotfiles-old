@@ -40,22 +40,6 @@ local setup_qf_mappings = function()
   })
 end
 
-local setup_terminal_commands_and_mapping = function()
-  vcmd([[command! -nargs=? T lua require('fsouza.plugin.terminal').terminal_here(<f-args>)]])
-  helpers.create_mappings({
-    n = {
-      {
-        lhs = '<c-t>';
-        rhs = helpers.cmd_map([[lua require('fsouza.plugin.terminal').terminal_cmd()]]);
-      };
-      {
-        lhs = '<c-s-t>';
-        rhs = helpers.cmd_map([[lua require('fsouza.plugin.terminal').terminal_here()]]);
-      };
-    };
-  })
-end
-
 local setup_autofmt_commands = function()
   vcmd([[command! ToggleAutofmt lua require('fsouza.lib.autofmt').toggle()]])
   vcmd([[command! ToggleGlobalAutofmt lua require('fsouza.lib.autofmt').toggle_g()]])
@@ -184,7 +168,6 @@ do
   schedule(setup_fzf_mappings)
   schedule(setup_hlyank)
   schedule(setup_qf_mappings)
-  schedule(setup_terminal_commands_and_mapping)
   schedule(setup_autofmt_commands)
   schedule(setup_word_replace)
   schedule(setup_spell)
