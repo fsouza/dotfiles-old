@@ -162,6 +162,17 @@ local setup_git_messenger = function()
   })
 end
 
+local configure_toggleterm = function()
+  vcmd('packadd nvim-toggleterm.lua')
+  require('toggleterm').setup({
+    size = 20;
+    open_mapping = [[<c-\>]];
+    shade_terminals = false;
+    persist_size = true;
+    direction = 'horizontal';
+  })
+end
+
 do
   local schedule = vim.schedule
   schedule(function()
@@ -190,5 +201,6 @@ do
   schedule(function()
     require('fsouza.plugin.ft').setup()
   end)
+  schedule(configure_toggleterm)
   schedule(trigger_ft)
 end
