@@ -74,8 +74,7 @@ local deps = {
     };
   };
   {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
-  {'teal-language/vim-teal'; opt = true; ft = {'teal'}; event = 'BufEnter *.tl'};
-  {'akinsho/nvim-toggleterm.lua'; opt=true; cmd = {'TermExec'; 'ToggleTerm'}};
+  {'akinsho/nvim-toggleterm.lua'; opt = true; cmd = {'TermExec'; 'ToggleTerm'}};
 }
 
 function M.reload()
