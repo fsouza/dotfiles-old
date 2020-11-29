@@ -108,7 +108,14 @@ do
       init_options = {
         deepCompletion = false;
         staticcheck = true;
-        analyses = {unusedparams = true; ST1000 = false};
+        analyses = {
+          fillreturns = true;
+          nonewvars = true;
+          undeclaredname = true;
+          unusedparams = true;
+          ST1000 = false;
+        };
+        linksInHover = false;
       };
     }))
   end)
