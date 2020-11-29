@@ -25,6 +25,7 @@ function rebootstrap_neovim {
 	pushd "${NEOVIM_SRC_DIR}" &&
 		make distclean &&
 		git clean -dfx &&
+		rm -rf "${NEOVIM_INSTALL_PREFIX}" &&
 		_update_neovim
 }
 
