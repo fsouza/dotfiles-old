@@ -106,6 +106,12 @@ local setup_prettierd = function()
   })
 end
 
+local trigger_ft = function()
+  if vim.bo.filetype and vim.bo.filetype ~= '' then
+    vcmd([[doautocmd FileType ]] .. vim.bo.filetype)
+  end
+end
+
 local setup_lsp_ts_commands = function()
   vim.schedule(function()
     vcmd([[command! LspEnable lua require('fsouza.plugin.feat_switch').enable_lsp_ts()]])
@@ -162,4 +168,5 @@ do
     require('fsouza.plugin.ft').setup()
   end)
   schedule(configure_toggleterm)
+  schedule(trigger_ft)
 end
