@@ -109,6 +109,7 @@ end
 local setup_lsp_ts_commands = function()
   vim.schedule(function()
     vcmd([[command! LspEnable lua require('fsouza.plugin.feat_switch').enable_lsp_ts()]])
+    vcmd([[command! EnableLsp lua require('fsouza.plugin.feat_switch').enable_lsp_ts()]])
   end)
 end
 
