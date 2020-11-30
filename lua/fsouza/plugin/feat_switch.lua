@@ -1,11 +1,11 @@
 local M = {}
 
 local enable_lsp = function()
-  require('fsouza.lsp').setup()
+  require('fsouza.lsp')
 end
 
 local enable_ts = function()
-  require('fsouza.plugin.ts').setup()
+  require('fsouza.plugin.ts')
 end
 
 local trigger_ft = function()

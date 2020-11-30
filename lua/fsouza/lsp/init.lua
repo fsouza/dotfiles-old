@@ -1,8 +1,6 @@
 local vcmd = vim.cmd
 local vfn = vim.fn
 
-local M = {}
-
 local config_dir = vfn.stdpath('config')
 
 local get_local_cmd = function(cmd)
@@ -52,7 +50,7 @@ local patch_lsp = function()
     end
 end
 
-function M.setup()
+do
   patch_lsp()
 
   local if_executable = function(name, cb)
@@ -182,5 +180,3 @@ function M.setup()
     }))
   end)
 end
-
-return M
