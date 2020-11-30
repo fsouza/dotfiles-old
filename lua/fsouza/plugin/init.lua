@@ -147,7 +147,6 @@ local setup_git_messenger = function()
 end
 
 local configure_toggleterm = function()
-  vcmd('packadd nvim-toggleterm.lua')
   require('toggleterm').setup({
     size = 20;
     open_mapping = [[<c-\>]];

@@ -74,7 +74,7 @@ local deps = {
     };
   };
   {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
-  {'akinsho/nvim-toggleterm.lua'; opt = true; cmd = {'TermExec'; 'ToggleTerm'}};
+  {'akinsho/nvim-toggleterm.lua'};
 }
 
 function M.reload()
