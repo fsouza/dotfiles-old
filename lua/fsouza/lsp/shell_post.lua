@@ -46,7 +46,7 @@ function M.on_attach(opts)
   clients_by_buf[bufnr] = clients_by_buf[bufnr] or {}
   table.insert(clients_by_buf[bufnr], opts.client)
 
-  helpers.augroup('lc_shell_post_' .. bufnr, {
+  helpers.augroup('lsp_shell_post_' .. bufnr, {
     {
       events = {'FileChangedShellPost'};
       targets = {string.format('<buffer=%d>', bufnr)};

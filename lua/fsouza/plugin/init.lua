@@ -124,10 +124,9 @@ local trigger_ft = function()
   end
 end
 
-local setup_lsp = function()
-  require('fsouza.lsp')
+local setup_lsp_ts_commands = function()
   vim.schedule(function()
-    vcmd([[command! LspStop lua require('fsouza.lsp.restart').stop()]])
+    vcmd([[command! LspEnable lua require('fsouza.plugin.feat_switch').enable_lsp_ts()]])
   end)
 end
 
@@ -171,14 +170,11 @@ do
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(setup_prettierd)
-  schedule(setup_lsp)
+  schedule(setup_lsp_ts_commands)
   schedule(setup_shortcuts)
   schedule(setup_git_messenger)
   schedule(function()
     require('colorizer').setup({'css'; 'javascript'; 'html'; 'lua'; 'htmldjango'})
-  end)
-  schedule(function()
-    require('fsouza.plugin.ts')
   end)
   schedule(function()
     require('fsouza.plugin.ft').setup()

@@ -1,3 +1,5 @@
+local M = {}
+
 local wanted_parsers = {
   'bash';
   'c';
@@ -43,7 +45,7 @@ local set_folding = function()
   })
 end
 
-do
+function M.setup()
   vim.cmd([[
     packadd nvim-treesitter
     packadd nvim-treesitter-textobjects
@@ -83,3 +85,5 @@ do
   })
   set_folding()
 end
+
+return M

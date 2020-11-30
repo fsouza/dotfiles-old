@@ -46,7 +46,7 @@ function M.register_client(client, bufnr)
 
   local slow = slow_formatters[api.nvim_buf_get_option(bufnr, 'filetype')]
   if slow == true then
-    helpers.augroup('lc_autofmt_' .. bufnr, {
+    helpers.augroup('lsp_autofmt_' .. bufnr, {
       {
         events = {'BufWritePost'};
         targets = {'<buffer>'};
@@ -55,7 +55,7 @@ function M.register_client(client, bufnr)
       };
     })
   else
-    helpers.augroup('lc_autofmt_' .. bufnr, {
+    helpers.augroup('lsp_autofmt_' .. bufnr, {
       {
         events = {'BufWritePre'};
         targets = {'<buffer>'};
@@ -147,13 +147,6 @@ function M.autofmt_and_write(bufnr)
       vcmd('noautocmd write')
     end
   end)
-end
-
-function M.reset()
-  for bufnr, _ in pairs(fmt_clients) do
-    helpers.augroup('lc_autofmt_' .. bufnr, {})
-  end
-  fmt_clients = {}
 end
 
 return M
