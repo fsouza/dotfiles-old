@@ -56,8 +56,39 @@ local deps = {
     keys = {{'x'; 'if'}; {'x'; 'af'}; {'o'; 'if'}; {'o'; 'af'}};
     setup = [[vim.cmd('packadd vim-textobj-user')]];
   };
-  {'nvim-treesitter/nvim-treesitter'; opt = true};
-  {'nvim-treesitter/nvim-treesitter-textobjects'; opt = true};
+  {
+    'nvim-treesitter/nvim-treesitter';
+    opt = true;
+    cmd = {
+      'TSBufDisable';
+      'TSDisableAll';
+      'TSInstallFromGrammar';
+      'TSModuleInfo';
+      'TSBufEnable';
+      'TSEnableAll';
+      'TSInstallInfo';
+      'TSPlaygroundToggle';
+      'TSUninstall';
+      'TSConfigInfo';
+      'TSInstall';
+      'TSInstallSync';
+      'TSUpdate';
+    };
+  };
+  {
+    'nvim-treesitter/nvim-treesitter-textobjects';
+    opt = true;
+    cmd = {
+      'TSTextobjectGotoNextEnd';
+      'TSTextobjectGotoNextStart';
+      'TSTextobjectGotoPreviousEnd';
+      'TSTextobjectGotoPreviousStart';
+      'TSTextobjectPeekDefinitionCode';
+      'TSTextobjectSelect';
+      'TSTextobjectSwapNext';
+      'TSTextobjectSwapPrevious';
+    };
+  };
   {'nvim-treesitter/playground'; opt = true; cmd = {'TSPlaygroundToggle'}};
   {
     'michaeljsmith/vim-indent-object';
