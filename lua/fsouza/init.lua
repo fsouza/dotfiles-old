@@ -17,7 +17,7 @@ local initial_mappings = function()
   vim.g.mapleader = ' '
 
   -- Remap terminal escaping
-  nvim_set_keymap('t', [[<Esc><Esc>]], [[<c-\><c-n>]], {})
+  nvim_set_keymap('t', [[<c-c><c-c>]], [[<c-\><c-n>]], {})
 
   -- <leader>w for writing (with update instead of 'write')
   nvim_set_keymap('n', '<leader>w', '<cmd>update<cr>', {})
