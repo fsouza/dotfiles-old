@@ -28,18 +28,6 @@ local setup_fzf_mappings = function()
   })
 end
 
-local setup_qf_mappings = function()
-  helpers.create_mappings({
-    n = {
-      {lhs = '<cr>'; rhs = helpers.cmd_map('cc')};
-      {lhs = '<c-n>'; rhs = helpers.cmd_map('cnext')};
-      {lhs = '<c-p>'; rhs = helpers.cmd_map('cprevious')};
-      {lhs = '<down>'; rhs = helpers.cmd_map('cnext')};
-      {lhs = '<up>'; rhs = helpers.cmd_map('cprevious')};
-    };
-  })
-end
-
 local setup_autofmt_commands = function()
   vcmd([[command! ToggleAutofmt lua require('fsouza.lib.autofmt').toggle()]])
   vcmd([[command! ToggleGlobalAutofmt lua require('fsouza.lib.autofmt').toggle_g()]])
@@ -159,7 +147,6 @@ do
   schedule(setup_global_ns)
   schedule(setup_fzf_mappings)
   schedule(setup_hlyank)
-  schedule(setup_qf_mappings)
   schedule(setup_autofmt_commands)
   schedule(setup_word_replace)
   schedule(setup_spell)
