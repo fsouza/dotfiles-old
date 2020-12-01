@@ -3,7 +3,7 @@ local themes = require('fsouza.themes')
 
 local M = {}
 
-local _default_theme
+local _default_theme = 0
 
 local _themes = {}
 
@@ -15,6 +15,9 @@ function M.add_popup_cb(cb)
 end
 
 function M.set_popup_winid(winid)
+  if _default_theme == 0 then
+    return
+  end
   if winid then
     _themes[winid] = themes.popup
   end
@@ -33,7 +36,7 @@ local gc = function()
 end
 
 local find_theme = function(curr_winid)
-  if _popup_cb then
+  if _default_theme ~= 0 and _popup_cb then
     local winid = _popup_cb()
     if winid == curr_winid then
       return themes.popup
@@ -42,7 +45,7 @@ local find_theme = function(curr_winid)
   return _default_theme
 end
 
-function M.setup()
+function M.enable()
   vim.o.background = 'light'
   _default_theme = themes.none
   local cb = function(_, winid)
@@ -53,7 +56,13 @@ function M.setup()
     api.nvim_set_hl_ns(theme)
     vim.schedule(gc)
   end
-  api.nvim_set_decoration_provider(themes.none, {on_win = cb; on_line = cb})
+  local ns = api.nvim_create_namespace('fsouza__color')
+  api.nvim_set_decoration_provider(ns, {on_win = cb; on_line = cb})
+end
+
+function M.disable()
+  _default_theme = 0
+  _themes = {}
 end
 
 return M

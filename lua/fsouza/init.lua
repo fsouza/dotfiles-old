@@ -65,7 +65,7 @@ local ui_options = function()
   vim.o.guicursor = ''
   vim.o.mouse = 'a'
   vim.o.shortmess = 'filnxtToOFIc'
-  require('fsouza.color').setup()
+  require('fsouza.color').enable()
 end
 
 local global_options = function()
