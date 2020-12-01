@@ -36,8 +36,9 @@ function M.augroup(name, commands)
   vcmd('augroup ' .. name)
   vcmd('autocmd!')
   for _, c in ipairs(commands) do
-    vcmd(string.format('autocmd %s %s %s', table.concat(c.events, ','),
-                       table.concat(c.targets, ','), c.command))
+    vcmd(string.format('autocmd %s %s %s %s', table.concat(c.events, ','),
+                       table.concat(c.targets, ','), table.concat(c.modifiers or {}, ' '),
+                       c.command))
   end
   vcmd('augroup END')
 end
