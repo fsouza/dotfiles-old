@@ -112,7 +112,16 @@ local trigger_ft = function()
   end
 end
 
-local setup_lsp_ts_commands = function()
+local setup_lsp_ts = function()
+  local auto_lsp_tg_fts = {'go'; 'lua'; 'typescript'}
+  helpers.augroup('fsouza__auto_lsp', {
+    {
+      events = {'FileType'};
+      targets = auto_lsp_tg_fts;
+      modifiers = {'++once'};
+      command = [[lua require('fsouza.plugin.feat_switch').enable_lsp_ts()]];
+    };
+  })
   vim.schedule(function()
     vcmd([[command! LspEnable lua require('fsouza.plugin.feat_switch').enable_lsp_ts()]])
     vcmd([[command! EnableLsp lua require('fsouza.plugin.feat_switch').enable_lsp_ts()]])
@@ -158,7 +167,7 @@ do
   schedule(setup_word_replace)
   schedule(setup_spell)
   schedule(setup_prettierd)
-  schedule(setup_lsp_ts_commands)
+  schedule(setup_lsp_ts)
   schedule(setup_shortcuts)
   schedule(setup_git_messenger)
   schedule(function()
