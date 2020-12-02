@@ -68,7 +68,7 @@ end
 local install_autoload_plugins = function()
   vfn.mkdir(site_dir .. '/autoload', 'p')
   execute(
-    [[curl -sLo %s/autoload.fzf.vim https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim]],
+    [[curl -sLo %s/autoload/fzf.vim https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim]],
     site_dir)
 end
 
