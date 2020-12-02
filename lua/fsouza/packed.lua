@@ -4,9 +4,12 @@ local vfn = vim.fn
 local M = {}
 
 local deps = {
+  {'akinsho/nvim-toggleterm.lua'};
   {'justinmk/vim-dirvish'};
   {'justinmk/vim-sneak'};
+  {'kana/vim-textobj-user'};
   {'norcalli/nvim-colorizer.lua'};
+  {'thinca/vim-textobj-between'};
   {'tpope/vim-repeat'};
   {'tpope/vim-surround'};
 
@@ -49,13 +52,6 @@ local deps = {
     cmd = {'Emmet'; 'EmmetInstall'};
   };
   {'rhysd/git-messenger.vim'; opt = true; cmd = {'GitMessenger'}; keys = {'<leader>gm'}};
-  {'kana/vim-textobj-user'; opt = true};
-  {
-    'thinca/vim-textobj-between';
-    opt = true;
-    keys = {{'x'; 'if'}; {'x'; 'af'}; {'o'; 'if'}; {'o'; 'af'}};
-    setup = [[vim.cmd('packadd vim-textobj-user')]];
-  };
   {
     'nvim-treesitter/nvim-treesitter';
     opt = true;
@@ -105,7 +101,6 @@ local deps = {
     };
   };
   {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
-  {'akinsho/nvim-toggleterm.lua'};
 }
 
 function M.reload()
