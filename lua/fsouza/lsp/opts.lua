@@ -260,7 +260,7 @@ local on_attach = function(client, bufnr)
   attached(bufnr, client)
 end
 
-function M.with_default_opts(opts)
+function M.with_defaults(opts)
   return vim.tbl_extend('keep', opts, {
     handlers = require('fsouza.lsp.handlers');
     on_attach = on_attach;

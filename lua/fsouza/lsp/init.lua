@@ -62,50 +62,40 @@ do
   set_log_level()
   vcmd([[packadd nvim-lspconfig]])
   local lsp = require('lspconfig')
-  local lsp_opts = require('fsouza.lsp.opts')
+  local opts = require('fsouza.lsp.opts')
 
   if_executable('npx', function()
     local vim_node_ls = get_local_cmd('node-lsp')
-    lsp.bashls.setup(lsp_opts.with_default_opts({
-      cmd = {vim_node_ls; 'bash-language-server'; 'start'};
-    }))
+    lsp.bashls.setup(opts.with_defaults({cmd = {vim_node_ls; 'bash-language-server'; 'start'}}))
 
-    lsp.cssls.setup(lsp_opts.with_default_opts({
-      cmd = {vim_node_ls; 'css-languageserver'; '--stdio'};
-    }))
+    lsp.cssls.setup(opts.with_defaults({cmd = {vim_node_ls; 'css-languageserver'; '--stdio'}}))
 
-    lsp.html.setup(lsp_opts.with_default_opts({cmd = {vim_node_ls; 'html-langserver'; '--stdio'}}))
+    lsp.html.setup(opts.with_defaults({cmd = {vim_node_ls; 'html-langserver'; '--stdio'}}))
 
-    lsp.jsonls.setup(lsp_opts.with_default_opts({
+    lsp.jsonls.setup(opts.with_defaults({
       cmd = {vim_node_ls; 'vscode-json-languageserver'; '--stdio'};
     }))
 
-    lsp.tsserver.setup(lsp_opts.with_default_opts(
-                         {
-        cmd = {vim_node_ls; 'typescript-language-server'; '--stdio'};
-        filetypes = {'javascript'; 'typescript'; 'typescriptreact'; 'typescript.tsx'};
-      }))
-
-    lsp.yamlls.setup(lsp_opts.with_default_opts({
-      cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'};
+    lsp.tsserver.setup(opts.with_defaults({
+      cmd = {vim_node_ls; 'typescript-language-server'; '--stdio'};
+      filetypes = {'javascript'; 'typescript'; 'typescriptreact'; 'typescript.tsx'};
     }))
 
-    local init_options, filetypes = require('fsouza.lsp.diagnosticls').gen_config()
-    lsp.diagnosticls.setup(lsp_opts.with_default_opts(
-                             {
-        cmd = {vim_node_ls; 'diagnostic-languageserver'; '--stdio'; '--log-level'; '4'};
-        filetypes = filetypes;
-        init_options = init_options;
-      }))
+    lsp.yamlls.setup(opts.with_defaults({cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'}}))
 
-    lsp.pyright.setup(lsp_opts.with_default_opts(require('fsouza.lsp.custom.pyright').get_opts(
-                                                   {
-        cmd = {vim_node_ls; 'pyright-langserver'; '--stdio'};
-      })))
+    local init_options, filetypes = require('fsouza.lsp.diagnosticls').gen_config()
+    lsp.diagnosticls.setup(opts.with_defaults({
+      cmd = {vim_node_ls; 'diagnostic-languageserver'; '--stdio'; '--log-level'; '4'};
+      filetypes = filetypes;
+      init_options = init_options;
+    }))
+
+    lsp.pyright.setup(opts.with_defaults(require('fsouza.lsp.custom.pyright').get_opts(
+                                           {cmd = {vim_node_ls; 'pyright-langserver'; '--stdio'}})))
   end)
 
   if_executable('gopls', function()
-    lsp.gopls.setup(lsp_opts.with_default_opts({
+    lsp.gopls.setup(opts.with_defaults({
       init_options = {
         deepCompletion = false;
         staticcheck = true;
@@ -122,60 +112,57 @@ do
   end)
 
   if_executable('golangci-lint-langserver', function()
-    require('fsouza.lsp.custom.golangcilint').setup(lsp_opts.with_default_opts({}))
+    require('fsouza.lsp.custom.golangcilint').setup(opts.with_defaults({}))
   end)
 
   if_executable('dune', function()
-    lsp.ocamllsp.setup(lsp_opts.with_default_opts({cmd = {get_local_cmd('ocaml-lsp')}}))
+    lsp.ocamllsp.setup(opts.with_defaults({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
 
   if_executable('mix', function()
-    lsp.elixirls.setup(lsp_opts.with_default_opts(
-                         {
-        cmd = {vfn.stdpath('cache') .. '/langservers/elixir-ls/release/language_server.sh'};
-      }))
+    lsp.elixirls.setup(opts.with_defaults({
+      cmd = {vfn.stdpath('cache') .. '/langservers/elixir-ls/release/language_server.sh'};
+    }))
   end)
 
   if_executable('rust-analyzer', function()
-    lsp.rust_analyzer.setup(lsp_opts.with_default_opts({settings = {}}))
+    lsp.rust_analyzer.setup(opts.with_defaults({settings = {}}))
   end)
 
   if_executable('ninja', function()
-    lsp.sumneko_lua.setup(lsp_opts.with_default_opts(
-                            {
-        cmd = {get_local_cmd('lua-lsp')};
-        settings = {
-          Lua = {
-            runtime = {version = 'LuaJIT'};
-            diagnostics = {
-              enable = true;
-              globals = {
-                'vim';
-                'insulate';
-                'describe';
-                'it';
-                'before_each';
-                'after_each';
-                'teardown';
-                'pending';
-              };
-            };
-            workspace = {
-              library = {[vfn.expand('$VIMRUNTIME/lua')] = true; [config_dir .. '/lua'] = true};
+    lsp.sumneko_lua.setup(opts.with_defaults({
+      cmd = {get_local_cmd('lua-lsp')};
+      settings = {
+        Lua = {
+          runtime = {version = 'LuaJIT'};
+          diagnostics = {
+            enable = true;
+            globals = {
+              'vim';
+              'insulate';
+              'describe';
+              'it';
+              'before_each';
+              'after_each';
+              'teardown';
+              'pending';
             };
           };
+          workspace = {
+            library = {[vfn.expand('$VIMRUNTIME/lua')] = true; [config_dir .. '/lua'] = true};
+          };
         };
-      }))
+      };
+    }))
   end)
 
   if_executable('zig', function()
-    require('fsouza.lsp.custom.zls').setup(lsp_opts.with_default_opts(
-                                             {cmd = {get_local_cmd('zig-lsp')}}))
+    require('fsouza.lsp.custom.zls').setup(opts.with_defaults({cmd = {get_local_cmd('zig-lsp')}}))
   end)
 
   local clangd = os.getenv('HOMEBREW_PREFIX') .. '/opt/llvm/bin/clangd'
   if_executable(clangd, function()
-    lsp.clangd.setup(lsp_opts.with_default_opts({
+    lsp.clangd.setup(opts.with_defaults({
       cmd = {clangd; '--background-index'; '--pch-storage=memory'};
     }))
   end)
