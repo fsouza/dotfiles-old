@@ -118,7 +118,7 @@ local language_highlights = function(ns)
 end
 
 local custom_groups = function(ns)
-  nvim_set_hl(ns, 'HlYank', {bg = colors.pink})
+  nvim_set_hl(ns, 'HlYank', {bg = colors.orange})
 end
 
 return function(name)

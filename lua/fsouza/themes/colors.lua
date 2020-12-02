@@ -8,4 +8,5 @@ return {
   brown = '#5f0000';
   white = '#f0f0f0';
   pink = '#ffd7ff';
+  orange = '#ffd787';
 }
