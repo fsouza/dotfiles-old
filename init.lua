@@ -35,6 +35,13 @@ local bootstrap_env = function()
                                       stdlib.getenv('PATH')))
 end
 
+local fzf_env = function()
+  local envname = 'FZF_DEFAULT_OPTS'
+  local stdlib = require('posix.stdlib')
+  local fzf_default_opts = stdlib.getenv(envname) or ''
+  stdlib.setenv('FZF_DEFAULT_OPTS', string.format('%s %s', fzf_default_opts, '--layout=reverse'))
+end
+
 local hererocks = function()
   local lua_version = string.gsub(_VERSION, 'Lua ', '')
   local hererocks_path = cache_dir .. '/hr'
@@ -50,6 +57,7 @@ local global_vars = function()
   vim.g.netrw_banner = 0
   vim.g.netrw_liststyle = 3
   vim.g.fzf_command_prefix = 'Fzf'
+  vim.g.fzf_layout = {window = {width = 0.9; height = 0.6}}
   vim.g.polyglot_disabled = {'markdown'; 'sensible'; 'autoindent'}
   vim.g.user_emmet_mode = 'i'
   vim.g.user_emmet_leader_key = [[<C-x>]]
@@ -143,6 +151,7 @@ do
   initial_mappings()
   hererocks()
   bootstrap_env()
+  fzf_env()
 
   schedule(function()
     global_options()
