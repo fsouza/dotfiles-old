@@ -35,13 +35,6 @@ local bootstrap_env = function()
                                       stdlib.getenv('PATH')))
 end
 
-local fzf_env = function()
-  local envname = 'FZF_DEFAULT_OPTS'
-  local stdlib = require('posix.stdlib')
-  local fzf_default_opts = stdlib.getenv(envname) or ''
-  stdlib.setenv('FZF_DEFAULT_OPTS', string.format('%s %s', fzf_default_opts, '--layout=reverse'))
-end
-
 local hererocks = function()
   local lua_version = string.gsub(_VERSION, 'Lua ', '')
   local hererocks_path = cache_dir .. '/hr'
@@ -151,7 +144,6 @@ do
   initial_mappings()
   hererocks()
   bootstrap_env()
-  fzf_env()
 
   schedule(function()
     global_options()
