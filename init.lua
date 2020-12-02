@@ -50,7 +50,6 @@ local global_vars = function()
   vim.g.netrw_banner = 0
   vim.g.netrw_liststyle = 3
   vim.g.fzf_command_prefix = 'Fzf'
-  vim.g.fzf_height = '80%'
   vim.g.polyglot_disabled = {'markdown'; 'sensible'; 'autoindent'}
   vim.g.user_emmet_mode = 'i'
   vim.g.user_emmet_leader_key = [[<C-x>]]
