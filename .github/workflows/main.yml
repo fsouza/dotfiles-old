@@ -14,8 +14,6 @@ jobs:
         os:
           - ubuntu-20.04
           - macos-latest
-        ocaml-version:
-          - 4.11.1
 
     name: bootstrap
     runs-on: ${{ matrix.os }}
@@ -32,32 +30,37 @@ jobs:
       - name: install deps on mac
         if: matrix.os == 'macos-latest'
         run: |
-          brew install bash shellcheck ninja libyaml elixir
+          brew install bash shellcheck ninja libyaml elixir opam
 
       - name: install deps on ubuntu
         if: matrix.os == 'ubuntu-20.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y shellcheck ninja-build libyaml-dev
+          sudo apt-get install -y shellcheck ninja-build libyaml-dev opam
 
       - uses: actions/checkout@v2.3.4
 
       - run: make shellcheck
-
-      - uses: actions/setup-node@v2.1.2
-        with:
-          node-version: "14.x"
 
       - name: opam cache
         id: opam-cache
         uses: actions/cache@v2.1.3
         with:
           path: ~/.opam
-          key: "${{ matrix.os }}-${{ matrix.ocaml-version }}"
+          key: "${{ matrix.os }}-${{ steps.get-opam-version.outputs.version }}"
 
-      - uses: avsm/setup-ocaml@v1.1.3
+      - name: opam init
+        run: opam init --disable-sandboxing -n
+
+      - uses: actions/setup-node@v2.1.2
         with:
-          ocaml-version: "${{ matrix.ocaml-version }}"
+          node-version: "14.x"
+
+      - name: get opam version
+        id: get-opam-version
+        run: |
+          echo "::set-output name=version::$(opam --version)"
+        shell: bash
 
       - uses: actions/setup-python@v2.1.4
         with:
