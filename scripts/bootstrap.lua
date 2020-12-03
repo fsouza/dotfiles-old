@@ -81,8 +81,7 @@ local ensure_packer_nvim = function()
 
   vim.o.packpath = string.format('%s,%s', site_dir, vim.o.packpath)
   require('fsouza.packed').setup()
-  require('packer').install()
-  require('packer').compile()
+  require('packer').sync()
 end
 
 local ensure_spell = function()
