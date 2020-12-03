@@ -103,20 +103,6 @@ function install_lua_lsp() {
 		popd
 }
 
-function install_elixir_langserver {
-	if ! command -v mix &>/dev/null; then
-		echo skipping elixir-lsp
-		return
-	fi
-	path=${cache_dir}/elixir-ls
-	_clone_or_update https://github.com/elixir-lsp/elixir-ls.git "${path}" &&
-		pushd "${path}" &&
-		mix deps.get --force &&
-		mix local.rebar --force &&
-		mix compile --force &&
-		mix elixir_ls.release -o release
-}
-
 function install_zls() {
 	if ! command -v zig &>/dev/null; then
 		echo skipping zls
@@ -155,7 +141,6 @@ install_gopls &
 install_lua_lsp &
 install_shfmt &
 install_golangci_lint_langserver &
-install_elixir_langserver &
 install_zls &
 wait
 popd

@@ -119,12 +119,6 @@ do
     lsp.ocamllsp.setup(opts.with_defaults({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
 
-  if_executable('mix', function()
-    lsp.elixirls.setup(opts.with_defaults({
-      cmd = {vfn.stdpath('cache') .. '/langservers/elixir-ls/release/language_server.sh'};
-    }))
-  end)
-
   if_executable('rust-analyzer', function()
     lsp.rust_analyzer.setup(opts.with_defaults({settings = {}}))
   end)

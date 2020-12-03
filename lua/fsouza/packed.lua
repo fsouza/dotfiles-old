@@ -22,7 +22,7 @@ local deps = {
     'sheerun/vim-polyglot';
     opt = true;
     ft = {'bzl'; 'gomod'; 'javascript'; 'kotlin'; 'lua'; 'python'; 'typescript'; 'zig'};
-    event = {'BufEnter *.ex,*.exs,*.ts,*.tsx,go.mod,*.zig'};
+    event = {'BufEnter *.ts,*.tsx,go.mod,*.zig'};
   };
   {
     'tpope/vim-commentary';
