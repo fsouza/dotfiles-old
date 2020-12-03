@@ -55,6 +55,9 @@ local deps = {
   {
     'nvim-treesitter/nvim-treesitter';
     opt = true;
+    run = function()
+      vcmd('TSUpdate')
+    end;
     cmd = {
       'TSBufDisable';
       'TSDisableAll';
