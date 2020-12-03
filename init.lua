@@ -63,7 +63,7 @@ local ui_options = function()
   vim.o.ruler = true
   vim.o.rulerformat = [[%-14.(%l,%c   %o%)]]
   vim.o.guicursor = ''
-  vim.o.mouse = 'a'
+  vim.o.mouse = ''
   vim.o.shortmess = 'filnxtToOFIc'
   require('fsouza.color').enable()
 end
