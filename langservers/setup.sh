@@ -14,6 +14,12 @@ function _clone_or_update() {
 	git -C "${path}" submodule update --init --recursive
 }
 
+function _create_opam_switch_if_needed() {
+	if [[ $(opam switch show) != "${PWD}" ]]; then
+		opam switch create . ocaml-base-compiler.4.11.1 --with-test --yes
+	fi
+}
+
 function install_ocaml_lsp() {
 	if ! command -v opam &>/dev/null; then
 		echo skipping ocaml-lsp
@@ -21,11 +27,9 @@ function install_ocaml_lsp() {
 	fi
 	path="${cache_dir}/ocaml-lsp"
 	_clone_or_update https://github.com/ocaml/ocaml-lsp.git "${path}" &&
-		opam update -y &&
-		opam install -y dune ocamlformat &&
 		pushd "${path}" &&
-		opam install --deps-only -y . &&
-		dune build @install &&
+		_create_opam_switch_if_needed &&
+		opam exec -- dune build --root . &&
 		popd
 }
 
