@@ -127,7 +127,10 @@ end
 local packer_startup = function()
   vcmd('packadd packer.nvim')
   local compile_path = vfn.stdpath('data') .. '/site/plugin/packer_compiled.vim'
-  require('packer').startup({deps; config = {compile_on_sync = true; compile_path = compile_path}})
+  require('packer').startup({
+    deps;
+    config = {compile_on_sync = true; compile_path = compile_path; no_input = true};
+  })
 end
 
 local basic_setup = function()
