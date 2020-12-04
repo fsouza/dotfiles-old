@@ -129,19 +129,7 @@ do
       settings = {
         Lua = {
           runtime = {version = 'LuaJIT'};
-          diagnostics = {
-            enable = true;
-            globals = {
-              'vim';
-              'insulate';
-              'describe';
-              'it';
-              'before_each';
-              'after_each';
-              'teardown';
-              'pending';
-            };
-          };
+          diagnostics = {enable = true; globals = {'vim'}};
           workspace = {
             library = {[vfn.expand('$VIMRUNTIME/lua')] = true; [config_dir .. '/lua'] = true};
           };
