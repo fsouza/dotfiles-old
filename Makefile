@@ -1,9 +1,9 @@
 mkfile_path := $(realpath $(lastword $(MAKEFILE_LIST)))
 mkfile_dir := $(dir $(mkfile_path))
 
-LUACHECK := $(if $(shell command -v luacheck 2>/dev/null), luacheck, $(shell nvim --headless -E -u NORC -R +'echo stdpath("cache")' +q 2>&1)/hr/bin/luacheck)
+LUACHECK := $(if $(shell command -v luacheck 2>/dev/null), luacheck, $(shell nvim --clean --headless -E -u NORC -R +'echo stdpath("cache")' +q 2>&1)/hr/bin/luacheck)
 
-LUAFORMAT := $(if $(shell command -v lua-format 2>/dev/null), lua-format, $(shell nvim --headless -E -u NORC -R +'echo stdpath("cache")' +q 2>&1)/hr/bin/lua-format)
+LUAFORMAT := $(if $(shell command -v lua-format 2>/dev/null), lua-format, $(shell nvim --clean --headless -E -u NORC -R +'echo stdpath("cache")' +q 2>&1)/hr/bin/lua-format)
 
 MACOSX_DEPLOYMENT_TARGET ?= 10.15
 
