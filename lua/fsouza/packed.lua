@@ -104,6 +104,7 @@ local deps = {
     };
   };
   {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
+  {'szw/vim-maximizer'; opt = true; cmd = {'MaximizerToggle'}};
 }
 
 function M.reload()
