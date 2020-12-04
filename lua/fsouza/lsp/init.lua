@@ -115,7 +115,7 @@ do
     require('fsouza.lsp.custom.golangcilint').setup(opts.with_defaults({}))
   end)
 
-  if_executable('dune', function()
+  if_executable('opam', function()
     lsp.ocamllsp.setup(opts.with_defaults({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
 
@@ -128,7 +128,7 @@ do
       cmd = {get_local_cmd('lua-lsp')};
       settings = {
         Lua = {
-          runtime = {version = 'LuaJIT'};
+          runtime = {path = vim.split(package.path, ';'); version = 'LuaJIT'};
           diagnostics = {enable = true; globals = {'vim'}};
           workspace = {
             library = {[vfn.expand('$VIMRUNTIME/lua')] = true; [config_dir .. '/lua'] = true};
