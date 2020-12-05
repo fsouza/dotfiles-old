@@ -1,3 +1,5 @@
+local api = vim.api
+
 local helpers = require('fsouza.lib.nvim_helpers')
 
 local M = {}
@@ -6,7 +8,10 @@ function M.handle()
   if vim.bo.filetype and vim.bo.filetype ~= '' then
     local status, ft_plugin = pcall(require, 'fsouza.plugin.ft.' .. vim.bo.filetype)
     if status then
-      pcall(ft_plugin)
+      local bufnr = api.nvim_get_current_buf()
+      pcall(function()
+        ft_plugin(bufnr)
+      end)
     end
   end
 end
