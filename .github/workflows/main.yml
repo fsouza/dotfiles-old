@@ -25,8 +25,7 @@ jobs:
           else
             filename=nvim-macos.tar.bz2
           fi
-          curl -sLo /tmp/${filename} https://github.com/neovim/neovim/releases/download/nightly/${filename}
-          sudo tar -C /usr/local --strip 1 -xf /tmp/${filename}
+          curl -L https://github.com/neovim/neovim/releases/download/nightly/${filename} | sudo tar -C /usr/local --strip 1 -xf -
 
       - name: install deps on mac
         if: matrix.os == 'macos-latest'
