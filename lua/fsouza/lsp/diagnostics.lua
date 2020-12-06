@@ -4,7 +4,7 @@ local api = vim.api
 local lsp = vim.lsp
 local vcmd = vim.cmd
 
-local items_from_diagnostics = function(bufnr, diagnostics)
+local function items_from_diagnostics(bufnr, diagnostics)
   local fname = api.nvim_buf_get_name(bufnr)
   local items = {}
   for _, diagnostic in ipairs(diagnostics) do
@@ -19,7 +19,7 @@ local items_from_diagnostics = function(bufnr, diagnostics)
   return items
 end
 
-local render_diagnostics = function(items)
+local function render_diagnostics(items)
   lsp.util.set_qflist(items)
   if vim.tbl_isempty(items) then
     vcmd('cclose')

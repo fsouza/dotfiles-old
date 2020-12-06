@@ -3,7 +3,7 @@ local M = {}
 local api = vim.api
 local lsp = vim.lsp
 
-local fzf_symbol_callback = function(_, _, result, _, bufnr)
+local function fzf_symbol_callback(_, _, result, _, bufnr)
   if not result or vim.tbl_isempty(result) then
     return
   end
@@ -12,7 +12,7 @@ local fzf_symbol_callback = function(_, _, result, _, bufnr)
   require('fsouza.lsp.fzf').send(items, 'Symbols')
 end
 
-local popup_callback = function(err, method, result)
+local function popup_callback(err, method, result)
   vim.lsp.handlers[method](err, method, result)
   for _, winid in ipairs(api.nvim_list_wins()) do
     if pcall(api.nvim_win_get_var, winid, method) then

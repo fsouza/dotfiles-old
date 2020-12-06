@@ -2,7 +2,7 @@ local M = {}
 
 local loop = vim.loop
 
-local make_debug = function(prefix, debug_fn)
+local function make_debug(prefix, debug_fn)
   if debug_fn == nil then
     return function()
     end
@@ -17,7 +17,7 @@ local make_debug = function(prefix, debug_fn)
   end
 end
 
-local input_collector = function(prefix, debug_fn)
+local function input_collector(prefix, debug_fn)
   local debug = make_debug(prefix, debug_fn)
   local result = {data = ''}
   function result.callback(err, chunk)
@@ -31,7 +31,7 @@ local input_collector = function(prefix, debug_fn)
   return result
 end
 
-local safe_close = function(h, cb)
+local function safe_close(h, cb)
   if not loop.is_closing(h) then
     loop.close(h, cb)
   end
@@ -60,7 +60,7 @@ function M.run(cmd, opts, input_data, on_finished, debug_fn)
   local stderr = loop.new_pipe(false)
   local stdin = loop.new_pipe(false)
 
-  local close = function()
+  local function close()
     loop.read_stop(stdout)
     loop.read_stop(stderr)
     safe_close(stdout)
@@ -73,7 +73,7 @@ function M.run(cmd, opts, input_data, on_finished, debug_fn)
   local stderr_handler = input_collector('STDERR', debug_fn)
 
   local r = {abort = false; finished = false}
-  local onexit = function(code, signal)
+  local function onexit(code, signal)
     if r.abort and code == 0 then
       code = -1
     end

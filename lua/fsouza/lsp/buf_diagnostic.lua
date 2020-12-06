@@ -14,13 +14,13 @@ end
 
 -- This is a workaround because the nvim-lsp doesn't let us hook into
 -- textDocument/didChange like coc.nvim does.
-local exec_hooks = function()
+local function exec_hooks()
   for _, fn in pairs(hooks) do
     fn()
   end
 end
 
-local make_handler = function()
+local function make_handler()
   local lsp_diagnostic = vim.lsp.diagnostic
   local handler = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true;

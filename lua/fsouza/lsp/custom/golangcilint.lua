@@ -3,7 +3,7 @@ local configs = require('lspconfig/configs')
 
 local M = {}
 
-local add_to_config = function()
+local function add_to_config()
   configs.golangci_lint_language_server = {
     default_config = {
       cmd = {'golangci-lint-langserver'};

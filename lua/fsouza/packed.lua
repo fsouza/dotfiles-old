@@ -113,7 +113,7 @@ function M.reload()
   require('packer').sync()
 end
 
-local setup_auto_commands = function()
+local function setup_auto_commands()
   local helpers = require('fsouza.lib.nvim_helpers')
   local fpath = vfn.stdpath('config') .. '/lua/fsouza/packed.lua'
   helpers.augroup('packer-auto-sync', {
@@ -125,7 +125,7 @@ local setup_auto_commands = function()
   })
 end
 
-local packer_startup = function()
+local function packer_startup()
   vcmd('packadd packer.nvim')
   local compile_path = vfn.stdpath('data') .. '/site/plugin/packer_compiled.vim'
   require('packer').startup({
@@ -138,7 +138,7 @@ local packer_startup = function()
   })
 end
 
-local basic_setup = function()
+local function basic_setup()
   setup_auto_commands()
   vcmd([[doautocmd User PluginReady]])
 end

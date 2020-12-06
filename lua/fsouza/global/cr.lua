@@ -1,7 +1,7 @@
 local api = vim.api
 local vfn = vim.fn
 
-local key_for_comp_info = function(comp_info)
+local function key_for_comp_info(comp_info)
   if comp_info.mode == '' then
     return [[<cr>]]
   end

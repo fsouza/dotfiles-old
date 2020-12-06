@@ -12,7 +12,7 @@ local slow_formatters = {python = true}
 
 local langservers_skip_set = {tsserver = true}
 
-local should_skip_buffer = function(bufnr)
+local function should_skip_buffer(bufnr)
   local file_path = vim.api.nvim_buf_get_name(bufnr)
   local prefix = loop.cwd()
   if not vim.endswith(prefix, '/') then
@@ -25,7 +25,7 @@ local should_skip_buffer = function(bufnr)
   return skip
 end
 
-local should_skip_server = function(server_name)
+local function should_skip_server(server_name)
   return langservers_skip_set[server_name] ~= nil
 end
 
@@ -69,7 +69,7 @@ function M.register_client(client, bufnr)
                           {silent = true})
 end
 
-local formatting_params = function(bufnr)
+local function formatting_params(bufnr)
   local sts = api.nvim_buf_get_option(bufnr, 'softtabstop')
   local options = {
     tabSize = (sts > 0 and sts) or (sts < 0 and api.nvim_buf_get_option(bufnr, 'shiftwidth')) or
@@ -79,7 +79,7 @@ local formatting_params = function(bufnr)
   return {textDocument = {uri = vim.uri_from_bufnr(bufnr)}; options = options}
 end
 
-local apply_edits = function(result, bufnr)
+local function apply_edits(result, bufnr)
   local curbuf = api.nvim_get_current_buf()
   if curbuf ~= bufnr then
     return
@@ -90,7 +90,7 @@ local apply_edits = function(result, bufnr)
   end)
 end
 
-local fmt = function(bufnr, cb)
+local function fmt(bufnr, cb)
   local client = fmt_clients[bufnr]
   if not client then
     error(string.format('cannot format the buffer %d, no lsp client registered', bufnr))

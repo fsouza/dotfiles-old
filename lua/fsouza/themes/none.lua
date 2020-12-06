@@ -3,7 +3,7 @@ local nvim_set_hl = api.nvim_set_hl
 
 local colors = require('fsouza.themes.colors')
 
-local basics = function(ns)
+local function basics(ns)
   nvim_set_hl(ns, 'CursorColumn', {bg = colors.lighter_gray})
   nvim_set_hl(ns, 'CursorLine', {bg = colors.lighter_gray})
   nvim_set_hl(ns, 'CursorLineNr', {bold = true; bg = colors.lighter_gray})
@@ -28,8 +28,8 @@ local basics = function(ns)
   nvim_set_hl(ns, 'Error', {fg = colors.red})
 end
 
-local noners = function(ns)
-  local noners = {
+local function noners(ns)
+  local groups = {
     'Boolean';
     'Character';
     'Comment';
@@ -73,25 +73,25 @@ local noners = function(ns)
     'Underlined';
     'htmlBold';
   }
-  for _, group in pairs(noners) do
+  for _, group in pairs(groups) do
     nvim_set_hl(ns, group, {})
   end
 end
 
-local reversers = function(ns)
-  local reversers = {'MoreMsg'; 'StatusLine'; 'StatusLineNC'; 'Visual'};
-  for _, group in pairs(reversers) do
+local function reversers(ns)
+  local groups = {'MoreMsg'; 'StatusLine'; 'StatusLineNC'; 'Visual'};
+  for _, group in pairs(groups) do
     nvim_set_hl(ns, group, {reverse = true})
   end
 end
 
-local setup_lsp_reference = function(ns)
+local function setup_lsp_reference(ns)
   for _, ref_type in pairs({'Text'; 'Read'; 'Write'}) do
     nvim_set_hl(ns, 'LspReference' .. ref_type, {bg = colors.light_gray})
   end
 end
 
-local setup_lsp_diagnostics = function(ns)
+local function setup_lsp_diagnostics(ns)
   local diagnostics_floating = {fg = colors.black}
   local diagnostics_sign = {link = 'SignColumn'}
   local virtual_text = {fg = colors.brown}
@@ -107,17 +107,17 @@ local setup_lsp_diagnostics = function(ns)
   end
 end
 
-local setup_lsp_codelens = function(ns)
+local function setup_lsp_codelens(ns)
   nvim_set_hl(ns, 'LspCodeLensVirtualText', {fg = colors.gray})
 end
 
-local language_highlights = function(ns)
+local function language_highlights(ns)
   setup_lsp_diagnostics(ns)
   setup_lsp_reference(ns)
   setup_lsp_codelens(ns)
 end
 
-local custom_groups = function(ns)
+local function custom_groups(ns)
   nvim_set_hl(ns, 'HlYank', {bg = colors.orange})
 end
 

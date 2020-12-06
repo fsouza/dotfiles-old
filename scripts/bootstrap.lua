@@ -9,7 +9,7 @@ local site_dir = string.format('%s/site', vfn.stdpath('data'))
 
 local rocks = {'lyaml'; 'luacheck'; 'luaposix'}
 
-local execute = function(pat, ...)
+local function execute(pat, ...)
   local cmd = string.format(pat, ...)
   local status = os.execute(cmd)
   if status ~= 0 then
@@ -19,7 +19,7 @@ local execute = function(pat, ...)
   end
 end
 
-local download_virtualenv_pyz = function()
+local function download_virtualenv_pyz()
   local file_name = cache_dir .. '/virtualenv.pyz'
   if not loop.fs_stat(file_name) then
     execute([[curl -sLo %s https://bootstrap.pypa.io/virtualenv.pyz]], file_name)
@@ -27,7 +27,7 @@ local download_virtualenv_pyz = function()
   return file_name
 end
 
-local ensure_virtualenv = function()
+local function ensure_virtualenv()
   local venv_dir = cache_dir .. '/venv'
   if not loop.fs_stat(venv_dir) then
     local venv_pyz = download_virtualenv_pyz()
@@ -37,7 +37,7 @@ local ensure_virtualenv = function()
   return venv_dir
 end
 
-local download_hererocks_py = function()
+local function download_hererocks_py()
   local file_name = cache_dir .. '/hererocks.py'
   if not loop.fs_stat(file_name) then
     execute(
@@ -47,7 +47,7 @@ local download_hererocks_py = function()
   return file_name
 end
 
-local ensure_hererocks = function()
+local function ensure_hererocks()
   local hr_dir = cache_dir .. '/hr'
   if not loop.fs_stat(hr_dir) then
     local hererocks_py = download_hererocks_py()
@@ -61,18 +61,18 @@ local ensure_hererocks = function()
   return hr_dir
 end
 
-local setup_langservers = function()
+local function setup_langservers()
   execute([[./langservers/setup.sh %s/langservers]], cache_dir)
 end
 
-local install_autoload_plugins = function()
+local function install_autoload_plugins()
   vfn.mkdir(site_dir .. '/autoload', 'p')
   execute(
     [[curl -sLo %s/autoload/fzf.vim https://raw.githubusercontent.com/junegunn/fzf/HEAD/plugin/fzf.vim]],
     site_dir)
 end
 
-local ensure_packer_nvim = function()
+local function ensure_packer_nvim()
   local packer_dir = string.format('%s/pack/packer/opt/packer.nvim', site_dir)
   vfn.mkdir(packer_dir, 'p')
   if not loop.fs_stat(packer_dir .. '/.git') then
@@ -87,7 +87,7 @@ local ensure_packer_nvim = function()
   require('packer').compile()
 end
 
-local ensure_spell = function()
+local function ensure_spell()
   local spell_files = {'en.utf-8.spl'; 'en.utf-8.sug'; 'pt.utf-8.spl'}
   vfn.mkdir('spell', 'p')
   for _, spell_file in ipairs(spell_files) do
@@ -106,7 +106,7 @@ do
   }
   local done = {}
 
-  local sched = function(name, fn)
+  local function sched(name, fn)
     vim.schedule(function()
       fn()
       done[name] = true

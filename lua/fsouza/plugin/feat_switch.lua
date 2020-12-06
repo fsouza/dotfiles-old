@@ -1,14 +1,14 @@
 local M = {}
 
-local enable_lsp = function()
+local function enable_lsp()
   require('fsouza.lsp')
 end
 
-local enable_ts = function()
+local function enable_ts()
   require('fsouza.plugin.ts')
 end
 
-local trigger_ft = function()
+local function trigger_ft()
   if vim.bo.filetype and vim.bo.filetype ~= '' then
     vim.cmd([[doautocmd FileType ]] .. vim.bo.filetype)
   end

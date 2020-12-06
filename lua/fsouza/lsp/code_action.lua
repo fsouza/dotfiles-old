@@ -12,7 +12,7 @@ function M.handle_actions(actions)
     table.insert(lines, action.title)
   end
 
-  local handle_selection = function(index)
+  local function handle_selection(index)
     local action_chosen = actions[index]
     if action_chosen.edit or type(action_chosen.command) == 'table' then
       if action_chosen.edit then
@@ -29,11 +29,11 @@ function M.handle_actions(actions)
   require('fsouza.lib.popup_picker').open(lines, handle_selection)
 end
 
-local code_action_for_buf = function()
+local function code_action_for_buf()
   vim.lsp.buf.range_code_action(nil, {1; 1}, {api.nvim_buf_line_count(0); 2147483647})
 end
 
-local code_action_for_line = function(cb)
+local function code_action_for_line(cb)
   local context = {diagnostics = vim.lsp.diagnostic.get_line_diagnostics()}
   local params = util.make_range_params()
   params.context = context

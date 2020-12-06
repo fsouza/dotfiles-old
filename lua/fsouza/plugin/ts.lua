@@ -16,7 +16,7 @@ local wanted_parsers = {
   'typescript';
 };
 
-local set_folding = function()
+local function set_folding()
   local parsers = require('nvim-treesitter.parsers')
   local helpers = require('fsouza.lib.nvim_helpers')
   local file_types = {}

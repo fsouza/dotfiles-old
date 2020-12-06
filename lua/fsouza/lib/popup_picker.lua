@@ -22,21 +22,21 @@ function M.close(winid)
   api.nvim_win_close(winid, false)
 end
 
-local max = function(x, y)
+local function max(x, y)
   if x > y then
     return x
   end
   return y
 end
 
-local min = function(x, y)
+local function min(x, y)
   if x < y then
     return x
   end
   return y
 end
 
-local close_others = function(win_var_identifier)
+local function close_others(win_var_identifier)
   for _, winid in ipairs(api.nvim_list_wins()) do
     if pcall(api.nvim_win_get_var, winid, win_var_identifier) then
       api.nvim_win_close(winid, true)

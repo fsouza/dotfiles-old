@@ -3,11 +3,11 @@ local vfn = vim.fn
 
 local config_dir = vfn.stdpath('config')
 
-local get_local_cmd = function(cmd)
+local function get_local_cmd(cmd)
   return string.format('%s/langservers/bin/%s', config_dir, cmd)
 end
 
-local set_log_level = function()
+local function set_log_level()
   local level = 'ERROR'
   if os.getenv('NVIM_DEBUG') then
     level = 'TRACE'
@@ -16,7 +16,7 @@ local set_log_level = function()
 end
 
 -- override some stuff in vim.lsp
-local patch_lsp = function()
+local function patch_lsp()
   -- disable unsupported method so I don't get random errors.
   vim.lsp._unsupported_methood = function()
   end
@@ -53,7 +53,7 @@ end
 do
   patch_lsp()
 
-  local if_executable = function(name, cb)
+  local function if_executable(name, cb)
     if vfn.executable(name) == 1 then
       cb()
     end

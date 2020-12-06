@@ -27,7 +27,7 @@ function M.set_default_theme(theme_ns)
   _default_theme = theme_ns
 end
 
-local gc = function()
+local function gc()
   for winid in pairs(_themes) do
     if not api.nvim_win_is_valid(winid) then
       _themes[winid] = nil
@@ -35,7 +35,7 @@ local gc = function()
   end
 end
 
-local find_theme = function(curr_winid)
+local function find_theme(curr_winid)
   if _default_theme ~= 0 and _popup_cb then
     local winid = _popup_cb()
     if winid == curr_winid then
@@ -48,7 +48,7 @@ end
 function M.enable()
   vim.o.background = 'light'
   _default_theme = themes.none
-  local cb = function(_, winid)
+  local function cb(_, winid)
     local theme = _themes[winid]
     if not theme then
       theme = find_theme(winid)

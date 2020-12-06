@@ -8,7 +8,7 @@ local state = {running = false; port = 0; token = ''}
 
 local M = {}
 
-local load_state = function()
+local function load_state()
   local state_file = string.format('%s/.prettierd', loop.os_homedir())
   local f = io.open(state_file)
   local contents = f:read('all*')
@@ -23,7 +23,7 @@ local load_state = function()
   state.token = parts[2]
 end
 
-local start_server = function()
+local function start_server()
   local exec_path = string.format('%s/langservers/node_modules/.bin/prettierd',
                                   vfn.stdpath('config'))
   cmd.run(exec_path, {args = {'start'}}, nil, function(result)
@@ -41,7 +41,7 @@ local start_server = function()
   end)
 end
 
-local wait_for_server = function(timeout_ms)
+local function wait_for_server(timeout_ms)
   timeout_ms = timeout_ms or 200
   local status = vim.wait(timeout_ms, function()
     return state.running
@@ -64,7 +64,7 @@ function M.format(bufnr, cb, is_retry)
   table.insert(lines, 1, string.format('%s %s %s', state.token, cwd,
                                        helpers.ensure_path_relative_to_prefix(cwd, fname)))
 
-  local write_to_buf = function(data)
+  local function write_to_buf(data)
     local new_lines = vim.split(data, '\n')
     while new_lines[#new_lines] == '' do
       table.remove(new_lines, #new_lines)

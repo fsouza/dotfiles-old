@@ -6,7 +6,7 @@ local _ = vim.fn['fzf#run']
 
 local M = {}
 
-local fzf_dir = function(directory, cd)
+local function fzf_dir(directory, cd)
   require('fsouza.plugin.fuzzy').ensure_fzf()
   if cd then
     api.nvim_set_current_dir(directory)
@@ -17,7 +17,7 @@ local fzf_dir = function(directory, cd)
 end
 
 function M.register(command, path, cd)
-  local is_dir_cb = function(is_dir)
+  local function is_dir_cb(is_dir)
     if is_dir then
       fzf_dir(path, cd)
     else

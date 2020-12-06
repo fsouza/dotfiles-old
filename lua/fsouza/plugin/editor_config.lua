@@ -8,7 +8,7 @@ local helpers = require('fsouza.lib.nvim_helpers')
 
 local M = {}
 
-local set_enabled = function(v)
+local function set_enabled(v)
   local commands = {}
   if v then
     table.insert(commands, {
@@ -21,7 +21,7 @@ local set_enabled = function(v)
   M.set_config()
 end
 
-local parse_output = function(data)
+local function parse_output(data)
   local lines = vim.split(data, '\n')
   local opts = {}
   for _, line in ipairs(lines) do
@@ -33,7 +33,7 @@ local parse_output = function(data)
   return opts
 end
 
-local get_vim_fenc = function(editorconfig_charset)
+local function get_vim_fenc(editorconfig_charset)
   if editorconfig_charset == 'utf-8' or editorconfig_charset == 'latin1' then
     return editorconfig_charset, false
   elseif editorconfig_charset == 'utf-16be' or editorconfig_charset == 'utf-16le' then
@@ -43,12 +43,12 @@ local get_vim_fenc = function(editorconfig_charset)
   end
 end
 
-local get_vim_fileformat = function(editorconfig_eol)
+local function get_vim_fileformat(editorconfig_eol)
   local m = {crlf = 'dos'; cr = 'mac'}
   return m[editorconfig_eol] or 'unix'
 end
 
-local handle_whitespaces = function(bufnr, v)
+local function handle_whitespaces(bufnr, v)
   local commands = {}
   if v == 'true' then
     table.insert(commands, {
@@ -60,7 +60,7 @@ local handle_whitespaces = function(bufnr, v)
   helpers.augroup('editorconfig_trim_trailing_whitespace_' .. bufnr, commands)
 end
 
-local set_opts = function(bufnr, opts)
+local function set_opts(bufnr, opts)
   local vim_opts = {}
   for k, v in pairs(opts) do
     if k == 'charset' then

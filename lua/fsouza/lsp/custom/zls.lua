@@ -3,7 +3,7 @@ local configs = require('lspconfig/configs')
 
 local M = {}
 
-local add_to_config = function()
+local function add_to_config()
   configs.zls = {
     default_config = {
       cmd = {'zls'};

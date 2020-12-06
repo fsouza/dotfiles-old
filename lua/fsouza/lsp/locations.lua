@@ -4,7 +4,7 @@ local lsp = vim.lsp
 local lsp_util = require('vim.lsp.util')
 local parsers = require('nvim-treesitter.parsers')
 
-local should_use_ts = function(node)
+local function should_use_ts(node)
   if node == nil then
     return false
   end
@@ -19,7 +19,7 @@ local should_use_ts = function(node)
   return false
 end
 
-local ts_range = function(loc)
+local function ts_range(loc)
   if not loc.uri then
     return loc
   end
@@ -55,7 +55,7 @@ local ts_range = function(loc)
   return loc
 end
 
-local peek_location_callback = function(_, _, result)
+local function peek_location_callback(_, _, result)
   if not result or vim.tbl_isempty(result) then
     return
   end

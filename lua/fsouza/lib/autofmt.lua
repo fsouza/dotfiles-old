@@ -14,7 +14,7 @@ function M.config()
   return true, timeout_ms
 end
 
-local toggle = function(ns)
+local function toggle(ns)
   if ns.autoformat == false then
     ns.autoformat = true
   else

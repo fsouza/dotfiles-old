@@ -5,7 +5,7 @@ local M = {}
 
 local clients_by_buf = {}
 
-local read_buffer = function(bufnr)
+local function read_buffer(bufnr)
   local lines = table.concat(api.nvim_buf_get_lines(bufnr, 0, -1, true), '\n')
   if api.nvim_buf_get_option(bufnr, 'eol') then
     lines = lines .. '\n'
@@ -28,7 +28,7 @@ function M.notify(bufnr)
   end
 end
 
-local buf_attach_if_needed = function(bufnr)
+local function buf_attach_if_needed(bufnr)
   if clients_by_buf[bufnr] then
     return
   end

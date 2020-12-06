@@ -2,7 +2,7 @@ local M = {}
 
 local api = vim.api
 
-local attached = function(bufnr, client)
+local function attached(bufnr, client)
   local helpers = require('fsouza.lib.nvim_helpers')
   vim.schedule(function()
     local mappings = {
@@ -245,7 +245,7 @@ local attached = function(bufnr, client)
   end)
 end
 
-local on_attach = function(client, bufnr)
+local function on_attach(client, bufnr)
   local all_clients = vim.lsp.get_active_clients()
   for _, c in pairs(all_clients) do
     if c.id == client.id then

@@ -8,7 +8,7 @@ local data_dir = vfn.stdpath('data')
 
 local helpers = require('fsouza.lib.nvim_helpers')
 
-local initial_mappings = function()
+local function initial_mappings()
   -- Disable ex mode. I'm not that smart.
   nvim_set_keymap('n', 'Q', '', {})
 
@@ -20,7 +20,7 @@ local initial_mappings = function()
   nvim_set_keymap('n', '<leader>w', '<cmd>update<cr>', {})
 end
 
-local bootstrap_env = function()
+local function bootstrap_env()
   local stdlib = require('posix.stdlib')
   stdlib.setenv('NVIM_CACHE_DIR', cache_dir)
 
@@ -32,7 +32,7 @@ local bootstrap_env = function()
                                       stdlib.getenv('PATH')))
 end
 
-local hererocks = function()
+local function hererocks()
   local lua_version = string.gsub(_VERSION, 'Lua ', '')
   local hererocks_path = cache_dir .. '/hr'
   local share_path = hererocks_path .. '/share/lua/' .. lua_version
@@ -42,7 +42,7 @@ local hererocks = function()
   package.cpath = package.cpath .. ';' .. lib_path .. '/?.so'
 end
 
-local global_vars = function()
+local function global_vars()
   vim.g.netrw_home = data_dir
   vim.g.netrw_banner = 0
   vim.g.netrw_liststyle = 3
@@ -53,7 +53,7 @@ local global_vars = function()
   vim.g.user_emmet_leader_key = [[<C-x>]]
 end
 
-local ui_options = function()
+local function ui_options()
   vim.o.termguicolors = true
   vim.o.showcmd = false
   vim.o.laststatus = 0
@@ -65,7 +65,7 @@ local ui_options = function()
   require('fsouza.color').enable()
 end
 
-local global_options = function()
+local function global_options()
   vim.o.completeopt = 'menuone,noinsert,noselect'
   vim.o.hidden = true
   vim.o.backspace = 'indent,eol,start'
@@ -84,11 +84,11 @@ local global_options = function()
   vim.o.jumpoptions = 'stack'
 end
 
-local rnu = function()
+local function rnu()
   vcmd('set relativenumber')
 end
 
-local folding = function()
+local function folding()
   local fold_method = 'indent'
   vim.o.foldlevelstart = 99
   vim.wo.foldmethod = fold_method
@@ -99,7 +99,7 @@ local folding = function()
   end)
 end
 
-local global_mappings = function()
+local function global_mappings()
   local rl_bindings = {
     {lhs = '<c-a>'; rhs = '<home>'; opts = {noremap = true}};
     {lhs = '<c-e>'; rhs = '<end>'; opts = {noremap = true}};

@@ -2,7 +2,7 @@ local vcmd = vim.cmd
 local vfn = vim.fn
 local helpers = require('fsouza.lib.nvim_helpers')
 
-local setup_fzf_mappings = function()
+local function setup_fzf_mappings()
   helpers.create_mappings({
     n = {
       {lhs = '<leader>zz'; rhs = helpers.cmd_map('FzfFiles'); opts = {silent = true}};
@@ -28,16 +28,16 @@ local setup_fzf_mappings = function()
   })
 end
 
-local setup_autofmt_commands = function()
+local function setup_autofmt_commands()
   vcmd([[command! ToggleAutofmt lua require('fsouza.lib.autofmt').toggle()]])
   vcmd([[command! ToggleGlobalAutofmt lua require('fsouza.lib.autofmt').toggle_g()]])
 end
 
-local setup_completion = function()
+local function setup_completion()
   vim.g.completion_enable_auto_popup = 0
 end
 
-local setup_hlyank = function()
+local function setup_hlyank()
   helpers.augroup('yank_highlight', {
     {
       events = {'TextYankPost'};
@@ -47,11 +47,11 @@ local setup_hlyank = function()
   })
 end
 
-local setup_global_ns = function()
+local function setup_global_ns()
   _G.f = require('fsouza.global')
 end
 
-local setup_word_replace = function()
+local function setup_word_replace()
   helpers.create_mappings({
     n = {
       {
@@ -63,7 +63,7 @@ local setup_word_replace = function()
   })
 end
 
-local setup_spell = function()
+local function setup_spell()
   helpers.augroup('auto_spell', {
     {
       events = {'FileType'};
@@ -73,7 +73,7 @@ local setup_spell = function()
   })
 end
 
-local setup_editorconfig = function()
+local function setup_editorconfig()
   require('fsouza.plugin.editor_config').enable()
   vim.schedule(function()
     vcmd([[command! EnableEditorConfig lua require('fsouza.plugin.editor_config').enable()]])
@@ -81,7 +81,7 @@ local setup_editorconfig = function()
   end)
 end
 
-local setup_prettierd = function()
+local function setup_prettierd()
   local auto_fmt_fts = {
     'json';
     'javascript';
@@ -106,13 +106,13 @@ local setup_prettierd = function()
   })
 end
 
-local trigger_ft = function()
+local function trigger_ft()
   if vim.bo.filetype and vim.bo.filetype ~= '' then
     vcmd([[doautocmd FileType ]] .. vim.bo.filetype)
   end
 end
 
-local setup_lsp_ts = function()
+local function setup_lsp_ts()
   local auto_lsp_tg_fts = {'go'; 'lua'; 'typescript'}
   helpers.augroup('fsouza__auto_lsp', {
     {
@@ -128,12 +128,12 @@ local setup_lsp_ts = function()
   end)
 end
 
-local setup_shortcuts = function()
+local function setup_shortcuts()
   require('fsouza.plugin.shortcut').register('Vimfiles', vfn.stdpath('config'))
   require('fsouza.plugin.shortcut').register('Dotfiles', vfn.expand('~/.dotfiles'))
 end
 
-local setup_git_messenger = function()
+local function setup_git_messenger()
   helpers.augroup('git-messenger-popup', {
     {
       events = {'FileType'};
@@ -143,7 +143,7 @@ local setup_git_messenger = function()
   })
 end
 
-local configure_toggleterm = function()
+local function configure_toggleterm()
   require('toggleterm').setup({
     size = 20;
     open_mapping = [[<c-\>]];

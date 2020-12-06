@@ -6,7 +6,7 @@ function M.debounce(interval_ms, fn)
   local timer = loop.new_timer()
   local last_call = {}
 
-  local make_call = function()
+  local function make_call()
     if #last_call > 0 then
       fn(unpack(last_call))
       last_call = {}

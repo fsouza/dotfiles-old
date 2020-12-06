@@ -11,7 +11,7 @@ local clients = {}
 -- stores result by bufnr & line (range.start.line)
 local code_lenses = {}
 
-local group_by_line = function(codelenses)
+local function group_by_line(codelenses)
   local by_line = {}
   for _, codelens in ipairs(codelenses) do
     local line_id = codelens.range.start.line
@@ -22,11 +22,11 @@ local group_by_line = function(codelenses)
   return by_line
 end
 
-local remove_results = function(bufnr)
+local function remove_results(bufnr)
   code_lenses[bufnr] = nil
 end
 
-local render_virtual_text = function(bufnr)
+local function render_virtual_text(bufnr)
   local ns = api.nvim_create_namespace('fsouza__code_lens')
   api.nvim_buf_clear_namespace(bufnr, ns, 0, -1)
 
@@ -43,7 +43,7 @@ local render_virtual_text = function(bufnr)
   end
 end
 
-local codelenses_handler = function(_, _, codelenses, _, bufnr)
+local function codelenses_handler(_, _, codelenses, _, bufnr)
   if not codelenses then
     return
   end
@@ -52,7 +52,7 @@ local codelenses_handler = function(_, _, codelenses, _, bufnr)
   render_virtual_text(bufnr)
 end
 
-local codelenses = function(bufnr)
+local function codelenses(bufnr)
   if not clients[bufnr] then
     return
   end
@@ -80,7 +80,7 @@ function M.codelens(bufnr)
   debounced.call(bufnr)
 end
 
-local execute_codelenses = function(bufnr, items)
+local function execute_codelenses(bufnr, items)
   if vim.tbl_isempty(items) then
     return
   end
@@ -90,7 +90,7 @@ local execute_codelenses = function(bufnr, items)
     return
   end
 
-  local run = function(codelens)
+  local function run(codelens)
     client.lsp_client.request('workspace/executeCommand', codelens.command, function(err)
       if not err then
         vcmd([[checktime]])
@@ -98,7 +98,7 @@ local execute_codelenses = function(bufnr, items)
     end)
   end
 
-  local execute_item = function(selected)
+  local function execute_item(selected)
     if not client.supports_command then
       return
     end

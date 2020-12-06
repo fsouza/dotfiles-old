@@ -7,7 +7,7 @@ local default_root_patterns = {'.git'}
 
 local config_dir = vfn.stdpath('config')
 
-local setup_blackd_logs_dir = function()
+local function setup_blackd_logs_dir()
   local cache_dir = vfn.stdpath('cache')
   local setenv = require('posix.stdlib').setenv
   local logs_dir = cache_dir .. '/blackd-logs'
@@ -15,7 +15,7 @@ local setup_blackd_logs_dir = function()
   setenv('BLACKD_LOGS_DIR', logs_dir)
 end
 
-local get_python_tool = function(bin_name)
+local function get_python_tool(bin_name)
   local result = bin_name
   if os.getenv('VIRTUAL_ENV') then
     local venv_bin_name = os.getenv('VIRTUAL_ENV') .. '/bin/' .. bin_name
@@ -26,13 +26,13 @@ local get_python_tool = function(bin_name)
   return result
 end
 
-local get_black = function()
+local function get_black()
   local nvim_config_path = config_dir
   local bin = nvim_config_path .. '/langservers/bin/blackd-format'
   return {command = bin; rootPatterns = {'.git'; ''}}
 end
 
-local get_isort = function()
+local function get_isort()
   return {
     command = get_python_tool('isort');
     args = {'-'};
@@ -40,7 +40,7 @@ local get_isort = function()
   }
 end
 
-local get_flake8 = function()
+local function get_flake8()
   return {
     command = get_python_tool('flake8');
     args = {'--stdin-display-name'; '%filepath'; '-'};
@@ -52,7 +52,7 @@ local get_flake8 = function()
   }
 end
 
-local get_add_trailing_comma = function()
+local function get_add_trailing_comma()
   return {
     command = get_python_tool('add-trailing-comma');
     args = {'--exit-zero-even-if-changed'; '-'};
@@ -60,7 +60,7 @@ local get_add_trailing_comma = function()
   }
 end
 
-local get_reorder_python_imports = function()
+local function get_reorder_python_imports()
   return {
     command = get_python_tool('reorder-python-imports');
     args = {'--exit-zero-even-if-changed'; '-'};
@@ -68,7 +68,7 @@ local get_reorder_python_imports = function()
   }
 end
 
-local get_autopep8 = function()
+local function get_autopep8()
   return {
     command = get_python_tool('autopep8');
     args = {'-'};
@@ -76,7 +76,7 @@ local get_autopep8 = function()
   }
 end
 
-local get_buildifier = function()
+local function get_buildifier()
   local nvim_config_path = config_dir
   local bin = nvim_config_path .. '/langservers/bin/buildifierw'
   if vfn.executable('buildifier') == 1 then
@@ -85,11 +85,11 @@ local get_buildifier = function()
   return {}
 end
 
-local get_dune = function()
+local function get_dune()
   return {command = 'dune'; args = {'format-dune-file'}; rootPatterns = default_root_patterns}
 end
 
-local get_shellcheck = function()
+local function get_shellcheck()
   return {
     command = 'shellcheck';
     args = {'-f'; 'gcc'; '-'};
@@ -105,11 +105,11 @@ local get_shellcheck = function()
   }
 end
 
-local get_shfmt = function()
+local function get_shfmt()
   return {command = 'shfmt'; args = {'-'}; rootPatterns = default_root_patterns}
 end
 
-local get_luacheck = function()
+local function get_luacheck()
   return {
     command = 'luacheck';
     args = {'--formatter'; 'plain'; '--filename'; '%filepath'; '-'};
@@ -122,7 +122,7 @@ local get_luacheck = function()
   }
 end
 
-local get_luaformat = function()
+local function get_luaformat()
   return {
     command = 'lua-format';
     rootPatterns = {'.lua-format'; '.git'};
@@ -130,7 +130,7 @@ local get_luaformat = function()
   }
 end
 
-local read_precommit_config = function(file_path)
+local function read_precommit_config(file_path)
   local lyaml = require('lyaml')
   local f = io.open(file_path, 'r')
   local content = f:read('all*')
@@ -138,7 +138,7 @@ local read_precommit_config = function(file_path)
   return lyaml.load(content)
 end
 
-local blackd_cleanup_if_needed = function(init_options)
+local function blackd_cleanup_if_needed(init_options)
   for _, tools in pairs(init_options.formatFiletypes) do
     for _, tool in pairs(tools) do
       if tool == 'blackd' then
@@ -154,7 +154,7 @@ local blackd_cleanup_if_needed = function(init_options)
   end
 end
 
-local get_python_linters_and_formatters = function()
+local function get_python_linters_and_formatters()
   local pre_commit_config_file_path = '.pre-commit-config.yaml'
   if not loop.fs_stat(pre_commit_config_file_path) then
     return {flake8 = get_flake8()}, {
@@ -208,7 +208,7 @@ local get_python_linters_and_formatters = function()
   return linters, formatters
 end
 
-local get_lua_linters_and_formatters = function()
+local function get_lua_linters_and_formatters()
   local linters = {luacheck = get_luacheck()}
   local formatters = {}
   if loop.fs_stat('.lua-format') then
@@ -217,7 +217,7 @@ local get_lua_linters_and_formatters = function()
   return linters, formatters
 end
 
-local add_linters_and_formatters = function(init_options, ft, linters, formatters)
+local function add_linters_and_formatters(init_options, ft, linters, formatters)
   init_options.linters = vim.tbl_extend('keep', init_options.linters or {}, linters)
   init_options.formatters = vim.tbl_extend('keep', init_options.formatters or {}, formatters)
 
@@ -243,7 +243,7 @@ local add_linters_and_formatters = function(init_options, ft, linters, formatter
   init_options.formatFiletypes[ft] = ft_formatters
 end
 
-local filter_empty = function(t)
+local function filter_empty(t)
   for k, v in pairs(t) do
     if vim.tbl_isempty(v) then
       t[k] = nil
@@ -252,7 +252,7 @@ local filter_empty = function(t)
   return t
 end
 
-local get_init_options = function()
+local function get_init_options()
   local init_options = {}
 
   local py_linters, py_formatters = get_python_linters_and_formatters()

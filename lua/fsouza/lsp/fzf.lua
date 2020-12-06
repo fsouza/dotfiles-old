@@ -9,7 +9,7 @@ local helpers = require('fsouza.lib.nvim_helpers')
 
 local fzf_actions = {['ctrl-t'] = 'tabedit'; ['ctrl-x'] = 'split'; ['ctrl-v'] = 'vsplit'}
 
-local lines_to_qf_list = function(lines)
+local function lines_to_qf_list(lines)
   local items = {}
   for _, line in ipairs(lines) do
     local _, _, filename, lnum, col, text = string.find(line, [[([^:]+):(%d+):(%d+):(.*)]])
@@ -21,7 +21,7 @@ local lines_to_qf_list = function(lines)
   return items
 end
 
-local handle_lsp_lines = function(lines)
+local function handle_lsp_lines(lines)
   if #lines < 2 then
     return
   end
@@ -46,7 +46,7 @@ local handle_lsp_lines = function(lines)
   end
 end
 
-local format_items = function(items)
+local function format_items(items)
   local lines = {}
   local prefix = loop.cwd() .. '/'
   for _, item in pairs(items) do
