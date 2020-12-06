@@ -21,11 +21,11 @@ jobs:
       - name: install neovim nightly
         run: |
           if [ "${{ matrix.os }}" = "ubuntu-20.04" ]; then
-            filename=nvim-linux64.tar.gz
+            suffix=linux64
           else
-            filename=nvim-macos.tar.bz2
+            suffix=macos
           fi
-          curl -L https://github.com/neovim/neovim/releases/download/nightly/${filename} | sudo tar -C /usr/local --strip 1 -xf -
+          curl -L https://github.com/neovim/neovim/releases/download/nightly/nvim-${suffix}.tar.gz | sudo tar -C /usr/local --strip 1 -xzf -
 
       - name: install deps on mac
         if: matrix.os == 'macos-latest'
