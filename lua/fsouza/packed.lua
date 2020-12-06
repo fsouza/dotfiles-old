@@ -13,7 +13,7 @@ local deps = {
   {'tpope/vim-repeat'};
   {'tpope/vim-surround'};
 
-  {'fsouza/packer.nvim'; branch = 'add-no-input-config'; opt = true};
+  {'wbthomason/packer.nvim'; opt = true};
   {'godlygeek/tabular'; opt = true; cmd = {'Tabularize'}};
   {'junegunn/fzf.vim'; opt = true; cmd = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
   {'neovim/nvim-lspconfig'; opt = true};
@@ -130,11 +130,7 @@ local function packer_startup()
   local compile_path = vfn.stdpath('data') .. '/site/plugin/packer_compiled.vim'
   require('packer').startup({
     deps;
-    config = {
-      compile_on_sync = true;
-      compile_path = compile_path;
-      display = {non_interactive = true};
-    };
+    config = {compile_on_sync = true; compile_path = compile_path; no_input = true};
   })
 end
 

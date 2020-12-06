@@ -76,9 +76,7 @@ local function ensure_packer_nvim()
   local packer_dir = string.format('%s/pack/packer/opt/packer.nvim', site_dir)
   vfn.mkdir(packer_dir, 'p')
   if not loop.fs_stat(packer_dir .. '/.git') then
-    execute(
-      [[git clone --depth=1 -b add-no-input-config https://github.com/fsouza/packer.nvim %s]],
-      packer_dir)
+    execute([[git clone --depth=1 https://github.com/wbthomason/packer.nvim %s]], packer_dir)
   end
 
   vim.o.packpath = string.format('%s,%s', site_dir, vim.o.packpath)
