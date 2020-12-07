@@ -74,18 +74,20 @@ local function global_options()
   vim.o.smartcase = true
   vim.o.wildmenu = true
   vim.o.wildmode = 'list:longest'
-  vim.o.autoindent = true
-  vim.o.smartindent = true
   vim.o.smarttab = true
   vim.o.errorbells = false
   vim.o.backup = false
-  vim.o.swapfile = false
   vim.o.inccommand = 'split'
   vim.o.jumpoptions = 'stack'
 end
 
-local function rnu()
-  vcmd('set relativenumber')
+local function set_non_global_options()
+  vcmd([[
+set autoindent
+set relativenumber
+set smartindent
+set noswapfile
+]])
 end
 
 local function folding()
@@ -148,7 +150,7 @@ do
   end)
 
   ui_options()
-  rnu()
+  set_non_global_options()
   folding()
   global_vars()
 
