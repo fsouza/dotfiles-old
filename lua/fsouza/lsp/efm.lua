@@ -166,7 +166,7 @@ local function get_python_tools()
   end
 
   local pc_repo_tools = {
-    -- ['https://gitlab.com/pycqa/flake8'] = get_flake8;
+    ['https://gitlab.com/pycqa/flake8'] = get_flake8;
     ['https://github.com/psf/black'] = get_black;
     ['https://github.com/asottile/add-trailing-comma'] = get_add_trailing_comma;
     ['https://github.com/asottile/reorder_python_imports'] = get_reorder_python_imports;
