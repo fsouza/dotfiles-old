@@ -19,8 +19,6 @@ local function basics(ns)
   nvim_set_hl(ns, 'TabLine', {bg = colors.gray; fg = colors.dark_gray})
   nvim_set_hl(ns, 'TabLineFill', {bg = colors.gray})
   nvim_set_hl(ns, 'TabLineSel', {fg = colors.dark_gray})
-  nvim_set_hl(ns, 'Title', {})
-  nvim_set_hl(ns, 'ModeMsg', {})
   nvim_set_hl(ns, 'ErrorMsg', {bg = colors.red; fg = colors.white})
   nvim_set_hl(ns, 'WarningMsg', {fg = colors.brown})
   nvim_set_hl(ns, 'Folded', {bg = colors.lighter_gray})
@@ -72,6 +70,8 @@ local function noners(ns)
     'Typedef';
     'Underlined';
     'htmlBold';
+    'Title';
+    'ModeMsg';
   }
   for _, group in pairs(groups) do
     nvim_set_hl(ns, group, {})
