@@ -41,10 +41,11 @@ end
 
 local function get_flake8()
   return {
-    lintCommand = string.format('%s --stdin-display-name ${INPUT} -', get_python_bin('flake8'));
+    lintCommand = string.format(
+      '%s --stdin-display-name ${INPUT} --format "%%(path)s:%%(row)d:%%(col)d: %%(code)s %%(text)s" -',
+      get_python_bin('flake8'));
     lintStdin = true;
     lintSource = 'flake8';
-    formatPattern = {'^[^:]+:(\\d+):((\\d+):)?\\s+(.+)$'; {line = 1; column = 3; message = 4}};
     lintFormats = {'%f:%l:%c: %m'};
     rootMarkers = {'.flake8'; '.git'; ''};
   }
