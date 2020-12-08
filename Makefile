@@ -13,7 +13,7 @@ bootstrap:
 
 .PHONY: shellcheck
 shellcheck:
-	shellcheck langservers/bin/*-lsp langservers/setup.sh
+	shellcheck langservers/bin/* langservers/setup.sh
 
 .PHONY: luacheck
 luacheck:
