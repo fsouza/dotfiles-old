@@ -31,6 +31,16 @@ local function get_black()
   return {formatCommand = bin; formatStdin = true; rootMarkers = {'.git'; ''}}
 end
 
+local function get_dmypy()
+  return {
+    lintCommand = string.format('%s run -- --show-column-numbers', get_python_bin('dmypy'));
+    lintStdin = false;
+    lintSource = 'mypy';
+    lintFormats = {'%f:%l:%c: %m'};
+    lintIgnoreExitCode = true;
+  }
+end
+
 local function get_isort()
   return {
     formatCommand = string.format('%s -', get_python_bin('isort'));
@@ -156,12 +166,13 @@ local function get_python_tools()
   end
 
   local pc_repo_tools = {
-    ['https://gitlab.com/pycqa/flake8'] = get_flake8;
+    -- ['https://gitlab.com/pycqa/flake8'] = get_flake8;
     ['https://github.com/psf/black'] = get_black;
     ['https://github.com/asottile/add-trailing-comma'] = get_add_trailing_comma;
     ['https://github.com/asottile/reorder_python_imports'] = get_reorder_python_imports;
     ['https://github.com/pre-commit/mirrors-autopep8'] = get_autopep8;
     ['https://github.com/pre-commit/mirrors-isort'] = get_isort;
+    ['https://github.com/pre-commit/mirrors-mypy'] = get_dmypy;
   }
   local local_repos_mapping = {['black'] = 'https://github.com/psf/black'}
   local pre_commit_config = read_precommit_config(pre_commit_config_file_path)
@@ -194,7 +205,7 @@ local function get_lua_tools()
 end
 
 local function get_settings()
-  local settings = {lintDebounce = 250000000; rootMarkers = default_root_markers; languages = {}}
+  local settings = {rootMarkers = default_root_markers; languages = {}}
   local function add_if_not_empty(language, tool)
     if tool.formatCommand or tool.lintCommand then
       local tools = settings.languages[language] or {}

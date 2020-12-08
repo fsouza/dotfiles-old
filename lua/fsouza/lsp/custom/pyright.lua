@@ -48,7 +48,7 @@ local function detect_virtual_env(settings)
   end
 end
 
-local function pyright_settings()
+local function pyright_settings(enable_typechecking)
   local settings = {
     pyright = {};
     python = {
@@ -56,7 +56,7 @@ local function pyright_settings()
         autoImportCompletions = true;
         autoSearchPaths = true;
         diagnosticMode = 'workspace';
-        typeCheckingMode = 'strict';
+        typeCheckingMode = enable_typechecking and 'strict' or 'off';
         useLibraryCodeForTypes = true;
       };
     };
@@ -65,11 +65,12 @@ local function pyright_settings()
   return settings
 end
 
-function M.get_opts(opts)
+function M.get_opts(opts, enable_typechecking)
+  enable_typechecking = enable_typechecking or true
   opts.root_dir = function(fname)
     return lspconfig.util.find_git_ancestor(fname) or vim.loop.cwd()
   end
-  opts.settings = pyright_settings()
+  opts.settings = pyright_settings(enable_typechecking)
   return opts
 end
 
