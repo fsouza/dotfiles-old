@@ -126,6 +126,10 @@ do
     return true
   end, 25)
   if not status then
-    error(string.format('timed out after %d minutes', timeout_min))
+    local parts = {string.format('timed out after %d minutes', timeout_min)}
+    for k, _ in pairs(ops) do
+      table.insert(parts, string.format('%s = %s', k, done[k] or false))
+    end
+    error(table.concat(parts, '\n'))
   end
 end
