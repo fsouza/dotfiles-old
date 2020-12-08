@@ -10,7 +10,7 @@ local function should_use_ts(node)
   end
 
   local node_type = node:type()
-  local node_types = {'function_declaration'; 'method_declaration'; 'type_spec'}
+  local node_types = {'local_function'; 'function_declaration'; 'method_declaration'; 'type_spec'}
   for _, t in pairs(node_types) do
     if node_type == t then
       return true
@@ -19,7 +19,24 @@ local function should_use_ts(node)
   return false
 end
 
+local function normalize_loc(loc)
+  if loc.uri then
+    return loc
+  end
+
+  if loc.targetUri then
+    loc.uri = loc.targetUri
+
+    if loc.targetRange then
+      loc.range = loc.targetRange
+    end
+  end
+
+  return loc
+end
+
 local function ts_range(loc)
+  loc = normalize_loc(loc)
   if not loc.uri then
     return loc
   end
@@ -40,7 +57,11 @@ local function ts_range(loc)
   local end_pos = loc.range['end']
 
   local parser = vim.treesitter.get_parser(bufnr, lang)
-  local root = parser._tree:root()
+  local _, t = next(parser:trees())
+  if not t then
+    return loc
+  end
+  local root = t:root()
   local node = root:named_descendant_for_range(start_pos.line, start_pos.character, end_pos.line,
                                                end_pos.character)
 
