@@ -83,6 +83,10 @@ function install_golangci_lint_langserver() {
 		_go_install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 }
 
+function install_efm() {
+	_go_install github.com/mattn/efm-langserver@master
+}
+
 function install_lua_lsp() {
 	if ! command -v ninja &>/dev/null; then
 		echo skipping lua-lsp
@@ -141,6 +145,7 @@ install_gopls &
 install_lua_lsp &
 install_shfmt &
 install_golangci_lint_langserver &
+install_efm &
 install_zls &
 wait
 popd

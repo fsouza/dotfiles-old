@@ -83,13 +83,6 @@ do
 
     lsp.yamlls.setup(opts.with_defaults({cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'}}))
 
-    local init_options, filetypes = require('fsouza.lsp.diagnosticls').gen_config()
-    lsp.diagnosticls.setup(opts.with_defaults({
-      cmd = {vim_node_ls; 'diagnostic-languageserver'; '--stdio'; '--log-level'; '4'};
-      filetypes = filetypes;
-      init_options = init_options;
-    }))
-
     lsp.pyright.setup(opts.with_defaults(require('fsouza.lsp.custom.pyright').get_opts(
                                            {cmd = {vim_node_ls; 'pyright-langserver'; '--stdio'}})))
   end)
@@ -108,6 +101,18 @@ do
         };
         linksInHover = false;
       };
+    }))
+  end)
+
+  if_executable('efm-langserver', function()
+    local init_options, settings, filetypes = require('fsouza.lsp.efm').gen_config()
+    print(vim.inspect(init_options))
+    print(vim.inspect(settings))
+    print(vim.inspect(filetypes))
+    lsp.efm.setup(opts.with_defaults({
+      init_options = init_options;
+      settings = settings;
+      filetypes = filetypes;
     }))
   end)
 
