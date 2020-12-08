@@ -106,9 +106,6 @@ do
 
   if_executable('efm-langserver', function()
     local init_options, settings, filetypes = require('fsouza.lsp.efm').gen_config()
-    print(vim.inspect(init_options))
-    print(vim.inspect(settings))
-    print(vim.inspect(filetypes))
     lsp.efm.setup(opts.with_defaults({
       init_options = init_options;
       settings = settings;
