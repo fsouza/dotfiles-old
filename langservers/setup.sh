@@ -107,18 +107,6 @@ function install_lua_lsp() {
 		popd
 }
 
-function install_zls() {
-	if ! command -v zig &>/dev/null; then
-		echo skipping zls
-		return
-	fi
-	path=${cache_dir}/zls
-	_clone_or_update https://github.com/zigtools/zls.git "${path}" &&
-		pushd "${path}" &&
-		zig build -Drelease-safe &&
-		popd
-}
-
 cache_dir=${1}
 exit_status=0
 
@@ -146,7 +134,6 @@ install_lua_lsp &
 install_shfmt &
 install_golangci_lint_langserver &
 install_efm &
-install_zls &
 wait
 popd
 
