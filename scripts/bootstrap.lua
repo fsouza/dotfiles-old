@@ -85,14 +85,6 @@ local function ensure_packer_nvim()
   require('packer').compile()
 end
 
-local function ensure_spell()
-  local spell_files = {'en.utf-8.spl'; 'en.utf-8.sug'; 'pt.utf-8.spl'}
-  vfn.mkdir('spell', 'p')
-  for _, spell_file in ipairs(spell_files) do
-    execute([[curl -sLo spell/%s http://ftp.vim.org/vim/runtime/spell/%s]], spell_file, spell_file)
-  end
-end
-
 do
   local ops = {
     autoload = install_autoload_plugins;
@@ -100,7 +92,6 @@ do
     packer = ensure_packer_nvim;
     virtualenv = ensure_virtualenv;
     hererocks = ensure_hererocks;
-    spell = ensure_spell;
   }
   local done = {}
 
