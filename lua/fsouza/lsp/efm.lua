@@ -218,24 +218,10 @@ local function get_settings()
   return settings
 end
 
-local function get_init_options(settings)
-  local init_options = {}
-  for _, tools in pairs(settings.languages) do
-    for _, tool in ipairs(tools) do
-      if tool.formatCommand then
-        init_options.documentFormatting = true;
-        break
-      end
-    end
-  end
-  return init_options
-end
-
 function M.gen_config()
   setup_blackd_logs_dir()
   local settings = get_settings()
-  local init_options = get_init_options(settings)
-  return init_options, settings, vim.tbl_keys(settings.languages)
+  return settings, vim.tbl_keys(settings.languages)
 end
 
 return M
