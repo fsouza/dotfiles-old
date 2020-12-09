@@ -63,27 +63,6 @@ do
   vcmd([[packadd nvim-lspconfig]])
   local lsp = require('lspconfig')
   local opts = require('fsouza.lsp.opts')
-  local has_mypy = false
-
-  if_executable('efm-langserver', function()
-    local function find_mypy(efm_settings)
-      local python_tools = efm_settings.languages.python or {}
-      for _, tool in ipairs(python_tools) do
-        if tool.lintSource == 'mypy' then
-          return true
-        end
-      end
-      return false
-    end
-
-    local init_options, settings, filetypes = require('fsouza.lsp.efm').gen_config()
-    has_mypy = find_mypy(settings)
-    lsp.efm.setup(opts.with_defaults({
-      init_options = init_options;
-      settings = settings;
-      filetypes = filetypes;
-    }))
-  end)
 
   if_executable('npx', function()
     local vim_node_ls = get_local_cmd('node-lsp')
@@ -105,8 +84,7 @@ do
     lsp.yamlls.setup(opts.with_defaults({cmd = {vim_node_ls; 'yaml-language-server'; '--stdio'}}))
 
     lsp.pyright.setup(opts.with_defaults(require('fsouza.lsp.custom.pyright').get_opts(
-                                           {cmd = {vim_node_ls; 'pyright-langserver'; '--stdio'}})),
-                      not has_mypy)
+                                           {cmd = {vim_node_ls; 'pyright-langserver'; '--stdio'}})))
   end)
 
   if_executable('gopls', function()
@@ -123,6 +101,15 @@ do
         };
         linksInHover = false;
       };
+    }))
+  end)
+
+  if_executable('efm-langserver', function()
+    local init_options, settings, filetypes = require('fsouza.lsp.efm').gen_config()
+    lsp.efm.setup(opts.with_defaults({
+      init_options = init_options;
+      settings = settings;
+      filetypes = filetypes;
     }))
   end)
 
