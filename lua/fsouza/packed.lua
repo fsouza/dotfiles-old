@@ -127,7 +127,11 @@ local function packer_startup()
   local compile_path = vfn.stdpath('data') .. '/site/plugin/packer_compiled.vim'
   require('packer').startup({
     deps;
-    config = {compile_on_sync = true; compile_path = compile_path; no_input = true};
+    config = {
+      compile_on_sync = true;
+      compile_path = compile_path;
+      display = {non_interactive = true};
+    };
   })
 end
 
