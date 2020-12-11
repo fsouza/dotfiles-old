@@ -8,8 +8,6 @@ local helpers = require('fsouza.lib.nvim_helpers')
 
 local fmt_clients = {}
 
-local slow_formatters = {python = true}
-
 local langservers_skip_set = {tsserver = true}
 
 local function should_skip_buffer(bufnr)
@@ -44,25 +42,13 @@ function M.register_client(client, bufnr)
   end
   fmt_clients[bufnr] = client
 
-  local slow = slow_formatters[api.nvim_buf_get_option(bufnr, 'filetype')]
-  if slow == true then
-    helpers.augroup('lsp_autofmt_' .. bufnr, {
-      {
-        events = {'BufWritePost'};
-        targets = {'<buffer>'};
-        command = string.format([[lua require('fsouza.lsp.formatting').autofmt_and_write(%d)]],
-                                bufnr);
-      };
-    })
-  else
-    helpers.augroup('lsp_autofmt_' .. bufnr, {
-      {
-        events = {'BufWritePre'};
-        targets = {'<buffer>'};
-        command = string.format([[lua require('fsouza.lsp.formatting').autofmt(%d)]], bufnr);
-      };
-    })
-  end
+  helpers.augroup('lsp_autofmt_' .. bufnr, {
+    {
+      events = {'BufWritePost'};
+      targets = {'<buffer>'};
+      command = string.format([[lua require('fsouza.lsp.formatting').autofmt_and_write(%d)]], bufnr);
+    };
+  })
 
   api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f',
                           helpers.cmd_map([[lua require('fsouza.lsp.formatting').fmt()]]),

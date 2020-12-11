@@ -93,11 +93,8 @@ end
 
 local function setup_lsp_diagnostics(ns)
   local diagnostics_floating = {fg = colors.black}
-  local diagnostics_sign = {link = 'SignColumn'}
-  local virtual_text = {fg = colors.brown}
-  local virtual_text_group = 'LspDiagnosticsVirtualText'
+  local diagnostics_sign = {fg = colors.red; bg = colors.lighter_gray}
 
-  nvim_set_hl(ns, virtual_text_group, virtual_text)
   for _, level in pairs({'Error'; 'Warning'; 'Information'; 'Hint'}) do
     local sign_group = 'LspDiagnosticsSign' .. level
     local floating_group = 'LspDiagnosticsFloating' .. level

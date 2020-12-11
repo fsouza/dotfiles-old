@@ -12,7 +12,7 @@ function M.buf_clear_all_diagnostics()
   end
 end
 
--- This is a workaround because the nvim-lsp doesn't let us hook into
+-- This is a workaround because the default lsp client doesn't let us hook into
 -- textDocument/didChange like coc.nvim does.
 local function exec_hooks()
   for _, fn in pairs(hooks) do
@@ -24,7 +24,7 @@ local function make_handler()
   local lsp_diagnostic = vim.lsp.diagnostic
   local handler = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     underline = true;
-    virtual_text = true;
+    virtual_text = false;
     signs = true;
     update_in_insert = true;
   })
