@@ -51,6 +51,8 @@ local function global_vars()
   vim.g.polyglot_disabled = {'markdown'; 'sensible'; 'autoindent'}
   vim.g.user_emmet_mode = 'i'
   vim.g.user_emmet_leader_key = [[<C-x>]]
+  vim.g.VM_maps = {['Find Under'] = ''}
+  vim.g.VM_show_warnings = 0
 end
 
 local function ui_options()
