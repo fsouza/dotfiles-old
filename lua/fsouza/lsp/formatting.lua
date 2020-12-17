@@ -123,15 +123,17 @@ function M.autofmt_and_write(bufnr)
   if not enable then
     return
   end
-  fmt(bufnr, function(_, _, result, _)
-    local curr_buf = api.nvim_get_current_buf()
-    if curr_buf ~= bufnr or api.nvim_get_mode().mode ~= 'n' then
-      return
-    end
-    if result then
-      apply_edits(result, bufnr)
-      vcmd('noautocmd update')
-    end
+  pcall(function()
+    fmt(bufnr, function(_, _, result, _)
+      local curr_buf = api.nvim_get_current_buf()
+      if curr_buf ~= bufnr or api.nvim_get_mode().mode ~= 'n' then
+        return
+      end
+      if result then
+        apply_edits(result, bufnr)
+        vcmd('noautocmd update')
+      end
+    end)
   end)
 end
 
