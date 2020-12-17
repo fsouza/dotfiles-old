@@ -21,8 +21,8 @@ local deps = {
   {
     'sheerun/vim-polyglot';
     opt = true;
-    ft = {'bzl'; 'gomod'; 'javascript'; 'kotlin'; 'lua'; 'proto'; 'python'; 'typescript'; 'zig'};
-    event = {'BufEnter *.ts,*.tsx,go.mod,*.zig'};
+    ft = {'bzl'; 'gomod'; 'javascript'; 'kotlin'; 'lua'; 'python'; 'typescript'};
+    event = {'BufEnter *.ex,*.exs,*.ts,*.tsx,go.mod'};
   };
   {
     'tpope/vim-commentary';
