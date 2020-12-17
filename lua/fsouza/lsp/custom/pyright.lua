@@ -56,7 +56,7 @@ local function pyright_settings()
         autoImportCompletions = true;
         autoSearchPaths = true;
         diagnosticMode = 'workspace';
-        typeCheckingMode = vim.g.pyright_type_checking_mode or 'strict';
+        typeCheckingMode = vim.g.pyright_type_checking_mode or 'basic';
         useLibraryCodeForTypes = true;
       };
     };
