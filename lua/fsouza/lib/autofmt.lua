@@ -11,14 +11,14 @@ function M.config()
   if vim.g.autoformat ~= nil then
     return vim.g.autoformat, timeout_ms
   end
-  return true, timeout_ms
+  return false, timeout_ms
 end
 
 local function toggle(ns)
-  if ns.autoformat == false then
-    ns.autoformat = true
-  else
+  if ns.autoformat then
     ns.autoformat = false
+  else
+    ns.autoformat = true
   end
 end
 
