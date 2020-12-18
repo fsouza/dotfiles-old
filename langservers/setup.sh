@@ -115,7 +115,7 @@ function install_elixir_langserver {
 	path=${cache_dir}/elixir-ls
 	_clone_or_update https://github.com/elixir-lsp/elixir-ls.git "${path}" &&
 		pushd "${path}" &&
-		mix deps.get --force &&
+		yes y | mix deps.get --force &&
 		mix local.rebar --force &&
 		mix compile --force &&
 		mix elixir_ls.release -o release
