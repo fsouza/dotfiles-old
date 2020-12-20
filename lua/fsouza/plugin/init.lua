@@ -2,16 +2,17 @@ local vcmd = vim.cmd
 local vfn = vim.fn
 local helpers = require('fsouza.lib.nvim_helpers')
 
-local function setup_fzf_mappings()
+local function setup_fuzzy_mappings()
   helpers.create_mappings({
     n = {
+      {lhs = '<leader>ff'; rhs = helpers.cmd_map('Findr'); opts = {silent = true}};
       {lhs = '<leader>zz'; rhs = helpers.cmd_map('FzfFiles'); opts = {silent = true}};
       {lhs = '<leader>;'; rhs = helpers.cmd_map('FzfCommands'); opts = {silent = true}};
       {lhs = '<leader>zb'; rhs = helpers.cmd_map('FzfBuffers'); opts = {silent = true}};
       {lhs = '<leader>zl'; rhs = helpers.cmd_map('FzfLines'); opts = {silent = true}};
       {
         lhs = '<leader>zj';
-        rhs = helpers.cmd_map([[lua require('fsouza.plugin.fuzzy').fzf_here()]]);
+        rhs = helpers.cmd_map([[lua require('fsouza.plugin.fuzzy').fuzzy_here()]]);
         opts = {silent = true};
       };
       {
@@ -167,7 +168,7 @@ do
   schedule(setup_completion)
   schedule(setup_editorconfig)
   schedule(setup_global_ns)
-  schedule(setup_fzf_mappings)
+  schedule(setup_fuzzy_mappings)
   schedule(setup_hlyank)
   schedule(setup_autofmt_commands)
   schedule(setup_word_replace)

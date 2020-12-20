@@ -7,9 +7,13 @@ function M.ensure_fzf()
   vcmd('packadd fzf.vim')
 end
 
-function M.fzf_here()
-  M.ensure_fzf()
-  vfn['fzf#vim#files'](vfn.expand('%:p:h'))
+local function ensure_findr()
+  vcmd('packadd findr.vim')
+end
+
+function M.fuzzy_here()
+  ensure_findr()
+  require('findr').init(require('findr.sources.files'), vfn.expand('%:p:h'))
 end
 
 function M.rg(input)
