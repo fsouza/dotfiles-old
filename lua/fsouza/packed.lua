@@ -108,6 +108,7 @@ local deps = {
     opt = true;
     cmd = {'Findr'; 'FindrBuffers'; 'FindrLocList'; 'FindrQFList'};
   };
+  {'tpope/vim-dispatch'; opt = true; cmd = {'Dispatch'}};
 }
 
 function M.reload()
