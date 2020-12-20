@@ -37,6 +37,7 @@ source "${basedir}"/extra/alacritty
 cond_source "${basedir}/extra/local-functions"
 cond_source "${basedir}/extra/$(uname -s)-functions"
 
+export NO_COLOR=1
 export PS1="％ " PS2="\\ "
 
 if command -v fnm &>/dev/null; then
