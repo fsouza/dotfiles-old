@@ -148,7 +148,7 @@ end
 
 local function basic_setup()
   setup_auto_commands()
-  vcmd([[doautocmd User PluginReady]])
+  vcmd([[doautocmd User PackerReady]])
 end
 
 function M.setup(force_bootstrap)
