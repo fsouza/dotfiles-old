@@ -113,7 +113,7 @@ local function trigger_ft()
 end
 
 local function setup_lsp_ts()
-  local auto_lsp_tg_fts = {'go'; 'lua'; 'typescript'}
+  local auto_lsp_tg_fts = {'lua'; 'typescript'}
   helpers.augroup('fsouza__auto_lsp', {
     {
       events = {'FileType'};
