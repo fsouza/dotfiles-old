@@ -7,6 +7,9 @@ LUAFORMAT := $(if $(shell command -v lua-format 2>/dev/null), lua-format, $(shel
 
 MACOSX_DEPLOYMENT_TARGET ?= 10.15
 
+.PHONY: all
+all: shellcheck luacheck lua-format
+
 .PHONY: bootstrap
 bootstrap:
 	cd $(mkfile_dir) && env MACOSX_DEPLOYMENT_TARGET=$(MACOSX_DEPLOYMENT_TARGET) NVIM_BOOTSTRAP=1 nvim --headless -E -u NORC +'set rtp+=$(mkfile_dir)' +'luafile scripts/bootstrap.lua' +qa
@@ -17,7 +20,7 @@ shellcheck:
 
 .PHONY: luacheck
 luacheck:
-	cd $(mkfile_dir) && $(LUACHECK) lua
+	cd $(mkfile_dir) && $(LUACHECK) --no-color lua
 
 .PHONY: lua-format
 lua-format:
