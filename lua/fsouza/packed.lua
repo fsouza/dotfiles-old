@@ -100,7 +100,12 @@ local deps = {
       {'o'; 'aI'};
     };
   };
-  {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
+  {
+    'tpope/vim-fugitive';
+    opt = true;
+    cmd = {'Git'; 'GBrowse'};
+    requires = {{'tpope/vim-dispatch'; opt = true; cmd = {'Dispatch'; 'Make'; 'Copen'}}};
+  };
   {'szw/vim-maximizer'; opt = true; cmd = {'MaximizerToggle'}};
   {'mg979/vim-visual-multi'; opt = true; keys = {{'x'; '<c-n>'}}};
   {
@@ -108,7 +113,6 @@ local deps = {
     opt = true;
     cmd = {'Findr'; 'FindrBuffers'; 'FindrLocList'; 'FindrQFList'};
   };
-  {'tpope/vim-dispatch'; opt = true; cmd = {'Dispatch'}};
 }
 
 function M.reload()
