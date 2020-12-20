@@ -103,6 +103,11 @@ local deps = {
   {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
   {'szw/vim-maximizer'; opt = true; cmd = {'MaximizerToggle'}};
   {'mg979/vim-visual-multi'; opt = true; keys = {{'x'; '<c-n>'}}};
+  {
+    'conweller/findr.vim';
+    opt = true;
+    cmd = {'Findr'; 'FindrBuffers'; 'FindrLocList'; 'FindrQFList'};
+  };
 }
 
 function M.reload()
