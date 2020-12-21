@@ -19,7 +19,7 @@ click==7.1.2              # via black
 flake8-bugbear==20.11.1   # via -r requirements.in
 flake8-builtins==1.5.3    # via -r requirements.in
 flake8-comprehensions==3.3.0  # via -r requirements.in
-flake8-tidy-imports==4.2.0  # via -r requirements.in
+flake8-tidy-imports==4.2.1  # via -r requirements.in
 flake8==3.8.4             # via -r requirements.in, flake8-bugbear, flake8-builtins, flake8-comprehensions, flake8-tidy-imports
 idna==2.10                # via yarl
 isort==5.6.4              # via -r requirements.in
