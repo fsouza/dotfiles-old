@@ -64,6 +64,11 @@ setopt SHARE_HISTORY
 
 bindkey -e
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
 alias bump_dotfiles="cd ${basedir} && git pull && git submodule update --init --recursive && bin/setup && cd -"
 
 source "${basedir}"/extra/fzf
