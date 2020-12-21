@@ -62,7 +62,7 @@ jobs:
         with:
           node-version: "14.x"
 
-      - uses: actions/setup-python@v2.2.0
+      - uses: actions/setup-python@v2.2.1
         with:
           python-version: "3.x"
 
