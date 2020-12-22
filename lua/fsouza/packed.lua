@@ -107,7 +107,7 @@ local deps = {
     requires = {{'tpope/vim-dispatch'; opt = true; cmd = {'Dispatch'; 'Make'; 'Copen'}}};
   };
   {'szw/vim-maximizer'; opt = true; cmd = {'MaximizerToggle'}};
-  {'mg979/vim-visual-multi'; opt = true; keys = {{'x'; '<c-n>'}}};
+  {'mg979/vim-visual-multi'; opt = true; keys = {{'x'; '<c-n>'}; {'n'; '<c-n>'}}};
   {
     'conweller/findr.vim';
     opt = true;
