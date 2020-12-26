@@ -15,6 +15,14 @@ local function set_log_level()
   require('vim.lsp.log').set_level(level)
 end
 
+local function define_signs()
+  local levels = {'Error'; 'Warning'; 'Information'; 'Hint'}
+  for _, level in ipairs(levels) do
+    local sign_name = 'LspDiagnosticsSign' .. level
+    vfn.sign_define(sign_name, {text = ''; texthl = sign_name; numhl = sign_name})
+  end
+end
+
 -- override some stuff in vim.lsp
 local function patch_lsp()
   -- disable unsupported method so I don't get random errors.
@@ -33,6 +41,7 @@ end
 
 do
   patch_lsp()
+  define_signs()
 
   local function if_executable(name, cb)
     if vfn.executable(name) == 1 then

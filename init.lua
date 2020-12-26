@@ -89,7 +89,6 @@ set autoindent
 set relativenumber
 set smartindent
 set noswapfile
-set signcolumn=number
 ]])
 end
 
