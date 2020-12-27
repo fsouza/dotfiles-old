@@ -1,4 +1,5 @@
 local api = vim.api
+local helpers = require('fsouza.lib.nvim_helpers')
 local themes = require('fsouza.themes')
 
 local M = {}
@@ -12,6 +13,7 @@ local state = {
   timer = nil;
 }
 
+local augroup_name = 'fsouza__colors_auto_disable'
 
 local gc_interval_ms = 5000
 
@@ -64,6 +66,21 @@ local function stop_gc_timer()
   end
 end
 
+local function setup_autocmd()
+  helpers.augroup(augroup_name, {
+    {
+      events = {'ColorScheme'};
+      targets = {'*'};
+      modifiers = {'++once'};
+      command = [[lua require('fsouza.color').disable()]];
+    };
+  })
+end
+
+local function disable_autocmd()
+  helpers.augroup(augroup_name, {})
+end
+
 function M.enable()
   vim.o.background = 'light'
   state.enabled = true
@@ -83,6 +100,7 @@ function M.enable()
     api.nvim_set_decoration_provider(state.ns, {on_win = cb; on_line = cb})
   end
   start_gc_timer()
+  setup_autocmd()
 end
 
 function M.disable()
@@ -90,6 +108,7 @@ function M.disable()
   state.themes = {}
   stop_gc_timer()
   api.nvim_set_hl_ns(0)
+  disable_autocmd()
 end
 
 return M
