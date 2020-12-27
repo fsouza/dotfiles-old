@@ -114,12 +114,6 @@ local function trigger_ft()
 end
 
 local function setup_lsp_ts()
-  if os.getenv('FSOUZA_NVIM_WITH_LSP') then
-    vim.schedule(function()
-      require('fsouza.plugin.feat_switch').enable_lsp_ts()
-    end)
-    return
-  end
   local auto_lsp_tg_fts = {'lua'; 'typescript'}
   helpers.augroup('fsouza__auto_lsp', {
     {
