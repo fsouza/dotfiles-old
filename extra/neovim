@@ -48,9 +48,5 @@ if [ -x "$NEOVIM_INSTALL_PREFIX/bin/nvim" ]; then
 		nvim +'autocmd User PackerReady ++once FzfFiles' "$@"
 	}
 
-	function lvim {
-		env FSOUZA_NVIM_WITH_LSP=1 nvim "$@"
-	}
-
 	export EDITOR=nvim
 fi
