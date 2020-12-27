@@ -3,6 +3,8 @@ local themes = require('fsouza.themes')
 
 local M = {}
 
+local _enabled = false
+
 local _default_theme = 0
 
 local _themes = {}
@@ -65,7 +67,11 @@ end
 function M.enable()
   vim.o.background = 'light'
   _default_theme = themes.none
+  _enabled = true
   local function cb(_, winid)
+    if not _enabled then
+      return
+    end
     local theme = _themes[winid]
     if not theme then
       theme = find_theme(winid)
@@ -79,8 +85,10 @@ end
 
 function M.disable()
   _default_theme = 0
+  _enabled = false
   _themes = {}
   stop_gc_timer()
+  api.nvim_set_hl_ns(0)
 end
 
 return M
