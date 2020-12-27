@@ -131,7 +131,11 @@ local function global_mappings()
       {lhs = '<c-n>'; rhs = helpers.cmd_map('cnext'); opts = {silent = true}};
       {lhs = '<c-p>'; rhs = helpers.cmd_map('cprevious'); opts = {silent = true}};
     };
-    i = {{lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}}};
+    i = {
+      {lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}};
+      {lhs = '<c-f>'; rhs = '<right>'; opts = {noremap = true}};
+      {lhs = '<c-b>'; rhs = '<left>'; opts = {noremap = true}};
+    };
     c = rl_bindings;
     o = rl_bindings;
   }
