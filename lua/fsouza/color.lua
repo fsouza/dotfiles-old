@@ -3,90 +3,91 @@ local themes = require('fsouza.themes')
 
 local M = {}
 
-local _enabled = false
+local state = {
+  enabled = false;
+  default_theme = nil;
+  themes = {};
+  popup_cb = nil;
+  ns = nil;
+  timer = nil;
+}
 
-local _default_theme = 0
-
-local _themes = {}
-
-local _popup_cb
 
 local gc_interval_ms = 5000
 
-local timer
-
 -- Should we support more than one cb?
 function M.add_popup_cb(cb)
-  _popup_cb = cb
+  state.popup_cb = cb
 end
 
 function M.set_popup_winid(winid)
-  if _default_theme == 0 then
+  if not state.enabled then
     return
   end
   if winid then
-    _themes[winid] = themes.popup
+    state.themes[winid] = themes.popup
   end
 end
 
 function M.set_default_theme(theme_ns)
-  _default_theme = theme_ns
+  state.default_theme = theme_ns
 end
 
 local function gc()
-  for winid in pairs(_themes) do
+  for winid in pairs(state.themes) do
     if not api.nvim_win_is_valid(winid) then
-      _themes[winid] = nil
+      state.themes[winid] = nil
     end
   end
 end
 
 local function find_theme(curr_winid)
-  if _default_theme ~= 0 and _popup_cb then
-    local winid = _popup_cb()
+  if state.popup_cb then
+    local winid = state.popup_cb()
     if winid == curr_winid then
       return themes.popup
     end
   end
-  return _default_theme
+  return state.default_theme
 end
 
 local function start_gc_timer()
-  if not timer then
-    timer = vim.loop.new_timer()
+  if not state.timer then
+    state.timer = vim.loop.new_timer()
   end
-  timer:start(gc_interval_ms, gc_interval_ms, vim.schedule_wrap(gc))
+  state.timer:start(gc_interval_ms, gc_interval_ms, vim.schedule_wrap(gc))
 end
 
 local function stop_gc_timer()
-  if timer then
-    timer:close()
+  if state.timer then
+    state.timer:close()
   end
 end
 
 function M.enable()
   vim.o.background = 'light'
-  _default_theme = themes.none
-  _enabled = true
+  state.enabled = true
+  M.set_default_theme(themes.none)
   local function cb(_, winid)
-    if not _enabled then
+    if not state.enabled then
       return
     end
-    local theme = _themes[winid]
+    local theme = state.themes[winid]
     if not theme then
       theme = find_theme(winid)
     end
     api.nvim_set_hl_ns(theme)
   end
-  local ns = api.nvim_create_namespace('fsouza__color')
-  api.nvim_set_decoration_provider(ns, {on_win = cb; on_line = cb})
+  if not state.ns then
+    state.ns = api.nvim_create_namespace('fsouza__color')
+    api.nvim_set_decoration_provider(state.ns, {on_win = cb; on_line = cb})
+  end
   start_gc_timer()
 end
 
 function M.disable()
-  _default_theme = 0
-  _enabled = false
-  _themes = {}
+  state.enabled = false
+  state.themes = {}
   stop_gc_timer()
   api.nvim_set_hl_ns(0)
 end
