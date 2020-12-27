@@ -128,16 +128,13 @@ local function global_mappings()
         rhs = [[(v:count > 8 ? "m'" . v:count : '') . 'k']];
         opts = {expr = true; noremap = true};
       };
+      {lhs = '<c-n>'; rhs = helpers.cmd_map('cnext'); opts = {silent = true}};
+      {lhs = '<c-p>'; rhs = helpers.cmd_map('cprevious'); opts = {silent = true}};
     };
     i = {{lhs = '<c-d>'; rhs = '<del>'; opts = {noremap = true}}};
     c = rl_bindings;
     o = rl_bindings;
   }
-
-  local win_mov_keys = {'h'; 'j'; 'k'; 'l'}
-  for _, key in ipairs(win_mov_keys) do
-    table.insert(maps.n, {lhs = '<leader>' .. key; rhs = helpers.cmd_map('wincmd ' .. key)})
-  end
   helpers.create_mappings(maps)
 end
 
