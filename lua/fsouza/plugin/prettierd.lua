@@ -148,7 +148,7 @@ function M.enable_auto_format(bufnr)
   helpers.augroup('prettierd_autofmt_' .. bufnr, {
     {
       events = {'BufWritePre'};
-      targets = {'<buffer>'};
+      targets = {string.format('<buffer=%d>', bufnr)};
       command = string.format([[lua require('fsouza.plugin.prettierd').auto_format(%d)]], bufnr);
     };
   })

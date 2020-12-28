@@ -45,7 +45,7 @@ function M.register_client(client, bufnr)
   helpers.augroup('lsp_autofmt_' .. bufnr, {
     {
       events = {'BufWritePost'};
-      targets = {'<buffer>'};
+      targets = {string.format('<buffer=%d>', bufnr)};
       command = string.format([[lua require('fsouza.lsp.formatting').autofmt_and_write(%d)]], bufnr);
     };
   })

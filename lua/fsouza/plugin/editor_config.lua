@@ -53,7 +53,7 @@ local function handle_whitespaces(bufnr, v)
   if v == 'true' then
     table.insert(commands, {
       events = {'BufWritePre'};
-      targets = {'<buffer>'};
+      targets = {string.format('<buffer=%d>', bufnr)};
       command = [[lua require('fsouza.plugin.editor_config').trim_whitespace()]];
     })
   end
