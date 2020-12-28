@@ -38,3 +38,5 @@ ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
 if [ -f $basedir/bin/${os}-setup ] && [[ $1 != "--skip-os" ]]; then
 	$basedir/bin/${os}-setup
 fi
+
+touch "${HOME}"/.zsh_sessions_disable
