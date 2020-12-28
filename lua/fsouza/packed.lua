@@ -96,12 +96,7 @@ local deps = {
       {'o'; 'aI'};
     };
   };
-  {
-    'tpope/vim-fugitive';
-    opt = true;
-    cmd = {'Git'; 'GBrowse'};
-    requires = {{'tpope/vim-dispatch'; opt = true; cmd = {'Dispatch'; 'Make'; 'Copen'}}};
-  };
+  {'tpope/vim-fugitive'; opt = true; cmd = {'Git'; 'GBrowse'}};
   {'szw/vim-maximizer'; opt = true; cmd = {'MaximizerToggle'}};
   {
     'conweller/findr.vim';
