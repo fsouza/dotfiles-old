@@ -8,7 +8,9 @@ local deps = {
   {'justinmk/vim-dirvish'};
   {'justinmk/vim-sneak'};
   {'kana/vim-textobj-user'};
+  {'mg979/vim-visual-multi'};
   {'norcalli/nvim-colorizer.lua'};
+  {'sheerun/vim-polyglot'};
   {'thinca/vim-textobj-between'};
   {'tpope/vim-repeat'};
   {'tpope/vim-surround'};
@@ -18,12 +20,6 @@ local deps = {
   {'junegunn/fzf.vim'; opt = true; cmd = {'FzfFiles'; 'FzfCommands'; 'FzfBuffers'; 'FzfLines'}};
   {'neovim/nvim-lspconfig'; opt = true};
   {'nvim-lua/completion-nvim'; opt = true};
-  {
-    'sheerun/vim-polyglot';
-    opt = true;
-    ft = {'bzl'; 'gomod'; 'javascript'; 'kotlin'; 'lua'; 'python'; 'typescript'};
-    event = {'BufEnter *.ex,*.exs,*.ts,*.tsx,dune,go.mod'};
-  };
   {
     'tpope/vim-commentary';
     opt = true;
@@ -107,7 +103,6 @@ local deps = {
     requires = {{'tpope/vim-dispatch'; opt = true; cmd = {'Dispatch'; 'Make'; 'Copen'}}};
   };
   {'szw/vim-maximizer'; opt = true; cmd = {'MaximizerToggle'}};
-  {'mg979/vim-visual-multi'; opt = true; keys = {{'x'; '<c-n>'}}};
   {
     'conweller/findr.vim';
     opt = true;
