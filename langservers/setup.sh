@@ -59,7 +59,7 @@ function _go_install() {
 		return
 	fi
 	(
-		cd /tmp && env GOBIN="${cache_dir}/bin" go install "${@}"
+		cd /tmp && env GO111MODULE=on GOBIN="${cache_dir}/bin" go get "${@}"
 	)
 }
 
