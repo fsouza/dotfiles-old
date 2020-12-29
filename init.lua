@@ -8,15 +8,13 @@ local data_dir = vfn.stdpath('data')
 
 local helpers = require('fsouza.lib.nvim_helpers')
 
-local function prequire(module)
+_G.prequire = function(module)
   local ok, mod = pcall(require, module)
   if not ok then
     return nil
   end
   return mod
 end
-
-_G.prequire = prequire
 
 local function initial_mappings()
   -- Disable ex mode. I'm not that smart.
