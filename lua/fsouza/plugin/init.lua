@@ -114,11 +114,11 @@ local function trigger_ft()
 end
 
 local function setup_lsp_ts()
-  local auto_lsp_tg_fts = {'lua'; 'typescript'}
+  local auto_lsp_ts_fts = {'lua'}
   helpers.augroup('fsouza__auto_lsp', {
     {
       events = {'FileType'};
-      targets = auto_lsp_tg_fts;
+      targets = auto_lsp_ts_fts;
       modifiers = {'++once'};
       command = [[lua require('fsouza.plugin.feat_switch').enable_lsp_ts()]];
     };
