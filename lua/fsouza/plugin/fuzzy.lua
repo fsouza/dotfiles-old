@@ -31,4 +31,12 @@ function M.rg_cword()
   M.rg(vfn.expand('<cword>'))
 end
 
+function M.files()
+  local cmd = 'FzfFiles'
+  if vfn.isdirectory('.git') == 1 then
+    cmd = 'FzfGitFiles'
+  end
+  vcmd(cmd)
+end
+
 return M
