@@ -95,6 +95,18 @@ jobs:
           path: ~/.cache/nvim/hr
           key: "${{ matrix.os }}-${{ hashFiles('Makefile') }}-${{ hashFiles('scripts/bootstrap.lua') }}"
 
+      - name: get python version
+        id: get-python-version
+        run: |
+          echo "::set-output name=version::$(python3 --version)"
+
+      - name: virtualenv cache
+        id: nvim-virtualenv-cache
+        uses: actions/cache@v2.1.3
+        with:
+          path: ~/.cache/nvim/venv
+          key: "${{ matrix.os }}-${{ hashFiles('scripts/bootstrap.lua') }}-${{ steps.get-python-version.outputs.version }}"
+
       - name: bootstrap from config dir
         env:
           NVIM_DEBUG: 1
