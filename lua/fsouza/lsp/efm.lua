@@ -127,7 +127,10 @@ local function get_luaformat()
 end
 
 local function read_precommit_config(file_path)
-  local lyaml = require('lyaml')
+  local lyaml = prequire('lyaml')
+  if not lyaml then
+    return {repos = {}}
+  end
   local f = io.open(file_path, 'r')
   local content = f:read('all*')
   f:close()

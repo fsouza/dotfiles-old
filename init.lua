@@ -8,6 +8,16 @@ local data_dir = vfn.stdpath('data')
 
 local helpers = require('fsouza.lib.nvim_helpers')
 
+local function prequire(module)
+  local ok, mod = pcall(require, module)
+  if not ok then
+    return nil
+  end
+  return mod
+end
+
+_G.prequire = prequire
+
 local function initial_mappings()
   -- Disable ex mode. I'm not that smart.
   nvim_set_keymap('n', 'Q', '', {})
@@ -21,15 +31,17 @@ local function initial_mappings()
 end
 
 local function bootstrap_env()
-  local stdlib = require('posix.stdlib')
-  stdlib.setenv('NVIM_CACHE_DIR', cache_dir)
+  local stdlib = prequire('posix.stdlib')
+  if stdlib then
+    stdlib.setenv('NVIM_CACHE_DIR', cache_dir)
 
-  local vim_venv_bin = cache_dir .. '/venv/bin'
-  local hererocks_bin = cache_dir .. '/hr/bin'
-  local langservers_bin = cache_dir .. '/langservers/bin'
+    local vim_venv_bin = cache_dir .. '/venv/bin'
+    local hererocks_bin = cache_dir .. '/hr/bin'
+    local langservers_bin = cache_dir .. '/langservers/bin'
 
-  stdlib.setenv('PATH', string.format('%s:%s:%s:%s', langservers_bin, hererocks_bin, vim_venv_bin,
-                                      stdlib.getenv('PATH')))
+    stdlib.setenv('PATH', string.format('%s:%s:%s:%s', langservers_bin, hererocks_bin,
+                                        vim_venv_bin, stdlib.getenv('PATH')))
+  end
 end
 
 local function hererocks()
