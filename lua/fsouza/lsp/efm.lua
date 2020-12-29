@@ -11,7 +11,7 @@ local function setup_blackd_logs_dir()
   local cache_dir = vfn.stdpath('cache')
   local setenv = require('posix.stdlib').setenv
   local logs_dir = cache_dir .. '/blackd-logs'
-  loop.fs_mkdir(logs_dir, 0755)
+  vfn.mkdir(logs_dir, 'p')
   setenv('BLACKD_LOGS_DIR', logs_dir)
 end
 
