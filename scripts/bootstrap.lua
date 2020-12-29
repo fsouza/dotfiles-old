@@ -72,24 +72,10 @@ local function install_autoload_plugins()
     site_dir)
 end
 
-local function ensure_packer_nvim()
-  local packer_dir = string.format('%s/pack/packer/opt/packer.nvim', site_dir)
-  vfn.mkdir(packer_dir, 'p')
-  if not loop.fs_stat(packer_dir .. '/.git') then
-    execute([[git clone --depth=1 https://github.com/wbthomason/packer.nvim %s]], packer_dir)
-  end
-
-  vim.o.packpath = string.format('%s,%s', site_dir, vim.o.packpath)
-  require('fsouza.packed').setup()
-  require('packer').sync()
-  require('packer').compile()
-end
-
 do
   local ops = {
     autoload = install_autoload_plugins;
     langservers = setup_langservers;
-    packer = ensure_packer_nvim;
     virtualenv = ensure_virtualenv;
     hererocks = ensure_hererocks;
   }

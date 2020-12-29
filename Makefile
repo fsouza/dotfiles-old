@@ -27,7 +27,7 @@ luacheck:
 
 .PHONY: lua-format
 lua-format:
-	cd $(mkfile_dir) && git ls-files | grep '\.lua$$' | xargs $(LUAFORMAT) -i
+	cd $(mkfile_dir) && git ls-files | grep '\.lua$$' | grep -v ^pack | xargs $(LUAFORMAT) -i
 
 .PHONY: install-lua-format
 install-lua-format:

@@ -171,4 +171,7 @@ do
     require('fsouza.plugin.ts')
   end)
   schedule(trigger_ft)
+  schedule(function()
+    vcmd([[doautocmd User PluginReady]])
+  end)
 end

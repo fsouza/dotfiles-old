@@ -1,0 +1,72 @@
+[submodule "nvim-toggleterm.lua"]
+	path = pack/fsouza/start/nvim-toggleterm.lua
+	url = https://github.com/akinsho/nvim-toggleterm.lua.git
+[submodule "vim-dirvish"]
+	path = pack/fsouza/start/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
+[submodule "vim-sneak"]
+	path = pack/fsouza/start/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
+[submodule "vim-textobj-user"]
+	path = pack/fsouza/start/vim-textobj-user
+	url = https://github.com/kana/vim-textobj-user.git
+[submodule "vim-visual-multi"]
+	path = pack/fsouza/start/vim-visual-multi
+	url = https://github.com/mg979/vim-visual-multi.git
+[submodule "nvim-colorizer.lua"]
+	path = pack/fsouza/start/nvim-colorizer.lua
+	url = https://github.com/norcalli/nvim-colorizer.lua.git
+[submodule "vim-polyglot"]
+	path = pack/fsouza/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "vim-textobj-between"]
+	path = pack/fsouza/start/vim-textobj-between
+	url = https://github.com/thinca/vim-textobj-between.git
+[submodule "vim-repeat"]
+	path = pack/fsouza/start/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim-surround"]
+	path = pack/fsouza/start/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "tabular"]
+	path = pack/fsouza/start/tabular
+	url = https://github.com/godlygeek/tabular.git
+[submodule "fzf.vim"]
+	path = pack/fsouza/start/fzf.vim
+	url = https://github.com/junegunn/fzf.vim.git
+[submodule "nvim-lspconfig"]
+	path = pack/fsouza/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "completion-nvim"]
+	path = pack/fsouza/start/completion-nvim
+	url = https://github.com/nvim-lua/completion-nvim.git
+[submodule "vim-commentary"]
+	path = pack/fsouza/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "emmet-vim"]
+	path = pack/fsouza/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "git-messenger.vim"]
+	path = pack/fsouza/start/git-messenger.vim
+	url = https://github.com/rhysd/git-messenger.vim.git
+[submodule "nvim-treesitter"]
+	path = pack/fsouza/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "nvim-treesitter-textobjects"]
+	path = pack/fsouza/start/nvim-treesitter-textobjects
+	url = https://github.com/nvim-treesitter/nvim-treesitter-textobjects.git
+[submodule "playground"]
+	path = pack/fsouza/start/playground
+	url = https://github.com/nvim-treesitter/playground.git
+[submodule "vim-indent-object"]
+	path = pack/fsouza/start/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "vim-fugitive"]
+	path = pack/fsouza/start/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim-maximizer"]
+	path = pack/fsouza/start/vim-maximizer
+	url = https://github.com/szw/vim-maximizer.git
+[submodule "findr.vim"]
+	path = pack/fsouza/start/findr.vim
+	url = https://github.com/conweller/findr.vim.git

@@ -156,10 +156,7 @@ do
   folding()
   global_vars()
 
-  require('fsouza.packed').setup()
-  if not os.getenv('NVIM_BOOTSTRAP') then
-    schedule(function()
-      require('fsouza.plugin')
-    end)
-  end
+  schedule(function()
+    require('fsouza.plugin')
+  end)
 end

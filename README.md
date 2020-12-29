@@ -14,6 +14,6 @@ I'll take PRs fixing or improving my code though :)
 Clone it in the configuration directory and use `make bootstrap`:
 
 ```
-% git clone https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
+% git clone --recurse-submodules https://github.com/fsouza/vimfiles.git ${HOME}/.config/nvim
 % make -f ${HOME}/.config/nvim/Makefile bootstrap
 ```
