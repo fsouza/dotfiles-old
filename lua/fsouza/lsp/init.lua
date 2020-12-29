@@ -103,10 +103,6 @@ do
     }))
   end)
 
-  if_executable('golangci-lint-langserver', function()
-    require('fsouza.lsp.custom.golangcilint').setup(opts.with_defaults({}))
-  end)
-
   if_executable('opam', function()
     lsp.ocamllsp.setup(opts.with_defaults({cmd = {get_local_cmd('ocaml-lsp')}}))
   end)
