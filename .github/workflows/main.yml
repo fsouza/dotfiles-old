@@ -116,9 +116,3 @@ jobs:
 
       - name: run luacheck from config dir
         run: make -f $HOME/.config/nvim/Makefile luacheck
-
-      - name: install lua-format
-        run: make -f $HOME/.config/nvim/Makefile install-lua-format
-
-      - name: run lua-format
-        run: make -f $HOME/.config/nvim/Makefile lua-format
