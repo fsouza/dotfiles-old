@@ -117,6 +117,10 @@ do
     lsp.rust_analyzer.setup(opts.with_defaults({settings = {}}))
   end)
 
+  if_executable('clojure-lsp', function()
+    lsp.clojure_lsp.setup(opts.with_defaults({}))
+  end)
+
   if_executable('ninja', function()
     lsp.sumneko_lua.setup(opts.with_defaults({
       cmd = {get_local_cmd('lua-lsp')};
