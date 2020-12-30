@@ -34,7 +34,10 @@ local function render_virtual_text(bufnr)
   for line, items in pairs(code_lenses[bufnr]) do
     local titles = {}
     for _, item in ipairs(items) do
-      table.insert(titles, item.command.title)
+      -- TODO: properly resolve item.command before displaying (see note below).
+      if item.command then
+        table.insert(titles, item.command.title)
+      end
     end
     local chunks = {
       {string.format('%s%s', prefix, table.concat(titles, ' | ')); 'LspCodeLensVirtualText'};
@@ -107,6 +110,9 @@ local function execute_codelenses(bufnr, items)
         return
       end
 
+      -- TODO: this is incorrect, items need to be resolved to be displayed,
+      -- not to be executed. Ideally we'd track the scroll position and reoslve
+      -- on demand, but just doing it eagerly may be enough.
       client.lsp_client.request('codeLens/resolve', selected, function(_, _, result)
         if result then
           run(result)
