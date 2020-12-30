@@ -143,17 +143,17 @@ local function setup_terminal_mappings()
   helpers.create_mappings({
     n = {
       {
-        lhs = '<leader>tj';
+        lhs = '<c-t>j';
         rhs = helpers.cmd_map([[lua require('fsouza.plugin.terminal').open('j')]]);
         opts = {silent = true};
       };
       {
-        lhs = '<leader>tk';
+        lhs = '<c-t>k';
         rhs = helpers.cmd_map([[lua require('fsouza.plugin.terminal').open('k')]]);
         opts = {silent = true};
       };
       {
-        lhs = '<leader>tl';
+        lhs = '<c-t>l';
         rhs = helpers.cmd_map([[lua require('fsouza.plugin.terminal').open('l')]]);
         opts = {silent = true};
       };
