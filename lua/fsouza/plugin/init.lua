@@ -2,15 +2,12 @@ local vcmd = vim.cmd
 local vfn = vim.fn
 local helpers = require('fsouza.lib.nvim_helpers')
 
-local function setup_fuzzy_mappings_and_commands()
+local function setup_fuzzy_mappings()
   helpers.create_mappings({
     n = {
       {lhs = '<leader>ff'; rhs = helpers.cmd_map('Findr'); opts = {silent = true}};
-      {
-        lhs = '<leader>zz';
-        rhs = helpers.cmd_map([[lua require('fsouza.plugin.fuzzy').files()]]);
-        opts = {silent = true};
-      };
+      {lhs = '<leader>zz'; rhs = helpers.cmd_map('FzfFiles'); opts = {silent = true}};
+      {lhs = '<leader>zg'; rhs = helpers.cmd_map('FzfGitFiles'); opts = {silent = true}};
       {lhs = '<leader>;'; rhs = helpers.cmd_map('FzfCommands'); opts = {silent = true}};
       {lhs = '<leader>zb'; rhs = helpers.cmd_map('FzfBuffers'); opts = {silent = true}};
       {lhs = '<leader>zl'; rhs = helpers.cmd_map('FzfLines'); opts = {silent = true}};
@@ -31,7 +28,6 @@ local function setup_fuzzy_mappings_and_commands()
       };
     };
   })
-  vcmd([[command! FuzzyFiles lua require('fsouza.plugin.fuzzy').files()]])
 end
 
 local function setup_autofmt_commands()
@@ -173,7 +169,7 @@ do
   schedule(setup_completion)
   schedule(setup_editorconfig)
   schedule(setup_global_ns)
-  schedule(setup_fuzzy_mappings_and_commands)
+  schedule(setup_fuzzy_mappings)
   schedule(setup_hlyank)
   schedule(function()
     require('fsouza.plugin.mkdir').setup()
