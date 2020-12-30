@@ -34,3 +34,5 @@
 	version = 2
 [alias]
 	git = !git
+[init]
+	defaultBranch = main
