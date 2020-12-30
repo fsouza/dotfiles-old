@@ -143,6 +143,28 @@ local function configure_toggleterm()
   })
 end
 
+local function setup_terminal_mappings()
+  helpers.create_mappings({
+    n = {
+      {
+        lhs = '<leader>tj';
+        rhs = helpers.cmd_map([[lua require('fsouza.plugin.terminal').open('j')]]);
+        opts = {silent = true};
+      };
+      {
+        lhs = '<leader>tk';
+        rhs = helpers.cmd_map([[lua require('fsouza.plugin.terminal').open('k')]]);
+        opts = {silent = true};
+      };
+      {
+        lhs = '<leader>tl';
+        rhs = helpers.cmd_map([[lua require('fsouza.plugin.terminal').open('l')]]);
+        opts = {silent = true};
+      };
+    };
+  })
+end
+
 do
   local schedule = vim.schedule
   schedule(function()
@@ -169,6 +191,7 @@ do
     require('fsouza.plugin.ft').setup()
   end)
   schedule(configure_toggleterm)
+  schedule(setup_terminal_mappings)
   schedule(function()
     require('fsouza.lsp')
   end)
