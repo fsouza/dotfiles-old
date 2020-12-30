@@ -114,10 +114,10 @@ function M.disable()
 end
 
 function M.set_config()
-  if not vim.bo.modifiable then
+  local bufnr = api.nvim_get_current_buf()
+  if not vim.bo[bufnr].modifiable or vim.bo[bufnr].readonly then
     return
   end
-  local bufnr = api.nvim_get_current_buf()
   local filename = api.nvim_buf_get_name(bufnr)
   if filename == '' then
     return
