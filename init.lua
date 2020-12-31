@@ -69,6 +69,7 @@ end
 local function ui_options()
   vim.o.termguicolors = true
   vim.o.showcmd = false
+  vim.o.showmatch = true
   vim.o.laststatus = 0
   vim.o.ruler = true
   vim.o.rulerformat = [[%-14.(%l,%c   %o%)]]
