@@ -1,4 +1,3 @@
-local vcmd = vim.cmd
 local vfn = vim.fn
 
 local config_dir = vfn.stdpath('config')
