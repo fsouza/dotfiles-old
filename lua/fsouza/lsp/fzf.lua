@@ -60,7 +60,6 @@ local function format_items(items)
 end
 
 function M.send(items, prompt)
-  require('fsouza.plugin.fuzzy').ensure_fzf()
   prompt = prompt .. '：'
   local opts = {
     source = format_items(items);

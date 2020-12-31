@@ -49,10 +49,6 @@ local function set_folding()
 end
 
 do
-  vim.cmd([[
-    packadd nvim-treesitter
-    packadd nvim-treesitter-textobjects
-  ]])
   local configs = require('nvim-treesitter.configs')
   configs.setup({
     highlight = {enable = false};

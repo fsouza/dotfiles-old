@@ -1,23 +1,12 @@
 local M = {}
 
-local vcmd = vim.cmd
 local vfn = vim.fn
 
-function M.ensure_fzf()
-  vcmd('packadd fzf.vim')
-end
-
-local function ensure_findr()
-  vcmd('packadd findr.vim')
-end
-
 function M.fuzzy_here()
-  ensure_findr()
   require('findr').init(require('findr.sources.files'), vfn.expand('%:p:h'))
 end
 
 function M.rg(input)
-  M.ensure_fzf()
   input = input or vfn.input([[rg：]])
   if input ~= '' then
     local cmd =
