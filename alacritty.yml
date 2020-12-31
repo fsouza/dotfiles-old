@@ -63,7 +63,9 @@ selection:
   save_to_clipboard: true
 
 cursor:
-  style: Block
+  style:
+    shape: Block
+    blinking: Off
   unfocused_hollow: true
 
 shell:
