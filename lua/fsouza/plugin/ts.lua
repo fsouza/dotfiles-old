@@ -1,6 +1,7 @@
 local wanted_parsers = {
   'bash';
   'c';
+  'clojure';
   'cpp';
   'css';
   'go';
@@ -9,9 +10,13 @@ local wanted_parsers = {
   'lua';
   'ocaml';
   'ocaml_interface';
+  'ocamllex';
   'python';
   'query';
+  'regex';
   'rust';
+  'teal';
+  'toml';
   'tsx';
   'typescript';
 };
