@@ -22,7 +22,7 @@ flake8-comprehensions==3.3.1  # via -r requirements.in
 flake8-tidy-imports==4.2.1  # via -r requirements.in
 flake8==3.8.4             # via -r requirements.in, flake8-bugbear, flake8-builtins, flake8-comprehensions, flake8-tidy-imports
 idna==2.10                # via yarl
-isort==5.6.4              # via -r requirements.in
+isort==5.7.0              # via -r requirements.in
 mccabe==0.6.1             # via flake8
 multidict==4.7.6          # via aiohttp, yarl
 mypy-extensions==0.4.3    # via black
