@@ -139,7 +139,7 @@ local function configure_toggleterm()
   })
 end
 
-local function setup_terminal_mappings()
+local function setup_terminal_mappings_and_commands()
   helpers.create_mappings({
     n = {
       {
@@ -159,6 +159,8 @@ local function setup_terminal_mappings()
       };
     };
   })
+  vcmd([[command! -nargs=* Run lua require('fsouza.plugin.terminal').run_in_main_term(<f-args>)]])
+  vcmd([[command! -nargs=* T lua require('fsouza.plugin.terminal').run_in_main_term(<f-args>)]])
 end
 
 do
@@ -187,7 +189,7 @@ do
     require('fsouza.plugin.ft').setup()
   end)
   schedule(configure_toggleterm)
-  schedule(setup_terminal_mappings)
+  schedule(setup_terminal_mappings_and_commands)
   schedule(function()
     require('fsouza.lsp')
   end)

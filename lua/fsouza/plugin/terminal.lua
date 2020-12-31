@@ -56,12 +56,28 @@ function M.open(term_id)
   jump_to(term.bufnr)
 end
 
-function M.run(term_id, command)
+local function run(term_id, command)
   local term = ensure_term(term_id)
   if not vim.endswith(command, '\n') then
     command = command .. '\n'
   end
   vfn.chansend(term.job_id, command)
+end
+
+function M.run(term_id, ...)
+  -- this isn't great, but we can live with it.
+  local command = table.concat({...}, ' ')
+  if command == '' then
+    command = vfn.input([[>> ]])
+  end
+  if command == '' then
+    return
+  end
+  run(term_id, command)
+end
+
+function M.run_in_main_term(...)
+  M.run('j', ...)
 end
 
 return M
