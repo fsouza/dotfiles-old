@@ -52,6 +52,92 @@ schemes:
 
     indexed_colors: []
 
+  themer-dark: &dark
+    primary:
+      background: "#282c34"
+      foreground: "#979eab"
+
+    cursor:
+      text: "#282c34"
+      cursor: "#c678dd"
+
+    selection:
+      text: "#282c34"
+      background: "#61afef"
+
+    normal:
+      black: "#4b515c"
+      red: "#e06c75"
+      green: "#98c379"
+      yellow: "#e5c07b"
+      blue: "#61afef"
+      magenta: "#be5046"
+      cyan: "#56b6c2"
+      white: "#979eab"
+
+    bright:
+      black: "#5c6370"
+      red: "#D57A84"
+      green: "#9CC087"
+      yellow: "#D9BD89"
+      blue: "#70B0E5"
+      magenta: "#BA645E"
+      cyan: "#67B5C1"
+      white: "#abb2bf"
+
+    dim:
+      black: "#393e48"
+      red: "#BB5F68"
+      green: "#82A56B"
+      yellow: "#BFA26D"
+      blue: "#5695CA"
+      magenta: "#A04942"
+      cyan: "#4D9AA6"
+      white: "#828997"
+
+  themer-light: &light
+    primary:
+      background: "#fafafa"
+      foreground: "#51535d"
+
+    cursor:
+      text: "#fafafa"
+      cursor: "#a626a4"
+
+    selection:
+      text: "#fafafa"
+      background: "#4078f2"
+
+    normal:
+      black: "#51535d"
+      red: "#e45649"
+      green: "#50a14f"
+      yellow: "#c18401"
+      blue: "#4078f2"
+      magenta: "#ca1243"
+      cyan: "#0184bc"
+      white: "#a0a1a7"
+
+    bright:
+      black: "#696c77"
+      red: "#E8776C"
+      green: "#72B371"
+      yellow: "#CC9C33"
+      blue: "#6592F4"
+      magenta: "#D44068"
+      cyan: "#339CC8"
+      white: "#cdced1"
+
+    dim:
+      black: "#383a42"
+      red: "#C25048"
+      green: "#4B8C4C"
+      yellow: "#A6750E"
+      blue: "#3E6CCF"
+      magenta: "#AD1A43"
+      cyan: "#0C75A4"
+      white: "#9d9d9f"
+
 colors: *default-theme
 
 mouse:
