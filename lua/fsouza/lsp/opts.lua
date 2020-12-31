@@ -8,7 +8,7 @@ local function attached(bufnr, client)
     local mappings = {
       n = {
         {
-          lhs = '<leader><leader>';
+          lhs = '<leader>l';
           rhs = helpers.cmd_map([[lua vim.lsp.diagnostic.show_line_diagnostics()]]);
           opts = {silent = true};
         };
