@@ -11,19 +11,51 @@ local clients = {}
 -- stores result by bufnr & line (range.start.line)
 local code_lenses = {}
 
-local function group_by_line(codelenses)
-  local by_line = {}
+local function group_by_line(codelenses, by_line)
+  local to_resolve = {}
+  by_line = by_line or {}
   for _, codelens in ipairs(codelenses) do
-    local line_id = codelens.range.start.line
-    local curr = by_line[line_id] or {}
-    table.insert(curr, codelens)
-    by_line[line_id] = curr
+    if not codelens.command then
+      table.insert(to_resolve, codelens)
+    else
+      local line_id = codelens.range.start.line
+      local curr = by_line[line_id] or {}
+      table.insert(curr, codelens)
+      by_line[line_id] = curr
+    end
   end
-  return by_line
+  return by_line, to_resolve
 end
 
 local function remove_results(bufnr)
   code_lenses[bufnr] = nil
+end
+
+local function resolve_code_lenses(client, lenses, cb)
+  if not client.supports_resolve then
+    cb({})
+    return
+  end
+
+  local resolved_lenses = {}
+  local done = 0
+
+  for _, lens in ipairs(lenses) do
+    client.lsp_client.request('codeLens/resolve', lens, function(_, _, result)
+      done = done + 1
+      if result then
+        table.insert(resolved_lenses, result)
+      end
+    end)
+  end
+
+  local timer = vim.loop.new_timer()
+  timer:start(500, 500, vim.schedule_wrap(function()
+    if done == #lenses then
+      timer:close()
+      cb(resolved_lenses)
+    end
+  end))
 end
 
 local function render_virtual_text(bufnr)
@@ -34,10 +66,7 @@ local function render_virtual_text(bufnr)
   for line, items in pairs(code_lenses[bufnr]) do
     local titles = {}
     for _, item in ipairs(items) do
-      -- TODO: properly resolve item.command before displaying (see note below).
-      if item.command then
-        table.insert(titles, item.command.title)
-      end
+      table.insert(titles, item.command.title)
     end
     local chunks = {
       {string.format('%s%s', prefix, table.concat(titles, ' | ')); 'LspCodeLensVirtualText'};
@@ -51,8 +80,17 @@ local function codelenses_handler(_, _, codelenses, _, bufnr)
     return
   end
 
-  code_lenses[bufnr] = group_by_line(codelenses)
-  render_virtual_text(bufnr)
+  local preresolved, to_resolve = group_by_line(codelenses)
+  local client = clients[bufnr]
+  if #to_resolve > 0 then
+    resolve_code_lenses(client, to_resolve, function(lenses)
+      code_lenses[bufnr] = group_by_line(lenses, preresolved)
+      render_virtual_text(bufnr)
+    end)
+  else
+    code_lenses[bufnr] = preresolved
+    render_virtual_text(bufnr)
+  end
 end
 
 local function codelenses(bufnr)
@@ -105,20 +143,7 @@ local function execute_codelenses(bufnr, items)
     if not client.supports_command then
       return
     end
-    if selected.command.command == '' then
-      if not client.supports_resolve then
-        return
-      end
-
-      -- TODO: this is incorrect, items need to be resolved to be displayed,
-      -- not to be executed. Ideally we'd track the scroll position and reoslve
-      -- on demand, but just doing it eagerly may be enough.
-      client.lsp_client.request('codeLens/resolve', selected, function(_, _, result)
-        if result then
-          run(result)
-        end
-      end)
-    else
+    if selected.command.command ~= '' then
       run(selected)
     end
   end
