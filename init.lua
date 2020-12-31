@@ -105,14 +105,8 @@ set noswapfile
 end
 
 local function folding()
-  local fold_method = 'indent'
   vim.o.foldlevelstart = 99
-  vim.wo.foldmethod = fold_method
-  vim.schedule(function()
-    helpers.augroup('folding_config', {
-      {events = {'BufEnter'}; targets = {'*'}; command = [[setlocal foldmethod=]] .. fold_method};
-    })
-  end)
+  vcmd([[set foldmethod=indent]])
 end
 
 local function global_mappings()
