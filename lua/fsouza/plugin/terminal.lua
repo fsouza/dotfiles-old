@@ -17,12 +17,12 @@ local function set_options(bufnr)
 end
 
 local function jump_to(bufnr)
-  set_options(bufnr)
   api.nvim_set_current_buf(bufnr)
 end
 
 local function create_terminal(term_id)
   local bufnr = api.nvim_create_buf(false, false)
+  set_options(bufnr)
   jump_to(bufnr)
   local job_id = vfn.termopen(string.format('%s;#fsouza_term', vim.o.shell), {
     detach = false;
@@ -31,6 +31,7 @@ local function create_terminal(term_id)
     end;
   })
   terminals[term_id] = {bufnr = bufnr; job_id = job_id}
+  return terminals[term_id]
 end
 
 local function get_term(term_id)
@@ -42,13 +43,25 @@ local function get_term(term_id)
   return nil
 end
 
-function M.open(term_id)
+local function ensure_term(term_id)
   local term = get_term(term_id)
-  if term then
-    jump_to(term.bufnr)
-  else
-    create_terminal(term_id)
+  if not term then
+    return create_terminal(term_id)
   end
+  return term
+end
+
+function M.open(term_id)
+  local term = ensure_term(term_id)
+  jump_to(term.bufnr)
+end
+
+function M.run(term_id, command)
+  local term = ensure_term(term_id)
+  if not vim.endswith(command, '\n') then
+    command = command .. '\n'
+  end
+  vfn.chansend(term.job_id, command)
 end
 
 return M
