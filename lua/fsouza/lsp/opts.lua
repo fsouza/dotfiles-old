@@ -183,11 +183,6 @@ local function attached(bufnr, client)
     end
 
     if client.resolved_capabilities.signature_help then
-      table.insert(mappings.n, {
-        lhs = '<c-k>';
-        rhs = helpers.cmd_map('lua vim.lsp.buf.signature_help()');
-        opts = {silent = true};
-      })
       table.insert(mappings.i, {
         lhs = '<c-k>';
         rhs = helpers.cmd_map('lua vim.lsp.buf.signature_help()');
