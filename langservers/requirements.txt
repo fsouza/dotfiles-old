@@ -4,7 +4,7 @@
 #
 #    pip-compile
 #
-add-trailing-comma==2.0.1  # via -r requirements.in
+add_trailing_comma==2.0.2  # via -r requirements.in
 aiohttp-cors==0.7.0       # via black
 aiohttp==3.6.2            # via aiohttp-cors, black
 appdirs==1.4.4            # via black
