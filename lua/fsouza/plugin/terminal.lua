@@ -13,7 +13,6 @@ local terminals = {}
 
 local function set_options(bufnr)
   api.nvim_buf_set_option(bufnr, 'filetype', filetype)
-  api.nvim_buf_set_option(bufnr, 'buflisted', false)
 end
 
 local function jump_to(bufnr)
@@ -21,10 +20,10 @@ local function jump_to(bufnr)
 end
 
 local function create_terminal(term_id)
-  local bufnr = api.nvim_create_buf(false, false)
+  local bufnr = api.nvim_create_buf(true, false)
   set_options(bufnr)
   jump_to(bufnr)
-  local job_id = vfn.termopen(string.format('%s;#fsouza_term', vim.o.shell), {
+  local job_id = vfn.termopen(string.format('%s;#fsouza_term;%s', vim.o.shell, term_id), {
     detach = false;
     on_exit = function()
       terminals[term_id] = nil
