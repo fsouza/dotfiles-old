@@ -73,3 +73,6 @@
 [submodule "vim-dispatch"]
 	path = pack/fsouza/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule "vim-wordmotion"]
+	path = pack/fsouza/start/vim-wordmotion
+	url = https://github.com/chaoren/vim-wordmotion.git
