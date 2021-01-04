@@ -6,7 +6,7 @@
   "dependencies": {
     "@fsouza/prettierd": "0.8.10",
     "bash-language-server": "^1.17.0",
-    "pyright": "^1.1.98",
+    "pyright": "^1.1.99",
     "typescript-language-server": "^0.4.0",
     "vscode-css-languageserver-bin": "^1.4.0",
     "vscode-html-languageserver-bin": "^1.4.0",
