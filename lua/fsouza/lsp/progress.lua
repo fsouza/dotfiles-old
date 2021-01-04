@@ -10,8 +10,12 @@ function M.on_progress_update()
 
   local function format_message(msg)
     local prefix = ''
-    if msg.title ~= 'empty title' then
-      prefix = string.format('[%s] ', msg.title)
+    if msg.title ~= '' then
+      prefix = string.format('%s: ', msg.title)
+    end
+
+    if msg.name ~= '' then
+      prefix = string.format('[%s] %s', msg.name, prefix)
     end
 
     local suffix = ''
@@ -23,7 +27,7 @@ function M.on_progress_update()
   end
 
   for _, message in ipairs(messages) do
-    vcmd(string.format('echomsg "%s"', format_message(message)))
+    vcmd(string.format('echomsg %s', format_message(message)))
   end
 end
 
