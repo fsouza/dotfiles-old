@@ -85,7 +85,7 @@
 		git_status_ignored: "None None"
 		git_status_conflicted: "None None"
 		git_status_other: "None None"
-		selected_line: "None None"
+		selected_line: "None Ansi(222)"
 		char_match: "Ansi(198) None"
 		file_error: "None None"
 		flag_label: "None None"
