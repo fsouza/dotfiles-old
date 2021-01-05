@@ -31,13 +31,6 @@
 		}
 
 		{
-			invocation: git_diff
-			shortcut: gd
-			leave_broot: false
-			execution: "git difftool -y {file}"
-		}
-
-		{
 			invocation: terminal
 			key: ctrl-t
 			execution: "$SHELL"
