@@ -91,6 +91,8 @@ function M.open(lines, cb)
                                 [[lua require('fsouza.lib.popup_picker').handle_selection(%d)]],
                                 winid));
       };
+      {lhs = '<c-n>'; rhs = '<down>'; opts = {noremap = true}};
+      {lhs = '<c-p>'; rhs = '<up>'; opts = {noremap = true}};
     };
   }, bufnr)
 end
