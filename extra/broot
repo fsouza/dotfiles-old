@@ -1,0 +1,4 @@
+if command -v broot &>/dev/null; then
+	broot --set-install-state installed
+	eval "$(broot --print-shell-function zsh)"
+fi

@@ -28,6 +28,9 @@ mkdir -p ${HOME}/.config/git
 ln -sf ${basedir}/gitconfig ${HOME}/.config/git/config
 ln -sf ${basedir}/gitignore_global ${HOME}/.config/git/gitignore
 
+mkdir -p ${HOME}/.config/broot
+ln -sf ${basedir}/broot-conf.hjson ${HOME}/.config/broot/conf.hjson
+
 mkdir -p ${HOME}/.config/fd
 ln -sf ${basedir}/fdignore ${HOME}/.config/fd/ignore
 
