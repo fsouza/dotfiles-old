@@ -167,6 +167,7 @@ key_bindings:
   - { key: F, mods: Alt, chars: "\x1bf" }
   - { key: B, mods: Alt, chars: "\x1bb" }
   - { key: D, mods: Alt, chars: "\x1bd" }
+  - { key: Return, mods: Alt, chars: "\x1b\x0d" }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
   - { key: L, mods: Control|Shift|Alt, action: DecreaseFontSize }
