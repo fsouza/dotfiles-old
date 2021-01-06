@@ -158,3 +158,44 @@ defaults write com.apple.controlstrip MiniCustomized -array com.apple.system.bri
 
 defaults write com.apple.touchbar.agent PresentationModeFnModes -dict appWithControlStrip fullControlStrip
 install_sfmono_user
+
+# Amethyst config
+
+defaults write com.amethyst.Amethyst floating '(
+	{
+		id = "com.todoist.mac.Todoist";
+		"window-titles" = ();
+	},
+	{
+		id = "com.agilebits.onepassword7";
+		"window-titles" = ();
+	},
+	{
+		id = "com.apple.systempreferences";
+		"window-titles" = ();
+	}
+)'
+
+defaults write com.amethyst.Amethyst float-small-windows 1
+
+defaults write com.amethyst.Amethyst layouts '(
+	tall,
+	wide,
+	fullscreen,
+	column,
+	bsp
+)'
+
+defaults write com.amethyst.Amethyst new-windows-to-main 1
+
+defaults write com.amethyst.Amethyst window-margins 1
+defaults write com.amethyst.Amethyst window-margin-size 15
+
+defaults write com.amethyst.Amethyst enables-layout-hud-on-space-change 0
+
+defaults write com.amethyst.Amethyst mouse-resize-windows 1
+defaults write com.amethyst.Amethyst mouse-swaps-windows 1
+
+defaults write com.amethyst.Amethyst restore-layouts-on-launch 1
+
+defaults read com.amethyst.Amethyst &>/dev/null
