@@ -102,6 +102,7 @@ local function setup_lsp_diagnostics(ns)
     nvim_set_hl(ns, floating_group, diagnostics_floating)
     nvim_set_hl(ns, sign_group, diagnostics_sign)
   end
+  nvim_set_hl(ns, 'User1', {bold = true; fg = colors.red})
 end
 
 local function setup_lsp_codelens(ns)
