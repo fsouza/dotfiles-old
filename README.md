@@ -1,5 +1,7 @@
 # dotfiles
 
+[![Build Status](https://github.com/fsouza/dotfiles/workflows/Build/badge.svg)](https://github.com/fsouza/dotfiles/actions?query=branch:main+workflow:Build)
+
 This is my personal dotfiles config. Most interesting bits are probably in the
 nvim folder.
 
