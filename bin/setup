@@ -1,5 +1,7 @@
 #!/bin/zsh -e
 
+set -x
+
 # This script setups this repository, intializing the submodules, setting up
 # symlinks, copying any required files and bootstrapping the nvim config.
 
