@@ -8,7 +8,6 @@ window:
     lines: 68
 
   dynamic_padding: true
-  decorations: none
 
 scrolling:
   history: 50000
