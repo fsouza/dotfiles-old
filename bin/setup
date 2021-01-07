@@ -19,7 +19,7 @@ for file in $files; do
 done
 
 mkdir -p ${HOME}/.config
-xdg_files_and_dirs=(tmux.conf tmux.${os}.conf alacritty.yml rgrc git broot fd utop)
+xdg_files_and_dirs=(tmux.conf tmux.${os}.conf alacritty.yml rgrc git broot fd utop nvim)
 for item in $xdg_files_and_dirs; do
 	ln -sf ${basedir}/${item} ${HOME}/.config/${item}
 done
@@ -28,8 +28,13 @@ mkdir -p ~/.gnupg
 chmod 700 ~/.gnupg
 ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
 
-if [ -f $basedir/bin/${os}-setup ] && [[ $1 != "--skip-os" ]]; then
+if [ -f $basedir/bin/${os}-setup ]; then
 	$basedir/bin/${os}-setup
 fi
+
+# bootstrap nvim
+pushd ${HOME}/.config/nvim
+env NVIM_DEBUG=1 make bootstrap
+popd
 
 touch "${HOME}"/.zsh_sessions_disable
