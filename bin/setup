@@ -13,26 +13,16 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=(.zshrc .editorconfig .utoprc)
+files=(.zshrc .editorconfig)
 for file in $files; do
 	ln -sf ${basedir}/${file} ~/${file}
 done
 
 mkdir -p ${HOME}/.config
-xdg_files=(tmux.conf tmux.${os}.conf alacritty.yml rgrc)
-for file in $xdg_files; do
-	ln -sf ${basedir}/${file} ${HOME}/.config/${file}
+xdg_files_and_dirs=(tmux.conf tmux.${os}.conf alacritty.yml rgrc git broot fd utop)
+for item in $xdg_files_and_dirs; do
+	ln -sf ${basedir}/${item} ${HOME}/.config/${item}
 done
-
-mkdir -p ${HOME}/.config/git
-ln -sf ${basedir}/gitconfig ${HOME}/.config/git/config
-ln -sf ${basedir}/gitignore_global ${HOME}/.config/git/gitignore
-
-mkdir -p ${HOME}/.config/broot
-ln -sf ${basedir}/broot-conf.hjson ${HOME}/.config/broot/conf.hjson
-
-mkdir -p ${HOME}/.config/fd
-ln -sf ${basedir}/fdignore ${HOME}/.config/fd/ignore
 
 mkdir -p ~/.gnupg
 chmod 700 ~/.gnupg
