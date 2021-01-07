@@ -11,7 +11,6 @@ function _clone_or_update() {
 	else
 		git clone "${repo}" "${path}"
 	fi
-	git -C "${path}" submodule update --init --recursive
 }
 
 function _create_opam_switch_if_needed() {
@@ -133,7 +132,6 @@ if [ -z "${cache_dir}" ]; then
 fi
 
 pushd "$(dirname "${0}")"
-git submodule update --init --recursive
 mkdir -p "${cache_dir}"
 install_servers_from_npm &
 install_ocaml_lsp &
