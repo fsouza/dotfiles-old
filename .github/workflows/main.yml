@@ -30,13 +30,13 @@ jobs:
       - name: install build deps on mac
         if: matrix.os == 'macos-latest'
         run: |
-          brew install bash shellcheck ninja libyaml elixir opam
+          brew install bash shellcheck ninja libyaml elixir opam zsh
 
       - name: install build deps on ubuntu
         if: matrix.os == 'ubuntu-20.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y shellcheck ninja-build libyaml-dev opam
+          sudo apt-get install -y shellcheck ninja-build libyaml-dev opam zsh
 
       - uses: actions/checkout@v2.3.4
         with:
