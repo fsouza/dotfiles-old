@@ -47,8 +47,10 @@ if [ -f $basedir/bin/${os}-setup ]; then
 fi
 
 # bootstrap nvim
-pushd ${HOME}/.config/nvim
-env NVIM_DEBUG=1 make bootstrap
-popd
+if command -v nvim &>/dev/null; then
+	pushd ${HOME}/.config/nvim
+	env NVIM_DEBUG=1 make bootstrap
+	popd
+fi
 
 touch "${HOME}"/.zsh_sessions_disable
