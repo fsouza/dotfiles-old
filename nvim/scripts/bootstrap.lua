@@ -7,8 +7,6 @@ local minute_ms = 60 * second_ms
 local cache_dir = vfn.stdpath('cache')
 local site_dir = string.format('%s/site', vfn.stdpath('data'))
 
-local rocks = {'lyaml'; 'luacheck'; 'luaposix'}
-
 local function execute(pat, ...)
   local cmd = string.format(pat, ...)
   local status = os.execute(cmd)
@@ -54,10 +52,7 @@ local function ensure_hererocks()
     execute([[python3 %s -j latest -r latest %s]], hererocks_py, hr_dir)
   end
 
-  for _, rock in pairs(rocks) do
-    execute([[%s/bin/luarocks install %s]], hr_dir, rock)
-  end
-
+  execute([[%s/bin/luarocks make]], hr_dir)
   return hr_dir
 end
 
