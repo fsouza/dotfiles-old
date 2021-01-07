@@ -1,7 +1,5 @@
 local loop = vim.loop
 
-local lspconfig = require('lspconfig')
-
 local M = {}
 
 local function set_from_env_var(settings)
