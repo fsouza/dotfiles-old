@@ -33,14 +33,6 @@ function update_neovim {
 	_update_neovim || rebootstrap_neovim
 }
 
-function bump_vimfiles {
-	(
-		cd "${HOME}"/.config/nvim &&
-			git pull &&
-			env NVIM_DEBUG=1 make bootstrap
-	)
-}
-
 if [ -x "$NEOVIM_INSTALL_PREFIX/bin/nvim" ]; then
 	prepend_to_path "$NEOVIM_INSTALL_PREFIX/bin"
 
