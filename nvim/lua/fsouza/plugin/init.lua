@@ -127,16 +127,6 @@ local function setup_git_messenger()
   })
 end
 
-local function configure_toggleterm()
-  require('toggleterm').setup({
-    size = 20;
-    open_mapping = [[<c-\>]];
-    shade_terminals = false;
-    persist_size = true;
-    direction = 'horizontal';
-  })
-end
-
 local function setup_terminal_mappings_and_commands()
   helpers.create_mappings({
     n = {
@@ -186,7 +176,6 @@ do
   schedule(function()
     require('fsouza.plugin.ft').setup()
   end)
-  schedule(configure_toggleterm)
   schedule(setup_terminal_mappings_and_commands)
   schedule(function()
     require('fsouza.lsp')

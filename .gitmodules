@@ -4,9 +4,6 @@
 [submodule "extra/gimme"]
 	path = extra/gimme
 	url = https://github.com/travis-ci/gimme.git
-[submodule "nvim-toggleterm.lua"]
-	path = nvim/pack/fsouza/start/nvim-toggleterm.lua
-	url = https://github.com/akinsho/nvim-toggleterm.lua.git
 [submodule "vim-dirvish"]
 	path = nvim/pack/fsouza/start/vim-dirvish
 	url = https://github.com/justinmk/vim-dirvish.git

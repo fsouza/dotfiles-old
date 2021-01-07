@@ -3,9 +3,7 @@ local vfn = vim.fn
 
 local M = {}
 
--- reuse the filetype because I want to use the same settings for toggleterm
--- and don't want to create multiple ft modules to config such settings.
-local filetype = 'toggleterm'
+local filetype = 'fsouza_terminal'
 
 -- maps number to a terminal, where a terminal is a table with the following
 -- shape: { bufnr: ..., job_id: ... }
