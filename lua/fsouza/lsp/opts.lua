@@ -258,12 +258,11 @@ function M.with_defaults(opts)
   });
 end
 
-M.project_root_pattern = function()
-  return require('lspconfig').util.root_pattern('.git')
-end
-
-M.cwd_root_pattern = function()
-  return vim.loop.cwd()
+M.root_pattern_with_fallback = function(...)
+  local find_root = require('lspconfig').util.root_pattern(...)
+  return function(startpath)
+    return find_root(startpath) or vim.loop.cwd()
+  end
 end
 
 return M

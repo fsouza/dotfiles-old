@@ -102,7 +102,10 @@ do
   end)
 
   if_executable('opam', function()
-    lsp.ocamllsp.setup(opts.with_defaults({cmd = {get_local_cmd('ocaml-lsp')}}))
+    lsp.ocamllsp.setup(opts.with_defaults({
+      cmd = {get_local_cmd('ocaml-lsp')};
+      root_dir = opts.root_pattern_with_fallback('.merlin', 'package.json', '.git');
+    }))
   end)
 
   if_executable('mix', function()
