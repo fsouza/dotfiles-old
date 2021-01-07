@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+
+ROOT=${NVIM_CACHE_DIR}/langservers
+
+os_folder_name=$(uname -s)
+if [[ $os_folder_name == "Darwin" ]]; then
+	os_folder_name=macOS
+fi
+
+cd "${ROOT}/lua-language-server"
+exec "bin/${os_folder_name}/lua-language-server" -E ./main.lua
