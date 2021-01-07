@@ -1,7 +1,7 @@
 #!/bin/zsh -e
 
 # This script setups this repository, intializing the submodules, setting up
-# symlinks and copying any required files.
+# symlinks, copying any required files and bootstrapping the nvim config.
 
 os=$(uname -s)
 basedir=$(
@@ -13,15 +13,28 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
-files=(.zshrc .editorconfig)
-for file in $files; do
-	ln -sf ${basedir}/${file} ~/${file}
+home_files=(.zshrc .editorconfig)
+for file in $home_files; do
+	ln -sf ${basedir}/${file} ${HOME}/${file}
 done
 
 mkdir -p ${HOME}/.config
-xdg_files_and_dirs=(tmux.conf tmux.${os}.conf alacritty.yml rgrc git broot fd utop nvim)
-for item in $xdg_files_and_dirs; do
-	ln -sf ${basedir}/${item} ${HOME}/.config/${item}
+xdg_files=(tmux.conf tmux.${os}.conf alacritty.yml rgrc)
+for file in $xdg_files; do
+	ln -sf ${basedir}/${file} ${HOME}/.config/${file}
+done
+
+xdg_dirs=(git broot fd utop nvim)
+for dir in $xdg_dirs; do
+	link=${HOME}/.config/${dir}
+	if ! [ -L ${link} ] && [ -d ${link} ]; then
+		echo >&2 "${link} exists, aborting"
+		exit 2
+	fi
+
+	if ! [ -L ${link} ]; then
+		ln -s ${basedir}/${dir} ${link}
+	fi
 done
 
 mkdir -p ~/.gnupg
