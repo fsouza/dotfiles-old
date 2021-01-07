@@ -13,6 +13,7 @@ pushd $basedir
 git submodule update --init --recursive
 popd
 
+# Should I start using stow?
 home_files=(.zshrc .editorconfig)
 for file in $home_files; do
 	ln -sf ${basedir}/${file} ${HOME}/${file}
