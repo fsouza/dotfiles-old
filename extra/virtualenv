@@ -107,6 +107,8 @@ function cv() {
 	fi
 }
 
-_disable_bare_python
+if [ -z "${VIRTUAL_ENV}" ]; then
+	_disable_bare_python
+fi
 export PIP_REQUIRE_VIRTUALENV=1
 export VIRTUAL_ENV_DISABLE_PROMPT=1
