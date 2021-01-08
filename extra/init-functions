@@ -3,6 +3,10 @@ function cond_source {
 }
 
 function prepend_to_path {
+	# prepend_to_path is a no-op if running inside VIM
+	if [[ -v VIM ]]; then
+		return 0
+	fi
 	for dir in $@; do
 		if [ -d "$dir" ]; then
 			PATH=$dir:$PATH

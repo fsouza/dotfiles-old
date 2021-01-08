@@ -6,7 +6,6 @@ export GOBIN=$HOME/bin GOPATH=$HOME/.go GIMME_SILENT_ENV=1 GIMME_TYPE=binary
 export EDITOR=vim PAGER=less MANPAGER=less
 export RIPGREP_CONFIG_PATH=${HOME}/.config/rgrc
 
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 prepend_to_path \
 	"${basedir}"/extra/gimme \
 	/usr/local/sbin \
