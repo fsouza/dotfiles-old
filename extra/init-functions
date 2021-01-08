@@ -10,12 +10,3 @@ function prepend_to_path {
 	done
 	export PATH
 }
-
-function append_to_path {
-	for dir in $@; do
-		if [ -d "$dir" ]; then
-			PATH=$PATH:$dir
-		fi
-	done
-	export PATH
-}
