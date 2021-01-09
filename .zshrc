@@ -15,10 +15,16 @@ prepend_to_path \
 	"${basedir}"/bin \
 	"${GOBIN}"
 
-source "${basedir}"/extra/brew
+if ! [[ -v VIM ]]; then
+	source "${basedir}"/extra/brew
+	cond_source "${HOME}/.gimme/envs/gotip.env"
+
+	if command -v fnm &>/dev/null; then
+		eval "$(fnm env)"
+	fi
+fi
 
 cond_source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-cond_source "${HOME}/.gimme/envs/gotip.env"
 cond_source "${basedir}/extra/z/z.sh"
 
 source "${basedir}"/extra/virtualenv
@@ -39,10 +45,6 @@ cond_source "${basedir}/extra/$(uname -s)-functions"
 
 export NO_COLOR=1
 export PS1="％ " PS2="\\ "
-
-if command -v fnm &>/dev/null; then
-	eval "$(fnm env)"
-fi
 
 source "${basedir}"/extra/tmux
 
