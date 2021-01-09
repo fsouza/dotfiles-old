@@ -69,7 +69,7 @@ zle -N edit-command-line
 bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
-alias bump_dotfiles="cd ${basedir} && git pull && git submodule update --init --recursive && bin/setup && cd -"
+alias bump_dotfiles="git -C ${basedir} pull && git -C ${basedir} submodule update --init --recursive && ${basedir}/bin/setup"
 
 source "${basedir}"/extra/fzf
 unset basedir
