@@ -1,54 +1,56 @@
-#!/bin/zsh -e
+#!/usr/bin/env bash
+
+set -euo pipefail
 
 # This script setups this repository, intializing the submodules, setting up
 # symlinks, copying any required files and bootstrapping the nvim config.
 
 os=$(uname -s)
 basedir=$(
-	cd $(dirname $0)/..
+	cd "$(dirname "${0}")"/..
 	pwd -P
 )
 
-pushd $basedir
+pushd "${basedir}"
 git submodule update --init --recursive
 popd
 
 # Should I start using stow?
 home_files=(.zshrc .editorconfig)
-for file in $home_files; do
-	ln -sf ${basedir}/${file} ${HOME}/${file}
+for file in "${home_files[@]}"; do
+	ln -sf "${basedir}"/"${file}" "${HOME}"/"${file}"
 done
 
-mkdir -p ${HOME}/.config
-xdg_files=(tmux.conf tmux.${os}.conf alacritty.yml rgrc)
-for file in $xdg_files; do
-	ln -sf ${basedir}/${file} ${HOME}/.config/${file}
+mkdir -p "${HOME}"/.config
+xdg_files=(tmux.conf tmux."${os}".conf alacritty.yml rgrc)
+for file in "${xdg_files[@]}"; do
+	ln -sf "${basedir}"/"${file}" "${HOME}"/.config/"${file}"
 done
 
 xdg_dirs=(git broot fd utop nvim)
-for dir in $xdg_dirs; do
-	link=${HOME}/.config/${dir}
-	if ! [ -L ${link} ] && [ -d ${link} ]; then
+for dir in "${xdg_dirs[@]}"; do
+	link="${HOME}"/.config/"${dir}"
+	if ! [ -L "${link}" ] && [ -d "${link}" ]; then
 		echo >&2 "${link} exists, aborting"
 		exit 2
 	fi
 
-	if ! [ -L ${link} ]; then
-		ln -s ${basedir}/${dir} ${link}
+	if ! [ -L "${link}" ]; then
+		ln -s "${basedir}"/"${dir}" "${link}"
 	fi
 done
 
 mkdir -p ~/.gnupg
 chmod 700 ~/.gnupg
-ln -sf ${basedir}/gpg.conf ~/.gnupg/gpg.conf
+ln -sf "${basedir}"/gpg.conf ~/.gnupg/gpg.conf
 
-if [ -f $basedir/bin/${os}-setup ]; then
-	$basedir/bin/${os}-setup
+if [ -f "${basedir}"/bin/"${os}"-setup ]; then
+	"${basedir}"/bin/"${os}"-setup
 fi
 
 # bootstrap nvim
 if command -v nvim &>/dev/null; then
-	pushd ${HOME}/.config/nvim
+	pushd "${HOME}"/.config/nvim
 	env NVIM_DEBUG=1 make bootstrap
 	popd
 fi

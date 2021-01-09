@@ -1,6 +1,6 @@
-#!/bin/zsh -e
+#!/usr/bin/env bash
 
-basedir=$(cd $(dirname $0)/..; pwd -P)
+set -euo pipefail
 
 # Increase window resize speed for Cocoa applications
 defaults write -g NSWindowResizeTime -float 0.001
@@ -20,7 +20,7 @@ defaults write -g NSDocumentSaveNewDocumentsToCloud -bool false
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2>/dev/null
 
 # Disable smart quotes as they’re annoying when typing code
 defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false

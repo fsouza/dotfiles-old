@@ -1,11 +1,13 @@
-#!/bin/zsh -el
+#!/usr/bin/bash
+
+set -euo pipefail
 
 basedir=$(
-	cd $(dirname $0)/..
+	cd "$(dirname "${0}")"/..
 	pwd -P
 )
 
-brew info --installed --json | jq -rf $basedir/extra/brew-info.jq >"$1"
+brew info --installed --json | jq -rf "${basedir}"/extra/brew-info.jq >"$1"
 
 brew tap >"${1}-tap"
 if [[ ${OSTYPE} == darwin* ]]; then

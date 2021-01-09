@@ -42,9 +42,7 @@ jobs:
         with:
           submodules: 'recursive'
 
-      # TODO: shellcheck from the root and check everything? :)
-      - name: run shellcheck on vimfiles
-        run: cd nvim && make shellcheck
+      - run: make shellcheck
 
       - name: get opam version
         id: get-opam-version
