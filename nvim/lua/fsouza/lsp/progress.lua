@@ -9,10 +9,6 @@ function M.on_progress_update()
   local messages = lsp_util.get_progress_messages()
 
   local function format_message(msg)
-    if not msg.message then
-      return nil
-    end
-
     local prefix = ''
     if msg.title ~= '' then
       prefix = string.format('%s: ', msg.title)
@@ -31,10 +27,7 @@ function M.on_progress_update()
   end
 
   for _, message in ipairs(messages) do
-    local formatted_message = format_message(message)
-    if formatted_message then
-      vcmd(string.format('echomsg %s', formatted_message))
-    end
+    vcmd(string.format('echomsg %s', format_message(message)))
   end
 end
 
