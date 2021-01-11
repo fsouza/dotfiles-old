@@ -85,11 +85,9 @@ local function global_options()
   vim.o.backspace = 'indent,eol,start'
   vim.o.hlsearch = false
   vim.o.incsearch = true
-  vim.o.smartcase = true
   vim.o.wildmenu = true
   vim.o.wildmode = 'list:longest'
   vim.o.smarttab = true
-  vim.o.errorbells = false
   vim.o.backup = false
   vim.o.inccommand = 'split'
   vim.o.jumpoptions = 'stack'
@@ -101,6 +99,7 @@ set autoindent
 set relativenumber
 set smartindent
 set noswapfile
+set undofile
 ]])
 end
 

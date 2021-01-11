@@ -54,6 +54,9 @@ local function attached(bufnr, client)
         trigger_on_delete = 1;
         auto_change_source = 1;
         confirm_key = [[\<C-y>]];
+        enable_server_trigger = 0;
+        matching_ignore_case = 1;
+        matching_smart_case = 1;
         matching_strategy_list = {'exact'; 'fuzzy'};
         chain_complete_list = {
           default = {
