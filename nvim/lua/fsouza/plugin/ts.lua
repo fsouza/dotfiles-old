@@ -5,6 +5,7 @@ local wanted_parsers = {
   'cpp';
   'css';
   'go';
+  'html';
   'javascript';
   'json';
   'lua';
