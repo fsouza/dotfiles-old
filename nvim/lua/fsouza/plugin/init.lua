@@ -5,10 +5,9 @@ local helpers = require('fsouza.lib.nvim_helpers')
 local function setup_fuzzy_mappings()
   helpers.create_mappings({
     n = {
-      {lhs = '<leader>ff'; rhs = helpers.cmd_map('Findr'); opts = {silent = true}};
+      {lhs = '<leader>zb'; rhs = helpers.cmd_map('FindrBuffers'); opts = {silent = true}};
       {lhs = '<leader>zz'; rhs = helpers.cmd_map('FzfFiles'); opts = {silent = true}};
       {lhs = '<leader>;'; rhs = helpers.cmd_map('FzfCommands'); opts = {silent = true}};
-      {lhs = '<leader>zb'; rhs = helpers.cmd_map('FzfBuffers'); opts = {silent = true}};
       {
         lhs = '<leader>zj';
         rhs = helpers.cmd_map([[lua require('fsouza.plugin.fuzzy').fuzzy_here()]]);
